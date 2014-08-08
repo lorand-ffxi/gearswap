@@ -5,7 +5,6 @@
 	Slips:										|	/NIN
 		3:	Twilight Torque
 		10:	Tantra+2 Body/Feet
-		14:	Thaumas Coat						|	Gloves
 		15:	Anchorite's Head/Body/Hands/Legs/Feet
 		17:	Hesychast's Body/Legs/Feet
 		18:	Hestchast's+1 Hands
@@ -16,7 +15,7 @@ function init_gear_sets()
 	--============================================================
 	--					Precast sets
 	--============================================================
-	sets.precast.JA['Hundred Fists'] = {	legs="Hesychast's Hose"}
+	sets.precast.JA['Hundred Fists'] = {	legs="Hesychast's Hose +1"}
 	sets.precast.JA['Boost'] = {			hands="Anchorite's Gloves"}
 	sets.precast.JA['Dodge'] = {			feet="Anchorite's Gaiters +1"}
 	sets.precast.JA['Focus'] = {			head="Anchorite's Crown"}
@@ -62,9 +61,9 @@ function init_gear_sets()
 	
 	sets.wsBase = {
 		ammo="Potestas Bomblet",
-		head="Uk'uxkaj Cap",		neck="Asperity Necklace",		ear1="Bladeborn Earring",	ear2="Steelflash Earring",
-		body="Otronif Harness +1",	hands="Hesychast's Gloves +1",	ring1="Rajas Ring",			ring2="Epona's Ring",
-		back="Atheling Mantle",		waist="Windbuffet Belt",		legs="Otronif Brais +1",	feet="Manibozho Boots"
+		head="Uk'uxkaj Cap",	neck="Asperity Necklace",		ear1="Bladeborn Earring",	ear2="Steelflash Earring",
+		body="Qaaxo Harness",	hands="Hesychast's Gloves +1",	ring1="Rajas Ring",			ring2="Epona's Ring",
+		back="Atheling Mantle",	waist="Windbuffet Belt",		legs="Otronif Brais +1",	feet="Manibozho Boots"
 	}
 	sets.wsBase.Acc = {ammo="Honed Tathlum"}
 
@@ -91,9 +90,9 @@ function init_gear_sets()
 	
 	sets.idle = {
 		ammo="Demonry Stone",
-		head="Ocelomeh Headpiece +1",	neck="Orochi Nodowa",	ear1="Novia Earring",	ear2="Ethereal Earring",
-		body="Hesychast's Cyclas",		hands="Garden Bangles",	ring1="Defending Ring",	ring2="Sheltered Ring",
-		back="Repulse Mantle",			waist="Black Belt",		legs="Otronif Brais +1",feet="Otronif Boots +1"
+		head="Ocelomeh Headpiece +1",	neck="Orochi Nodowa",	ear1="Novia Earring",		ear2="Ethereal Earring",
+		body="Hesychast's Cyclas",		hands="Garden Bangles",	ring1="Defending Ring",		ring2="Sheltered Ring",
+		back="Repulse Mantle",			waist="Black Belt",		legs="Hesychast's Hose +1",	feet="Otronif Boots +1"
 	}
 	sets.idle.Speedy = set_combine(sets.idle, {feet="Hermes' Sandals +1"})
 	
@@ -118,22 +117,13 @@ function init_gear_sets()
 	
 	sets.defense.HP = sets.defense.PDT
 
-	sets.Kiting = {feet="Hermes' Sandals +1"}
-
 	--============================================================
-	
-	sets.engaged = {
-		ammo="Potestas Bomblet",
-		head="Uk'uxkaj Cap",	neck="Asperity Necklace",		ear1="Bladeborn Earring",	ear2="Steelflash Earring",
-		body="Thaumas Coat",	hands="Hesychast's Gloves +1",	ring1="Rajas Ring",			ring2="Epona's Ring",
-		back="Atheling Mantle",	waist="Windbuffet Belt",		legs="Otronif Brais +1",	feet="Anchorite's Gaiters +1"
-	}
 	
 	sets.engaged.Normal_A = {
 		ammo="Potestas Bomblet",
 		head="Uk'uxkaj Cap",	neck="Asperity Necklace",		ear1="Bladeborn Earring",	ear2="Steelflash Earring",
-		body="Thaumas Coat",	hands="Hesychast's Gloves +1",	ring1="Rajas Ring",			ring2="Epona's Ring",
-		back="Atheling Mantle",	waist="Windbuffet Belt",		legs="Otronif Brais +1",	feet="Anchorite's Gaiters +1"
+		body="Qaaxo Harness",	hands="Hesychast's Gloves +1",	ring1="Rajas Ring",			ring2="Epona's Ring",
+		back="Atheling Mantle",	waist="Windbuffet Belt",		legs="Hesychast's Hose +1",	feet="Anchorite's Gaiters +1"
 	}
 	
 	sets.engaged.Normal_B = {
@@ -141,6 +131,13 @@ function init_gear_sets()
 		head="Uk'uxkaj Cap",		neck="Asperity Necklace",		ear1="Bladeborn Earring",	ear2="Steelflash Earring",
 		body="Otronif Harness +1",	hands="Hesychast's Gloves +1",	ring1="Rajas Ring",			ring2="Epona's Ring",
 		back="Atheling Mantle",		waist="Windbuffet Belt",		legs="Otronif Brais +1",	feet="Anchorite's Gaiters +1"
+	}
+	
+	sets.engaged.Normal_C = {
+		ammo="Honed Tathlum",
+		head="Uk'uxkaj Cap",		neck="Asperity Necklace",		ear1="Bladeborn Earring",	ear2="Steelflash Earring",
+		body="Qaaxo Harness",		hands="Hesychast's Gloves +1",	ring1="Rajas Ring",			ring2="Epona's Ring",
+		back="Anchoret's Mantle",	waist="Windbuffet Belt",		legs="Otronif Brais +1",	feet="Anchorite's Gaiters +1"
 	}
 
 	sets.engaged.Tank = {

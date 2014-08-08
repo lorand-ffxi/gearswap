@@ -172,15 +172,15 @@ function init_gear_sets()
 	
 	sets.idle = {
 		main="Terra's Staff",			sub="Achaq Grip",			ammo="Kalboron Stone",
-		head="Vitivation Chapeau +1",	neck="Twilight Torque",		ear1="Loquacious Earring",	ear2="Novia Earring",
-		body="Artsieq Jubbah",			hands="Serpentes Cuffs",	ring1="Dark Ring",			ring2="Dark Ring",
-		back="Cheviot Cape",			waist="Flume Belt",			legs="Nares Trews",			feet="Serpentes Sabots"
+		head="Vitivation Chapeau +1",	neck="Twilight Torque",		ear1="Novia Earring",	ear2="Ethereal Earring",
+		body="Artsieq Jubbah",			hands="Serpentes Cuffs",	ring1="Dark Ring",		ring2="Dark Ring",
+		back="Cheviot Cape",			waist="Emphatikos Rope",	legs="Nares Trews",		feet="Serpentes Sabots"
 	}
 	
 	sets.idle.Melee = {
 		--main="Iztaasu +2",			sub="Beatific Shield",
 		ammo="Jukukik Feather",
-		head="Vitivation Chapeau +1",	neck="Twilight Torque",		ear1="Loquacious Earring",	ear2="Novia Earring",
+		head="Vitivation Chapeau +1",	neck="Twilight Torque",		ear1="Novia Earring",	ear2="Ethereal Earring",
 		body="Artsieq Jubbah",			hands="Serpentes Cuffs",	ring1="Dark Ring",			ring2="Dark Ring",
 		back="Cheviot Cape",			waist="Flume Belt",			legs="Nares Trews",			feet="Serpentes Sabots"
 	}

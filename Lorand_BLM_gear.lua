@@ -102,7 +102,8 @@ function init_gear_sets()
 		body="Hagondes Coat +1",	hands="Otomi Gloves",		ring1="Fenrir Ring +1",		ring2="Acumen Ring",
 		back="Bane Cape",			waist="Aswang Sash",		legs="Hagondes Pants +1",	feet="Hagondes Sabots +1"
 	}
-
+	sets.midcast.ElementalMagic.Earth = {neck="Quanpur Necklace"}
+	
 	--============================================================
 	--					Other sets
 	--============================================================

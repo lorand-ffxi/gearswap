@@ -438,6 +438,12 @@ function buff_change(buff, gain)
 		state.arts = 'LA'
 	elseif buff == 'Dark Arts' and gain then
 		state.arts = 'DA'
+	elseif S{'Curse', 'Doom', 'Doomed', 'Cursed'}:contains(buff) and gain then
+		enable('ring1', 'ring2')
+		equip({ring1='Saida Ring', ring2='Saida Ring'})
+		disable('ring1', 'ring2')
+	elseif S{'Curse', 'Doom', 'Doomed', 'Cursed'}:contains(buff) and not gain then
+		enable('ring1', 'ring2')
 	else
 		if state.Buff[buff] ~= nil then state.Buff[buff] = gain end
 	end

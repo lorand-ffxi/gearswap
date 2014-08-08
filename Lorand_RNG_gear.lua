@@ -18,7 +18,7 @@ function init_gear_sets()
 	gear.Gun = "Hgafircian +2"
 	gear['Gun_ammo'] = "Ra'Kaznar Bullet"
 	gear['Gun_ammo_RA'] = "Adlivun Bullet"
-	gear['Gun_ammo_WS'] = "Ra'Kaznar Bullet"
+	gear['Gun_ammo_WS'] = "Eminent Bullet"
 	gear.Bow = "Bocluamni +2"
 	gear['Bow_ammo'] = "Eminent Arrow"
 	gear['Bow_ammo_WS'] = "Eminent Arrow"
@@ -49,8 +49,10 @@ function init_gear_sets()
 		head="Anwig Salade",		--5%
 		neck="Orunmila's Torque",	--5%
 		ear1="Loquacious Earring",	--2%
-		hands="Thaumas Gloves",		--4%
+		--hands="Thaumas Gloves",		--4%
+		hands="Buremte Gloves",		--3%
 		ring1="Prolix Ring",		--2%
+		ring2="Veneficium Ring",	--Q+1%
 		legs="Quiahuiz Trousers",	--3%
 		feet="Suzaku's Sune-Ate"	--4%
 	}
@@ -60,13 +62,13 @@ function init_gear_sets()
 
 	--============================================================
 
-	sets.precast.ranged = {			--22% Snapshot, 14% Rapid Shot
-		head="Sylvan Gapette +2",	--5% Snapshot
-		body="Arcadian Jerkin",		--10% Rapid Shot
-		hands="Iuitl Wristbands",	--10% Snapshot
-		waist="Impulse Belt",		--3% Snapshot
-		legs="Arcadian Braccae",	--4% Snapshot
-		feet="Arcadian Socks"		--4% Rapid Shot
+	sets.precast.ranged = {				--22% Snapshot, 14% Rapid Shot
+		head="Sylvan Gapette +2",		--5% Snapshot
+		body="Arcadian Jerkin",			--10% Rapid Shot
+		hands="Iuitl Wristbands +1",	--5% Snapshot
+		waist="Impulse Belt",			--3% Snapshot
+		legs="Arcadian Braccae",		--4% Snapshot
+		feet="Arcadian Socks"			--4% Rapid Shot
 	}
 	
 	--============================================================
@@ -86,8 +88,8 @@ function init_gear_sets()
 	}
 	sets.wsBase.AGI = {
 		head="Uk'uxkaj Cap",
-		hands="Iuitl Wristbands",	ring1="Blobnag Ring",		ring2="Stormsoul Ring",
-		back="Ik Cape",				waist="Sveltesse Gouriz",	legs="Kaabnax Trousers"
+		hands="Iuitl Wristbands +1",	ring1="Blobnag Ring",		ring2="Stormsoul Ring",
+		back="Ik Cape",					waist="Sveltesse Gouriz",	legs="Kaabnax Trousers"
 	}
 	sets.wsBase.DEX = {
 		head="Uk'uxkaj Cap",			ear1="Pixie Earring",
@@ -200,7 +202,7 @@ function init_gear_sets()
 
 	sets.midcast.FastRecast = {
 		head="Ejekamal Mask",	neck="Orunmila's Torque",	ear1="Loquacious Earring",
-		body="Iuitl Vest",		hands="Buremte Gloves",		ring1="Prolix Ring",		ring2="Diamond Ring",		--Diamond Ring aug: 2% interrupt rate down
+		body="Iuitl Vest +1",	hands="Buremte Gloves",		ring1="Prolix Ring",		ring2="Diamond Ring",		--Diamond Ring aug: 2% interrupt rate down
 		back="Mujin Mantle",	waist="Cetl Belt",			legs="Kaabnax Trousers",	feet="Iuitl Gaiters"
 	}
 	
@@ -242,20 +244,20 @@ function init_gear_sets()
 		body="Orion Jerkin",			hands="Buremte Gloves",		ring1="Eihwaz Ring",			ring2="Sheltered Ring",
 		back="Repulse Mantle",			waist="Flume Belt",			legs="Kaabnax Trousers",		feet="Orion Socks"
 	}
-	sets.idle.Speedy = {feet="Orion Socks"}
+	sets.idle.Speedy = {feet="Skadi's Jambeaux +1"}
 	
 	sets.defense.DT = {	--DT-5%, PDT-10%, MDT-7%	=> PDT-15%, MDT-12%
 		neck="Twilight Torque",
 		ring1="Defending Ring",		ring2="Dark Ring"
 	}
 	sets.defense.PDT = set_combine(sets.defense.Evasion, sets.defense.DT, {	--PDT-18% + DT => PDT-33%
-		head="Iuitl Headgear",
-		body="Iuitl Vest",		hands="Iuitl Wristbands",
-		back="Repulse Mantle",	waist="Flume Belt",			legs="Iuitl Tights",	feet="Iuitl Gaiters"
+		head="Iuitl Headgear +1",
+		body="Iuitl Vest +1",		hands="Iuitl Wristbands +1",
+		back="Repulse Mantle",		waist="Flume Belt",				legs="Iuitl Tights",	feet="Iuitl Gaiters"
 	})
 	sets.defense.MDT = set_combine(sets.defense.Evasion, sets.defense.DT, {	--MDT-4% + DT => MDT-16%, MDB+19
 		head="Ejekamal Mask",	ear1="Merman's Earring",	ear2="Merman's Earring",
-		body="Iuitl Vest",		hands="Buremte Gloves",
+		body="Iuitl Vest +1",	hands="Buremte Gloves",
 		back="Tuilha Cape",		waist="Flume Belt",			legs="Kaabnax Trousers",	feet="Iuitl Gaiters"
 	})
 	
@@ -263,7 +265,7 @@ function init_gear_sets()
 	
 	sets.engaged = {
 		head="Ejekamal Mask",	neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
-		body="Iuitl Vest",		hands="Buremte Gloves",		ring1="Rajas Ring",			ring2="Epona's Ring",
+		body="Iuitl Vest +1",	hands="Buremte Gloves",		ring1="Rajas Ring",			ring2="Epona's Ring",
 		back="Atheling Mantle",	waist="Patentia Sash",		legs="Kaabanax Trousers",	feet="Orion Socks"
 	}
 	sets.Melee = {}

@@ -23,7 +23,7 @@ function user_setup()
 	options.DefenseModes = {'Normal', 'Evasion', 'PDT'}
 	options.RangedModes = {'Normal', 'TH', 'Acc'}
 	options.WeaponskillModes = {'Normal'}
-	options.IdleModes = {'Normal'}
+	options.IdleModes = {'Normal','Speedy'}
 	options.RestingModes = {'Normal'}
 	options.PhysicalDefenseModes = {'Evasion', 'PDT'}
 	options.MagicalDefenseModes = {'MDT'}
@@ -31,6 +31,7 @@ function user_setup()
 	state.RangedMode = 'TH'
 	state.Defense.PhysicalMode = 'Evasion'
 	state.OffenseMode = 'TH'
+	state.IdleMode = 'Speedy'
 
 	refresh_keybindings()
 end

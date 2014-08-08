@@ -24,7 +24,7 @@ function user_setup()
 	options.MagicalDefenseModes = {'MDT'}
 
 	state.Defense.PhysicalMode = 'PDT'
-	state.OffenseMode = 'Bow'
+	state.OffenseMode = 'Gun'
 	state.IdleMode = 'Speedy'
 	state.RangedMode = 'Default'
 	
