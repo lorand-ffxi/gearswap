@@ -80,6 +80,9 @@ function init_gear_sets()
 		body="Hachiya Chainmail +1",	hands="Mochizuki Tekko",	ring1="Dark Ring",			ring2="Dark Ring",
 		back="Yokaze Mantle",			waist="Flume Belt",			legs="Mochizuki Hakama",	feet="Danzo Sune-Ate"
 	}
+	sets.idle.speedy = {feet="Danzo Sune-Ate"}
+	sets.idle.with_buff = {}
+	sets.idle.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	
 	sets.defense.DT = {
 		neck="Twilight Torque",
@@ -107,6 +110,8 @@ function init_gear_sets()
 		body="Hachiya Chainmail +1",hands="Mochizuki Tekko",	ring1="Rajas Ring",			ring2="Epona's Ring",
 		back="Yokaze Mantle",		waist="Cetl Belt",			legs="Mochizuki Hakama",	feet="Mochizuki Kyahan"
 	}
+	sets.engaged.with_buff = {}
+	sets.engaged.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	
 	sets.engaged.Mix = set_combine(sets.engaged, {
 		head="Ejekamal Mask",

@@ -121,8 +121,10 @@ function init_gear_sets()
 		body="Hagondes Coat +1",	hands="Serpentes Cuffs",	ring1="Defending Ring",	ring2="Sheltered Ring",
 		back="Cheviot Cape",		waist="Emphatikos Rope",	legs="Nares Trews",		feet="Serpentes Sabots"
 	}
-	sets.idle.Speedy = {feet="Herald's Gaiters"}
-		
+	sets.idle.speedy = {feet="Herald's Gaiters"}
+	sets.idle.with_buff = {}
+	sets.idle.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
+	
 	-- Defense sets
 	sets.defense.PDT = sets.idle
 	sets.defense.MDT = sets.idle
@@ -131,4 +133,6 @@ function init_gear_sets()
 	sets.buff['Mana Wall'] = {feet="Goetia Sabots +2"}
 
 	sets.engaged = {}
+	sets.engaged.with_buff = {}
+	sets.engaged.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 end

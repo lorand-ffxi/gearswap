@@ -407,14 +407,6 @@ magic_stats = {
 }
 
 strat_charge_time = {[1]=240,[2]=120,[3]=80,[4]=60,[5]=48}
-addBlackSpells = S{
-	'Fire IV', 'Fire V', 'Blizzard IV', 'Blizzard V', 'Aero IV', 'Aero V', 'Stone IV', 'Stone V',
-	'Thunder IV', 'Thunder V', 'Water IV', 'Water V', 'Sleep', 'Sleep II', 'Break', 'Dispel'
-}
-addWhiteSpells = S{
-	'Raise II', 'Raise III', 'Reraise', 'Reraise II', 'Reraise III', 'Poisona', 'Paralyna',
-	'Blindna', 'Silena', 'Stona', 'Viruna', 'Cursna', 'Erase'
-}
 
 debuff_to_na = {
 	['Blind']='Blindna',	['Paralyze']='Paralyna',	['Poison']='Poisona',	['Silence']='Silena',

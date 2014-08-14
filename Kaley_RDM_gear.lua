@@ -12,7 +12,6 @@ function init_gear_sets()
 	sets.precast.JA['Chainspell'] = {body="Vitivation Tabard +1"}
 	sets.precast.JA['Saboteur'] = {hands="Estoqueur's Gantherots +2"}
 	
-	
 	sets.precast.Waltz = {}
 	sets.precast.Waltz['Healing Waltz'] = {}
 	
@@ -42,13 +41,14 @@ function init_gear_sets()
 		body="Hagondes Coat +1",	hands="Atrophy Gloves",		ring1="Rajas Ring",			ring2="Spiral Ring",
 		back="Atheling Mantle",		waist="Anguinus Belt",		legs="Hagondes Pants +1",	feet="Weatherspoon Souliers +1"
 	}
+	sets.wsBase.Magic = {}
 	
 	--============================================================
 	--					Midcast sets
 	--============================================================
 	
 	sets.midcast.FastRecast = {
-		head="Atrophy Chapeau +1",			neck="Jeweled Collar",			ear1="Loquacious Earring",	ear2="Novia Earring",
+		head="Atrophy Chapeau +1",		neck="Jeweled Collar",			ear1="Loquacious Earring",	ear2="Novia Earring",
 		body="Vitivation Tabard +1",	hands="Gendewitha Gages +1",
 		back="Ogapepo Cape",			waist="Cetl Belt",				legs="Hagondes Pants +1",	feet="Atrophy Boots"
 	}
@@ -65,7 +65,7 @@ function init_gear_sets()
 	
 	sets.midcast.Cure = {	--Cure potency > 50%	|	Enmity - 33
 		main="Tamaxchi",				sub="Genbu's Shield",	ammo="Clarus Stone",
-		head="Gendewitha Caubeen +1",		neck="Jeweled Collar",	ear1="Roundel Earring",	ear2="Novia Earring",
+		head="Gendewitha Caubeen +1",	neck="Jeweled Collar",	ear1="Roundel Earring",	ear2="Novia Earring",
 		body="Vitivation Tabard +1",	hands="Otomi Gloves",	ring1="Prolix Ring",	ring2="Sirona's Ring",
 		back="Ghostfyre Cape",			waist="Cetl Belt",		legs="Atrophy Tights",	feet="Atrophy Boots"
 	}
@@ -148,7 +148,7 @@ function init_gear_sets()
 	sets.midcast.DarkMagic = {}
 	sets.midcast.Stun = {
 		main="Apamajas II",				sub="Mephitis Grip",	ammo="Kalboron Stone",
-		head="Atrophy Chapeau +1",			neck="Jeweled Collar",	ear1="Lifestorm Earring",	ear2="Psystorm Earring",
+		head="Atrophy Chapeau +1",		neck="Jeweled Collar",	ear1="Lifestorm Earring",	ear2="Psystorm Earring",
 		body="Vitivation Tabard +1",	hands="Buremte Gloves",	ring1="Perception Ring",
 		back="Ogapepo Cape",			waist="Cetl Belt",		legs="Artsieq Hose",		feet="Bokwus Boots"
 	}
@@ -176,6 +176,8 @@ function init_gear_sets()
 		body="Artsieq Jubbah",			hands="Serpentes Cuffs",	ring1="Dark Ring",		ring2="Dark Ring",
 		back="Cheviot Cape",			waist="Emphatikos Rope",	legs="Nares Trews",		feet="Serpentes Sabots"
 	}
+	sets.idle.with_buff = {}
+	sets.idle.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	
 	sets.idle.Melee = {
 		--main="Iztaasu +2",			sub="Beatific Shield",
@@ -184,7 +186,7 @@ function init_gear_sets()
 		body="Artsieq Jubbah",			hands="Serpentes Cuffs",	ring1="Dark Ring",			ring2="Dark Ring",
 		back="Cheviot Cape",			waist="Flume Belt",			legs="Nares Trews",			feet="Serpentes Sabots"
 	}
-	sets.idle.Speedy = {legs="Crimson Cuisses"}
+	sets.idle.speedy = {legs="Crimson Cuisses"}
 	
 	sets.defense.DT = {
 		neck="Twilight Torque",
@@ -206,6 +208,8 @@ function init_gear_sets()
 		body="Hagondes Coat +1",		hands="Atrophy Gloves",		ring1="Rajas Ring",		ring2="Tyrant's Ring",
 		back="Atheling Mantle",			waist="Cetl Belt",			legs="Atrophy Tights",	feet="Atrophy Boots"
 	}
+	sets.engaged.with_buff = {}
+	sets.engaged.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	
 	sets.engaged.Skillup = {
 		ammo="Jukukik Feather",

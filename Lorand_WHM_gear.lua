@@ -28,15 +28,17 @@ function init_gear_sets()
 		feet="Chelona Boots"		--4%
 	}
 		
-	sets.precast.FC.EnhancingMagic = set_combine(sets.precast.FC, {	--53%
+	sets.precast.FC.EnhancingMagic = {	--53%
 		waist="Siegel Sash"			--8%
-	})
-	sets.precast.FC.HealingMagic = set_combine(sets.precast.FC, {	--68%
+	}
+	sets.precast.FC.HealingMagic = {	--68%
 		main="Tamaxchi",			--0%
 		sub="Genbu's Shield",		--8%
 		back="Pahtli Cape",			--8%
 		legs="Orison Pantaloons +2"	--12%
-	})
+	}
+	
+	sets.precast.FC.Impact = {body='Twilight Cloak'}
 	
 	--============================================================
 	
@@ -61,7 +63,7 @@ function init_gear_sets()
 		main="Venabulum",				sub="Achaq Grip",			ammo="Impatiens",
 		head="Gendewitha Caubeen +1",	neck="Orunmila's Torque",	ear1="Loquacious Earring",	ear2="Novia Earring",
 		body="Theophany Briault",		hands="Otomi Gloves",		ring1="Prolix Ring",		ring2="Cho'j Band",
-		back="Swith Cape",				waist="Witful Belt",		legs="Artsieq Hose",		feet="Bokwus Boots"
+		back="Swith Cape",				waist="Witful Belt",		legs="Artsieq Hose",		feet="Theophany Duckbills"
 	}
 	
 	sets.midcast.MagicAccuracy = {
@@ -80,9 +82,9 @@ function init_gear_sets()
 	
 	sets.midcast.Cure = {
 		main="Tamaxchi",				sub="Genbu's Shield",			ammo="Incantor Stone",
-		head="Gendewitha Caubeen +1",	neck="Fylgja Torque +1",		ear1="Loquacious Earring",		ear2="Novia Earring",
-		body="Orison Bliaud +2",		hands="Weatherspoon Gloves +1",	ring1="Prolix Ring",			ring2="Aquasoul Ring",
-		back="Oretania's Cape",			waist="Witful Belt",			legs="Orison Pantaloons +2",	feet="Uk'uxkaj Boots",
+		head="Gendewitha Caubeen +1",	neck="Orunmila's Torque",		ear1="Loquacious Earring",		ear2="Roundel Earring",
+		body="Orison Bliaud +2",		hands="Weatherspoon Cuffs +1",	ring1="Prolix Ring",			ring2="Aquasoul Ring",
+		back="Swith Cape",				waist="Cetl Belt",				legs="Orison Pantaloons +2",	feet="Theophany Duckbills"
 	}
 	sets.midcast.Curaga = sets.midcast.Cure
 	sets.midcast.Cure.Engaged = {}
@@ -103,7 +105,7 @@ function init_gear_sets()
 	
 	sets.midcast.EnhancingMagic = {
 		neck="Colossus's Torque",
-		body="Hyksos Robe",			hands="Dynasty Mitts",
+		body="Manasa Chasuble",		hands="Dynasty Mitts",
 		waist="Cascade Belt",		feet="Orison Duckbills +2"
 	}
 	
@@ -151,7 +153,7 @@ function init_gear_sets()
 	sets.midcast.EnfeeblingMagic = {
 		main="Lehbrailg +2",	sub="Mephitis Grip",
 		body="Theophany Briault",
-		hands="Cleric's Mitts",
+		feet="Theophany Duckbills"
 	}
 	sets.midcast.EnfeeblingMagic.Potency = {
 		ring2="Aquasoul Ring",
@@ -185,13 +187,16 @@ function init_gear_sets()
 		body="Gendewitha Bilaut +1",	hands="Gendewitha Gages +1",	ring1="Defending Ring",	ring2="Sheltered Ring",
 		back="Cheviot Cape",			waist="Emphatikos Rope",		legs="Artsieq Hose",	feet="Serpentes Sabots"
 	}
-	sets.idle.Speedy = {feet="Herald's Gaiters"}
+	sets.idle.speedy = {feet="Herald's Gaiters"}
 	sets.idle.lowMP = {
 		--main="Owleyes",		sub="Genbu's Shield",
 		legs="Nares Trews"
 	}
 	sets.idle.lowMP_night =	{hands="Serpentes Cuffs"}
 	sets.idle.lowMP_day = {feet="Serpentes Sabots"}
+	
+	sets.idle.with_buff = {}
+	sets.idle.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	
 	sets.defense.DT = {}
 	sets.defense.PDT = set_combine(sets.defense.DT, {
@@ -205,6 +210,7 @@ function init_gear_sets()
 		body="Weatherspoon Robe +1",	hands="Otomi Gloves",		ring1="Rajas Ring",			ring2="Mars's Ring",
 		back="Bukuwik Cape",			waist="Cetl Belt",			legs="Artsieq Hose",		feet="Uk'uxkaj Boots"
 	}
-	
-	sets.buff['Divine Caress'] = {hands="Orison Mitts +2"}
+	sets.engaged.with_buff = {}
+	sets.engaged.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
+	--sets.buff['Divine Caress'] = {hands="Orison Mitts +2"}
 end

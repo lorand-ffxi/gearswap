@@ -90,9 +90,6 @@ function refresh_keybindings()
 	send_command('bind ^a gs c scholar aoe')				--Accession / Manifestation
 	send_command('bind !s input /ja Sublimation <me>')
 	send_command('bind ^s input /ja Sublimation <me>')
-	
-	
-	
 end
 
 function set_modes()

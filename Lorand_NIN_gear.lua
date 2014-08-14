@@ -143,7 +143,10 @@ function init_gear_sets()
 		body="War Shinobi Gi",			hands="Mochizuki Tekko +1",	ring1="Defending Ring",		ring2="Sheltered Ring",
 		back="Repulse Mantle",			waist="Flume Belt",			legs="Hachiya Hakama +1",	feet="Danzo Sune-Ate"
 	}
-
+	sets.idle.speedy = select_movement()
+	sets.idle.with_buff['Migawari'] = {body="Iga Ningi +2"}
+	sets.idle.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
+	
 	-- Defense sets
 	sets.defense.Evasion = {
 		head="Otronif Mask +1",			neck="Torero Torque",		ear1="Novia Earring",		ear2="Ethereal Earring",
@@ -170,11 +173,13 @@ function init_gear_sets()
 
 	sets.DayMovement = {feet="Danzo Sune-Ate"}
 	sets.NightMovement = {feet="Hachiya Kyahan"}
-	sets.Kiting = select_movement()
 	
 	--============================================================
 	
 	sets.engaged = {}
+	
+	sets.engaged.with_buff['Migawari'] = {body="Iga Ningi +2"}
+	sets.engaged.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	
 	sets.engaged.HasteII = {
 		ammo="Yetshila",
@@ -238,9 +243,4 @@ function init_gear_sets()
 		body="Hachiya Chainmail +1",hands="Otronif Gloves +1",	ring1="Defending Ring",		ring2="Rajas Ring",
 		back="Yokaze Mantle",		waist="Patentia Sash",		legs="Mochizuki Hakama +1",	feet="Otronif Boots +1"
 	}
-
-	sets.buff.Migawari = {body="Iga Ningi +2"}
-	sets.buff.Doomed = {ring1="Saida Ring",ring2="Saida Ring"}
-	sets.buff.Yonin = {}
-	sets.buff.Innin = {}
 end

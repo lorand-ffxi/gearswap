@@ -1,10 +1,9 @@
 -----------------------------------------------------------------------------------------------------------
---[[
-	Author: Ragnarok.Lorand
-
-	Slips:										|	/NIN
+--[[Author: Ragnarok.Lorand
+	Slips:
 		3:	Twilight Torque
 		10:	Tantra+2 Body/Feet
+		(14:	Thaumas Gloves)*/NIN
 		15:	Anchorite's Head/Body/Hands/Legs/Feet
 		17:	Hesychast's Body/Legs/Feet
 		18:	Hestchast's+1 Hands
@@ -88,36 +87,52 @@ function init_gear_sets()
 	--					Other sets
 	--============================================================
 	
+	sets.buffs['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
+	
 	sets.idle = {
 		ammo="Demonry Stone",
 		head="Ocelomeh Headpiece +1",	neck="Orochi Nodowa",	ear1="Novia Earring",		ear2="Ethereal Earring",
 		body="Hesychast's Cyclas",		hands="Garden Bangles",	ring1="Defending Ring",		ring2="Sheltered Ring",
 		back="Repulse Mantle",			waist="Black Belt",		legs="Hesychast's Hose +1",	feet="Otronif Boots +1"
 	}
-	sets.idle.Speedy = set_combine(sets.idle, {feet="Hermes' Sandals +1"})
+	sets.idle.speedy = {feet="Hermes' Sandals +1"}
+	sets.idle.with_buff = {}
+	sets.idle.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	
 	sets.resting = sets.idle
 	
-	sets.defense.DT = {	--DT-5%, PDT-10%, MDT-7%	=> PDT-15%, MDT-12%
+	sets.defense.DT = {	--DT-15%, PDT-5%, MDT-4%	=> PDT-20%, MDT-19%
 		neck="Twilight Torque",
 		ring1="Defending Ring",		ring2="Dark Ring"
 	}
-	
-	sets.defense.PDT = set_combine(sets.defense.DT, {	--PDT-23% + DT => PDT-38%
-		head="Otronif Mask +1",	
-		body="Otronif Harness +1",	hands="Otronif Gloves +1",	
-		back="Repulse Mantle",		waist="Black Belt",		legs="Otronif Brais +1",	feet="Otronif Boots +1"
+	sets.defense.PDT = set_combine(sets.defense.DT, {	--PDT-25% + DT => PDT-45%
+		head="Otronif Mask +1",			--4%
+		body="Otronif Harness +1",		--3%
+		hands="Otronif Gloves +1",		--4%
+		back="Repulse Mantle",			--4%
+		waist="Black Belt",				--5%
+		legs="Otronif Brais +1",		--2%
+		feet="Otronif Boots +1"			--3%
 	})
-	sets.defense.MDT = set_combine(sets.defense.DT, {	--MDT-4% + DT => MDT-16%, MDB+19
-		ammo="Demonry Stone",
-		head="Otronif Mask +1",	ear1="Merman's Earring",		ear2="Merman's Earring",
-		body="Otronif Harness",	hands="Hesychast's Gloves +1",
-		back="Tuilha Cape",		waist="Black Belt",				legs="Otronif Brais +1",	feet="Otronif Boots"
+	sets.defense.MDT = set_combine(sets.defense.DT, {	--MDT-6% + DT => MDT-25%, MDB+24
+		ammo="Demonry Stone",			--MDB+2
+		head="Ejekamal Mask",			--2%, MDB+3
+		ear1="Merman's Earring",		--2%
+		ear2="Merman's Earring",		--2%
+		body="Qaaxo Harness",			--MDB+6
+		hands="Hesychast's Gloves +1",	--MDB+1
+		back="Tuilha Cape",				--MDB+4
+		waist="Black Belt",				--n/a
+		legs="Hesychast's Hose +1",		--MDB+3
+		feet="Daihanshi Habaki"			--MDB+5
 	})
 	
 	sets.defense.HP = sets.defense.PDT
 
 	--============================================================
+	
+	sets.engaged.with_buff = {}
+	sets.engaged.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	
 	sets.engaged.Normal_A = {
 		ammo="Potestas Bomblet",
@@ -167,8 +182,4 @@ function init_gear_sets()
 		body="Otronif Harness +1",	hands="Hesychast's Gloves +1",	ring1="Rajas Ring",			ring2="Epona's Ring",
 		back="Anchoret's Mantle",	waist="Windbuffet Belt",		legs="Kaabnax Trousers",	feet="Anchorite's Gaiters +1"
 	}
-
-	-- Footwork combat form
-	sets.engaged.Footwork = sets.engaged
-	sets.engaged.Footwork.Acc = sets.engaged.Footwork
 end

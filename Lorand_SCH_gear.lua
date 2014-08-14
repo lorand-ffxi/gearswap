@@ -176,12 +176,19 @@ function init_gear_sets()
 		body="Academic's Gown",			hands="Lurid Mitts",		ring1="Defending Ring",	ring2="Sheltered Ring",
 		back="Cheviot Cape",			waist="Emphatikos Rope",	legs="Pedagogy Pants",	feet="Serpentes Sabots"
 	}
-	sets.idle.Speedy = {feet="Herald's Gaiters"}
+	sets.idle.speedy = {feet="Herald's Gaiters"}
+	sets.idle.with_buff = {}
+	sets.idle.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	
 	sets.idle.lowMP =		{legs="Nares Trews"}
 	sets.idle.lowMP_night =	{hands="Serpentes Cuffs"}
 	sets.idle.lowMP_day =	{feet="Serpentes Sabots"}
 	sets.idle.sublimation = {
+		head="Academic's Mortarboard",
+		back="Repulse Mantle"
+	}
+	
+	sets.idle.with_buff['Sublimation: Activated'] = {
 		head="Academic's Mortarboard",
 		back="Repulse Mantle"
 	}
@@ -199,6 +206,8 @@ function init_gear_sets()
 		body="Hagondes Coat +1",	hands="Otomi Gloves",		ring1="Rajas Ring",			ring2="Mars's Ring",
 		waist="Cetl Belt",			legs="Hagondes Pants +1",	feet="Hagondes Sabots +1"
 	}
+	sets.engaged.with_buff = {}
+	sets.engaged.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	
 	--============================================================
 	

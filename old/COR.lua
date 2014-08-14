@@ -8,47 +8,6 @@ function get_sets()
 	include('include.lua')
 end
 
-function job_setup()
-	state.warned = false
-end
-
-function user_setup()
-	-- Options: Override default values
-	options.OffenseModes = {'Melee', 'Gun', 'Bow'}
-	options.RangedModes = {'Default'}
-	options.WeaponskillModes = {'Normal'}
-	options.CastingModes = {'Normal'}
-	options.IdleModes = {'Normal','Speedy'}
-	options.RestingModes = {'Normal'}
-	options.PhysicalDefenseModes = {'PDT'}
-	options.MagicalDefenseModes = {'MDT'}
-
-	state.Defense.PhysicalMode = 'PDT'
-	state.OffenseMode = 'Bow'
-	state.IdleMode = 'Speedy'
-	state.RangedMode = 'Default'
-	
-	options.ammo_warning_limit = 15
-
-	refreshRangedModes()
-	
-	send_command('bind @1 input /ma "Utsusemi: Ni" <me>')
-	send_command('bind @2 input /ma "Utsusemi: Ichi" <me>')
-	send_command('bind @3 input /ja "Scavenge" <me>')
-	send_command('bind @4 input /ja "Bounty Shot" <t>')
-	send_command('bind @5 gs c cycle RangedMode')
-	send_command('bind @6 input ')
-	send_command('bind @7 input ')
-	send_command('bind @8 input /ja "Spectral Jig" <me>')
-	send_command('bind @9 input /ma "Monomi: Ichi" <me>')
-	send_command('bind @0 input /ma "Tonko: Ni" <me>')
-	
-	send_command('bind ^` input /ja "Sharpshot" <me>')
-	send_command('bind !` input /ja "Velocity Shot" <me>')
-	
-	send_command('bind @` input /ja "Shadowbind" <t>')
-end
-
 function refreshRangedModes()
 	if state.OffenseMode == 'Bow' then
 		if player.sub_job == 'SAM' then
@@ -72,14 +31,6 @@ end
 function set_default_RangedMode(defaultMode)
 	if options.RangedModes[state.RangedMode] ~= nil then
 		state.RangedMode = defaultMode
-	end
-end
-
-function get_sub_type()
-	if player.sub_job == 'SAM' then
-		return 'sam'
-	else
-		return 'other'
 	end
 end
 
@@ -182,5 +133,3 @@ function display_roll_info(spell)
 		add_to_chat(104, 'Lucky roll is '..tostring(rollinfo.lucky)..', Unlucky roll is '..tostring(rollinfo.unlucky)..'.')
 	end
 end
-
-

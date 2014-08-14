@@ -1,33 +1,28 @@
 -----------------------------------------------------------------------------------------------------------
 --[[
 	Author: Ragnarok.Lorand
+	
+	TODO:
+	- Cycle weapon mode: Katana/Katana, Katana/Dagger, manual, etc (use specific weap names)
+	
 --]]
 -----------------------------------------------------------------------------------------------------------
 
--- Initialization function for this job file.
 function get_sets()
-	include('mage_utils.lua')
 	include('include.lua')
-end
-
--- Setup vars that are user-dependent.  Can override this function in a sidecar file.
-function user_setup()
-	set_modes()
-	refresh_keybindings()
-	send_command('bind @8 input /ja "Manawell" <me>')
 end
 
 -------------------------------------------------------------------------------------------------------------------
 -- Utility functions specific to this job.
 -------------------------------------------------------------------------------------------------------------------
 
--- Function to get the custom class to use for nukes.
-function get_nuke_class(spell, action, spellMap)
-	return nil
---	if lowTierNukes[spell.english] then
-		-- low tier nukes use the default set
---		return nil
---	else
---		return 'HighTierNuke'
---	end
+function select_movement()
+	-- world.time is given in minutes into each day
+	-- 7:00 AM would be 420 minutes		(dawn)
+	-- 17:00 PM would be 1020 minutes	(dusk)
+	if world.time >= (17*60) or world.time <= (7*60) then
+		return sets.NightMovement
+	else
+		return sets.DayMovement
+	end
 end

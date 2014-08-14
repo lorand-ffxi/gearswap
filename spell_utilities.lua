@@ -5,6 +5,44 @@
 --]]
 -----------------------------------------------------------------------------------------------------------
 
+local cnums = {['Cure'] = 1, ['Cure II'] = 2, ['Cure III'] = 3, ['Cure IV'] = 4, ['Cure V'] = 5, ['Cure VI'] = 6}
+local ncures = {[1] = '"Cure"', [2] = '"Cure II"', [3] = '"Cure III"', [4] = '"Cure IV"', [5] = '"Cure V"', [6] = '"Cure VI"'}
+local strat_charge_time = {[1]=240,[2]=120,[3]=80,[4]=60,[5]=48}
+
+--[[
+	Lower the tier of the cure spell being cast if the spell target's HP warrants it.
+	Returns true when the spell is changed, otherwise false.
+--]]
+function modify_cure(spell)
+	if not modes.ConserveMP then return false end
+	local cnum = cnums[spell.name]
+	if (cnum == nil) or (cnum == 1) then return false end
+	local potency = vars.CurePotency[cnum]
+	
+	local targ = get_ally_info(spell.target.name)
+	if targ == nil then return false end
+	local hpMissing = (targ.hp/(targ.hpp/100)) - targ.hp
+	local ncnum = cnum
+	if hpMissing < potency then
+		local pdelta = potency - vars.CurePotency[ncnum-1]
+		local threshold = potency - (pdelta * 0.5)
+		while hpMissing < threshold do
+			ncnum = ncnum - 1
+			if ncnum > 1 then
+				potency = vars.CurePotency[ncnum]
+				pdelta = potency - vars.CurePotency[ncnum-1]
+				threshold = potency - (pdelta * 0.5)
+			else
+				threshold = 0
+			end
+		end
+	end
+	if ncnum == cnum then return false end
+	
+	windower.send_command('input /ma '..ncures[ncnum]..' '..spell.target.name)
+	return true
+end
+
 --[[
 	Initiates a timer that gives 15 and 5 second warnings before a crowd control spell will wear off.
 --]]
@@ -108,6 +146,10 @@ function matchesGrimoire(spell)
 	end
 end
 
+function weatherPermits(element)
+	return buffactive[elements.storm_of[element]] or element == world.day_element or element == world.weather_element
+end
+
 --[[
 	Calculates and returns the maximum number of SCH stratagems available for use.
 --]]
@@ -139,12 +181,13 @@ end
 	Returns the table from resources that contains information about the first buff from the given list
 	that was found in the list of active buffs.  If none of the given buffs are active, it returns nil.
 --]]
-function buffactive(...)
+function buff_active(...)
 	local args = {...}
 	for _,arg in ipairs(args) do
 		if buffactive[arg] then
-			local buff = res.buffs:with('name', arg)
-			return buff
+			return arg
+			--local buff = res.buffs:with('name', arg)
+			--return buff
 		end
 	end
 	return nil
@@ -155,9 +198,9 @@ end
 	When an action cannot be used, a message explaining the reason is added to the chat log.
 --]]
 function not_possible_to_use(spell)
-	local activeDebuff = buffactive('Sleep', 'Petrification', 'Charm', 'Terror', 'Lullaby')
+	local activeDebuff = buff_active('Sleep', 'Petrification', 'Charm', 'Terror', 'Lullaby')
 	if activeDebuff ~= nil then
-		add_to_chat(166, 'Cancelling '..spell.name..' because you are '..activeDebuff.enl..'.')
+		add_to_chat(166, 'Cancelling '..spell.name..' because you are '..activeDebuff..'.')
 		return true
 	end
 	
@@ -185,7 +228,7 @@ function not_possible_to_use(spell)
 			return true
 		end
 	elseif spell.action_type == 'Magic' then
-		if buffactive('Silence', 'Mute') then
+		if buff_active('Silence', 'Mute') then
 			add_to_chat(123, string.char(0x81, 0xA3)..' Cancelling '..spell.en..' because you are silenced. '..string.char(0x81, 0xA3))
 			return true
 		end
@@ -204,4 +247,163 @@ function not_possible_to_use(spell)
 		end
 	end
 	return false
+end
+
+function get_instrument_type(spellMap)
+	local i = gear.instruments[spellMap]
+	if instruments.string:contains(i) then
+		return 'String'
+	elseif instruments.wind:contains(i) then
+		return 'Wind'
+	else
+		return 'Singing'
+	end
+end
+
+-- Determine the custom class to use for the given song.
+function get_song_class(spell)
+	if spell.targets:contains('Enemy') then
+		if modes.casting == 'Resistant' then
+			return 'ResistantSongDebuff'
+		else
+			return 'SongDebuff'
+		end
+	elseif modes.Daurdabla == 'Dummy' then
+		return 'DaurdablaDummy'
+	else
+		return 'SongBuff'
+	end
+end
+
+function get_song_mult(spellName, spellMap)
+	local mult = 1
+	if player.equipment.range == "Eminent Flute"		then mult = mult + 0.2 end
+	if player.equipment.range == "Daurdabla"			then mult = mult + 0.3 end -- change to 0.25 with 90 Daur
+	if player.equipment.range == "Gjallarhorn"			then mult = mult + 0.4 end -- change to 0.3 with 95 Gjall
+	
+	
+	if player.equipment.main == "Carnwenhan"			then mult = mult + 0.1 end -- 0.1 for 75, 0.4 for 95, 0.5 for 99/119
+	if player.equipment.main == "Legato Dagger"			then mult = mult + 0.05 end
+	if player.equipment.neck == "Aoidos' Matinee"		then mult = mult + 0.1 end
+	if player.equipment.body == "Aoidos' Hongreline +2"	then mult = mult + 0.1 end
+	if player.equipment.legs == "Marduk's Shalwar +1"	then mult = mult + 0.1 end
+	if player.equipment.feet == "Brioso Slippers"		then mult = mult + 0.1 end
+	if player.equipment.feet == "Brioso Slippers +1"	then mult = mult + 0.11 end
+	
+	if spellMap == 'Ballad'		and player.equipment.range == "Crooner's Cithara"		then mult = mult + 0.1 end
+	if spellMap == 'Ballad'		and player.equipment.legs == "Aoidos' Rhingrave +2"		then mult = mult + 0.1 end
+	if spellMap == 'Carol'		and player.equipment.range == "Crumhorn"				then mult = mult + 0.1 end
+	if spellMap == 'Carol'		and player.equipment.range == "Crumhorn +1"				then mult = mult + 0.2 end
+	if spellMap == 'Elegy'		and player.equipment.range == "Syrinx"					then mult = mult + 0.3 end
+	if spellMap == 'Etude'		and player.equipment.range == "Rose Harp"				then mult = mult + 0.1 end
+	if spellMap == 'Etude'		and player.equipment.range == "Rose Harp +1"			then mult = mult + 0.2 end
+	if spellMap == 'Finale'		and player.equipment.range == "Pan's Horn"				then mult = mult + 0.3 end
+	if spellMap == 'Lullaby'	and player.equipment.range == "Pan's Horn"				then mult = mult + 0.3 end
+	if spellMap == 'Lullaby'	and player.equipment.hands == "Brioso Cuffs"			then mult = mult + 0.1 end
+	if spellMap == 'Madrigal'	and player.equipment.range == "Traversiere +1"			then mult = mult + 0.2 end
+	if spellMap == 'Madrigal'	and player.equipment.range == "Cantabank's Horn"		then mult = mult + 0.3 end
+	if spellMap == 'Madrigal'	and player.equipment.head == "Aoidos' Calot +2"			then mult = mult + 0.1 end
+	if spellMap == 'Mambo'		and player.equipment.range == "Vihuela"					then mult = mult + 0.3 end
+	if spellMap == 'March'		and player.equipment.range == "Iron Ram Horn"			then mult = mult + 0.2 end
+	if spellMap == 'March'		and player.equipment.hands == "Aoidos' Manchettes +2"	then mult = mult + 0.1 end
+	if spellMap == 'Mazurka'	and player.equipment.range == "Vihuela"					then mult = mult + 0.3 end
+	if spellMap == 'Minne'		and player.equipment.range == "Syrinx"					then mult = mult + 0.3 end
+	if spellMap == 'Minuet'		and player.equipment.range == "Apollo's Flute"			then mult = mult + 0.3 end
+	if spellMap == 'Minuet'		and player.equipment.body == "Aoidos' Hongreline +2"	then mult = mult + 0.1 end	--Note: gives Minuet+1 in addition to all songs duration+
+	if spellMap == 'Paeon'		and player.equipment.range == "Oneiros Harp"			then mult = mult + 0.3 end
+	if spellMap == 'Paeon'		and player.equipment.head == "Brioso Roundlet"			then mult = mult + 0.1 end
+	if spellMap == 'Paeon'		and player.equipment.head == "Brioso Roundlet +1"		then mult = mult + 0.1 end
+	if spellMap == 'Prelude'	and player.equipment.range == "Cantabank's Horn"		then mult = mult + 0.3 end
+	if spellMap == 'Requiem'	and player.equipment.range == "Requiem Flute"			then mult = mult + 0.4 end
+	if spellMap == 'Scherzo'	and player.equipment.feet == "Aoidos' Cothurnes +2"		then mult = mult + 0.1 end
+	if spellMap == 'Threnody'	and player.equipment.range == "Sorrowful Harp"			then mult = mult + 0.3 end
+
+	if buffactive.Troubadour then
+		mult = mult*2
+	end
+	if spellName == "Sentinel's Scherzo" then
+		if buffactive['Soul Voice'] then
+			mult = mult*2
+		elseif buffactive['Marcato'] then
+			mult = mult*1.5
+		end
+	end
+	return mult
+end
+
+-- Function to calculate the duration of a song based on the equipment used to cast it.
+-- Called from adjust_Timers(), which is only called on aftercast().
+function calculate_duration(spellName, spellMap)
+	local mult = get_song_mult(spellName, spellMap) - 0.05
+	local totalDuration = mult*120
+	return totalDuration
+end
+
+--[[
+	Function to create custom buff-remaining timers with the Timers plugin, keeping only the actual
+	valid songs rather than spamming the default buff remaining timers.
+--]]
+function adjust_Timers(spell, spellMap)
+	local t = os.time()
+	
+	-- Eliminate songs that have already expired from our local list.
+	local tempreg = {}
+	for i,v in pairs(timer_reg) do
+		if v < t then tempreg[i] = true end
+	end
+	for i,v in pairs(tempreg) do
+		timer_reg[i] = nil
+	end
+	
+	local dur = calculate_duration(spell.name, spellMap)
+	if timer_reg[spell.name] then
+		-- Can delete timers that have less than 120 seconds remaining, since
+		-- the new version of the song will overwrite the old one.
+		-- Otherwise create a new timer counting down til we can overwrite.
+		if (timer_reg[spell.name] - t) <= 120 then
+			send_command('timers delete "'..spell.name..'"')
+			timer_reg[spell.name] = t + dur
+			send_command('timers create "'..spell.name..'" '..dur..' down')
+		end
+	else
+		-- Figure out how many songs we can maintain.
+		local maxsongs = 2
+		if player.equipment.range == gear.instruments.multiSong then
+			if gear.instruments.multiSong == 'Terpander' then
+				maxsongs = maxsongs + 1
+			else
+				maxsongs = maxsongs + 2
+			end
+		end
+		if buffactive['Clarion Call'] then
+			maxsongs = maxsongs + 1
+		end
+		-- If we have more songs active than is currently apparent, we can still overwrite
+		-- them while they're active, even if not using appropriate gear bonuses (ie: Daur).
+		if maxsongs < table.length(timer_reg) then
+			maxsongs = table.length(timer_reg)
+		end
+		
+		-- Create or update new song timers.
+		if table.length(timer_reg) < maxsongs then
+			timer_reg[spell.name] = t+dur
+			send_command('timers create "'..spell.name..'" '..dur..' down')
+		else
+			local rep,repsong
+			for i,v in pairs(timer_reg) do
+				if t+dur > v then
+					if not rep or rep > v then
+						rep = v
+						repsong = i
+					end
+				end
+			end
+			if repsong then
+				timer_reg[repsong] = nil
+				send_command('timers delete "'..repsong..'"')
+				timer_reg[spell.name] = t+dur
+				send_command('timers create "'..spell.name..'" '..dur..' down')
+			end
+		end
+	end
 end

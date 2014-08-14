@@ -117,7 +117,9 @@ function init_gear_sets()
 		body="Orion Jerkin",			hands="Buremte Gloves",		ring1="Eihwaz Ring",			ring2="Sheltered Ring",
 		back="Repulse Mantle",			waist="Flume Belt",			legs="Kaabnax Trousers",		feet="Orion Socks"
 	}
-	sets.idle.Speedy = {feet="Orion Socks"}
+	sets.idle.speedy = {feet="Orion Socks"}
+	sets.idle.with_buff = {}
+	sets.idle.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	
 	sets.defense.DT = {	--DT-5%, PDT-10%, MDT-7%	=> PDT-15%, MDT-12%
 		neck="Twilight Torque",
@@ -141,6 +143,9 @@ function init_gear_sets()
 		body="Iuitl Vest",		hands="Buremte Gloves",		ring1="Rajas Ring",			ring2="Epona's Ring",
 		back="Atheling Mantle",	waist="Patentia Sash",		legs="Kaabanax Trousers",	feet="Orion Socks"
 	}
+	sets.engaged.with_buff = {}
+	sets.engaged.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
+	
 	sets.Melee = {}
 	sets.Melee.tp = sets.engaged
 end

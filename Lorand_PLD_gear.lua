@@ -28,19 +28,19 @@ function init_gear_sets()
 	sets.precast.JA['Holy Circle'] = {feet="Reverence Leggings"}
 	sets.precast.JA['Shield Bash'] = {
 		ear1="Creed Earring",
-		hands="Caballarius Gauntlets",	ring2="Fenian Ring",
+		hands="Caballarius Gauntlets +1",	ring2="Fenian Ring",
 		feet="Reverence Leggings"
 	}
 	sets.precast.JA['Sentinel'] = {feet="Caballarius Leggings +1"}
 	sets.precast.JA['Rampart'] = {head="Caballarius Coronet"}
 	sets.precast.JA['Fealty'] = {body="Caballarius Surcoat +1"}
 	sets.precast.JA['Divine Emblem'] = {feet="Creed Sabatons +2"}
-	sets.precast.JA['Chivalry'] = {hands="Caballarius Gauntlets"}
+	sets.precast.JA['Chivalry'] = {hands="Caballarius Gauntlets +1"}
 	
 	sets.precast.Waltz = {
-		head="Reverence Coronet +1",	neck="Invidia Torque",			ear1="Creed Earring",			ear2="Friomisi Earring",
-		body="Reverence Surcoat +1",	hands="Caballarius Gauntlets",	ring1="Eihwaz Ring",			ring2="Asklepian Ring",
-		back="Earthcry Mantle",			waist="Creed Baudrier",			legs="Caballarius Breeches",	feet="Caballarius Leggings +1"
+		head="Reverence Coronet +1",	neck="Invidia Torque",				ear1="Creed Earring",			ear2="Friomisi Earring",
+		body="Reverence Surcoat +1",	hands="Caballarius Gauntlets +1",	ring1="Eihwaz Ring",			ring2="Asklepian Ring",
+		back="Earthcry Mantle",			waist="Creed Baudrier",				legs="Caballarius Breeches",	feet="Caballarius Leggings +1"
 	}
 	sets.precast.Waltz['Healing Waltz'] = {}
 
@@ -87,7 +87,7 @@ function init_gear_sets()
 	sets.midcast.FastRecast = {		--NOTE: Have not re-evaluated yet
 		ammo="Incantor Stone",
 		head="Cizin Helm +1",			neck="Orunmila's Torque",		ear1="Creed Earring",			ear2="Loquacious Earring",
-		body="Reverence Surcoat +1",	hands="Caballarius Gauntlets",	ring1="Prolix Ring",			ring2="Eihwaz Ring",
+		body="Reverence Surcoat +1",	hands="Caballarius Gauntlets +1",	ring1="Prolix Ring",			ring2="Eihwaz Ring",
 		back="Earthcry Mantle",			waist="Cetl Belt",				legs="Caballarius Breeches",	feet="Ejekamal Boots"
 	}
 	
@@ -98,7 +98,7 @@ function init_gear_sets()
 	sets.midcast.DivineMagic = {	--Haste+23%, FC+9%, Enmity+61
 		ammo="Incantor Stone",
 		head="Cizin Helm +1",			neck="Invidia Torque",			ear1="Friomisi Earring",		ear2="Loquacious Earring",
-		body="Reverence Surcoat +1",	hands="Caballarius Gauntlets",	ring1="Eihwaz Ring",			ring2="Provocare Ring",
+		body="Reverence Surcoat +1",	hands="Caballarius Gauntlets +1",	ring1="Eihwaz Ring",			ring2="Provocare Ring",
 		back="Earthcry Mantle",			waist="Creed Baudrier",			legs="Caballarius Breeches",	feet="Creed Sabatons +2"
 	}
 	
@@ -143,17 +143,17 @@ function init_gear_sets()
 		body="Twilight Mail",	hands="Reverence Gauntlets +1",	ring1="Defending Ring",		ring2="Sheltered Ring",
 		back="Weard Mantle",	waist="Nierenschutz",			legs="Reverence Breeches",	feet="Caballarius Leggings +1"
 	}
-	sets.idle.Speedy = {legs="Blood Cuisses"}
+	sets.idle.speedy = {legs="Blood Cuisses"}
+	
+	sets.idle.with_buff = {}
+	sets.idle.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
+	
 	sets.idle.Showoff = {
 		head="Reverence Coronet +1",	body="Caballarius Surcoat +1",	legs="Blood Cuisses"
 	}
 	
-	sets.idle.ShieldSkillup = {	--46% PDT
-		ammo="Angha Gem",
-		head="Temachtiani Headband",	neck="Twilight Torque",			ear1="Creed Earring",		ear2="Buckler Earring",
-		body="Caballarius Surcoat +1",	hands="Reverence Gauntlets +1",	ring1="Defending Ring",		ring2="Dark Ring",
-		back="Repulse Mantle",			waist="Flume Belt",				legs="Temachtiani Pants",	feet="Temachtiani Boots"
-	}
+	sets.idle.with_buff = {}
+	sets.idle.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	
 	sets.idle.PDT = {	--51% PDT, 41% MDT
 		ammo="Angha Gem",
@@ -196,6 +196,9 @@ function init_gear_sets()
 		body="Gorney Haubert +1",	hands="Cizin Mufflers +1",	ring1="Rajas Ring",			ring2="Tyrant's Ring",
 		back="Atheling Mantle",		waist="Windbuffet Belt",	legs="Cizin Breeches +1",	feet="Ejekamal Boots"
 	}
+	
+	sets.engaged.with_buff = {}
+	sets.engaged.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	
 	sets.engaged.TankP = {	--50% PDT, 34% MDT
 		ammo="Angha Gem",

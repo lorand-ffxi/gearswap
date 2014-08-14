@@ -210,6 +210,9 @@ function pretarget(spell,action)
 	elseif S{'Haste'}:contains(spell.english) and player.main_job == 'RDM' then
 		send_command('@input /ma "Haste II" '..spell.target.name)
 		eventArgs.cancel = true
+	elseif S{'Flurry'}:contains(spell.english) and player.main_job == 'RDM' then
+		send_command('@input /ma "Flurry II" '..spell.target.name)
+		eventArgs.cancel = true
 	end
 	
 	if eventArgs.cancel then

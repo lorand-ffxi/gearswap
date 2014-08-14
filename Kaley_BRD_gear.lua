@@ -220,7 +220,10 @@ function init_gear_sets()
 	}
 	sets.idle.Speedy = {feet="Aoidos' Cothurnes +2"}
 	
-	sets.Kiting = {feet="Aoidos' Cothurnes +2"}
+	sets.idle.with_buff = {}
+	sets.idle.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	
 	sets.engaged = {}
+	sets.engaged.with_buff = {}
+	sets.engaged.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 end

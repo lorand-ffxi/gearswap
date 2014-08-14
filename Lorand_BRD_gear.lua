@@ -2,6 +2,34 @@
 --[[
 	Author: Ragnarok.Lorand
 	
+	Songs can be cast with normal gear/instruments, normal gear + Terpander/Daurdabla,
+	or fast recast gear + Terpander/Daurdabla.
+	
+	When the maximum number of active songs has been reached, the new song will always take the place of
+	the one with the lowest remaining duration.  Exploiting this, you can cast a 3rd song with
+	Terpander/Daurdabla without any duration enhancing gear, and then overwrite it right away with a more
+	desirable song while wearing duration enhancing / potency gear (and instrument).
+	
+	To cycle modes:				gs c cycle daurdabla
+	To set a specific mode:		gs c set daurdabla Daurdabla
+	
+	Example usage in a macro, using Terpander/Daurdabla with normal gear:
+	/console gs c set daurdabla Daurdabla
+	/ma "Mage's Ballad" <stpc>
+	
+	Example usage in a macro, using Terpander/Daurdabla without duration enhancing gear:
+	/console gs c set daurdabla Dummy
+	/ma "Army's Paeon" <stpc>
+	
+	All macros should be written with <stpc> because Pianissimo will automatically be used when the target
+	is a player other than yourself.
+--]]
+-----------------------------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------------------------
+--[[
+	Author: Ragnarok.Lorand
+	
 	Slips:
 		1:	Marduk's Body
 		2:	Loq Earring, Musical Earring
@@ -46,6 +74,7 @@ function init_gear_sets()
 		body="Marduk's Jubbah",		--5%
 		hands="Gendewitha Gages +1",--7%
 		ring1="Prolix Ring",		--2%
+		ring2="Veneficium Ring",	--Q+1%
 		back="Swith Cape",			--3%
 		waist="Witful Belt",		--3%
 		legs="Artsieq Hose",		--5%
@@ -71,6 +100,7 @@ function init_gear_sets()
 		body="Sha'ir Manteel",		--12%
 		hands="Gendewitha Gages +1",--11%	(song spellcasting time -4% augment)
 		ring1="Prolix Ring",		--2%
+		ring2="Veneficium Ring",	--Q+1%
 		back="Swith Cape",			--3%
 		waist="Witful Belt",		--3%
 		legs="Gendewitha Spats +1",	--8%	(song spellcasting time -3% augment)
@@ -89,12 +119,12 @@ function init_gear_sets()
 	--============================================================
 	--					Midcast sets
 	--============================================================
-	sets.midcast.FastRecast = set_combine(sets.precast.FC, {
-		range="",					ammo="",
-		head="Kaabanax Hat",
-		hands="Gendewitha Gages +1",
-		back="Ogapepo Cape",		waist="Cetl Belt"
-	})
+	sets.midcast.FastRecast = {
+		range="empty",			ammo="empty",
+		head="Kaabanax Hat",	neck="Orunmila's Torque",		ear1="Loquacious Earring",
+		body="Marduk's Jubbah",	hands="Gendewitha Gages +1",	ring1="Prolix Ring",
+		back="Swith Cape",		waist="Cetl Belt",				legs="Artsieq Hose",	feet="Chelona Boots"
+	}
 	
 	--============================================================
 	
@@ -131,16 +161,20 @@ function init_gear_sets()
 		feet="Bihu Slippers"
 	}
 	
-	sets.midcast.SongBuff = {
-		main="Legato Dagger",			sub="Genbu's Shield",
-		neck="Aoidos' Matinee",
-		body="Aoidos' Hongreline +2",
-		feet="Brioso Slippers"
+	sets.midcast.SongBuff = {	--Song duration + 45%
+		main="Legato Dagger",			--5%
+		sub="Genbu's Shield",			--n/a
+		neck="Aoidos' Matinee",			--10%
+		body="Aoidos' Hongreline +2",	--10%
+		legs="Marduk's Shalwar +1",		--10%
+		feet="Brioso Slippers"			--10%
 	}
 	
 	sets.midcast.SongDebuff = {				-- For song debuffs (duration primary, accuracy secondary)
 		main="Lehbrailg +2",		sub="Mephitis Grip",
-		body="Brioso Justaucorps"
+		neck="Aoidos' Matinee",
+		body="Brioso Justaucorps",
+		legs="Marduk's Shalwar +1",	feet="Brioso Slippers"
 	}
 
 	sets.midcast.ResistantSongDebuff = {	-- For song debuffs (accuracy primary, duration secondary)
@@ -208,7 +242,9 @@ function init_gear_sets()
 	}
 	sets.idle.lowMP =		{legs="Nares Trews"}
 	sets.idle.lowMP_night =	{hands="Serpentes Cuffs"}
-	sets.idle.Speedy = set_combine(sets.idle, {feet="Aoidos' Cothurnes +2"})
+	sets.idle.speedy = set_combine(sets.idle, {feet="Aoidos' Cothurnes +2"})
+	sets.idle.with_buff = {}
+	sets.idle.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	
 	sets.idle.Melee = {
 		main="Leisilonu +2"
@@ -223,4 +259,6 @@ function init_gear_sets()
 		back="Atheling Mantle",	waist="Cetl Belt",			legs="Bihu Cannions",		feet="Brioso Slippers"
 	}
 	sets.engaged.Melee = sets.engaged
+	sets.engaged.with_buff = {}
+	sets.engaged.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 end

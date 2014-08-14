@@ -5,6 +5,51 @@
 --]]
 -----------------------------------------------------------------------------------------------------------
 
+-- Attempt to load user gear files in place of default gear sets.
+-- Return true if one exists and was loaded.
+function load_user_gear(job)
+	if not job then return false end
+	-- filename format example for user-local files: whm_gear.lua, or playername_whm_gear.lua
+	local filenames = {player.name..'_'..job..'_gear.lua', job..'_gear.lua'}
+	for _,v in pairs(filenames) do
+		local path = gearswap.pathsearch({v})
+		if path then
+			include(v)
+			return true
+		end
+	end
+	return false
+end
+
+function select_movement()
+	-- world.time is given in minutes into each day
+	-- 7:00 AM would be 420 minutes		(dawn)
+	-- 17:00 PM would be 1020 minutes	(dusk)
+	if world.time >= (17*60) or world.time <= (7*60) then
+		return sets.NightMovement
+	else
+		return sets.DayMovement
+	end
+end
+
+function print_gearset(gearset, title)
+	if title ~= nil then
+		windower.add_to_chat(2, title)
+	end
+	for s,i in pairs(gearset) do
+		windower.add_to_chat(1, tostring(s)..': '..tostring(i))
+	end
+end
+
+
+function display_current_state()
+	local modeStrings = {}
+	for k,v in pairs(modes) do
+		table.insert(modeStrings, tostring(k)..': '..tostring(v))
+	end
+	windower.add_to_chat(1, table.concat(modeStrings, ' | '))
+end
+
 --[[
 	Rounds a number to the given number of decimal places
 	Note: math.round erroneously floors the entire return statement, causing it to always return an integer value
@@ -44,7 +89,20 @@ function addToChat(cmdParams)
 	for i = 3, #cmdParams, 1 do
 		dispText = dispText .. ' ' .. cmdParams[i]
 	end
-	add_to_chat(cmdParams[1], dispText)
+	windower.add_to_chat(cmdParams[1], dispText)
+end
+
+--[[
+	Get the given party/alliance member's vitals.  Returns nil if the player with the given name
+	is not in the player's party/alliance.
+--]]
+function get_ally_info(name)
+	for _,m in pairs(windower.ffxi.get_party()) do
+		if m.name == name then
+			return m
+		end
+	end
+	return nil
 end
 
 --[[
@@ -57,15 +115,14 @@ function addMode(mode, vals)
 	if options == nil then options = {} end
 	if options.modes == nil then options.modes = {} end
 	
-	if options.modes[mode] == nil then
-		options.modes[mode] = {}
-	end
+	options.modes[mode] = {}
 	
 	if vals ~= nil then
 		for _,option in ipairs(vals) do
 			addModeOption(mode, option)
 		end
 	end
+	modes[mode] = getNextOption(mode)
 end
 
 --[[
@@ -111,12 +168,19 @@ end
 	previously active state, then the state is set to the first option in the list as per the behaviour
 	of the getNextOption function.
 --]]
-function cycleState(mode)
+function cycleMode(mode)
 	if options.modes[mode] == nil then return end
 	if #options.modes[mode] < 1 then return end
 	
-	if state == nil then state = {} end
-	if state.modes == nil then state.modes = {} end
-	
-	state.modes[mode] = getNextOption(mode, state.modes[mode])
+	setMode(mode, getNextOption(mode, modes[mode]))
+end
+
+--[[
+	Set the active mode for the given mode.
+--]]
+function setMode(mode, option)
+	if mode == nil then return end
+	if modes == nil then modes = {} end
+	if modes[mode] == nil then addMode(mode) end
+	modes[mode] = option
 end

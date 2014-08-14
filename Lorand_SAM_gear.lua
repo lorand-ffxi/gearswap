@@ -94,12 +94,14 @@ function init_gear_sets()
 		body="Sakonji Domaru +1",	hands="Sakonji Kote",	ring1="Defending Ring",	ring2="Sheltered Ring",
 		back="Repulse Mantle",	waist="Flume Belt",		legs="Otronif Brais +1",feet="Ejekamal Boots"
 	}
-	sets.idle.Speedy = {feet="Danzo Sune-Ate"}
+	sets.idle.speedy = {feet="Danzo Sune-Ate"}
 	sets.idle.Reraise = {
 		head="Twilight Helm",
 		body="Twilight Mail",
 		feet="Danzo Sune-Ate"
 	}
+	sets.idle.with_buff = {}
+	sets.idle.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	
 	sets.defense.DT = {	--DT-5%, PDT-10%, MDT-7%	=> PDT-15%, MDT-12%
 		neck="Twilight Torque",
@@ -125,6 +127,9 @@ function init_gear_sets()
 	sets.Reraise = {head="Twilight Helm",body="Twilight Mail"}
 
 	--============================================================
+	
+	sets.engaged.with_buff = {}
+	sets.engaged.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	
 	sets.engaged['5-Hit'] = {
 		main="Amanomurakumo",		sub="Pole Grip",			ammo="Potestas Bomblet",

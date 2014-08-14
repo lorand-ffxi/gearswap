@@ -92,9 +92,10 @@ function init_gear_sets()
 	
 	sets.resting = {}
 	
-	sets.idle.Town = {}
-	sets.idle.Field = {}
-	sets.idle.Weak = {}
+	sets.idle = {}
+	sets.idle.speedy = {}
+	sets.idle.with_buff = {}
+	sets.idle.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	
 	sets.defense.PDT = {}
 	sets.defense.MDT = {}
@@ -102,4 +103,6 @@ function init_gear_sets()
 	sets.Kiting = {legs="Blood Cuisses"}
 
 	sets.engaged = {}
+	sets.engaged.with_buff = {}
+	sets.engaged.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 end
