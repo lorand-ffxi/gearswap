@@ -44,7 +44,7 @@ function init_gear_sets()
 		head="Anwig Salade",			--5%
 		neck="Orunmila's Torque",		--5%
 		ear1="Loquacious Earring",		--2%
-		hands="Thaumas Gloves",			--4%
+		hands={"Thaumas Gloves", "Buremte Gloves"},	--4%
 		ring1="Prolix Ring",			--2%
 		ring2="Veneficium Ring",		--Q+1%
 		legs="Quiahuiz Trousers",		--3%
@@ -140,10 +140,13 @@ function init_gear_sets()
 	sets.idle = {
 		ammo="Demonry Stone",
 		head="Ocelomeh Headpiece +1",	neck="Orochi Nodowa",		ear1="Novia Earring",		ear2="Ethereal Earring",
-		body="War Shinobi Gi",			hands="Mochizuki Tekko +1",	ring1="Defending Ring",		ring2="Sheltered Ring",
-		back="Repulse Mantle",			waist="Flume Belt",			legs="Hachiya Hakama +1",	feet="Danzo Sune-Ate"
+		body="War Shinobi Gi",			hands={"Mochizuki Tekko +1", "Otronif Gloves +1"},
+		ring1="Defending Ring",			ring2="Sheltered Ring",
+		back="Repulse Mantle",			waist="Flume Belt",			legs={"Hachiya Hakama +1", "Otronif Brais +1"},
+		feet="Danzo Sune-Ate"
 	}
 	sets.idle.speedy = select_movement()
+	sets.idle.with_buff = {}
 	sets.idle.with_buff['Migawari'] = {body="Iga Ningi +2"}
 	sets.idle.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	
@@ -177,7 +180,7 @@ function init_gear_sets()
 	--============================================================
 	
 	sets.engaged = {}
-	
+	sets.engaged.with_buff = {}
 	sets.engaged.with_buff['Migawari'] = {body="Iga Ningi +2"}
 	sets.engaged.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	

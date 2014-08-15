@@ -94,7 +94,7 @@ function set_modes()
 end
 
 function set_keybinds()
-	--send_command('alias equip gs c equip')
+	send_command('alias equip gs c equip')
 	send_command('bind ^d gs c set defense PDT')
 	send_command('bind !d gs c set defense MDT')
 	send_command('bind @d gs c reset defense')

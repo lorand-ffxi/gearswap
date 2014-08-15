@@ -30,14 +30,14 @@ init()
 	Called when an action has been flagged as not possible to perform.
 --]]
 function filtered_action(spell)
-	if spell.type == 'WhiteMagic' and buffactive['Light Arts'] and addendum_white[spell.id] then
+	if spell.type == 'WhiteMagic' and buffactive['Light Arts'] and gearswap.addendum_white[spell.id] then
 		cancel_spell()
 		if get_available_stratagem_count() > 0 then
 			windower.send_command('input /ja "Addendum: White" <me>; wait 1.75; input /ma "'..spell.name..'" '..spell.target.name)
 		else
 			windower.add_to_chat(122, "Cancelled "..spell.name..".  Addendum: White is required, but there are no available stratagems.")
 		end
-	elseif spell.type == 'BlackMagic' and buffactive['Dark Arts'] and addendum_black[spell.id] then
+	elseif spell.type == 'BlackMagic' and buffactive['Dark Arts'] and gearswap.addendum_black[spell.id] then
 		local retryTarget
 		if spell.target.type == 'MONSTER' then
 			retryTarget = '<t>'
@@ -92,7 +92,7 @@ function precast(spell)
 	end
 	
 	local notOverwritable = S{'Stoneskin', 'Sneak', 'Spectral Jig'}
-	if notOverwritable:contains(spell.name) then
+	if notOverwritable:contains(spell.name) and (spell.target.name == player.name) then
 		if spell.name == 'Spectral Jig' then
 			windower.send_command('cancel Sneak')
 		else
@@ -209,6 +209,14 @@ end
 	[62] = {id=62,en="Fishing no catch or lost"}
 --]]
 function status_change(new, old)
+	if S{'WHM', 'BLM', 'RDM', 'SCH', 'BRD'}:contains(player.main_job) then
+		if S{'Melee', 'Skillup'}:contains(modes.offense) then
+			disable('main', 'sub')
+		else
+			enable('main', 'sub')
+		end
+	end
+	
 	equip(get_gear_for_status(new))
 end
 
