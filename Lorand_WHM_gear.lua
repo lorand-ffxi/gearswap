@@ -40,7 +40,6 @@ function init_gear_sets()
 		back="Pahtli Cape",			--8%
 	}
 	
-	sets.precast.FC.Impact = {body='Twilight Cloak'}
 	sets.precast.FC.Lightning = {main="Apamajas I"}
 	
 	--============================================================
@@ -99,7 +98,7 @@ function init_gear_sets()
 		back="Swith Cape",				waist="Cetl Belt",				legs="Orison Pantaloons +2",	feet="Theophany Duckbills"
 	}
 	sets.midcast.Curaga = sets.midcast.Cure
-	sets.midcast.Cure.Engaged = {}
+	sets.midcast.Cure.Engaged = sets.midcast.Cure
 
 	sets.midcast.Cursna = {
 		legs="Theophany Pantaloons"
@@ -108,7 +107,6 @@ function init_gear_sets()
 	sets.midcast.StatusRemoval = {
 		head="Orison Cap +2"
 	}
-	
 	sets.midcast.StatusRemoval['Divine Caress'] = {
 		hands="Orison Mitts +2"
 	}
@@ -209,12 +207,11 @@ function init_gear_sets()
 	sets.idle.lowMP_day = {feet="Serpentes Sabots"}
 	
 	sets.idle.with_buff = {}
-	sets.idle.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	
 	sets.defense.DT = {}
-	sets.defense.PDT = set_combine(sets.defense.DT, {
+	sets.defense.PDT = combineSets(sets.defense.DT, {
 	})
-	sets.defense.MDT = set_combine(sets.defense.DT, {
+	sets.defense.MDT = combineSets(sets.defense.DT, {
 	})
 	
 	sets.engaged = {
@@ -224,6 +221,4 @@ function init_gear_sets()
 		back="Bukuwik Cape",	waist="Cetl Belt",			legs="Artsieq Hose",		feet="Theophany Duckbills"
 	}
 	sets.engaged.with_buff = {}
-	sets.engaged.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
-	--sets.buff['Divine Caress'] = {hands="Orison Mitts +2"}
 end

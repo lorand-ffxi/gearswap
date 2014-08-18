@@ -159,6 +159,16 @@ function matchesGrimoire(spell)
 	end
 end
 
+function getGrimoire()
+	if buff_active('Light Arts', 'Addendum: White') then
+		return 'LA'
+	elseif buff_active('Dark Arts', 'Addendum: Black') then
+		return 'DA'
+	else
+		return nil
+	end
+end
+
 function weatherPermits(element)
 	return buffactive[elements.storm_of[element]] or element == world.day_element or element == world.weather_element
 end

@@ -25,8 +25,6 @@
 	is a player other than yourself.
 --]]
 -----------------------------------------------------------------------------------------------------------
-
------------------------------------------------------------------------------------------------------------
 --[[
 	Author: Ragnarok.Lorand
 	
@@ -36,7 +34,7 @@
 		3:	Twilight Torque
 		8:	Aoidos' Matinee/Earring
 		10:	Aoidos' (all)
-		14:	Nares Cap/Hands/Legs
+		14:	Nares Hands/Legs, Marduk's+1 Legs
 		15:	Brioso (all)
 		17:	Bihu (all)
 --]]
@@ -46,29 +44,32 @@ function init_gear_sets()
 	--============================================================
 	--					Instruments
 	--============================================================
-	gear.Instruments.Ballad = "Crooner's Cithara"
-	gear.Instruments.Carol = "Crumhorn +1"
-	gear.Instruments.Elegy = "Syrinx"
-	gear.Instruments.Etude = "Rose Harp +1"
-	gear.Instruments.Finale = "Pan's Horn"
-	gear.Instruments.Lullaby = "Pan's Horn"
-	gear.Instruments.Madrigal = "Cantabank's Horn"
-	gear.Instruments.Mambo = "Vihuela"
-	gear.Instruments.March = "Iron Ram Horn"
-	gear.Instruments.Mazurka = "Vihuela"
-	gear.Instruments.Minne = "Syrinx"
-	gear.Instruments.Minuet = "Apollo's Flute"
-	gear.Instruments.Paeon = "Oneiros Harp"
-	gear.Instruments.Prelude = "Cantabank's Horn"
-	gear.Instruments.Requiem = "Requiem Flute"
-	gear.Instruments.Scherzo = "Terpander"
-	gear.Instruments.Threnody = "Sorrowful Harp"
+	gear.instruments.multiSong = "Terpander"
+	gear.instruments.default = "Eminent Flute"
+	
+	gear.Instruments.Ballad		= "Crooner's Cithara"
+	gear.Instruments.Carol		= "Crumhorn +1"
+	gear.Instruments.Elegy		= "Syrinx"
+	gear.Instruments.Etude		= "Rose Harp +1"
+	gear.Instruments.Finale		= "Pan's Horn"
+	gear.Instruments.Lullaby	= "Pan's Horn"
+	gear.Instruments.Madrigal	= "Cantabank's Horn"
+	gear.Instruments.Mambo		= "Vihuela"
+	gear.Instruments.March		= "Iron Ram Horn"
+	gear.Instruments.Mazurka	= "Vihuela"
+	gear.Instruments.Minne		= "Syrinx"
+	gear.Instruments.Minuet		= "Apollo's Flute"
+	gear.Instruments.Paeon		= "Oneiros Harp"
+	gear.Instruments.Prelude	= "Cantabank's Horn"
+	gear.Instruments.Requiem	= "Requiem Flute"
+	gear.Instruments.Scherzo	= "Terpander"
+	gear.Instruments.Threnody	= "Sorrowful Harp"
 	
 	--============================================================
 	--					Precast sets
 	--============================================================
 	sets.precast.FC = {				--46%
-		head="Nahtirah Hat",			--10%
+		head="Nahtirah Hat",		--10%
 		neck="Orunmila's Torque",	--5%
 		ear1="Loquacious Earring",	--2%
 		body="Marduk's Jubbah",		--5%
@@ -81,14 +82,14 @@ function init_gear_sets()
 		feet="Chelona Boots"		--4%
 	}
 
-	sets.precast.FC.Cure = set_combine(sets.precast.FC, {	--54%
+	sets.precast.FC.Cure = {		--54%
 		main="Felibre's Dague",		--0%
 		sub="Genbu's Shield",		--8%
 		back="Pahtli Cape"			--8%
-	})
-	sets.precast.FC.EnhancingMagic = set_combine(sets.precast.FC, {	--46%
+	}
+	sets.precast.FC.EnhancingMagic = {	--46%
 		waist="Siegel Sash"			--8%
-	})
+	}
 
 	sets.precast.FC.BardSong = {	--73%
 		main="Felibre's Dague",		--6%
@@ -116,7 +117,8 @@ function init_gear_sets()
 	--============================================================
 	
 	sets.precast.Waltz = {}
-	sets.precast.WS = {}
+	sets.wsBase = {}
+	sets.wsBase.Magic = {}
 	
 	--============================================================
 	--					Midcast sets
@@ -138,18 +140,11 @@ function init_gear_sets()
 	sets.midcast.Paeon =	{head="Brioso Roundlet"}
 	sets.midcast.Scherzo =	{feet="Aoidos' Cothurnes +2"}
 	
-	sets.midcast.MagicAcc = {
-		main="Lehbrailg +2",		sub="Mephitis Grip",
-		head="Bihu Roundlet",		neck="Stoicheion Medal",	ear1="Lifestorm Earring",	ear2="Psystorm Earring",
-		body="Brioso Justaucorps",	hands="Lurid Mitts",		ring1="Balrahn's Ring",		ring2="Perception Ring",
-		back="Rhapsode's Cape",		legs="Bihu Cannions",		feet="Bokwus Boots"
-	}
-	
-	sets.midcast.Singing = set_combine(sets.midcast.MagicAcc, {
+	sets.midcast.Singing = {
 		head="Bihu Roundlet",			neck="Aoidos' Matinee",			ear2="Musical Earring",
 		body="Brioso Justaucorps",		hands="Brioso Cuffs",
 		legs="Aoidos' Rhingrave +2",	feet="Brioso Slippers"
-	})
+	}
 	
 	sets.midcast.Wind = {
 		hands="Aoidos' Manchettes +2",
@@ -163,6 +158,7 @@ function init_gear_sets()
 		feet="Bihu Slippers"
 	}
 	
+	--This set is for extending party song buff duration
 	sets.midcast.SongBuff = {	--Song duration + 45%
 		main="Legato Dagger",			--5%
 		sub="Genbu's Shield",			--n/a
@@ -170,6 +166,21 @@ function init_gear_sets()
 		body="Aoidos' Hongreline +2",	--10%
 		legs="Marduk's Shalwar +1",		--10%
 		feet="Brioso Slippers"			--10%
+	}
+	
+	--This set is for Daurdabla/Terpander dummy songs
+	sets.midcast.SongRecast = {
+		main="Felibre's Dague",			sub="Genbu's Shield",
+		head="Gendewitha Caubeen +1",	neck="Orunmila's Torque",	ear1="Loquacious Earring",	ear2="Novia Earring",
+		body="Marduk's Jubbah",			hands="Buremte Gloves",		ring1="Prolix Ring",
+		back="Swith Cape",				waist="Witful Belt",		legs="Artsieq Hose",		feet="Bihu Slippers"
+	}
+	
+	sets.midcast.MagicAcc = {
+		main="Lehbrailg +2",		sub="Mephitis Grip",
+		head="Bihu Roundlet",		neck="Stoicheion Medal",	ear1="Lifestorm Earring",	ear2="Psystorm Earring",
+		body="Brioso Justaucorps",	hands="Lurid Mitts",		ring1="Balrahn's Ring",		ring2="Perception Ring",
+		back="Rhapsode's Cape",		legs="Bihu Cannions",		feet="Bokwus Boots"
 	}
 	
 	sets.midcast.SongDebuff = {				-- For song debuffs (duration primary, accuracy secondary)
@@ -182,13 +193,6 @@ function init_gear_sets()
 	sets.midcast.ResistantSongDebuff = {	-- For song debuffs (accuracy primary, duration secondary)
 	}
 
-	sets.midcast.SongRecast = {
-		main="Felibre's Dague",			sub="Genbu's Shield",
-		head="Gendewitha Caubeen +1",	neck="Fylgja Torque +1",	ear1="Loquacious Earring",	ear2="Novia Earring",
-		body="Marduk's Jubbah",			hands="Buremte Gloves",		ring1="Prolix Ring",
-		back="Swith Cape",				waist="Witful Belt",		legs="Artsieq Hose",		feet="Bihu Slippers"
-	}
-
 	--============================================================		
 	
 	sets.midcast.EnhancingMagic = {
@@ -196,17 +200,7 @@ function init_gear_sets()
 		body="Hyksos Robe",
 		waist="Cascade Belt"
 	}
-	
-	sets.midcast.EnhancingMagic.Aquaveil = {
-		waist="Emphatikos Rope"
-	}
-
-	sets.midcast.Cure = {
-		main="Arka IV",					sub="Achaq Grip",
-		head="Gendewitha Caubeen +1",	neck="Fylgja Torque +1",		ear1="Novia Earring",		ear2="Star Earring",
-		body="Gendewitha Bliaut +1",	hands="Weatherspoon Cuffs +1",	ring1="Aquasoul Ring",		ring2="Aqua Ring",
-		back="Oretania's Cape",			waist="Cascade Belt",			legs="Gendewitha Spats +1",	feet="Bihu Slippers"
-	}
+	sets.midcast.Aquaveil = {waist="Emphatikos Rope"}
 	
 	sets.midcast.Stoneskin = {
 		neck="Stone Gorget",	ear1="Star Earring",	ear2="Earthcry Earring",
@@ -215,25 +209,33 @@ function init_gear_sets()
 	}
 	
 	sets.midcast.HealingMagic = {}
-	sets.midcast.Cursna = set_combine(sets.midcast.HealingMagic, {
-		neck="Malison Medallion",ring1="Ephedra Ring",ring2="Ephedra Ring"
-	})
+	sets.midcast.Cursna = {
+		neck="Malison Medallion",
+		ring1="Ephedra Ring",		ring2="Ephedra Ring"
+	}
+	
+	sets.midcast.Cure = {
+		main="Arka IV",					sub="Achaq Grip",
+		head="Gendewitha Caubeen +1",	neck="Orunmila's Torque",		ear1="Novia Earring",		ear2="Star Earring",
+		body="Gendewitha Bliaut +1",	hands="Weatherspoon Cuffs +1",	ring1="Aquasoul Ring",		ring2="Aqua Ring",
+		back="Oretania's Cape",			waist="Cascade Belt",			legs="Gendewitha Spats +1",	feet="Bihu Slippers"
+	}
 	
 	--============================================================
 	--					Other sets
 	--============================================================
 	
 	sets.resting = {
-		main="Chatoyant Staff",	sub="Elder's Grip",
-		body="Gendewitha Bliaut +1",
-		legs="Nares Trews",
-		feet="Chelona Boots +1"
+		main="Chatoyant Staff",			sub="Elder's Grip",			ammo="Kalboron Stone",
+		head="Nahtirah Hat",			neck="Eidolon Pendant",		ear1="Loquacious Earring",	ear2="Relaxing Earring",
+		body="Gendewitha Bilaut +1",	hands="Nares Cuffs",		ring1="Defending Ring",		ring2="Sheltered Ring",
+		back="Felicitas Cape",			waist="Emphatikos Rope",	legs="Nares Trews",			feet="Chelona Boots"
 	}
 	
 	sets.defense.DT = {}
-	sets.defense.PDT = set_combine(sets.defense.DT, {
+	sets.defense.PDT = combineSets(sets.defense.DT, {
 	})
-	sets.defense.MDT = set_combine(sets.defense.DT, {
+	sets.defense.MDT = combineSets(sets.defense.DT, {
 	})
 	
 	sets.idle = {
@@ -244,23 +246,14 @@ function init_gear_sets()
 	}
 	sets.idle.lowMP =		{legs="Nares Trews"}
 	sets.idle.lowMP_night =	{hands="Serpentes Cuffs"}
-	sets.idle.speedy = set_combine(sets.idle, {feet="Aoidos' Cothurnes +2"})
+	sets.idle.speedy =		{feet="Aoidos' Cothurnes +2"}
 	sets.idle.with_buff = {}
-	sets.idle.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
-	
-	sets.idle.Melee = {
-		main="Leisilonu +2"
-	}
-	
-	sets.Kiting = {feet="Aoidos' Cothurnes +2"}
 	
 	sets.engaged = {
 		main="Leisilonu +2",
-		head="Kaabanax Hat",	neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
-		body="Bihu Justaucorps",hands="Otomi Gloves",		ring1="Rajas Ring",			ring2="Mars's Ring",
-		back="Atheling Mantle",	waist="Cetl Belt",			legs="Bihu Cannions",		feet="Brioso Slippers"
+		head="Kaabanax Hat",		neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
+		body="Bihu Justaucorps",	hands="Otomi Gloves",		ring1="Rajas Ring",			ring2="Mars's Ring",
+		back="Atheling Mantle",		waist="Cetl Belt",			legs="Bihu Cannions",		feet="Brioso Slippers"
 	}
-	sets.engaged.Melee = sets.engaged
 	sets.engaged.with_buff = {}
-	sets.engaged.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 end

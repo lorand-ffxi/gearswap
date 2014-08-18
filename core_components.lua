@@ -33,9 +33,9 @@ function filtered_action(spell)
 	if spell.type == 'WhiteMagic' and buffactive['Light Arts'] and gearswap.addendum_white[spell.id] then
 		cancel_spell()
 		if get_available_stratagem_count() > 0 then
-			windower.send_command('input /ja "Addendum: White" <me>; wait 1.75; input /ma "'..spell.name..'" '..spell.target.name)
+			windower.send_command('input /ja "Addendum: White" <me>; wait 1.75; input /ma "'..spell.en..'" '..spell.target.name)
 		else
-			windower.add_to_chat(122, "Cancelled "..spell.name..".  Addendum: White is required, but there are no available stratagems.")
+			windower.add_to_chat(122, "Cancelled "..spell.en..".  Addendum: White is required, but there are no available stratagems.")
 		end
 	elseif spell.type == 'BlackMagic' and buffactive['Dark Arts'] and gearswap.addendum_black[spell.id] then
 		local retryTarget
@@ -46,9 +46,9 @@ function filtered_action(spell)
 		end
 		cancel_spell()
 		if get_available_stratagem_count() > 0 then
-			windower.send_command('input /ja "Addendum: Black" <me>; wait 1.75; input /ma "'..spell.name..'" '..retryTarget)
+			windower.send_command('input /ja "Addendum: Black" <me>; wait 1.75; input /ma "'..spell.en..'" '..retryTarget)
 		else
-			windower.add_to_chat(122, "Cancelled "..spell.name..".  Addendum: Black is required, but there are no available stratagems.")
+			windower.add_to_chat(122, "Cancelled "..spell.en..".  Addendum: Black is required, but there are no available stratagems.")
 		end
 	else
 		windower.add_to_chat(166, 'Unhandled filtered action: '..spell.english)
@@ -93,27 +93,27 @@ function precast(spell)
 	end
 	
 	local notOverwritable = S{'Stoneskin', 'Sneak', 'Spectral Jig'}
-	if notOverwritable:contains(spell.name) and (spell.target.name == player.name) then
-		if spell.name == 'Spectral Jig' then
+	if notOverwritable:contains(spell.en) and (spell.target.name == player.name) then
+		if spell.en == 'Spectral Jig' then
 			windower.send_command('cancel Sneak')
 		else
-			windower.send_command('wait 0.5; cancel '..spell.name)
+			windower.send_command('wait 0.5; cancel '..spell.en)
 		end
 	end
 	
 	--Perform checks prior to execution of the command
 	if player.main_job == 'BRD' and spell.type == 'BardSong' then
-		windower.add_to_chat(122, "Casting "..spell.name.." in mode: "..state.DaurdablaMode)
+		windower.add_to_chat(122, "Casting "..spell.en.." in mode: "..modes.Daurdabla)
 		-- Auto-Pianissimo
-		if spell.target.type == 'PLAYER' and not spell.target.charmed and not state.Buff['Pianissimo'] then
+		if spell.target.type == 'PLAYER' and not spell.target.charmed and not buffactive['Pianissimo'] then
 			cancel_spell()
-			windower.send_command('input /ja "Pianissimo" <me>; wait 1.25; input /ma "'..spell.name..'" '..spell.target.name)
+			windower.send_command('input /ja "Pianissimo" <me>; wait 1.25; input /ma "'..spell.en..'" '..spell.target.name)
 			return
 		end
 	elseif S{'RNG', 'COR'}:contains(player.main_job) then
 		local check_ammo
 		--Choose which ammo should be verified
-		if spell.type == 'WeaponSkill' and bow_gun_weaponskills:contains(spell.name) then
+		if spell.type == 'WeaponSkill' and bow_gun_weaponskills:contains(spell.en) then
 			check_ammo = gear[modes.offense..'_ammo_WS']
 		elseif spell.action_type == 'Ranged Attack' then
 			check_ammo = gear[modes.offense..'_ammo_RA']
@@ -154,27 +154,23 @@ end
 	It should take effect regardless of the spell cast speed.
 --]]
 function midcast(spell)
-	if spell.name == 'Utsusemi: Ichi' and not spell.interrupted then
+	if spell.en == 'Utsusemi: Ichi' and not spell.interrupted then
 		windower.send_command('wait 2; cancel 66; cancel 446')
 	end
 	equip(get_midcast_set(spell))
-	
-	if spell.name == 'Impact' then
-		equip({head='empty', body='Twilight Cloak'})
-	end
 end
 
 --[[
 	Called upon action completion (i.e., casting finished, ws landed, casting interrupted, etc)
 --]]
 function aftercast(spell)
-	if spell.name == 'Unknown Interrupt' then return end
-	local spellMap = spell_maps[spell.name]
+	if spell.en == 'Unknown Interrupt' then return end
+	local spellMap = spell_maps[spell.en]
 	
 	if not spell.interrupted then
 		initSleepTimer(spell, spellMap)
 		if player.main_job == "BLM" then
-			if spell.name == 'Mana Wall' and player.equipment.feet == "Goetia Sabots +2" then
+			if spell.en == 'Mana Wall' and player.equipment.feet == "Goetia Sabots +2" then
 				disable('feet')
 			end
 		elseif player.main_job == "BRD" then
@@ -230,7 +226,7 @@ function buff_change(buff, gain)
 		end
 	end
 	
-	if buff == 'Sleep' and gain and buffactive['Stoneskin'] then
+	if buff == 'sleep' and gain and buffactive['Stoneskin'] then
 		--If slept, drop stoneskin if a DOT is active to wake up
 		if buffactive['Sublimation: Active'] or dotActive() then
 			windower.send_command('cancel stoneskin')
@@ -240,10 +236,6 @@ function buff_change(buff, gain)
 		equip(get_gear_for_status(player.status))
 	elseif buff == 'Sublimation: Complete' and gain then
 		windower.add_to_chat(204, 'Sublimation is done charging!')
-	elseif buff == 'Light Arts' and gain then
-		state.arts = 'LA'
-	elseif buff == 'Dark Arts' and gain then
-		state.arts = 'DA'
 	end
 	
 	if buff:lower() == 'weakness' then
@@ -287,7 +279,7 @@ end
 function get_precast_set(spell)
 	local precastSet = {}
 	local status = player.status:lower()
-	local spellMap = spell_maps[spell.name]
+	local spellMap = spell_maps[spell.en]
 	
 	if spell.action_type == 'Magic' then
 		precastSet = sets.precast.FC
@@ -295,15 +287,18 @@ function get_precast_set(spell)
 		precastSet = combineSets(precastSet, sets.precast.FC, spell.skill:stripchars(' '))
 		precastSet = combineSets(precastSet, sets.precast.FC, spell.element)
 		precastSet = combineSets(precastSet, sets.precast.FC, spellMap)
-		precastSet = combineSets(precastSet, sets.precast.FC, spell.name)
+		precastSet = combineSets(precastSet, sets.precast.FC, spell.en)
 		precastSet = combineSets(precastSet, sets.precast.FC, modes.casting)
 		precastSet = combineSets(precastSet, sets.precast.FC, status)
+		if spell.en == 'Impact' then
+			precastSet = combineSets(precastSet, {body='Twilight Cloak'})
+		end
 	elseif spell.action_type == 'Ranged Attack' then
 		--Equip snapshot gear & TP ammo
 		precastSet = combineSets(sets.precast.ranged, {ammo=gear[modes.offense..'_ammo_RA']})
 	elseif spell.action_type == 'Ability' then
 		if spell.type == 'JobAbility' then
-			precastSet = combineSets(precastSet, sets.precast.JA, spell.name)
+			precastSet = combineSets(precastSet, sets.precast.JA, spell.en)
 		elseif spell.type == 'WeaponSkill' then
 			--sets.wsBase[sam/other][modes.offense][state.RangedMode][wsmod[spell.english]]
 			if S{'RNG', 'COR'}:contains(player.main_job) then
@@ -314,8 +309,8 @@ function get_precast_set(spell)
 				precastSet = combineSets(precastSet, {ammo=gear[modes.offense..'_ammo_WS']})
 				
 				local wsSet = sets.wsBase
-				wsSet = combineSets(wsSet, sets.wsBase, wsmod[spell.name])
-				wsSet = combineSets(wsSet, sets.wsBase, wsmod[spell.name], spell.name)
+				wsSet = combineSets(wsSet, sets.wsBase, wsmod[spell.en])
+				wsSet = combineSets(wsSet, sets.wsBase, wsmod[spell.en], spell.en)
 				wsSet = combineSets(wsSet, get_ftp_set(spell))
 				
 				precastSet = combineSets(wsSet, precastSet)
@@ -330,8 +325,8 @@ function get_precast_set(spell)
 				end
 				precastSet = combineSets(precastSet, sets.wsBase, get_sub_type())
 				precastSet = combineSets(precastSet, sets.wsBase, get_sub_type(), modes.offense)
-				precastSet = combineSets(precastSet, sets.wsBase, get_sub_type(), modes.offense, wsmod[spell.name])
-				precastSet = combineSets(precastSet, sets.wsBase, get_sub_type(), modes.offense, wsmod[spell.name], spell.name)
+				precastSet = combineSets(precastSet, sets.wsBase, get_sub_type(), modes.offense, wsmod[spell.en])
+				precastSet = combineSets(precastSet, sets.wsBase, get_sub_type(), modes.offense, wsmod[spell.en], spell.en)
 				precastSet = combineSets(precastSet,get_ftp_set(spell))
 			end
 		else
@@ -339,7 +334,7 @@ function get_precast_set(spell)
 			-- These may use the generic type, or be refined for the individual action, either by name or by spell map.
 			precastSet = combineSets(precastSet, sets.precast, spell.type)
 			precastSet = combineSets(precastSet, sets.precast, spellMap)
-			precastSet = combineSets(precastSet, sets.precast, spell.name)
+			precastSet = combineSets(precastSet, sets.precast, spell.en)
 		end
 	end
 	
@@ -366,12 +361,12 @@ function get_standard_magic_set(baseSet, spell, spellMap, spellType)
 	castSet = combineSets(castSet, baseSet)
 	castSet = combineSets(castSet, sets.midcast.MagicAccuracy)
 	castSet = combineSets(castSet, sets.midcast, spellType)
-	castSet = combineSets(castSet, sets.midcast, spellType, state.arts)
+	castSet = combineSets(castSet, sets.midcast, spellType, getGrimoire())
 	castSet = combineSets(castSet, sets.midcast, spellType, spellMap, modes.casting)
 	castSet = combineSets(castSet, sets.midcast, spellType, spellMap)
-	castSet = combineSets(castSet, sets.midcast, spellType, spell.name)
+	castSet = combineSets(castSet, sets.midcast, spellType, spell.en)
 	castSet = combineSets(castSet, sets.midcast, spellMap)
-	castSet = combineSets(castSet, sets.midcast, spell.name)
+	castSet = combineSets(castSet, sets.midcast, spell.en)
 	return castSet
 end
 
@@ -382,7 +377,7 @@ function get_midcast_set(spell)
 	local midcastSet = {}
 	local status = player.status:lower()
 	local targType = spell.target.type:lower()
-	local spellMap = spell_maps[spell.name]
+	local spellMap = spell_maps[spell.en]
 	
 	if spell.action_type == 'Magic' then
 		midcastSet = combineSets(midcastSet, sets.midcast.FastRecast)
@@ -397,7 +392,7 @@ function get_midcast_set(spell)
 				midcastSet = combineSets(midcastSet, sets.midcast, instrumentSkill)					--Equip gear based on skill of instrument
 				midcastSet = combineSets(midcastSet, sets.midcast, songType)						--Equip gear based on buff/debuff
 				midcastSet = combineSets(midcastSet, sets.midcast, spellMap)						--Equip gear based on song
-				if state.DaurdablaMode == 'Daurdabla' then
+				if modes.Daurdabla == 'Daurdabla' then
 					midcastSet = combineSets(midcastSet, {range=gear.instruments.multiSong})
 				else
 					if (gear.instruments[spellMap] ~= nil) and isAvailable(gear.instruments[spellMap]) then
@@ -407,7 +402,7 @@ function get_midcast_set(spell)
 					end
 				end
 			end
-			state.DaurdablaMode = 'None'
+			modes.Daurdabla = 'None'
 		elseif spell.skill == 'Dark Magic' then
 			midcastSet = get_standard_magic_set(midcastSet, spell, spellMap, 'DarkMagic')
 		elseif spell.skill == 'Healing Magic' then
@@ -443,6 +438,9 @@ function get_midcast_set(spell)
 				end
 			end
 			midcastSet = combineSets(midcastSet, sets.midcast.ElementalMagic, spell.element)
+			if spell.en == 'Impact' then
+				midcastSet = combineSets(midcastSet, {body='Twilight Cloak'})
+			end
 		elseif spell.skill == 'Enfeebling Magic' then
 			midcastSet = get_standard_magic_set(midcastSet, spell, spellMap, 'EnfeeblingMagic')
 		
@@ -456,18 +454,18 @@ function get_midcast_set(spell)
 			end			
 		elseif spell.skill == 'Enhancing Magic' then
 			midcastSet = combineSets(midcastSet, sets.midcast.EnhancingMagic)
-			midcastSet = combineSets(midcastSet, sets.midcast.EnhancingMagic, state.arts)
+			midcastSet = combineSets(midcastSet, sets.midcast.EnhancingMagic, getGrimoire())
 			midcastSet = combineSets(midcastSet, sets.midcast.EnhancingMagic.Duration)
 			midcastSet = combineSets(midcastSet, sets.midcast.EnhancingMagic, spellMap)
-			midcastSet = combineSets(midcastSet, sets.midcast.EnhancingMagic, spell.name)
+			midcastSet = combineSets(midcastSet, sets.midcast.EnhancingMagic, spell.en)
 			midcastSet = combineSets(midcastSet, sets.midcast, spellMap)
-			midcastSet = combineSets(midcastSet, sets.midcast, spell.name)
+			midcastSet = combineSets(midcastSet, sets.midcast, spell.en)
 			
 			if buffactive['Composure'] and spell.target.type ~= 'SELF' then
 				midcastSet = combineSets(midcastSet, sets.midcast.EnhancingMagic.Duration.ComposureOther)
 			end
-			if spell.name == 'Phalanx II' then
-				midcastSet = combineSets(midcastSet, sets.midcast, spell.name)
+			if spell.en == 'Phalanx II' then
+				midcastSet = combineSets(midcastSet, sets.midcast, spell.en)
 			end
 		elseif spell.skill == 'Ninjutsu' then
 			if spellMap == 'Utsusemi' then
@@ -489,7 +487,7 @@ function get_midcast_set(spell)
 			midcastSet = combineSets(midcastSet, sets.midcast, spell.type)
 			midcastSet = combineSets(midcastSet, sets.midcast, spell.skill)
 			midcastSet = combineSets(midcastSet, sets.midcast, spellMap)
-			midcastSet = combineSets(midcastSet, sets.midcast, spell.name)
+			midcastSet = combineSets(midcastSet, sets.midcast, spell.en)
 		end
 	elseif spell.action_type == 'Ranged Attack' then
 		if S{'RNG', 'COR'}:contains(player.main_job) then
@@ -509,9 +507,9 @@ function get_midcast_set(spell)
 	elseif spell.action_type == 'Ability' then
 		midcastSet = combineSets(midcastSet, sets.midcast, spell.type)
 		midcastSet = combineSets(midcastSet, sets.midcast, spell.type, spellMap)
-		midcastSet = combineSets(midcastSet, sets.midcast, spell.type, spell.name)
+		midcastSet = combineSets(midcastSet, sets.midcast, spell.type, spell.en)
 		midcastSet = combineSets(midcastSet, sets.midcast, spellMap)
-		midcastSet = combineSets(midcastSet, sets.midcast, spell.name)
+		midcastSet = combineSets(midcastSet, sets.midcast, spell.en)
 	end
 	
 	if player.main_job == 'THF' then

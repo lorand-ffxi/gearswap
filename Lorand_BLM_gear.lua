@@ -36,7 +36,8 @@ function init_gear_sets()
 
 	--============================================================
 	
-	sets.precast.WS = {}
+	sets.wsBase = {}
+	sets.wsBase.Magic = {}
 	
 	--============================================================
 	--					Midcast sets
@@ -130,16 +131,13 @@ function init_gear_sets()
 	sets.idle.lowMP_day = {feet="Serpentes Sabots"}
 	
 	sets.idle.with_buff = {}
-	sets.idle.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	
 	-- Defense sets
 	sets.defense.PDT = sets.idle
 	sets.defense.MDT = sets.idle
-	sets.Kiting = {}
 	
 	sets.buffs['Mana Wall'] = {feet="Goetia Sabots +2"}
 
 	sets.engaged = {}
 	sets.engaged.with_buff = {}
-	sets.engaged.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 end
