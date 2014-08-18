@@ -404,7 +404,7 @@ function get_midcast_set(spell)
 				end
 				
 				--Determine the skill used by the instrument that will be used to cast the song via spell_utilities.lua.get_instrument_type(i)
-				--The mapping of skill to instrument is done in mapping.lua, and the instruments that should be used for each song should be
+				--The mapping of skill to instrument is done in mappings.lua, and the instruments that should be used for each song should be
 				--defined in Playername_BRD_gear.lua
 				local instrumentSkill = get_instrument_type(activeInstrument)
 				

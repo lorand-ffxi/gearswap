@@ -303,46 +303,22 @@ end
 
 function get_song_mult(spellName, spellMap)
 	local mult = 1
-	if player.equipment.range == "Eminent Flute"		then mult = mult + 0.2 end
-	if player.equipment.range == "Daurdabla"			then mult = mult + 0.3 end -- change to 0.25 with 90 Daur
-	if player.equipment.range == "Gjallarhorn"			then mult = mult + 0.4 end -- change to 0.3 with 95 Gjall
+	local instrumentEffects = instruments.effects[player.equipment.range]
+	if (instrumentEffects ~= nil) then
+		local val = instrumentEffects[spellMap] or instrumentEffects['All'] or 0
+		mult = mult + (val/10)
+	end
 	
-	
-	if player.equipment.main == "Carnwenhan"			then mult = mult + 0.1 end -- 0.1 for 75, 0.4 for 95, 0.5 for 99/119
-	if player.equipment.main == "Legato Dagger"			then mult = mult + 0.05 end
-	if player.equipment.neck == "Aoidos' Matinee"		then mult = mult + 0.1 end
-	if player.equipment.body == "Aoidos' Hongreline +2"	then mult = mult + 0.1 end
-	if player.equipment.legs == "Marduk's Shalwar +1"	then mult = mult + 0.1 end
-	if player.equipment.feet == "Brioso Slippers"		then mult = mult + 0.1 end
-	if player.equipment.feet == "Brioso Slippers +1"	then mult = mult + 0.11 end
-	
-	if spellMap == 'Ballad'		and player.equipment.range == "Crooner's Cithara"		then mult = mult + 0.1 end
-	if spellMap == 'Ballad'		and player.equipment.legs == "Aoidos' Rhingrave +2"		then mult = mult + 0.1 end
-	if spellMap == 'Carol'		and player.equipment.range == "Crumhorn"				then mult = mult + 0.1 end
-	if spellMap == 'Carol'		and player.equipment.range == "Crumhorn +1"				then mult = mult + 0.2 end
-	if spellMap == 'Elegy'		and player.equipment.range == "Syrinx"					then mult = mult + 0.3 end
-	if spellMap == 'Etude'		and player.equipment.range == "Rose Harp"				then mult = mult + 0.1 end
-	if spellMap == 'Etude'		and player.equipment.range == "Rose Harp +1"			then mult = mult + 0.2 end
-	if spellMap == 'Finale'		and player.equipment.range == "Pan's Horn"				then mult = mult + 0.3 end
-	if spellMap == 'Lullaby'	and player.equipment.range == "Pan's Horn"				then mult = mult + 0.3 end
-	if spellMap == 'Lullaby'	and player.equipment.hands == "Brioso Cuffs"			then mult = mult + 0.1 end
-	if spellMap == 'Madrigal'	and player.equipment.range == "Traversiere +1"			then mult = mult + 0.2 end
-	if spellMap == 'Madrigal'	and player.equipment.range == "Cantabank's Horn"		then mult = mult + 0.3 end
-	if spellMap == 'Madrigal'	and player.equipment.head == "Aoidos' Calot +2"			then mult = mult + 0.1 end
-	if spellMap == 'Mambo'		and player.equipment.range == "Vihuela"					then mult = mult + 0.3 end
-	if spellMap == 'March'		and player.equipment.range == "Iron Ram Horn"			then mult = mult + 0.2 end
-	if spellMap == 'March'		and player.equipment.hands == "Aoidos' Manchettes +2"	then mult = mult + 0.1 end
-	if spellMap == 'Mazurka'	and player.equipment.range == "Vihuela"					then mult = mult + 0.3 end
-	if spellMap == 'Minne'		and player.equipment.range == "Syrinx"					then mult = mult + 0.3 end
-	if spellMap == 'Minuet'		and player.equipment.range == "Apollo's Flute"			then mult = mult + 0.3 end
-	if spellMap == 'Minuet'		and player.equipment.body == "Aoidos' Hongreline +2"	then mult = mult + 0.1 end	--Note: gives Minuet+1 in addition to all songs duration+
-	if spellMap == 'Paeon'		and player.equipment.range == "Oneiros Harp"			then mult = mult + 0.3 end
-	if spellMap == 'Paeon'		and player.equipment.head == "Brioso Roundlet"			then mult = mult + 0.1 end
-	if spellMap == 'Paeon'		and player.equipment.head == "Brioso Roundlet +1"		then mult = mult + 0.1 end
-	if spellMap == 'Prelude'	and player.equipment.range == "Cantabank's Horn"		then mult = mult + 0.3 end
-	if spellMap == 'Requiem'	and player.equipment.range == "Requiem Flute"			then mult = mult + 0.4 end
-	if spellMap == 'Scherzo'	and player.equipment.feet == "Aoidos' Cothurnes +2"		then mult = mult + 0.1 end
-	if spellMap == 'Threnody'	and player.equipment.range == "Sorrowful Harp"			then mult = mult + 0.3 end
+	for s,i in pairs(player.equipment) do
+		if i ~= nil then
+			local gearEffects = brdGearEffects[i]
+			if gearEffects ~= nil then
+				local aVal = gearEffects['All'] or 0
+				local sVal = gearEffects[spellMap] or 0
+				mult = mult + (aVal/10) + (sVal/10)
+			end
+		end
+	end
 
 	if buffactive.Troubadour then
 		mult = mult*2

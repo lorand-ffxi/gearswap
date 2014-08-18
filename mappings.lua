@@ -22,6 +22,44 @@ instruments.wind = S{
 	"Siren Flute", "Storm Fife", "Syrinx", "Traversiere", "Traversiere +1", "Traversiere +2"
 }
 
+instruments.effects = {
+	["Angel's Flute"] = {['Prelude']=1},	["Angel's Flute +1"] = {['Prelude']=2},	["Apollo's Flute"] = {['Minuet']=3},
+	["Cornette"] = {['Minuet']=1},			["Cornette +1"] = {['Minuet']=2},		["Cornette +2"] = {['Minuet']=2},
+	["Cradle Horn"] = {['Lullaby']=2},		["Crumhorn"] = {['Carol']=1},			["Crumhorn +1"] = {['Carol']=2},
+	["Crumhorn +2"] = {['Carol']=2},		["Eminent Flute"] = {['All']=2},		["Faerie Piccolo"] = {['March']=2},
+	["Flute +1"] = {['Requiem']=1},			["Flute +2"] = {['Requiem']=1},			["Forefront Flute"] = {['All']=2},
+	["Gemshorn"] = {['Mambo']=1},			["Gemshorn +1"] = {['Mambo']=2},		["Gjallarhorn"] = {['All']=4},
+	["Hamelin Flute"] = {['Requiem']=2},	["Harlequin's Horn"] = {['Mazurka']=2},	["Hellish Bugle"] = {['Mambo']=1},
+	["Hellish Bugle +1"] = {['Mambo']=2},	["Homestead Flute"] = {['All']=2},		["Horn"] = {['Elegy']=1},
+	["Horn +1"] = {['Elegy']=2},			["Iron Ram Horn"] = {['March']=1},		["Kingdom Horn"] = {['March']=1},
+	["Linos"] = {['All']=1},				["Mary's Horn"] = {['Lullaby']=1},		["Millennium Horn"] = {['All']=2},
+	["Ney"] = {['Finale']=2},				["Piccolo"] = {['Threnody']=1},			["Piccolo +1"] = {['Threnody']=2},
+	["Requiem Flute"] = {['Requiem']=4},	["San D'Orian Horn"] = {['March']=1},	["Shofar"] = {['Requiem']=2},
+	["Shofar +1"] = {['Requiem']=3},		["Siren Flute"] = {['Requiem']=2},		["Storm Fife"] = {['Ballad']=1},
+	["Traversiere"] = {['Madrigal']=1},		["Traversiere +1"] = {['Madrigal']=2},	["Traversiere +2"] = {['Madrigal']=2},
+	["Angel Lyre"] = {['Hymnus']=2},		["Crooner's Cithara"] = {['Ballad']=1},	["Cythara Anglica"] = {['Virelai']=1},
+	["Ebony Harp"] = {['Paeon']=1},			["Ebony Harp +1"] = {['Paeon']=2},		["Ebony Harp +2"] = {['Paeon']=2},
+	["Harp"] = {['Minne']=1},				["Harp +1"] = {['Minne']=2},			["Maple Harp +1"] = {['Minne']=1},
+	["Military Harp"] = {['Finale']=2},		["Mythic Harp"] = {['Etude']=1},		["Mythic Harp +1"] = {['Etude']=2},
+	["Nursemaid's Harp"] = {['Lullaby']=2},	["Oneiros Harp"] = {['Paeon']=3},		["Cythara Anglica +1"] = {['Virelai']=2},
+	["Rose Harp"] = {['Etude']=1},			["Rose Harp +1"] = {['Etude']=2},		["Royal Spearman's Horn"] = {['March']=1},
+	["Sorrowful Harp"] = {['Threnody']=3},											["Cantabank's Horn"] = {['Madrigal']=3, ['Prelude']=3},
+	["Mass Chalemie"] = {['Hymnus']=3, ['Scherzo']=1},								["Pan's Horn"] = {['Finale']=3, ['Lullaby']=3},
+	["Syrinx"] = {['Elegy']=3, ['Minne']=3},										["Langeleik"] = {['March']=3, ['Etude']=3},
+	["Vihuela"] = {['Mambo']=3, ['Mazurka']=3}
+}
+
+brdGearEffects = {
+	["Aoidos' Hongreline +2"] = {['All']=1, ['Minuet']=1},
+	["Aoidos' Calot +2"] = {['Madrigal']=1},	["Aoidos' Cothurnes +2"] = {['Scherzo']=1},
+	["Aoidos' Manchettes +2"] = {['March']=1},	["Aoidos' Matinee"] = {['All']=1},
+	["Aoidos' Rhingrave +2"] = {['Ballad']=1},	["Brioso Cuffs"] = {['Lullaby']=1},
+	["Brioso Roundlet"] = {['Paeon']=1},		["Brioso Roundlet +1"] = {['Paeon']=1},
+	["Brioso Slippers"] = {['All']=1},			["Brioso Slippers +1"] = {['All']=1.1},
+	["Carnwenhan"] = {['All']=1},				["Legato Dagger"] = {['All']=0.5},
+	["Marduk's Shalwar +1"] = {['All']=1}
+}
+
 -----------------------------------------------------------------------------------------------------------
 -- Elemental mappings for element relationships and certian types of spells.
 -----------------------------------------------------------------------------------------------------------
