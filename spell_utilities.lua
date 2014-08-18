@@ -6,8 +6,9 @@
 -----------------------------------------------------------------------------------------------------------
 
 local buffList = T(require('res/buffs'))
+local spellList = T(require('res/spells'))
 local cnums = {['Cure'] = 1, ['Cure II'] = 2, ['Cure III'] = 3, ['Cure IV'] = 4, ['Cure V'] = 5, ['Cure VI'] = 6}
-local ncures = {[1] = '"Cure"', [2] = '"Cure II"', [3] = '"Cure III"', [4] = '"Cure IV"', [5] = '"Cure V"', [6] = '"Cure VI"'}
+local ncures = {[1] = 'Cure', [2] = 'Cure II', [3] = 'Cure III', [4] = 'Cure IV', [5] = 'Cure V', [6] = 'Cure VI'}
 local strat_charge_time = {[1]=240,[2]=120,[3]=80,[4]=60,[5]=48}
 
 --[[
@@ -20,6 +21,7 @@ function modify_cure(spell)
 	if (cnum == nil) or (cnum == 1) then return false end
 	local potency = vars.CurePotency[cnum]
 	
+	--Modify the cure tier based on the amount of HP missing from the cure target
 	local targ = get_ally_info(spell.target.name)
 	if targ == nil then return false end
 	local hpMissing = (targ.hp/(targ.hpp/100)) - targ.hp
@@ -38,11 +40,23 @@ function modify_cure(spell)
 			end
 		end
 	end
+	
+	local cspell = spellList:with('en', ncures[ncnum])
+	local crecast = windower.ffxi.get_spell_recasts()[cspell.id] or 0
+	if (crecast > 0) and (ncnum > 1) then
+		ncnum = ncnum - 1
+	end
+	
 	if ncnum == cnum then return false end
 	
-	windower.send_command('input /ma '..ncures[ncnum]..' '..spell.target.name)
+	windower.send_command('input /ma "'..ncures[ncnum]..'" '..spell.target.name)
 	return true
 end
+
+
+function verify_cure_potency(spell)
+end
+
 
 --[[
 	Initiates a timer that gives 15 and 5 second warnings before a crowd control spell will wear off.
@@ -234,7 +248,7 @@ function not_possible_to_use(spell)
 		if spell_recasts[spell.id] > 0 then
 			windower.add_to_chat(166, 'Unable to cast '..spell.english..' at this time. ['..(spell_recasts[spell.id]/100)..'s remaining]')
 			return true
-		elseif spell.target.charmed and spell.en:contains('Cur') then
+		elseif (spell.target.charmed and not spell.target.is_npc) and spell.en:contains('Cur') then
 			windower.add_to_chat(166, 'Cancelling '..spell.en..' because '..spell.target.name..' is currently charmed.')
 			return true
 		elseif spell.en:contains('Utsusemi') then

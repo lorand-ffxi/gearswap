@@ -111,7 +111,7 @@ function init_gear_sets()
 
 	sets.midcast.MagicAccuracy = {
 		head="Hachiya Hatsuburi",	neck="Stoicheion Medal",	ear1="Lifestorm Earring",	ear2="Psystorm Earring",
-		ring1="Perception Ring",	ring2="Balrahn's Ring",
+		ring1="Perception Ring",	ring2="Sangoma Ring",
 		back="Yokaze Mantle",		feet="Shneddick Boots +1"
 	}
 	
@@ -137,6 +137,8 @@ function init_gear_sets()
 	--					Other sets
 	--============================================================
 	
+	sets.buffs['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
+	
 	sets.idle = {
 		ammo="Demonry Stone",
 		head="Ocelomeh Headpiece +1",	neck="Orochi Nodowa",		ear1="Novia Earring",		ear2="Ethereal Earring",
@@ -145,7 +147,11 @@ function init_gear_sets()
 		back="Repulse Mantle",			waist="Flume Belt",			legs={"Hachiya Hakama +1", "Otronif Brais +1"},
 		feet="Danzo Sune-Ate"
 	}
-	sets.idle.speedy = select_movement()
+	
+	sets.idle.day = {feet="Danzo Sune-Ate"}
+	sets.idle.night = {feet="Hachiya Kyahan"}
+	sets.idle.speedy = (world.time >= (17*60) or world.time <= (7*60)) and sets.idle.night or sets.idle.day
+	
 	sets.idle.with_buff = {}
 	sets.idle.with_buff['Migawari'] = {body="Iga Ningi +2"}
 	sets.idle.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
@@ -173,9 +179,6 @@ function init_gear_sets()
 		body="Hachiya Chainmail +1",hands="Otronif Gloves +1",
 		back="Tuilha Cape",			legs="Hachiya Hakama +1",	feet="Mochizuki Kyahan +1"
 	})
-
-	sets.DayMovement = {feet="Danzo Sune-Ate"}
-	sets.NightMovement = {feet="Hachiya Kyahan"}
 	
 	--============================================================
 	
@@ -183,6 +186,17 @@ function init_gear_sets()
 	sets.engaged.with_buff = {}
 	sets.engaged.with_buff['Migawari'] = {body="Iga Ningi +2"}
 	sets.engaged.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
+	
+	sets.engaged.Tank = {
+		-- ammo="Yetshila",
+		-- head="Ejekamal Mask",		neck="Twilight Torque",		ear1="Dudgeon Earring",		ear2="Heartseeker Earring",
+		-- body="Hachiya Chainmail +1",hands="Otronif Gloves +1",	ring1="Defending Ring",		ring2="Rajas Ring",
+		-- back="Yokaze Mantle",		waist="Patentia Sash",		legs="Mochizuki Hakama +1",	feet="Otronif Boots +1"
+		ammo="Yetshila",
+		head="Otronif Mask +1",			neck="Twilight Torque",		ear1="Bladeborn Earring",	ear2="Steelflash Earring",
+		body="Mochizuki Chainmail +1",	hands="Otronif Gloves +1",	ring1="Defending Ring",		ring2="Rajas Ring",
+		back="Yokaze Mantle",			waist="Patentia Sash",		legs="Mochizuki Hakama +1",	feet="Otronif Boots +1"
+	}
 	
 	sets.engaged.HasteII = {
 		ammo="Yetshila",
@@ -238,12 +252,5 @@ function init_gear_sets()
 		head="Mochizuki Hatsuburi +1",	neck="Ziel Charm",			ear1="Dudgeon Earring",		ear2="Heartseeker Earring",
 		body="Mochizuki Chainmail +1",	hands="Otronif Gloves +1",	ring1="Rajas Ring",			ring2="Mars's Ring",
 		back="Yokaze Mantle",			waist="Anguinus Belt",		legs="Hachiya Hakama +1",	feet="Mochizuki Kyahan +1"
-	}
-	
-	sets.engaged.Tank = {
-		ammo="Yetshila",
-		head="Ejekamal Mask",		neck="Twilight Torque",		ear1="Dudgeon Earring",		ear2="Heartseeker Earring",
-		body="Hachiya Chainmail +1",hands="Otronif Gloves +1",	ring1="Defending Ring",		ring2="Rajas Ring",
-		back="Yokaze Mantle",		waist="Patentia Sash",		legs="Mochizuki Hakama +1",	feet="Otronif Boots +1"
 	}
 end

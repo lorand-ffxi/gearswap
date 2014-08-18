@@ -20,7 +20,7 @@ function init_gear_sets()
 	
 	sets.precast.FC = {
 		ammo="Impatiens",
-		head="Nares Cap",			neck="Orunmila's Torque",	ear1="Loquacious Earring",
+		head="Nahtirah Hat",		neck="Orunmila's Torque",	ear1="Loquacious Earring",
 		hands="Repartie Gloves",	ring1="Prolix Ring",		ring2="Veneficium Ring",
 		back="Swith Cape",			waist="Witful Belt",		legs="Artsieq Hose",		feet="Chelona Boots"
 	}
@@ -43,14 +43,14 @@ function init_gear_sets()
 	--============================================================
 	sets.midcast.FastRecast = {
 		ammo="Impatiens",
-		head="Kaabnax Hat",			neck="Orunmila's Torque",	ear1="Loquacious Earring",
+		head="Nahtirah Hat",		neck="Orunmila's Torque",	ear1="Loquacious Earring",
 		body="Hagondes Coat +1",	hands="Otomi Gloves",		ring1="Prolix Ring",
 		back="Swith Cape",			waist="Witful Belt",		legs="Artsieq Hose",		feet="Bokwus Boots"
 	}
 
 	sets.midcast.Cure = {
 		main="Tamaxchi",			sub="Genbu's Shield",			ammo="Impatiens",
-		head="Kaabnax Hat",			neck="Orunmila's Torque",		ear1="Roundel Earring",	ear2="Star Earring",
+		head="Nahtirah Hat",		neck="Orunmila's Torque",		ear1="Roundel Earring",	ear2="Star Earring",
 		body="Hagondes Coat +1",	hands="Weatherspoon Cuffs +1",	ring1="Aquasoul Ring",	ring2="Aqua Ring",
 		back="Oretania's Cape",		waist="Witful Belt",			legs="Nares Trews",		feet="Hagondes Sabots +1"
 	}
@@ -89,8 +89,8 @@ function init_gear_sets()
 
 	sets.midcast.Stun = {
 		main="Apamajas II",			sub="Mephitis Grip",	ammo="Kalboron Stone",
-		head="Kaabnax Hat",			neck="Dark Torque",		ear1="Lifestorm Earring",	ear2="Psystorm Earring",
-		body="Spaekona's Coat",		hands="Otomi Gloves",	ring1="Balrahn's Ring",		ring2="Perception Ring",
+		head="Nahtirah Hat",			neck="Dark Torque",		ear1="Lifestorm Earring",	ear2="Psystorm Earring",
+		body="Spaekona's Coat",		hands="Otomi Gloves",	ring1="Sangoma Ring",		ring2="Perception Ring",
 		back="Ogapepo Cape",		waist="Witful Belt",	legs="Artsieq Hose",		feet="Bokwus Boots"
 	}
 
@@ -118,21 +118,28 @@ function init_gear_sets()
 	sets.idle = {
 		main="Terra's Staff",		sub="Elder's Grip",			ammo="Impatiens",
 		head="Kaabnax Hat",			neck="Twilight Torque",		ear1="Novia Earring",	ear2="Ethereal Earring",
-		body="Hagondes Coat +1",	hands="Serpentes Cuffs",	ring1="Defending Ring",	ring2="Sheltered Ring",
-		back="Cheviot Cape",		waist="Emphatikos Rope",	legs="Nares Trews",		feet="Serpentes Sabots"
+		body="Artsieq Jubbah",		hands="Yaoyotl Gloves",		ring1="Defending Ring",	ring2="Sheltered Ring",
+		back="Cheviot Cape",		waist="Emphatikos Rope",	legs="Artsieq Hose",	feet="Serpentes Sabots"
 	}
 	sets.idle.speedy = {feet="Herald's Gaiters"}
+	sets.idle.lowMP = {
+		--main="Owleyes",		sub="Genbu's Shield",
+		legs="Nares Trews"
+	}
+	sets.idle.lowMP_night =	{hands="Serpentes Cuffs"}
+	sets.idle.lowMP_day = {feet="Serpentes Sabots"}
+	
 	sets.idle.with_buff = {}
-	sets.idle.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
+	sets.idle.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	
 	-- Defense sets
 	sets.defense.PDT = sets.idle
 	sets.defense.MDT = sets.idle
 	sets.Kiting = {}
 	
-	sets.buff['Mana Wall'] = {feet="Goetia Sabots +2"}
+	sets.buffs['Mana Wall'] = {feet="Goetia Sabots +2"}
 
 	sets.engaged = {}
 	sets.engaged.with_buff = {}
-	sets.engaged.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
+	sets.engaged.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 end

@@ -31,7 +31,7 @@ function init_gear_sets()
 	
 	sets.precast.FC = {					--44%	|	54% / 34%
 		ammo="Incantor Stone",			--2%
-		head="Nares Cap",				--10%
+		head="Nahtirah Hat",			--10%
 		neck="Orunmila's Torque",		--5%
 		ear1="Loquacious Earring",		--2%
 		hands="Gendewitha Gages +1",	--7%
@@ -55,6 +55,7 @@ function init_gear_sets()
 	sets.precast.FC.Weather = {			--(80%)
 		feet="Pedagogy Loafers"			--15% addition to Celerity/Alacrity (50%)
 	}
+	sets.precast.FC.Lightning = {main="Apamajas I"}
 
 	--============================================================
 	

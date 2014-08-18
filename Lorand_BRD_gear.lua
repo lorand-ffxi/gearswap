@@ -68,7 +68,7 @@ function init_gear_sets()
 	--					Precast sets
 	--============================================================
 	sets.precast.FC = {				--46%
-		head="Nares Cap",			--10%
+		head="Nahtirah Hat",			--10%
 		neck="Orunmila's Torque",	--5%
 		ear1="Loquacious Earring",	--2%
 		body="Marduk's Jubbah",		--5%
@@ -106,6 +106,8 @@ function init_gear_sets()
 		legs="Gendewitha Spats +1",	--8%	(song spellcasting time -3% augment)
 		feet="Bihu Slippers"		--7%
 	}
+	
+	sets.precast.FC.Lightning = {main="Apamajas I"}
 	
 	sets.precast.JA.Nightingale = 	{feet="Bihu Slippers"}
 	sets.precast.JA.Troubadour = 	{body="Bihu Justaucorps"}

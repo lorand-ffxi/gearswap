@@ -60,6 +60,7 @@ end
 	In particular, it hasn't initiated target selection for <st*> target types.
 --]]
 function pretarget(spell)
+	if spell.target == nil then return end
 	if S{'PLAYER', 'SELF'}:contains(spell.target.type) and debuff_to_na[spell.english] then
 		local spellTarget = spell.target.name
 		if spell.target.name == player.name then
@@ -86,7 +87,7 @@ end
 	Equip any gear that should be on before the spell or ability is used.
 --]]
 function precast(spell)
-	if not_possible_to_use(spell) or modify_cure(spell) then
+	if modify_cure(spell) or not_possible_to_use(spell) then
 		cancel_spell()
 		return
 	end
@@ -113,9 +114,9 @@ function precast(spell)
 		local check_ammo
 		--Choose which ammo should be verified
 		if spell.type == 'WeaponSkill' and bow_gun_weaponskills:contains(spell.name) then
-			check_ammo = gear[state.OffenseMode..'_ammo_WS']
+			check_ammo = gear[modes.offense..'_ammo_WS']
 		elseif spell.action_type == 'Ranged Attack' then
-			check_ammo = gear[state.OffenseMode..'_ammo_RA']
+			check_ammo = gear[modes.offense..'_ammo_RA']
 		end
 		
 		if check_ammo then		--Verify that ammunition is available
@@ -209,15 +210,7 @@ end
 	[62] = {id=62,en="Fishing no catch or lost"}
 --]]
 function status_change(new, old)
-	if S{'WHM', 'BLM', 'RDM', 'SCH', 'BRD'}:contains(player.main_job) then
-		if S{'Melee', 'Skillup'}:contains(modes.offense) then
-			disable('main', 'sub')
-		else
-			enable('main', 'sub')
-		end
-	end
-	
-	equip(get_gear_for_status(new))
+	update()
 end
 
 --[[
@@ -312,13 +305,13 @@ function get_precast_set(spell)
 		if spell.type == 'JobAbility' then
 			precastSet = combineSets(precastSet, sets.precast.JA, spell.name)
 		elseif spell.type == 'WeaponSkill' then
-			--sets.wsBase[sam/other][state.OffenseMode][state.RangedMode][wsmod[spell.english]]
+			--sets.wsBase[sam/other][modes.offense][state.RangedMode][wsmod[spell.english]]
 			if S{'RNG', 'COR'}:contains(player.main_job) then
 				precastSet = combineSets(precastSet, sets[modes.offense])
 				precastSet = combineSets(precastSet, sets[modes.offense], get_sub_type())
 				precastSet = combineSets(precastSet, sets[modes.offense], get_sub_type(), modes.ranged)
 				precastSet = combineSets(precastSet, sets[modes.offense], get_sub_type(), modes.ranged, 'ws')
-				precastSet = combineSets(precastSet, {ammo=gear[state.OffenseMode..'_ammo_WS']})
+				precastSet = combineSets(precastSet, {ammo=gear[modes.offense..'_ammo_WS']})
 				
 				local wsSet = sets.wsBase
 				wsSet = combineSets(wsSet, sets.wsBase, wsmod[spell.name])
@@ -507,7 +500,7 @@ function get_midcast_set(spell)
 				midcastSet = combineSets(midcastSet, sets[modes.offense], get_sub_type())
 				midcastSet = combineSets(midcastSet, sets[modes.offense], get_sub_type(), modes.ranged)
 				midcastSet = combineSets(midcastSet, sets[modes.offense], get_sub_type(), modes.ranged, 'tp')
-				midcastSet = combineSets(midcastSet, {ammo=gear[state.OffenseMode..'_ammo_WS']})
+				midcastSet = combineSets(midcastSet, {ammo=gear[modes.offense..'_ammo_WS']})
 				midcastSet = combineSets(sets.tpBase, midcastSet)
 			end
 		else
@@ -579,9 +572,9 @@ function get_idle_set(baseSet)
 	
 	if player.main_job == 'RNG' then
 		local rngSet = {}
-		rngSet = combineSets(rngSet, sets[state.OffenseMode])
-		rngSet = combineSets(rngSet, sets[state.OffenseMode], get_sub_type())
-		rngSet = combineSets(rngSet, sets[state.OffenseMode], get_sub_type(), state.RangedMode)
+		rngSet = combineSets(rngSet, sets[modes.offense])
+		rngSet = combineSets(rngSet, sets[modes.offense], get_sub_type())
+		rngSet = combineSets(rngSet, sets[modes.offense], get_sub_type(), state.RangedMode)
 		idleSet = combineSets(idleSet, rngSet)
 	elseif player.main_job == 'THF' then
 		if modes.treasure == 'TH' then
@@ -608,6 +601,7 @@ function get_melee_set(baseSet)
 	meleeSet = combineSets(meleeSet, sets.engaged[modes.defense], modes.accuracy)
 	
 	for buff,_ in pairs(buffactive) do
+		--windower.add_to_chat(1, '[Engaged] Buffactive: '..tostring(buff))
 		meleeSet = combineSets(meleeSet, sets.engaged.with_buff[buff])
 	end
 	
@@ -670,6 +664,14 @@ function equip_set(args)
 end
 
 function update(args)
+	if S{'WHM', 'BLM', 'RDM', 'SCH', 'BRD'}:contains(player.main_job) then
+		if S{'Melee', 'Skillup'}:contains(modes.offense) then
+			disable('main', 'sub')
+		else
+			enable('main', 'sub')
+		end
+	end
+	
 	equip(get_gear_for_status(player.status))
 
 	if (args ~= nil) and (args[1] == 'user') then

@@ -80,9 +80,12 @@ function init_gear_sets()
 		body="Hachiya Chainmail +1",	hands="Mochizuki Tekko",	ring1="Dark Ring",			ring2="Dark Ring",
 		back="Yokaze Mantle",			waist="Flume Belt",			legs="Mochizuki Hakama",	feet="Danzo Sune-Ate"
 	}
-	sets.idle.speedy = {feet="Danzo Sune-Ate"}
+	sets.idle.day = {feet="Danzo Sune-Ate"}
+	sets.idle.night = {feet="Hachiya Kyahan"}
+	sets.idle.speedy = (world.time >= (17*60) or world.time <= (7*60)) and sets.idle.night or sets.idle.day
+	
 	sets.idle.with_buff = {}
-	sets.idle.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
+	sets.idle.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	
 	sets.defense.DT = {
 		neck="Twilight Torque",
@@ -98,10 +101,6 @@ function init_gear_sets()
 		back="Tuilha Cape",			legs="Kaabnax Trousers",	feet="Otronif Boots"
 	})
 
-	sets.DayMovement = {feet="Danzo Sune-Ate"}
-	sets.NightMovement = {feet="Hachiya Kyahan"}
-	sets.Kiting = select_movement()
-
 	--============================================================
 	
 	sets.engaged = {
@@ -111,7 +110,7 @@ function init_gear_sets()
 		back="Yokaze Mantle",		waist="Cetl Belt",			legs="Mochizuki Hakama",	feet="Mochizuki Kyahan"
 	}
 	sets.engaged.with_buff = {}
-	sets.engaged.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
+	sets.engaged.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	
 	sets.engaged.Mix = set_combine(sets.engaged, {
 		head="Ejekamal Mask",
@@ -131,8 +130,5 @@ function init_gear_sets()
 		back="Yokaze Mantle",		waist="Cetl Belt",			legs="Mochizuki Hakama",	feet="Mochizuki Kyahan"
 	}
 
-	sets.buff.Migawari = {body="Iga Ningi +2"}
-	--sets.buff.Doomed = {ring2="Saida Ring"}
-	sets.buff.Yonin = {}
-	sets.buff.Innin = {}
+	sets.buffs.Migawari = {body="Iga Ningi +2"}
 end

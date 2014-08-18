@@ -16,9 +16,12 @@
 
 function init_gear_sets()
 	gear.Gun = "Hgafircian +2"
-	gear['Gun_ammo'] = "Ra'Kaznar Bullet"
-	gear['Gun_ammo_RA'] = "Adlivun Bullet"
-	gear['Gun_ammo_WS'] = "Eminent Bullet"
+	gear['Gun_ammo'] = "Achiyalabopa Bullet"
+	gear['Gun_ammo_RA'] = "Achiyalabopa Bullet"
+	gear['Gun_ammo_WS'] = "Achiyalabopa Bullet"
+	-- gear['Gun_ammo'] = "Ra'Kaznar Bullet"
+	-- gear['Gun_ammo_RA'] = "Adlivun Bullet"
+	-- gear['Gun_ammo_WS'] = "Eminent Bullet"
 	gear.Bow = "Bocluamni +2"
 	gear['Bow_ammo'] = "Eminent Arrow"
 	gear['Bow_ammo_WS'] = "Eminent Arrow"
@@ -194,6 +197,13 @@ function init_gear_sets()
 		legs="Aetosaur Trousers"
 	}
 	
+	sets.Gun.other['acc'] = {main="Hurlbat", sub="Antican Axe"}
+	sets.Gun.other['acc'].tp = {
+		neck="Ocachi Gorget",	ear2="Volley Earring",
+		body="Iuitl Vest +1",	ring2="Rajas Ring",
+		waist="Patentia Sash",	legs="Aetosaur Trousers",	feet="Iuitl Gaiters +1"
+	}
+	
 	sets.Melee = {}
 	sets.Melee.sam = {}
 	sets.Melee.other = {}
@@ -203,7 +213,7 @@ function init_gear_sets()
 	sets.midcast.FastRecast = {
 		head="Ejekamal Mask",	neck="Orunmila's Torque",	ear1="Loquacious Earring",
 		body="Iuitl Vest +1",	hands="Buremte Gloves",		ring1="Prolix Ring",		ring2="Diamond Ring",		--Diamond Ring aug: 2% interrupt rate down
-		back="Mujin Mantle",	waist="Cetl Belt",			legs="Kaabnax Trousers",	feet="Iuitl Gaiters"
+		back="Mujin Mantle",	waist="Cetl Belt",			legs="Kaabnax Trousers",	feet="Iuitl Gaiters +1"
 	}
 	
 	--============================================================
@@ -241,7 +251,7 @@ function init_gear_sets()
 	
 	sets.idle = {
 		head="Ocelomeh Headpiece +1",	neck="Orochi Nodowa",		ear1="Novia Earring",			ear2="Ethereal Earring",
-		body="Orion Jerkin",			hands="Buremte Gloves",		ring1="Eihwaz Ring",			ring2="Sheltered Ring",
+		body="Orion Jerkin",			hands="Buremte Gloves",		ring1="Defending Ring",			ring2="Sheltered Ring",
 		back="Repulse Mantle",			waist="Flume Belt",			legs="Kaabnax Trousers",		feet="Orion Socks"
 	}
 	sets.idle.speedy = {feet="Skadi's Jambeaux +1"}
@@ -255,12 +265,12 @@ function init_gear_sets()
 	sets.defense.PDT = set_combine(sets.defense.Evasion, sets.defense.DT, {	--PDT-18% + DT => PDT-33%
 		head="Iuitl Headgear +1",
 		body="Iuitl Vest +1",		hands="Iuitl Wristbands +1",
-		back="Repulse Mantle",		waist="Flume Belt",				legs="Iuitl Tights",	feet="Iuitl Gaiters"
+		back="Repulse Mantle",		waist="Flume Belt",				legs="Iuitl Tights +1",	feet="Iuitl Gaiters +1"
 	})
 	sets.defense.MDT = set_combine(sets.defense.Evasion, sets.defense.DT, {	--MDT-4% + DT => MDT-16%, MDB+19
 		head="Ejekamal Mask",	ear1="Merman's Earring",	ear2="Merman's Earring",
 		body="Iuitl Vest +1",	hands="Buremte Gloves",
-		back="Tuilha Cape",		waist="Flume Belt",			legs="Kaabnax Trousers",	feet="Iuitl Gaiters"
+		back="Tuilha Cape",		waist="Flume Belt",			legs="Kaabnax Trousers",	feet="Iuitl Gaiters +1"
 	})
 	
 	sets.Kiting = {feet="Orion Socks"}

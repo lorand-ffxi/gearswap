@@ -1,0 +1,109 @@
+-----------------------------------------------------------------------------------------------------------
+--[[
+	Author: Ragnarok.Lorand
+	
+	Slips:
+		3:	Rose Strap, Twilight Helm/Mail/Torque
+		10:	Lancer's+2 Hands/Legs/Feet
+		14:	Phorcys Korazin
+--]]
+-----------------------------------------------------------------------------------------------------------
+
+function init_gear_sets()
+	--============================================================
+	--					Precast sets
+	--============================================================
+	sets.precast.JA['Spirit Link'] = {hands="Lancer's Vambraces +2"}
+	sets.precast.JA.Jump = {
+		ammo="Hagneia Stone",
+		head="Yaoyotl Helm",	neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
+		body="Cizin Mail +1",	hands="Cizin Mufflers +1",	ring1="Rajas Ring",			ring2="K'ayres Ring",
+		back="Atheling Mantle",	waist="Anguinus Belt",		legs="Cizin Breeches +1",	feet="Cizin Greaves +1"
+	}	
+	sets.precast.JA['High Jump'] = combineSets(sets.precast.JA.Jump, {})
+	sets.precast.JA['Super Jump'] = combineSets(sets.precast.JA.Jump, {})
+	sets.precast.JA['Spirit Jump'] = combineSets(sets.precast.JA.Jump, {legs="Lancer's Cuissots +2", feet="Lancer's Schynbalds +2"})
+	sets.precast.JA['Soul Jump'] = combineSets(sets.precast.JA.Jump, {legs="Lancer's Cuissots +2"})
+	
+	sets.precast.FC = {
+		head="Cizin Helm +1",	neck="Orunmila's Torque",	ear1="Loquacious Earring",
+		body="Nuevo Coselete",	hands="Buremte Gloves",		ring1="Prolix Ring",	ring2="Veneficium Ring",
+		feet="Ejekamal Boots"
+	}
+	
+	sets.precast.Waltz = {}
+	sets.precast.Waltz['Healing Waltz'] = {}
+	sets.precast.Ranged = {}
+	
+	--============================================================
+	--sets.wsBase[magic][sam/other][state.OffenseMode][state.RangedMode][wsmod[spell.en]]
+	sets.wsBase = {
+		ammo="Potestas Bomblet",
+		head="Yaoyotl Helm",	neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
+		body="Phorcys Korazin",	hands="Cizin Mufflers +1",	ring1="Rajas Ring",			ring2="K'ayres Ring",
+		back="Atheling Mantle",	waist="Windbuffet Belt",	legs="Cizin Breeches +1",	feet="Whirlpool Greaves"
+	}
+	
+	sets.wsBase.magic = {
+		ammo="Dosis Tathlum",
+		ring1="Fenrir Ring +1",		ring2="Acumen Ring",
+	}
+	
+	--============================================================
+	--					Midcast sets
+	--============================================================
+
+	sets.midcast.FastRecast = {
+		neck="Orunmila's Torque",	ear1="Loquacious Earring",
+		hands="Buremte Gloves",		ring1="Prolix Ring",		ring2="Diamond Ring",	--Diamond Ring aug: 2% interrupt rate down
+		waist="Cetl Belt",
+	}
+	
+	--============================================================
+	--					Other sets
+	--============================================================
+	
+	sets.engaged = {
+		sub="Pole Grip",		ammo="Potestas Bomblet",
+		head="Yaoyotl Helm",	neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
+		body="Cizin Mail +1",	hands="Cizin Mufflers +1",	ring1="Rajas Ring",			ring2="K'ayres Ring",
+		back="Atheling Mantle",	waist="Windbuffet Belt",	legs="Cizin Breeches +1",	feet="Whirlpool Greaves"
+	}
+	
+	sets.engaged.with_buff = {}
+	sets.engaged.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
+
+	--============================================================
+	
+	sets.resting = {}
+	
+	sets.idle = {
+		ammo="Demonry Stone",
+		head={"Twilight Helm", "Yaoyotl Helm"},
+		neck="Orochi Nodowa",		ear1="Novia Earring",	ear2="Ethereal Earring",
+		body={"Twilight Mail", "Cizin Mail +1"},
+		hands="Cizin Mufflers +1",	ring1="Defending Ring",	ring2="Sheltered Ring",
+		back="Repulse Mantle",		waist="Nierenschutz",	legs="Cizin Breeches +1",	feet="Whirlpool Greaves"
+	}
+	sets.idle.speedy = {legs="Blood Cuisses"}
+	sets.idle.with_buff = {}
+	sets.idle.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
+	
+	sets.defense.DT = {	--DT-18%, PDT-5%, MDT-4%	=> PDT-23%, MDT-22%
+		neck="Twilight Torque",
+		ring1="Defending Ring",		ring2="Dark Ring",
+		waist="Nierenschutz"
+	}
+	
+	sets.defense.PDT = set_combine(sets.defense.DT, {	--PDT-19% + DT => PDT-39%
+		head="Cizin Helm +1",
+		body="Cizin Mail +1",	hands="Cizin Mufflers +1",	
+		back="Repulse Mantle",	waist="Flume Belt",			legs="Cizin Breeches +1",	feet="Cizin Greaves +1"
+	})
+	sets.defense.MDT = set_combine(sets.defense.DT, {	--MDT-4% + DT => MDT-26%, MDB+18
+		ammo="Demonry Stone",
+		head="Cizin Helm +1",	ear1="Merman's Earring",	ear2="Merman's Earring",
+		body="Cizin Mail +1",	hands="Cizin Mufflers +1",
+		back="Tuilha Cape",		legs="Cizin Breeches +1",	feet="Whirlpool Greaves"
+	})
+end
