@@ -132,7 +132,7 @@ function handle_strategems(cmdParams)
 		if stratagems[magicType][stratagem] ~= nil then
 			windower.send_command(stratagems[magicType][stratagem])
 		else
-			windower.add_to_chat(123,'Error: Unknown strategem ['..strategem..']')
+			windower.add_to_chat(123,'Error: Unknown strategem ['..tostring(strategem)..']')
 		end
 	else
 		windower.add_to_chat(123,'You must activate Light or Dark Arts before you can use a stratagem.')
@@ -271,8 +271,12 @@ function not_possible_to_use(spell)
 	return false
 end
 
-function get_instrument_type(spellMap)
-	local i = gear.instruments[spellMap]
+--[[
+	Checks the given instrument name against lists of known instruments and returns the type.
+	Valid types include String and Wind
+--]]
+function get_instrument_type(i)
+	--local i = gear.instruments[spellMap]
 	if instruments.string:contains(i) then
 		return 'String'
 	elseif instruments.wind:contains(i) then

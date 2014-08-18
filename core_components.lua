@@ -380,28 +380,45 @@ function get_midcast_set(spell)
 	local spellMap = spell_maps[spell.en]
 	
 	if spell.action_type == 'Magic' then
+		--The base layer of gear for all spells in midcast is a set to reduce recast delay
 		midcastSet = combineSets(midcastSet, sets.midcast.FastRecast)
+		
 		if spell.type == 'BardSong' and player.main_job == 'BRD' then
-			local songType = get_song_class(spell)													--Buff/debuff/dummy
+			--Determine the type of song being cast via spell_utilities.lua.get_song_class(spell)
+			--Valid types include SongDebuff, DaurdablaDummy, and SongBuff
+			local songType = get_song_class(spell)
+			
 			if songType == 'DaurdablaDummy' then
+				--Equip Daudabla/Terpander and gear that reduces recast time but does not enhance buff duration
 				midcastSet = combineSets(midcastSet, sets.midcast.SongRecast)
 				midcastSet = combineSets(midcastSet, {range=gear.instruments.multiSong})
 			else
-				local instrumentSkill = get_instrument_type(spellMap)
+				--Determine the instrument that will be used to cast the song
+				local activeInstrument = gear.instruments.default
+				if modes.Daurdabla == 'Daurdabla' then
+					--It is assumed that Daurdabla/Terpander is in the player's inventory if they are using this mode
+					activeInstrument = gear.instruments.multiSong
+				elseif (gear.instruments[spellMap] ~= nil) and isAvailable(gear.instruments[spellMap]) then
+					--If the instrument that should be used is not defined or not in inventory, this falls back on the default instrument
+					activeInstrument = gear.instruments[spellMap]
+				end
+				
+				--Determine the skill used by the instrument that will be used to cast the song via spell_utilities.lua.get_instrument_type(i)
+				--The mapping of skill to instrument is done in mapping.lua, and the instruments that should be used for each song should be
+				--defined in Playername_BRD_gear.lua
+				local instrumentSkill = get_instrument_type(activeInstrument)
+				
+				--Layer on skill gear for singing, then for the type of instrument being used to cast the song.
 				midcastSet = combineSets(midcastSet, sets.midcast.Singing)							--Equip base singing gear
 				midcastSet = combineSets(midcastSet, sets.midcast, instrumentSkill)					--Equip gear based on skill of instrument
+				--Layer on magic accuracy or duration enhancing gear based on the type of song being cast
 				midcastSet = combineSets(midcastSet, sets.midcast, songType)						--Equip gear based on buff/debuff
+				--Layer on gear that directly enhances the song being cast
 				midcastSet = combineSets(midcastSet, sets.midcast, spellMap)						--Equip gear based on song
-				if modes.Daurdabla == 'Daurdabla' then
-					midcastSet = combineSets(midcastSet, {range=gear.instruments.multiSong})
-				else
-					if (gear.instruments[spellMap] ~= nil) and isAvailable(gear.instruments[spellMap]) then
-						midcastSet = combineSets(midcastSet, {range=gear.instruments[spellMap]})	--Equip the proper instrument
-					else
-						midcastSet = combineSets(midcastSet, {range=gear.instruments.default})
-					end
-				end
+				--Finally, layer on the instrument that will be used.
+				midcastSet = combineSets(midcastSet, {range=activeInstrument})
 			end
+			--Automatically disables Daurdabla mode so that the user doesn't have to after casting a song in that mode
 			modes.Daurdabla = 'None'
 		elseif spell.skill == 'Dark Magic' then
 			midcastSet = get_standard_magic_set(midcastSet, spell, spellMap, 'DarkMagic')
