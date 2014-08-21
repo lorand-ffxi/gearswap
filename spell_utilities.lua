@@ -8,8 +8,8 @@
 local buffList = T(require('res/buffs'))
 local spellList = T(require('res/spells'))
 local cnums = {['Cure'] = 1, ['Cure II'] = 2, ['Cure III'] = 3, ['Cure IV'] = 4, ['Cure V'] = 5, ['Cure VI'] = 6}
-local ncures = {[1] = 'Cure', [2] = 'Cure II', [3] = 'Cure III', [4] = 'Cure IV', [5] = 'Cure V', [6] = 'Cure VI'}
-local strat_charge_time = {[1]=240,[2]=120,[3]=80,[4]=60,[5]=48}
+local ncures = {'Cure','Cure II','Cure III','Cure IV','Cure V','Cure VI'}
+local strat_charge_time = {240,120,80,60,48}
 
 --[[
 	Lower the tier of the cure spell being cast if the spell target's HP warrants it.
@@ -19,13 +19,61 @@ function modify_cure(spell)
 	if not modes.ConserveMP then return false end
 	local cnum = cnums[spell.name]
 	if (cnum == nil) or (cnum == 1) then return false end
-	local potency = vars.CurePotency[cnum]
 	
 	--Modify the cure tier based on the amount of HP missing from the cure target
 	local targ = get_ally_info(spell.target.name)
 	if targ == nil then return false end
 	local hpMissing = (targ.hp/(targ.hpp/100)) - targ.hp
-	local ncnum = cnum
+	
+	local ncnum = get_tier_for_hp(cnum, hpMissing)
+	ncnum = get_tier_for_mp(ncnum)
+	
+	local cspell = spellList:with('en', ncures[ncnum])
+	local crecast = windower.ffxi.get_spell_recasts()[cspell.id] or 0
+	if (crecast > 0) and (ncnum > 1) then
+		ncnum = ncnum - 1
+	end
+	
+	if ncnum == cnum then return false end
+	
+	windower.send_command('input /ma "'..ncures[ncnum]..'" '..spell.target.name)
+	return true
+end
+
+--[[
+	Returns the cure tier to use to heal the target with the available MP.
+--]]
+function get_tier_for_mp(cureTier)
+	local ncnum = cureTier
+	local mpMult = 1
+	local grimoire = getGrimoire()
+	if grimoire ~= nil then
+		if grimoire == 'LA' then
+			mpMult = 0.9
+			if buffactive['Penury'] then
+				mpMult = 0.5
+			end
+		else
+			mpMult = 1.1
+		end
+	end
+	
+	local spell = spellList:with('en', ncures[ncnum])
+	while (spell.mp_cost * mpMult) > player.mp do
+		if ncnum > 1 then
+			ncnum = ncnum - 1
+			spell = spellList:with('en', ncures[ncnum])
+		end
+	end
+	return ncnum
+end
+
+--[[
+	Returns the cure tier to use to adequately heal the spell target without wasting MP.
+--]]
+function get_tier_for_hp(cureTier, hpMissing)
+	local ncnum = cureTier
+	local potency = vars.CurePotency[cureTier]
 	if hpMissing < potency then
 		local pdelta = potency - vars.CurePotency[ncnum-1]
 		local threshold = potency - (pdelta * 0.5)
@@ -40,21 +88,7 @@ function modify_cure(spell)
 			end
 		end
 	end
-	
-	local cspell = spellList:with('en', ncures[ncnum])
-	local crecast = windower.ffxi.get_spell_recasts()[cspell.id] or 0
-	if (crecast > 0) and (ncnum > 1) then
-		ncnum = ncnum - 1
-	end
-	
-	if ncnum == cnum then return false end
-	
-	windower.send_command('input /ma "'..ncures[ncnum]..'" '..spell.target.name)
-	return true
-end
-
-
-function verify_cure_potency(spell)
+	return ncnum
 end
 
 
@@ -170,7 +204,7 @@ function getGrimoire()
 end
 
 function weatherPermits(element)
-	return buffactive[elements.storm_of[element]] or element == world.day_element or element == world.weather_element
+	return buffactive[elements.storm_of[element]] or (element == world.day_element) or (element == world.weather_element)
 end
 
 --[[
@@ -206,7 +240,7 @@ end
 --]]
 function buff_active(...)
 	local args = {...}
-	for _,arg in ipairs(args) do
+	for _,arg in pairs(args) do
 		if buffactive[arg] then
 			return buffList:with('en', arg)
 		end

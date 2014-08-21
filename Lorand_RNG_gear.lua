@@ -22,10 +22,14 @@ function init_gear_sets()
 	-- gear['Gun_ammo'] = "Ra'Kaznar Bullet"
 	-- gear['Gun_ammo_RA'] = "Adlivun Bullet"
 	-- gear['Gun_ammo_WS'] = "Eminent Bullet"
-	gear.Bow = "Bocluamni +2"
-	gear['Bow_ammo'] = "Eminent Arrow"
-	gear['Bow_ammo_WS'] = "Eminent Arrow"
-	gear['Bow_ammo_RA'] = "Eminent Arrow"
+	-- gear.Bow = "Bocluamni +2"
+	gear.Bow = "Phaosphaelia"
+	gear['Bow_ammo'] = "Achiyalabopa Arrow"
+	gear['Bow_ammo_WS'] = "Achiyalabopa Arrow"
+	gear['Bow_ammo_RA'] = "Achiyalabopa Arrow"
+	-- gear['Bow_ammo'] = "Eminent Arrow"
+	-- gear['Bow_ammo_WS'] = "Eminent Arrow"
+	-- gear['Bow_ammo_RA'] = "Eminent Arrow"
 	gear.Accuracy = "Bocluamni +2"
 	gear['Accuracy_ammo'] = "Eminent Arrow"
 	gear['Accuracy_ammo_WS'] = "Eminent Arrow"
@@ -52,16 +56,15 @@ function init_gear_sets()
 		head="Anwig Salade",		--5%
 		neck="Orunmila's Torque",	--5%
 		ear1="Loquacious Earring",	--2%
-		--hands="Thaumas Gloves",		--4%
-		hands="Buremte Gloves",		--3%
+		hands={"Thaumas Gloves", "Buremte Gloves"},
 		ring1="Prolix Ring",		--2%
 		ring2="Veneficium Ring",	--Q+1%
 		legs="Quiahuiz Trousers",	--3%
 		feet="Suzaku's Sune-Ate"	--4%
 	}
-	sets.precast.FC.Utsusemi = set_combine(sets.precast.FC, {	--30%
+	sets.precast.FC.Utsusemi = {	--30%
 		neck="Magoraga Bead Necklace"	--10%
-	})
+	}
 
 	--============================================================
 
@@ -70,7 +73,7 @@ function init_gear_sets()
 		body="Arcadian Jerkin",			--10% Rapid Shot
 		hands="Iuitl Wristbands +1",	--5% Snapshot
 		waist="Impulse Belt",			--3% Snapshot
-		legs="Arcadian Braccae",		--4% Snapshot
+		legs="Nahtirah Trousers",		--9% Snapshot
 		feet="Arcadian Socks"			--4% Rapid Shot
 	}
 	
@@ -79,9 +82,9 @@ function init_gear_sets()
 	--============================================================
 	
 	sets.wsBase = {
-		neck="Ocachi Gorget",		ear1="Clearview Earring",	ear2="Volley Earring",
-		body="Shneddick Tabard +1",	ring1="Rajas Ring",
-		feet="Shneddick Boots +1"
+		head="Shneddick Chapeau +1",	neck="Ocachi Gorget",			ear1="Clearview Earring",	ear2="Volley Earring",
+		body="Shneddick Tabard +1",		hands="Iuitl Wristbands +1",	ring1="Rajas Ring",			ring2="Stormsoul Ring",
+		back="Lutian Cape",				waist="Scout's Belt",			legs="Nahtirah Trousers",	feet="Iuitl Gaiters +1"
 	}
 	
 	sets.wsBase.STR = {
@@ -107,8 +110,8 @@ function init_gear_sets()
 	
 	sets.tpBase = {
 		head="Arcadian Beret",	neck="Ocachi Gorget",		ear1="Clearview Earring",	ear2="Volley Earring",
-		body="Orion Jerkin",	hands="Manibozho Gloves",	ring1="Paqichikaji Ring",	ring2="Longshot Ring",
-		back="Lutian Cape",		waist="Scout's Belt",		legs="Arcadian Braccae",	feet="Orion Socks"
+		body="Iuitl Vest +1",	hands="Manibozho Gloves",	ring1="Paqichikaji Ring",	ring2="Longshot Ring",
+		back="Lutian Cape",		waist="Scout's Belt",		legs="Nahtirah Trousers",	feet="Iuitl Gaiters +1"
 	}
 	
 	--========================[Bow]===============================
@@ -154,10 +157,15 @@ function init_gear_sets()
 	--5-hit with no requirements
 	sets.Bow.other['5-hit'] = {main="Mekki Shakki", sub="Rose Strap"}
 	sets.Bow.other['5-hit'].tp = {
-		neck="Ocachi Gorget",
-		hands="Sylvan Glovelettes +2",
-		ring1="Rajas Ring",
-		back="Sylvan Chlamys"
+		-- neck="Ocachi Gorget",
+		-- hands="Sylvan Glovelettes +2",
+		-- ring1="Rajas Ring",
+		-- back="Sylvan Chlamys"
+	}
+	
+	sets.Bow.other.acc = {main="Hurlbat", sub={"Antican Axe", "Legion Scutum"}}
+	sets.Bow.other.acc.tp = {
+		waist="Patentia Sash"
 	}
 	
 	--========================[Gun]===============================

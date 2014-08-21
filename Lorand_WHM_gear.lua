@@ -181,6 +181,8 @@ function init_gear_sets()
 	}
 	sets.midcast.ElementalMagic.Earth = {neck="Quanpur Necklace"}
 	
+	sets.midcast.ElementalEnfeeble = {}
+	
 	--============================================================
 	--					Other sets
 	--============================================================
@@ -208,17 +210,28 @@ function init_gear_sets()
 	
 	sets.idle.with_buff = {}
 	
-	sets.defense.DT = {}
+	sets.defense.DT = {
+		head="Kaabnax Hat",		neck="Twilight Torque",
+		ring1="Defending Ring",	ring2="Dark Ring",
+	}
 	sets.defense.PDT = combineSets(sets.defense.DT, {
+		main="Terra's Staff",
+		head="Kaabnax Hat",
+		body="Gendewitha Bliaut +1",	hands="Gendewitha Gages +1",
+		back="Cheviot Cape",			legs="Gendewitha Spats +1"
 	})
 	sets.defense.MDT = combineSets(sets.defense.DT, {
+		main="Chatoyant Staff",
+		ear1="Merman's Earring",		ear2="Merman's Earring",
+		body="Gendewitha Bliaut +1",	hands="Dynasty Mitts",
+		back="Tuilha Cape",				legs="Gendewitha Spats +1",	feet="Uk'uxkaj Boots"
 	})
 	
 	sets.engaged = {
 		ammo="Jukukik Feather",
 		head="Nahtirah Hat",	neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
 		body="Artsieq Jubbah",	hands="Otomi Gloves",		ring1="Rajas Ring",			ring2="K'ayres Ring",
-		back="Bukuwik Cape",	waist="Cetl Belt",			legs="Artsieq Hose",		feet="Theophany Duckbills"
+		back="Buquwik Cape",	waist="Cetl Belt",			legs="Artsieq Hose",		feet="Theophany Duckbills"
 	}
 	sets.engaged.with_buff = {}
 end

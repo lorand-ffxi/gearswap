@@ -126,9 +126,6 @@ function init_gear_sets()
 	sets.midcast.EnfeeblingMagic.LA = {
 		legs="Academic's Pants"			--18 Divine/Enfeebling/Enhancing/Healing Skill
 	}
-	
-	
-	sets.midcast.ElementalEnfeeble = sets.midcast.EnfeeblingMagic
 
 	sets.midcast.DarkMagic = {
 		neck="Dark Torque",
@@ -159,6 +156,8 @@ function init_gear_sets()
 		back="Bookworm's Cape",		waist="Aswang Sash",		legs="Hagondes Pants +1",	feet="Hagondes Sabots +1"
 	}
 	sets.midcast.ElementalMagic.Earth = {neck="Quanpur Necklace"}
+	
+	sets.midcast.ElementalEnfeeble = {}
 	
 	--============================================================
 	--					Other sets

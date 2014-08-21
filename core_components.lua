@@ -543,9 +543,9 @@ end
 function get_gear_for_status(status)
 	if player.main_job == 'THF' then
 		local thfSet = {}
-		if state.Buff['Sneak Attack'] then
+		if buffactive['Sneak Attack'] then
 			thfSet = combineSets(thfSet, sets.precast.JA['Sneak Attack'])
-		elseif state.Buff['Trick Attack'] then
+		elseif buffactive['Trick Attack'] then
 			thfSet = combineSets(thfSet, sets.precast.JA['Trick Attack'])
 		end
 		if modes.treasure == 'TH' then

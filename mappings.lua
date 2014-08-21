@@ -450,8 +450,6 @@ magic_stats = {
 	['Noctohelix'] =	{V=0,L1=75,M0=1.1,L2=85,M50=0.75,L3=200,M3=0.5,Max_N=1},
 }
 
-strat_charge_time = {[1]=240,[2]=120,[3]=80,[4]=60,[5]=48}
-
 debuff_to_na = {
 	['Blind']='Blindna',	['Paralyze']='Paralyna',	['Poison']='Poisona',	['Silence']='Silena',
 }

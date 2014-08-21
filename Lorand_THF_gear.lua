@@ -19,9 +19,6 @@ function init_gear_sets()
 	--============================================================
 	--					Precast sets
 	--============================================================
-	sets.NormalWeapons = {
-		--main="Sandung",	sub="Leisilonu +2",
-	}
 	sets.TreasureHunter = {
 		hands="Plunderer's Armlets +1",
 		feet="Raider's Poulaines +2"
@@ -130,9 +127,8 @@ function init_gear_sets()
 		body="Qaaxo Harness",			hands="Plunderer's Armlets +1",	ring1="Defending Ring",		ring2="Sheltered Ring",
 		back="Repulse Mantle",			waist="Flume Belt",				legs="Kaabnax Trousers",	feet="Pillager's Poulaines"
 	}
-	sets.idle.speedy = set_combine(sets.idle, {feet="Skadi's Jambeaux +1"})
+	sets.idle.speedy = {feet="Skadi's Jambeaux +1"}
 	sets.idle.with_buff = {}
-	sets.idle.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	
 	sets.defense.Evasion = {
 		head="Iuitl Headgear +1",	neck="Torero Torque",			ear1="Novia Earring",		ear2="Ethereal Earring",
@@ -164,7 +160,6 @@ function init_gear_sets()
 		back="Atheling Mantle",		waist="Patentia Sash",			legs="Iuitl Tights",		feet="Plunderer's Poulaines"
 	}
 	sets.engaged.with_buff = {}
-	sets.engaged.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	
 	sets.engaged.Acc = {
 		range="Raider's Boomerang",

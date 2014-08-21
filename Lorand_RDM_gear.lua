@@ -3,12 +3,13 @@
 	Author: Ragnarok.Lorand
 	
 	Slips:
-		2:	Blood Legs, Loq. Earring
-		3: 	Twilight Torque/Cape
-		6:	Hands
-		8:	Neck/Back
-		10:	Legs/Hands/Feet
-		15: Hat/Body/Legs
+		2:	Loq. Earring
+		3: 	Twilight Torque, Impact body
+		8:	Estoqueuer's Back
+		10:	Estoqueur's+2 (all)
+		14:	Nares Hands/Legs
+		15: Atrophy Hat/Body/Legs
+		17:	Vitivation Hat/Body/Hands
 --]]
 -----------------------------------------------------------------------------------------------------------
 
@@ -16,16 +17,18 @@ function init_gear_sets()
 	--============================================================
 	--					Precast sets
 	--============================================================
-	sets.precast.JA['Chainspell'] = {body="Duelist's Tabard +2"}
+	sets.precast.JA['Chainspell'] = {body="Vitivation Tabard"}
+	sets.precast.JA['Saboteur'] = {hands="Estoqueur's Gantherots +2"}
 	
 	sets.precast.Waltz = {}
 	sets.precast.Waltz['Healing Waltz'] = {}
 	
 	-- Fast Cast caps at 80%
-	sets.precast.FC = {					--30% + 
-		head="Nahtirah Hat",				--10%
+	sets.precast.FC = {					--???
+		head="Atrophy Chapeau",			--?10%
 		neck="Orunmila's Torque",		--5%
 		ear1="Loquacious Earring",		--2%
+		body="Vitivation Tabard",		--12%
 		hands="Gendewitha Gages +1",	--7%
 		ring1="Prolix Ring",			--2%
 		ring2="Veneficium Ring",		--Q+1%
@@ -34,75 +37,138 @@ function init_gear_sets()
 		legs="Artsieq Hose",			--5%
 		feet="Chelona Boots"			--4%
 	}
+	sets.precast.FC.HealingMagic = {
+		main="Tamaxchi",	sub="Genbu's Shield",
+		back="Pahtli Cape"
+	}
+	sets.precast.FC.EnhancingMagic = {waist="Siegel Sash"}
 	sets.precast.FC.Lightning = {main="Apamajas I"}
-	sets.precast.FC.Impact = {head=empty,body="Twilight Cloak"}
 	
 	--============================================================
 	
 	sets.wsBase = {}
-
+	sets.wsBase.Magic = {}
 	
 	--============================================================
 	--					Midcast sets
 	--============================================================
 	
 	sets.midcast.FastRecast = {
-		neck="Orunmila's Torque",
+		ammo="Impatiens",
+		head="Nahtirah Hat",		neck="Orunmila's Torque",		ear1="Loquacious Earring",
+		body="Vitivation Tabard",	hands="Gendewitha Gages +1",	ring1="Prolix Ring",		ring2="Diamond Ring",
+		back="Swith Cape",			waist="Cetl Belt",				legs="Artsieq Hose",		feet="Hagondes Sabots +1"
 	}
 
 	sets.midcast.Cure = {
-		main="Arka IV",
-		head="Gendewitha Caubeen +1",	ear1="Roundel Earring",			ear2="Novia Earring",
-		body="Gendewitha Bliaut",		hands="Weatherspoon Cuffs +1",	ring1="Sirona's Ring",	ring2="Solemn Ring",
-		back="Oretania's Cape",			waist="Emphatikos Rope",		legs="Atrophy Tights",	feet="Atrophy Boots"
+		main="Tamaxchi",				sub="Genbu's Shield",
+		ear2="Roundel Earring",	
+		hands="Weatherspoon Cuffs +1",	ring2="Aquasoul Ring",
+		legs="Atrophy Tights"
 	}
 	sets.midcast.Curaga = sets.midcast.Cure
-
-	sets.midcast.EnhancingMagic = {}
-
-	sets.midcast.Refresh = {legs="Estoqueur's Fuseau +2"}
-	sets.midcast.Stoneskin = {waist="Siegel Sash"}
+	sets.midcast.Cure.Engaged = {
+		body="Gendewitha Bliaut +1",	hands="Bokwus Cuffs"
+	}
 	
-	sets.midcast.EnfeeblingMagic = {}
+	sets.midcast.EnhancingMagic = {
+		body="Vitivation Tabard",	hands="Vitivation Gloves",
+		back="Estoqueur's Cape",	waist="Cascade Belt",		legs="Atrophy Tights",	feet="Estoqueur's Houseaux +2"
+	}
+	sets.midcast.EnhancingMagic.Duration = {
+		--hands="Atrophy Gloves",
+		back="Estoqueur's Cape",	feet="Estoqueur's Houseaux +2"
+	}
+	sets.midcast.EnhancingMagic.Duration.ComposureOther = {
+		head="Estoqueur's Chappel +2",
+		body="Estoqueur's Sayon +2",
+		legs="Estoqueur's Fuseau +2"
+	}
+	
+	sets.midcast['Aquaveil'] =		{waist="Emphatikos Rope"}
+	sets.midcast['Phalanx II'] =	{hands="Vitivation Gloves"}
+	sets.midcast['Refresh'] =		{legs="Estoqueur's Fuseau +2"}
+	sets.midcast['Stoneskin'] =		{
+		neck="Stone Gorget",	ear2="Earthcry Earring",
+		waist="Siegel Sash",	legs="Haven Hose"
+	}
+	
+	--============================================================
+	
+	sets.midcast.MagicAccuracy = {
+		main="Lehbrailg +2",	sub="Mephitis Grip",	ammo="Kalboron Stone",
+		head="Kaabnax Hat",		neck="Eddy Necklace",	ear1="Lifestorm Earring",	ear2="Psystorm Earring",
+		body="Artsieq Jubbah",	hands="Lurid Mitts",	ring1="Perception Ring",	ring2="Sangoma Ring",
+		back="Ogapepo Cape",	waist="Aswang Sash",	legs="Artsieq Hose",		feet="Bokwus Boots"
+	}
+	
+	sets.midcast.EnfeeblingMagic = {
+		head="Vitivation Chapeau",	neck="Enfeebling Torque",
+		body="Atrophy Tabard",		hands="Lurid Mitts"
+	}
+	sets.midcast.EnfeeblingMagic.Saboteur = {hands="Estoqueur's Gantherots +2"}
+	
+	sets.midcast.EnfeeblingMagic.Potency = {
+		neck="Estoqueur's Collar",
+		body="Estoqueur's Sayon +2",
+		feet="Uk'uxkaj Boots"
+	}
+	sets.midcast.EnfeeblingMagic.Potency.Resistant = {}
+	sets.midcast.EnfeeblingMagic.Potency.Normal = {}
+	
+	sets.midcast['Dia III'] = {head="Vitivation Chapeau"}
+	sets.midcast['Slow II'] = {head="Vitivation Chapeau"}
 
-	sets.midcast['Dia III'] = set_combine(sets.midcast.EnfeeblingMagic, {head="Duelist's Chapeau +2"})
-	sets.midcast['Slow II'] = set_combine(sets.midcast.EnfeeblingMagic, {head="Duelist's Chapeau +2"})
+	--============================================================
 	
 	sets.midcast.ElementalMagic = {
-		ring1="Fenrir Ring +1",		ring2="Acumen Ring",
+		main="Venabulum",			sub="Zuuxowu Grip",		ammo="Dosis Tathlum",
+		head="Buremte Hat",			neck="Eddy Necklace",	ear1="Hecate's Earring",	ear2="Friomisi Earring",
+		body="Hagondes Coat +1",	hands="Otomi Gloves",	ring1="Fenrir Ring +1",		ring2="Acumen Ring",
+		back="Toro Cape",			waist="Aswang Sash",	legs="Hagondes Pants +1",	feet="Hagondes Sabots +1"
+	}
+	sets.midcast.ElementalMagic.Earth = {neck="Quanpur Necklace"}
+	
+	sets.midcast.ElementalEnfeeble = {
+		main="Venabulum",			sub="Mephitis Grip",
+		head="Kaabnax Hat",			ear1="Lifestorm Earring",	ear2="Psystorm Earring",
+		body="Hagondes Coat +1",	hands="Lurid Mitts",		ring1="Icesoul Ring",		ring2="Diamond Ring",
+		back="Toro Cape",			legs="Hagondes Pants +1",	feet="Hagondes Sabots +1"
 	}
 
-	sets.midcast.Impact = set_combine(sets.midcast.ElementalMagic, {head=empty,body="Twilight Cloak"})
-
-	sets.midcast.DarkMagic = {}
-
-	sets.midcast.EnhancingDuration = {hands="Atrophy Gloves +1",back="Estoqueur's Cape",feet="Estoqueur's Houseaux +2"}
-		
-	sets.buff.ComposureOther = {
-		head="Estoqueur's Chappel +2",
-		body="Estoqueur's Sayon +2",	hands="Estoqueur's Gantherots +2",
-		legs="Estoqueur's Fuseau +2",	feet="Estoqueur's Houseaux +2"
+	sets.midcast.DarkMagic = {
+		neck="Dark Torque"
 	}
-
-	sets.buff.Saboteur = {hands="Estoqueur's Gantherots +2"}
+	sets.midcast.Stun = {
+		main="Apamajas II",				sub="Mephitis Grip",	ammo="Kalboron Stone",
+		head="Atrophy Chapeau +1",		neck="Jeweled Collar",	ear1="Lifestorm Earring",	ear2="Psystorm Earring",
+		body="Vitivation Tabard +1",	hands="Buremte Gloves",	ring1="Perception Ring",
+		back="Ogapepo Cape",			waist="Cetl Belt",		legs="Artsieq Hose",		feet="Bokwus Boots"
+	}
 	
 	--============================================================
 	--					Other sets
 	--============================================================
 	
-	sets.resting = {}
+	sets.resting = {
+		legs="Nares Trews",
+	}
 	
-	sets.idle = {}
-	sets.idle.speedy = {}
+	sets.idle = {
+		main="Terra's Staff",		sub="Elder's Grip",		ammo="Demonry Stone",
+		head="Vitivation Chapeau",	neck="Twilight Torque",	ear1="Novia Earring",	ear2="Ethereal Earring",
+		body="Artsieq Jubbah",		hands="Lurid Mitts",	ring1="Defending Ring",	ring2="Sheltered Ring",
+		back="Cheviot Cape",		waist="Flume Belt",		legs="Nares Trews",		feet="Serpentes Sabots"
+	}
+	sets.idle.speedy = {legs="Blood Cuisses"}
 	sets.idle.with_buff = {}
-	sets.idle.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
+	--sets.idle.lowMP = {legs="Nares Trews"}
+	sets.idle.lowMP_night =	{hands="Serpentes Cuffs"}
+	sets.idle.lowMP_day = {feet="Serpentes Sabots"}
 	
 	sets.defense.PDT = {}
 	sets.defense.MDT = {}
 
-	sets.Kiting = {legs="Blood Cuisses"}
-
 	sets.engaged = {}
 	sets.engaged.with_buff = {}
-	sets.engaged.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 end

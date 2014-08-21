@@ -124,8 +124,6 @@ function init_gear_sets()
 	})
 
 	sets.defense.Reraise = {head="Twilight Helm",body="Twilight Mail"}
-	
-	sets.Kiting = {feet="Danzo Sune-ate"}
 
 	sets.Reraise = {head="Twilight Helm",body="Twilight Mail"}
 

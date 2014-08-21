@@ -139,7 +139,7 @@ function init_gear_sets()
 	}
 	sets.midcast.ElementalMagic.Earth = {neck="Quanpur Necklace"}
 	
-	sets.midcast.ElementalMagic.DOT = {
+	sets.midcast.ElementalEnfeeble = {
 		head="Kaabanax Hat",
 		hands="Otomi Gloves",	ring1="Spiral Ring",
 		feet="Uk'uxkaj Boots"
@@ -177,7 +177,6 @@ function init_gear_sets()
 		back="Cheviot Cape",			waist="Emphatikos Rope",	legs="Nares Trews",		feet="Serpentes Sabots"
 	}
 	sets.idle.with_buff = {}
-	sets.idle.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	
 	sets.idle.Melee = {
 		--main="Iztaasu +2",			sub="Beatific Shield",
@@ -199,8 +198,6 @@ function init_gear_sets()
 	})
 	sets.defense.MDT = set_combine(sets.defense.DT, {})
 
-	sets.Kiting = {legs="Crimson Cuisses"}
-
 	sets.engaged = {
 		--main="Iztaasu +2",			sub="Beatific Shield",
 		ammo="Jukukik Feather",
@@ -209,7 +206,6 @@ function init_gear_sets()
 		back="Atheling Mantle",			waist="Cetl Belt",			legs="Atrophy Tights",	feet="Atrophy Boots"
 	}
 	sets.engaged.with_buff = {}
-	sets.engaged.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	
 	sets.engaged.Skillup = {
 		ammo="Jukukik Feather",
