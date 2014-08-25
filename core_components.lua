@@ -14,10 +14,12 @@ function init()
 	include('spell_utilities')
 	include('mappings')
 	
-	load_user_gear(player.main_job)				-- Load gear from a job-specific file
-	set_modes()
-	set_keybinds()
-	if init_gear_sets then init_gear_sets() end
+	-- Load gear from a job-specific file
+	if load_user_gear(player.main_job) then
+		set_modes()
+		set_keybinds()
+		if init_gear_sets then init_gear_sets() end
+	end
 end
 
 init()
@@ -87,7 +89,7 @@ end
 	Equip any gear that should be on before the spell or ability is used.
 --]]
 function precast(spell)
-	if modify_cure(spell) or not_possible_to_use(spell) then
+	if modify_spell(spell) or modify_cure(spell) or not_possible_to_use(spell) then
 		cancel_spell()
 		return
 	end
@@ -228,9 +230,9 @@ function buff_change(buff, gain)
 	
 	if buff == 'sleep' and gain and buffactive['Stoneskin'] then
 		--If slept, drop stoneskin if a DOT is active to wake up
-		if buffactive['Sublimation: Active'] or dotActive() then
-			windower.send_command('cancel stoneskin')
-		end
+		-- if buffactive['Sublimation: Active'] or dotActive() then
+			-- windower.send_command('cancel stoneskin')
+		-- end
 	elseif player.main_job == "BLM" and buff == "Mana Wall" and not gain then
 		enable('feet')		-- Unlock feet when Mana Wall buff is lost.
 		equip(get_gear_for_status(player.status))

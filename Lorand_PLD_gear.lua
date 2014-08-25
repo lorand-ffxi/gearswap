@@ -113,14 +113,14 @@ function init_gear_sets()
 		ammo="Impatiens",
 		head="Cizin Helm +1",			neck="Invidia Torque",	ear1="Hospitaler Earring",	ear2="Oneiros Earring",
 		body="Reverence Surcoat +1",	hands="Buremte Gloves",	ring1="Kunaji Ring",		ring2="Asklepian Ring",
-		back="Fierabras's Mantle",		waist="Chuq'aba Belt",	legs="Reverence Breeches",	feet="Caballarius Leggings +1"
+		back="Fierabras's Mantle",		waist="Chuq'aba Belt",	legs="Reverence Breeches +1",	feet="Caballarius Leggings +1"
 	}
 
 	sets.midcast.EnhancingMagic = {	--Enmity+43, Haste+23%, FC+7%, Interrupt-10%, Enhancing Skill+25, Enhancing duration+9
 		ammo="Impatiens",
 		head="Cizin Helm +1",	neck="Colossus's Torque",		ear1="Friomisi Earring",		ear2="Loquacious Earring",
 		body="Shabti Cuirass",	hands="Reverence Gauntlets +1",	ring1="Eihwaz Ring",			ring2="Provocare Ring",
-		back="Earthcry Mantle",	waist="Cascade Belt",			legs="Reverence Breeches",		feet="Caballarius Leggings +1"
+		back="Earthcry Mantle",	waist="Cascade Belt",			legs="Reverence Breeches +1",		feet="Caballarius Leggings +1"
 	}
 	sets.midcast.Protect = {ring1="Sheltered Ring"}
 	sets.midcast.Shell = {ring1="Sheltered Ring"}
@@ -134,26 +134,20 @@ function init_gear_sets()
 	sets.resting = {
 		head="Twilight Helm",		neck="Creed Collar",	ear2="Relaxing Earring",
 		body="Twilight Mail",		ring1="Paguroidea Ring",
-		legs="Reverence Breeches",	feet="Reverence Leggings"
+		legs="Reverence Breeches +1",	feet="Reverence Leggings"
 	}
 	
 	sets.idle = {
 		ammo="Angha Gem",
 		head="Twilight Helm",	neck="Creed Collar",			ear1="Creed Earring",		ear2="Ethereal Earring",
 		body="Twilight Mail",	hands="Reverence Gauntlets +1",	ring1="Defending Ring",		ring2="Sheltered Ring",
-		back="Weard Mantle",	waist="Nierenschutz",			legs="Reverence Breeches",	feet="Caballarius Leggings +1"
+		back="Weard Mantle",	waist="Nierenschutz",			legs="Reverence Breeches +1",	feet="Caballarius Leggings +1"
 	}
 	sets.idle.speedy = {legs="Blood Cuisses"}
-	
-	sets.idle.with_buff = {}
-	sets.idle.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
-	
 	sets.idle.Showoff = {
 		head="Reverence Coronet +1",	body="Caballarius Surcoat +1",	legs="Blood Cuisses"
 	}
-	
 	sets.idle.with_buff = {}
-	sets.idle.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	
 	sets.idle.PDT = {	--51% PDT, 41% MDT
 		ammo="Angha Gem",
@@ -193,12 +187,11 @@ function init_gear_sets()
 	sets.engaged = {
 		ammo="Jukukik Feather",
 		head="Otomi Helm",			neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
-		body="Gorney Haubert +1",	hands="Cizin Mufflers +1",	ring1="Rajas Ring",			ring2="Tyrant's Ring",
+		body="Gorney Haubert +1",	hands="Cizin Mufflers +1",	ring1="Rajas Ring",			ring2="K'ayres Ring",
 		back="Atheling Mantle",		waist="Windbuffet Belt",	legs="Cizin Breeches +1",	feet="Ejekamal Boots"
 	}
 	
 	sets.engaged.with_buff = {}
-	sets.engaged.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	
 	sets.engaged.TankP = {	--50% PDT, 34% MDT
 		ammo="Angha Gem",
@@ -223,5 +216,6 @@ function init_gear_sets()
 	
 	sets.engaged.Shield = {}
 	
-	sets.buff.Cover = {head="Reverence Coronet +1", body="Caballarius Surcoat +1"}
+	sets.buffs.doom = {ring1="Saida Ring", ring2="Saida Ring", legs="Shabti Cuisses"}
+	sets.buffs.Cover = {head="Reverence Coronet +1", body="Caballarius Surcoat +1"}
 end

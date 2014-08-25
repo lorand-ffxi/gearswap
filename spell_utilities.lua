@@ -5,6 +5,7 @@
 --]]
 -----------------------------------------------------------------------------------------------------------
 
+local abilList = T(require('res/abilities'))
 local buffList = T(require('res/buffs'))
 local spellList = T(require('res/spells'))
 local cnums = {['Cure'] = 1, ['Cure II'] = 2, ['Cure III'] = 3, ['Cure IV'] = 4, ['Cure V'] = 5, ['Cure VI'] = 6}
@@ -239,13 +240,55 @@ end
 	that was found in the list of active buffs.  If none of the given buffs are active, it returns nil.
 --]]
 function buff_active(...)
-	local args = {...}
+	local args = T{...}:map(string.lower)
+	local activeBuffs = T(buffactive):map(string.lower)
 	for _,arg in pairs(args) do
-		if buffactive[arg] then
-			return buffList:with('en', arg)
+		if activeBuffs[arg] then
+			return buffList:with('en', arg) or buffList:with('en', arg:capitalize())
 		end
 	end
 	return nil
+end
+
+function modify_spell(spell)
+	local smap = spell_maps[spell.en]
+	if (player.main_job == 'WHM') then
+		if (smap == 'StatusRemoval') and (not S{'Erase', 'Esuna'}:contains(spell.en)) then
+			local xrecast = getRecast('Divine Caress') or -1
+			if (not buff_active('Divine Caress')) and (xrecast == 0) then
+				windower.send_command('input /ja "Divine Caress" <me>; wait 1.75; input /ma "'..spell.en..'" '..spell.target.name)
+				return true
+			end
+		end
+	end
+end
+
+function getRecast(spell)
+	local xtype = nil
+	local xid = nil
+	if type(spell) == 'table' then
+		xtype = spell.action_type
+		xid = spell.recast_id
+	elseif type(spell) == 'string' then
+		local xspell = spellList:with('en', spell)
+		local xabil = abilList:with('en', spell)
+		if xspell ~= nil then
+			xtype = 'Magic'
+			xid = xspell.recast_id
+		elseif xabil ~= nil then
+			xtype = 'Ability'
+			xid = xabil.recast_id
+		end
+	end
+	if (xtype == nil) or (xid == nil) then return nil end
+	local xtime = nil
+	if xtype == 'Ability' then
+		xtime = windower.ffxi.get_ability_recasts()[xid]
+	elseif xtype == 'Magic' then
+		xtime =  windower.ffxi.get_spell_recasts()[xid]
+	end
+	
+	return xtime
 end
 
 --[[

@@ -59,8 +59,8 @@ function init_gear_sets()
 	}
 	sets.midcast.Cursna = {
 		neck="Malison Medallion",
-		ring1="Ephedra Ring",		ring2="Ephedra Ring",
-		feet="Gendewitha Galoshes"
+		hands="Hieros Mittens",		ring1="Ephedra Ring",		ring2="Ephedra Ring",
+		feet="Gendewitha Galoshes +1"
 	}
 	
 	sets.midcast.Cure = {	--Cure potency > 50%	|	Enmity - 33
@@ -147,11 +147,16 @@ function init_gear_sets()
 
 	sets.midcast.DarkMagic = {}
 	sets.midcast.Stun = {
-		main="Apamajas II",				sub="Mephitis Grip",	ammo="Kalboron Stone",
-		head="Atrophy Chapeau +1",		neck="Jeweled Collar",	ear1="Lifestorm Earring",	ear2="Psystorm Earring",
-		body="Vitivation Tabard +1",	hands="Buremte Gloves",	ring1="Perception Ring",
-		back="Ogapepo Cape",			waist="Cetl Belt",		legs="Artsieq Hose",		feet="Bokwus Boots"
+		main="Apamajas II",				sub="Mephitis Grip",			ammo="Kalboron Stone",
+		head="Atrophy Chapeau +1",		neck="Jeweled Collar",			ear1="Lifestorm Earring",	ear2="Psystorm Earring",
+		body="Vitivation Tabard +1",
+		hands="Buremte Gloves",
+		--hands="Gendewitha Gages +1",
+		ring1="Prolix Ring",		ring2="Perception Ring",
+		back="Ogapepo Cape",			waist="Cetl Belt",				legs="Artsieq Hose",		feet="Bokwus Boots"
 	}
+	
+	sets.midcast.DivineMagic = {}
 	
 	--============================================================
 	--					Other sets

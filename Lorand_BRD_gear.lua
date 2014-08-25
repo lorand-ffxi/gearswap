@@ -79,7 +79,7 @@ function init_gear_sets()
 		back="Swith Cape",			--3%
 		waist="Witful Belt",		--3%
 		legs="Artsieq Hose",		--5%
-		feet="Chelona Boots"		--4%
+		feet={"Chelona Boots", "Suzaku's Sune-Ate"}		--4%
 	}
 
 	sets.precast.FC.Cure = {		--54%
@@ -210,8 +210,7 @@ function init_gear_sets()
 	
 	sets.midcast.HealingMagic = {}
 	sets.midcast.Cursna = {
-		neck="Malison Medallion",
-		ring1="Ephedra Ring",		ring2="Ephedra Ring"
+		hands="Hieros Mittens",
 	}
 	
 	sets.midcast.Cure = {
@@ -220,6 +219,10 @@ function init_gear_sets()
 		body="Gendewitha Bliaut +1",	hands="Weatherspoon Cuffs +1",	ring1="Aquasoul Ring",		ring2="Aqua Ring",
 		back="Oretania's Cape",			waist="Cascade Belt",			legs="Gendewitha Spats +1",	feet="Bihu Slippers"
 	}
+	
+	sets.midcast.DivineMagic = {}
+	sets.midcast.DarkMagic = {}
+	sets.midcast.ElementalMagic = {}
 	
 	--============================================================
 	--					Other sets
@@ -232,7 +235,10 @@ function init_gear_sets()
 		back="Felicitas Cape",			waist="Emphatikos Rope",	legs="Nares Trews",			feet="Chelona Boots"
 	}
 	
-	sets.defense.DT = {}
+	sets.defense.DT = {
+		neck="Twilight Torque",
+		ring1="Defending Ring",		ring2="Dark Ring",
+	}
 	sets.defense.PDT = combineSets(sets.defense.DT, {
 	})
 	sets.defense.MDT = combineSets(sets.defense.DT, {

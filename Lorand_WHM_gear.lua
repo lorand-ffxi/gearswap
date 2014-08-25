@@ -44,7 +44,7 @@ function init_gear_sets()
 	
 	--============================================================
 	
-	sets.precast.JA.Benediction = {body="Cleric's Briault +2"}
+	sets.precast.JA.Benediction = {body="Piety Briault"}
 	sets.precast.JA.Martyr = {hands="Piety Mitts"}
 
 	sets.precast.Waltz = {}
@@ -72,13 +72,13 @@ function init_gear_sets()
 	sets.midcast.FastRecast = {
 		main="Venabulum",			sub="Achaq Grip",			ammo="Impatiens",
 		head="Nahtirah Hat",		neck="Orunmila's Torque",	ear1="Loquacious Earring",	ear2="Novia Earring",
-		body="Theophany Briault",	hands="Otomi Gloves",		ring1="Prolix Ring",		ring2="Diamond Ring",
+		body="Theophany Briault +1",	hands="Otomi Gloves",		ring1="Prolix Ring",		ring2="Diamond Ring",
 		back="Swith Cape",			waist="Witful Belt",		legs="Artsieq Hose",		feet="Theophany Duckbills"
 	}
 	
 	sets.midcast.MagicAccuracy = {
 		main="Lehbrailg +2",	sub="Mephitis Grip",	ammo="Kalboron Stone",
-		head="Kaabnax Hat",		neck="Eddy Necklace",	ear1="Lifestorm Earring",	ear2="Psystorm Earring",
+		head="Nahtirah Hat",	neck="Eddy Necklace",	ear1="Lifestorm Earring",	ear2="Psystorm Earring",
 		body="Artsieq Jubbah",	hands="Lurid Mitts",	ring1="Sangoma Ring",		ring2="Perception Ring",
 		back="Ogapepo Cape",	waist="Aswang Sash",	legs="Artsieq Hose",		feet="Bokwus Boots"
 	}
@@ -88,7 +88,7 @@ function init_gear_sets()
 	sets.midcast.HealingMagic = {
 		neck="Colossus's Torque",
 		body="Orison Bliaud +2",		hands="Theophany Mitts",
-		legs="Cleric's Pantaloons +2"
+		legs="Piety Pantaloons"
 	}
 	
 	sets.midcast.Cure = {
@@ -101,6 +101,7 @@ function init_gear_sets()
 	sets.midcast.Cure.Engaged = sets.midcast.Cure
 
 	sets.midcast.Cursna = {
+		hands="Hieros Mittens",
 		legs="Theophany Pantaloons"
 	}
 
@@ -116,7 +117,7 @@ function init_gear_sets()
 	sets.midcast.EnhancingMagic = {
 		neck="Colossus's Torque",
 		body="Manasa Chasuble",		hands="Dynasty Mitts",
-		waist="Cascade Belt",		legs="Cleric's Pantaloons +2",	feet="Orison Duckbills +2"
+		waist="Cascade Belt",		legs="Piety Pantaloons",	feet="Orison Duckbills +2"
 	}
 	
 	sets.midcast.Stoneskin = {
@@ -129,20 +130,22 @@ function init_gear_sets()
 
 	sets.midcast.BarElement = {
 		head="Orison Cap +2",
-		body="Orison Bliaud +2",		hands="Orison Mitts +2",
-		legs="Cleric's Pantaloons +2",	feet="Orison Duckbills +2"
+		body="Orison Bliaud +2",	hands="Orison Mitts +2",
+		legs="Piety Pantaloons",	feet="Orison Duckbills +2"
 	}
 
 	sets.midcast.Regen = {
-		body="Cleric's Briault +2",	hands="Orison Mitts +2",
+		body="Piety Briault",		hands="Orison Mitts +2",
 		legs="Theophany Pantaloons"
 	}
 	
 	sets.midcast.Protectra = {
 		ring2="Sheltered Ring",
+		feet="Piety Duckbills"
 	}
 	sets.midcast.Shellra = {
 		ring2="Sheltered Ring",
+		legs="Piety Pantaloons"
 	}
 	
 	--====================== Offensive ===========================	
@@ -162,8 +165,8 @@ function init_gear_sets()
 	sets.midcast.DarkMagic = {}
 
 	sets.midcast.EnfeeblingMagic = {
-		main="Lehbrailg +2",	sub="Mephitis Grip",
-		body="Theophany Briault",
+		main="Lehbrailg +2",			sub="Mephitis Grip",
+		body="Theophany Briault +1",
 		feet="Theophany Duckbills"
 	}
 	sets.midcast.EnfeeblingMagic.Potency = {
@@ -195,10 +198,11 @@ function init_gear_sets()
 	}
 
 	sets.idle = {
-		main="Terra's Staff",	sub="Elder's Grip",			ammo="Incantor Stone",
-		head="Nahtirah Hat",	neck="Twilight Torque",		ear1="Novia Earring",	ear2="Ethereal Earring",
-		body="Artsieq Jubbah",	hands="Dynasty Mitts",		ring1="Defending Ring",	ring2="Sheltered Ring",
-		back="Cheviot Cape",	waist="Emphatikos Rope",	legs="Artsieq Hose",	feet="Serpentes Sabots"
+		main="Terra's Staff",			sub="Elder's Grip",			ammo="Incantor Stone",
+		head="Nahtirah Hat",			neck="Twilight Torque",		ear1="Novia Earring",	ear2="Ethereal Earring",
+		body={"Theophany Briault +1", "Artsieq Jubbah"},
+		hands="Dynasty Mitts",		ring1="Defending Ring",	ring2="Sheltered Ring",
+		back="Repulse Mantle",			waist="Emphatikos Rope",	legs="Artsieq Hose",	feet="Serpentes Sabots"
 	}
 	sets.idle.speedy = {feet="Herald's Gaiters"}
 	sets.idle.lowMP = {
@@ -218,7 +222,7 @@ function init_gear_sets()
 		main="Terra's Staff",
 		head="Kaabnax Hat",
 		body="Gendewitha Bliaut +1",	hands="Gendewitha Gages +1",
-		back="Cheviot Cape",			legs="Gendewitha Spats +1"
+		back="Repulse Mantle",			legs="Gendewitha Spats +1"
 	})
 	sets.defense.MDT = combineSets(sets.defense.DT, {
 		main="Chatoyant Staff",

@@ -44,6 +44,11 @@ function init_gear_sets()
 	}
 	sets.midcast.Curaga = sets.midcast.Cure
 
+	sets.midcast.Cursna = {
+		neck="Malison Medallion",
+		hands="Hieros Mittens",		ring1="Ephedra Ring",	ring2="Ephedra Ring"
+	}
+	
 	sets.midcast.EnhancingMagic = {
 		neck="Colossus's Torque",
 		waist="Cascade Belt"
@@ -82,10 +87,8 @@ function init_gear_sets()
 	--============================================================
 	
 	sets.resting = {
-		main="Chatoyant Staff",
-		ammo="Clarus Stone",
-		legs="Nisse Slacks",
-		feet="Chelona Boots"
+		main="Chatoyant Staff",	ammo="Clarus Stone",
+		legs="Nisse Slacks",	feet="Chelona Boots"
 	}
 	
 	-- Idle sets
@@ -95,17 +98,14 @@ function init_gear_sets()
 		body="Hagondes Coat +1",	hands="Serpentes Cuffs",	ring1="Dark Ring",		ring2="Dark Ring",
 		back="Cheviot Cape",		waist="Emphatikos Rope",	legs="Nares Trews",		feet="Serpentes Sabots"
 	}
-	sets.idle.Speedy = {feet="Herald's Gaiters"}
+	sets.idle.speedy = {feet="Herald's Gaiters"}
 	sets.idle.with_buff = {}
-	sets.idle.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	
 	sets.defense.PDT = sets.idle
 	sets.defense.MDT = sets.idle
-	sets.Kiting = {}
 
-	sets.buff['Mana Wall'] = {feet="Goetia Sabots +2"}
+	sets.buffs['Mana Wall'] = {feet="Goetia Sabots +2"}
 	
 	sets.engaged = {}
 	sets.engaged.with_buff = {}
-	sets.engaged.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 end

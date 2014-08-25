@@ -71,6 +71,10 @@ function init_gear_sets()
 		body="Gendewitha Bliaut +1",	hands="Bokwus Cuffs"
 	}
 	
+	sets.midcast.Cursna = {
+		hands="Hieros Mittens",
+	}
+	
 	sets.midcast.EnhancingMagic = {
 		body="Vitivation Tabard",	hands="Vitivation Gloves",
 		back="Estoqueur's Cape",	waist="Cascade Belt",		legs="Atrophy Tights",	feet="Estoqueur's Houseaux +2"
@@ -145,6 +149,8 @@ function init_gear_sets()
 		body="Vitivation Tabard +1",	hands="Buremte Gloves",	ring1="Perception Ring",
 		back="Ogapepo Cape",			waist="Cetl Belt",		legs="Artsieq Hose",		feet="Bokwus Boots"
 	}
+	
+	sets.midcast.DivineMagic = {}
 	
 	--============================================================
 	--					Other sets

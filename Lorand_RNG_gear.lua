@@ -109,7 +109,7 @@ function init_gear_sets()
 	}
 	
 	sets.tpBase = {
-		head="Arcadian Beret",	neck="Ocachi Gorget",		ear1="Clearview Earring",	ear2="Volley Earring",
+		head="Arcadian Beret +1",	neck="Ocachi Gorget",		ear1="Clearview Earring",	ear2="Volley Earring",
 		body="Iuitl Vest +1",	hands="Manibozho Gloves",	ring1="Paqichikaji Ring",	ring2="Longshot Ring",
 		back="Lutian Cape",		waist="Scout's Belt",		legs="Nahtirah Trousers",	feet="Iuitl Gaiters +1"
 	}
@@ -161,6 +161,22 @@ function init_gear_sets()
 		-- hands="Sylvan Glovelettes +2",
 		-- ring1="Rajas Ring",
 		-- back="Sylvan Chlamys"
+	}
+	
+	--Cibitshavore 5-hit dependent upon 1 recycle proc
+	sets.Bow.other['c:5-hit(1r)'] = {main="Hurlbat", sub={"Antican Axe", "Legion Scutum"}}
+	sets.Bow.other['c:5-hit(1r)'].tp = {
+		head="Arcadian Beret +1",	neck="Ocachi Gorget",		ear1="Clearview Earring",	ear2="Volley Earring",
+		body="Iuitl Vest +1",	hands="Manibozho Gloves",	ring1="Rajas Ring",			ring2="Longshot Ring",
+		back="Lutian Cape",		waist="Patentia Sash",		legs="Nahtirah Trousers",	feet="Iuitl Gaiters +1"
+	}
+	
+	--Cibitshavore 5-hit with no requirements
+	sets.Bow.other['c:5-hit(0r)'] = {main="Hurlbat", sub={"Antican Axe", "Legion Scutum"}}
+	sets.Bow.other['c:5-hit(0r)'].tp = {
+		head="Arcadian Beret +1",	neck="Ocachi Gorget",		ear1="Clearview Earring",	ear2="Volley Earring",
+		body="Iuitl Vest +1",	hands="Manibozho Gloves",	ring1="Rajas Ring",			ring2="K'ayres Ring",
+		back="Lutian Cape",		waist="Patentia Sash",		legs="Iuitl Tights +1",		feet="Iuitl Gaiters +1"
 	}
 	
 	sets.Bow.other.acc = {main="Hurlbat", sub={"Antican Axe", "Legion Scutum"}}
@@ -259,7 +275,8 @@ function init_gear_sets()
 	
 	sets.idle = {
 		head="Ocelomeh Headpiece +1",	neck="Orochi Nodowa",		ear1="Novia Earring",			ear2="Ethereal Earring",
-		body="Orion Jerkin",			hands="Buremte Gloves",		ring1="Defending Ring",			ring2="Sheltered Ring",
+		body={"Kirin's Osode", "Orion Jerkin"},
+		hands="Buremte Gloves",		ring1="Defending Ring",			ring2="Sheltered Ring",
 		back="Repulse Mantle",			waist="Flume Belt",			legs="Kaabnax Trousers",		feet="Orion Socks"
 	}
 	sets.idle.speedy = {feet="Skadi's Jambeaux +1"}

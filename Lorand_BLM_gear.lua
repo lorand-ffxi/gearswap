@@ -57,6 +57,10 @@ function init_gear_sets()
 	}
 	sets.midcast.Curaga = sets.midcast.Cure
 
+	sets.midcast.Cursna = {
+		hands="Hieros Mittens",
+	}
+	
 	sets.midcast.EnhancingMagic = {
 		neck="Colossus's Torque",
 		body="Hyksos Robe",			
@@ -93,6 +97,8 @@ function init_gear_sets()
 		back="Ogapepo Cape",		waist="Witful Belt",	legs="Artsieq Hose",		feet="Bokwus Boots"
 	}
 
+	sets.midcast.DivineMagic = {}
+	
 	sets.midcast.BardSong = {}
 
 	sets.midcast.ElementalMagic = {
@@ -118,7 +124,7 @@ function init_gear_sets()
 		main="Terra's Staff",		sub="Elder's Grip",			ammo="Impatiens",
 		head="Kaabnax Hat",			neck="Twilight Torque",		ear1="Novia Earring",	ear2="Ethereal Earring",
 		body="Artsieq Jubbah",		hands="Yaoyotl Gloves",		ring1="Defending Ring",	ring2="Sheltered Ring",
-		back="Cheviot Cape",		waist="Emphatikos Rope",	legs="Artsieq Hose",	feet="Serpentes Sabots"
+		back="Repulse Mantle",		waist="Emphatikos Rope",	legs="Artsieq Hose",	feet="Serpentes Sabots"
 	}
 	sets.idle.speedy = {feet="Herald's Gaiters"}
 	sets.idle.lowMP = {

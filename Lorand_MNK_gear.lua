@@ -87,12 +87,12 @@ function init_gear_sets()
 	--					Other sets
 	--============================================================
 	
-	sets.buffs['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
+	sets.buffs['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	
 	sets.idle = {
 		ammo="Demonry Stone",
 		head="Ocelomeh Headpiece +1",	neck="Orochi Nodowa",	ear1="Novia Earring",		ear2="Ethereal Earring",
-		body={"Hesychast's Cyclas", "Qaaxo Harness"},
+		body={"Hesychast's Cyclas", "Kirin's Osode", "Qaaxo Harness"},
 		hands="Garden Bangles",	ring1="Defending Ring",		ring2="Sheltered Ring",
 		back="Repulse Mantle",			waist="Black Belt",		legs={"Hesychast's Hose +1", "Otronif Brais +1"},
 		feet="Otronif Boots +1"
@@ -136,6 +136,13 @@ function init_gear_sets()
 	sets.engaged.with_buff = {}
 	sets.engaged.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	
+	sets.engaged.HitYouBastard = {
+		ammo="Honed Tathlum",
+		head="Whirlpool Mask",			neck="Ziel Charm",				ear1="Bladeborn Earring",	ear2="Steelflash Earring",
+		body="Otronif Harness +1",		hands="Hesychast's Gloves +1",	ring1="Rajas Ring",			ring2="Epona's Ring",
+		back="Anchoret's Mantle",		waist="Anguinus Belt",			legs="Hesychast's Hose +1",	feet="Anchorite's Gaiters +1"
+	}
+	
 	sets.engaged.Normal_A = {
 		ammo="Potestas Bomblet",
 		head="Uk'uxkaj Cap",	neck="Asperity Necklace",		ear1="Bladeborn Earring",	ear2="Steelflash Earring",
@@ -166,14 +173,14 @@ function init_gear_sets()
 	
 	sets.engaged.TankAcc = {
 		ammo="Honed Tathlum",
-		head="Ejekamal Mask",		neck="Twilight Torque",		ear1="Bladeborn Earring",	ear2="Steelflash Earring",
+		head="Whirlpool Mask",		neck="Twilight Torque",		ear1="Bladeborn Earring",	ear2="Steelflash Earring",
 		body="Otronif Harness +1",	hands="Otronif Gloves +1",	ring1="Defending Ring",		ring2="Rajas Ring",
 		back="Anchoret's Mantle",	waist="Black Belt",			legs="Kaabnax Trousers",	feet="Otronif Boots +1"
 	}
 	
 	sets.engaged.HitMoar = {
 		ammo="Honed Tathlum",
-		head="Ejekamal Mask",			neck="Asperity Necklace",		ear1="Bladeborn Earring",	ear2="Steelflash Earring",
+		head="Whirlpool Mask",			neck="Asperity Necklace",		ear1="Bladeborn Earring",	ear2="Steelflash Earring",
 		body="Otronif Harness +1",		hands="Hesychast's Gloves +1",	ring1="Rajas Ring",			ring2="Epona's Ring",
 		back="Anchoret's Mantle",		waist="Anguinus Belt",			legs="Kaabnax Trousers",	feet="Anchorite's Gaiters +1"
 	}

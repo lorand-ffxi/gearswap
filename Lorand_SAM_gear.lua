@@ -3,7 +3,7 @@
 	Author: Ragnarok.Lorand
 	
 	Slips:
-		3:	Rose Strap, Twilight Helm/Mail/Torque
+		3:	Twilight Helm/Mail/Torque
 		10:	Unkai+2 Head/Hands/Legs/Feet
 		15:	Wakido Head/Body/Hands/Legs/Feet
 		17:	Sakonji Hands/Legs/Feet
@@ -43,26 +43,27 @@ function init_gear_sets()
 		head="Otomi Helm",		--2%
 		body="Nuevo Coselete",	--5%
 		hands="Buremte Gloves",	--2%
+		legs="Mustela Brais",	--?
 	}
 	
 	--============================================================
 	--sets.wsBase[magic][sam/other][state.OffenseMode][state.RangedMode][wsmod[spell.en]]
 	sets.wsBase = {
-		ammo="Potestas Bomblet",
+		--ammo="Potestas Bomblet",
 		head="Otomi Helm",			neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
 		body="Gorney Haubert +1",	hands="Wakido Kote",		ring1="Rajas Ring",			ring2="Pyrosoul Ring",
 		back="Atheling Mantle",		waist="Windbuffet Belt",	legs="Gorney Brayettes +1",	feet="Ejekamal Boots"
 	}
 
 	sets.wsBase['4-Hit'] = {
-		ammo="Potestas Bomblet",
+		--ammo="Potestas Bomblet",
 		head="Yaoyotl Helm",	neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
 		body="Phorcys Korazin",	hands="Otronif Gloves +1",	ring1="Rajas Ring",			ring2="Pyrosoul Ring",
 		back="Takaha Mantle",	waist="Windbuffet Belt",	legs="Otronif Brais +1",	feet="Whirlpool Greaves"
 	}
 	
 	sets.wsBase['5-Acc'] = {
-		ammo="Potestas Bomblet",
+		--ammo="Potestas Bomblet",
 		head="Otomi Helm",			neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
 		body="Gorney Haubert +1",	hands="Buremte Gloves",		ring1="Rajas Ring",			ring2="Pyrosoul Ring",
 		back="Takaha Mantle",		waist="Windbuffet Belt",	legs="Gorney Brayettes +1",	feet="Ejekamal Boots"
@@ -70,6 +71,12 @@ function init_gear_sets()
 	
 	sets.wsBase.magic = {
 		ring1="Fenrir Ring +1",		ring2="Acumen Ring",
+	}
+	
+	sets.wsBase['Apex Arrow'] = {	--AGI
+		head="Sakonji Kabuto +1",	neck="Ocachi Gorget",		ear1="Clearview Earring",	ear2="Steelflash Earring",
+		body="Sakonji Domaru +1",	hands="Otronif Gloves +1",	ring1="Longshot Ring",		ring2="Paqichikaji Ring",
+		back="Kayapa Cape",			waist="Sveltesse Gouriz",	legs="Otronif Brais +1",	feet="Daihanshi Habaki"
 	}
 	
 	--============================================================
@@ -89,13 +96,13 @@ function init_gear_sets()
 	sets.resting = {}
 	
 	sets.idle = {
-		ammo="Demonry Stone",
+		main="Amanomurakumo",	sub="Pole Grip",	range="Cibitshavore",	ammo="Eminent Arrow",
 		head={"Twilight Helm", "Yaoyotl Helm"},
 		neck="Orochi Nodowa",	ear1="Novia Earring",	ear2="Ethereal Earring",
-		body={"Sakonji Domaru +1", "Otronif Harness +1"},
+		body={"Kirin's Osode", "Sakonji Domaru +1", "Otronif Harness +1"},
 		hands={"Sakonji Kote", "Otronif Gloves +1"},
 		ring1="Defending Ring",	ring2="Sheltered Ring",
-		back="Repulse Mantle",	waist="Flume Belt",		legs="Otronif Brais +1",feet="Ejekamal Boots"
+		back="Repulse Mantle",	waist="Flume Belt",		legs="Otronif Brais +1",	feet="Whirlpool Greaves"
 	}
 	sets.idle.speedy = {feet="Danzo Sune-Ate"}
 	sets.idle.Reraise = {
@@ -106,18 +113,17 @@ function init_gear_sets()
 	sets.idle.with_buff = {}
 	sets.idle.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	
-	sets.defense.DT = {	--DT-5%, PDT-10%, MDT-7%	=> PDT-15%, MDT-12%
+	sets.defense.DT = {
 		neck="Twilight Torque",
 		ring1="Defending Ring",		ring2="Dark Ring"
 	}
 	
-	sets.defense.PDT = set_combine(sets.defense.DT, {	--PDT-22% + DT => PDT-37%
+	sets.defense.PDT = combineSets(sets.defense.DT, {
 		head="Otronif Mask +1",	
 		body="Otronif Harness +1",	hands="Otronif Gloves +1",	
 		back="Repulse Mantle",		waist="Flume Belt",			legs="Otronif Brais +1",	feet="Otronif Boots +1"
 	})
-	sets.defense.MDT = set_combine(sets.defense.DT, {	--MDT-4% + DT => MDT-16%, MDB+19
-		ammo="Demonry Stone",
+	sets.defense.MDT = combineSets(sets.defense.DT, {
 		head="Otronif Mask +1",		ear1="Merman's Earring",	ear2="Merman's Earring",
 		body="Otronif Harness +1",	hands="Buremte Gloves",
 		back="Tuilha Cape",			waist="Flume Belt",			legs="Otronif Brais +1",	feet="Otronif Boots +1"
@@ -134,23 +140,25 @@ function init_gear_sets()
 	sets.engaged.with_buff['hasso'] = {head="Yaoyotl Helm", legs="Unkai Haidate +2"}
 	
 	sets.engaged['5-Hit'] = {
-		main="Amanomurakumo",		sub="Pole Grip",			ammo="Potestas Bomblet",
+--		main="Amanomurakumo",		sub="Pole Grip",			ammo="Potestas Bomblet",
 		head="Otomi Helm",			neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
-		body="Gorney Haubert +1",	hands="Otronif Gloves +1",	ring1="Rajas Ring",			ring2="Tyrant's Ring",
+		body="Gorney Haubert +1",	hands="Otronif Gloves +1",	ring1="Rajas Ring",			ring2="K'ayres Ring",
 		back="Atheling Mantle",		waist="Windbuffet Belt",	legs="Otronif Brais +1",	feet="Ejekamal Boots"
 	}
 	
 	sets.engaged['5-Acc'] = {
-		main="Amanomurakumo",		sub="Pole Grip",			ammo="Potestas Bomblet",
+--		main="Amanomurakumo",		sub="Pole Grip",			ammo="Potestas Bomblet",
 		head="Sakonji Kabuto +1",	neck="Agasaya's Collar",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
 		body="Gorney Haubert +1",	hands="Buremte Gloves",		ring1="Rajas Ring",			ring2="Mars's Ring",
 		back="Takaha Mantle",		waist="Goading Belt",		legs="Otronif Brais +1",	feet="Ejekamal Boots"
 	}
 	
 	sets.engaged['4-Hit'] = {
-		main="Amanomurakumo",		sub="Rose Strap",			ammo="Hagneia Stone",
-		head="Sakonji Kabuto +1",	neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
-		body="Sakonji Domaru +1",	hands="Otronif Gloves +1",	ring1="Rajas Ring",			ring2="Tyrant's Ring",
+--		main="Amanomurakumo",		sub="Rose Strap",			ammo="Hagneia Stone",
+		--head="Sakonji Kabuto +1",	
+		head="Yaoyotl Helm",
+		neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
+		body="Sakonji Domaru +1",	hands="Otronif Gloves +1",	ring1="Rajas Ring",			ring2="K'ayres Ring",
 		back="Takaha Mantle",		waist="Goading Belt",		legs="Otronif Brais +1",	feet="Otronif Boots +1"
 	}
 	

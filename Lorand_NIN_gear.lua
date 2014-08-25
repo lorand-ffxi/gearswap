@@ -30,7 +30,7 @@ function init_gear_sets()
 	}
 	sets.precast.Waltz['Healing Waltz'] = {}
 
-	sets.precast.Step = set_combine(sets.engaged, {
+	sets.precast.Step = combineSets(sets.engaged, {
 		body="Mochizuki Chainmail +1"
 	})
 	
@@ -51,7 +51,7 @@ function init_gear_sets()
 		feet="Suzaku's Sune-Ate"		--4%
 	}
 	
-	sets.precast.FC.Utsusemi = set_combine(sets.precast.FC, {	--40%
+	sets.precast.FC.Utsusemi = combineSets(sets.precast.FC, {	--40%
 		neck="Magoraga Bead Necklace",	--10%
 		body="Mochizuki Chainmail +1",	--10%
 	})
@@ -137,12 +137,10 @@ function init_gear_sets()
 	--					Other sets
 	--============================================================
 	
-	sets.buffs['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
-	
 	sets.idle = {
 		ammo="Demonry Stone",
 		head="Ocelomeh Headpiece +1",	neck="Orochi Nodowa",		ear1="Novia Earring",		ear2="Ethereal Earring",
-		body="War Shinobi Gi",			hands={"Mochizuki Tekko +1", "Otronif Gloves +1"},
+		body="Kirin's Osode",			hands={"Mochizuki Tekko +1", "Otronif Gloves +1"},
 		ring1="Defending Ring",			ring2="Sheltered Ring",
 		back="Repulse Mantle",			waist="Flume Belt",			legs={"Hachiya Hakama +1", "Otronif Brais +1"},
 		feet="Danzo Sune-Ate"
@@ -154,7 +152,6 @@ function init_gear_sets()
 	
 	sets.idle.with_buff = {}
 	sets.idle.with_buff['Migawari'] = {body="Iga Ningi +2"}
-	sets.idle.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	
 	-- Defense sets
 	sets.defense.Evasion = {
@@ -168,12 +165,12 @@ function init_gear_sets()
 		ring1="Defending Ring",	ring2="Dark Ring"
 	}
 	
-	sets.defense.PDT = set_combine(sets.defense.DT, {	--PDT-37%
+	sets.defense.PDT = combineSets(sets.defense.DT, {	--PDT-37%
 		head="Otronif Mask +1",		
 		body="Otronif Harness +1",	hands="Otronif Gloves +1",	
 		back="Repulse Mantle",		waist="Flume Belt",			legs="Otronif Brais +1",	feet="Otronif Boots +1"
 	})
-	sets.defense.MDT = set_combine(sets.defense.DT, {	--MDT-16%, MDB+17
+	sets.defense.MDT = combineSets(sets.defense.DT, {	--MDT-16%, MDB+17
 		ammo="Demonry Stone",
 		head="Otronif Mask +1",		ear1="Merman's Earring",	ear2="Merman's Earring",
 		body="Hachiya Chainmail +1",hands="Otronif Gloves +1",
@@ -185,7 +182,6 @@ function init_gear_sets()
 	sets.engaged = {}
 	sets.engaged.with_buff = {}
 	sets.engaged.with_buff['Migawari'] = {body="Iga Ningi +2"}
-	sets.engaged.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	
 	sets.engaged.Tank = {
 		-- ammo="Yetshila",

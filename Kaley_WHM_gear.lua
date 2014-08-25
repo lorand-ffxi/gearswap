@@ -98,8 +98,8 @@ function init_gear_sets()
 
 	sets.midcast.Cursna = {
 		neck="Malison Medallion",
-		ring1="Ephedra Ring",		ring2="Ephedra Ring",
-		back="Mending Cape",		legs="Theophany Pantaloons",	feet="Gendewitha Galoshes"
+		hands="Hieros Mittens",		ring1="Ephedra Ring",			ring2="Ephedra Ring",
+		back="Mending Cape",		legs="Theophany Pantaloons",	feet="Gendewitha Galoshes +1"
 	}
 
 	sets.midcast.StatusRemoval = {
@@ -207,7 +207,6 @@ function init_gear_sets()
 	}
 	sets.idle.speedy = {feet="Herald's Gaiters"}
 	sets.idle.with_buff = {}
-	sets.idle.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	
 	sets.idle.lowMP = {
 		main="Owleyes",		sub="Genbu's Shield",
@@ -221,12 +220,12 @@ function init_gear_sets()
 		ring1="Dark Ring",
 		ring2="Dark Ring",
 	}
-	sets.defense.PDT = set_combine(sets.defense.DT, {
+	sets.defense.PDT = combineSets(sets.defense.DT, {
 		main="Terra's Staff",
 		body="Gendewitha Bilaut +1",	hands="Gendewitha Gages +1",
-		back="Cheviot Cape",		legs="Gendewitha Spats +1",		feet="Gendewitha Galoshes"
+		back="Cheviot Cape",		legs="Gendewitha Spats +1",		feet="Gendewitha Galoshes +1"
 	})
-	sets.defense.MDT = set_combine(sets.defense.DT, {})
+	sets.defense.MDT = combineSets(sets.defense.DT, {})
 	
 	sets.engaged = {
 		--main="Aedold +2",				sub="Genbu's Shield",		
@@ -236,7 +235,6 @@ function init_gear_sets()
 		back="Buquwik Cape",			waist="Cetl Belt",			legs="Weatherspoon Pants +1",	feet="Weatherspoon Souliers +1"
 	}
 	sets.engaged.with_buff = {}
-	sets.engaged.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	
 	sets.engaged.Skillup = {
 		ammo="Jukukik Feather",
@@ -244,6 +242,4 @@ function init_gear_sets()
 		body="Artsieq Jubbah",		hands="Otomi Gloves",		ring1="Rajas Ring",			ring2="Tyrant's Ring",
 		back="Buquwik Cape",			waist="Cetl Belt",			legs="Temachtiani Pants",	feet="Temachtiani Boots"
 	}
-
-	-- Buff sets: Gear that needs to be worn to actively enhance a current player buff.
 end

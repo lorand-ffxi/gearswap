@@ -12,14 +12,23 @@ function define_defaults()
 	sets.precast.JA = {}
 	
 	sets.midcast = {}
+	sets.midcast.DarkMagic = {}
+	sets.midcast.EnfeeblingMagic = {}
+	sets.midcast.EnhancingMagic = {}
+	sets.midcast.ElementalMagic = {}
+	sets.midcast.HealingMagic = {}
+	sets.midcast.FastRecast = {}
+	
 	sets.idle = {}
+	sets.idle.with_buff = {}
 	sets.engaged = {}
+	sets.engaged.with_buff = {}
 	sets.ws = {}
 	sets.defense = {}
-	sets.def = {}
-	sets.def.m = {}
-	sets.def.p = {}
+	sets.defense.PDT = {}
+	sets.defense.MDT = {}
 	sets.buffs = {}
+	sets.buffs.doom = {ring1="Saida Ring", ring2="Saida Ring"}
 	
 	state = {}
 	
@@ -69,7 +78,7 @@ function set_modes()
 		addMode('offense', {'Gun', 'Bow', 'Melee'})
 		addMode('ranged', {'5-hit', 'acc'})
 	elseif S{'MNK'}:contains(player.main_job) then
-		addMode('offense', {'Normal_A', 'Normal_B', 'Normal_C',	'HitMoar', 'Tank', 'TankAcc', 'Mix'})
+		addMode('offense', {'Normal_A', 'Normal_B', 'Normal_C',	'HitMoar', 'Tank', 'TankAcc', 'HitYouBastard'})
 		addMode('accuracy', {'Normal', 'Medium', 'High'})
 	elseif S{'NIN'}:contains(player.main_job) then
 		addMode('offense', {'HasteII', 'HasteII++', 'HasteII_Acc', 'HasteII++_Acc', 'Tank'})
@@ -94,18 +103,17 @@ function set_modes()
 end
 
 function set_keybinds()
+	clear_binds()
 	windower.send_command('alias equip gs c equip')
 	windower.send_command('bind ^d gs c set defense PDT')
 	windower.send_command('bind !d gs c set defense MDT')
 	windower.send_command('bind @d gs c reset defense')
-	
 	windower.send_command('bind @e gs c update user')
 	windower.send_command('bind @w equip engaged')
 	windower.send_command('bind @s gs c cycle offense')
 	windower.send_command('bind @q gs c cycle idle')
 	windower.send_command('bind @c gs c cycle casting')
 	windower.send_command('bind @r gs c cycle ranged')
-	
 	windower.send_command('bind @F12 du blinking self always')
 	
 	if S{player.main_job, player.sub_job}:contains('SCH') then
@@ -114,7 +122,7 @@ function set_keybinds()
 		windower.send_command('bind ^` gs c scholar cost')				--Penury / Parsimony
 		windower.send_command('bind !` gs c scholar speed')				--Celerity / Alacrity
 		windower.send_command('bind @F1 gs c scholar accuracy')			--Altruism / Focalization
-		windower.send_command('bind @F2 gs c scholar power')				--Rapture / Ebullience
+		windower.send_command('bind @F2 gs c scholar power')			--Rapture / Ebullience
 		windower.send_command('bind @F3 gs c scholar enmity')			--Tranquility / Equanimity
 		windower.send_command('bind @F4 gs c scholar duration')			--Perpetuance [Light only]
 		windower.send_command('bind !a gs c scholar aoe')				--Accession / Manifestation
@@ -128,7 +136,6 @@ function set_keybinds()
 	
 	if S{'WHM', 'BLM', 'RDM', 'SCH', 'BRD'}:contains(player.main_job) then
 		windower.send_command('bind @` input /ma "Stun" <t>')
-		
 		if player.sub_job == 'NIN' then
 			windower.send_command('bind @1 input /ma "Utsusemi: Ni" <me>')
 		else
@@ -138,26 +145,22 @@ function set_keybinds()
 			windower.send_command('bind @2 input /ma "Utsusemi: Ichi" <me>')
 		elseif S{player.main_job, player.sub_job}:contains('BLM') then
 			windower.send_command('bind @2 input /ma "Aspir II" <t>')
-		else
-			windower.send_command('unbind @2')
 		end
 		windower.send_command('bind @3 input /ma Aspir <t>')
 		windower.send_command('bind @4 input /ma "Aquaveil" <me>')
 		windower.send_command('bind @5 input /ma "Phalanx" <me>')
 		windower.send_command('bind @6 input /ma "Stoneskin" <me>')
 		windower.send_command('bind @7 input /ma "Ice Spikes" <me>')
-		
-		windower.send_command('unbind @8')
 		if player.main_job == 'RDM' then
 			windower.send_command('bind @8 input /ja "Composure" <me>')
 		elseif player.main_job == 'WHM' then
 			windower.send_command('bind @8 input /ja "Afflatus Solace" <me>')
+			windower.send_command('bind @m input /ja "Afflatus Misery" <me>')
 		elseif player.main_job == 'BRD' then
 			windower.send_command('bind @8 input /ja "Pianissimo" <me>')
 		elseif player.main_job == 'BLM' then
 			windower.send_command('bind @8 input /ja "Manawell" <me>')
 		end
-		
 		windower.send_command('bind @9 input /ma "Sneak" <t>')
 		windower.send_command('bind @0 input /ma "Invisible" <t>')
 	elseif S{'MNK', 'NIN', 'SAM', 'PLD', 'RNG', 'COR', 'THF'}:contains(player.main_job) then
@@ -179,24 +182,17 @@ function set_keybinds()
 			windower.send_command('bind ^` input /ja "Sharpshot" <me>')
 			windower.send_command('bind !` input /ja "Velocity Shot" <me>')
 		end
-		
 		windower.send_command('bind @1 input /ma "Utsusemi: Ni" <me>')
 		windower.send_command('bind @2 input /ma "Utsusemi: Ichi" <me>')
 		if player.main_job == 'PLD' then
 			windower.send_command('bind @4 input /ma "Reprisal" <me>')
 			windower.send_command('bind @5 input /ma "Phalanx" <me>')
 			windower.send_command('bind @6 input /ma "Enlight" <me>')
-			windower.send_command('unbind @7')
 		elseif S{'RNG', 'COR'}:contains(player.main_job) then
 			if player.main_job == 'RNG' then
 				windower.send_command('bind @4 input /ja "Bounty Shot" <t>')
-			else
-				windower.send_command('unbind @4')
 			end
 			windower.send_command('bind @5 gs c cycle RangedMode')
-			windower.send_command('unbind @6;unbind @7')
-		else
-			windower.send_command('unbind @4;unbind @5;unbind @6;unbind @7')
 		end
 		windower.send_command('bind @8 input /ja "Spectral Jig" <me>')
 		windower.send_command('bind @9 input /ma "Monomi: Ichi" <me>')
@@ -213,8 +209,6 @@ function set_keybinds()
 			windower.send_command('bind @3 input /ja Provoke <t>')
 		elseif player.main_job == 'RNG' then
 			windower.send_command('bind @3 input /ja "Scavenge" <me>')
-		else
-			windower.send_command('unbind @3')
 		end
 	end
 	
@@ -225,12 +219,11 @@ function set_keybinds()
 	end
 end
 
-function binds_on_unload()
+function clear_binds()
 	windower.send_command('unbind @1;unbind @2;unbind @3;unbind @4;unbind @5')
 	windower.send_command('unbind @6;unbind @7;unbind @8;unbind @9;unbind @0')
 	windower.send_command('unbind ^=;unbind !=')
 	windower.send_command('unbind ^`;unbind !`;unbind @`')
 	windower.send_command('unbind @F1;unbind @F2;unbind @F3;unbind @F4')
-	windower.send_command('unbind !a;unbind ^a')
-	windower.send_command('unbind !s;unbind ^s')
+	windower.send_command('unbind !a;unbind ^a;unbind !s;unbind ^s;unbind @m')
 end

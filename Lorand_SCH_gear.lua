@@ -79,6 +79,10 @@ function init_gear_sets()
 		legs="Academic's Pants"			--18 Divine/Enfeebling/Enhancing/Healing Skill
 	}
 	
+	sets.midcast.Cursna = {
+		hands="Hieros Mittens",
+	}
+	
 	sets.midcast.Cure = {
 		main="Tamaxchi",				sub="Genbu's Shield",			ammo="Impatiens",
 		head="Gendewitha Caubeen +1",	neck="Fylgja Torque +1",		ear1="Novia Earring",	ear2="Star Earring",
@@ -158,6 +162,8 @@ function init_gear_sets()
 	sets.midcast.ElementalMagic.Earth = {neck="Quanpur Necklace"}
 	
 	sets.midcast.ElementalEnfeeble = {}
+	
+	sets.midcast.DivineMagic = {}
 	
 	--============================================================
 	--					Other sets
