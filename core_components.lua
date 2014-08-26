@@ -32,14 +32,20 @@ init()
 	Called when an action has been flagged as not possible to perform.
 --]]
 function filtered_action(spell)
-	if spell.type == 'WhiteMagic' and buffactive['Light Arts'] and gearswap.addendum_white[spell.id] then
+	windower.add_to_chat(1, spell.en .. ' (' .. spell.type .. ') has been flagged as a filtered action.')
+	windower.add_to_chat(1, 'Active buffs:')
+	for k,v in pairs(buffactive) do
+		windower.add_to_chat(1, tostring(k)..': '..tostring(v))
+	end
+	
+	if spell.type == 'WhiteMagic' and buff_active('Light Arts') and gearswap.addendum_white[spell.id] then
 		cancel_spell()
 		if get_available_stratagem_count() > 0 then
 			windower.send_command('input /ja "Addendum: White" <me>; wait 1.75; input /ma "'..spell.en..'" '..spell.target.name)
 		else
 			windower.add_to_chat(122, "Cancelled "..spell.en..".  Addendum: White is required, but there are no available stratagems.")
 		end
-	elseif spell.type == 'BlackMagic' and buffactive['Dark Arts'] and gearswap.addendum_black[spell.id] then
+	elseif spell.type == 'BlackMagic' and buff_active('Dark Arts') and gearswap.addendum_black[spell.id] then
 		local retryTarget
 		if spell.target.type == 'MONSTER' then
 			retryTarget = '<t>'
@@ -107,7 +113,7 @@ function precast(spell)
 	if player.main_job == 'BRD' and spell.type == 'BardSong' then
 		windower.add_to_chat(122, "Casting "..spell.en.." in mode: "..modes.Daurdabla)
 		-- Auto-Pianissimo
-		if spell.target.type == 'PLAYER' and not spell.target.charmed and not buffactive['Pianissimo'] then
+		if spell.target.type == 'PLAYER' and not spell.target.charmed and not buff_active('Pianissimo') then
 			cancel_spell()
 			windower.send_command('input /ja "Pianissimo" <me>; wait 1.25; input /ma "'..spell.en..'" '..spell.target.name)
 			return
@@ -228,7 +234,7 @@ function buff_change(buff, gain)
 		end
 	end
 	
-	if buff == 'sleep' and gain and buffactive['Stoneskin'] then
+	if buff == 'sleep' and gain and buff_active('Stoneskin') then
 		--If slept, drop stoneskin if a DOT is active to wake up
 		-- if buffactive['Sublimation: Active'] or dotActive() then
 			-- windower.send_command('cancel stoneskin')
@@ -345,7 +351,7 @@ function get_precast_set(spell)
 			precastSet = combineSets(precastSet, sets.precast.FC.Grimoire)		--FastCast/Haste +8%
 		end
 		if buffactive.Celerity or buffactive.Alacrity then
-			if buffactive[elements.storm_of[spell.element]] or spell.element == world.weather_element then
+			if buff_active(elements.storm_of[spell.element]) or spell.element == world.weather_element then
 				precastSet = combineSets(precastSet, sets.precast.FC.Weather)	--FastCast/Haste +15%
 			end
 		end
@@ -452,7 +458,7 @@ function get_midcast_set(spell)
 				if options.useTwilightCape then
 					midcastSet = combineSets(midcastSet, {back='Twilight Cape'})
 				end
-				if buffactive['Klimaform'] and player.main_job == 'SCH' then
+				if buff_active('Klimaform') and player.main_job == 'SCH' then
 					midcastSet = combineSets(midcastSet, {feet={"Savant's Loafers +2", "Savant's Loafers +1"}})
 				end
 			end
@@ -468,7 +474,7 @@ function get_midcast_set(spell)
 				midcastSet = combineSets(midcastSet, sets.midcast.EnfeeblingMagic, 'Potency')
 				midcastSet = combineSets(midcastSet, sets.midcast.EnfeeblingMagic, 'Potency', modes.casting)
 			end
-			if player.main_job == 'RDM' and buffactive['Saboteur'] then
+			if player.main_job == 'RDM' and buff_active('Saboteur') then
 				midcastSet = combineSets(midcastSet, sets.precast.JA, 'Saboteur')
 			end			
 		elseif spell.skill == 'Enhancing Magic' then
@@ -480,7 +486,7 @@ function get_midcast_set(spell)
 			midcastSet = combineSets(midcastSet, sets.midcast, spellMap)
 			midcastSet = combineSets(midcastSet, sets.midcast, spell.en)
 			
-			if buffactive['Composure'] and spell.target.type ~= 'SELF' then
+			if buff_active('Composure') and spell.target.type ~= 'SELF' then
 				midcastSet = combineSets(midcastSet, sets.midcast.EnhancingMagic.Duration.ComposureOther)
 			end
 			if spell.en == 'Phalanx II' then
@@ -510,7 +516,7 @@ function get_midcast_set(spell)
 		end
 	elseif spell.action_type == 'Ranged Attack' then
 		if S{'RNG', 'COR'}:contains(player.main_job) then
-			if buffactive['Barrage'] then
+			if buff_active('Barrage') then
 				midcastSet = combineSets(midcastSet, sets.ranged.barrage)
 			else
 				midcastSet = combineSets(midcastSet, sets[modes.offense])
@@ -545,9 +551,9 @@ end
 function get_gear_for_status(status)
 	if player.main_job == 'THF' then
 		local thfSet = {}
-		if buffactive['Sneak Attack'] then
+		if buff_active('Sneak Attack') then
 			thfSet = combineSets(thfSet, sets.precast.JA['Sneak Attack'])
-		elseif buffactive['Trick Attack'] then
+		elseif buff_active('Trick Attack') then
 			thfSet = combineSets(thfSet, sets.precast.JA['Trick Attack'])
 		end
 		if modes.treasure == 'TH' then

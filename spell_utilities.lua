@@ -51,7 +51,7 @@ function get_tier_for_mp(cureTier)
 	if grimoire ~= nil then
 		if grimoire == 'LA' then
 			mpMult = 0.9
-			if buffactive['Penury'] then
+			if buff_active('Penury') then
 				mpMult = 0.5
 			end
 		else
@@ -114,7 +114,7 @@ function initSleepTimer(spell, spellMap)
 		return
 	end
 	
-	if spell.type == 'WhiteMagic' and buffactive['Perpetuance'] then
+	if spell.type == 'WhiteMagic' and buff_active('Perpetuance') then
 		duration = duration * 2
 	end
 	
@@ -139,9 +139,9 @@ function handle_strategems(cmdParams)
 	local stratagem = cmdParams[1]:lower()
 	
 	local magicType = 'None'
-	if buffactive['Light Arts'] or buffactive['Addendum: White'] then
+	if buff_active('Light Arts', 'Addendum: White') then
 		magicType = 'White Magic'
-	elseif buffactive['Dark Arts']  or buffactive['Addendum: Black'] then
+	elseif buff_active('Dark Arts', 'Addendum: Black') then
 		magicType = 'Black Magic'
 	end
 	
@@ -186,9 +186,9 @@ end
 --]]
 function matchesGrimoire(spell)
 	if spell.type == 'WhiteMagic' then
-		return (buffactive['Light Arts'] or buffactive['Addendum: White'])
+		return getGrimoire() == 'LA'
 	elseif spell.type == 'BlackMagic' then
-		return (buffactive['Dark Arts'] or buffactive['Addendum: Black'])
+		return getGrimoire() == 'DA'
 	else
 		return false
 	end
@@ -205,7 +205,7 @@ function getGrimoire()
 end
 
 function weatherPermits(element)
-	return buffactive[elements.storm_of[element]] or (element == world.day_element) or (element == world.weather_element)
+	return buff_active(elements.storm_of[element]) or (element == world.day_element) or (element == world.weather_element)
 end
 
 --[[
@@ -304,7 +304,7 @@ function not_possible_to_use(spell)
 	end
 	
 	if spell.action_type == 'Ability' then
-		if buffactive['Amnesia'] then
+		if buff_active('Amnesia') then
 			windower.add_to_chat(166, 'Cancelling '..spell.en..' because you are amnesic.')
 			return true
 		end
@@ -318,7 +318,7 @@ function not_possible_to_use(spell)
 			if get_available_stratagem_count() == 0 then
 				windower.add_to_chat(166, 'Cancelling '..spell.en..' because there are currently no stratagems available for use.')
 				return true
-			elseif buffactive[spell.en] then
+			elseif buff_active(spell.en) then
 				windower.add_to_chat(166, 'Cancelling '..spell.en..' because it is already active.')
 				return true
 			end
@@ -339,7 +339,7 @@ function not_possible_to_use(spell)
 			windower.add_to_chat(166, 'Cancelling '..spell.en..' because '..spell.target.name..' is currently charmed.')
 			return true
 		elseif spell.en:contains('Utsusemi') then
-			if buffactive['Copy Image (3)'] or buffactive['Copy Image (4+)'] then
+			if buff_active('Copy Image (3)', 'Copy Image (4+)') then
 				windower.add_to_chat(57, 'Cancelled '..spell.en..' because 3 or more shadows are still active.')
 				return true
 			end
@@ -401,9 +401,9 @@ function get_song_mult(spellName, spellMap)
 		mult = mult*2
 	end
 	if spellName == "Sentinel's Scherzo" then
-		if buffactive['Soul Voice'] then
+		if buff_active('Soul Voice') then
 			mult = mult*2
-		elseif buffactive['Marcato'] then
+		elseif buff_active('Marcato') then
 			mult = mult*1.5
 		end
 	end
@@ -454,7 +454,7 @@ function adjust_Timers(spell, spellMap)
 				maxsongs = maxsongs + 2
 			end
 		end
-		if buffactive['Clarion Call'] then
+		if buff_active('Clarion Call') then
 			maxsongs = maxsongs + 1
 		end
 		-- If we have more songs active than is currently apparent, we can still overwrite
