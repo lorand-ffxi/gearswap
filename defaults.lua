@@ -129,9 +129,6 @@ function set_keybinds()
 		windower.send_command('bind ^a gs c scholar aoe')				--Accession / Manifestation
 		windower.send_command('bind !s input /ja Sublimation <me>')
 		windower.send_command('bind ^s input /ja Sublimation <me>')
-	else
-		windower.send_command('unbind ^=;unbind !=')
-		windower.send_command('unbind !a;unbind ^a;unbind !s;unbind ^s')
 	end
 	
 	if S{'WHM', 'BLM', 'RDM', 'SCH', 'BRD'}:contains(player.main_job) then
@@ -168,7 +165,6 @@ function set_keybinds()
 			windower.send_command('bind ^` input /ja "Innin" <me>')
 			windower.send_command('bind !` input /ja "Yonin" <me>')
 		elseif player.main_job == 'MNK' then
-			windower.send_command('unbind ^`')
 			windower.send_command('bind !` input /ja "Perfect Counter" <me>')
 		elseif player.main_job == 'SAM' then
 			windower.send_command('bind @` input /ja "Blade Bash" <t>')
@@ -192,14 +188,13 @@ function set_keybinds()
 			if player.main_job == 'RNG' then
 				windower.send_command('bind @4 input /ja "Bounty Shot" <t>')
 			end
-			windower.send_command('bind @5 gs c cycle RangedMode')
 		end
 		windower.send_command('bind @8 input /ja "Spectral Jig" <me>')
 		windower.send_command('bind @9 input /ma "Monomi: Ichi" <me>')
 		windower.send_command('bind @0 input /ma "Tonko: Ni" <me>')
 		
 		if player.main_job == 'THF' then
-			windower.send_command('bind ^= gs c cycle treasuremode')
+			windower.send_command('bind @t gs c cycle treasure')
 		end
 		
 		if player.sub_job == 'DNC' then

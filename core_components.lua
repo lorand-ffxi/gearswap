@@ -527,7 +527,8 @@ function get_midcast_set(spell)
 				midcastSet = combineSets(sets.tpBase, midcastSet)
 			end
 		else
-			equipSet = sets.midcast.ranged
+			midcastSet = sets.midcast.ranged
+			midcastSet = combineSets(midcastSet, sets.midcast.ranged, modes.ranged)
 		end
 	elseif spell.action_type == 'Ability' then
 		midcastSet = combineSets(midcastSet, sets.midcast, spell.type)

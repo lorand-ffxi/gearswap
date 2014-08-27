@@ -65,14 +65,14 @@ function init_gear_sets()
 		ring2="Veneficium Ring",	--Q+1%
 		legs="Enif Cosciales"		--7%
 	}
-	sets.precast.FC.Utsusemi = set_combine(sets.precast.FC, {neck="Magoraga Bead Necklace"})
+	sets.precast.FC.Utsusemi = {neck="Magoraga Bead Necklace"}
 
 	--============================================================
 	
 	--Snapshot
-	sets.precast.RangedAttack = {
+	sets.precast.ranged = {
 		hands="Iuitl Wristbands +1",
-		legs="Mustela Brais",
+		legs="Nahtirah Trousers",
 	}
 
 	sets.wsBase = {
@@ -108,12 +108,12 @@ function init_gear_sets()
 	}
 	sets.midcast.Utsusemi = {back="Mujin Mantle"}
 
-	sets.midcast.RangedAttack = {
-		head="Uk'uxkaj Cap",	neck="Ocachi Gorget",		ear1="Clearview Earring",	ear2="Volley Earring",
-		body="Iuitl Vest +1",	hands="Manibozho Gloves",	ring1="Paqichikaji Ring",	ring2="Longshot Ring",
-		back="Kayapa Cape",		waist="Sveltesse Gouriz",	legs="Aetosaur Trousers",	feet="Pillager's Poulaines"
+	sets.midcast.ranged = {
+		head="Uk'uxkaj Cap",	neck="Ocachi Gorget",			ear1="Clearview Earring",	ear2="Volley Earring",
+		body="Iuitl Vest +1",	hands="Iuitl Wristbands +1",	ring1="Paqichikaji Ring",	ring2="Longshot Ring",
+		back="Libeccio Mantle",	waist="Sveltesse Gouriz",		legs="Nahtirah Trousers",	feet="Pillager's Poulaines"
 	}
-	sets.midcast.RangedAttack.TH = set_combine(sets.midcast.RangedAttack, sets.TreasureHunter)
+	sets.midcast.ranged.TH = sets.TreasureHunter
 	
 	--============================================================
 	--					Other sets
@@ -142,12 +142,12 @@ function init_gear_sets()
 		legs="Kaabnax Trousers"
 	}
 	
-	sets.defense.PDT = set_combine(sets.defense.Evasion, sets.defense.DT, {	--PDT-12% + DT => PDT-39%
+	sets.defense.PDT = combineSets(sets.defense.Evasion, sets.defense.DT, {	--PDT-12% + DT => PDT-39%
 		hands="Iuitl Wristbands +1",
 		back="Repulse Mantle",		waist="Flume Belt",	feet="Iuitl Gaiters"
 	})
 
-	sets.defense.MDT = set_combine(sets.defense.Evasion, sets.defense.DT, {	--MDT-4% + DT => MDT-29%, MDB+23
+	sets.defense.MDT = combineSets(sets.defense.Evasion, sets.defense.DT, {	--MDT-4% + DT => MDT-29%, MDB+23
 		ear1="Merman's Earring",	ear2="Merman's Earring",
 		hands="Iuitl Wristbands +1",
 		back="Tuilha Cape",			waist="Flume Belt",		feet="Shneddick Boots +1"

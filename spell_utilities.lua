@@ -261,6 +261,7 @@ function modify_spell(spell)
 			end
 		end
 	end
+	return false
 end
 
 function getRecast(spell)

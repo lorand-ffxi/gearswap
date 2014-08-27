@@ -203,7 +203,7 @@ function init_gear_sets()
 	--sets.engaged.HasteII_HasteSamba = {
 	sets.engaged.HasteII_Acc = {
 		ammo="Fire Bomblet",
-		head="Ejekamal Mask",			neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
+		head="Whirlpool Mask",			neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
 		body="Mochizuki Chainmail +1",	hands="Otronif Gloves +1",	ring1="Rajas Ring",			ring2="Epona's Ring",
 		back="Yokaze Mantle",			waist="Patentia Sash",		legs="Mochizuki Hakama +1",	feet="Mochizuki Kyahan +1"
 	}
@@ -216,7 +216,7 @@ function init_gear_sets()
 	}
 	sets.engaged['HasteII++_Acc'] = {
 		ammo="Fire Bomblet",
-		head="Ejekamal Mask",			neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
+		head="Whirlpool Mask",			neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
 		body="Mochizuki Chainmail +1",	hands="Otronif Gloves +1",	ring1="Rajas Ring",			ring2="Epona's Ring",
 		back="Yokaze Mantle",			waist="Patentia Sash",		legs="Hachiya Hakama +1",	feet="Mochizuki Kyahan +1"
 	}
@@ -238,7 +238,7 @@ function init_gear_sets()
 		back="Atheling Mantle",			waist="Patentia Sash",		legs="Mochizuki Hakama +1",	feet="Mochizuki Kyahan +1"
 	}
 	sets.engaged.HasteI_HasteSamba.Higher = {
-		head="Ejekamal Mask",
+		head="Whirlpool Mask",
 		hands="Otronif Gloves +1",
 		back="Yokaze Mantle"
 	}
