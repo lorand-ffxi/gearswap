@@ -32,11 +32,11 @@ init()
 	Called when an action has been flagged as not possible to perform.
 --]]
 function filtered_action(spell)
-	windower.add_to_chat(1, spell.en .. ' (' .. spell.type .. ') has been flagged as a filtered action.')
-	windower.add_to_chat(1, 'Active buffs:')
-	for k,v in pairs(buffactive) do
-		windower.add_to_chat(1, tostring(k)..': '..tostring(v))
-	end
+	-- windower.add_to_chat(1, spell.en .. ' (' .. spell.type .. ') has been flagged as a filtered action.')
+	-- windower.add_to_chat(1, 'Active buffs:')
+	-- for k,v in pairs(buffactive) do
+		-- windower.add_to_chat(1, tostring(k)..': '..tostring(v))
+	-- end
 	
 	if spell.type == 'WhiteMagic' and buff_active('Light Arts') and gearswap.addendum_white[spell.id] then
 		cancel_spell()
@@ -822,9 +822,19 @@ end
 function pet_status_change(new, old)
 end
 
+function info(args)
+	local argStr = table.concat(args, ' ')
+	local tbl = parseInput(argStr)
+	if tbl ~= nil then
+		printInfo(tbl, argStr)
+	else
+		windower.add_to_chat(0, 'Error: Unable to parse valid command')
+	end
+end
+
 executable_commands = {
 	['atc']		=	addToChat,	['scholar'] =	handle_strategems,	['show']	=	show_set,
 	['update']	=	update,		['cycle']	=	cycle_mode,			['set']		=	set_mode,
 	['reset']	=	reset_mode,	['toggle']	=	toggle_mode,		['activate']=	activate_mode,
-	['equip']	=	equip_set,
+	['equip']	=	equip_set,	['info']	=	info,
 }

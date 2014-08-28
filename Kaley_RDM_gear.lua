@@ -176,10 +176,10 @@ function init_gear_sets()
 	}
 	
 	sets.idle = {
-		main="Terra's Staff",			sub="Achaq Grip",			ammo="Kalboron Stone",
-		head="Vitivation Chapeau +1",	neck="Twilight Torque",		ear1="Novia Earring",	ear2="Ethereal Earring",
-		body="Artsieq Jubbah",			hands="Serpentes Cuffs",	ring1="Dark Ring",		ring2="Dark Ring",
-		back="Cheviot Cape",			waist="Emphatikos Rope",	legs="Nares Trews",		feet="Serpentes Sabots"
+		main="Terra's Staff",			sub="Achaq Grip",				ammo="Kalboron Stone",
+		head="Vitivation Chapeau +1",	neck="Twilight Torque",			ear1="Novia Earring",		ear2="Ethereal Earring",
+		body="Artsieq Jubbah",			hands="Gendewitha Gages +1",	ring1="Dark Ring",			ring2="Dark Ring",
+		back="Tuilha Cape",				waist="Emphatikos Rope",		legs="Gendewitha Spats +1",	feet="Serpentes Sabots"
 	}
 	sets.idle.with_buff = {}
 	
@@ -191,6 +191,12 @@ function init_gear_sets()
 		back="Cheviot Cape",			waist="Flume Belt",			legs="Nares Trews",			feet="Serpentes Sabots"
 	}
 	sets.idle.speedy = {legs="Crimson Cuisses"}
+	-- sets.idle.lowMP = {
+		-- legs="Nares Trews"
+	-- }
+	-- sets.idle.lowMP_night =	{hands="Serpentes Cuffs"}
+	-- sets.idle.lowMP_day = {feet="Serpentes Sabots"}
+	
 	
 	sets.defense.DT = {
 		neck="Twilight Torque",

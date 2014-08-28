@@ -175,7 +175,7 @@ function init_gear_sets()
 		ammo="Honed Tathlum",
 		head="Whirlpool Mask",		neck="Twilight Torque",		ear1="Bladeborn Earring",	ear2="Steelflash Earring",
 		body="Otronif Harness +1",	hands="Otronif Gloves +1",	ring1="Defending Ring",		ring2="Rajas Ring",
-		back="Anchoret's Mantle",	waist="Black Belt",			legs="Kaabnax Trousers",	feet="Otronif Boots +1"
+		back="Anchoret's Mantle",	waist="Anguinus Belt",		legs="Hesychast's Hose +1",	feet="Otronif Boots +1"
 	}
 	
 	sets.engaged.HitMoar = {

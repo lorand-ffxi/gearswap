@@ -25,11 +25,11 @@ function init_gear_sets()
 	--============================================================
 	sets.precast.JA = sets.Enmity
 	sets.precast.JA['Invincible'] = {legs="Caballarius Breeches"}
-	sets.precast.JA['Holy Circle'] = {feet="Reverence Leggings"}
+	sets.precast.JA['Holy Circle'] = {feet="Reverence Leggings +1"}
 	sets.precast.JA['Shield Bash'] = {
 		ear1="Creed Earring",
 		hands="Caballarius Gauntlets +1",	ring2="Fenian Ring",
-		feet="Reverence Leggings"
+		feet="Reverence Leggings +1"
 	}
 	sets.precast.JA['Sentinel'] = {feet="Caballarius Leggings +1"}
 	sets.precast.JA['Rampart'] = {head="Caballarius Coronet"}
@@ -132,15 +132,15 @@ function init_gear_sets()
 	sets.Reraise = {head="Twilight Helm", body="Twilight Mail"}
 	
 	sets.resting = {
-		head="Twilight Helm",		neck="Creed Collar",	ear2="Relaxing Earring",
-		body="Twilight Mail",		ring1="Paguroidea Ring",
-		legs="Reverence Breeches +1",	feet="Reverence Leggings"
+		head="Twilight Helm",			neck="Creed Collar",			ear2="Relaxing Earring",
+		body="Twilight Mail",			ring1="Paguroidea Ring",
+		legs="Reverence Breeches +1",	feet="Reverence Leggings +1"
 	}
 	
 	sets.idle = {
 		ammo="Angha Gem",
-		head="Twilight Helm",	neck="Creed Collar",			ear1="Creed Earring",		ear2="Ethereal Earring",
-		body="Twilight Mail",	hands="Reverence Gauntlets +1",	ring1="Defending Ring",		ring2="Sheltered Ring",
+		head="Twilight Helm",	neck="Creed Collar",			ear1="Creed Earring",			ear2="Ethereal Earring",
+		body="Twilight Mail",	hands="Reverence Gauntlets +1",	ring1="Defending Ring",			ring2="Sheltered Ring",
 		back="Weard Mantle",	waist="Nierenschutz",			legs="Reverence Breeches +1",	feet="Caballarius Leggings +1"
 	}
 	sets.idle.speedy = {legs="Blood Cuisses"}

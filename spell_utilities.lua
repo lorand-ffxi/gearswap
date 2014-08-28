@@ -240,11 +240,11 @@ end
 	that was found in the list of active buffs.  If none of the given buffs are active, it returns nil.
 --]]
 function buff_active(...)
-	local args = T{...}:map(string.lower)
-	local activeBuffs = T(buffactive):map(string.lower)
-	for _,arg in pairs(args) do
-		if activeBuffs[arg] then
-			return buffList:with('en', arg) or buffList:with('en', arg:capitalize())
+	local args = S{...}:map(string.lower)
+	for _,buffid in pairs(player.buffs) do
+		local buff = buffList[buffid]
+		if args:contains(buff.en:lower()) then
+			return buff
 		end
 	end
 	return nil
@@ -256,7 +256,7 @@ function modify_spell(spell)
 		if (smap == 'StatusRemoval') and (not S{'Erase', 'Esuna'}:contains(spell.en)) then
 			local xrecast = getRecast('Divine Caress') or -1
 			if (not buff_active('Divine Caress')) and (xrecast == 0) then
-				windower.send_command('input /ja "Divine Caress" <me>; wait 1.75; input /ma "'..spell.en..'" '..spell.target.name)
+				windower.send_command('input /ja "Divine Caress" <me>; wait 1.25; input /ma "'..spell.en..'" '..spell.target.name)
 				return true
 			end
 		end

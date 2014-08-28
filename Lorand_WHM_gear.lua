@@ -102,7 +102,7 @@ function init_gear_sets()
 
 	sets.midcast.Cursna = {
 		hands="Hieros Mittens",
-		legs="Theophany Pantaloons"
+		legs="Theophany Pantaloons",	feet="Gendewitha Galoshes +1"
 	}
 
 	sets.midcast.StatusRemoval = {

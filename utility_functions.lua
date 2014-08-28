@@ -173,3 +173,60 @@ function setMode(mode, option)
 	if modes[mode] == nil then addMode(mode) end
 	modes[mode] = option
 end
+
+--======================================================================
+--			Table info functions
+--======================================================================
+
+function parseInput(command)
+	local parts = string.split(command, '.')
+	local result = _G[parts[1]] or _G[parts[1]:lower()]
+	if result == nil then return nil end
+	
+	for i = 2, #parts, 1 do
+		local str = parts[i]
+		if string.endswith(str, '()') then
+			local func = str:sub(1, #str-2)
+			result = result[func]()
+		elseif string.endswith(str, ')') then
+			local params = string.match(str, '%([^)]+%)')
+			params = params:sub(2, #params-1)
+			local func = str:sub(1, string.find(str, '%(')-1)
+			result = result[func](params)
+		elseif string.endswith(str, ']') then
+			local key = string.match(str, '%[.+%]')
+			key = key:sub(2, #key-1)
+			local tab = str:sub(1, string.find(str, '%[')-1)
+			result = result[tab][key]
+		else
+			local strnum = tonumber(str)
+			if (strnum ~= nil) and (result[strnum] ~= nil) then
+				result = result[strnum]
+			else
+				result = result[str]
+			end
+		end
+	end
+	
+	return result
+end
+
+--[[
+	Print all key, value pairs in the given table t to the FFXI chat log,
+	with an optional header line h
+--]]
+function printInfo(t, h)
+	if t ~= nil then
+		if h ~= nil then
+			windower.add_to_chat(2, h)
+		end
+		
+		if type(t) == 'table' then
+			for k,v in pairs(t) do
+				windower.add_to_chat(0, tostring(k)..'  :  '..tostring(v))
+			end
+		else
+			windower.add_to_chat(0, tostring(t))
+		end
+	end
+end
