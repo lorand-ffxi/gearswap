@@ -7,10 +7,9 @@
 		3:	Twilight Helm/Body
 		8:	Creed Collar/Earring/Baudrier
 		10:	Creed+2 Body/Feet
-		15:	Reverence Legs/Feet
-		16:	Reverence+1 Head/Body/Hands
-		17:	Caballarius Head/Body/Hands/Legs
-		18:	Caballarius+1 Body/Feet
+		16:	Reverence+1 (all)
+		17:	Caballarius Head
+		18:	Caballarius+1 Body/Hands/Legs/Feet
 --]]
 -----------------------------------------------------------------------------------------------------------
 
@@ -18,13 +17,13 @@ function init_gear_sets()
 	sets.Enmity = {	--68
 		head="Hero's Galea",		neck="Invidia Torque",			ear2="Friomisi Earring",
 		body="Creed Cuirass +2",	hands="Tjukurrpa Gauntlets",	ring1="Eihwaz Ring",			ring2="Provocare Ring",
-		back="Earthcry Mantle",		waist="Creed Baudrier",			legs="Caballarius Breeches",	feet="Creed Sabatons +2"
+		back="Earthcry Mantle",		waist="Creed Baudrier",			legs="Caballarius Breeches +1",	feet="Creed Sabatons +2"
 	}
 	--============================================================
 	--					Precast sets
 	--============================================================
 	sets.precast.JA = sets.Enmity
-	sets.precast.JA['Invincible'] = {legs="Caballarius Breeches"}
+	sets.precast.JA['Invincible'] = {legs="Caballarius Breeches +1"}
 	sets.precast.JA['Holy Circle'] = {feet="Reverence Leggings +1"}
 	sets.precast.JA['Shield Bash'] = {
 		ear1="Creed Earring",
@@ -40,7 +39,7 @@ function init_gear_sets()
 	sets.precast.Waltz = {
 		head="Reverence Coronet +1",	neck="Invidia Torque",				ear1="Creed Earring",			ear2="Friomisi Earring",
 		body="Reverence Surcoat +1",	hands="Caballarius Gauntlets +1",	ring1="Eihwaz Ring",			ring2="Asklepian Ring",
-		back="Earthcry Mantle",			waist="Creed Baudrier",				legs="Caballarius Breeches",	feet="Caballarius Leggings +1"
+		back="Earthcry Mantle",			waist="Creed Baudrier",				legs="Caballarius Breeches +1",	feet="Caballarius Leggings +1"
 	}
 	sets.precast.Waltz['Healing Waltz'] = {}
 
@@ -88,7 +87,7 @@ function init_gear_sets()
 		ammo="Incantor Stone",
 		head="Cizin Helm +1",			neck="Orunmila's Torque",		ear1="Creed Earring",			ear2="Loquacious Earring",
 		body="Reverence Surcoat +1",	hands="Caballarius Gauntlets +1",	ring1="Prolix Ring",			ring2="Eihwaz Ring",
-		back="Earthcry Mantle",			waist="Cetl Belt",				legs="Caballarius Breeches",	feet="Ejekamal Boots"
+		back="Earthcry Mantle",			waist="Cetl Belt",				legs="Caballarius Breeches +1",	feet="Ejekamal Boots"
 	}
 	
 	sets.midcast.MagicAccuracy = {
@@ -99,14 +98,14 @@ function init_gear_sets()
 		ammo="Incantor Stone",
 		head="Cizin Helm +1",			neck="Invidia Torque",			ear1="Friomisi Earring",		ear2="Loquacious Earring",
 		body="Reverence Surcoat +1",	hands="Caballarius Gauntlets +1",	ring1="Eihwaz Ring",			ring2="Provocare Ring",
-		back="Earthcry Mantle",			waist="Creed Baudrier",			legs="Caballarius Breeches",	feet="Creed Sabatons +2"
+		back="Earthcry Mantle",			waist="Creed Baudrier",			legs="Caballarius Breeches +1",	feet="Creed Sabatons +2"
 	}
 	
 	sets.midcast.Cure = {	--Enmity+56, Haste+23%, FC+5%, Interrupt-10%, Cure+7%
 		ammo="Impatiens",
 		head="Cizin Helm +1",			neck="Invidia Torque",			ear1="Hospitaler Earring",		ear2="Friomisi Earring",
 		body="Reverence Surcoat +1",	hands="Reverence Gauntlets +1",	ring1="Eihwaz Ring",			ring2="Provocare Ring",
-		back="Fierabras's Mantle",		waist="Creed Baudrier",			legs="Caballarius Breeches",	feet="Caballarius Leggings +1"
+		back="Fierabras's Mantle",		waist="Creed Baudrier",			legs="Caballarius Breeches +1",	feet="Caballarius Leggings +1"
 	}
 	
 	sets.midcast.Cure.Self = {	--Enmity+33, Haste+29%, FC+8%, Interrupt-10%, Cure+7%, Cure received+31%

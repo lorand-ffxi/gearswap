@@ -230,16 +230,19 @@ function init_gear_sets()
 	sets.engaged = {
 		--main="Aedold +2",				sub="Genbu's Shield",		
 		ammo="Jukukik Feather",
-		head="Weatherspoon Corona +1",	neck="Asperity Necklace",	ear1="Bladeborn Earring",		ear2="Steelflash Earring",
-		body="Artsieq Jubbah",		hands="Otomi Gloves",		ring1="Rajas Ring",				ring2="Tyrant's Ring",
-		back="Buquwik Cape",			waist="Cetl Belt",			legs="Weatherspoon Pants +1",	feet="Weatherspoon Souliers +1"
+		head="Gendewitha Caubeen +1",	neck="Asperity Necklace",	ear1="Bladeborn Earring",		ear2="Steelflash Earring",
+		body="Artsieq Jubbah",			hands="Otomi Gloves",		ring1="Rajas Ring",				ring2="Tyrant's Ring",
+		back="Buquwik Cape",			waist="Cetl Belt",			legs="Gendewitha Spats +1",	feet="Gendewitha Galoshes +1"
 	}
 	sets.engaged.with_buff = {}
 	
 	sets.engaged.Skillup = {
 		ammo="Jukukik Feather",
-		head="Temachtiani Headband",	neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
-		body="Artsieq Jubbah",		hands="Otomi Gloves",		ring1="Rajas Ring",			ring2="Tyrant's Ring",
-		back="Buquwik Cape",			waist="Cetl Belt",			legs="Temachtiani Pants",	feet="Temachtiani Boots"
+		head="Gendewitha Caubeen +1",	neck="Asperity Necklace",	ear1="Bladeborn Earring",		ear2="Steelflash Earring",
+		body="Artsieq Jubbah",			hands="Otomi Gloves",		ring1="Rajas Ring",				ring2="Adler Ring",
+		back="Kayapa Cape",				waist="Cetl Belt",			legs="Gendewitha Spats +1",		feet="Gendewitha Galoshes +1"
+		-- head="Temachtiani Headband",	neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
+		-- body="Artsieq Jubbah",			hands="Otomi Gloves",		ring1="Rajas Ring",			ring2="Tyrant's Ring",
+		-- back="Buquwik Cape",			waist="Cetl Belt",			legs="Temachtiani Pants",	feet="Temachtiani Boots"
 	}
 end

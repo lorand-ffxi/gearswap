@@ -15,10 +15,14 @@
 -----------------------------------------------------------------------------------------------------------
 
 function init_gear_sets()
-	gear.Gun = "Hgafircian +2"
-	gear['Gun_ammo'] = "Achiyalabopa Bullet"
-	gear['Gun_ammo_RA'] = "Achiyalabopa Bullet"
-	gear['Gun_ammo_WS'] = "Achiyalabopa Bullet"
+	gear.Gun = "Killer Bow"
+	gear['Gun_ammo'] = "Mythril Bolt"
+	gear['Gun_ammo_RA'] = "Mythril Bolt"
+	gear['Gun_ammo_WS'] = "Mythril Bolt"
+	-- gear.Gun = "Hgafircian +2"
+	-- gear['Gun_ammo'] = "Achiyalabopa Bullet"
+	-- gear['Gun_ammo_RA'] = "Achiyalabopa Bullet"
+	-- gear['Gun_ammo_WS'] = "Achiyalabopa Bullet"
 	-- gear['Gun_ammo'] = "Ra'Kaznar Bullet"
 	-- gear['Gun_ammo_RA'] = "Adlivun Bullet"
 	-- gear['Gun_ammo_WS'] = "Eminent Bullet"
@@ -267,7 +271,6 @@ function init_gear_sets()
 	sets.Accuracy.sam.Accuracy = {}
 	sets.Accuracy.other.Accuracy = {}
 	
-	
 	--============================================================
 	--					Other sets
 	--============================================================
@@ -281,7 +284,6 @@ function init_gear_sets()
 	}
 	sets.idle.speedy = {feet="Skadi's Jambeaux +1"}
 	sets.idle.with_buff = {}
-	sets.idle.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	
 	sets.defense.DT = {	--DT-5%, PDT-10%, MDT-7%	=> PDT-15%, MDT-12%
 		neck="Twilight Torque",
@@ -298,15 +300,12 @@ function init_gear_sets()
 		back="Tuilha Cape",		waist="Flume Belt",			legs="Kaabnax Trousers",	feet="Iuitl Gaiters +1"
 	})
 	
-	sets.Kiting = {feet="Orion Socks"}
-	
 	sets.engaged = {
-		head="Ejekamal Mask",	neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
-		body="Iuitl Vest +1",	hands="Buremte Gloves",		ring1="Rajas Ring",			ring2="Epona's Ring",
-		back="Atheling Mantle",	waist="Patentia Sash",		legs="Kaabanax Trousers",	feet="Orion Socks"
+		head="Whirlpool Mask",	neck="Asperity Necklace",		ear1="Dudgeon Earring",	ear2="Heartseeker Earring",
+		body="Qaaxo Harness",	hands="Iuitl Wristbands +1",	ring1="Rajas Ring",		ring2="Epona's Ring",
+		back="Atheling Mantle",	waist="Patentia Sash",			legs="Iuitl Tights +1",	feet="Iuitl Gaiters +1"
 	}
 	sets.engaged.with_buff = {}
-	sets.engaged.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	sets.Melee = {}
 	sets.Melee.tp = sets.engaged
 end

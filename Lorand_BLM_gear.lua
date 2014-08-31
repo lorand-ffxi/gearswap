@@ -108,6 +108,14 @@ function init_gear_sets()
 		back="Bane Cape",			waist="Aswang Sash",		legs="Hagondes Pants +1",	feet="Hagondes Sabots +1"
 	}
 	sets.midcast.ElementalMagic.Earth = {neck="Quanpur Necklace"}
+	
+	sets.midcast.ElementalMagic.Resistant = {
+		main="Kaladanda",		sub="Mephitis Grip",	ammo="Dosis Tathlum",
+		head="Nahtirah Hat",	neck="Eddy Necklace",	ear1="Hecate's Earring",	ear2="Friomisi Earring",
+		body="Artsieq Jubbah",	hands="Yaoyotl Gloves",	ring1="Fenrir Ring +1",		ring2="Sangoma Ring",
+		back="Bane Cape",		waist="Aswang Sash",	legs="Artsieq Hose",		feet="Hagondes Sabots +1"
+	}
+	
 	sets.midcast.ElementalEnfeeble = {}
 	--============================================================
 	--					Other sets

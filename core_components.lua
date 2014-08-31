@@ -69,7 +69,7 @@ end
 --]]
 function pretarget(spell)
 	if spell.target == nil then return end
-	if S{'PLAYER', 'SELF'}:contains(spell.target.type) and debuff_to_na[spell.english] then
+	if S{'PLAYER', 'SELF'}:contains(spell.target.type) and debuff_to_na[spell.en] then
 		local spellTarget = spell.target.name
 		if spell.target.name == player.name then
 			local ptarg = windower.ffxi.get_mob_by_target()
@@ -77,12 +77,12 @@ function pretarget(spell)
 				spellTarget = '<t>'
 			end
 		end
-		windower.send_command('input /ma "'..debuff_to_na[spell.english]..'" '..spellTarget)
-	elseif spell.english == 'Phalanx' and spell.target.type == 'PLAYER' and spell.target.type ~= 'SELF' then
+		windower.send_command('input /ma "'..debuff_to_na[spell.en]..'" '..spellTarget)
+	elseif spell.en == 'Phalanx' and spell.target.type == 'PLAYER' and spell.target.type ~= 'SELF' then
 		windower.send_command('input /ma "Phalanx II" '..spell.target.name)
-	elseif S{'Haste'}:contains(spell.english) and player.main_job == 'RDM' then
+	elseif S{'Haste'}:contains(spell.en) and player.main_job == 'RDM' then
 		windower.send_command('input /ma "Haste II" '..spell.target.name)
-	elseif S{'Flurry'}:contains(spell.english) and player.main_job == 'RDM' then
+	elseif S{'Flurry'}:contains(spell.en) and player.main_job == 'RDM' then
 		windower.send_command('input /ma "Flurry II" '..spell.target.name)
 	else
 		return
@@ -430,6 +430,7 @@ function get_midcast_set(spell)
 			modes.Daurdabla = 'None'
 		elseif spell.skill == 'Dark Magic' then
 			midcastSet = get_standard_magic_set(midcastSet, spell, spellMap, 'DarkMagic')
+			midcastSet = combineSets(midcastSet, sets.midcast.DarkMagic, modes.casting)
 		elseif spell.skill == 'Healing Magic' then
 			midcastSet = get_standard_magic_set(midcastSet, spell, spellMap, 'HealingMagic')
 			midcastSet = combineSets(midcastSet, sets.midcast.spellMap, status)
@@ -447,6 +448,7 @@ function get_midcast_set(spell)
 					midcastSet = combineSets(midcastSet, {waist='Korin Obi'})
 				end
 			end
+			midcastSet = combineSets(midcastSet, sets.midcast.DivineMagic, modes.casting)
 		elseif spell.skill == 'Elemental Magic' then
 			midcastSet = get_standard_magic_set(midcastSet, spell, spellMap, 'ElementalMagic')
 			--TODO: Add High/Low tier sets
@@ -463,6 +465,7 @@ function get_midcast_set(spell)
 				end
 			end
 			midcastSet = combineSets(midcastSet, sets.midcast.ElementalMagic, spell.element)
+			midcastSet = combineSets(midcastSet, sets.midcast.ElementalMagic, modes.casting)
 			if spell.en == 'Impact' then
 				midcastSet = combineSets(midcastSet, {body='Twilight Cloak'})
 			end
@@ -476,7 +479,8 @@ function get_midcast_set(spell)
 			end
 			if player.main_job == 'RDM' and buff_active('Saboteur') then
 				midcastSet = combineSets(midcastSet, sets.precast.JA, 'Saboteur')
-			end			
+			end
+			midcastSet = combineSets(midcastSet, sets.midcast.EnfeeblingMagic, modes.casting)
 		elseif spell.skill == 'Enhancing Magic' then
 			midcastSet = combineSets(midcastSet, sets.midcast.EnhancingMagic)
 			midcastSet = combineSets(midcastSet, sets.midcast.EnhancingMagic, getGrimoire())
@@ -617,6 +621,9 @@ end
 	Assembles the player's melee set with an optional baseSet.
 --]]
 function get_melee_set(baseSet)
+
+	--local hasteTier = hasteType or 1
+
 	local meleeSet = combineSets(baseSet, sets.engaged)
 	meleeSet = combineSets(meleeSet, sets.engaged[modes.offense])
 	meleeSet = combineSets(meleeSet, sets.engaged[modes.defense])

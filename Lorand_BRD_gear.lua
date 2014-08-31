@@ -256,10 +256,9 @@ function init_gear_sets()
 	sets.idle.with_buff = {}
 	
 	sets.engaged = {
-		main="Leisilonu +2",
-		head="Kaabanax Hat",		neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
-		body="Bihu Justaucorps",	hands="Otomi Gloves",		ring1="Rajas Ring",			ring2="Mars's Ring",
-		back="Atheling Mantle",		waist="Cetl Belt",			legs="Bihu Cannions",		feet="Brioso Slippers"
+		head="Nahtirah Hat",		neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
+		body="Bihu Justaucorps",	hands="Buremte Gloves",		ring1="Rajas Ring",			ring2="Mars's Ring",
+		back="Atheling Mantle",		waist="Cetl Belt",			legs="Gendewitha Spats +1",	feet="Gendewitha Galoshes +1"
 	}
 	sets.engaged.with_buff = {}
 end

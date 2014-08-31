@@ -5,9 +5,9 @@
 --]]
 -----------------------------------------------------------------------------------------------------------
 
-local abilList = T(require('res/abilities'))
-local buffList = T(require('res/buffs'))
-local spellList = T(require('res/spells'))
+--local abilList = T(require('res/abilities'))
+--local buffList = T(require('res/buffs'))
+--local spellList = T(require('res/spells'))
 local cnums = {['Cure'] = 1, ['Cure II'] = 2, ['Cure III'] = 3, ['Cure IV'] = 4, ['Cure V'] = 5, ['Cure VI'] = 6}
 local ncures = {'Cure','Cure II','Cure III','Cure IV','Cure V','Cure VI'}
 local strat_charge_time = {240,120,80,60,48}
@@ -29,7 +29,7 @@ function modify_cure(spell)
 	local ncnum = get_tier_for_hp(cnum, hpMissing)
 	ncnum = get_tier_for_mp(ncnum)
 	
-	local cspell = spellList:with('en', ncures[ncnum])
+	local cspell = gearswap.res.spells:with('en', ncures[ncnum])
 	local crecast = windower.ffxi.get_spell_recasts()[cspell.id] or 0
 	if (crecast > 0) and (ncnum > 1) then
 		ncnum = ncnum - 1
@@ -59,11 +59,11 @@ function get_tier_for_mp(cureTier)
 		end
 	end
 	
-	local spell = spellList:with('en', ncures[ncnum])
+	local spell = gearswap.res.spells:with('en', ncures[ncnum])
 	while (spell.mp_cost * mpMult) > player.mp do
 		if ncnum > 1 then
 			ncnum = ncnum - 1
-			spell = spellList:with('en', ncures[ncnum])
+			spell = gearswap.res.spells:with('en', ncures[ncnum])
 		end
 	end
 	return ncnum
@@ -121,6 +121,71 @@ function initSleepTimer(spell, spellMap)
 	mtext = '; gs c atc 123 '..string.char(0x81, 0xA3)..' '..spell.english..' on '..spell.target.name..' is wearing off in '
 	windower.send_command('wait '..(duration-15)..mtext..'15 seconds '..string.char(0x81, 0xA3))
 	windower.send_command('wait '..(duration-5)..mtext..'5 seconds '..string.char(0x81, 0xA3))
+end
+
+function get_haste_potency()
+	local hasteTier = hasteType or 1
+	
+	
+	
+	
+	
+	local mpotency = 0
+	if buffactive[33] then		--Haste I/II
+		if hasteTier == 2 then
+			mpotency = mpotency + 307
+		else
+			mpotency = mpotency + 150
+		end
+	end
+	if buffactive[214] then		--March
+		if buffactive[214] == 2 then
+			mpotency = mpotency + 144 + 112
+		elseif buffactive[214] == 1 then
+			mpotency = mpotency + 144
+		end
+	end
+	if buffactive[228] then		--Embrava
+		mpotency = mpotency + 256
+	end
+	if buffactive[580] then		--Geomancer haste
+		mpotency = mpotency + 330
+	end
+	mpotency = (mpotency < 448 and mpotency or 448)
+	
+	local jpotency = 0
+	if buffactive[353] then		--Hasso
+		jpotency = jpotency + 100
+	end
+	if buffactive[370] then		--Haste Samba
+		if player.main_job == 'DNC' then
+			jpotency = jpotency + 101
+		else
+			jpotency = jpotency + 50
+		end
+	end
+	jpotency = (jpotency < 256 and jpotency or 256)
+	
+	local potency = (mpotency + jpotency) / 1024
+	potency = (potency < 0.8 and potency or 0.8) * 100
+	
+	if potency < 10 then		return 0
+	elseif potency < 20 then	return 15
+	elseif potency < 25 then	return 20
+	elseif potency < 30 then	return 25
+	elseif potency < 35 then	return 30
+	elseif potency < 40 then	return 35
+	elseif potency < 45 then	return 40
+	elseif potency < 50 then	return 45
+	elseif potency < 55 then	return 50
+	elseif potency < 60 then	return 55
+	elseif potency < 65 then	return 60
+	elseif potency < 70 then	return 65
+	elseif potency < 75 then	return 70
+	elseif potency < 80 then	return 75
+	else						return 80
+	end
+	
 end
 
 --[[
@@ -242,7 +307,7 @@ end
 function buff_active(...)
 	local args = S{...}:map(string.lower)
 	for _,buffid in pairs(player.buffs) do
-		local buff = buffList[buffid]
+		local buff = gearswap.res.buffs[buffid]
 		if args:contains(buff.en:lower()) then
 			return buff
 		end
@@ -271,8 +336,8 @@ function getRecast(spell)
 		xtype = spell.action_type
 		xid = spell.recast_id
 	elseif type(spell) == 'string' then
-		local xspell = spellList:with('en', spell)
-		local xabil = abilList:with('en', spell)
+		local xspell = gearswap.res.spells:with('en', spell)
+		local xabil = gearswap.res.abilities:with('en', spell)
 		if xspell ~= nil then
 			xtype = 'Magic'
 			xid = xspell.recast_id

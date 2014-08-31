@@ -194,7 +194,7 @@ function init_gear_sets()
 		back="Yokaze Mantle",			waist="Patentia Sash",		legs="Mochizuki Hakama +1",	feet="Otronif Boots +1"
 	}
 	
-	sets.engaged.HasteII = {
+	sets.engaged.HasteII = {		--30%
 		ammo="Yetshila",
 		head="Uk'uxkaj Cap",			neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
 		body="Mochizuki Chainmail +1",	hands="Mochizuki Tekko +1",	ring1="Rajas Ring",			ring2="Epona's Ring",
@@ -208,7 +208,7 @@ function init_gear_sets()
 		back="Yokaze Mantle",			waist="Patentia Sash",		legs="Mochizuki Hakama +1",	feet="Mochizuki Kyahan +1"
 	}
 
-	sets.engaged['HasteII++'] = {
+	sets.engaged['HasteII++'] = {	--43%
 		ammo="Yetshila",
 		head="Uk'uxkaj Cap",			neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
 		body="Mochizuki Chainmail +1",	hands="Mochizuki Tekko +1",	ring1="Rajas Ring",			ring2="Epona's Ring",
@@ -221,7 +221,7 @@ function init_gear_sets()
 		back="Yokaze Mantle",			waist="Patentia Sash",		legs="Hachiya Hakama +1",	feet="Mochizuki Kyahan +1"
 	}
 	
-	sets.engaged.HasteI = {
+	sets.engaged.HasteI = {	--15%
 		ammo="Yetshila",
 		head="Iga Zukin +2",			neck="Asperity Necklace",	ear1="Dudgeon Earring",		ear2="Heartseeker Earring",
 		body="Mochizuki Chainmail +1",	hands="Mochizuki Tekko +1",	ring1="Rajas Ring",			ring2="Epona's Ring",
@@ -231,7 +231,7 @@ function init_gear_sets()
 		back="Yokaze Mantle"
 	}
 	
-	sets.engaged.HasteI_HasteSamba = {
+	sets.engaged.HasteI_HasteSamba = {	--20%
 		ammo="Yetshila",
 		head="Uk'uxkaj Cap",			neck="Asperity Necklace",	ear1="Dudgeon Earring",		ear2="Heartseeker Earring",
 		body="Hachiya Chainmail +1",	hands="Mochizuki Tekko +1",	ring1="Rajas Ring",			ring2="Epona's Ring",
