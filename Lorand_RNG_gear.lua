@@ -114,8 +114,8 @@ function init_gear_sets()
 	
 	sets.tpBase = {
 		head="Arcadian Beret +1",	neck="Ocachi Gorget",		ear1="Clearview Earring",	ear2="Volley Earring",
-		body="Iuitl Vest +1",	hands="Manibozho Gloves",	ring1="Paqichikaji Ring",	ring2="Longshot Ring",
-		back="Lutian Cape",		waist="Scout's Belt",		legs="Nahtirah Trousers",	feet="Iuitl Gaiters +1"
+		body="Iuitl Vest +1",		hands="Manibozho Gloves",	ring1="Paqichikaji Ring",	ring2="Longshot Ring",
+		back="Lutian Cape",			waist="Scout's Belt",		legs="Nahtirah Trousers",	feet="Scopuli Nails +1"
 	}
 	
 	--========================[Bow]===============================
@@ -170,17 +170,17 @@ function init_gear_sets()
 	--Cibitshavore 5-hit dependent upon 1 recycle proc
 	sets.Bow.other['c:5-hit(1r)'] = {main="Hurlbat", sub={"Antican Axe", "Legion Scutum"}}
 	sets.Bow.other['c:5-hit(1r)'].tp = {
-		head="Arcadian Beret +1",	neck="Ocachi Gorget",		ear1="Clearview Earring",	ear2="Volley Earring",
+		head="Arcadian Beret +1",	neck="Ocachi Gorget",	ear1="Clearview Earring",	ear2="Volley Earring",
 		body="Iuitl Vest +1",	hands="Manibozho Gloves",	ring1="Rajas Ring",			ring2="Longshot Ring",
-		back="Lutian Cape",		waist="Patentia Sash",		legs="Nahtirah Trousers",	feet="Iuitl Gaiters +1"
+		back="Lutian Cape",		waist="Patentia Sash",		legs="Nahtirah Trousers",	feet="Scopuli Nails +1"
 	}
 	
 	--Cibitshavore 5-hit with no requirements
 	sets.Bow.other['c:5-hit(0r)'] = {main="Hurlbat", sub={"Antican Axe", "Legion Scutum"}}
 	sets.Bow.other['c:5-hit(0r)'].tp = {
-		head="Arcadian Beret +1",	neck="Ocachi Gorget",		ear1="Clearview Earring",	ear2="Volley Earring",
+		head="Arcadian Beret +1",	neck="Ocachi Gorget",	ear1="Clearview Earring",	ear2="Volley Earring",
 		body="Iuitl Vest +1",	hands="Manibozho Gloves",	ring1="Rajas Ring",			ring2="K'ayres Ring",
-		back="Lutian Cape",		waist="Patentia Sash",		legs="Iuitl Tights +1",		feet="Iuitl Gaiters +1"
+		back="Lutian Cape",		waist="Patentia Sash",		legs="Iuitl Tights +1",		feet="Scopuli Nails +1"
 	}
 	
 	sets.Bow.other.acc = {main="Hurlbat", sub={"Antican Axe", "Legion Scutum"}}
@@ -229,7 +229,7 @@ function init_gear_sets()
 	sets.Gun.other['acc'].tp = {
 		neck="Ocachi Gorget",	ear2="Volley Earring",
 		body="Iuitl Vest +1",	ring2="Rajas Ring",
-		waist="Patentia Sash",	legs="Aetosaur Trousers",	feet="Iuitl Gaiters +1"
+		waist="Patentia Sash",	legs="Aetosaur Trousers",	feet="Scopuli Nails +1"
 	}
 	
 	sets.Melee = {}

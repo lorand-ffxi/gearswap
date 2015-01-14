@@ -133,7 +133,7 @@ function init_gear_sets()
 	}
 
 	sets.midcast.Regen = {
-		body="Cleric's Briault",	hands="Orison Mitts +2",
+		body="Piety Briault",	hands="Orison Mitts +2",
 		legs="Theophany Pantaloons"
 	}
 	
@@ -162,10 +162,8 @@ function init_gear_sets()
 	sets.midcast.DarkMagic = {}
 
 	sets.midcast.EnfeeblingMagic = {
-		main="Lehbrailg +2",
-		sub="Mephitis Grip",
-		body="Theophany Briault",
-		hands="Cleric's Mitts",
+		main="Lehbrailg +2",		sub="Mephitis Grip",
+		body="Theophany Briault",	hands="Piety Mitts",
 		feet="Theophany Duckbills"
 	}
 	sets.midcast.EnfeeblingMagic.Potency = {

@@ -73,8 +73,8 @@ function init_gear_sets()
 	
 	sets.tpBase = {
 		head="Navarch's Tricorne",	neck="Ocachi Gorget",		ear1="Clearview Earring",	ear2="Volley Earring",
-		body="Iuitl Vest",			hands="Manibozho Gloves",	ring1="Paqichikaji Ring",	ring2="Longshot Ring",
-		back="Gunslinger's Cape",	waist="Impulse Belt",		legs="Aetosaur Trousers",	feet="Iuitl Gaiters"
+		body="Iuitl Vest +1",		hands="Manibozho Gloves",	ring1="Paqichikaji Ring",	ring2="Longshot Ring",
+		back="Gunslinger's Cape",	waist="Impulse Belt",		legs="Aetosaur Trousers",	feet="Scopuli Nails +1"
 	}
 	
 	
@@ -102,8 +102,8 @@ function init_gear_sets()
 
 	sets.midcast.FastRecast = {
 		head="Ejekamal Mask",
-		body="Iuitl Vest",		hands="Buremte Gloves",	ring2="Diamond Ring",	--Diamond Ring aug: 2% interrupt rate down
-		back="Mujin Mantle",	waist="Cetl Belt",		legs="Kaabnax Trousers",	feet="Iuitl Gaiters"
+		body="Iuitl Vest +1",	hands="Buremte Gloves",	ring2="Diamond Ring",	--Diamond Ring aug: 2% interrupt rate down
+		back="Mujin Mantle",	waist="Cetl Belt",		legs="Kaabnax Trousers",	feet="Iuitl Gaiters +1"
 	}
 	sets.midcast.Utsusemi = sets.midcast.FastRecast
 	
@@ -115,7 +115,7 @@ function init_gear_sets()
 	sets.idle = {
 		head="Ocelomeh Headpiece +1",	neck="Orochi Nodowa",		ear1="Novia Earring",			ear2="Ethereal Earring",
 		body="Orion Jerkin",			hands="Buremte Gloves",		ring1="Eihwaz Ring",			ring2="Sheltered Ring",
-		back="Repulse Mantle",			waist="Flume Belt",			legs="Kaabnax Trousers",		feet="Orion Socks"
+		back="Repulse Mantle",			waist="Flume Belt",			legs="Kaabnax Trousers",		feet="Iuitl Gaiters +1"
 	}
 	sets.idle.speedy = {feet="Orion Socks"}
 	sets.idle.with_buff = {}

@@ -44,26 +44,9 @@ function init_gear_sets()
 	--============================================================
 	--					Instruments
 	--============================================================
-	gear.instruments.multiSong = "Terpander"
-	gear.instruments.default = "Eminent Flute"
-	
-	gear.instruments.Ballad		= "Crooner's Cithara"
-	gear.instruments.Carol		= "Crumhorn +1"
-	gear.instruments.Elegy		= "Syrinx"
-	gear.instruments.Etude		= "Rose Harp +1"
-	gear.instruments.Finale		= "Pan's Horn"
-	gear.instruments.Lullaby	= "Pan's Horn"
-	gear.instruments.Madrigal	= "Cantabank's Horn"
-	gear.instruments.Mambo		= "Vihuela"
-	gear.instruments.March		= "Iron Ram Horn"
-	gear.instruments.Mazurka	= "Vihuela"
-	gear.instruments.Minne		= "Syrinx"
-	gear.instruments.Minuet		= "Apollo's Flute"
-	gear.instruments.Paeon		= "Oneiros Harp"
-	gear.instruments.Prelude	= "Cantabank's Horn"
-	gear.instruments.Requiem	= "Requiem Flute"
-	gear.instruments.Scherzo	= "Terpander"
-	gear.instruments.Threnody	= "Sorrowful Harp"
+	gear.instruments.multiSong = "Terpander"		--Adds an additional song effect
+	gear.instruments.default = "Linos"				--All Songs +3 (+1 with +2 augment)
+	gear.instruments.Requiem = "Requiem Flute"		--Requiem +4
 	
 	--============================================================
 	--					Precast sets

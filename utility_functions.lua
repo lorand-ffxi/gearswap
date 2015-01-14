@@ -87,7 +87,7 @@ end
 --]]
 function get_ally_info(name)
 	for _,m in pairs(windower.ffxi.get_party()) do
-		if m.name == name then
+		if (type(m)=='table') and (m.name == name) then
 			return m
 		end
 	end
@@ -137,8 +137,9 @@ function getNextOption(mode, lastOption)
 			return options.modes[mode][1]
 		end
 		
-		local invertedTable = invertTable(options.modes[mode])
-		local i = invertedTable[lastOption]
+		-- local invertedTable = invertTable(options.modes[mode])
+		-- local i = invertedTable[lastOption]
+		local i = getIndex(options.modes[mode], lastOption)
 		if i ~= nil then
 			if i == listLen then
 				return options.modes[mode][1]
@@ -170,7 +171,7 @@ end
 function setMode(mode, option)
 	if mode == nil then return end
 	if modes == nil then modes = {} end
-	if modes[mode] == nil then addMode(mode) end
+	--if modes[mode] == nil then addMode(mode) end
 	modes[mode] = option
 end
 

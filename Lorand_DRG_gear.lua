@@ -41,7 +41,7 @@ function init_gear_sets()
 		ammo="Potestas Bomblet",
 		head="Yaoyotl Helm",	neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
 		body="Phorcys Korazin",	hands="Cizin Mufflers +1",	ring1="Rajas Ring",			ring2="K'ayres Ring",
-		back="Atheling Mantle",	waist="Windbuffet Belt",	legs="Cizin Breeches +1",	feet="Whirlpool Greaves"
+		back="Atheling Mantle",	waist="Windbuffet Belt +1",	legs="Cizin Breeches +1",	feet="Whirlpool Greaves"
 	}
 	
 	sets.wsBase.magic = {
@@ -67,7 +67,7 @@ function init_gear_sets()
 		sub="Pole Grip",		ammo="Potestas Bomblet",
 		head="Yaoyotl Helm",	neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
 		body="Cizin Mail +1",	hands="Cizin Mufflers +1",	ring1="Rajas Ring",			ring2="K'ayres Ring",
-		back="Atheling Mantle",	waist="Windbuffet Belt",	legs="Cizin Breeches +1",	feet="Whirlpool Greaves"
+		back="Atheling Mantle",	waist="Windbuffet Belt +1",	legs="Cizin Breeches +1",	feet="Whirlpool Greaves"
 	}
 	
 	sets.engaged.with_buff = {}

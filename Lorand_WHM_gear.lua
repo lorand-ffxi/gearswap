@@ -55,7 +55,7 @@ function init_gear_sets()
 		ammo="Jukukik Feather",
 		head="Gendewitha Caubeen +1",	neck="Asperity Necklace",		ear1="Bladeborn Earring",	ear2="Steelflash Earring",
 		body="Weatherspoon Robe +1",	hands="Gendewitha Gages +1",	ring1="Rajas Ring",			ring2="Mars's Ring",
-		back="Buquwik Cape",			waist="Windbuffet Belt",		legs="Gendewitha Spats +1",	feet="Uk'uxkaj Boots"
+		back="Buquwik Cape",			waist="Windbuffet Belt +1",		legs="Gendewitha Spats +1",	feet="Uk'uxkaj Boots"
 	}
 	
 	sets.wsBase.Magic = {

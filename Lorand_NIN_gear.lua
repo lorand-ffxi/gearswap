@@ -10,8 +10,7 @@
 		10:	Iga+2 Body/Hands/Feet
 		15:	Hachiya Hands/Feet
 		16:	Hachiya+1 Body/Legs
-		17:	Mochizuki Head/Body/Hands/Legs
-		18:	Mochizuki+1 Feet
+		18:	Mochizuki+1 Head/Body/Hands/Legs/Feet
 
 	<legs>Iga Hakama +2</legs>	Adds Counter to Yonin when shadows are down
 --]]
@@ -148,7 +147,6 @@ function init_gear_sets()
 	
 	sets.idle.day = {feet="Danzo Sune-Ate"}
 	sets.idle.night = {feet="Hachiya Kyahan"}
-	sets.idle.speedy = (world.time >= (17*60) or world.time <= (7*60)) and sets.idle.night or sets.idle.day
 	
 	sets.idle.with_buff = {}
 	sets.idle.with_buff['Migawari'] = {body="Iga Ningi +2"}

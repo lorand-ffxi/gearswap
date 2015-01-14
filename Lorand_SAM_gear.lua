@@ -52,21 +52,21 @@ function init_gear_sets()
 		--ammo="Potestas Bomblet",
 		head="Otomi Helm",			neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
 		body="Gorney Haubert +1",	hands="Wakido Kote",		ring1="Rajas Ring",			ring2="Pyrosoul Ring",
-		back="Atheling Mantle",		waist="Windbuffet Belt",	legs="Gorney Brayettes +1",	feet="Ejekamal Boots"
+		back="Atheling Mantle",		waist="Windbuffet Belt +1",	legs="Gorney Brayettes +1",	feet="Ejekamal Boots"
 	}
 
 	sets.wsBase['4-Hit'] = {
 		--ammo="Potestas Bomblet",
 		head="Yaoyotl Helm",	neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
 		body="Phorcys Korazin",	hands="Otronif Gloves +1",	ring1="Rajas Ring",			ring2="Pyrosoul Ring",
-		back="Takaha Mantle",	waist="Windbuffet Belt",	legs="Otronif Brais +1",	feet="Whirlpool Greaves"
+		back="Takaha Mantle",	waist="Windbuffet Belt +1",	legs="Otronif Brais +1",	feet="Whirlpool Greaves"
 	}
 	
 	sets.wsBase['5-Acc'] = {
 		--ammo="Potestas Bomblet",
 		head="Otomi Helm",			neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
 		body="Gorney Haubert +1",	hands="Buremte Gloves",		ring1="Rajas Ring",			ring2="Pyrosoul Ring",
-		back="Takaha Mantle",		waist="Windbuffet Belt",	legs="Gorney Brayettes +1",	feet="Ejekamal Boots"
+		back="Takaha Mantle",		waist="Windbuffet Belt +1",	legs="Gorney Brayettes +1",	feet="Ejekamal Boots"
 	}
 	
 	sets.wsBase.magic = {
@@ -143,7 +143,7 @@ function init_gear_sets()
 --		main="Amanomurakumo",		sub="Pole Grip",			ammo="Potestas Bomblet",
 		head="Otomi Helm",			neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
 		body="Gorney Haubert +1",	hands="Otronif Gloves +1",	ring1="Rajas Ring",			ring2="K'ayres Ring",
-		back="Atheling Mantle",		waist="Windbuffet Belt",	legs="Otronif Brais +1",	feet="Ejekamal Boots"
+		back="Atheling Mantle",		waist="Windbuffet Belt +1",	legs="Otronif Brais +1",	feet="Ejekamal Boots"
 	}
 	
 	sets.engaged['5-Acc'] = {

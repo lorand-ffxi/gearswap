@@ -598,6 +598,12 @@ function get_idle_set(baseSet)
 	end
 	idleSet = combineSets(idleSet, sets.idle[modes.idle])
 	
+	if (world.time >= (17*60) or world.time <= (6*60)) then
+		idleSet = combineSets(idleSet, sets.idle.night)
+	else
+		idleSet = combineSets(idleSet, sets.idle.day)
+	end
+	
 	if player.main_job == 'RNG' then
 		local rngSet = {}
 		rngSet = combineSets(rngSet, sets[modes.offense])

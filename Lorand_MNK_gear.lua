@@ -62,7 +62,7 @@ function init_gear_sets()
 		ammo="Potestas Bomblet",
 		head="Uk'uxkaj Cap",	neck="Asperity Necklace",		ear1="Bladeborn Earring",	ear2="Steelflash Earring",
 		body="Qaaxo Harness",	hands="Hesychast's Gloves +1",	ring1="Rajas Ring",			ring2="Epona's Ring",
-		back="Atheling Mantle",	waist="Windbuffet Belt",		legs="Otronif Brais +1",	feet="Manibozho Boots"
+		back="Atheling Mantle",	waist="Windbuffet Belt +1",		legs="Otronif Brais +1",	feet="Manibozho Boots"
 	}
 	sets.wsBase.Acc = {ammo="Honed Tathlum"}
 
@@ -147,21 +147,21 @@ function init_gear_sets()
 		ammo="Potestas Bomblet",
 		head="Uk'uxkaj Cap",	neck="Asperity Necklace",		ear1="Bladeborn Earring",	ear2="Steelflash Earring",
 		body="Qaaxo Harness",	hands="Hesychast's Gloves +1",	ring1="Rajas Ring",			ring2="Epona's Ring",
-		back="Atheling Mantle",	waist="Windbuffet Belt",		legs="Hesychast's Hose +1",	feet="Anchorite's Gaiters +1"
+		back="Atheling Mantle",	waist="Windbuffet Belt +1",		legs="Hesychast's Hose +1",	feet="Anchorite's Gaiters +1"
 	}
 	
 	sets.engaged.Normal_B = {
 		ammo="Honed Tathlum",
 		head="Uk'uxkaj Cap",		neck="Asperity Necklace",		ear1="Bladeborn Earring",	ear2="Steelflash Earring",
 		body="Otronif Harness +1",	hands="Hesychast's Gloves +1",	ring1="Rajas Ring",			ring2="Epona's Ring",
-		back="Atheling Mantle",		waist="Windbuffet Belt",		legs="Otronif Brais +1",	feet="Anchorite's Gaiters +1"
+		back="Atheling Mantle",		waist="Windbuffet Belt +1",		legs="Otronif Brais +1",	feet="Anchorite's Gaiters +1"
 	}
 	
 	sets.engaged.Normal_C = {
 		ammo="Honed Tathlum",
 		head="Uk'uxkaj Cap",		neck="Asperity Necklace",		ear1="Bladeborn Earring",	ear2="Steelflash Earring",
 		body="Qaaxo Harness",		hands="Hesychast's Gloves +1",	ring1="Rajas Ring",			ring2="Epona's Ring",
-		back="Anchoret's Mantle",	waist="Windbuffet Belt",		legs="Otronif Brais +1",	feet="Anchorite's Gaiters +1"
+		back="Anchoret's Mantle",	waist="Windbuffet Belt +1",		legs="Otronif Brais +1",	feet="Anchorite's Gaiters +1"
 	}
 
 	sets.engaged.Tank = {
@@ -189,6 +189,6 @@ function init_gear_sets()
 		ammo="Honed Tathlum",
 		head="Uk'uxkaj Cap",		neck="Asperity Necklace",		ear1="Bladeborn Earring",	ear2="Steelflash Earring",
 		body="Otronif Harness +1",	hands="Hesychast's Gloves +1",	ring1="Rajas Ring",			ring2="Epona's Ring",
-		back="Anchoret's Mantle",	waist="Windbuffet Belt",		legs="Kaabnax Trousers",	feet="Anchorite's Gaiters +1"
+		back="Anchoret's Mantle",	waist="Windbuffet Belt +1",		legs="Kaabnax Trousers",	feet="Anchorite's Gaiters +1"
 	}
 end

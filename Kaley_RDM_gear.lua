@@ -134,7 +134,7 @@ function init_gear_sets()
 	sets.midcast.ElementalMagic = {
 		main="Lehbrailg +2",		sub="Bugard Strap +1",		ammo="Witchstone",
 		head="Buremte Hat",			neck="Stoicheion Medal",	ear1="Hecate's Earring",	ear2="Friomisi Earring",
-		body="Hagondes Coat +1",	hands="Otomi Gloves",		ring1="Acumen Ring",		ring2="Snow Ring",
+		body="Hagondes Coat +1",	hands="Otomi Gloves",		ring1="Acumen Ring",		ring2="Spiral Ring",
 		back="Toro Cape",			waist="Cognition Belt",		legs="Hagondes Pants +1",	feet="Hagondes Sabots"
 	}
 	sets.midcast.ElementalMagic.Earth = {neck="Quanpur Necklace"}

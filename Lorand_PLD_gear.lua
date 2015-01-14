@@ -8,8 +8,7 @@
 		8:	Creed Collar/Earring/Baudrier
 		10:	Creed+2 Body/Feet
 		16:	Reverence+1 (all)
-		17:	Caballarius Head
-		18:	Caballarius+1 Body/Hands/Legs/Feet
+		18:	Caballarius+1 (all)
 --]]
 -----------------------------------------------------------------------------------------------------------
 
@@ -31,7 +30,7 @@ function init_gear_sets()
 		feet="Reverence Leggings +1"
 	}
 	sets.precast.JA['Sentinel'] = {feet="Caballarius Leggings +1"}
-	sets.precast.JA['Rampart'] = {head="Caballarius Coronet"}
+	sets.precast.JA['Rampart'] = {head="Caballarius Coronet +1"}
 	sets.precast.JA['Fealty'] = {body="Caballarius Surcoat +1"}
 	sets.precast.JA['Divine Emblem'] = {feet="Creed Sabatons +2"}
 	sets.precast.JA['Chivalry'] = {hands="Caballarius Gauntlets +1"}
@@ -65,7 +64,7 @@ function init_gear_sets()
 		ammo="Jukukik Feather",
 		head="Otomi Helm",			neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
 		body="Gorney Haubert +1",	hands="Cizin Mufflers +1",	ring1="Rajas Ring",			ring2="Mars's Ring",
-		back="Atheling Mantle",		waist="Windbuffet Belt",	legs="Cizin Breeches +1",	feet="Ejekamal Boots"
+		back="Atheling Mantle",		waist="Windbuffet Belt +1",	legs="Cizin Breeches +1",	feet="Ejekamal Boots"
 	}
 	
 	sets.wsBase.DEX = {ring2="Thundersoul Ring"}
@@ -187,7 +186,7 @@ function init_gear_sets()
 		ammo="Jukukik Feather",
 		head="Otomi Helm",			neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
 		body="Gorney Haubert +1",	hands="Cizin Mufflers +1",	ring1="Rajas Ring",			ring2="K'ayres Ring",
-		back="Atheling Mantle",		waist="Windbuffet Belt",	legs="Cizin Breeches +1",	feet="Ejekamal Boots"
+		back="Atheling Mantle",		waist="Windbuffet Belt +1",	legs="Cizin Breeches +1",	feet="Ejekamal Boots"
 	}
 	
 	sets.engaged.with_buff = {}
