@@ -59,6 +59,10 @@ function init_gear_sets()
 		waist="Cetl Belt",
 	}
 	
+	sets.midcast.Cure = {}
+	sets.midcast.Cure.with_buff = {}
+	sets.midcast.Cure.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
+	
 	--============================================================
 	--					Other sets
 	--============================================================
@@ -72,6 +76,7 @@ function init_gear_sets()
 	
 	sets.engaged.with_buff = {}
 	sets.engaged.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
+	sets.engaged.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}
 
 	--============================================================
 	
@@ -88,6 +93,7 @@ function init_gear_sets()
 	sets.idle.speedy = {legs="Blood Cuisses"}
 	sets.idle.with_buff = {}
 	sets.idle.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
+	sets.idle.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}
 	
 	sets.defense.DT = {	--DT-18%, PDT-5%, MDT-4%	=> PDT-23%, MDT-22%
 		neck="Twilight Torque",

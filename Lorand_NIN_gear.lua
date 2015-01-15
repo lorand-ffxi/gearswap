@@ -149,7 +149,8 @@ function init_gear_sets()
 	sets.idle.night = {feet="Hachiya Kyahan"}
 	
 	sets.idle.with_buff = {}
-	sets.idle.with_buff['Migawari'] = {body="Iga Ningi +2"}
+	sets.idle.with_buff['migawari'] = {body="Iga Ningi +2"}
+	sets.idle.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}
 	
 	-- Defense sets
 	sets.defense.Evasion = {
@@ -177,9 +178,8 @@ function init_gear_sets()
 	
 	--============================================================
 	
-	sets.engaged = {}
-	sets.engaged.with_buff = {}
-	sets.engaged.with_buff['Migawari'] = {body="Iga Ningi +2"}
+	sets.engaged.with_buff['migawari'] = {body="Iga Ningi +2"}
+	sets.engaged.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}
 	
 	sets.engaged.Tank = {
 		-- ammo="Yetshila",

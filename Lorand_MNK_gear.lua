@@ -100,7 +100,8 @@ function init_gear_sets()
 	}
 	sets.idle.speedy = {feet="Hermes' Sandals +1"}
 	sets.idle.with_buff = {}
-	sets.idle.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
+	sets.idle.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
+	sets.idle.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}
 	
 	sets.resting = sets.idle
 	
@@ -134,8 +135,8 @@ function init_gear_sets()
 
 	--============================================================
 	
-	sets.engaged.with_buff = {}
-	sets.engaged.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
+	sets.engaged.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
+	sets.engaged.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}
 	
 	sets.engaged.HitYouBastard = {
 		ammo="Honed Tathlum",

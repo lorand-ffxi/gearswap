@@ -97,6 +97,8 @@ function init_gear_sets()
 		body="Orison Bliaud +2",		hands="Weatherspoon Cuffs +1",	ring1="Prolix Ring",			ring2="Aquasoul Ring",
 		back="Swith Cape",				waist="Cetl Belt",				legs="Orison Pantaloons +2",	feet="Theophany Duckbills"
 	}
+	sets.midcast.Cure.with_buff = {}
+	sets.midcast.Cure.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
 	sets.midcast.Curaga = sets.midcast.Cure
 	sets.midcast.Cure.Engaged = sets.midcast.Cure
 
@@ -213,6 +215,8 @@ function init_gear_sets()
 	sets.idle.lowMP_day = {feet="Serpentes Sabots"}
 	
 	sets.idle.with_buff = {}
+	sets.idle.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
+	sets.idle.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}
 	
 	sets.defense.DT = {
 		head="Kaabnax Hat",		neck="Twilight Torque",
@@ -238,4 +242,6 @@ function init_gear_sets()
 		back="Buquwik Cape",	waist="Cetl Belt",			legs="Artsieq Hose",		feet="Theophany Duckbills"
 	}
 	sets.engaged.with_buff = {}
+	sets.engaged.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
+	sets.engaged.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}
 end

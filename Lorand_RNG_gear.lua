@@ -284,6 +284,7 @@ function init_gear_sets()
 	}
 	sets.idle.speedy = {feet="Skadi's Jambeaux +1"}
 	sets.idle.with_buff = {}
+	sets.idle.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}
 	
 	sets.defense.DT = {	--DT-5%, PDT-10%, MDT-7%	=> PDT-15%, MDT-12%
 		neck="Twilight Torque",
@@ -306,6 +307,7 @@ function init_gear_sets()
 		back="Atheling Mantle",	waist="Patentia Sash",			legs="Iuitl Tights +1",	feet="Iuitl Gaiters +1"
 	}
 	sets.engaged.with_buff = {}
+	sets.engaged.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}
 	sets.Melee = {}
 	sets.Melee.tp = sets.engaged
 end

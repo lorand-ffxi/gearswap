@@ -95,7 +95,9 @@ function init_gear_sets()
 		body="Gendewitha Bilaut +1",
 		legs="Nares Trews",			feet="Piety Duckbills"
 	}
-
+	sets.midcast.Cure.with_buff = {}
+	sets.midcast.Cure.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
+	
 	sets.midcast.Cursna = {
 		neck="Malison Medallion",
 		hands="Hieros Mittens",		ring1="Ephedra Ring",			ring2="Ephedra Ring",

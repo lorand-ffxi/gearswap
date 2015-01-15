@@ -107,6 +107,10 @@ function init_gear_sets()
 	}
 	sets.midcast.Utsusemi = sets.midcast.FastRecast
 	
+	sets.midcast.Cure = {}
+	sets.midcast.Cure.with_buff = {}
+	sets.midcast.Cure.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
+	
 	--============================================================
 	--					Other sets
 	--============================================================
@@ -119,7 +123,8 @@ function init_gear_sets()
 	}
 	sets.idle.speedy = {feet="Orion Socks"}
 	sets.idle.with_buff = {}
-	sets.idle.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
+	sets.idle.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
+	sets.idle.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}
 	
 	sets.defense.DT = {	--DT-5%, PDT-10%, MDT-7%	=> PDT-15%, MDT-12%
 		neck="Twilight Torque",
@@ -144,7 +149,8 @@ function init_gear_sets()
 		back="Atheling Mantle",	waist="Patentia Sash",		legs="Kaabanax Trousers",	feet="Orion Socks"
 	}
 	sets.engaged.with_buff = {}
-	sets.engaged.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
+	sets.engaged.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
+	sets.engaged.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}
 	
 	sets.Melee = {}
 	sets.Melee.tp = sets.engaged

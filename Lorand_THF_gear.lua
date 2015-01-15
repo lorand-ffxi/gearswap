@@ -129,6 +129,8 @@ function init_gear_sets()
 	}
 	sets.idle.speedy = {feet="Skadi's Jambeaux +1"}
 	sets.idle.with_buff = {}
+	sets.idle.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
+	sets.idle.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}
 	
 	sets.defense.Evasion = {
 		head="Iuitl Headgear +1",	neck="Torero Torque",			ear1="Novia Earring",		ear2="Ethereal Earring",
@@ -160,6 +162,8 @@ function init_gear_sets()
 		back="Atheling Mantle",		waist="Patentia Sash",			legs="Iuitl Tights",		feet="Plunderer's Poulaines"
 	}
 	sets.engaged.with_buff = {}
+	sets.engaged.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
+	sets.engaged.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}
 	
 	sets.engaged.Acc = {
 		range="Raider's Boomerang",

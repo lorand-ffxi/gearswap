@@ -202,6 +202,8 @@ function init_gear_sets()
 		body="Gendewitha Bliaut +1",	hands="Weatherspoon Cuffs +1",	ring1="Aquasoul Ring",		ring2="Aqua Ring",
 		back="Oretania's Cape",			waist="Cascade Belt",			legs="Gendewitha Spats +1",	feet="Bihu Slippers"
 	}
+	sets.midcast.Cure.with_buff = {}
+	sets.midcast.Cure.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
 	
 	sets.midcast.DivineMagic = {}
 	sets.midcast.DarkMagic = {}
@@ -237,6 +239,8 @@ function init_gear_sets()
 	sets.idle.lowMP_night =	{hands="Serpentes Cuffs"}
 	sets.idle.speedy =		{feet="Aoidos' Cothurnes +2"}
 	sets.idle.with_buff = {}
+	sets.idle.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
+	sets.idle.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}
 	
 	sets.engaged = {
 		head="Nahtirah Hat",		neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
@@ -244,4 +248,6 @@ function init_gear_sets()
 		back="Atheling Mantle",		waist="Cetl Belt",			legs="Gendewitha Spats +1",	feet="Gendewitha Galoshes +1"
 	}
 	sets.engaged.with_buff = {}
+	sets.engaged.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
+	sets.engaged.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}
 end

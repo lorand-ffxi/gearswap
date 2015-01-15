@@ -178,6 +178,8 @@ function init_gear_sets()
 		waist="Cascade Belt",
 		legs="Gendewitha Spats"
 	}
+	sets.midcast.Cure.with_buff = {}
+	sets.midcast.Cure.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
 	
 	sets.midcast.Stoneskin = {
 		ear1="Star Earring",

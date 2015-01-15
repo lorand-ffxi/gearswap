@@ -112,6 +112,7 @@ function init_gear_sets()
 	}
 	sets.idle.with_buff = {}
 	sets.idle.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
+	sets.idle.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}
 	
 	sets.defense.DT = {
 		neck="Twilight Torque",
@@ -138,6 +139,7 @@ function init_gear_sets()
 	sets.engaged.with_buff = {}
 	sets.engaged.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	sets.engaged.with_buff['hasso'] = {head="Yaoyotl Helm", legs="Unkai Haidate +2"}
+	sets.engaged.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}
 	
 	sets.engaged['5-Hit'] = {
 --		main="Amanomurakumo",		sub="Pole Grip",			ammo="Potestas Bomblet",

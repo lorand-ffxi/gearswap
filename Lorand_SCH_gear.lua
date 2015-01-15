@@ -89,6 +89,8 @@ function init_gear_sets()
 		body="Hagondes Coat +1",		hands="Weatherspoon Cuffs +1",	ring1="Aquasoul Ring",	ring2="Aqua Ring",
 		back="Oretania's Cape",			waist="Witful Belt",			legs="Pedagogy Pants",	feet="Hagondes Sabots +1"
 	}
+	sets.midcast.Cure.with_buff = {}
+	sets.midcast.Cure.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
 	sets.midcast.Curaga = sets.midcast.Cure
 
 	sets.midcast.EnhancingMagic = {
@@ -184,7 +186,6 @@ function init_gear_sets()
 	}
 	sets.idle.speedy = {feet="Herald's Gaiters"}
 	sets.idle.with_buff = {}
-	sets.idle.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	
 	sets.idle.lowMP =		{legs="Nares Trews"}
 	sets.idle.lowMP_night =	{hands="Serpentes Cuffs"}
@@ -194,10 +195,12 @@ function init_gear_sets()
 		back="Repulse Mantle"
 	}
 	
-	sets.idle.with_buff['Sublimation: Activated'] = {
+	sets.idle.with_buff['sublimation: activated'] = {
 		head="Academic's Mortarboard",
 		back="Repulse Mantle"
 	}
+	sets.idle.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
+	sets.idle.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}
 		
 	sets.defense.DT = {}
 	sets.defense.PDT = set_combine(sets.defense.DT, {
@@ -213,7 +216,8 @@ function init_gear_sets()
 		waist="Cetl Belt",			legs="Hagondes Pants +1",	feet="Hagondes Sabots +1"
 	}
 	sets.engaged.with_buff = {}
-	sets.engaged.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
+	sets.engaged.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
+	sets.engaged.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}
 	
 	--============================================================
 	

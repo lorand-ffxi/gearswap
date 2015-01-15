@@ -66,6 +66,9 @@ function init_gear_sets()
 		hands="Weatherspoon Cuffs +1",	ring2="Aquasoul Ring",
 		legs="Atrophy Tights"
 	}
+	sets.midcast.Cure.with_buff = {}
+	sets.midcast.Cure.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
+	
 	sets.midcast.Curaga = sets.midcast.Cure
 	sets.midcast.Cure.Engaged = {
 		body="Gendewitha Bliaut +1",	hands="Bokwus Cuffs"
@@ -168,6 +171,8 @@ function init_gear_sets()
 	}
 	sets.idle.speedy = {legs="Blood Cuisses"}
 	sets.idle.with_buff = {}
+	sets.idle.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
+	sets.idle.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}
 	--sets.idle.lowMP = {legs="Nares Trews"}
 	sets.idle.lowMP_night =	{hands="Serpentes Cuffs"}
 	sets.idle.lowMP_day = {feet="Serpentes Sabots"}
@@ -177,4 +182,6 @@ function init_gear_sets()
 
 	sets.engaged = {}
 	sets.engaged.with_buff = {}
+	sets.engaged.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
+	sets.engaged.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}
 end

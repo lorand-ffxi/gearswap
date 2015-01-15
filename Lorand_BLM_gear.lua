@@ -55,6 +55,8 @@ function init_gear_sets()
 		body="Hagondes Coat +1",	hands="Weatherspoon Cuffs +1",	ring1="Aquasoul Ring",	ring2="Aqua Ring",
 		back="Oretania's Cape",		waist="Witful Belt",			legs="Nares Trews",		feet="Hagondes Sabots +1"
 	}
+	sets.midcast.Cure.with_buff = {}
+	sets.midcast.Cure.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
 	sets.midcast.Curaga = sets.midcast.Cure
 
 	sets.midcast.Cursna = {

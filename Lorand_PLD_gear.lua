@@ -113,7 +113,9 @@ function init_gear_sets()
 		body="Reverence Surcoat +1",	hands="Buremte Gloves",	ring1="Kunaji Ring",		ring2="Asklepian Ring",
 		back="Fierabras's Mantle",		waist="Chuq'aba Belt",	legs="Reverence Breeches +1",	feet="Caballarius Leggings +1"
 	}
-
+	sets.midcast.Cure.with_buff = {}
+	sets.midcast.Cure.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
+	
 	sets.midcast.EnhancingMagic = {	--Enmity+43, Haste+23%, FC+7%, Interrupt-10%, Enhancing Skill+25, Enhancing duration+9
 		ammo="Impatiens",
 		head="Cizin Helm +1",	neck="Colossus's Torque",		ear1="Friomisi Earring",		ear2="Loquacious Earring",
@@ -146,6 +148,8 @@ function init_gear_sets()
 		head="Reverence Coronet +1",	body="Caballarius Surcoat +1",	legs="Blood Cuisses"
 	}
 	sets.idle.with_buff = {}
+	sets.idle.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
+	sets.idle.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}
 	
 	sets.idle.PDT = {	--51% PDT, 41% MDT
 		ammo="Angha Gem",
@@ -190,6 +194,8 @@ function init_gear_sets()
 	}
 	
 	sets.engaged.with_buff = {}
+	sets.engaged.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
+	sets.engaged.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}
 	
 	sets.engaged.TankP = {	--50% PDT, 34% MDT
 		ammo="Angha Gem",

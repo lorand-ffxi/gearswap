@@ -42,6 +42,8 @@ function init_gear_sets()
 		hands="Bokwus Gloves",	ring1="Aqua Ring",	ring2="Solemn Ring",
 		back="Oretania's Cape",
 	}
+	sets.midcast.Cure.with_buff = {}
+	sets.midcast.Cure.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
 	sets.midcast.Curaga = sets.midcast.Cure
 
 	sets.midcast.Cursna = {
