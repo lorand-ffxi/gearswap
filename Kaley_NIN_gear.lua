@@ -64,6 +64,8 @@ function init_gear_sets()
 		ear1="Hecate's Earring",	ear2="Friomisi Earring",
 		hands="Iga Tekko +2",		ring2="Acumen Ring"
 	}
+	sets.midcast.Ninjutsu.Nuke.with_buff = {}
+	
 	
 	sets.midcast.RangedAttack = {
 		body="Mochizuki Chainmail",

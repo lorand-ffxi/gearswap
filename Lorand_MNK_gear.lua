@@ -4,9 +4,10 @@
 		3:	Twilight Torque
 		10:	Tantra+2 Body/Feet
 		(14:	Thaumas Gloves)*/NIN
-		15:	Anchorite's Head/Body/Hands/Legs/Feet
-		17:	Hesychast's Body/Legs/Feet
-		18:	Hestchast's+1 Hands
+		15:	Anchorite's Head/Body/Hands/Legs
+		16:	Anchorite's+1 Feet
+		17:	Hesychast's Body/Feet
+		18:	Hestchast's+1 Hands/Legs
 --]]
 -----------------------------------------------------------------------------------------------------------
 

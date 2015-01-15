@@ -74,6 +74,9 @@ function init_gear_sets()
 		body="Gendewitha Bliaut +1",	hands="Bokwus Cuffs"
 	}
 	
+	sets.midcast.Cure.with_buff = {}
+	sets.midcast.Cure.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
+	
 	sets.midcast.EnhancingMagic = {
 		main="Secespita",				sub="Muse Tariqah",			ammo="Clarus Stone",
 		ear1="Loquacious Earring",		ear2="Novia Earring",
@@ -139,6 +142,9 @@ function init_gear_sets()
 	}
 	sets.midcast.ElementalMagic.Earth = {neck="Quanpur Necklace"}
 	
+	sets.midcast.ElementalMagic.with_buff = {}
+	sets.midcast.ElementalMagic.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
+	
 	sets.midcast.ElementalEnfeeble = {
 		head="Kaabanax Hat",
 		hands="Otomi Gloves",	ring1="Spiral Ring",
@@ -182,6 +188,7 @@ function init_gear_sets()
 		back="Tuilha Cape",				waist="Emphatikos Rope",		legs="Gendewitha Spats +1",	feet="Serpentes Sabots"
 	}
 	sets.idle.with_buff = {}
+	sets.idle.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
 	
 	sets.idle.Melee = {
 		--main="Iztaasu +2",			sub="Beatific Shield",

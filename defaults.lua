@@ -24,6 +24,8 @@ function define_defaults()
 	sets.engaged = {}
 	sets.engaged.with_buff = {}
 	sets.ws = {}
+	sets.ws.with_buff = {}
+	sets.ws.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}
 	sets.defense = {}
 	sets.defense.PDT = {}
 	sets.defense.MDT = {}
@@ -40,6 +42,7 @@ function define_defaults()
 	setMode('idle', 'Normal')
 	setMode('ConserveMP', true)
 	setMode('autoPenury', false)
+	setMode('noIdle', false)
 	
 	options = {}
 	options.use_ftp_neck = true
@@ -115,6 +118,8 @@ function set_keybinds()
 	windower.send_command('bind @c gs c cycle casting')
 	windower.send_command('bind @r gs c cycle ranged')
 	windower.send_command('bind @F12 du blinking self always')
+	windower.send_command('bind @i gs c toggle noIdle')
+	
 	
 	if S{player.main_job, player.sub_job}:contains('SCH') then
 		windower.send_command('bind ^= gs c scholar light')				--Light Arts / Addendum: White

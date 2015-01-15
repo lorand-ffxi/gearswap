@@ -172,6 +172,11 @@ end
 	Called upon action completion (i.e., casting finished, ws landed, casting interrupted, etc)
 --]]
 function aftercast(spell)
+	if modes.noIdle then 
+		windower.add_to_chat(104, 'WARNING: Did not equip idle set (modes.noIdle is ON)')
+		return
+	end
+
 	if spell.en == 'Unknown Interrupt' then return end
 	local spellMap = spell_maps[spell.en]
 	
@@ -335,7 +340,11 @@ function get_precast_set(spell)
 				precastSet = combineSets(precastSet, sets.wsBase, get_sub_type(), modes.offense)
 				precastSet = combineSets(precastSet, sets.wsBase, get_sub_type(), modes.offense, wsmod[spell.en])
 				precastSet = combineSets(precastSet, sets.wsBase, get_sub_type(), modes.offense, wsmod[spell.en], spell.en)
-				precastSet = combineSets(precastSet,get_ftp_set(spell))
+				precastSet = combineSets(precastSet, get_ftp_set(spell))
+				
+				for buff,_ in pairs(buffactive) do
+					precastSet = combineSets(precastSet, sets.ws.with_buff[buff])
+				end
 			end
 		else
 			-- All other ability types, such as Waltz, Jig, Scholar, etc.
@@ -435,17 +444,23 @@ function get_midcast_set(spell)
 			midcastSet = get_standard_magic_set(midcastSet, spell, spellMap, 'HealingMagic')
 			midcastSet = combineSets(midcastSet, sets.midcast.spellMap, status)
 			midcastSet = combineSets(midcastSet, sets.midcast.spellMap, targType)
-			
-			if (spellMap == 'Cure') and weatherPermits(spell.element)then			
-				midcastSet = combineSets(midcastSet, {waist='Korin Obi'})
+			if (spellMap == 'Cure') then
+				if weatherPermits(spell.element)then			
+					midcastSet = combineSets(midcastSet, {waist='Korin Obi'})
+				end
+				for buff,_ in pairs(buffactive) do
+					midcastSet = combineSets(midcastSet, sets.midcast.Cure.with_buff[buff])
+				end
 			end
 		elseif spell.skill == 'Divine Magic' then
 			midcastSet = get_standard_magic_set(midcastSet, spell, spellMap, 'DivineMagic')
-			
 			if S{'Banish', 'Holy'}:contains(spellMap) then
 				midcastSet = combineSets(midcastSet, sets.midcast.DivineMagic.Nuke)
 				if weatherPermits(spell.element) and options.useObi then
 					midcastSet = combineSets(midcastSet, {waist='Korin Obi'})
+				end
+				for buff,_ in pairs(buffactive) do
+					midcastSet = combineSets(midcastSet, sets.midcast.DivineMagic.Nuke.with_buff[buff])
 				end
 			end
 			midcastSet = combineSets(midcastSet, sets.midcast.DivineMagic, modes.casting)
@@ -466,6 +481,11 @@ function get_midcast_set(spell)
 			end
 			midcastSet = combineSets(midcastSet, sets.midcast.ElementalMagic, spell.element)
 			midcastSet = combineSets(midcastSet, sets.midcast.ElementalMagic, modes.casting)
+			
+			for buff,_ in pairs(buffactive) do
+				midcastSet = combineSets(midcastSet, sets.midcast.ElementalMagic.with_buff[buff])
+			end
+			
 			if spell.en == 'Impact' then
 				midcastSet = combineSets(midcastSet, {body='Twilight Cloak'})
 			end
@@ -508,6 +528,10 @@ function get_midcast_set(spell)
 						midcastSet = combineSets(midcastSet, {waist=gear_map.Obi[spell.element]})
 					end
 					midcastSet = combineSets(midcastSet, sets.midcast, 'Ninjutsu', 'Nuke', spell.element)
+					
+					for buff,_ in pairs(buffactive) do
+						midcastSet = combineSets(midcastSet, sets.midcast.Ninjutsu.Nuke.with_buff[buff])
+					end
 				end
 			end
 		else
