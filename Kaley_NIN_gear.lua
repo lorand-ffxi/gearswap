@@ -65,7 +65,7 @@ function init_gear_sets()
 		hands="Iga Tekko +2",		ring2="Acumen Ring"
 	}
 	sets.midcast.Ninjutsu.Nuke.with_buff = {}
-	
+	sets.midcast.Ninjutsu.Nuke.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
 	
 	sets.midcast.RangedAttack = {
 		body="Mochizuki Chainmail",

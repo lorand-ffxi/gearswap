@@ -14,12 +14,12 @@ function init_gear_sets()
 	--============================================================
 	--					Precast sets
 	--============================================================
-	sets.precast.FC = {				--48%
+	sets.precast.FC = {				--54%
 		ammo="Incantor Stone",		--2%
 		head="Nahtirah Hat",		--10%
 		neck="Orunmila's Torque",	--5%
 		ear1="Loquacious Earring",	--2%
-		body="Marduk's Jubbah",		--5%
+		body="Marduk's Jubbah +1",	--11%
 		hands="Gendewitha Gages +1",--7%
 		ring1="Prolix Ring",		--2%
 		back="Swith Cape",			--3%
@@ -163,6 +163,8 @@ function init_gear_sets()
 		body="Artsieq Jubbah",	hands="Otomi Gloves",	ring1="Fenrir Ring +1",		ring2="Acumen Ring",
 		back="Toro Cape",		waist="Cascade Belt",	legs="Gendewitha Spats +1",	feet="Weatherspoon Souliers +1"
 	}
+	sets.midcast.DivineMagic.Nuke.with_buff = {}
+	sets.midcast.DivineMagic.Nuke.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
 	
 	sets.midcast.DarkMagic = {}
 
@@ -184,6 +186,8 @@ function init_gear_sets()
 		body="Weatherspoon Robe +1",	hands="Otomi Gloves",		ring1="Fenrir Ring +1",		ring2="Acumen Ring",
 		back="Toro Cape",				waist="Aswang Sash",		legs="Gendewitha Spats +1",	feet="Uk'uxkaj Boots"
 	}
+	sets.midcast.ElementalMagic.with_buff = {}
+	sets.midcast.ElementalMagic.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
 	sets.midcast.ElementalMagic.Earth = {neck="Quanpur Necklace"}
 	
 	sets.midcast.ElementalEnfeeble = {}

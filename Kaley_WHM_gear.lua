@@ -160,6 +160,8 @@ function init_gear_sets()
 		body="Weatherspoon Robe +1",	hands="Otomi Gloves",		ring1="Solemn Ring",		ring2="Acumen Ring",
 		back="Toro Cape",				waist="Cascade Belt",		legs="Gendewitha Spats +1",	feet="Weatherspoon Souliers +1"
 	}
+	sets.midcast.DivineMagic.Nuke.with_buff = {}
+	sets.midcast.DivineMagic.Nuke.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
 	
 	sets.midcast.DarkMagic = {}
 
@@ -186,6 +188,8 @@ function init_gear_sets()
 		body="Weatherspoon Robe +1",	hands="Otomi Gloves",		ring1="Snow Ring",			ring2="Acumen Ring",
 		back="Toro Cape",				waist="Cognition Belt",		legs="Gendewitha Spats +1",	feet="Weatherspoon Souliers +1"
 	}
+	sets.midcast.ElementalMagic.with_buff = {}
+	sets.midcast.ElementalMagic.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
 	sets.midcast.ElementalMagic.Earth = {neck="Quanpur Necklace"}
 	
 	--============================================================

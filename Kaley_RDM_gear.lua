@@ -163,6 +163,9 @@ function init_gear_sets()
 	}
 	
 	sets.midcast.DivineMagic = {}
+	sets.midcast.DivineMagic.Nuke = {}
+	sets.midcast.DivineMagic.Nuke.with_buff = {}
+	sets.midcast.DivineMagic.Nuke.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
 	
 	--============================================================
 	--					Other sets

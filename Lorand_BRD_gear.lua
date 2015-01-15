@@ -29,12 +29,11 @@
 	Author: Ragnarok.Lorand
 	
 	Slips:
-		1:	Marduk's Body
 		2:	Loq Earring, Musical Earring
 		3:	Twilight Torque
 		8:	Aoidos' Matinee/Earring
 		10:	Aoidos' (all)
-		14:	Nares Hands/Legs, Marduk's+1 Legs
+		14:	Nares Hands/Legs, Marduk's+1 Body/Legs
 		15:	Brioso (all)
 		17:	Bihu (all)
 --]]
@@ -51,11 +50,11 @@ function init_gear_sets()
 	--============================================================
 	--					Precast sets
 	--============================================================
-	sets.precast.FC = {				--46%
+	sets.precast.FC = {				--52%
 		head="Nahtirah Hat",		--10%
 		neck="Orunmila's Torque",	--5%
 		ear1="Loquacious Earring",	--2%
-		body="Marduk's Jubbah",		--5%
+		body="Marduk's Jubbah +1",	--11%
 		hands="Gendewitha Gages +1",--7%
 		ring1="Prolix Ring",		--2%
 		ring2="Veneficium Ring",	--Q+1%
@@ -74,14 +73,14 @@ function init_gear_sets()
 		waist="Siegel Sash"			--8%
 	}
 
-	sets.precast.FC.BardSong = {	--73%
+	sets.precast.FC.BardSong = {	--72%
 		main="Felibre's Dague",		--6%
 		sub="Genbu's Shield",		--0%
 		head="Aoidos' Calot +2",	--12%
 		neck="Orunmila's Torque",	--5%
 		ear1="Loquacious Earring",	--2%
 		ear2="Aoidos' Earring",		--2%
-		body="Sha'ir Manteel",		--12%
+		body="Marduk's Jubbah +1",	--11%
 		hands="Gendewitha Gages +1",--11%	(song spellcasting time -4% augment)
 		ring1="Prolix Ring",		--2%
 		ring2="Veneficium Ring",	--Q+1%

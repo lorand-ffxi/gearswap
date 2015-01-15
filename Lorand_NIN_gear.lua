@@ -34,6 +34,7 @@ function init_gear_sets()
 	})
 	
 	sets.precast.Ranged = {
+		ammo="Suppa Shuriken",
 		head="Uk'uxkaj Cap",
 		hands="Manibozho Gloves"
 	}
@@ -125,6 +126,8 @@ function init_gear_sets()
 		body="Shneddick Tabard +1",		hands="Iga Tekko +2",		ring1="Fenrir Ring +1",		ring2="Acumen Ring",
 		back="Toro Cape",				legs="Shneddick Tights +1",	feet="Hachiya Kyahan"
 	}
+	sets.midcast.Ninjutsu.Nuke.with_buff = {}
+	sets.midcast.Ninjutsu.Nuke.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
 	
 	sets.midcast.RangedAttack = {
 		head="Uk'uxkaj Cap",			neck="Ocachi Gorget",		ear1="Clearview Earring",
@@ -186,41 +189,41 @@ function init_gear_sets()
 		-- head="Ejekamal Mask",		neck="Twilight Torque",		ear1="Dudgeon Earring",		ear2="Heartseeker Earring",
 		-- body="Hachiya Chainmail +1",hands="Otronif Gloves +1",	ring1="Defending Ring",		ring2="Rajas Ring",
 		-- back="Yokaze Mantle",		waist="Patentia Sash",		legs="Mochizuki Hakama +1",	feet="Otronif Boots +1"
-		ammo="Yetshila",
+		ammo="Suppa Shuriken",
 		head="Otronif Mask +1",			neck="Twilight Torque",		ear1="Bladeborn Earring",	ear2="Steelflash Earring",
 		body="Mochizuki Chainmail +1",	hands="Otronif Gloves +1",	ring1="Defending Ring",		ring2="Rajas Ring",
 		back="Yokaze Mantle",			waist="Patentia Sash",		legs="Mochizuki Hakama +1",	feet="Otronif Boots +1"
 	}
 	
 	sets.engaged.HasteII = {		--30%
-		ammo="Yetshila",
+		ammo="Suppa Shuriken",
 		head="Uk'uxkaj Cap",			neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
 		body="Mochizuki Chainmail +1",	hands="Mochizuki Tekko +1",	ring1="Rajas Ring",			ring2="Epona's Ring",
 		back="Atheling Mantle",			waist="Patentia Sash",		legs="Mochizuki Hakama +1",	feet="Otronif Boots +1"
 	}
 	--sets.engaged.HasteII_HasteSamba = {
 	sets.engaged.HasteII_Acc = {
-		ammo="Fire Bomblet",
+		ammo="Suppa Shuriken",
 		head="Whirlpool Mask",			neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
 		body="Mochizuki Chainmail +1",	hands="Otronif Gloves +1",	ring1="Rajas Ring",			ring2="Epona's Ring",
 		back="Yokaze Mantle",			waist="Patentia Sash",		legs="Mochizuki Hakama +1",	feet="Mochizuki Kyahan +1"
 	}
 
 	sets.engaged['HasteII++'] = {	--43%
-		ammo="Yetshila",
+		ammo="Suppa Shuriken",
 		head="Uk'uxkaj Cap",			neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
 		body="Mochizuki Chainmail +1",	hands="Mochizuki Tekko +1",	ring1="Rajas Ring",			ring2="Epona's Ring",
 		back="Atheling Mantle",			waist="Patentia Sash",		legs="Hachiya Hakama +1",	feet="Mochizuki Kyahan +1"
 	}
 	sets.engaged['HasteII++_Acc'] = {
-		ammo="Fire Bomblet",
+		ammo="Suppa Shuriken",
 		head="Whirlpool Mask",			neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
 		body="Mochizuki Chainmail +1",	hands="Otronif Gloves +1",	ring1="Rajas Ring",			ring2="Epona's Ring",
 		back="Yokaze Mantle",			waist="Patentia Sash",		legs="Hachiya Hakama +1",	feet="Mochizuki Kyahan +1"
 	}
 	
 	sets.engaged.HasteI = {	--15%
-		ammo="Yetshila",
+		ammo="Suppa Shuriken",
 		head="Iga Zukin +2",			neck="Asperity Necklace",	ear1="Dudgeon Earring",		ear2="Heartseeker Earring",
 		body="Mochizuki Chainmail +1",	hands="Mochizuki Tekko +1",	ring1="Rajas Ring",			ring2="Epona's Ring",
 		back="Atheling Mantle",			waist="Patentia Sash",		legs="Mochizuki Hakama +1",	feet="Mochizuki Kyahan +1"
@@ -230,7 +233,7 @@ function init_gear_sets()
 	}
 	
 	sets.engaged.HasteI_HasteSamba = {	--20%
-		ammo="Yetshila",
+		ammo="Suppa Shuriken",
 		head="Uk'uxkaj Cap",			neck="Asperity Necklace",	ear1="Dudgeon Earring",		ear2="Heartseeker Earring",
 		body="Hachiya Chainmail +1",	hands="Mochizuki Tekko +1",	ring1="Rajas Ring",			ring2="Epona's Ring",
 		back="Atheling Mantle",			waist="Patentia Sash",		legs="Mochizuki Hakama +1",	feet="Mochizuki Kyahan +1"
@@ -242,7 +245,8 @@ function init_gear_sets()
 	}
 	
 	sets.engaged.Acc = {
-		ammo="Fire Bomblet",
+		--ammo="Fire Bomblet",
+		ammo="Suppa Shuriken",
 		head="Mochizuki Hatsuburi +1",	neck="Ziel Charm",			ear1="Dudgeon Earring",		ear2="Heartseeker Earring",
 		body="Mochizuki Chainmail +1",	hands="Otronif Gloves +1",	ring1="Rajas Ring",			ring2="Mars's Ring",
 		back="Yokaze Mantle",			waist="Anguinus Belt",		legs="Hachiya Hakama +1",	feet="Mochizuki Kyahan +1"

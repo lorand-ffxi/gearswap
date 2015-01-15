@@ -134,6 +134,8 @@ function init_gear_sets()
 		body="Hagondes Coat +1",	hands="Otomi Gloves",	ring1="Fenrir Ring +1",		ring2="Acumen Ring",
 		back="Toro Cape",			waist="Aswang Sash",	legs="Hagondes Pants +1",	feet="Hagondes Sabots +1"
 	}
+	sets.midcast.ElementalMagic.with_buff = {}
+	sets.midcast.ElementalMagic.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
 	sets.midcast.ElementalMagic.Earth = {neck="Quanpur Necklace"}
 	
 	sets.midcast.ElementalEnfeeble = {
@@ -154,6 +156,9 @@ function init_gear_sets()
 	}
 	
 	sets.midcast.DivineMagic = {}
+	sets.midcast.DivineMagic.Nuke = {}
+	sets.midcast.DivineMagic.Nuke.with_buff = {}
+	sets.midcast.DivineMagic.Nuke.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
 	
 	--============================================================
 	--					Other sets

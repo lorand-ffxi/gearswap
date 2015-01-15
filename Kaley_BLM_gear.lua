@@ -80,10 +80,16 @@ function init_gear_sets()
 		body="Hagondes Coat +1",	hands="Otomi Gloves",		ring1="Spiral Ring",		ring2="Acumen Ring",
 		back="Bane Cape",			waist="Cognition Belt",		legs="Hagondes Pants +1",	feet="Weatherspoon Souliers +1"
 	}
-
+	sets.midcast.ElementalMagic.with_buff = {}
+	sets.midcast.ElementalMagic.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
 	sets.midcast.ElementalMagic.Resistant = sets.midcast.ElementalMagic
 	sets.midcast.ElementalMagic.Proc = sets.midcast.FastRecast
 
+	sets.midcast.DivineMagic = {}
+	sets.midcast.DivineMagic.Nuke = {}
+	sets.midcast.DivineMagic.Nuke.with_buff = {}
+	sets.midcast.DivineMagic.Nuke.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
+	
 	--============================================================
 	--					Other sets
 	--============================================================
