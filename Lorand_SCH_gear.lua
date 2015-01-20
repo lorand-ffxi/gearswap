@@ -6,7 +6,7 @@
 	2:		Loq. Earring
 	3:		Twilight Neck
 	10:		Savant+2 All
-	14:		Nares Head/Hands/Legs
+	14:		Nares Hands/Legs
 	15:		Academic's Head/Body/Hands/Legs/Feet
 	17:		Pedagogy Legs/Feet
 	
@@ -90,7 +90,6 @@ function init_gear_sets()
 		back="Oretania's Cape",			waist="Witful Belt",			legs="Pedagogy Pants",	feet="Hagondes Sabots +1"
 	}
 	sets.midcast.Cure.with_buff = {}
-	sets.midcast.Cure.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
 	sets.midcast.Curaga = sets.midcast.Cure
 
 	sets.midcast.EnhancingMagic = {
@@ -161,11 +160,14 @@ function init_gear_sets()
 		body="Hagondes Coat +1",	hands="Otomi Gloves",		ring1="Fenrir Ring +1",		ring2="Acumen Ring",
 		back="Bookworm's Cape",		waist="Aswang Sash",		legs="Hagondes Pants +1",	feet="Hagondes Sabots +1"
 	}
+	sets.midcast.ElementalMagic.with_buff = {}
 	sets.midcast.ElementalMagic.Earth = {neck="Quanpur Necklace"}
 	
 	sets.midcast.ElementalEnfeeble = {}
 	
 	sets.midcast.DivineMagic = {}
+	sets.midcast.DivineMagic.Nuke = {}
+	sets.midcast.DivineMagic.Nuke.with_buff = {}
 	
 	--============================================================
 	--					Other sets
@@ -180,11 +182,10 @@ function init_gear_sets()
 	
 	sets.idle = {
 		main="Terra's Staff",			sub="Elder's Grip",			ammo="Impatiens",
-		head="Academic's Mortarboard",	neck="Twilight Torque",		ear1="Novia Earring",	ear2="Ethereal Earring",
-		body="Academic's Gown",			hands="Lurid Mitts",		ring1="Defending Ring",	ring2="Sheltered Ring",
-		back="Cheviot Cape",			waist="Emphatikos Rope",	legs="Pedagogy Pants",	feet="Serpentes Sabots"
+		head="Academic's Mortarboard",	neck="Twilight Torque",		ear1="Brachyura Earring",	ear2="Ethereal Earring",
+		body="Academic's Gown",			hands="Lurid Mitts",		ring1="Defending Ring",		ring2="Shneddick Ring",
+		back="Cheviot Cape",			waist="Emphatikos Rope",	legs="Pedagogy Pants",		feet="Serpentes Sabots"
 	}
-	sets.idle.speedy = {feet="Herald's Gaiters"}
 	sets.idle.with_buff = {}
 	
 	sets.idle.lowMP =		{legs="Nares Trews"}

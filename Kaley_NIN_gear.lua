@@ -79,13 +79,9 @@ function init_gear_sets()
 	sets.idle = {
 		ammo="Jukukik Feather",
 		head="Ejekamal Mask",			neck="Twilight Torque",		ear1="Novia Earring",		ear2="Suppanomimi",
-		body="Hachiya Chainmail +1",	hands="Mochizuki Tekko",	ring1="Dark Ring",			ring2="Dark Ring",
-		back="Yokaze Mantle",			waist="Flume Belt",			legs="Mochizuki Hakama",	feet="Danzo Sune-Ate"
+		body="Hachiya Chainmail +1",	hands="Mochizuki Tekko",	ring1="Dark Ring",			ring2="Shneddick Ring",
+		back="Yokaze Mantle",			waist="Flume Belt",			legs="Mochizuki Hakama",	feet="Hachiya Kyahan"
 	}
-	sets.idle.day = {feet="Danzo Sune-Ate"}
-	sets.idle.night = {feet="Hachiya Kyahan"}
-	sets.idle.speedy = (world.time >= (17*60) or world.time <= (7*60)) and sets.idle.night or sets.idle.day
-	
 	sets.idle.with_buff = {}
 	sets.idle.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	

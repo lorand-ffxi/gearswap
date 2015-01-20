@@ -277,12 +277,11 @@ function init_gear_sets()
 	sets.resting = {}
 	
 	sets.idle = {
-		head="Ocelomeh Headpiece +1",	neck="Orochi Nodowa",		ear1="Novia Earring",			ear2="Ethereal Earring",
+		head="Ocelomeh Headpiece +1",	neck="Orochi Nodowa",		ear1="Brachyura Earring",			ear2="Ethereal Earring",
 		body={"Kirin's Osode", "Orion Jerkin"},
-		hands="Buremte Gloves",		ring1="Defending Ring",			ring2="Sheltered Ring",
+		hands="Buremte Gloves",		ring1="Defending Ring",			ring2="Shneddick Ring",
 		back="Repulse Mantle",			waist="Flume Belt",			legs="Kaabnax Trousers",		feet="Orion Socks"
 	}
-	sets.idle.speedy = {feet="Skadi's Jambeaux +1"}
 	sets.idle.with_buff = {}
 	sets.idle.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}
 	

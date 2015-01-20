@@ -170,15 +170,13 @@ function init_gear_sets()
 	
 	sets.idle = {
 		main="Terra's Staff",		sub="Elder's Grip",		ammo="Demonry Stone",
-		head="Vitivation Chapeau",	neck="Twilight Torque",	ear1="Novia Earring",	ear2="Ethereal Earring",
-		body="Artsieq Jubbah",		hands="Lurid Mitts",	ring1="Defending Ring",	ring2="Sheltered Ring",
-		back="Cheviot Cape",		waist="Flume Belt",		legs="Nares Trews",		feet="Serpentes Sabots"
+		head="Vitivation Chapeau",	neck="Twilight Torque",	ear1="Brachyura Earring",	ear2="Ethereal Earring",
+		body="Artsieq Jubbah",		hands="Lurid Mitts",	ring1="Defending Ring",		ring2="Shneddick Ring",
+		back="Cheviot Cape",		waist="Flume Belt",		legs="Nares Trews",			feet="Serpentes Sabots"
 	}
-	sets.idle.speedy = {legs="Blood Cuisses"}
 	sets.idle.with_buff = {}
 	sets.idle.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
-	sets.idle.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}
-	--sets.idle.lowMP = {legs="Nares Trews"}
+	sets.idle.lowMP = {legs="Nares Trews"}
 	sets.idle.lowMP_night =	{hands="Serpentes Cuffs"}
 	sets.idle.lowMP_day = {feet="Serpentes Sabots"}
 	

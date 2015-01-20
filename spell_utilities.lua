@@ -336,7 +336,8 @@ function getRecast(spell)
 		xtype = spell.action_type
 		xid = spell.recast_id
 	elseif type(spell) == 'string' then
-		local xspell = gearswap.res.spell_recasts:with('en', spell)
+		local xspell = gearswap.res.spells:with('en', spell)
+		--local xspell = gearswap.res.spell_recasts:with('en', spell)
 		local xabil = gearswap.res.ability_recasts:with('en', spell)
 		if xspell ~= nil then
 			xtype = 'Magic'

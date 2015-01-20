@@ -99,10 +99,10 @@ function init_gear_sets()
 	--sets.midcast.Paeon =	{head="Brioso Roundlet"}
 	sets.midcast.Scherzo =	{feet="Aoidos' Cothurnes +2"}
 	
-	sets.midcast.MagicAcc = {
+	sets.midcast.MagicAccuracy = {
 		main="Lehbrailg +2",
-		head="Kaabnax Hat",		neck="Stoicheion Medal",
-		ring1="Balrahn's Ring",
+		head="Kaabnax Hat",		neck="Eddy Necklace",
+		ring1="Sangoma Ring",		ring2="Perception Ring",
 		legs="Artsieq Hose"
 	}
 	
@@ -217,15 +217,15 @@ function init_gear_sets()
 	sets.idle = {
 		main="Terra's Staff",		sub="Achaq Grip",
 		head="Kaabnax Hat",		neck="Twilight Torque",		ear1="Novia Earring",	ear2="Ethereal Earring",
-		body="Gendewitha Bliaut +1",	hands="Gendewitha Gages +1",ring1="Defending Ring",	ring2="Sheltered Ring",
+		body="Gendewitha Bliaut +1",	hands="Gendewitha Gages +1",ring1="Dark Ring",	ring2="Shneddick Ring",
 		back="Cheviot Cape",		waist="Flume Belt",			legs="Nares Trews",		feet="Bihu Slippers"
 	}
-	sets.idle.Speedy = {feet="Aoidos' Cothurnes +2"}
+	sets.idle.Speedy = {}
 	
 	sets.idle.with_buff = {}
-	sets.idle.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
+	sets.idle.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	
 	sets.engaged = {}
 	sets.engaged.with_buff = {}
-	sets.engaged.with_buff['Doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
+	sets.engaged.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 end

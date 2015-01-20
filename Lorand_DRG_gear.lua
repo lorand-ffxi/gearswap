@@ -85,12 +85,11 @@ function init_gear_sets()
 	sets.idle = {
 		ammo="Demonry Stone",
 		head={"Twilight Helm", "Yaoyotl Helm"},
-		neck="Orochi Nodowa",		ear1="Novia Earring",	ear2="Ethereal Earring",
+		neck="Orochi Nodowa",		ear1="Brachyura Earring",	ear2="Ethereal Earring",
 		body={"Twilight Mail", "Cizin Mail +1"},
-		hands="Cizin Mufflers +1",	ring1="Defending Ring",	ring2="Sheltered Ring",
+		hands="Cizin Mufflers +1",	ring1="Defending Ring",	ring2="Shneddick Ring",
 		back="Repulse Mantle",		waist="Nierenschutz",	legs="Cizin Breeches +1",	feet="Whirlpool Greaves"
 	}
-	sets.idle.speedy = {legs="Blood Cuisses"}
 	sets.idle.with_buff = {}
 	sets.idle.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	sets.idle.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}

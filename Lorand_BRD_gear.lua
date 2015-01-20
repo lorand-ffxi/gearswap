@@ -230,16 +230,14 @@ function init_gear_sets()
 	
 	sets.idle = {
 		main="Terra's Staff",			sub="Achaq Grip",				range="Oneiros Harp",
-		head="Kaabnax Hat",				neck="Twilight Torque",			ear1="Novia Earring",	ear2="Ethereal Earring",
-		body="Gendewitha Bilaut +1",	hands="Gendewitha Gages +1",	ring1="Defending Ring",	ring2="Sheltered Ring",
-		back="Cheviot Cape",			waist="Flume Belt",				legs="Bihu Cannions",	feet="Bihu Slippers"
+		head="Kaabnax Hat",				neck="Twilight Torque",			ear1="Brachyura Earring",	ear2="Ethereal Earring",
+		body="Gendewitha Bilaut +1",	hands="Gendewitha Gages +1",	ring1="Defending Ring",		ring2="Shneddick Ring",
+		back="Cheviot Cape",			waist="Flume Belt",				legs="Bihu Cannions",		feet="Bihu Slippers"
 	}
 	sets.idle.lowMP =		{legs="Nares Trews"}
 	sets.idle.lowMP_night =	{hands="Serpentes Cuffs"}
-	sets.idle.speedy =		{feet="Aoidos' Cothurnes +2"}
 	sets.idle.with_buff = {}
 	sets.idle.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
-	sets.idle.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}
 	
 	sets.engaged = {
 		head="Nahtirah Hat",		neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",

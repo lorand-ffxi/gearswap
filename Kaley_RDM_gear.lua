@@ -104,15 +104,16 @@ function init_gear_sets()
 	--============================================================
 	
 	sets.midcast.MagicAccuracy = {
-		main="Lehbrailg +2",			sub="Mephitis Grip",		ammo="Kalboron Stone",
-		head="Atrophy Chapeau +1",		neck="Stoicheion Medal",	ear1="Lifestorm Earring",	ear2="Psystorm Earring",
-		body="Estoqueur's Sayon +2",	hands="Hagondes Cuffs",		ring1="Perception Ring",
-		back="Ogapepo Cape",			legs="Artsieq Hose",		feet="Bokwus Boots"
+		main="Lehbrailg +2",		sub="Mephitis Grip",		ammo="Kalboron Stone",
+		head="Atrophy Chapeau +1",	neck="Eddy Necklace",		ear1="Lifestorm Earring",	ear2="Psystorm Earring",
+		body="Artsieq Jubbah",		hands="Hagondes Cuffs +1",	ring1="Sangoma Ring",		ring2="Perception Ring",
+		back="Ogapepo Cape",		waist="Ovate Rope",			legs="Artsieq Hose",		feet="Vitivation Boots +1"
 	}
 	
 	sets.midcast.EnfeeblingMagic = {
 		head="Vitivation Chapeau +1",
-		body="Atrophy Tabard",		hands="Estoqueur's Gantherots +2"
+		body="Atrophy Tabard +1",			--hands="Estoqueur's Gantherots +2",
+		feet="Vitivation Boots +1"
 	}
 	sets.midcast.EnfeeblingMagic.Saboteur = {hands="Estoqueur's Gantherots +2"}
 	
@@ -126,7 +127,7 @@ function init_gear_sets()
 		ammo="Aqua Sachet",
 		ear2="Star Earring",
 		hands="Gendewitha Gages +1",	ring1="Aqua Ring",
-		back="Tuilha Cape",				legs="Hagondes Pants +1",
+		back="Tuilha Cape",
 	}
 	
 	sets.midcast['Dia III'] = {head="Vitivation Chapeau +1"}
@@ -136,9 +137,9 @@ function init_gear_sets()
 	
 	sets.midcast.ElementalMagic = {
 		main="Lehbrailg +2",		sub="Bugard Strap +1",		ammo="Witchstone",
-		head="Buremte Hat",			neck="Stoicheion Medal",	ear1="Hecate's Earring",	ear2="Friomisi Earring",
+		head="Buremte Hat",			neck="Eddy Necklace",		ear1="Hecate's Earring",	ear2="Friomisi Earring",
 		body="Hagondes Coat +1",	hands="Otomi Gloves",		ring1="Acumen Ring",		ring2="Spiral Ring",
-		back="Toro Cape",			waist="Cognition Belt",		legs="Hagondes Pants +1",	feet="Hagondes Sabots"
+		back="Toro Cape",			waist="Cognition Belt",		legs="Hagondes Pants +1",	feet="Vitivation Boots +1"
 	}
 	sets.midcast.ElementalMagic.Earth = {neck="Quanpur Necklace"}
 	
@@ -185,10 +186,11 @@ function init_gear_sets()
 	}
 	
 	sets.idle = {
-		main="Terra's Staff",			sub="Achaq Grip",				ammo="Kalboron Stone",
-		head="Vitivation Chapeau +1",	neck="Twilight Torque",			ear1="Novia Earring",		ear2="Ethereal Earring",
-		body="Artsieq Jubbah",			hands="Gendewitha Gages +1",	ring1="Dark Ring",			ring2="Dark Ring",
-		back="Tuilha Cape",				waist="Emphatikos Rope",		legs="Gendewitha Spats +1",	feet="Serpentes Sabots"
+		--main="Terra's Staff",			sub="Achaq Grip",			ammo="Kalboron Stone",
+		main="Xiutleato",				sub="Genbu's Shield",		ammo="Kalboron Stone",
+		head="Vitivation Chapeau +1",	neck="Twilight Torque",		ear1="Novia Earring",		ear2="Ethereal Earring",
+		body="Artsieq Jubbah",			hands="Hagondes Cuffs +1",	ring1="Dark Ring",			ring2="Shneddick Ring",
+		back="Cheviot Cape",			waist="Emphatikos Rope",	legs="Vitivation Tights",	feet="Vitivation Boots +1"
 	}
 	sets.idle.with_buff = {}
 	sets.idle.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
@@ -197,24 +199,34 @@ function init_gear_sets()
 		--main="Iztaasu +2",			sub="Beatific Shield",
 		ammo="Jukukik Feather",
 		head="Vitivation Chapeau +1",	neck="Twilight Torque",		ear1="Novia Earring",	ear2="Ethereal Earring",
-		body="Artsieq Jubbah",			hands="Serpentes Cuffs",	ring1="Dark Ring",			ring2="Dark Ring",
-		back="Cheviot Cape",			waist="Flume Belt",			legs="Nares Trews",			feet="Serpentes Sabots"
+		body="Artsieq Jubbah",			hands="Serpentes Cuffs",	ring1="Dark Ring",		ring2="Shneddick Ring",
+		back="Cheviot Cape",			waist="Flume Belt",			legs="Nares Trews",		feet="Serpentes Sabots"
 	}
-	sets.idle.speedy = {legs="Crimson Cuisses"}
-	-- sets.idle.lowMP = {
-		-- legs="Nares Trews"
-	-- }
-	-- sets.idle.lowMP_night =	{hands="Serpentes Cuffs"}
-	-- sets.idle.lowMP_day = {feet="Serpentes Sabots"}
+	sets.idle.lowMP = {
+		legs="Nares Trews"
+	}
+	sets.idle.lowMP_night =	{hands="Serpentes Cuffs"}
+	sets.idle.lowMP_day = {feet="Serpentes Sabots"}
 	
-	
+	sets.minHp = set_combine(sets.naked, {
+		ear1="Graiai Earring",
+		ring1="Bifrost Ring",	ring2="Serket Ring",
+		back="Swith Cape"
+	})
+	sets.maxHp = set_combine(sets.naked, {
+		sub="Genbu's Shield",
+		head="Vitivation Chapeau +1",	neck="Estoqueur's Collar",	ear2="Ethereal Earring",
+		body="Vitivation Tabard +1",	hands="Hagondes Cuffs +1",	ring1="Kunaji Ring",	ring2="Meridian Ring",
+		back="Ebullient Cape",			legs="Nares Trews",			feet="Atrophy Boots"
+	})
+
 	sets.defense.DT = {
 		neck="Twilight Torque",
 		ring1="Dark Ring",		ring2="Dark Ring"
 	}
 	sets.defense.PDT = set_combine(sets.defense.DT, {
 		main="Terra's Staff",
-		hands="Gendewitha Gages +1",
+		hands="Hagondes Cuffs +1",
 		back="Cheviot Cape",			waist="Flume Belt"
 	})
 	sets.defense.MDT = set_combine(sets.defense.DT, {})

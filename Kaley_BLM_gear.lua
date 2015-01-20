@@ -32,7 +32,7 @@ function init_gear_sets()
 	--============================================================
 	sets.midcast.FastRecast = {
 		head="Weatherspoon Corona +1",	neck="Jeweled Collar",	lear="Loquacious Earring",
-		body="Hagondes Coat +1",		hands="Hagondes Cuffs",
+		body="Hagondes Coat +1",		hands="Hagondes Cuffs +1",
 		back="Swith Cape",				waist="Cetl Belt",		legs="Weatherspoon Pants +1",	feet="Weatherspoon Souliers +1"
 	}
 
@@ -60,8 +60,8 @@ function init_gear_sets()
 
 	sets.midcast.MagicAccuracy = {
 		main="Lehbrailg +2",	sub="Mephitis Grip",		ammo="Kalboron Stone",
-		head="Kaabnax Hat",	neck="Stoicheion Medal",	ear1="Lifestorm Earring",	ear2="Psystorm Earring",
-		body="Praeco Doublet",	hands="Hagondes Cuffs",		ring1="Perception Ring",
+		head="Kaabnax Hat",		neck="Eddy Necklace",	ear1="Lifestorm Earring",	ear2="Psystorm Earring",
+		body="Praeco Doublet",	hands="Hagondes Cuffs +1",	ring1="Sangoma Ring",		ring2="Perception Ring",
 		back="Bane Cape",		legs="Artsieq Hose",		feet="Bokwus Boots"
 	}
 	
@@ -76,7 +76,7 @@ function init_gear_sets()
 	-- Elemental Magic sets are default for handling low-tier nukes.
 	sets.midcast.ElementalMagic = {
 		main="Lehbrailg +2",		sub="Bugard Strap +1",		ammo="Witchstone",
-		head="Buremte Hat",			neck="Stoicheion Medal",	ear1="Hecate's Earring",	ear2="Friomisi Earring",
+		head="Buremte Hat",			neck="Eddy Necklace",	ear1="Hecate's Earring",	ear2="Friomisi Earring",
 		body="Hagondes Coat +1",	hands="Otomi Gloves",		ring1="Spiral Ring",		ring2="Acumen Ring",
 		back="Bane Cape",			waist="Cognition Belt",		legs="Hagondes Pants +1",	feet="Weatherspoon Souliers +1"
 	}
@@ -101,18 +101,21 @@ function init_gear_sets()
 	
 	-- Idle sets
 	sets.idle = {
-		main="Terra's Staff",		sub="Achaq Grip",			ammo="Kalboron Stone",
+		main="Terra's Staff",	sub="Achaq Grip",			ammo="Kalboron Stone",
 		head="Kaabnax Hat",		neck="Twilight Torque",		ear1="Novia Earring",	ear2="Star Earring",
-		body="Hagondes Coat +1",	hands="Serpentes Cuffs",	ring1="Dark Ring",		ring2="Dark Ring",
-		back="Cheviot Cape",		waist="Emphatikos Rope",	legs="Nares Trews",		feet="Serpentes Sabots"
+		body="Artsieq Jubbah",	hands="Hagondes Cuffs +1",	ring1="Dark Ring",		ring2="Shneddick Ring",
+		back="Cheviot Cape",	waist="Emphatikos Rope",	legs="Nares Trews",		feet="Serpentes Sabots"
 	}
-	sets.idle.speedy = {feet="Herald's Gaiters"}
+	sets.idle.lowMP = {legs="Nares Trews"}
+	sets.idle.lowMP_night =	{hands="Serpentes Cuffs"}
+	sets.idle.lowMP_day = {feet="Serpentes Sabots"}
 	sets.idle.with_buff = {}
+	sets.idle.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
 	
 	sets.defense.PDT = sets.idle
 	sets.defense.MDT = sets.idle
 
-	sets.buffs['Mana Wall'] = {feet="Goetia Sabots +2"}
+	sets.buffs['mana wall'] = {feet="Goetia Sabots +2"}
 	
 	sets.engaged = {}
 	sets.engaged.with_buff = {}

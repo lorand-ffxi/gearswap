@@ -71,8 +71,8 @@ function init_gear_sets()
 	
 	sets.midcast.MagicAccuracy = {
 		main="Lehbrailg +2",	sub="Mephitis Grip",			ammo="Kalboron Stone",
-		head="Kaabnax Hat",	neck="Stoicheion Medal",		ear1="Lifestorm Earring",	ear2="Psystorm Earring",
-		body="Praeco Doublet",	hands="Gendewitha Gages +1",	ring1="Perception Ring",
+		head="Kaabnax Hat",		neck="Eddy Necklace",		ear1="Lifestorm Earring",	ear2="Psystorm Earring",
+		body="Praeco Doublet",	hands="Gendewitha Gages +1",	ring1="Sangoma Ring",		ring2="Perception Ring",
 		back="Ogapepo Cape",	legs="Artsieq Hose",			feet="Bokwus Boots"
 	}
 
@@ -206,11 +206,11 @@ function init_gear_sets()
 	sets.idle = {
 		main="Terra's Staff",	sub="Achaq Grip",			ammo="Incantor Stone",
 		head="Kaabnax Hat",		neck="Twilight Torque",		ear1="Novia Earring",		ear2="Star Earring",
-		body="Artsieq Jubbah",	hands="Serpentes Cuffs",	ring1="Dark Ring",			ring2="Dark Ring",
+		body="Artsieq Jubbah",	hands="Serpentes Cuffs",	ring1="Dark Ring",			ring2="Shneddick Ring",
 		back="Cheviot Cape",	waist="Hierarch Belt",		legs="Piety Pantaloons",	feet="Theophany Duckbills"
 	}
-	sets.idle.speedy = {feet="Herald's Gaiters"}
 	sets.idle.with_buff = {}
+	sets.idle.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
 	
 	sets.idle.lowMP = {
 		main="Owleyes",		sub="Genbu's Shield",

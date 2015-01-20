@@ -98,18 +98,13 @@ function init_gear_sets()
 	sets.idle = {
 		main="Amanomurakumo",	sub="Pole Grip",	range="Cibitshavore",	ammo="Eminent Arrow",
 		head={"Twilight Helm", "Yaoyotl Helm"},
-		neck="Orochi Nodowa",	ear1="Novia Earring",	ear2="Ethereal Earring",
+		neck="Orochi Nodowa",	ear1="Brachyura Earring",	ear2="Ethereal Earring",
 		body={"Kirin's Osode", "Sakonji Domaru +1", "Otronif Harness +1"},
 		hands={"Sakonji Kote", "Otronif Gloves +1"},
-		ring1="Defending Ring",	ring2="Sheltered Ring",
+		ring1="Defending Ring",	ring2="Shneddick Ring",
 		back="Repulse Mantle",	waist="Flume Belt",		legs="Otronif Brais +1",	feet="Whirlpool Greaves"
 	}
-	sets.idle.speedy = {feet="Danzo Sune-Ate"}
-	sets.idle.Reraise = {
-		head="Twilight Helm",
-		body="Twilight Mail",
-		feet="Danzo Sune-Ate"
-	}
+	sets.idle.Reraise = {head="Twilight Helm",	body="Twilight Mail"}
 	sets.idle.with_buff = {}
 	sets.idle.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	sets.idle.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}

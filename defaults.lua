@@ -31,6 +31,7 @@ function define_defaults()
 	sets.defense.MDT = {}
 	sets.buffs = {}
 	sets.buffs.doom = {ring1="Saida Ring", ring2="Saida Ring"}
+	sets.naked = {main=empty,sub=empty,range=empty,ammo=empty,head=empty,neck=empty,ear1=empty,ear2=empty,body=empty,hands=empty,ring1=empty,ring2=empty,back=empty,waist=empty,legs=empty,feet=empty}
 	
 	state = {}
 	
@@ -84,7 +85,7 @@ function set_modes()
 		addMode('offense', {'Normal_A', 'Normal_B', 'Normal_C',	'HitMoar', 'Tank', 'TankAcc', 'HitYouBastard'})
 		addMode('accuracy', {'Normal', 'Medium', 'High'})
 	elseif S{'NIN'}:contains(player.main_job) then
-		addMode('offense', {'HasteII', 'HasteII++', 'HasteII_Acc', 'HasteII++_Acc', 'Tank'})
+		addMode('offense', {'HasteII', 'HasteII++', 'HasteII_Acc', 'HasteII++_Acc', 'Tank', 'CrazyAccuracy'})
 		addMode('accuracy', {'Normal', 'Medium', 'High'})
 		addMode('casting', {'Normal', 'Resistant', 'Proc'})
 	elseif S{'PLD'}:contains(player.main_job) then

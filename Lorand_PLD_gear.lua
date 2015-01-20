@@ -5,7 +5,7 @@
 	Slips:
 		2:	Blood legs, Enif Cosciales, Loq. Earring
 		3:	Twilight Helm/Body
-		8:	Creed Collar/Earring/Baudrier
+		8:	Creed Earring/Baudrier
 		10:	Creed+2 Body/Feet
 		16:	Reverence+1 (all)
 		18:	Caballarius+1 (all)
@@ -15,7 +15,7 @@
 function init_gear_sets()
 	sets.Enmity = {	--68
 		head="Hero's Galea",		neck="Invidia Torque",			ear2="Friomisi Earring",
-		body="Creed Cuirass +2",	hands="Tjukurrpa Gauntlets",	ring1="Eihwaz Ring",			ring2="Provocare Ring",
+		body="Creed Cuirass +2",	hands="Tjukurrpa Gauntlets",	ring1="Provocare Ring",			ring2="Eihwaz Ring",
 		back="Earthcry Mantle",		waist="Creed Baudrier",			legs="Caballarius Breeches +1",	feet="Creed Sabatons +2"
 	}
 	--============================================================
@@ -37,7 +37,7 @@ function init_gear_sets()
 	
 	sets.precast.Waltz = {
 		head="Reverence Coronet +1",	neck="Invidia Torque",				ear1="Creed Earring",			ear2="Friomisi Earring",
-		body="Reverence Surcoat +1",	hands="Caballarius Gauntlets +1",	ring1="Eihwaz Ring",			ring2="Asklepian Ring",
+		body="Reverence Surcoat +1",	hands="Caballarius Gauntlets +1",	ring1="Asklepian Ring",			ring2="Eihwaz Ring",
 		back="Earthcry Mantle",			waist="Creed Baudrier",				legs="Caballarius Breeches +1",	feet="Caballarius Leggings +1"
 	}
 	sets.precast.Waltz['Healing Waltz'] = {}
@@ -96,14 +96,14 @@ function init_gear_sets()
 	sets.midcast.DivineMagic = {	--Haste+23%, FC+9%, Enmity+61
 		ammo="Incantor Stone",
 		head="Cizin Helm +1",			neck="Invidia Torque",			ear1="Friomisi Earring",		ear2="Loquacious Earring",
-		body="Reverence Surcoat +1",	hands="Caballarius Gauntlets +1",	ring1="Eihwaz Ring",			ring2="Provocare Ring",
+		body="Reverence Surcoat +1",	hands="Caballarius Gauntlets +1",	ring1="Provocare Ring",			ring2="Eihwaz Ring",
 		back="Earthcry Mantle",			waist="Creed Baudrier",			legs="Caballarius Breeches +1",	feet="Creed Sabatons +2"
 	}
 	
 	sets.midcast.Cure = {	--Enmity+56, Haste+23%, FC+5%, Interrupt-10%, Cure+7%
 		ammo="Impatiens",
 		head="Cizin Helm +1",			neck="Invidia Torque",			ear1="Hospitaler Earring",		ear2="Friomisi Earring",
-		body="Reverence Surcoat +1",	hands="Reverence Gauntlets +1",	ring1="Eihwaz Ring",			ring2="Provocare Ring",
+		body="Reverence Surcoat +1",	hands="Reverence Gauntlets +1",	ring1="Provocare Ring",			ring2="Eihwaz Ring",
 		back="Fierabras's Mantle",		waist="Creed Baudrier",			legs="Caballarius Breeches +1",	feet="Caballarius Leggings +1"
 	}
 	
@@ -119,7 +119,7 @@ function init_gear_sets()
 	sets.midcast.EnhancingMagic = {	--Enmity+43, Haste+23%, FC+7%, Interrupt-10%, Enhancing Skill+25, Enhancing duration+9
 		ammo="Impatiens",
 		head="Cizin Helm +1",	neck="Colossus's Torque",		ear1="Friomisi Earring",		ear2="Loquacious Earring",
-		body="Shabti Cuirass",	hands="Reverence Gauntlets +1",	ring1="Eihwaz Ring",			ring2="Provocare Ring",
+		body="Shabti Cuirass",	hands="Reverence Gauntlets +1",	ring1="Provocare Ring",			ring2="Eihwaz Ring",
 		back="Earthcry Mantle",	waist="Cascade Belt",			legs="Reverence Breeches +1",		feet="Caballarius Leggings +1"
 	}
 	sets.midcast.Protect = {ring1="Sheltered Ring"}
@@ -132,23 +132,22 @@ function init_gear_sets()
 	sets.Reraise = {head="Twilight Helm", body="Twilight Mail"}
 	
 	sets.resting = {
-		head="Twilight Helm",			neck="Creed Collar",			ear2="Relaxing Earring",
+		head="Twilight Helm",			neck="Coatl Gorget +1",			ear2="Relaxing Earring",
 		body="Twilight Mail",			ring1="Paguroidea Ring",
 		legs="Reverence Breeches +1",	feet="Reverence Leggings +1"
 	}
 	
 	sets.idle = {
 		ammo="Angha Gem",
-		head="Twilight Helm",	neck="Creed Collar",			ear1="Creed Earring",			ear2="Ethereal Earring",
-		body="Twilight Mail",	hands="Reverence Gauntlets +1",	ring1="Defending Ring",			ring2="Sheltered Ring",
+		head="Twilight Helm",	neck="Coatl Gorget +1",			ear1="Brachyura Earring",		ear2="Ethereal Earring",
+		body="Twilight Mail",	hands="Reverence Gauntlets +1",	ring1="Defending Ring",			ring2="Shneddick Ring",
 		back="Weard Mantle",	waist="Nierenschutz",			legs="Reverence Breeches +1",	feet="Caballarius Leggings +1"
 	}
-	sets.idle.speedy = {legs="Blood Cuisses"}
 	sets.idle.Showoff = {
-		head="Reverence Coronet +1",	body="Caballarius Surcoat +1",	legs="Blood Cuisses"
+		head="Reverence Coronet +1",	body="Caballarius Surcoat +1"
 	}
 	sets.idle.with_buff = {}
-	sets.idle.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
+	sets.idle.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring", legs="Shabti Cuisses"}
 	sets.idle.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}
 	
 	sets.idle.PDT = {	--51% PDT, 41% MDT
@@ -194,7 +193,7 @@ function init_gear_sets()
 	}
 	
 	sets.engaged.with_buff = {}
-	sets.engaged.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
+	sets.engaged.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring", legs="Shabti Cuisses"}
 	sets.engaged.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}
 	
 	sets.engaged.TankP = {	--50% PDT, 34% MDT

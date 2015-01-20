@@ -3,10 +3,11 @@
 	Author: Ragnarok.Lorand
 	
 	Slips:	
-		1:	Marduk Body
 		10:	Head/Body/Hands/Legs/Feet
-		14:	Nares Hands/Legs
-		15:	Theophany Head/Body/Legs
+		14:	Marduk+1 Body; Nares Hands/Legs
+		15:	Theophany Head/Hands/Legs/Feet
+		16: Theophany+1 Body
+		17:	Piety Body/Hands/Legs/Feet
 --]]
 -----------------------------------------------------------------------------------------------------------
 
@@ -205,12 +206,11 @@ function init_gear_sets()
 
 	sets.idle = {
 		main="Terra's Staff",			sub="Elder's Grip",			ammo="Incantor Stone",
-		head="Nahtirah Hat",			neck="Twilight Torque",		ear1="Novia Earring",	ear2="Ethereal Earring",
+		head="Nahtirah Hat",			neck="Twilight Torque",		ear1="Brachyura Earring",	ear2="Ethereal Earring",
 		body={"Theophany Briault +1", "Artsieq Jubbah"},
-		hands="Dynasty Mitts",		ring1="Defending Ring",	ring2="Sheltered Ring",
+		hands="Dynasty Mitts",			ring1="Defending Ring",		ring2="Shneddick Ring",
 		back="Repulse Mantle",			waist="Emphatikos Rope",	legs="Artsieq Hose",	feet="Serpentes Sabots"
 	}
-	sets.idle.speedy = {feet="Herald's Gaiters"}
 	sets.idle.lowMP = {
 		--main="Owleyes",		sub="Genbu's Shield",
 		legs="Nares Trews"
@@ -220,7 +220,6 @@ function init_gear_sets()
 	
 	sets.idle.with_buff = {}
 	sets.idle.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
-	sets.idle.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}
 	
 	sets.defense.DT = {
 		head="Kaabnax Hat",		neck="Twilight Torque",
