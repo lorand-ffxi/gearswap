@@ -96,7 +96,7 @@ function init_gear_sets()
 		body={"Hesychast's Cyclas", "Kirin's Osode", "Qaaxo Harness"},
 		hands="Garden Bangles",	ring1="Defending Ring",		ring2="Shneddick Ring",
 		back="Repulse Mantle",			waist="Black Belt",		legs={"Hesychast's Hose +1", "Otronif Brais +1"},
-		feet="Otronif Boots +1"
+		feet="Daihanshi Habaki"
 	}
 	sets.idle.with_buff = {}
 	sets.idle.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}

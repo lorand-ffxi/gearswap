@@ -171,7 +171,7 @@ function init_gear_sets()
 		ear1="Novia Earring",
 		ear2="Star Earring",
 		body="Gendewitha Bliaut +1",
-		hands="Weatherspoon Cuffs",
+		hands="Bokwus Gloves",
 		ring1="Aquasoul Ring",
 		ring2="Aqua Ring",
 		back="Oretania's Cape",

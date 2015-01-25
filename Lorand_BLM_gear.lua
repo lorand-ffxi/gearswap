@@ -139,7 +139,7 @@ function init_gear_sets()
 		main="Terra's Staff",		sub="Elder's Grip",			ammo="Impatiens",
 		head="Kaabnax Hat",			neck="Twilight Torque",		ear1="Brachyura Earring",	ear2="Ethereal Earring",
 		body="Artsieq Jubbah",		hands="Yaoyotl Gloves",		ring1="Defending Ring",		ring2="Shneddick Ring",
-		back="Repulse Mantle",		waist="Emphatikos Rope",	legs="Artsieq Hose",		feet="Serpentes Sabots"
+		back="Repulse Mantle",		waist="Emphatikos Rope",	legs="Artsieq Hose",		feet="Hagondes Sabots +1"
 	}
 	sets.idle.lowMP = {
 		--main="Owleyes",		sub="Genbu's Shield",

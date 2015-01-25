@@ -55,7 +55,7 @@ function init_gear_sets()
 		ammo="Witchstone",
 		head="Buremte Hat",		neck="Stoicheion Medal",	ear1="Hecate's Earring",	ear2="Friomisi Earring",
 		body="Artsieq Jubbah",	hands="Otomi Gloves",		ring2="Acumen Ring",
-		back="Toro Cape",		legs="Gendewitha Spats +1",	feet="Weatherspoon Souliers +1"
+		back="Toro Cape",		legs="Gendewitha Spats +1",	feet="Gendewitha Galoshes +1"
 	}
 
 	--============================================================
@@ -65,15 +65,15 @@ function init_gear_sets()
 	sets.midcast.FastRecast = {
 		ammo="Clarus Stone",
 		head="Gendewitha Caubeen +1",	neck="Orison Locket",		ear1="Novia Earring",		ear2="Loquacious Earring",
-		body="Theophany Briault",	hands="Gendewitha Gages +1",
-		back="Ogapepo Cape",		waist="Cetl Belt",			legs="Piety Pantaloons",	feet="Theophany Duckbills"
+		body="Theophany Briault",		hands="Gendewitha Gages +1",
+		back="Ogapepo Cape",			waist="Cetl Belt",			legs="Piety Pantaloons",	feet="Theophany Duckbills"
 	}
 	
 	sets.midcast.MagicAccuracy = {
 		main="Lehbrailg +2",	sub="Mephitis Grip",			ammo="Kalboron Stone",
-		head="Kaabnax Hat",		neck="Eddy Necklace",		ear1="Lifestorm Earring",	ear2="Psystorm Earring",
+		head="Kaabnax Hat",		neck="Eddy Necklace",			ear1="Lifestorm Earring",	ear2="Psystorm Earring",
 		body="Praeco Doublet",	hands="Gendewitha Gages +1",	ring1="Sangoma Ring",		ring2="Perception Ring",
-		back="Ogapepo Cape",	legs="Artsieq Hose",			feet="Bokwus Boots"
+		back="Ogapepo Cape",	waist="Ovate Rope",				legs="Artsieq Hose",		feet="Bokwus Boots"
 	}
 
 	--====================== Healing =============================
@@ -158,7 +158,7 @@ function init_gear_sets()
 		main="Lehbrailg +2",			sub="Achaq Grip",			ammo="Witchstone",
 		head="Buremte Hat",				neck="Stoicheion Medal",	ear1="Hecate's Earring",	ear2="Friomisi Earring",
 		body="Weatherspoon Robe +1",	hands="Otomi Gloves",		ring1="Solemn Ring",		ring2="Acumen Ring",
-		back="Toro Cape",				waist="Cascade Belt",		legs="Gendewitha Spats +1",	feet="Weatherspoon Souliers +1"
+		back="Toro Cape",				waist="Cascade Belt",		legs="Gendewitha Spats +1",	feet="Gendewitha Galoshes +1"
 	}
 	sets.midcast.DivineMagic.Nuke.with_buff = {}
 	sets.midcast.DivineMagic.Nuke.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
@@ -179,14 +179,14 @@ function init_gear_sets()
 		ammo="Aqua Sachet",
 		head="Kaabnax Hat",			ear1="Lifestorm Earring",	ear2="Star Earring",
 		body="Weatherspoon Robe +1",	hands="Gendewitha Gages +1",	ring1="Aqua Ring",
-		back="Tuilha Cape",				legs="Weatherspoon Pants +1",
+		back="Tuilha Cape",				legs="Gendewitha Spats +1",
 	}
 	
 	sets.midcast.ElementalMagic = {
 		main="Lehbrailg +2",			sub="Bugard Strap +1",		ammo="Witchstone",
 		head="Buremte Hat",				neck="Stoicheion Medal",	ear1="Hecate's Earring",	ear2="Friomisi Earring",
 		body="Weatherspoon Robe +1",	hands="Otomi Gloves",		ring1="Snow Ring",			ring2="Acumen Ring",
-		back="Toro Cape",				waist="Cognition Belt",		legs="Gendewitha Spats +1",	feet="Weatherspoon Souliers +1"
+		back="Toro Cape",				waist="Cognition Belt",		legs="Gendewitha Spats +1",	feet="Gendewitha Galoshes +1"
 	}
 	sets.midcast.ElementalMagic.with_buff = {}
 	sets.midcast.ElementalMagic.with_buff['reive mark'] = {neck="Arciela's Grace +1"}

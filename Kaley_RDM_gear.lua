@@ -39,7 +39,7 @@ function init_gear_sets()
 	sets.wsBase = {
 		head="Buremte Hat",			neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
 		body="Hagondes Coat +1",	hands="Atrophy Gloves",		ring1="Rajas Ring",			ring2="Spiral Ring",
-		back="Atheling Mantle",		waist="Anguinus Belt",		legs="Hagondes Pants +1",	feet="Weatherspoon Souliers +1"
+		back="Atheling Mantle",		waist="Anguinus Belt",		legs="Hagondes Pants +1",	feet="Gendewitha Galoshes +1"
 	}
 	sets.wsBase.Magic = {}
 	
@@ -50,7 +50,7 @@ function init_gear_sets()
 	sets.midcast.FastRecast = {
 		head="Atrophy Chapeau +1",		neck="Jeweled Collar",			ear1="Loquacious Earring",	ear2="Novia Earring",
 		body="Vitivation Tabard +1",	hands="Gendewitha Gages +1",
-		back="Ogapepo Cape",			waist="Cetl Belt",				legs="Hagondes Pants +1",	feet="Atrophy Boots"
+		back="Ogapepo Cape",			waist="Cetl Belt",				legs="Artsieq Hose",	feet="Gendewitha Galoshes +1"
 	}
 
 	sets.midcast.HealingMagic = {
@@ -188,9 +188,9 @@ function init_gear_sets()
 	sets.idle = {
 		--main="Terra's Staff",			sub="Achaq Grip",			ammo="Kalboron Stone",
 		main="Xiutleato",				sub="Genbu's Shield",		ammo="Kalboron Stone",
-		head="Vitivation Chapeau +1",	neck="Twilight Torque",		ear1="Novia Earring",		ear2="Ethereal Earring",
-		body="Artsieq Jubbah",			hands="Hagondes Cuffs +1",	ring1="Dark Ring",			ring2="Shneddick Ring",
-		back="Cheviot Cape",			waist="Emphatikos Rope",	legs="Vitivation Tights",	feet="Vitivation Boots +1"
+		head="Vitivation Chapeau +1",	neck="Twilight Torque",		ear1="Novia Earring",			ear2="Ethereal Earring",
+		body="Artsieq Jubbah",			hands="Hagondes Cuffs +1",	ring1="Dark Ring",				ring2="Shneddick Ring",
+		back="Cheviot Cape",			waist="Emphatikos Rope",	legs="Vitivation Tights +1",	feet="Hagondes Sabots +1"
 	}
 	sets.idle.with_buff = {}
 	sets.idle.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
@@ -198,9 +198,9 @@ function init_gear_sets()
 	sets.idle.Melee = {
 		--main="Iztaasu +2",			sub="Beatific Shield",
 		ammo="Jukukik Feather",
-		head="Vitivation Chapeau +1",	neck="Twilight Torque",		ear1="Novia Earring",	ear2="Ethereal Earring",
-		body="Artsieq Jubbah",			hands="Serpentes Cuffs",	ring1="Dark Ring",		ring2="Shneddick Ring",
-		back="Cheviot Cape",			waist="Flume Belt",			legs="Nares Trews",		feet="Serpentes Sabots"
+		head="Vitivation Chapeau +1",	neck="Twilight Torque",		ear1="Novia Earring",			ear2="Ethereal Earring",
+		body="Artsieq Jubbah",			hands="Hagondes Cuffs +1",	ring1="Dark Ring",				ring2="Shneddick Ring",
+		back="Cheviot Cape",			waist="Flume Belt",			legs="Vitivation Tights +1",	feet="Hagondes Sabots +1"
 	}
 	sets.idle.lowMP = {
 		legs="Nares Trews"

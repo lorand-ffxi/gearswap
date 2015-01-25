@@ -9,7 +9,6 @@
 		3: 	Twilight Torque
 		8:	Boomerang
 		10:	Raider's Legs/Feet
-		14:	Qaaxo Harness
 		15:	Pillager's Feet
 		17:	Plunderer's Hands/Feet
 --]]
@@ -125,7 +124,7 @@ function init_gear_sets()
 		range="Raider's Boomerang",
 		head="Ocelomeh Headpiece +1",	neck="Orochi Nodowa",			ear1="Brachyura Earring",	ear2="Ethereal Earring",
 		body="Qaaxo Harness",			hands="Plunderer's Armlets +1",	ring1="Defending Ring",		ring2="Shneddick Ring",
-		back="Repulse Mantle",			waist="Flume Belt",				legs="Kaabnax Trousers",	feet="Pillager's Poulaines"
+		back="Repulse Mantle",			waist="Flume Belt",				legs="Kaabnax Trousers",	feet="Iuitl Gaiters +1"
 	}
 	sets.idle.with_buff = {}
 	sets.idle.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
