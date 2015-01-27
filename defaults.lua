@@ -72,7 +72,7 @@ function set_modes()
 	addMode('defense', {'normal', 'PDT', 'MDT'})
 	
 	--Note: The first value in the table passed to addMode becomes the default value for that mode.
-	if S{'WHM', 'BLM', 'RDM', 'SCH', 'BRD'}:contains(player.main_job) then
+	if S{'WHM', 'BLM', 'RDM', 'SCH', 'BRD', 'BLU'}:contains(player.main_job) then
 		addMode('casting', {'Normal', 'Resistant', 'Proc'})
 		addMode('offense', {'Magic', 'Melee', 'Skillup'})
 		if player.main_job == 'SCH' then

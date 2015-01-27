@@ -81,7 +81,7 @@ function init_gear_sets()
 		main="Lehbrailg +2",	sub="Mephitis Grip",	ammo="Kalboron Stone",
 		head="Nahtirah Hat",	neck="Eddy Necklace",	ear1="Lifestorm Earring",	ear2="Psystorm Earring",
 		body="Artsieq Jubbah",	hands="Lurid Mitts",	ring1="Sangoma Ring",		ring2="Perception Ring",
-		back="Ogapepo Cape",	waist="Aswang Sash",	legs="Artsieq Hose",		feet="Bokwus Boots"
+		back="Ogapepo Cape",	waist="Ovate Rope",		legs="Artsieq Hose",		feet="Bokwus Boots"
 	}
 
 	--====================== Healing =============================
@@ -154,15 +154,15 @@ function init_gear_sets()
 	--====================== Offensive ===========================	
 	
 	sets.midcast.DivineMagic = {
-		hands="Piety Mitts",
-		legs="Theophany Pantaloons"
+		--hands="Piety Mitts",
+		--legs="Theophany Pantaloons"
 	}
 				
 	sets.midcast.DivineMagic.Nuke = {
 		main="Venabulum",		sub="Zuuxowu Grip",		ammo="Dosis Tathlum",
 		head="Buremte Hat",		neck="Eddy Necklace",	ear1="Hecate's Earring",	ear2="Friomisi Earring",
 		body="Artsieq Jubbah",	hands="Otomi Gloves",	ring1="Fenrir Ring +1",		ring2="Acumen Ring",
-		back="Toro Cape",		waist="Cascade Belt",	legs="Gendewitha Spats +1",	feet="Weatherspoon Souliers +1"
+		back="Toro Cape",		waist="Cascade Belt",	legs="Gendewitha Spats +1",	feet="Gendewitha Galoshes +1"
 	}
 	sets.midcast.DivineMagic.Nuke.with_buff = {}
 	sets.midcast.DivineMagic.Nuke.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
@@ -182,10 +182,10 @@ function init_gear_sets()
 	sets.midcast.EnfeeblingMagic.Potency.Normal = {}
 	
 	sets.midcast.ElementalMagic = {
-		main="Venabulum",				sub="Zuuxowu Grip",			ammo="Dosis Tathlum",
-		head="Buremte Hat",				neck="Eddy Necklace",		ear1="Hecate's Earring",	ear2="Friomisi Earring",
-		body="Weatherspoon Robe +1",	hands="Otomi Gloves",		ring1="Fenrir Ring +1",		ring2="Acumen Ring",
-		back="Toro Cape",				waist="Aswang Sash",		legs="Gendewitha Spats +1",	feet="Uk'uxkaj Boots"
+		main="Venabulum",		sub="Zuuxowu Grip",			ammo="Dosis Tathlum",
+		head="Buremte Hat",		neck="Eddy Necklace",		ear1="Hecate's Earring",	ear2="Friomisi Earring",
+		body="Artsieq Jubbah",	hands="Otomi Gloves",		ring1="Fenrir Ring +1",		ring2="Acumen Ring",
+		back="Toro Cape",		waist="Aswang Sash",		legs="Gendewitha Spats +1",	feet="Gendewitha Galoshes +1"
 	}
 	sets.midcast.ElementalMagic.with_buff = {}
 	sets.midcast.ElementalMagic.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
@@ -209,7 +209,7 @@ function init_gear_sets()
 		head="Nahtirah Hat",			neck="Twilight Torque",		ear1="Brachyura Earring",	ear2="Ethereal Earring",
 		body={"Theophany Briault +1", "Artsieq Jubbah"},
 		hands="Dynasty Mitts",			ring1="Defending Ring",		ring2="Shneddick Ring",
-		back="Repulse Mantle",			waist="Emphatikos Rope",	legs="Artsieq Hose",	feet="Serpentes Sabots"
+		back="Repulse Mantle",			waist="Emphatikos Rope",	legs="Artsieq Hose",	feet="Gendewitha Galoshes +1"
 	}
 	sets.idle.lowMP = {
 		--main="Owleyes",		sub="Genbu's Shield",

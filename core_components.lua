@@ -145,8 +145,8 @@ function precast(spell)
 		end
 	end
 	
-	if S{'WHM', 'BLM', 'RDM', 'SCH', 'BRD'}:contains(player.main_job) then
-		if S{'Melee', 'Skillup'}:contains(modes.offense) then
+	if S{'WHM', 'BLM', 'RDM', 'SCH', 'BRD', 'BLU'}:contains(player.main_job) then
+		if S{'Melee', 'Skillup', 'Learn'}:contains(modes.offense) then
 			disable('main', 'sub')
 		else
 			enable('main', 'sub')
@@ -515,6 +515,32 @@ function get_midcast_set(spell)
 			end
 			if spell.en == 'Phalanx II' then
 				midcastSet = combineSets(midcastSet, sets.midcast, spell.en)
+			end
+		elseif spell.skill == 'Blue Magic' then
+			local bluType = (spell.element == -1) and 'Physical' or 'Magic'
+			if bluType == 'Magic' then
+				if (blu_typemap[spell.en] == 'Breath') then
+					midcastSet = combineSets(midcastSet, sets.midcast.MagicAccuracy)
+					midcastSet = combineSets(midcastSet, sets.midcast.BlueMagic)
+					midcastSet = combineSets(midcastSet, sets.midcast.BlueMagic.Magic)
+					midcastSet = combineSets(midcastSet, sets.midcast.BlueMagic.Breath)
+				elseif (blu_typemap[spell.en] == 'Buff') then
+					midcastSet = combineSets(midcastSet, sets.midcast.FastRecast)
+					midcastSet = combineSets(midcastSet, sets.midcast.BlueMagic)
+				elseif (blu_typemap[spell.en] == 'Enfeeb') then
+					midcastSet = combineSets(midcastSet, sets.midcast.MagicAccuracy)
+					midcastSet = combineSets(midcastSet, sets.midcast.BlueMagic)
+				elseif (blu_typemap[spell.en] == 'Heal') then
+					midcastSet = combineSets(midcastSet, sets.midcast.Cure)
+				else
+					midcastSet = combineSets(midcastSet, sets.midcast.MagicAccuracy)
+					midcastSet = combineSets(midcastSet, sets.midcast.BlueMagic)
+					midcastSet = combineSets(midcastSet, sets.midcast.BlueMagic.Magic)
+				end
+			elseif bluType == 'Physical' then
+				midcastSet = combineSets(midcastSet, sets.midcast.BlueMagic)
+				midcastSet = combineSets(midcastSet, sets.midcast.BlueMagic.Physical)
+				midcastSet = combineSets(midcastSet, sets.midcast.BlueMagic.Physical[blu_statmap[spell.en]])
 			end
 		elseif spell.skill == 'Ninjutsu' then
 			if spellMap == 'Utsusemi' then

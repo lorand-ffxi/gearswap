@@ -107,10 +107,10 @@ function init_gear_sets()
 	sets.midcast.BardSong = {}
 
 	sets.midcast.ElementalMagic = {
-		main="Kaladanda",			sub="Zuuxowu Grip",			ammo="Dosis Tathlum",
-		head="Buremte Hat",			neck="Stoicheion Medal",	ear1="Hecate's Earring",	ear2="Friomisi Earring",
-		body="Hagondes Coat +1",	hands="Otomi Gloves",		ring1="Fenrir Ring +1",		ring2="Acumen Ring",
-		back="Bane Cape",			waist="Aswang Sash",		legs="Hagondes Pants +1",	feet="Hagondes Sabots +1"
+		main="Kaladanda",			sub="Zuuxowu Grip",		ammo="Dosis Tathlum",
+		head="Buremte Hat",			neck="Eddy Necklace",	ear1="Hecate's Earring",	ear2="Friomisi Earring",
+		body="Hagondes Coat +1",	hands="Otomi Gloves",	ring1="Fenrir Ring +1",		ring2="Acumen Ring",
+		back="Bane Cape",			waist="Aswang Sash",	legs="Hagondes Pants +1",	feet="Hagondes Sabots +1"
 	}
 	sets.midcast.ElementalMagic.with_buff = {}
 	sets.midcast.ElementalMagic.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
