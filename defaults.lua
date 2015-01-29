@@ -77,6 +77,8 @@ function set_modes()
 		addMode('offense', {'Magic', 'Melee', 'Skillup'})
 		if player.main_job == 'SCH' then
 			addMode('idle', {'fun', 'speedy', 'normal'})
+		elseif player.main_job == 'BLU' then
+			addMode('offense', {'Normal', 'Learn'})
 		end
 	elseif S{'RNG'}:contains(player.main_job) then
 		addMode('offense', {'Gun', 'Bow', 'Melee'})
@@ -166,7 +168,7 @@ function set_keybinds()
 		end
 		windower.send_command('bind @9 input /ma "Sneak" <t>')
 		windower.send_command('bind @0 input /ma "Invisible" <t>')
-	elseif S{'MNK', 'NIN', 'SAM', 'PLD', 'RNG', 'COR', 'THF'}:contains(player.main_job) then
+	elseif S{'MNK', 'NIN', 'SAM', 'PLD', 'RNG', 'COR', 'THF', 'BLU'}:contains(player.main_job) then
 		if player.main_job == 'NIN' then
 			windower.send_command('bind ^` input /ja "Innin" <me>')
 			windower.send_command('bind !` input /ja "Yonin" <me>')
@@ -179,10 +181,13 @@ function set_keybinds()
 		elseif player.main_job == 'PLD' then
 			windower.send_command('bind ^` input /ja "Divine Emblem" <me>')
 			windower.send_command('bind !` input /ja "Shield Bash" <t>')
-		elseif player.main_job =='RNG' then
+		elseif player.main_job == 'RNG' then
 			windower.send_command('bind @` input /ja "Shadowbind" <t>')
 			windower.send_command('bind ^` input /ja "Sharpshot" <me>')
 			windower.send_command('bind !` input /ja "Velocity Shot" <me>')
+		elseif player.main_job == 'BLU' then
+			windower.send_command('bind ^` input /ja "Chain Affinity" <me>')
+			windower.send_command('bind !` input /ja "Efflux" <me>')
 		end
 		windower.send_command('bind @1 input /ma "Utsusemi: Ni" <me>')
 		windower.send_command('bind @2 input /ma "Utsusemi: Ichi" <me>')

@@ -251,6 +251,13 @@ function init_gear_sets()
 	}
 	sets.engaged.Learn = {
 		ammo="Honed Tathlum",
+		head="Whirlpool Mask",	neck="Ziel Charm",			ear1="Bladeborn Earring",	ear2="Steelflash Earring",
+		body="Iuitl Harness +1",hands="Magus Bazubands",	ring1="Rajas Ring",			ring2="Mars's Ring",
+		back="Kayapa Cape",		waist="Anguinus Belt",		legs="Iuitl Tights +1",		feet="Iuitl Gaiters +1"
+	}
+	
+	sets.engaged.Learn1 = {
+		ammo="Honed Tathlum",
 		head="Whirlpool Mask",	neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
 		body="Qaaxo Harness",	hands="Magus Bazubands",	ring1="Rajas Ring",			ring2="Epona's Ring",
 		back="Atheling Mantle",	waist="Windbuffet Belt +1",	legs="Iuitl Tights +1",		feet="Iuitl Gaiters +1"
