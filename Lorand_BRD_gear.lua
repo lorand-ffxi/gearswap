@@ -106,10 +106,10 @@ function init_gear_sets()
 	--					Midcast sets
 	--============================================================
 	sets.midcast.FastRecast = {
-		range="empty",			ammo="empty",
-		head="Kaabanax Hat",	neck="Orunmila's Torque",		ear1="Loquacious Earring",
-		body="Marduk's Jubbah",	hands="Gendewitha Gages +1",	ring1="Prolix Ring",
-		back="Swith Cape",		waist="Cetl Belt",				legs="Artsieq Hose",	feet="Chelona Boots"
+		range="empty",				ammo="empty",
+		head="Kaabanax Hat",		neck="Orunmila's Torque",		ear1="Loquacious Earring",
+		body="Marduk's Jubbah +1",	hands="Gendewitha Gages +1",	ring1="Prolix Ring",
+		back="Swith Cape",			waist="Cetl Belt",				legs="Artsieq Hose",		feet="Chelona Boots"
 	}
 	
 	--============================================================
@@ -154,15 +154,15 @@ function init_gear_sets()
 	sets.midcast.SongRecast = {
 		main="Felibre's Dague",			sub="Genbu's Shield",
 		head="Gendewitha Caubeen +1",	neck="Orunmila's Torque",	ear1="Loquacious Earring",	ear2="Novia Earring",
-		body="Marduk's Jubbah",			hands="Buremte Gloves",		ring1="Prolix Ring",
+		body="Marduk's Jubbah +1",		hands="Buremte Gloves",		ring1="Prolix Ring",
 		back="Swith Cape",				waist="Witful Belt",		legs="Artsieq Hose",		feet="Bihu Slippers"
 	}
 	
 	sets.midcast.MagicAcc = {
-		main="Lehbrailg +2",		sub="Mephitis Grip",
-		head="Bihu Roundlet",		neck="Stoicheion Medal",	ear1="Lifestorm Earring",	ear2="Psystorm Earring",
-		body="Brioso Justaucorps",	hands="Lurid Mitts",		ring1="Balrahn's Ring",		ring2="Perception Ring",
-		back="Rhapsode's Cape",		legs="Bihu Cannions",		feet="Bokwus Boots"
+		main="Lehbrailg +2",	sub="Mephitis Grip",
+		head="Nahtirah Hat",	neck="Stoicheion Medal",	ear1="Lifestorm Earring",	ear2="Psystorm Earring",
+		body="Artsieq Jubbah",	hands="Lurid Mitts",		ring1="Sangoma Ring",		ring2="Perception Ring",
+		back="Rhapsode's Cape",	waist="Ovate Rope",			legs="Artsieq Hose",		feet="Artsieq Boots"
 	}
 	
 	sets.midcast.SongDebuff = {				-- For song debuffs (duration primary, accuracy secondary)
@@ -179,7 +179,7 @@ function init_gear_sets()
 	
 	sets.midcast.EnhancingMagic = {
 		neck="Colossus's Torque",
-		body="Hyksos Robe",
+		body="Manasa Chasuble",
 		waist="Cascade Belt"
 	}
 	sets.midcast.Aquaveil = {waist="Emphatikos Rope"}
@@ -202,7 +202,6 @@ function init_gear_sets()
 		back="Oretania's Cape",			waist="Cascade Belt",			legs="Gendewitha Spats +1",	feet="Bihu Slippers"
 	}
 	sets.midcast.Cure.with_buff = {}
-	sets.midcast.Cure.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
 	
 	sets.midcast.DivineMagic = {}
 	sets.midcast.DarkMagic = {}

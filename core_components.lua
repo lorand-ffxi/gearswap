@@ -95,6 +95,7 @@ end
 	Equip any gear that should be on before the spell or ability is used.
 --]]
 function precast(spell)
+	if (spell.type == 'Trust') then return end
 	if modify_spell(spell) or modify_cure(spell) or not_possible_to_use(spell) then
 		cancel_spell()
 		return
@@ -162,6 +163,7 @@ end
 	It should take effect regardless of the spell cast speed.
 --]]
 function midcast(spell)
+	if (spell.type == 'Trust') then return end
 	if spell.en == 'Utsusemi: Ichi' and not spell.interrupted then
 		windower.send_command('wait 2; cancel 66; cancel 446')
 	end

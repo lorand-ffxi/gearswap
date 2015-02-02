@@ -136,12 +136,12 @@ function init_gear_sets()
 	sets.midcast.BlueMagic.Physical.STR = {
 		head="Whirlpool Mask",
 		ring2="Pyrosoul Ring",
-		back="Buquwik Cape",	waist="Prosilio Belt",	legs="Nahtirah Trousers",	feet="Shneddick Boots +1"
+		back="Buquwik Cape",	waist="Prosilio Belt",	legs="Nahtirah Trousers",	feet="Iuitl Gaiters +1"
 	}
 	sets.midcast.BlueMagic.Physical.VIT = {
 		head="Whirlpool Mask",
 		ring1="Terrasoul Ring",	ring2="Spiral Ring",
-		back="Iximulew Cape",	waist="Chuq'aba Belt",	legs="Nahtirah Trousers",	feet="Shneddick Boots +1"
+		back="Iximulew Cape",	waist="Chuq'aba Belt",	legs="Nahtirah Trousers",	feet="Iuitl Gaiters +1"
 	}
 	sets.midcast.BlueMagic.Physical.DEXINT = {
 		neck="Love Torque",		ear1="Pixie Earring",	ear2="Psystorm Earring",
@@ -151,12 +151,12 @@ function init_gear_sets()
 	sets.midcast.BlueMagic.Physical.STRAGI = {
 		head="Whirlpool Mask",
 		ring2="Pyrosoul Ring",
-		waist="Prosilio Belt",	legs="Nahtirah Trousers",	feet="Shneddick Boots +1"
+		waist="Prosilio Belt",	legs="Nahtirah Trousers",	feet="Iuitl Gaiters +1"
 	}
 	sets.midcast.BlueMagic.Physical.STRDEX = {
 		ear1="Pixie Earring",
 		ring2="Pyrosoul Ring",
-		waist="Warwolf Belt",	legs="Nahtirah Trousers",	feet="Shneddick Boots +1"
+		waist="Warwolf Belt",	legs="Nahtirah Trousers",	feet="Iuitl Gaiters +1"
 	}
 	sets.midcast.BlueMagic.Physical.STRINT = {
 		ear2="Psystorm Earring",
@@ -171,7 +171,7 @@ function init_gear_sets()
 	sets.midcast.BlueMagic.Physical.STRVIT = {
 		head="Whirlpool Mask",
 		ring2="Spiral Ring",
-		waist="Chuq'aba Belt",	legs="Nahtirah Trousers",	feet="Shneddick Boots +1"
+		waist="Chuq'aba Belt",	legs="Nahtirah Trousers",	feet="Iuitl Gaiters +1"
 	}
 	sets.midcast.BlueMagic.Physical['Cannonball'] = {	--Uses def instead of att
 		head="Whirlpool Mask",	neck="Stone Gorget",

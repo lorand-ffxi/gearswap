@@ -36,7 +36,7 @@ function init_gear_sets()
 
 	sets.precast.ranged = {
 		head="Sylvan Gapette +2",
-		body="Arcadian Jerkin",		hands="Iuitl Wristbands",
+		body="Arcadian Jerkin",		hands="Iuitl Wristbands +1",
 		waist="Impulse Belt",		legs="Arcadian Braccae"
 	}
 	
@@ -45,30 +45,30 @@ function init_gear_sets()
 	--============================================================
 	
 	sets.wsBase = {
-		neck="Ocachi Gorget",		ear1="Clearview Earring",	ear2="Volley Earring",
-		body="Shneddick Tabard +1",	ring1="Rajas Ring",
-		feet="Shneddick Boots +1"
+		neck="Ocachi Gorget",	ear1="Clearview Earring",	ear2="Volley Earring",
+		body="Iuitl Vest +1",	ring1="Rajas Ring",
+		feet="Iuitl Gaiters +1"
 	}
 	
 	sets.wsBase.STR = {
 		head="Ejekamal Mask",
-		hands="Arcadian Bracers",	ring2="Pyrosoul Ring",
+		ring2="Pyrosoul Ring",
 		back="Buquwik Cape",		waist="Prosilio Belt",		legs="Shneddick Tights +1"
 	}
 	sets.wsBase.AGI = {
 		head="Uk'uxkaj Cap",
-		hands="Iuitl Wristbands",	ring1="Blobnag Ring",		ring2="Stormsoul Ring",
-		back="Ik Cape",				waist="Sveltesse Gouriz",	legs="Kaabnax Trousers"
+		hands="Iuitl Wristbands +1",	ring1="Blobnag Ring",		ring2="Stormsoul Ring",
+		back="Ik Cape",					waist="Sveltesse Gouriz",	legs="Kaabnax Trousers"
 	}
 	sets.wsBase.DEX = {
 		head="Uk'uxkaj Cap",			ear1="Pixie Earring",
-		hands="Shneddick Gloves +1",	ring2="Thundersoul Ring",
-		back="Kayapa Cape",				waist="Chiner's Belt",		legs="Byakko's Haidate"
+		hands="Iuitl Wristbands +1",	ring2="Thundersoul Ring",
+		back="Kayapa Cape",				waist="Chiner's Belt",
 	}
 	sets.wsBase.STRAGI = {
 		head="Uk'uxkaj Cap",
-		hands="Arcadian Bracers",	ring2="Pyrosoul Ring",
-		back="Sylvan Chlamys",		waist="Prosilio Belt",		legs="Kaabnax Trousers"
+		ring2="Pyrosoul Ring",
+		waist="Prosilio Belt",		legs="Kaabnax Trousers"
 	}
 	
 	sets.tpBase = {
@@ -81,7 +81,7 @@ function init_gear_sets()
 	-- Midcast Sets
 	sets.midcast.FastRecast = {
 		head="Whirlpool Mask",	neck="Orunmila's Torque",
-		body="Iuitl Vest",		hands="Iuitl Wristbands",
+		body="Iuitl Vest",		hands="Iuitl Wristbands +1",
 		legs="Manibozho Brais",	feet="Iuitl Gaiters +1"
 	}
 		
@@ -131,7 +131,7 @@ function init_gear_sets()
 	}
 	sets.defense.PDT = set_combine(sets.defense.Evasion, sets.defense.DT, {	--PDT-18% + DT => PDT-33%
 		head="Iuitl Headgear",
-		body="Iuitl Vest",		hands="Iuitl Wristbands",
+		body="Iuitl Vest",		hands="Iuitl Wristbands +1",
 		back="Repulse Mantle",	waist="Flume Belt",			legs="Iuitl Tights",	feet="Iuitl Gaiters"
 	})
 	sets.defense.MDT = set_combine(sets.defense.Evasion, sets.defense.DT, {	--MDT-4% + DT => MDT-16%, MDB+19

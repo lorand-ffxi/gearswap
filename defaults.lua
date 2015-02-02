@@ -56,7 +56,6 @@ function define_defaults()
 	gear.instruments.default = 'Eminent Flute'
 	gear.instruments.multiSong = 'Terpander'
 	
-	
 	--addModeOption(mode, option)
 	
 	vars = {}

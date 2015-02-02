@@ -95,7 +95,7 @@ function init_gear_sets()
 	sets.midcast.EnhancingMagic = {
 		main="Coeus",				sub="Achaq Grip",			ammo="Savant's Treatise",
 		head="Savant's Bonnet +2",	neck="Colossus's Torque",
-		body="Hyksos Robe",
+		body="Manasa Chasuble",
 		waist="Cascade Belt"
 	}
 	sets.midcast.EnhancingMagic.LA = {
@@ -114,10 +114,10 @@ function init_gear_sets()
 	}
 
 	sets.midcast.MagicAccuracy = {
-		main="Lehbrailg +2",		sub="Mephitis Grip",		ammo="Kalboron Stone",
-		head="Kaabnax Hat",			neck="Stoicheion Medal",	ear1="Lifestorm Earring",	ear2="Psystorm Earring",
-		body="Savant's Gown +2",	hands="Lurid Mitts",		ring1="Balrahn's Ring",		ring2="Perception Ring",
-		back="Ogapepo Cape",		waist="Aswang Sash",		legs="Artsieq Hose",		feet="Bokwus Boots"
+		main="Lehbrailg +2",	sub="Mephitis Grip",		ammo="Kalboron Stone",
+		head="Nahtirah Hat",	neck="Eddy Necklace",		ear1="Lifestorm Earring",	ear2="Psystorm Earring",
+		body="Artsieq Jubbah",	hands="Hagondes Cuffs +1",	ring1="Sangoma Ring",		ring2="Perception Ring",
+		back="Ogapepo Cape",	waist="Ovate Rope",			legs="Artsieq Hose",		feet="Artsieq Boots"
 	}
 	
 	sets.midcast.EnfeeblingMagic = {

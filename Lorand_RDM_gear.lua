@@ -103,10 +103,10 @@ function init_gear_sets()
 	--============================================================
 	
 	sets.midcast.MagicAccuracy = {
-		main="Lehbrailg +2",	sub="Mephitis Grip",	ammo="Kalboron Stone",
-		head="Kaabnax Hat",		neck="Eddy Necklace",	ear1="Lifestorm Earring",	ear2="Psystorm Earring",
-		body="Artsieq Jubbah",	hands="Lurid Mitts",	ring1="Perception Ring",	ring2="Sangoma Ring",
-		back="Ogapepo Cape",	waist="Aswang Sash",	legs="Artsieq Hose",		feet="Bokwus Boots"
+		main="Lehbrailg +2",	sub="Mephitis Grip",		ammo="Kalboron Stone",
+		head="Nahtirah Hat",	neck="Eddy Necklace",		ear1="Lifestorm Earring",	ear2="Psystorm Earring",
+		body="Artsieq Jubbah",	hands="Hagondes Cuffs +1",	ring1="Sangoma Ring",		ring2="Perception Ring",
+		back="Ogapepo Cape",	waist="Ovate Rope",			legs="Artsieq Hose",		feet="Artsieq Boots"
 	}
 	
 	sets.midcast.EnfeeblingMagic = {
@@ -149,10 +149,10 @@ function init_gear_sets()
 		neck="Dark Torque"
 	}
 	sets.midcast.Stun = {
-		main="Apamajas II",				sub="Mephitis Grip",	ammo="Kalboron Stone",
-		head="Atrophy Chapeau +1",		neck="Jeweled Collar",	ear1="Lifestorm Earring",	ear2="Psystorm Earring",
-		body="Vitivation Tabard +1",	hands="Buremte Gloves",	ring1="Perception Ring",
-		back="Ogapepo Cape",			waist="Cetl Belt",		legs="Artsieq Hose",		feet="Bokwus Boots"
+		main="Apamajas II",				sub="Mephitis Grip",		ammo="Kalboron Stone",
+		head="Atrophy Chapeau +1",		neck="Orunmila's Torque",	ear1="Lifestorm Earring",	ear2="Psystorm Earring",
+		body="Vitivation Tabard +1",	hands="Buremte Gloves",		ring1="Perception Ring",
+		back="Ogapepo Cape",			waist="Cetl Belt",			legs="Artsieq Hose",		feet="Artsieq Boots"
 	}
 	
 	sets.midcast.DivineMagic = {}

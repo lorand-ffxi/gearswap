@@ -71,7 +71,7 @@ function init_gear_sets()
 		ammo="Dosis Tathlum",
 		neck="Stoicheion Medal",	ear1="Hecate's Earring",	ear2="Friomisi Earring",
 		ring1="Fenrir Ring +1",		ring2="Acumen Ring",
-		back="Toro Cape",			legs="Shneddick Tights"
+		back="Toro Cape"
 	}
 	
 	--============================================================

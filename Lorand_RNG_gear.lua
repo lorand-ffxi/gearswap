@@ -86,30 +86,29 @@ function init_gear_sets()
 	--============================================================
 	
 	sets.wsBase = {
-		head="Shneddick Chapeau +1",	neck="Ocachi Gorget",			ear1="Clearview Earring",	ear2="Volley Earring",
-		body="Shneddick Tabard +1",		hands="Iuitl Wristbands +1",	ring1="Rajas Ring",			ring2="Stormsoul Ring",
-		back="Lutian Cape",				waist="Scout's Belt",			legs="Nahtirah Trousers",	feet="Iuitl Gaiters +1"
+		head="Whirlpool Mask",	neck="Ocachi Gorget",			ear1="Clearview Earring",	ear2="Volley Earring",
+		body="Iuitl Vest +1",	hands="Iuitl Wristbands +1",	ring1="Rajas Ring",			ring2="Stormsoul Ring",
+		back="Lutian Cape",		waist="Scout's Belt",			legs="Nahtirah Trousers",	feet="Iuitl Gaiters +1"
 	}
 	
 	sets.wsBase.STR = {
-		head="Ejekamal Mask",
 		hands="Arcadian Bracers",	ring2="Pyrosoul Ring",
-		back="Buquwik Cape",		waist="Prosilio Belt",		legs="Shneddick Tights +1"
+		back="Buquwik Cape",		waist="Prosilio Belt",
 	}
 	sets.wsBase.AGI = {
 		head="Uk'uxkaj Cap",
-		hands="Iuitl Wristbands +1",	ring1="Blobnag Ring",		ring2="Stormsoul Ring",
-		back="Ik Cape",					waist="Sveltesse Gouriz",	legs="Kaabnax Trousers"
+		ring1="Blobnag Ring",	ring2="Stormsoul Ring",
+		back="Ik Cape",			waist="Sveltesse Gouriz",
 	}
 	sets.wsBase.DEX = {
-		head="Uk'uxkaj Cap",			ear1="Pixie Earring",
-		hands="Shneddick Gloves +1",	ring2="Thundersoul Ring",
-		back="Kayapa Cape",				waist="Chiner's Belt",		legs="Kaabnax Trousers"
+		head="Uk'uxkaj Cap",		ear1="Pixie Earring",
+		ring2="Thundersoul Ring",
+		back="Kayapa Cape",			waist="Chiner's Belt",		legs="Kaabnax Trousers"
 	}
 	sets.wsBase.STRAGI = {
 		head="Uk'uxkaj Cap",
 		hands="Arcadian Bracers",	ring2="Pyrosoul Ring",
-		back="Sylvan Chlamys",		waist="Prosilio Belt",		legs="Kaabnax Trousers"
+		back="Sylvan Chlamys",		waist="Prosilio Belt",
 	}
 	
 	sets.tpBase = {
@@ -277,10 +276,10 @@ function init_gear_sets()
 	sets.resting = {}
 	
 	sets.idle = {
-		head="Ocelomeh Headpiece +1",	neck="Orochi Nodowa",		ear1="Brachyura Earring",			ear2="Ethereal Earring",
+		head="Ocelomeh Headpiece +1",	neck="Orochi Nodowa",		ear1="Brachyura Earring",		ear2="Ethereal Earring",
 		body={"Kirin's Osode", "Orion Jerkin"},
-		hands="Buremte Gloves",		ring1="Defending Ring",			ring2="Shneddick Ring",
-		back="Repulse Mantle",			waist="Flume Belt",			legs="Kaabnax Trousers",		feet="Orion Socks"
+		hands="Buremte Gloves",			ring1="Defending Ring",		ring2="Shneddick Ring",
+		back="Repulse Mantle",			waist="Flume Belt",			legs="Kaabnax Trousers",		feet="Iuitl Gaiters +1"
 	}
 	sets.idle.with_buff = {}
 	sets.idle.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}
@@ -292,7 +291,7 @@ function init_gear_sets()
 	sets.defense.PDT = set_combine(sets.defense.Evasion, sets.defense.DT, {	--PDT-18% + DT => PDT-33%
 		head="Iuitl Headgear +1",
 		body="Iuitl Vest +1",		hands="Iuitl Wristbands +1",
-		back="Repulse Mantle",		waist="Flume Belt",				legs="Iuitl Tights +1",	feet="Iuitl Gaiters +1"
+		back="Repulse Mantle",		waist="Flume Belt",			legs="Iuitl Tights +1",	feet="Iuitl Gaiters +1"
 	})
 	sets.defense.MDT = set_combine(sets.defense.Evasion, sets.defense.DT, {	--MDT-4% + DT => MDT-16%, MDB+19
 		head="Ejekamal Mask",	ear1="Merman's Earring",	ear2="Merman's Earring",

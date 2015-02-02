@@ -190,7 +190,8 @@ function init_gear_sets()
 		main="Xiutleato",				sub="Genbu's Shield",		ammo="Kalboron Stone",
 		head="Vitivation Chapeau +1",	neck="Twilight Torque",		ear1="Novia Earring",			ear2="Ethereal Earring",
 		body="Artsieq Jubbah",			hands="Hagondes Cuffs +1",	ring1="Dark Ring",				ring2="Shneddick Ring",
-		back="Cheviot Cape",			waist="Emphatikos Rope",	legs="Vitivation Tights +1",	feet="Hagondes Sabots +1"
+		--back="Cheviot Cape",			
+		back="Mecistopins Mantle",		waist="Emphatikos Rope",	legs="Vitivation Tights +1",	feet="Hagondes Sabots +1"
 	}
 	sets.idle.with_buff = {}
 	sets.idle.with_buff['reive mark'] = {neck="Arciela's Grace +1"}

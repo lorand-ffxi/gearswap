@@ -6,7 +6,7 @@
 		2:	Loquacious Earring
 		3:	Twilight Torque/Cape
 		10:	Goetia+2 Head/Feet
-		15:	Spaekona's Body/Legs
+		--15:	Spaekona's Body/Legs
 --]]
 -----------------------------------------------------------------------------------------------------------
 
@@ -46,17 +46,16 @@ function init_gear_sets()
 		ammo="Impatiens",
 		head="Nahtirah Hat",		neck="Orunmila's Torque",	ear1="Loquacious Earring",
 		body="Hagondes Coat +1",	hands="Otomi Gloves",		ring1="Prolix Ring",
-		back="Swith Cape",			waist="Witful Belt",		legs="Artsieq Hose",		feet="Bokwus Boots"
+		back="Swith Cape",			waist="Witful Belt",		legs="Artsieq Hose",		feet="Artsieq Boots"
 	}
 
 	sets.midcast.Cure = {
 		main="Tamaxchi",			sub="Genbu's Shield",			ammo="Impatiens",
 		head="Nahtirah Hat",		neck="Orunmila's Torque",		ear1="Roundel Earring",	ear2="Star Earring",
 		body="Hagondes Coat +1",	hands="Weatherspoon Cuffs +1",	ring1="Aquasoul Ring",	ring2="Aqua Ring",
-		back="Oretania's Cape",		waist="Witful Belt",			legs="Nares Trews",		feet="Hagondes Sabots +1"
+		back="Oretania's Cape",		waist="Witful Belt",			legs="Nares Trews",		feet="Artsieq Boots"
 	}
 	sets.midcast.Cure.with_buff = {}
-	sets.midcast.Cure.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
 	sets.midcast.Curaga = sets.midcast.Cure
 
 	sets.midcast.Cursna = {
@@ -65,44 +64,44 @@ function init_gear_sets()
 	
 	sets.midcast.EnhancingMagic = {
 		neck="Colossus's Torque",
-		body="Hyksos Robe",			
+		body="Manasa Chasuble",			
 		waist="Cascade Belt"
 	}
 	sets.midcast.Aquaveil = {waist="Emphatikos Rope"}
-	sets.midcast.Stoneskin = {
-		neck="Stone Gorget",			ear1="Loquacious Earring",	ear2="Earthcry Earring",
-		hands="Weatherspoon Cuffs +1",	ring1="Aquasoul Ring",		ring2="Aqua Ring",
-		back="Tuilha Cape",				waist="Siegel Sash",		legs="Haven Hose",		feet="Hagondes Sabots +1"
+	sets.midcast.Stoneskin = {														ammo="Impatiens",
+		head="Natirah Hat",		neck="Stone Gorget",	ear1="Loquacious Earring",	ear2="Earthcry Earring",
+		hands="Lurid Mitts",	ring1="Aquasoul Ring",	ring2="Aqua Ring",
+		back="Tuilha Cape",		waist="Siegel Sash",	legs="Haven Hose",			feet="Artsieq Boots"
 	}
 
 	sets.midcast.MagicAccuracy = {
 		main="Kaladanda",		sub="Mephitis Grip",		ammo="Kalboron Stone",
-		head="Kaabnax Hat",		neck="Stoicheion Medal",	ear1="Lifestorm Earring",	ear2="Psystorm Earring",
-		body="Spaekona's Coat",	hands="Lurid Mitts",		ring1="Balrahn's Ring",		ring2="Perception Ring",
-		back="Bane Cape",		waist="Aswang Sash",		legs="Artsieq Hose",		feet="Bokwus Boots"
+		head="Nahtirah Hat",	neck="Eddy Necklace",		ear1="Lifestorm Earring",	ear2="Psystorm Earring",
+		body="Artsieq Jubbah",	hands="Hagondes Cuffs +1",	ring1="Sangoma Ring",		ring2="Perception Ring",
+		back="Ogapepo Cape",	waist="Ovate Rope",			legs="Artsieq Hose",		feet="Artsieq Boots"
 	}
 	
 	sets.midcast.EnfeeblingMagic = {
-		neck="Enfeebling Torque"
+		neck="Enfeebling Torque",
+		hands="Lurid Mitts",
 	}
 
 	sets.midcast.DarkMagic = {
 		neck="Dark Torque",
-		legs="Spaekona's Tonban",
-		feet="Goetia Sabots +2"
+		--legs="Spaekona's Tonban",
+		--feet="Goetia Sabots +2"
 	}
 
 	sets.midcast.Stun = {
-		main="Apamajas II",			sub="Mephitis Grip",	ammo="Kalboron Stone",
-		head="Nahtirah Hat",			neck="Dark Torque",		ear1="Lifestorm Earring",	ear2="Psystorm Earring",
-		body="Spaekona's Coat",		hands="Otomi Gloves",	ring1="Sangoma Ring",		ring2="Perception Ring",
-		back="Ogapepo Cape",		waist="Witful Belt",	legs="Artsieq Hose",		feet="Bokwus Boots"
+		main="Apamajas II",		sub="Mephitis Grip",		ammo="Kalboron Stone",
+		head="Nahtirah Hat",	neck="Orunmila's Torque",	ear1="Lifestorm Earring",	ear2="Psystorm Earring",
+		body="Artsieq Jubbah",	hands="Hagondes Cuffs +1",	ring1="Sangoma Ring",		ring2="Perception Ring",
+		back="Ogapepo Cape",	waist="Witful Belt",		legs="Artsieq Hose",		feet="Artsieq Boots"
 	}
 
 	sets.midcast.DivineMagic = {}
 	sets.midcast.DivineMagic.Nuke = {}
 	sets.midcast.DivineMagic.Nuke.with_buff = {}
-	sets.midcast.DivineMagic.Nuke.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
 	
 	sets.midcast.BardSong = {}
 
@@ -113,14 +112,13 @@ function init_gear_sets()
 		back="Bane Cape",			waist="Aswang Sash",	legs="Hagondes Pants +1",	feet="Hagondes Sabots +1"
 	}
 	sets.midcast.ElementalMagic.with_buff = {}
-	sets.midcast.ElementalMagic.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
 	sets.midcast.ElementalMagic.Earth = {neck="Quanpur Necklace"}
 	
 	sets.midcast.ElementalMagic.Resistant = {
 		main="Kaladanda",		sub="Mephitis Grip",	ammo="Dosis Tathlum",
 		head="Nahtirah Hat",	neck="Eddy Necklace",	ear1="Hecate's Earring",	ear2="Friomisi Earring",
 		body="Artsieq Jubbah",	hands="Yaoyotl Gloves",	ring1="Fenrir Ring +1",		ring2="Sangoma Ring",
-		back="Bane Cape",		waist="Aswang Sash",	legs="Artsieq Hose",		feet="Hagondes Sabots +1"
+		back="Bane Cape",		waist="Aswang Sash",	legs="Hagondes Pants +1",	feet="Artsieq Boots"
 	}
 	
 	sets.midcast.ElementalEnfeeble = {}
@@ -129,17 +127,17 @@ function init_gear_sets()
 	--============================================================
 	
 	sets.resting = {
-		main="Chatoyant Staff",		sub="Elder's Grip",			ammo="Clarus Stone",
-		head="Kaabnax Hat",			neck="Eidolon Pendant",		ear1="Loquacious Earring",	ear2="Relaxing Earring",
-		body="Hagondes Coat +1",	hands="Nares Cuffs",		ring1="Fenrir Ring +1",		ring2="Sangoma Ring",
-		back="Felicitas Cape",		waist="Emphatikos Rope",	legs="Nares Trews",			feet="Chelona Boots"
+		main="Chatoyant Staff",	sub="Elder's Grip",			ammo="Clarus Stone",
+		head="Kaabnax Hat",		neck="Eidolon Pendant",		ear1="Loquacious Earring",	ear2="Relaxing Earring",
+		body="Artsieq Jubbah",	hands="Nares Cuffs",		ring1="Fenrir Ring +1",		ring2="Sangoma Ring",
+		back="Felicitas Cape",	waist="Emphatikos Rope",	legs="Nares Trews",			feet="Chelona Boots"
 	}
 	
 	sets.idle = {
-		main="Terra's Staff",		sub="Elder's Grip",			ammo="Impatiens",
-		head="Kaabnax Hat",			neck="Twilight Torque",		ear1="Brachyura Earring",	ear2="Ethereal Earring",
-		body="Artsieq Jubbah",		hands="Yaoyotl Gloves",		ring1="Defending Ring",		ring2="Shneddick Ring",
-		back="Repulse Mantle",		waist="Emphatikos Rope",	legs="Artsieq Hose",		feet="Hagondes Sabots +1"
+		main="Terra's Staff",	sub="Elder's Grip",			ammo="Impatiens",
+		head="Kaabnax Hat",		neck="Twilight Torque",		ear1="Brachyura Earring",	ear2="Ethereal Earring",
+		body="Artsieq Jubbah",	hands="Yaoyotl Gloves",		ring1="Defending Ring",		ring2="Shneddick Ring",
+		back="Repulse Mantle",	waist="Emphatikos Rope",	legs="Artsieq Hose",		feet="Hagondes Sabots +1"
 	}
 	sets.idle.lowMP = {
 		--main="Owleyes",		sub="Genbu's Shield",

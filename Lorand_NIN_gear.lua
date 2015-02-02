@@ -58,42 +58,24 @@ function init_gear_sets()
 
 	--============================================================
 	--sets.wsBase[magic][sam/other][state.OffenseMode][state.RangedMode][wsmod[spell.en]]
-	sets.wsBase = {
-		ammo="Happo Shuriken +1",
-		head="Uk'uxkaj Cap",			neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
-		body="Mochizuki Chainmail +1",	hands="Mochizuki Tekko +1",	ring1="Rajas Ring",			ring2="Epona's Ring",
-		back="Yokaze Mantle",			waist="Anguinus Belt",		legs="Quiahuiz Trousers",	feet="Mochizuki Kyahan +1"
+	sets.wsBase = {																		ammo="Happo Shuriken +1",
+		head="Uk'uxkaj Cap",	neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
+		body="Qaaxo Harness",	hands="Mochizuki Tekko +1",	ring1="Rajas Ring",			ring2="Epona's Ring",
+		back="Yokaze Mantle",	waist="Windbuffet Belt +1",	legs="Otronif Brais +1",	feet="Mochizuki Kyahan +1"
 	}
 	
 	sets.wsBase.Acc = {}
 	sets.wsBase.Acc.DEX = {}
 	sets.wsBase.Acc.AGI = {}
 	
-	sets.wsBase.STR = {
-		head="Ejekamal Mask",
-		body="Hachiya Chainmail +1",
-		legs="Hachiya Hakama +1",
-	}
+	sets.wsBase.STR = {head="Whirlpool Mask",legs="Hachiya Hakama +1",}
+	sets.wsBase.DEX = {legs="Kaabnax Trousers"}
+	sets.wsBase.STRDEX = {legs="Kaabnax Trousers"}
+	sets.wsBase.AGI = {ring1="Stormsoul Ring",feet="Daihanshi Habaki"}
 	
-	sets.wsBase.DEX = {
-		body="Shneddick Tabard +1",
-		legs="Kaabnax Trousers"
-	}
-	
-	sets.wsBase.STRDEX = {
-		body="Shneddick Tabard +1",
-		legs="Kaabnax Trousers"
-	}
-	
-	sets.wsBase.AGI = {
-		ring1="Stormsoul Ring",
-		feet="Daihanshi Habaki"
-	}
-	
-	sets.wsBase.Magic = {
-		ammo="Dosis Tathlum",
+	sets.wsBase.Magic = {																		ammo="Dosis Tathlum",
 		head="Mochizuki Hatsuburi +1",	neck="Stoicheion Medal",	ear1="Hecate's Earring",	ear2="Friomisi Earring",
-		body="Shneddick Tabard +1",		hands="Mochizuki Tekko +1",	ring1="Fenrir Ring +1",		ring2="Acumen Ring",
+		body="Qaaxo Harness",			hands="Mochizuki Tekko +1",	ring1="Fenrir Ring +1",		ring2="Acumen Ring",
 		back="Toro Cape",				legs="Shneddick Tights +1",	feet="Hachiya Kyahan"
 	}
 	
@@ -101,8 +83,7 @@ function init_gear_sets()
 	--					Midcast sets
 	--============================================================
 	
-	sets.midcast.FastRecast = {
-		ammo="Impatiens",
+	sets.midcast.FastRecast = {																ammo="Impatiens",
 		head="Otronif Mask +1",		neck="Orunmila's Torque",	ear1="Loquacious Earring",	ear2="Ethereal Earring",
 		body="Otronif Harness +1",	hands="Mochizuki Tekko +1",	ring1="Prolix Ring",		ring2="Diamond Ring",
 		back="Mujin Mantle",		waist="Flume Belt",			legs="Quiahuiz Trousers",	feet="Otronif Boots +1"
@@ -112,7 +93,7 @@ function init_gear_sets()
 	sets.midcast.MagicAccuracy = {
 		head="Hachiya Hatsuburi",	neck="Stoicheion Medal",	ear1="Lifestorm Earring",	ear2="Psystorm Earring",
 		ring1="Perception Ring",	ring2="Sangoma Ring",
-		back="Yokaze Mantle",		feet="Shneddick Boots +1"
+		back="Yokaze Mantle",		waist="Ovate Rope",
 	}
 	
 	sets.midcast.Ninjutsu = {
@@ -120,14 +101,12 @@ function init_gear_sets()
 		feet="Mochizuki Kyahan +1"
 	}
 	
-	sets.midcast.Ninjutsu.Nuke = {
-		ammo="Dosis Tathlum",
+	sets.midcast.Ninjutsu.Nuke = {																ammo="Dosis Tathlum",
 		head="Mochizuki Hatsuburi +1",	neck="Stoicheion Medal",	ear1="Hecate's Earring",	ear2="Friomisi Earring",
-		body="Shneddick Tabard +1",		hands="Iga Tekko +2",		ring1="Fenrir Ring +1",		ring2="Acumen Ring",
+		body="Qaaxo Harness",			hands="Iga Tekko +2",		ring1="Fenrir Ring +1",		ring2="Acumen Ring",
 		back="Toro Cape",				legs="Shneddick Tights +1",	feet="Hachiya Kyahan"
 	}
 	sets.midcast.Ninjutsu.Nuke.with_buff = {}
-	sets.midcast.Ninjutsu.Nuke.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
 	
 	sets.midcast.RangedAttack = {
 		head="Uk'uxkaj Cap",			neck="Ocachi Gorget",		ear1="Clearview Earring",
@@ -139,8 +118,7 @@ function init_gear_sets()
 	--					Other sets
 	--============================================================
 	
-	sets.idle = {
-		ammo="Demonry Stone",
+	sets.idle = {																					ammo="Demonry Stone",
 		head="Ocelomeh Headpiece +1",	neck="Orochi Nodowa",		ear1="Brachyura Earring",		ear2="Ethereal Earring",
 		body="Kirin's Osode",			hands={"Mochizuki Tekko +1", "Otronif Gloves +1"},
 		ring1="Defending Ring",			ring2="Shneddick Ring",
@@ -180,11 +158,7 @@ function init_gear_sets()
 	sets.engaged.with_buff['migawari'] = {body="Iga Ningi +2"}
 	sets.engaged.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}
 	
-	sets.engaged.Tank = {
-		-- head="Ejekamal Mask",		neck="Twilight Torque",		ear1="Dudgeon Earring",		ear2="Heartseeker Earring",
-		-- body="Hachiya Chainmail +1",hands="Otronif Gloves +1",	ring1="Defending Ring",		ring2="Rajas Ring",
-		-- back="Yokaze Mantle",		waist="Patentia Sash",		legs="Mochizuki Hakama +1",	feet="Otronif Boots +1"
-		ammo="Happo Shuriken +1",
+	sets.engaged.Tank = {																		ammo="Happo Shuriken +1",
 		head="Otronif Mask +1",			neck="Twilight Torque",		ear1="Bladeborn Earring",	ear2="Steelflash Earring",
 		body="Mochizuki Chainmail +1",	hands="Otronif Gloves +1",	ring1="Defending Ring",		ring2="Rajas Ring",
 		back="Yokaze Mantle",			waist="Patentia Sash",		legs="Mochizuki Hakama +1",	feet="Otronif Boots +1"
@@ -197,8 +171,7 @@ function init_gear_sets()
 		back="Atheling Mantle",			waist="Patentia Sash",		legs="Mochizuki Hakama +1",	feet="Otronif Boots +1"
 	}
 	--sets.engaged.HasteII_HasteSamba = {
-	sets.engaged.HasteII_Acc = {
-		ammo="Happo Shuriken +1",
+	sets.engaged.HasteII_Acc = {																ammo="Happo Shuriken +1",
 		head="Whirlpool Mask",			neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
 		body="Mochizuki Chainmail +1",	hands="Otronif Gloves +1",	ring1="Rajas Ring",			ring2="Epona's Ring",
 		back="Yokaze Mantle",			waist="Patentia Sash",		legs="Mochizuki Hakama +1",	feet="Mochizuki Kyahan +1"
@@ -210,15 +183,13 @@ function init_gear_sets()
 		body="Mochizuki Chainmail +1",	hands="Mochizuki Tekko +1",	ring1="Rajas Ring",			ring2="Epona's Ring",
 		back="Atheling Mantle",			waist="Patentia Sash",		legs="Hachiya Hakama +1",	feet="Mochizuki Kyahan +1"
 	}
-	sets.engaged['HasteII++_Acc'] = {
-		ammo="Happo Shuriken +1",
+	sets.engaged['HasteII++_Acc'] = {															ammo="Happo Shuriken +1",
 		head="Whirlpool Mask",			neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
 		body="Mochizuki Chainmail +1",	hands="Otronif Gloves +1",	ring1="Rajas Ring",			ring2="Epona's Ring",
 		back="Yokaze Mantle",			waist="Patentia Sash",		legs="Hachiya Hakama +1",	feet="Mochizuki Kyahan +1"
 	}
 	
-	sets.engaged.CrazyAccuracy = {
-		ammo="Happo Shuriken +1",
+	sets.engaged.CrazyAccuracy = {																ammo="Happo Shuriken +1",
 		head="Whirlpool Mask",			neck="Agitator's Collar",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
 		body="Mochizuki Chainmail +1",	hands="Otronif Gloves +1",	ring1="Rajas Ring",			ring2="Mars's Ring",
 		back="Yokaze Mantle",			waist="Anguinus Belt",		legs="Hachiya Hakama +1",	feet="Mochizuki Kyahan +1"
@@ -246,8 +217,7 @@ function init_gear_sets()
 		back="Yokaze Mantle"
 	}
 	
-	sets.engaged.Acc = {
-		ammo="Happo Shuriken +1",
+	sets.engaged.Acc = {																		ammo="Happo Shuriken +1",
 		head="Mochizuki Hatsuburi +1",	neck="Ziel Charm",			ear1="Dudgeon Earring",		ear2="Heartseeker Earring",
 		body="Mochizuki Chainmail +1",	hands="Otronif Gloves +1",	ring1="Rajas Ring",			ring2="Mars's Ring",
 		back="Yokaze Mantle",			waist="Anguinus Belt",		legs="Hachiya Hakama +1",	feet="Mochizuki Kyahan +1"

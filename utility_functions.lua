@@ -30,11 +30,13 @@ function print_gearset(gearset, title)
 	end
 end
 
-
 function display_current_state()
 	local modeStrings = {}
 	for k,v in pairs(modes) do
 		table.insert(modeStrings, tostring(k)..': '..tostring(v))
+	end
+	if (gearswap.buffs ~= nil) then
+		table.insert(modeStrings, 'Haste tier: '..tostring(gearswap.buffs.Haste))
 	end
 	windower.add_to_chat(1, table.concat(modeStrings, ' | '))
 end

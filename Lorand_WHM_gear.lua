@@ -71,17 +71,17 @@ function init_gear_sets()
 	--============================================================
 	
 	sets.midcast.FastRecast = {
-		main="Venabulum",			sub="Achaq Grip",			ammo="Impatiens",
-		head="Nahtirah Hat",		neck="Orunmila's Torque",	ear1="Loquacious Earring",	ear2="Novia Earring",
+		main="Venabulum",				sub="Achaq Grip",			ammo="Impatiens",
+		head="Nahtirah Hat",			neck="Orunmila's Torque",	ear1="Loquacious Earring",	ear2="Novia Earring",
 		body="Theophany Briault +1",	hands="Otomi Gloves",		ring1="Prolix Ring",		ring2="Diamond Ring",
-		back="Swith Cape",			waist="Witful Belt",		legs="Artsieq Hose",		feet="Theophany Duckbills"
+		back="Swith Cape",				waist="Witful Belt",		legs="Artsieq Hose",		feet="Theophany Duckbills"
 	}
 	
 	sets.midcast.MagicAccuracy = {
 		main="Lehbrailg +2",	sub="Mephitis Grip",	ammo="Kalboron Stone",
 		head="Nahtirah Hat",	neck="Eddy Necklace",	ear1="Lifestorm Earring",	ear2="Psystorm Earring",
 		body="Artsieq Jubbah",	hands="Lurid Mitts",	ring1="Sangoma Ring",		ring2="Perception Ring",
-		back="Ogapepo Cape",	waist="Ovate Rope",		legs="Artsieq Hose",		feet="Bokwus Boots"
+		back="Ogapepo Cape",	waist="Ovate Rope",		legs="Artsieq Hose",		feet="Artsieq Boots"
 	}
 
 	--====================== Healing =============================
@@ -172,7 +172,7 @@ function init_gear_sets()
 	sets.midcast.EnfeeblingMagic = {
 		main="Lehbrailg +2",			sub="Mephitis Grip",
 		body="Theophany Briault +1",
-		feet="Theophany Duckbills"
+		--feet="Theophany Duckbills"
 	}
 	sets.midcast.EnfeeblingMagic.Potency = {
 		ring2="Aquasoul Ring",
@@ -209,7 +209,7 @@ function init_gear_sets()
 		head="Nahtirah Hat",			neck="Twilight Torque",		ear1="Brachyura Earring",	ear2="Ethereal Earring",
 		body={"Theophany Briault +1", "Artsieq Jubbah"},
 		hands="Dynasty Mitts",			ring1="Defending Ring",		ring2="Shneddick Ring",
-		back="Repulse Mantle",			waist="Emphatikos Rope",	legs="Artsieq Hose",	feet="Gendewitha Galoshes +1"
+		back="Repulse Mantle",			waist="Emphatikos Rope",	legs="Artsieq Hose",		feet="Gendewitha Galoshes +1"
 	}
 	sets.idle.lowMP = {
 		--main="Owleyes",		sub="Genbu's Shield",

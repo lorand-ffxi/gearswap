@@ -35,21 +35,21 @@ function init_gear_sets()
 	sets.precast.JA["Assassin's Charge"] = {feet="Plunderer's Poulaines"}
 
 	sets.precast.JA['Sneak Attack'] = {
-		head="Uk'uxkaj Cap",		neck="Love Torque",				ear2="Delta Earring",
-		body="Shneddick Tabard +1",	hands="Plunderer's Armlets +1",	ring1="Rajas Ring",			ring2="Thundersoul Ring",
-		back="Kayapa Cape",			waist="Chiner's Belt",			legs="Kaabnax Trousers",	feet="Shneddick Boots +1"
+		head="Uk'uxkaj Cap",	neck="Love Torque",				ear2="Delta Earring",
+		body="Iuitl Vest +1",	hands="Plunderer's Armlets +1",	ring1="Rajas Ring",			ring2="Thundersoul Ring",
+		back="Kayapa Cape",		waist="Chiner's Belt",			legs="Kaabnax Trousers",	feet="Iuitl Gaiters +1"
 	}
 
 	sets.precast.JA['Trick Attack'] = {
-		head="Uk'uxkaj Cap",		neck="Hope Torque",				ear2="Suppanomimi",
-		body="Shneddick Tabard +1",	hands="Iuitl Wristbands +1",	ring1="Stormsoul Ring",		ring2="Blobnag Ring",
-		back="Ik Cape",				waist="Sveltesse Gouriz",		legs="Kaabnax Trousers",	feet="Shneddick Boots +1"
+		head="Uk'uxkaj Cap",	neck="Hope Torque",				ear2="Suppanomimi",
+		body="Iuitl Vest +1",	hands="Iuitl Wristbands +1",	ring1="Stormsoul Ring",		ring2="Blobnag Ring",
+		back="Ik Cape",			waist="Sveltesse Gouriz",		legs="Kaabnax Trousers",	feet="Iuitl Gaiters +1"
 	}
 
 	sets.precast.Waltz = {
 		head="Uk'uxkaj Cap",
-		body="Shneddick Tabard +1",	hands="Plunderer's Armlets +1",	ring2="Spiral Ring",
-		back="Iximulew Cape",		waist="Warwolf Belt",			legs="Shneddick Tights +1",	feet="Shneddick Boots +1"
+		body="Iuitl Vest +1",	hands="Plunderer's Armlets +1",	ring2="Spiral Ring",
+		back="Iximulew Cape",	waist="Warwolf Belt",			legs="Shneddick Tights +1",	feet="Iuitl Gaiters +1"
 	}
 	sets.precast.Waltz['Healing Waltz'] = {}
 	
@@ -85,7 +85,7 @@ function init_gear_sets()
 	}
 	
 	sets.wsBase.Acc = {
-		head="Ejekamal Mask",
+		head="Whirlpool Mask",
 		hands="Buremte Gloves",
 		legs="Kaabanax Trousers"
 	}
@@ -103,7 +103,7 @@ function init_gear_sets()
 	sets.midcast.FastRecast = {
 		head="Iuitl Headgear +1",	neck="Orunmila's Torque",	ear1="Loquacious Earring",
 		body="Iuitl Vest +1",		hands="Buremte Gloves",		ring1="Prolix Ring",		ring2="Diamond Ring",	--Diamond Ring aug: 2% interrupt rate down
-		back="Mujin Mantle",		waist="Cetl Belt",			legs="Kaabnax Trousers",	feet="Iuitl Gaiters"
+		back="Mujin Mantle",		waist="Cetl Belt",			legs="Kaabnax Trousers",	feet="Iuitl Gaiters +1"
 	}
 	sets.midcast.Utsusemi = {back="Mujin Mantle"}
 
@@ -120,8 +120,7 @@ function init_gear_sets()
 	
 	sets.resting = {}
 	
-	sets.idle = {
-		range="Raider's Boomerang",
+	sets.idle = {																					range="Raider's Boomerang",
 		head="Ocelomeh Headpiece +1",	neck="Orochi Nodowa",			ear1="Brachyura Earring",	ear2="Ethereal Earring",
 		body="Qaaxo Harness",			hands="Plunderer's Armlets +1",	ring1="Defending Ring",		ring2="Shneddick Ring",
 		back="Repulse Mantle",			waist="Flume Belt",				legs="Kaabnax Trousers",	feet="Iuitl Gaiters +1"
@@ -133,7 +132,7 @@ function init_gear_sets()
 	sets.defense.Evasion = {
 		head="Iuitl Headgear +1",	neck="Torero Torque",			ear1="Novia Earring",		ear2="Ethereal Earring",
 		body="Qaaxo Harness",		hands="Plunderer's Armlets +1",	ring1="Defending Ring",		ring2="Alert Ring",
-		back="Canny Cape",			waist="Sveltesse Gouriz",		legs="Kaabnax Trousers",	feet="Shneddick Boots +1"
+		back="Canny Cape",			waist="Sveltesse Gouriz",		legs="Kaabnax Trousers",	feet="Iuitl Gaiters +1"
 	}
 
 	sets.defense.DT = {	--DT-15%, PDT-12%, MDT-10%	=> PDT-27%, MDT-25%
@@ -144,34 +143,31 @@ function init_gear_sets()
 	
 	sets.defense.PDT = combineSets(sets.defense.Evasion, sets.defense.DT, {	--PDT-12% + DT => PDT-39%
 		hands="Iuitl Wristbands +1",
-		back="Repulse Mantle",		waist="Flume Belt",	feet="Iuitl Gaiters"
+		back="Repulse Mantle",		waist="Flume Belt",	feet="Iuitl Gaiters +1"
 	})
 
 	sets.defense.MDT = combineSets(sets.defense.Evasion, sets.defense.DT, {	--MDT-4% + DT => MDT-29%, MDB+23
 		ear1="Merman's Earring",	ear2="Merman's Earring",
 		hands="Iuitl Wristbands +1",
-		back="Tuilha Cape",			waist="Flume Belt",		feet="Shneddick Boots +1"
+		back="Tuilha Cape",			waist="Flume Belt",		feet="Iuitl Gaiters +1"
 	})
 	
-	sets.engaged = {
-		range="Raider's Boomerang",
+	sets.engaged = {																			range="Raider's Boomerang",
 		head="Iuitl Headgear +1",	neck="Asperity Necklace",		ear1="Dudgeon Earring",		ear2="Heartseeker Earring",
 		body="Qaaxo Harness",		hands="Plunderer's Armlets +1",	ring1="Rajas Ring",			ring2="Epona's Ring",
-		back="Atheling Mantle",		waist="Patentia Sash",			legs="Iuitl Tights",		feet="Plunderer's Poulaines"
+		back="Atheling Mantle",		waist="Patentia Sash",			legs="Iuitl Tights +1",		feet="Plunderer's Poulaines"
 	}
 	sets.engaged.with_buff = {}
 	sets.engaged.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	sets.engaged.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}
 	
-	sets.engaged.Acc = {
-		range="Raider's Boomerang",
-		head="Ejekamal Mask",	neck="Asperity Necklace",		ear1="Dudgeon Earring",		ear2="Heartseeker Earring",
+	sets.engaged.Acc = {																	range="Raider's Boomerang",
+		head="Whirlpool Mask",	neck="Asperity Necklace",		ear1="Dudgeon Earring",		ear2="Heartseeker Earring",
 		body="Iuitl Vest +1",	hands="Plunderer's Armlets +1",	ring1="Rajas Ring",			ring2="Epona's Ring",
-		back="Canny Cape",		waist="Patentia Sash",			legs="Iuitl Tights",		feet="Plunderer's Poulaines"
+		back="Canny Cape",		waist="Patentia Sash",			legs="Iuitl Tights +1",		feet="Plunderer's Poulaines"
 	}
 	
-	sets.engaged.TH = {
-		range="Raider's Boomerang",
+	sets.engaged.TH = {																		range="Raider's Boomerang",
 		head="Uk'uxkaj Cap",	neck="Asperity Necklace",		ear1="Dudgeon Earring",		ear2="Heartseeker Earring",
 		body="Qaaxo Harness",	hands="Plunderer's Armlets +1",	ring1="Rajas Ring",			ring2="Epona's Ring",
 		back="Canny Cape",		waist="Patentia Sash",			legs="Kaabnax Trousers",	feet="Raider's Poulaines +2"
