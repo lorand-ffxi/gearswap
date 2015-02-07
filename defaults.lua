@@ -44,6 +44,7 @@ function define_defaults()
 	setMode('ConserveMP', true)
 	setMode('autoPenury', false)
 	setMode('noIdle', false)
+	setMode('autoCaress', false)
 	
 	options = {}
 	options.use_ftp_neck = true
@@ -86,7 +87,8 @@ function set_modes()
 		addMode('offense', {'Normal_A', 'Normal_B', 'Normal_C',	'HitMoar', 'Tank', 'TankAcc', 'HitYouBastard'})
 		addMode('accuracy', {'Normal', 'Medium', 'High'})
 	elseif S{'NIN'}:contains(player.main_job) then
-		addMode('offense', {'HasteII', 'HasteII++', 'HasteII_Acc', 'HasteII++_Acc', 'Tank', 'CrazyAccuracy'})
+		--addMode('offense', {'HasteII', 'HasteII++', 'HasteII_Acc', 'HasteII++_Acc', 'Tank', 'CrazyAccuracy'})
+		addMode('offense', {'auto', 'auto_acc', 'Tank', 'CrazyAccuracy'})
 		addMode('accuracy', {'Normal', 'Medium', 'High'})
 		addMode('casting', {'Normal', 'Resistant', 'Proc'})
 	elseif S{'PLD'}:contains(player.main_job) then

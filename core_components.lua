@@ -255,8 +255,10 @@ function buff_change(buff, gain)
 	
 	if buff:lower() == 'weakness' then
 		if gain then	send_command('timers create "Weakness" 300 up abilities/00255.png')
-		else			send_command('timers delete "Weakness"')
+		else		send_command('timers delete "Weakness"')
 		end
+	elseif (S{'haste','march'}:contains(buff:lower())) then
+		update()
 	end
 end
 
@@ -676,14 +678,33 @@ function get_idle_set(baseSet)
 end
 
 --[[
+	Determines how much Haste is active
+	TODO: Add haste samba
+--]]
+function get_haste_mod()
+	local hm = 'na'
+	if (S{'auto','auto_acc'}:contains(modes.offense)) then
+		if (buffactive['haste']) then
+			hm = 'I'
+			if (gearswap.buffs ~= nil) then
+				hm = num2rom[gearswap.buffs.Haste] or 'I'
+			end
+		end
+		if (buffactive['march']) then
+			hm = (hm == 'na') and 'I' or hm..'+'
+		end
+	end
+	return hm
+end
+
+--[[
 	Assembles the player's melee set with an optional baseSet.
 --]]
 function get_melee_set(baseSet)
-
-	--local hasteTier = hasteType or 1
-
+	local hasteMod = get_haste_mod()
 	local meleeSet = combineSets(baseSet, sets.engaged)
 	meleeSet = combineSets(meleeSet, sets.engaged[modes.offense])
+	meleeSet = combineSets(meleeSet, sets.engaged[modes.offense], hasteMod)
 	meleeSet = combineSets(meleeSet, sets.engaged[modes.defense])
 	meleeSet = combineSets(meleeSet, sets.engaged[modes.accuracy])
 	meleeSet = combineSets(meleeSet, sets.engaged[modes.offense], modes.accuracy)
@@ -899,8 +920,8 @@ function info(args)
 end
 
 executable_commands = {
-	['atc']		=	addToChat,	['scholar'] =	handle_strategems,	['show']	=	show_set,
-	['update']	=	update,		['cycle']	=	cycle_mode,			['set']		=	set_mode,
-	['reset']	=	reset_mode,	['toggle']	=	toggle_mode,		['activate']=	activate_mode,
-	['equip']	=	equip_set,	['info']	=	info,
+	['atc']   =	addToChat,	['scholar']=	handle_strategems,	['show']    =	show_set,
+	['update']=	update,		['cycle']  =	cycle_mode,		['set']     =	set_mode,
+	['reset'] =	reset_mode,	['toggle'] =	toggle_mode,		['activate']=	activate_mode,
+	['equip' ]=	equip_set,	['info']   =	info,
 }

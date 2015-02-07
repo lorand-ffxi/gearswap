@@ -70,25 +70,23 @@ end
 	Returns the cure tier to use to adequately heal the spell target without wasting MP.
 --]]
 function get_tier_for_hp(cureTier, hpMissing)
-	local ncnum = cureTier
-	local potency = vars.CurePotency[cureTier]
-	if hpMissing < potency then
-		local pdelta = potency - vars.CurePotency[ncnum-1]
-		local threshold = potency - (pdelta * 0.5)
-		while hpMissing < threshold do
-			ncnum = ncnum - 1
-			if ncnum > 1 then
-				potency = vars.CurePotency[ncnum]
-				pdelta = potency - vars.CurePotency[ncnum-1]
-				threshold = potency - (pdelta * 0.5)
-			else
-				threshold = 0
-			end
+	if (cureTier == 1) then return cureTier end		--Skip this if the tier is already 1
+	local tier = cureTier					--Set the Cure tier to the given tier
+	local potency = vars.CurePotency[tier]			--Retrieve the Cure potency for the given tier
+	local pdelta = potency - vars.CurePotency[tier-1]	--Calculate the potency difference between this tier and the next lowest tier
+	local threshold = potency - (pdelta * 0.5)		--Calculate the value to compare the amount of missing HP to
+	while hpMissing < threshold do				--Iterate while the current Cure tier is higher than necessary
+		tier = tier - 1						--Decrement the tier
+		if tier > 1 then					--If the tier is high enough
+			potency = vars.CurePotency[tier]			--Retrieve the Cure potency for the new tier
+			pdelta = potency - vars.CurePotency[tier-1]		--Recalculate the potency difference
+			threshold = potency - (pdelta * 0.5)			--Recalculate the comparison value
+		else							--Otherwise
+			threshold = 0						--Break out of the loop
 		end
 	end
-	return ncnum
+	return tier
 end
-
 
 --[[
 	Initiates a timer that gives 15 and 5 second warnings before a crowd control spell will wear off.
@@ -102,7 +100,7 @@ function initSleepTimer(spell, spellMap)
 		duration = durations[spellMap]
 	elseif spellMap == 'Lullaby' then
 		local songMult = get_song_mult(spellName, spellMap)
-		if spell.en == 'Foe Lullaby' or spell.en == 'Horde Lullaby' then
+		if S{'Foe Lullaby','Horde Lullaby'}:contains(spell.en) then
 			duration = 30 * songMult
 		else
 			duration = 60 * songMult
@@ -114,70 +112,9 @@ function initSleepTimer(spell, spellMap)
 	if spell.type == 'WhiteMagic' and buff_active('Perpetuance') then
 		duration = duration * 2
 	end
-	
 	mtext = '; gs c atc 123 <wtriangle> '..spell.english..' on '..spell.target.name..' is wearing off in '
 	windower.send_command('wait '..(duration-15)..mtext..'15 seconds <wtriangle>')
 	windower.send_command('wait '..(duration-5)..mtext..'5 seconds <wtriangle>')
-end
-
-function get_haste_potency()
-	local hasteTier = hasteType or 1
-	
-	local mpotency = 0
-	if buffactive[33] then		--Haste I/II
-		if hasteTier == 2 then
-			mpotency = mpotency + 307
-		else
-			mpotency = mpotency + 150
-		end
-	end
-	if buffactive[214] then		--March
-		if buffactive[214] == 2 then
-			mpotency = mpotency + 144 + 112
-		elseif buffactive[214] == 1 then
-			mpotency = mpotency + 144
-		end
-	end
-	if buffactive[228] then		--Embrava
-		mpotency = mpotency + 256
-	end
-	if buffactive[580] then		--Geomancer haste
-		mpotency = mpotency + 330
-	end
-	mpotency = (mpotency < 448 and mpotency or 448)
-	
-	local jpotency = 0
-	if buffactive[353] then		--Hasso
-		jpotency = jpotency + 100
-	end
-	if buffactive[370] then		--Haste Samba
-		if player.main_job == 'DNC' then
-			jpotency = jpotency + 101
-		else
-			jpotency = jpotency + 50
-		end
-	end
-	jpotency = (jpotency < 256 and jpotency or 256)
-	
-	local potency = (mpotency + jpotency) / 1024
-	potency = (potency < 0.8 and potency or 0.8) * 100
-	
-	if potency < 10 then		return 0
-	elseif potency < 20 then	return 15
-	elseif potency < 25 then	return 20
-	elseif potency < 30 then	return 25
-	elseif potency < 35 then	return 30
-	elseif potency < 40 then	return 35
-	elseif potency < 45 then	return 40
-	elseif potency < 50 then	return 45
-	elseif potency < 55 then	return 50
-	elseif potency < 60 then	return 55
-	elseif potency < 65 then	return 60
-	elseif potency < 70 then	return 65
-	elseif potency < 75 then	return 70
-	elseif potency < 80 then	return 75
-	else				return 80
-	end	
 end
 
 --[[
@@ -220,8 +157,8 @@ function handle_strategems(cmdParams)
 		['duration']=	' spell will last twice as long.',	['accuracy']=	' spell will be more accurate.',	['enmity']=	' spell will generate less enmity.',
 	}
 	
-	if stratagems[magicType] ~= nil then
-		if stratagems[magicType][stratagem] ~= nil then
+	if (stratagems[magicType] ~= nil) then
+		if (stratagems[magicType][stratagem] ~= nil) then
 			windower.send_command(stratagems[magicType][stratagem])
 		else
 			atc(123,'Error: Unknown strategem ['..tostring(strategem)..']')
@@ -230,9 +167,9 @@ function handle_strategems(cmdParams)
 		atc(123,'You must activate Light or Dark Arts before you can use a stratagem.')
 	end
 	
-	if messages[stratagem] ~= nil then
+	if (messages[stratagem] ~= nil) then
 		atc(207, 'Your next '..magicType..messages[stratagem])
-	elseif stratagem == 'power' then
+	elseif (stratagem == 'power') then
 		local effectTexts = {['Black Magic']='20%',['White Magic']='50%'}
 		atc(207, 'Your next '..magicType..' spell will be '..effectTexts[magicType]..' more potent.')
 	end
@@ -242,9 +179,9 @@ end
 	Returns true if the proper grimoire is in use for the given spell, false otherwise.
 --]]
 function matchesGrimoire(spell)
-	if spell.type == 'WhiteMagic' then
+	if (spell.type == 'WhiteMagic') then
 		return getGrimoire() == 'LA'
-	elseif spell.type == 'BlackMagic' then
+	elseif (spell.type == 'BlackMagic') then
 		return getGrimoire() == 'DA'
 	else
 		return false
@@ -307,10 +244,9 @@ function buff_active(...)
 	return nil
 end
 
-function modify_spell(spell)	--TODO Add toggle option for this
-	local smap = spell_maps[spell.en]
-	if (player.main_job == 'WHM') then
-		if (smap == 'StatusRemoval') and (not S{'Erase', 'Esuna'}:contains(spell.en)) then
+function modify_spell(spell)
+	if ((player.main_job == 'WHM') and modes.autoCaress) then
+		if (spell_maps[spell.en] == 'StatusRemoval') and (not S{'Erase', 'Esuna'}:contains(spell.en)) then
 			local xrecast = getRecast('Divine Caress') or -1
 			if (not buff_active('Divine Caress')) and (xrecast == 0) then
 				windower.send_command('input /ja "Divine Caress" <me>; wait 1.25; input /ma "'..spell.en..'" '..spell.target.name)

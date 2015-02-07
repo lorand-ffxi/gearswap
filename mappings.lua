@@ -260,6 +260,8 @@ blu_typemap = {["Amplification"]="Buff",["Animating Wail"]="Buff",["Auroral Drap
 
 debuff_to_na = {['Blind']='Blindna',['Paralyze']='Paralyna',['Poison']='Poisona',['Silence']='Silena'}
 
+num2rom = {'I','II','III','IV','V','VI','VII','VIII','IX','X','XI'}
+
 -----------------------------------------------------------------------------------------------------------
 -- Tables to specify general area groupings.  Creates the 'areas' table to be referenced in job files.
 -- Zone names provided by world.area/world.zone are currently in all-caps, so defining the same way here.
