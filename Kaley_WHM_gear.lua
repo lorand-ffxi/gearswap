@@ -8,15 +8,15 @@ function init_gear_sets()
 	--============================================================
 	--					Precast sets
 	--============================================================
-	sets.precast.FC = {				--42%
+	sets.precast.FC = {			--42%
 		main="Lehbrailg +2",		--2%
 		ammo="Incantor Stone",		--2%
-		head="Nares Cap",			--10%
+		head="Nares Cap",		--10%
 		neck="Orison Locket",		--5%
 		ear2="Loquacious Earring",	--2%
-		hands="Gendewitha Gages +1",--7%
+		hands="Gendewitha Gages +1",	--7%
 		ring1="Prolix Ring",		--2%
-		back="Swith Cape",			--3%
+		back="Swith Cape",		--3%
 		legs="Artsieq Hose",		--5%
 		feet="Chelona Boots"		--4%
 	}
@@ -24,13 +24,13 @@ function init_gear_sets()
 	sets.precast.FC.EnhancingMagic = {
 		waist="Siegel Sash"
 	}		
-	sets.precast.FC.HealingMagic = {--49%
+	sets.precast.FC.HealingMagic = {	--49%
 		legs="Orison Pantaloons +2"	--12%
 	}
 	sets.precast.FC.Cure = {		--60%
-		main="Tamaxchi",			--n/a
+		main="Tamaxchi",		--n/a
 		sub="Genbu's Shield",		--8%
-		back="Pahtli Cape"			--8%
+		back="Pahtli Cape"		--8%
 	}
 	sets.precast.FC.Curaga = sets.precast.FC.Cure
 	
@@ -39,23 +39,23 @@ function init_gear_sets()
 	sets.precast.Waltz = {
 		head="Kaabnax Hat",
 		body="Gendewitha Bilaut +1",	hands="Gendewitha Gages +1",	ring1="Spiral Ring",	ring2="Sirona's Ring",
-		back="Swith Cape",				legs="Gendewitha Spats +1",		feet="Uk'uxkaj Boots"
+		back="Swith Cape",		legs="Gendewitha Spats +1",	feet="Uk'uxkaj Boots"
 	}
 	
 	--============================================================
 	
 	sets.wsBase = {
 		ammo="Flame Sachet",
-		head="Buremte Hat",				neck="Asperity Necklace",		ear1="Bladeborn Earring",	ear2="Steelflash Earring",
-		body="Gendewitha Bilaut +1",	hands="Gendewitha Gages +1",	ring1="Rajas Ring",			ring2="Spiral Ring",
-		back="Buquwik Cape",			waist="Cascade Belt",			legs="Gendewitha Spats +1",	feet="Uk'uxkaj Boots"
+		head="Buremte Hat",		neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
+		body="Gendewitha Bilaut +1",	hands="Gendewitha Gages +1",	ring1="Rajas Ring",		ring2="Spiral Ring",
+		back="Buquwik Cape",		waist="Cascade Belt",		legs="Gendewitha Spats +1",	feet="Uk'uxkaj Boots"
 	}
 	
 	sets.wsBase.Magic = {
 		ammo="Witchstone",
-		head="Buremte Hat",		neck="Stoicheion Medal",	ear1="Hecate's Earring",	ear2="Friomisi Earring",
+		head="Buremte Hat",	neck="Stoicheion Medal",	ear1="Hecate's Earring",	ear2="Friomisi Earring",
 		body="Artsieq Jubbah",	hands="Otomi Gloves",		ring2="Acumen Ring",
-		back="Toro Cape",		legs="Gendewitha Spats +1",	feet="Gendewitha Galoshes +1"
+		back="Toro Cape",	legs="Gendewitha Spats +1",	feet="Gendewitha Galoshes +1"
 	}
 
 	--============================================================
@@ -64,16 +64,16 @@ function init_gear_sets()
 	
 	sets.midcast.FastRecast = {
 		ammo="Clarus Stone",
-		head="Gendewitha Caubeen +1",	neck="Orison Locket",		ear1="Novia Earring",		ear2="Loquacious Earring",
-		body="Theophany Briault",		hands="Gendewitha Gages +1",
-		back="Ogapepo Cape",			waist="Cetl Belt",			legs="Piety Pantaloons",	feet="Theophany Duckbills"
+		head="Gendewitha Caubeen +1",	neck="Orison Locket",		ear1="Novia Earring",	ear2="Loquacious Earring",
+		body="Theophany Briault",	hands="Gendewitha Gages +1",
+		back="Ogapepo Cape",		waist="Cetl Belt",		legs="Piety Pantaloons",	feet="Theophany Duckbills"
 	}
 	
 	sets.midcast.MagicAccuracy = {
-		main="Lehbrailg +2",	sub="Mephitis Grip",			ammo="Kalboron Stone",
-		head="Kaabnax Hat",		neck="Eddy Necklace",			ear1="Lifestorm Earring",	ear2="Psystorm Earring",
+		main="Lehbrailg +2",	sub="Mephitis Grip",		ammo="Kalboron Stone",
+		head="Kaabnax Hat",	neck="Eddy Necklace",		ear1="Lifestorm Earring",	ear2="Psystorm Earring",
 		body="Praeco Doublet",	hands="Gendewitha Gages +1",	ring1="Sangoma Ring",		ring2="Perception Ring",
-		back="Ogapepo Cape",	waist="Ovate Rope",				legs="Artsieq Hose",		feet="Bokwus Boots"
+		back="Ogapepo Cape",	waist="Ovate Rope",		legs="Artsieq Hose",		feet="Bokwus Boots"
 	}
 
 	--====================== Healing =============================
@@ -84,23 +84,23 @@ function init_gear_sets()
 	}
 	
 	sets.midcast.Cure = {
-		main="Tamaxchi",				sub="Genbu's Shield",	ammo="Incantor Stone",
-		head="Gendewitha Caubeen +1",	neck="Orison Locket",	ear1="Novia Earring",			ear2="Orison Earring",
-		body="Orison Bliaud +2",		hands="Bokwus Gloves",	ring1="Prolix Ring",			ring2="Sirona's Ring",
-		back="Mending Cape",			waist="Cetl Belt",		legs="Orison Pantaloons +2",	feet="Theophany Duckbills"
+		main="Tamaxchi",		sub="Genbu's Shield",	ammo="Incantor Stone",
+		head="Gendewitha Caubeen +1",	neck="Orison Locket",	ear1="Novia Earring",		ear2="Orison Earring",
+		body="Orison Bliaud +2",	hands="Bokwus Gloves",	ring1="Prolix Ring",		ring2="Sirona's Ring",
+		back="Mending Cape",		waist="Cetl Belt",	legs="Orison Pantaloons +2",	feet="Theophany Duckbills"
 	}
 	sets.midcast.Curaga = sets.midcast.Cure
 
 	sets.midcast.Cure.Engaged = {
 		body="Gendewitha Bilaut +1",
-		legs="Nares Trews",			feet="Piety Duckbills"
+		legs="Nares Trews",		feet="Piety Duckbills"
 	}
 	sets.midcast.Cure.with_buff = {}
 	sets.midcast.Cure.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
 	
 	sets.midcast.Cursna = {
 		neck="Malison Medallion",
-		hands="Hieros Mittens",		ring1="Ephedra Ring",			ring2="Ephedra Ring",
+		hands="Hieros Mittens",		ring1="Ephedra Ring",		ring2="Ephedra Ring",
 		back="Mending Cape",		legs="Theophany Pantaloons",	feet="Gendewitha Galoshes +1"
 	}
 
@@ -123,10 +123,10 @@ function init_gear_sets()
 		ammo="Aqua Sachet",
 		neck="Stone Gorget",	ear1="Lifestorm Earring",	ear2="Earthcry Earring",
 		ring1="Solemn Ring",	ring2="Aqua Ring",
-		back="Tuilha Cape",		waist="Siegel Sash",		legs="Haven Hose"
+		back="Tuilha Cape",	waist="Siegel Sash",		legs="Shedir Seraweels"
 	}
 	sets.midcast.Auspice = {feet="Orison Duckbills +2"}
-	sets.midcast.Aquaveil = {waist="Emphatikos Rope"}
+	sets.midcast.Aquaveil = {waist="Emphatikos Rope", legs="Shedir Seraweels"}
 
 	sets.midcast.BarElement = {
 		head="Orison Cap +2",

@@ -43,9 +43,9 @@ function init_gear_sets()
 	--============================================================
 	sets.precast.FC = {
 		ammo="Impatiens",
-		head="Nares Cap",		ear1="Loquacious Earring",
+		head="Nares Cap",	ear1="Loquacious Earring",
 		body="Marduk's Jubbah",	hands="Gendewitha Gages",	ring1="Prolix Ring",
-		back="Swith Cape",		waist="Witful Belt",		legs="Artsieq Hose",	feet="Chelona Boots"
+		back="Swith Cape",	waist="Witful Belt",		legs="Artsieq Hose",	feet="Chelona Boots"
 	}
 
 	sets.precast.FC.Cure = set_combine(sets.precast.FC, {
@@ -61,7 +61,7 @@ function init_gear_sets()
 		head="Aoidos' Calot +2",	--12%
 		neck="Aoidos' Matinee",		--3%
 		body="Praeco Doublet",		--10%
-		hands="Gendewitha Gages +1",--7%
+		hands="Gendewitha Gages +1",	--7%
 		ear2="Aoidos' Earring",		--2%
 		legs="Gendewitha Spats +1",	--6%
 		feet="Bokwus Boots",		--6%
@@ -101,36 +101,36 @@ function init_gear_sets()
 	
 	sets.midcast.MagicAccuracy = {
 		main="Lehbrailg +2",
-		head="Kaabnax Hat",		neck="Eddy Necklace",
-		ring1="Sangoma Ring",		ring2="Perception Ring",
+		head="Kaabnax Hat",	neck="Eddy Necklace",
+		ring1="Sangoma Ring",	ring2="Perception Ring",
 		legs="Artsieq Hose"
 	}
 	
 	sets.midcast.Singing = set_combine(sets.midcast.MagicAcc, {
-		head="Bard's Roundlet +2",		neck="Aoidos' Matinee",			ear2="Musical Earring",
+		head="Bard's Roundlet +2",	neck="Aoidos' Matinee",		ear2="Musical Earring",
 		body="Aoidos' Hongreline +2",	hands="Brioso Cuffs",
-		back="Swith Cape",				legs="Aoidos' Rhingrave +2",	feet="Brioso Slippers"
+		back="Swith Cape",		legs="Aoidos' Rhingrave +2",	feet="Brioso Slippers"
 	})
 	
 	sets.midcast.Wind = {
 		hands="Aoidos' Manchettes +2",
-		legs="Brioso Cannions",			feet="Brioso Slippers"
+		legs="Brioso Cannions",		feet="Brioso Slippers"
 	}
 	
 	sets.midcast.String = {
 		head="Brioso Roundlet",
-		body="Brioso Justaucorps",		hands="Aoidos' Manchettes +2",
+		body="Brioso Justaucorps",	hands="Aoidos' Manchettes +2",
 		feet="Bihu Slippers"
 	}
 	
 	sets.midcast.SongBuff = {
-		main="Legato Dagger",			sub="Genbu's Shield",
+		main="Legato Dagger",		sub="Genbu's Shield",
 		neck="Aoidos' Matinee",
 		body="Aoidos' Hongreline +2",
 		feet="Brioso Slippers"
 	}
 	
-	sets.midcast.SongDebuff = {				-- For song debuffs (duration primary, accuracy secondary)
+	sets.midcast.SongDebuff = {		-- For song debuffs (duration primary, accuracy secondary)
 		main="Lehbrailg +2",
 		sub="Mephitis Grip",
 		head="Kaabnax Hat",
@@ -189,8 +189,9 @@ function init_gear_sets()
 		ring2="Aquasoul Ring",
 		back="Tuilha Cape",
 		waist="Siegel Sash",
-		legs="Haven Hose"
+		legs="Shedir Seraweels"
 	}
+	sets.midcast['Aquaveil'] =	{waist="Emphatikos Rope", legs="Shedir Seraweels"}
 	
 	sets.midcast.HealingMagic = {}
 	sets.midcast.Cursna = set_combine(sets.midcast.HealingMagic, {

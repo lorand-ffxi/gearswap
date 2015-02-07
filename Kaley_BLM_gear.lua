@@ -13,9 +13,9 @@ function init_gear_sets()
 	
 	sets.precast.FC = {
 		main="Lehbrailg +2",
-		head="Nares Cap",		neck="Jeweled Collar",	lear="Loquacious Earring",
+		head="Nares Cap",	neck="Jeweled Collar",	lear="Loquacious Earring",
 		hands="Repartie Gloves",
-		back="Swith Cape",		legs="Artsieq Hose",	feet="Chelona Boots"
+		back="Swith Cape",	legs="Artsieq Hose",	feet="Chelona Boots"
 	}
 
 	sets.precast.FC.EnhancingMagic = {waist="Siegel Sash"}
@@ -31,13 +31,13 @@ function init_gear_sets()
 	--					Midcast sets
 	--============================================================
 	sets.midcast.FastRecast = {
-		head="Weatherspoon Corona +1",	neck="Jeweled Collar",	lear="Loquacious Earring",
-		body="Hagondes Coat +1",		hands="Hagondes Cuffs +1",
-		back="Swith Cape",				waist="Cetl Belt",		legs="Artsieq Hose",	feet="Hagondes Sabots +1"
+		head="Weatherspoon Corona +1",	neck="Jeweled Collar",		lear="Loquacious Earring",
+		body="Hagondes Coat +1",	hands="Hagondes Cuffs +1",
+		back="Swith Cape",		waist="Cetl Belt",		legs="Artsieq Hose",	feet="Hagondes Sabots +1"
 	}
 
 	sets.midcast.Cure = {
-		main="Arka IV",			sub="Achaq Grip",
+		main="Arka IV",		sub="Achaq Grip",
 		neck="Fylgja Torque",	ear2="Star Earring",
 		hands="Bokwus Gloves",	ring1="Aqua Ring",	ring2="Solemn Ring",
 		back="Oretania's Cape",
@@ -55,14 +55,14 @@ function init_gear_sets()
 		neck="Colossus's Torque",
 		waist="Cascade Belt"
 	}
-	sets.midcast.Aquaveil = {waist="Emphatikos Rope"}
-	sets.midcast.Stoneskin = {waist="Siegel Sash"}
+	sets.midcast.Aquaveil = {waist="Emphatikos Rope", legs="Shedir Seraweels"}
+	sets.midcast.Stoneskin = {waist="Siegel Sash", legs="Shedir Seraweels"}
 
 	sets.midcast.MagicAccuracy = {
 		main="Lehbrailg +2",	sub="Mephitis Grip",		ammo="Kalboron Stone",
-		head="Kaabnax Hat",		neck="Eddy Necklace",		ear1="Lifestorm Earring",	ear2="Psystorm Earring",
+		head="Kaabnax Hat",	neck="Eddy Necklace",		ear1="Lifestorm Earring",	ear2="Psystorm Earring",
 		body="Praeco Doublet",	hands="Hagondes Cuffs +1",	ring1="Sangoma Ring",		ring2="Perception Ring",
-		back="Bane Cape",		waist="Ovate Rope",			legs="Artsieq Hose",		feet="Bokwus Boots"
+		back="Bane Cape",	waist="Ovate Rope",		legs="Artsieq Hose",		feet="Bokwus Boots"
 	}
 	
 	sets.midcast.EnfeeblingMagic = {}
@@ -76,9 +76,9 @@ function init_gear_sets()
 	-- Elemental Magic sets are default for handling low-tier nukes.
 	sets.midcast.ElementalMagic = {
 		main="Lehbrailg +2",		sub="Bugard Strap +1",		ammo="Witchstone",
-		head="Buremte Hat",			neck="Eddy Necklace",		ear1="Hecate's Earring",	ear2="Friomisi Earring",
+		head="Buremte Hat",		neck="Eddy Necklace",		ear1="Hecate's Earring",	ear2="Friomisi Earring",
 		body="Hagondes Coat +1",	hands="Otomi Gloves",		ring1="Spiral Ring",		ring2="Acumen Ring",
-		back="Bane Cape",			waist="Cognition Belt",		legs="Hagondes Pants +1",	feet="Hagondes Sabots +1"
+		back="Bane Cape",		waist="Cognition Belt",		legs="Hagondes Pants +1",	feet="Hagondes Sabots +1"
 	}
 	sets.midcast.ElementalMagic.with_buff = {}
 	sets.midcast.ElementalMagic.with_buff['reive mark'] = {neck="Arciela's Grace +1"}

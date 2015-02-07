@@ -5,6 +5,17 @@
 --]]
 -----------------------------------------------------------------------------------------------------------
 
+local chars = require('chat/chars')
+
+--[[
+	Convenience wrapper for accessing the true windower.add_to_chat function.
+	Information printed via printInfo() was being mangled and causing FFXI crashes
+	through chat log glitches.
+--]]
+function atc(c, msg)
+	gearswap._G.windower.add_to_chat(c, msg)	--This exact syntax MUST be used, hence the need for a wrapper
+end
+
 -- Attempt to load user gear files in place of default gear sets.
 -- Return true if one exists and was loaded.
 function load_user_gear(job)
@@ -23,10 +34,10 @@ end
 
 function print_gearset(gearset, title)
 	if title ~= nil then
-		windower.add_to_chat(2, title)
+		atc(2, title)
 	end
 	for s,i in pairs(gearset) do
-		windower.add_to_chat(1, tostring(s)..': '..tostring(i))
+		atc(1, tostring(s)..': '..tostring(i))
 	end
 end
 
@@ -38,7 +49,7 @@ function display_current_state()
 	if (gearswap.buffs ~= nil) then
 		table.insert(modeStrings, 'Haste tier: '..tostring(gearswap.buffs.Haste))
 	end
-	windower.add_to_chat(1, table.concat(modeStrings, ' | '))
+	atc(1, table.concat(modeStrings, ' | '))
 end
 
 --[[
@@ -71,7 +82,7 @@ function getIndex(t, element)
 end
 
 --[[
-	Allows add_to_chat to be called via the Windower console.
+	Allows atc to be called via the Windower console.
 	This enables messages to be added to the chat log with a delay.
 	Usage: gs c atc <color> <text>
 --]]
@@ -80,7 +91,13 @@ function addToChat(cmdParams)
 	for i = 3, #cmdParams, 1 do
 		dispText = dispText .. ' ' .. cmdParams[i]
 	end
-	windower.add_to_chat(cmdParams[1], dispText)
+	--Parse the text to be displayed for special character codes as found in Windower/addons/libs/chat/chars.lua
+	for k,v in pairs(chars) do
+		if dispText:contains('<'..k..'>') then
+			dispText = dispText:gsub('<'..k..'>', v)	--Replace codes with the characters they represent
+		end
+	end
+	atc(cmdParams[1], dispText)
 end
 
 --[[
@@ -105,9 +122,7 @@ function addMode(mode, vals)
 	if mode == nil then return end
 	if options == nil then options = {} end
 	if options.modes == nil then options.modes = {} end
-	
 	options.modes[mode] = {}
-	
 	if vals ~= nil then
 		for _,option in ipairs(vals) do
 			addModeOption(mode, option)
@@ -138,9 +153,6 @@ function getNextOption(mode, lastOption)
 		if lastOption == nil then
 			return options.modes[mode][1]
 		end
-		
-		-- local invertedTable = invertTable(options.modes[mode])
-		-- local i = invertedTable[lastOption]
 		local i = getIndex(options.modes[mode], lastOption)
 		if i ~= nil then
 			if i == listLen then
@@ -163,7 +175,6 @@ end
 function cycleMode(mode)
 	if options.modes[mode] == nil then return end
 	if #options.modes[mode] < 1 then return end
-	
 	setMode(mode, getNextOption(mode, modes[mode]))
 end
 
@@ -210,7 +221,6 @@ function parseInput(command)
 			end
 		end
 	end
-	
 	return result
 end
 
@@ -221,15 +231,14 @@ end
 function printInfo(t, h)
 	if t ~= nil then
 		if h ~= nil then
-			windower.add_to_chat(2, h)
+			atc(2, h)
 		end
-		
 		if type(t) == 'table' then
 			for k,v in pairs(t) do
-				windower.add_to_chat(0, tostring(k)..'  :  '..tostring(v))
+				atc(0, tostring(k)..'  :  '..tostring(v))
 			end
 		else
-			windower.add_to_chat(0, tostring(t))
+			atc(0, tostring(t))
 		end
 	end
 end

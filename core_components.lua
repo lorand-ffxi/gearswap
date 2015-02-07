@@ -32,10 +32,10 @@ init()
 	Called when an action has been flagged as not possible to perform.
 --]]
 function filtered_action(spell)
-	-- windower.add_to_chat(1, spell.en .. ' (' .. spell.type .. ') has been flagged as a filtered action.')
-	-- windower.add_to_chat(1, 'Active buffs:')
+	-- atc(1, spell.en .. ' (' .. spell.type .. ') has been flagged as a filtered action.')
+	-- atc(1, 'Active buffs:')
 	-- for k,v in pairs(buffactive) do
-		-- windower.add_to_chat(1, tostring(k)..': '..tostring(v))
+		-- atc(1, tostring(k)..': '..tostring(v))
 	-- end
 	
 	if spell.type == 'WhiteMagic' and buff_active('Light Arts') and gearswap.addendum_white[spell.id] then
@@ -43,7 +43,7 @@ function filtered_action(spell)
 		if get_available_stratagem_count() > 0 then
 			windower.send_command('input /ja "Addendum: White" <me>; wait 1.75; input /ma "'..spell.en..'" '..spell.target.name)
 		else
-			windower.add_to_chat(122, "Cancelled "..spell.en..".  Addendum: White is required, but there are no available stratagems.")
+			atc(122, "Cancelled "..spell.en..".  Addendum: White is required, but there are no available stratagems.")
 		end
 	elseif spell.type == 'BlackMagic' and buff_active('Dark Arts') and gearswap.addendum_black[spell.id] then
 		local retryTarget
@@ -56,10 +56,10 @@ function filtered_action(spell)
 		if get_available_stratagem_count() > 0 then
 			windower.send_command('input /ja "Addendum: Black" <me>; wait 1.75; input /ma "'..spell.en..'" '..retryTarget)
 		else
-			windower.add_to_chat(122, "Cancelled "..spell.en..".  Addendum: Black is required, but there are no available stratagems.")
+			atc(122, "Cancelled "..spell.en..".  Addendum: Black is required, but there are no available stratagems.")
 		end
 	else
-		windower.add_to_chat(166, 'Unhandled filtered action: '..spell.english)
+		atc(166, 'Unhandled filtered action: '..spell.english)
 	end
 end
 
@@ -112,7 +112,7 @@ function precast(spell)
 	
 	--Perform checks prior to execution of the command
 	if player.main_job == 'BRD' and spell.type == 'BardSong' then
-		windower.add_to_chat(122, "Casting "..spell.en.." in mode: "..modes.Daurdabla)
+		atc(122, "Casting "..spell.en.." in mode: "..modes.Daurdabla)
 		-- Auto-Pianissimo
 		if spell.target.type == 'PLAYER' and not spell.target.charmed and not buff_active('Pianissimo') then
 			cancel_spell()
@@ -130,15 +130,15 @@ function precast(spell)
 		
 		if check_ammo then		--Verify that ammunition is available
 			if not player.inventory[check_ammo] then
-				windower.add_to_chat(104, 'No ammo available for that action.')
+				atc(104, 'No ammo available for that action.')
 				cancel_spell()
 				return
 			end
 			if player.inventory[check_ammo].count <= options.ammo_warning_limit and
 			   player.inventory[check_ammo].count > 1 and not state.warned then
-				windower.add_to_chat(104, '*******************************')
-				windower.add_to_chat(104, '*****  LOW AMMO WARNING *****')
-				windower.add_to_chat(104, '*******************************')
+				atc(104, '*******************************')
+				atc(104, '*****  LOW AMMO WARNING *****')
+				atc(104, '*******************************')
 				state.warned = true
 			elseif player.inventory[check_ammo].count > options.ammo_warning_limit and state.warned then
 				state.warned = false
@@ -175,7 +175,7 @@ end
 --]]
 function aftercast(spell)
 	if modes.noIdle then 
-		windower.add_to_chat(104, 'WARNING: Did not equip idle set (modes.noIdle is ON)')
+		atc(104, 'WARNING: Did not equip idle set (modes.noIdle is ON)')
 		return
 	end
 
@@ -250,7 +250,7 @@ function buff_change(buff, gain)
 		enable('feet')		-- Unlock feet when Mana Wall buff is lost.
 		equip(get_gear_for_status(player.status))
 	elseif buff == 'Sublimation: Complete' and gain then
-		windower.add_to_chat(204, 'Sublimation is done charging!')
+		atc(204, 'Sublimation is done charging!')
 	end
 	
 	if buff:lower() == 'weakness' then
@@ -563,7 +563,7 @@ function get_midcast_set(spell)
 				end
 			end
 		else
-			add_to_chat(122, 'Using default rule set for '..spell.english..'.')
+			atc(122, 'Using default rule set for '..spell.english..'.')
 			midcastSet = combineSets(midcastSet, sets.midcast)
 			midcastSet = combineSets(midcastSet, sets.midcast, spell.type)
 			midcastSet = combineSets(midcastSet, sets.midcast, spell.skill)
@@ -690,7 +690,7 @@ function get_melee_set(baseSet)
 	meleeSet = combineSets(meleeSet, sets.engaged[modes.defense], modes.accuracy)
 	
 	for buff,_ in pairs(buffactive) do
-		--windower.add_to_chat(1, '[Engaged] Buffactive: '..tostring(buff))
+		--atc(1, '[Engaged] Buffactive: '..tostring(buff))
 		meleeSet = combineSets(meleeSet, sets.engaged.with_buff[buff])
 	end
 	
@@ -733,7 +733,7 @@ function execute_command(command, args)
 	if executable_commands[cmd] ~= nil then
 		executable_commands[cmd](args)
 	else
-		add_to_chat(123, '[ERROR] Unknown command: '..command)
+		atc(123, '[ERROR] Unknown command: '..command)
 	end
 end
 
@@ -773,7 +773,7 @@ function cycle_mode(args)
 	if mode ~= nil then
 		cycleMode(mode)
 	end
-	windower.add_to_chat(1, tostring(mode)..' mode is now '..tostring(modes[mode]))
+	atc(1, tostring(mode)..' mode is now '..tostring(modes[mode]))
 	update()
 end
 
@@ -783,7 +783,7 @@ function set_mode(args)
 	if (mode ~= nil) and (opt ~= nil) then
 		setMode(mode, opt)
 	end
-	windower.add_to_chat(1, tostring(mode)..' mode is now '..tostring(modes[mode]))
+	atc(1, tostring(mode)..' mode is now '..tostring(modes[mode]))
 	update()
 end
 
@@ -793,7 +793,7 @@ function reset_mode(args)
 		modes[mode] = nil
 		cycleMode(mode)
 	end
-	windower.add_to_chat(1, tostring(mode)..' mode is now '..tostring(modes[mode]))
+	atc(1, tostring(mode)..' mode is now '..tostring(modes[mode]))
 	update()
 end
 
@@ -802,7 +802,7 @@ function toggle_mode(args)
 	if mode ~= nil then
 		modes[mode] = not modes[mode]
 	end
-	windower.add_to_chat(1, tostring(mode)..' mode is now '..tostring(modes[mode]))
+	atc(1, tostring(mode)..' mode is now '..tostring(modes[mode]))
 	update()
 end
 
@@ -811,7 +811,7 @@ function activate_mode(args)
 	if mode ~= nil then
 		modes[mode] = true
 	end
-	windower.add_to_chat(1, tostring(mode)..' mode is now '..tostring(modes[mode]))
+	atc(1, tostring(mode)..' mode is now '..tostring(modes[mode]))
 	update()
 end
 
@@ -860,7 +860,7 @@ function show_set(args)
 			equip(get_midcast_set(action))
 		end
 	else
-		windower.add_to_chat(166, 'Unable to determine set to equip for '..table.concat(args, ' '))
+		atc(166, 'Unable to determine set to equip for '..table.concat(args, ' '))
 	end
 end
 
@@ -891,9 +891,10 @@ function info(args)
 	local argStr = table.concat(args, ' ')
 	local tbl = parseInput(argStr)
 	if tbl ~= nil then
+		--print_set(tbl, argStr)
 		printInfo(tbl, argStr)
 	else
-		windower.add_to_chat(0, 'Error: Unable to parse valid command')
+		atc(0, 'Error: Unable to parse valid command')
 	end
 end
 

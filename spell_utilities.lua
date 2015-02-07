@@ -5,11 +5,8 @@
 --]]
 -----------------------------------------------------------------------------------------------------------
 
---local abilList = T(require('res/abilities'))
---local buffList = T(require('res/buffs'))
---local spellList = T(require('res/spells'))
-local cnums = {['Cure'] = 1, ['Cure II'] = 2, ['Cure III'] = 3, ['Cure IV'] = 4, ['Cure V'] = 5, ['Cure VI'] = 6}
-local ncures = {'Cure','Cure II','Cure III','Cure IV','Cure V','Cure VI'}
+local cure2num = {['Cure'] = 1, ['Cure II'] = 2, ['Cure III'] = 3, ['Cure IV'] = 4, ['Cure V'] = 5, ['Cure VI'] = 6}
+local num2cure = {'Cure','Cure II','Cure III','Cure IV','Cure V','Cure VI'}
 local strat_charge_time = {240,120,80,60,48}
 
 --[[
@@ -18,7 +15,7 @@ local strat_charge_time = {240,120,80,60,48}
 --]]
 function modify_cure(spell)
 	if not modes.ConserveMP then return false end
-	local cnum = cnums[spell.name]
+	local cnum = cure2num[spell.name]
 	if (cnum == nil) or (cnum == 1) then return false end
 	
 	--Modify the cure tier based on the amount of HP missing from the cure target
@@ -29,7 +26,7 @@ function modify_cure(spell)
 	local ncnum = get_tier_for_hp(cnum, hpMissing)
 	ncnum = get_tier_for_mp(ncnum)
 	
-	local cspell = gearswap.res.spells:with('en', ncures[ncnum])
+	local cspell = gearswap.res.spells:with('en', num2cure[ncnum])
 	local crecast = windower.ffxi.get_spell_recasts()[cspell.id] or 0
 	if (crecast > 0) and (ncnum > 1) then
 		ncnum = ncnum - 1
@@ -37,7 +34,7 @@ function modify_cure(spell)
 	
 	if ncnum == cnum then return false end
 	
-	windower.send_command('input /ma "'..ncures[ncnum]..'" '..spell.target.name)
+	windower.send_command('input /ma "'..num2cure[ncnum]..'" '..spell.target.name)
 	return true
 end
 
@@ -59,11 +56,11 @@ function get_tier_for_mp(cureTier)
 		end
 	end
 	
-	local spell = gearswap.res.spells:with('en', ncures[ncnum])
+	local spell = gearswap.res.spells:with('en', num2cure[ncnum])
 	while (spell.mp_cost * mpMult) > player.mp do
 		if ncnum > 1 then
 			ncnum = ncnum - 1
-			spell = gearswap.res.spells:with('en', ncures[ncnum])
+			spell = gearswap.res.spells:with('en', num2cure[ncnum])
 		end
 	end
 	return ncnum
@@ -118,17 +115,13 @@ function initSleepTimer(spell, spellMap)
 		duration = duration * 2
 	end
 	
-	mtext = '; gs c atc 123 '..string.char(0x81, 0xA3)..' '..spell.english..' on '..spell.target.name..' is wearing off in '
-	windower.send_command('wait '..(duration-15)..mtext..'15 seconds '..string.char(0x81, 0xA3))
-	windower.send_command('wait '..(duration-5)..mtext..'5 seconds '..string.char(0x81, 0xA3))
+	mtext = '; gs c atc 123 <wtriangle> '..spell.english..' on '..spell.target.name..' is wearing off in '
+	windower.send_command('wait '..(duration-15)..mtext..'15 seconds <wtriangle>')
+	windower.send_command('wait '..(duration-5)..mtext..'5 seconds <wtriangle>')
 end
 
 function get_haste_potency()
 	local hasteTier = hasteType or 1
-	
-	
-	
-	
 	
 	local mpotency = 0
 	if buffactive[33] then		--Haste I/II
@@ -183,9 +176,8 @@ function get_haste_potency()
 	elseif potency < 70 then	return 65
 	elseif potency < 75 then	return 70
 	elseif potency < 80 then	return 75
-	else						return 80
-	end
-	
+	else				return 80
+	end	
 end
 
 --[[
@@ -195,10 +187,10 @@ end
 --]]
 function handle_strategems(cmdParams)
 	if not cmdParams[1] then
-		windower.add_to_chat(123,'Error: No strategem command given.')
+		atc(123,'Error: No strategem command given.')
 		return
 	elseif not S{player.main_job, player.sub_job}:contains('SCH') then
-		windower.add_to_chat(123,'You cannot use stratagems without having Scholar as your main or sub job.')
+		atc(123,'You cannot use stratagems without having Scholar as your main or sub job.')
 		return
 	end
 	local stratagem = cmdParams[1]:lower()
@@ -212,37 +204,37 @@ function handle_strategems(cmdParams)
 	
 	local stratagems = {
 		['White Magic'] = {
-			['dark']	=	'input /ja "Dark Arts" <me>',	['light']	=	'input /ja "Addendum: White" <me>',	['cost']	=	'input /ja Penury <me>',
-			['speed']	=	'input /ja Celerity <me>',		['aoe']		=	'input /ja Accession <me>',			['power']	=	'input /ja Rapture <me>',
-			['accuracy']=	'input /ja Altruism <me>',		['enmity']	=	'input /ja Tranquility <me>',		['duration']=	'input /ja Perpetuance <me>',	
+			['dark']=	'input /ja "Dark Arts" <me>',	['light']=	'input /ja "Addendum: White" <me>',	['cost']=	'input /ja Penury <me>',
+			['speed']=	'input /ja Celerity <me>',	['aoe']	=	'input /ja Accession <me>',		['power']=	'input /ja Rapture <me>',
+			['accuracy']=	'input /ja Altruism <me>',	['enmity']=	'input /ja Tranquility <me>',		['duration']=	'input /ja Perpetuance <me>',	
 		},
 		['Black Magic'] = {
-			['light']	=	'input /ja "Light Arts" <me>',	['dark']	=	'input /ja "Addendum: Black" <me>',	['cost']	=	'@input /ja Parsimony <me>',
-			['speed']	=	'input /ja Alacrity <me>',		['aoe']		=	'input /ja Manifestation <me>',		['power']	=	'@input /ja Ebullience <me>',
-			['accuracy']=	'input /ja Focalization <me>',	['enmity']	=	'input /ja Equanimity <me>',
+			['light']=	'input /ja "Light Arts" <me>',	['dark']=	'input /ja "Addendum: Black" <me>',	['cost']=	'@input /ja Parsimony <me>',
+			['speed']=	'input /ja Alacrity <me>',	['aoe']	=	'input /ja Manifestation <me>',		['power']=	'@input /ja Ebullience <me>',
+			['accuracy']=	'input /ja Focalization <me>',	['enmity']=	'input /ja Equanimity <me>',
 		},
-		['None'] = {['light'] = 'input /ja "Light Arts" <me>', ['dark'] = 'input /ja "Dark Arts" <me>'}
+		['None'] = {['light']=	'input /ja "Light Arts" <me>',	['dark']=	'input /ja "Dark Arts" <me>'}
 	}
 	local messages = {
-		['cost']	=	' spell will cost 50% less MP.',	['speed']	=	' spell will cast 50% faster.',		['aoe']		=	' spell will affect multiple targets.',
-		['duration']=	' spell will last twice as long.',	['accuracy']=	' spell will be more accurate.',	['enmity']	=	' spell will generate less enmity.',
+		['cost']=	' spell will cost 50% less MP.',	['speed']=	' spell will cast 50% faster.',		['aoe']	=	' spell will affect multiple targets.',
+		['duration']=	' spell will last twice as long.',	['accuracy']=	' spell will be more accurate.',	['enmity']=	' spell will generate less enmity.',
 	}
 	
 	if stratagems[magicType] ~= nil then
 		if stratagems[magicType][stratagem] ~= nil then
 			windower.send_command(stratagems[magicType][stratagem])
 		else
-			windower.add_to_chat(123,'Error: Unknown strategem ['..tostring(strategem)..']')
+			atc(123,'Error: Unknown strategem ['..tostring(strategem)..']')
 		end
 	else
-		windower.add_to_chat(123,'You must activate Light or Dark Arts before you can use a stratagem.')
+		atc(123,'You must activate Light or Dark Arts before you can use a stratagem.')
 	end
 	
 	if messages[stratagem] ~= nil then
-		windower.add_to_chat(207, 'Your next '..magicType..messages[stratagem])
+		atc(207, 'Your next '..magicType..messages[stratagem])
 	elseif stratagem == 'power' then
-		local effectTexts = {['Black Magic']='20%',	['White Magic']='50%'}
-		windower.add_to_chat(207, 'Your next '..magicType..' spell will be '..effectTexts[magicType]..' more potent.')
+		local effectTexts = {['Black Magic']='20%',['White Magic']='50%'}
+		atc(207, 'Your next '..magicType..' spell will be '..effectTexts[magicType]..' more potent.')
 	end
 end
 
@@ -315,7 +307,7 @@ function buff_active(...)
 	return nil
 end
 
-function modify_spell(spell)
+function modify_spell(spell)	--TODO Add toggle option for this
 	local smap = spell_maps[spell.en]
 	if (player.main_job == 'WHM') then
 		if (smap == 'StatusRemoval') and (not S{'Erase', 'Esuna'}:contains(spell.en)) then
@@ -337,7 +329,6 @@ function getRecast(spell)
 		xid = spell.recast_id
 	elseif type(spell) == 'string' then
 		local xspell = gearswap.res.spells:with('en', spell)
-		--local xspell = gearswap.res.spell_recasts:with('en', spell)
 		local xabil = gearswap.res.ability_recasts:with('en', spell)
 		if xspell ~= nil then
 			xtype = 'Magic'
@@ -365,49 +356,48 @@ end
 function not_possible_to_use(spell)
 	local activeDebuff = buff_active('Sleep', 'Petrification', 'Charm', 'Terror', 'Lullaby', 'Stun')
 	if activeDebuff then
-		--add_to_chat(166, 'Cancelling '..spell.name..' because you are '..activeDebuff..'.')
-		windower.add_to_chat(166, 'Cancelling '..spell.name..' because you are '..activeDebuff.enl..'.')
+		atc(166, 'Cancelling '..spell.name..' because you are '..activeDebuff.enl..'.')
 		return true
 	end
 	
 	if spell.action_type == 'Ability' then
 		if buff_active('Amnesia') then
-			windower.add_to_chat(166, 'Cancelling '..spell.en..' because you are amnesic.')
+			atc(166, 'Cancelling '..spell.en..' because you are amnesic.')
 			return true
 		end
 		local abil_recasts = windower.ffxi.get_ability_recasts()
 		if spell.type == 'WeaponSkill' then
 			if player.tp < 1000 and player.status == 'Engaged' then
-				windower.add_to_chat(166, 'Cancelling '..spell.en..' because TP is too low ('..player.tp..').')
+				atc(166, 'Cancelling '..spell.en..' because TP is too low ('..player.tp..').')
 				return true
 			end
 		elseif spell.type == 'Scholar' then
 			if get_available_stratagem_count() == 0 then
-				windower.add_to_chat(166, 'Cancelling '..spell.en..' because there are currently no stratagems available for use.')
+				atc(166, 'Cancelling '..spell.en..' because there are currently no stratagems available for use.')
 				return true
 			elseif buff_active(spell.en) then
-				windower.add_to_chat(166, 'Cancelling '..spell.en..' because it is already active.')
+				atc(166, 'Cancelling '..spell.en..' because it is already active.')
 				return true
 			end
 		elseif abil_recasts[spell.recast_id] and abil_recasts[spell.recast_id] > 0 then
-			windower.add_to_chat(166, 'Unable to use '..spell.english..' at this time. ['..(abil_recasts[spell.recast_id])..'s remaining]')
+			atc(166, 'Unable to use '..spell.english..' at this time. ['..(abil_recasts[spell.recast_id])..'s remaining]')
 			return true
 		end
 	elseif spell.action_type == 'Magic' then
 		if buff_active('Silence', 'Mute') then
-			windower.add_to_chat(123, string.char(0x81, 0xA3)..' Cancelling '..spell.en..' because you are silenced. '..string.char(0x81, 0xA3))
+			atc(123, string.char(0x81, 0xA3)..' Cancelling '..spell.en..' because you are silenced. '..string.char(0x81, 0xA3))
 			return true
 		end
 		local spell_recasts = windower.ffxi.get_spell_recasts()
 		if spell_recasts[spell.id] > 0 then
-			windower.add_to_chat(166, 'Unable to cast '..spell.english..' at this time. ['..(spell_recasts[spell.id]/100)..'s remaining]')
+			atc(166, 'Unable to cast '..spell.english..' at this time. ['..(spell_recasts[spell.id]/100)..'s remaining]')
 			return true
 		elseif (spell.target.charmed and not spell.target.is_npc) and spell.en:contains('Cur') then
-			windower.add_to_chat(166, 'Cancelling '..spell.en..' because '..spell.target.name..' is currently charmed.')
+			atc(166, 'Cancelling '..spell.en..' because '..spell.target.name..' is currently charmed.')
 			return true
 		elseif spell.en:contains('Utsusemi') then
 			if buff_active('Copy Image (3)', 'Copy Image (4+)') then
-				windower.add_to_chat(57, 'Cancelled '..spell.en..' because 3 or more shadows are still active.')
+				atc(57, 'Cancelled '..spell.en..' because 3 or more shadows are still active.')
 				return true
 			end
 		end
@@ -420,7 +410,6 @@ end
 	Valid types include String and Wind
 --]]
 function get_instrument_type(i)
-	--local i = gear.instruments[spellMap]
 	if instruments.string:contains(i) then
 		return 'String'
 	elseif instruments.wind:contains(i) then
