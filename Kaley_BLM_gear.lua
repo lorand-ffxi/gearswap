@@ -12,7 +12,7 @@ function init_gear_sets()
 	sets.precast.JA['Convert'] = {}
 	
 	sets.precast.FC = {
-		main="Lehbrailg +2",
+		main="Marin Staff",
 		head="Nares Cap",	neck="Jeweled Collar",	lear="Loquacious Earring",
 		hands="Repartie Gloves",
 		back="Swith Cape",	legs="Artsieq Hose",	feet="Chelona Boots"
@@ -59,7 +59,7 @@ function init_gear_sets()
 	sets.midcast.Stoneskin = {waist="Siegel Sash", legs="Shedir Seraweels"}
 
 	sets.midcast.MagicAccuracy = {
-		main="Lehbrailg +2",	sub="Mephitis Grip",		ammo="Kalboron Stone",
+		main="Marin Staff",	sub="Mephitis Grip",		ammo="Kalboron Stone",
 		head="Kaabnax Hat",	neck="Eddy Necklace",		ear1="Lifestorm Earring",	ear2="Psystorm Earring",
 		body="Praeco Doublet",	hands="Hagondes Cuffs +1",	ring1="Sangoma Ring",		ring2="Perception Ring",
 		back="Bane Cape",	waist="Ovate Rope",		legs="Artsieq Hose",		feet="Bokwus Boots"
@@ -75,7 +75,7 @@ function init_gear_sets()
 
 	-- Elemental Magic sets are default for handling low-tier nukes.
 	sets.midcast.ElementalMagic = {
-		main="Lehbrailg +2",		sub="Bugard Strap +1",		ammo="Witchstone",
+		main="Marin Staff",		sub="Bugard Strap +1",		ammo="Witchstone",
 		head="Buremte Hat",		neck="Eddy Necklace",		ear1="Hecate's Earring",	ear2="Friomisi Earring",
 		body="Hagondes Coat +1",	hands="Otomi Gloves",		ring1="Spiral Ring",		ring2="Acumen Ring",
 		back="Bane Cape",		waist="Cognition Belt",		legs="Hagondes Pants +1",	feet="Hagondes Sabots +1"

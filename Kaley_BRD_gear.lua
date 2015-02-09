@@ -10,36 +10,34 @@
 		10:	Aoidos' (all)
 		14:	Nares Cap/Hands/Legs
 		15:	Brioso (all)
-	<var name="WindInstruments">Iron Ram Horn|Pan's Horn|Harlequin's Horn|Cornette|Syrinx|Apollo's Flute|Shofar|Hellish Bugle +1|Crumhorn|Traversiere +1</var>
-	<var name="StringInstruments">Terpander|Oneiros Harp|Crooner's Cithara|Vihuela|Sorrowful Harp</var>
 	
 --]]
 -----------------------------------------------------------------------------------------------------------
 
 function init_gear_sets()
 	--============================================================
-	--					Instruments
+	--			Instruments
 	--============================================================
-	gear.Instruments.Ballad = "Eminent Flute"
-	gear.Instruments.Carol = "Eminent Flute"
-	gear.Instruments.Elegy = "Syrinx"
-	gear.Instruments.Etude = "Eminent Flute"
-	gear.Instruments.Finale = "Pan's Horn"
-	gear.Instruments.Lullaby = "Pan's Horn"
-	gear.Instruments.Madrigal = "Cantabank's Horn"
-	gear.Instruments.Mambo = "Vihuela"
-	gear.Instruments.March = "Eminent Flute"
-	gear.Instruments.Mazurka = "Vihuela"
-	gear.Instruments.Minne = "Syrinx"
-	gear.Instruments.Minuet = "Apollo's Flute"
-	gear.Instruments.Paeon = "Eminent Flute"
-	gear.Instruments.Prelude = "Cantabank's Horn"
-	gear.Instruments.Requiem = "Eminent Flute"
-	gear.Instruments.Scherzo = "Terpander"
-	gear.Instruments.Threnody = "Eminent Flute"
+	gear.instruments.Ballad = "Eminent Flute"
+	gear.instruments.Carol = "Eminent Flute"
+	gear.instruments.Elegy = "Syrinx"
+	gear.instruments.Etude = "Eminent Flute"
+	gear.instruments.Finale = "Pan's Horn"
+	gear.instruments.Lullaby = "Pan's Horn"
+	gear.instruments.Madrigal = "Cantabank's Horn"
+	gear.instruments.Mambo = "Vihuela"
+	gear.instruments.March = "Eminent Flute"
+	gear.instruments.Mazurka = "Vihuela"
+	gear.instruments.Minne = "Syrinx"
+	gear.instruments.Minuet = "Apollo's Flute"
+	gear.instruments.Paeon = "Eminent Flute"
+	gear.instruments.Prelude = "Cantabank's Horn"
+	gear.instruments.Requiem = "Eminent Flute"
+	gear.instruments.Scherzo = "Terpander"
+	gear.instruments.Threnody = "Eminent Flute"
 	
 	--============================================================
-	--					Precast sets
+	--			Precast sets
 	--============================================================
 	sets.precast.FC = {
 		ammo="Impatiens",
@@ -100,7 +98,7 @@ function init_gear_sets()
 	sets.midcast.Scherzo =	{feet="Aoidos' Cothurnes +2"}
 	
 	sets.midcast.MagicAccuracy = {
-		main="Lehbrailg +2",
+		main="Marin Staff",
 		head="Kaabnax Hat",	neck="Eddy Necklace",
 		ring1="Sangoma Ring",	ring2="Perception Ring",
 		legs="Artsieq Hose"
@@ -131,7 +129,7 @@ function init_gear_sets()
 	}
 	
 	sets.midcast.SongDebuff = {		-- For song debuffs (duration primary, accuracy secondary)
-		main="Lehbrailg +2",
+		main="Marin Staff",
 		sub="Mephitis Grip",
 		head="Kaabnax Hat",
 	}
@@ -199,7 +197,7 @@ function init_gear_sets()
 	})
 	
 	--============================================================
-	--					Other sets
+	--			Other sets
 	--============================================================
 	
 	sets.resting = {

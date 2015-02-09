@@ -9,7 +9,7 @@ function init_gear_sets()
 	--					Precast sets
 	--============================================================
 	sets.precast.FC = {			--42%
-		main="Lehbrailg +2",		--2%
+		main="Marin Staff",		--2%
 		ammo="Incantor Stone",		--2%
 		head="Nares Cap",		--10%
 		neck="Orison Locket",		--5%
@@ -70,7 +70,7 @@ function init_gear_sets()
 	}
 	
 	sets.midcast.MagicAccuracy = {
-		main="Lehbrailg +2",	sub="Mephitis Grip",		ammo="Kalboron Stone",
+		main="Marin Staff",	sub="Mephitis Grip",		ammo="Kalboron Stone",
 		head="Kaabnax Hat",	neck="Eddy Necklace",		ear1="Lifestorm Earring",	ear2="Psystorm Earring",
 		body="Praeco Doublet",	hands="Gendewitha Gages +1",	ring1="Sangoma Ring",		ring2="Perception Ring",
 		back="Ogapepo Cape",	waist="Ovate Rope",		legs="Artsieq Hose",		feet="Bokwus Boots"
@@ -155,7 +155,7 @@ function init_gear_sets()
 	}
 				
 	sets.midcast.DivineMagic.Nuke = {
-		main="Lehbrailg +2",			sub="Achaq Grip",			ammo="Witchstone",
+		main="Marin Staff",			sub="Achaq Grip",			ammo="Witchstone",
 		head="Buremte Hat",				neck="Stoicheion Medal",	ear1="Hecate's Earring",	ear2="Friomisi Earring",
 		body="Weatherspoon Robe +1",	hands="Otomi Gloves",		ring1="Solemn Ring",		ring2="Acumen Ring",
 		back="Toro Cape",				waist="Cascade Belt",		legs="Gendewitha Spats +1",	feet="Gendewitha Galoshes +1"
@@ -166,7 +166,7 @@ function init_gear_sets()
 	sets.midcast.DarkMagic = {}
 
 	sets.midcast.EnfeeblingMagic = {
-		main="Lehbrailg +2",		sub="Mephitis Grip",
+		main="Marin Staff",		sub="Mephitis Grip",
 		body="Theophany Briault",	hands="Piety Mitts",
 		feet="Theophany Duckbills"
 	}
@@ -183,7 +183,7 @@ function init_gear_sets()
 	}
 	
 	sets.midcast.ElementalMagic = {
-		main="Lehbrailg +2",			sub="Bugard Strap +1",		ammo="Witchstone",
+		main="Marin Staff",			sub="Bugard Strap +1",		ammo="Witchstone",
 		head="Buremte Hat",				neck="Stoicheion Medal",	ear1="Hecate's Earring",	ear2="Friomisi Earring",
 		body="Weatherspoon Robe +1",	hands="Otomi Gloves",		ring1="Snow Ring",			ring2="Acumen Ring",
 		back="Toro Cape",				waist="Cognition Belt",		legs="Gendewitha Spats +1",	feet="Gendewitha Galoshes +1"

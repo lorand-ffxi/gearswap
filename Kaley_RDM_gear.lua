@@ -17,7 +17,7 @@ function init_gear_sets()
 	
 	-- Fast Cast caps at 80%; RDM JT: 30%
 	sets.precast.FC = {			--50% + 30% = 80%
-		main="Lehbrailg +2",		--2%
+		main="Marin Staff",		--2%
 		head="Atrophy Chapeau +1",	--12%
 		ear1="Loquacious Earring",	--2%
 		body="Vitivation Tabard +1",	--13%
@@ -104,7 +104,7 @@ function init_gear_sets()
 	--============================================================
 	
 	sets.midcast.MagicAccuracy = {
-		main="Lehbrailg +2",		sub="Mephitis Grip",		ammo="Kalboron Stone",
+		main="Marin Staff",		sub="Mephitis Grip",		ammo="Kalboron Stone",
 		head="Atrophy Chapeau +1",	neck="Eddy Necklace",		ear1="Lifestorm Earring",	ear2="Psystorm Earring",
 		body="Artsieq Jubbah",		hands="Hagondes Cuffs +1",	ring1="Sangoma Ring",		ring2="Perception Ring",
 		back="Ogapepo Cape",		waist="Ovate Rope",		legs="Artsieq Hose",		feet="Vitivation Boots +1"
@@ -136,7 +136,7 @@ function init_gear_sets()
 	--============================================================
 	
 	sets.midcast.ElementalMagic = {
-		main="Lehbrailg +2",		sub="Bugard Strap +1",	ammo="Witchstone",
+		main="Marin Staff",		sub="Bugard Strap +1",	ammo="Witchstone",
 		head="Buremte Hat",		neck="Eddy Necklace",	ear1="Hecate's Earring",	ear2="Friomisi Earring",
 		body="Hagondes Coat +1",	hands="Otomi Gloves",	ring1="Acumen Ring",		ring2="Spiral Ring",
 		back="Toro Cape",		waist="Cognition Belt",	legs="Hagondes Pants +1",	feet="Vitivation Boots +1"
