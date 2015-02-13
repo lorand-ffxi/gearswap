@@ -435,14 +435,21 @@ function get_midcast_set(spell)
 				--The mapping of skill to instrument is done in mappings.lua, and the instruments that should be used for each song should be
 				--defined in Playername_BRD_gear.lua
 				local instrumentSkill = get_instrument_type(activeInstrument)
-				
-				--Layer on skill gear for singing, then for the type of instrument being used to cast the song.
-				midcastSet = combineSets(midcastSet, sets.midcast.Singing)							--Equip base singing gear
-				midcastSet = combineSets(midcastSet, sets.midcast, instrumentSkill)					--Equip gear based on skill of instrument
+				if S{'Threnody','Requiem','Lullaby','Elegy','Finale','Nocturne'}:contains(spellMap) then
+					midcastSet = combineSets(midcastSet, sets.midcast.MagicAccuracy)
+				else
+					--Layer on skill gear for singing, then for the type of instrument being used to cast the song.
+					midcastSet = combineSets(midcastSet, sets.midcast.Singing)					--Equip base singing gear
+					midcastSet = combineSets(midcastSet, sets.midcast, instrumentSkill)				--Equip gear based on skill of instrument
+				end
 				--Layer on magic accuracy or duration enhancing gear based on the type of song being cast
-				midcastSet = combineSets(midcastSet, sets.midcast, songType)						--Equip gear based on buff/debuff
+				if not S{'Finale'}:contains(spellMap) then
+					midcastSet = combineSets(midcastSet, sets.midcast, songType)					--Equip gear based on buff/debuff
+					midcastSet = combineSets(midcastSet, sets.midcast, songType, modes.casting)
+				end
 				--Layer on gear that directly enhances the song being cast
 				midcastSet = combineSets(midcastSet, sets.midcast, spellMap)						--Equip gear based on song
+				midcastSet = combineSets(midcastSet, sets.midcast, spellMap, modes.casting)
 				--Finally, layer on the instrument that will be used.
 				midcastSet = combineSets(midcastSet, {range=activeInstrument})
 			end

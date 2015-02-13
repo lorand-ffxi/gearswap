@@ -114,12 +114,12 @@ function init_gear_sets()
 	sets.defense.PDT = combineSets(sets.defense.DT, {
 		head="Otronif Mask +1",	
 		body="Otronif Harness +1",	hands="Otronif Gloves +1",	
-		back="Repulse Mantle",		waist="Flume Belt",			legs="Otronif Brais +1",	feet="Otronif Boots +1"
+		back="Repulse Mantle",		waist="Flume Belt",		legs="Otronif Brais +1",	feet="Otronif Boots +1"
 	})
 	sets.defense.MDT = combineSets(sets.defense.DT, {
 		head="Otronif Mask +1",		ear1="Merman's Earring",	ear2="Merman's Earring",
 		body="Otronif Harness +1",	hands="Buremte Gloves",
-		back="Tuilha Cape",			waist="Flume Belt",			legs="Otronif Brais +1",	feet="Otronif Boots +1"
+		back="Tuilha Cape",		waist="Flume Belt",		legs="Otronif Brais +1",	feet="Otronif Boots +1"
 	})
 
 	sets.defense.Reraise = {head="Twilight Helm",body="Twilight Mail"}
@@ -134,20 +134,20 @@ function init_gear_sets()
 	sets.engaged.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}
 	
 	sets.engaged['5-Hit'] = {
-		head="Otomi Helm",		neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
-		body="Xaddi Mail",		hands="Otronif Gloves +1",	ring1="Rajas Ring",			ring2="K'ayres Ring",
+		head="Otomi Helm",	neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
+		body="Xaddi Mail",	hands="Otronif Gloves +1",	ring1="Rajas Ring",		ring2="K'ayres Ring",
 		back="Atheling Mantle",	waist="Windbuffet Belt +1",	legs="Otronif Brais +1",	feet="Ejekamal Boots"
 	}
 	
 	sets.engaged['5-Acc'] = {
 		head="Sakonji Kabuto +1",	neck="Agitator's Collar",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
-		body="Sakonji Domaru +1",	hands="Otronif Gloves +1",	ring1="Rajas Ring",			ring2="Mars's Ring",
+		body="Sakonji Domaru +1",	hands="Otronif Gloves +1",	ring1="Rajas Ring",		ring2="Mars's Ring",
 		back="Takaha Mantle",		waist="Sweordfaetels",		legs="Otronif Brais +1",	feet="Whirlpool Greaves"
 	}
 	
 	sets.engaged['4-Hit'] = {
 		head="Yaoyotl Helm",		neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
-		body="Sakonji Domaru +1",	hands="Otronif Gloves +1",	ring1="Rajas Ring",			ring2="K'ayres Ring",
+		body="Sakonji Domaru +1",	hands="Otronif Gloves +1",	ring1="Rajas Ring",		ring2="K'ayres Ring",
 		back="Takaha Mantle",		waist="Sweordfaetels",		legs="Otronif Brais +1",	feet="Otronif Boots +1"
 	}
 	

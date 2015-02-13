@@ -8,8 +8,8 @@
 	8:	Savant's Treatise
 	10:	Savant+2 ALL
 	14:	Nares Hands/Legs
-	15:	Academic's Hands/Legs/Feet
-	16:	Academic's +1 Head/Body
+	15:	Academic's Hands/Feet
+	16:	Academic's +1 Head/Body/Legs
 	17:	Pedagogy ALL
 --]]
 -----------------------------------------------------------------------------------------------------------
@@ -77,7 +77,7 @@ function init_gear_sets()
 		feet="Pedagogy Loafers"
 	}
 	sets.midcast.HealingMagic.LA = {
-		legs="Academic's Pants"		--18 Divine/Enfeebling/Enhancing/Healing Skill
+		legs="Academic's Pants +1"		--18 Divine/Enfeebling/Enhancing/Healing Skill
 	}
 	
 	sets.midcast.Cursna = {
@@ -100,7 +100,7 @@ function init_gear_sets()
 		waist="Cascade Belt"
 	}
 	sets.midcast.EnhancingMagic.LA = {
-		legs="Academic's Pants"		--18 Divine/Enfeebling/Enhancing/Healing Skill
+		legs="Academic's Pants +1"		--18 Divine/Enfeebling/Enhancing/Healing Skill
 	}
 	
 	sets.midcast.Aquaveil = {waist="Emphatikos Rope"}
@@ -133,7 +133,7 @@ function init_gear_sets()
 		body="Academic's Gown +1"		--18 Elemental/Enfeebling/Dark Skill
 	}
 	sets.midcast.EnfeeblingMagic.LA = {
-		legs="Academic's Pants"		--18 Divine/Enfeebling/Enhancing/Healing Skill
+		legs="Academic's Pants +1"		--18 Divine/Enfeebling/Enhancing/Healing Skill
 	}
 
 	sets.midcast.DarkMagic = {
@@ -167,7 +167,7 @@ function init_gear_sets()
 	
 	sets.midcast.DivineMagic = {}
 	sets.midcast.DivineMagic.LA = {
-		legs="Academic's Pants"		--18 Divine/Enfeebling/Enhancing/Healing Skill
+		legs="Academic's Pants +1"		--18 Divine/Enfeebling/Enhancing/Healing Skill
 	}
 	
 	sets.midcast.ElementalMagicSkill = {
@@ -209,7 +209,7 @@ function init_gear_sets()
 		main="Terra's Staff",			sub="Elder's Grip",						ammo="Impatiens",
 		head="Academic's Mortarboard +1",	neck="Twilight Torque",		ear1="Brachyura Earring",	ear2="Ethereal Earring",
 		body="Academic's Gown +1",		hands="Gendewitha Gages +1",	ring1="Defending Ring",		ring2="Shneddick Ring",
-		back="Repulse Mantle",			waist="Emphatikos Rope",	legs="Pedagogy Pants",		feet="Gendewitha Galoshes +1"
+		back="Repulse Mantle",			waist="Emphatikos Rope",	legs="Academic's Pants +1",	feet="Gendewitha Galoshes +1"
 	}
 	sets.idle.with_buff = {}
 	
