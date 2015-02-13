@@ -33,7 +33,7 @@ function init_gear_sets()
 	sets.precast.JA['Rampart'] = {head="Caballarius Coronet +1"}
 	sets.precast.JA['Fealty'] = {body="Caballarius Surcoat +1"}
 	sets.precast.JA['Divine Emblem'] = {feet="Creed Sabatons +2"}
-	sets.precast.JA['Chivalry'] = {hands="Caballarius Gauntlets +1"}
+	sets.precast.JA['Chivalry'] = {hands="Caballarius Gauntlets +1"}	-- MP recovered = TP×0.5 + TP×0.015×MND
 	
 	sets.precast.Waltz = {
 		head="Reverence Coronet +1",	neck="Invidia Torque",				ear1="Creed Earring",			ear2="Friomisi Earring",

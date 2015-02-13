@@ -7,7 +7,7 @@
 
 function init_gear_sets()
 	--============================================================
-	--					Precast sets
+	--			Precast sets
 	--============================================================
 	sets.precast.JA['Chainspell'] = {body="Vitivation Tabard +1"}
 	sets.precast.JA['Saboteur'] = {hands="Estoqueur's Gantherots +2"}
@@ -38,13 +38,13 @@ function init_gear_sets()
 	
 	sets.wsBase = {
 		head="Buremte Hat",		neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
-		body="Hagondes Coat +1",	hands="Atrophy Gloves",		ring1="Rajas Ring",		ring2="Spiral Ring",
+		body="Hagondes Coat +1",	hands="Atrophy Gloves +1",	ring1="Rajas Ring",		ring2="Spiral Ring",
 		back="Atheling Mantle",		waist="Anguinus Belt",		legs="Hagondes Pants +1",	feet="Gendewitha Galoshes +1"
 	}
 	sets.wsBase.Magic = {}
 	
 	--============================================================
-	--					Midcast sets
+	--			Midcast sets
 	--============================================================
 	
 	sets.midcast.FastRecast = {
@@ -84,7 +84,7 @@ function init_gear_sets()
 		back="Estoqueur's Cape",	waist="Cascade Belt",		legs="Atrophy Tights",	feet="Estoqueur's Houseaux +2"
 	}
 	sets.midcast.EnhancingMagic.Duration = {
-		hands="Atrophy Gloves",
+		hands="Atrophy Gloves +1",
 		back="Estoqueur's Cape",	feet="Estoqueur's Houseaux +2"
 	}
 	sets.midcast.EnhancingMagic.Duration.ComposureOther = {
@@ -169,7 +169,7 @@ function init_gear_sets()
 	sets.midcast.DivineMagic.Nuke.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
 	
 	--============================================================
-	--					Other sets
+	--			Other sets
 	--============================================================
 	
 	sets.maxMP = {
@@ -236,7 +236,7 @@ function init_gear_sets()
 		--main="Iztaasu +2",		sub="Beatific Shield",
 		ammo="Jukukik Feather",
 		head="Vitivation Chapeau +1",	neck="Asperity Necklace",	ear1="Brutal Earring",	ear2="Suppanomimi",
-		body="Hagondes Coat +1",	hands="Atrophy Gloves",		ring1="Rajas Ring",	ring2="Tyrant's Ring",
+		body="Hagondes Coat +1",	hands="Atrophy Gloves +1",	ring1="Rajas Ring",	ring2="Tyrant's Ring",
 		back="Atheling Mantle",		waist="Cetl Belt",		legs="Atrophy Tights",	feet="Atrophy Boots"
 	}
 	sets.engaged.with_buff = {}
@@ -244,7 +244,7 @@ function init_gear_sets()
 	sets.engaged.Skillup = {
 		ammo="Jukukik Feather",
 		head="Temachtiani Headband",	neck="Asperity Necklace",	ear1="Brutal Earring",		ear2="Suppanomimi",
-		body="Hagondes Coat +1",	hands="Atrophy Gloves",		ring1="Rajas Ring",		ring2="Tyrant's Ring",
+		body="Hagondes Coat +1",	hands="Atrophy Gloves +1",	ring1="Rajas Ring",		ring2="Tyrant's Ring",
 		back="Atheling Mantle",		waist="Cetl Belt",		legs="Temachtiani Pants",	feet="Temachtiani Boots"
 	}
 end

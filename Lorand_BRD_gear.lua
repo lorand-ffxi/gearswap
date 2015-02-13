@@ -10,8 +10,8 @@
 	Terpander/Daurdabla without any duration enhancing gear, and then overwrite it right away with a more
 	desirable song while wearing duration enhancing / potency gear (and instrument).
 	
-	To cycle modes:				gs c cycle daurdabla
-	To set a specific mode:		gs c set daurdabla Daurdabla
+	To cycle modes:				gs c cycle Daurdabla
+	To set a specific mode:		gs c set Daurdabla Daurdabla
 	
 	Example usage in a macro, using Terpander/Daurdabla with normal gear:
 	/console gs c set daurdabla Daurdabla
@@ -230,7 +230,7 @@ function init_gear_sets()
 	sets.idle = {
 		main="Terra's Staff",			sub="Achaq Grip",				range="Oneiros Harp",
 		head="Kaabnax Hat",				neck="Twilight Torque",			ear1="Brachyura Earring",	ear2="Ethereal Earring",
-		body="Gendewitha Bilaut +1",	hands="Gendewitha Gages +1",	ring1="Defending Ring",		ring2="Shneddick Ring",
+		body="Gendewitha Bliaut +1",	hands="Gendewitha Gages +1",	ring1="Defending Ring",		ring2="Shneddick Ring",
 		back="Cheviot Cape",			waist="Flume Belt",				legs="Bihu Cannions",		feet="Bihu Slippers"
 	}
 	sets.idle.lowMP =		{legs="Nares Trews"}

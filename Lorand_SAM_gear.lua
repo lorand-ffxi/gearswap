@@ -7,7 +7,7 @@
 		10:	Unkai+2 Head/Hands/Legs/Feet
 		15:	Wakido Head/Body/Hands/Legs/Feet
 		17:	Sakonji Hands/Legs/Feet
-		18: Sakonji+1 Head/Body
+		18:	Sakonji+1 Head/Body
 --]]
 -----------------------------------------------------------------------------------------------------------
 
@@ -130,7 +130,7 @@ function init_gear_sets()
 	
 	sets.engaged.with_buff = {}
 	sets.engaged.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
-	sets.engaged.with_buff['Hasso'] = {head="Yaoyotl Helm", legs="Unkai Haidate +2"}
+	sets.engaged.with_buff['hasso'] = {head="Yaoyotl Helm", legs="Unkai Haidate +2"}
 	sets.engaged.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}
 	
 	sets.engaged['5-Hit'] = {

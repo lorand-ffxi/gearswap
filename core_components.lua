@@ -6,6 +6,8 @@
 -----------------------------------------------------------------------------------------------------------
 
 function init()
+	winraw = gearswap._G.windower
+
 	include('utility_functions')
 	include('defaults')
 	define_defaults()
@@ -257,7 +259,7 @@ function buff_change(buff, gain)
 		if gain then	send_command('timers create "Weakness" 300 up abilities/00255.png')
 		else		send_command('timers delete "Weakness"')
 		end
-	elseif (S{'haste','march'}:contains(buff:lower())) then
+	elseif (S{'haste','march','sublimation: activated'}:contains(buff:lower())) then
 		update()
 	end
 end
@@ -307,9 +309,6 @@ function get_precast_set(spell)
 		precastSet = combineSets(precastSet, sets.precast.FC, spell.en)
 		precastSet = combineSets(precastSet, sets.precast.FC, modes.casting)
 		precastSet = combineSets(precastSet, sets.precast.FC, status)
-		if spell.en == 'Impact' then
-			precastSet = combineSets(precastSet, {body='Twilight Cloak'})
-		end
 	elseif spell.action_type == 'Ranged Attack' then
 		--Equip snapshot gear & TP ammo
 		precastSet = combineSets(sets.precast.ranged, {ammo=gear[modes.offense..'_ammo_RA']})
@@ -373,7 +372,13 @@ function get_precast_set(spell)
 			precastSet = combineSets(precastSet, sets.TreasureHunter)
 		end
 	end
+
+	if spell.en == 'Impact' then
+		precastSet = combineSets(precastSet, {body='Twilight Cloak'})
+		precastSet.head = nil
+	end
 	
+	--printInfo(precastSet, 'Precast set for '..spell.en)
 	return precastSet
 end
 
@@ -386,8 +391,10 @@ function get_standard_magic_set(baseSet, spell, spellMap, spellType)
 	castSet = combineSets(castSet, sets.midcast, spellType, spellMap, modes.casting)
 	castSet = combineSets(castSet, sets.midcast, spellType, spellMap)
 	castSet = combineSets(castSet, sets.midcast, spellType, spell.en)
+	castSet = combineSets(castSet, sets.midcast, spellType, spell.en, modes.casting)
 	castSet = combineSets(castSet, sets.midcast, spellMap)
 	castSet = combineSets(castSet, sets.midcast, spell.en)
+	castSet = combineSets(castSet, sets.midcast, spell.en, modes.casting)
 	return castSet
 end
 
@@ -443,7 +450,7 @@ function get_midcast_set(spell)
 			modes.Daurdabla = 'None'
 		elseif spell.skill == 'Dark Magic' then
 			midcastSet = get_standard_magic_set(midcastSet, spell, spellMap, 'DarkMagic')
-			midcastSet = combineSets(midcastSet, sets.midcast.DarkMagic, modes.casting)
+			--midcastSet = combineSets(midcastSet, sets.midcast.DarkMagic, modes.casting)
 		elseif spell.skill == 'Healing Magic' then
 			midcastSet = get_standard_magic_set(midcastSet, spell, spellMap, 'HealingMagic')
 			midcastSet = combineSets(midcastSet, sets.midcast.spellMap, status)
@@ -488,10 +495,6 @@ function get_midcast_set(spell)
 			
 			for buff,_ in pairs(buffactive) do
 				midcastSet = combineSets(midcastSet, sets.midcast.ElementalMagic.with_buff[buff])
-			end
-			
-			if spell.en == 'Impact' then
-				midcastSet = combineSets(midcastSet, {body='Twilight Cloak'})
 			end
 		elseif spell.skill == 'Enfeebling Magic' then
 			midcastSet = get_standard_magic_set(midcastSet, spell, spellMap, 'EnfeeblingMagic')
@@ -601,6 +604,13 @@ function get_midcast_set(spell)
 			midcastSet = combineSets(midcastSet, sets.TreasureHunter)
 		end
 	end
+	
+	if spell.en == 'Impact' then
+		midcastSet = combineSets(midcastSet, {body='Twilight Cloak'})
+		midcastSet.head = nil
+	end
+	
+	--printInfo(midcastSet, 'Midcast set for '..spell.en)
 	return midcastSet
 end
 
