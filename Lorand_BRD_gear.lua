@@ -170,7 +170,7 @@ function init_gear_sets()
 		legs="Marduk's Shalwar +1",	feet="Brioso Slippers"
 	}
 
-	sets.midcast.SongDebuff.Resistant = sets.midcast.MagicAcc	-- For song debuffs (accuracy primary, duration secondary)
+	sets.midcast.SongDebuff.Resistant = sets.midcast.MagicAccuracy	-- For song debuffs (accuracy primary, duration secondary)
 
 	--============================================================		
 	
