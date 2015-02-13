@@ -1,91 +1,117 @@
------------------------------------------------------------------------------------------------------------
+--==============================================================================
 --[[
 	Author: Ragnarok.Lorand
 	GearSwap core components
 --]]
------------------------------------------------------------------------------------------------------------
+--==============================================================================
 
-function init()
-	winraw = gearswap._G.windower
-
-	include('utility_functions')
-	include('defaults')
-	define_defaults()
-	
-	include('set_operations')
-	include('spell_utilities')
-	include('mappings')
-	
-	-- Load gear from a job-specific file
-	if load_user_gear(player.main_job) then
-		set_modes()
-		set_keybinds()
-		if init_gear_sets then init_gear_sets() end
+--[[
+	Called upon receipt of incoming packets.
+	Parses the given packet info if it is an Action Packet for information
+	about incoming buffs that provide Haste effects.
+--]]
+function parse_buff_info(id,data)
+	if id == 0x28 then
+		local parsed = packets.parse('incoming', data)
+		if parsed['Target 1 ID'] == player.id then
+			if S{230,266}:contains(parsed['Target 1 Action 1 Message']) then
+				local bid = parsed['Target 1 Action 1 Param']
+				local sid = parsed.Param
+				local bname = res.buffs[bid].en
+				if S{'Haste','March'}:contains(bname) then
+					buffs = buffs or {}
+					if sid == 419 then
+						buffs.March1 = true
+					elseif sid == 420 then
+						buffs.March2 = true
+					elseif sid == 511 then
+						buffs.Haste = 2
+					elseif sid == 57 then
+						buffs.Haste = 1
+					end
+				end
+			end
+		end
 	end
 end
 
-init()
+function init()
+	packets = require('packets')	--Required for haste tier detection
+	chars = require('chat/chars')	--Required for using special characters in delayed messages
+	winraw = gearswap._G.windower	--Required for direct access to windower functions
+	winraw.register_event('incoming chunk', parse_buff_info)
+	
+	include('utility_functions')	--Load utility_functions.lua (defines misc functions)
+	include('defaults')		--Load defaults.lua
+	define_defaults()		--Define some default sets & set up variable modes
+	
+	include('set_operations')	--Load set_operations.lua (advanced set combination functions)
+	include('spell_utilities')	--Load spell_utilities.lua (cure & timer handling)
+	include('mappings')		--Load mappings.lua (provides generalizations for spells and abilities)
+	
+	info = require('../info/info_share')	--Load addons\info\info_shared.lua for functions to print information accessed directly from windower
+	
+	-- Load gear from a job-specific file
+	if load_user_gear(player.main_job) then
+		if init_gear_sets then init_gear_sets() end
+	end
+	
+	load_user_settings()		--Attempt to load user settings
+	if use_user_settings then
+		use_user_settings()	--Use the loaded settings
+	else
+		echo('WARNING: settings_'..player.name..'.lua not found.')
+	end
+end
 
------------------------------------------------------------------------------------------------------------
---	Spell / ability handling
------------------------------------------------------------------------------------------------------------
+init()	--Execute init()
+
+--==============================================================================
+--			Spell / Ability Handling
+--==============================================================================
 
 --[[
 	Called when an action has been flagged as not possible to perform.
 --]]
 function filtered_action(spell)
-	-- atc(1, spell.en .. ' (' .. spell.type .. ') has been flagged as a filtered action.')
-	-- atc(1, 'Active buffs:')
-	-- for k,v in pairs(buffactive) do
-		-- atc(1, tostring(k)..': '..tostring(v))
-	-- end
-	
-	if spell.type == 'WhiteMagic' and buff_active('Light Arts') and gearswap.addendum_white[spell.id] then
+	local tname = (spell.target.type == 'MONSTER') and '<t>' or spell.target.name
+	if gearswap.addendum_white[spell.id] and (not buff_active('Addendum: White')) then
 		cancel_spell()
-		if get_available_stratagem_count() > 0 then
-			windower.send_command('input /ja "Addendum: White" <me>; wait 1.75; input /ma "'..spell.en..'" '..spell.target.name)
+		if stratagems_available() then
+			windower.send_command('gs c scholar light; wait 1.75; input /ma "'..spell.en..'" '..tname)
 		else
 			atc(122, "Cancelled "..spell.en..".  Addendum: White is required, but there are no available stratagems.")
 		end
-	elseif spell.type == 'BlackMagic' and buff_active('Dark Arts') and gearswap.addendum_black[spell.id] then
-		local retryTarget
-		if spell.target.type == 'MONSTER' then
-			retryTarget = '<t>'
-		else
-			retryTarget = spell.target.name
-		end
+	elseif gearswap.addendum_black[spell.id] and (not buff_active('Addendum: Black'))then
 		cancel_spell()
-		if get_available_stratagem_count() > 0 then
-			windower.send_command('input /ja "Addendum: Black" <me>; wait 1.75; input /ma "'..spell.en..'" '..retryTarget)
+		if stratagems_available() then
+			windower.send_command('gs c scholar dark; wait 1.75; input /ma "'..spell.en..'" '..tname)
 		else
 			atc(122, "Cancelled "..spell.en..".  Addendum: Black is required, but there are no available stratagems.")
 		end
 	else
-		atc(166, 'Unhandled filtered action: '..spell.english)
+		atc(166, '[Unhandled] Unable to perform filtered action: '..spell.english)
 	end
 end
 
 --[[
-	Called when GearSwap intercepts the original text input, but before the game has done any processing on it.
-	In particular, it hasn't initiated target selection for <st*> target types.
+	Called when GearSwap intercepts the original text input, but before the
+	game has done any processing on it. In particular, it hasn't initiated
+	target selection for <st*> target types.
 --]]
 function pretarget(spell)
-	if spell.target == nil then return end
+	if (spell.target == nil) then return end
 	if S{'PLAYER', 'SELF'}:contains(spell.target.type) and debuff_to_na[spell.en] then
-		local spellTarget = spell.target.name
-		if spell.target.name == player.name then
+		local tname = spell.target.name
+		if (spell.target.name == player.name) then
 			local ptarg = windower.ffxi.get_mob_by_target()
 			if (ptarg ~= nil) and (ptarg.name ~= player.name) and (ptarg.in_alliance or not ptarg.is_npc) then
-				spellTarget = '<t>'
+				tname = '<t>'
 			end
 		end
-		windower.send_command('input /ma "'..debuff_to_na[spell.en]..'" '..spellTarget)
-	elseif spell.en == 'Phalanx' and spell.target.type == 'PLAYER' and spell.target.type ~= 'SELF' then
+		windower.send_command('input /ma "'..debuff_to_na[spell.en]..'" '..tname)
+	elseif (spell.en == 'Phalanx') and (spell.target.type == 'PLAYER') and (spell.target.type ~= 'SELF') then
 		windower.send_command('input /ma "Phalanx II" '..spell.target.name)
-	elseif S{'Haste'}:contains(spell.en) and player.main_job == 'RDM' then
-		windower.send_command('input /ma "Haste II" '..spell.target.name)
-	elseif S{'Flurry'}:contains(spell.en) and player.main_job == 'RDM' then
-		windower.send_command('input /ma "Flurry II" '..spell.target.name)
 	else
 		return
 	end
@@ -93,19 +119,21 @@ function pretarget(spell)
 end
 
 --[[
-	Called after the text command has been processed (and target selected), but before the packet gets pushed out.
-	Equip any gear that should be on before the spell or ability is used.
+	Called after the text command has been processed (and target selected),
+	but before the packet gets pushed out.  Equip any gear that should be
+	on before the spell or ability is used.
 --]]
 function precast(spell)
-	if (spell.type == 'Trust') then return end
-	if modify_spell(spell) or modify_cure(spell) or not_possible_to_use(spell) then
+	if (spell.type == 'Trust') then
+		return
+	elseif modify_spell(spell) or modify_cure(spell) or not_possible_to_use(spell) then
 		cancel_spell()
 		return
 	end
 	
 	local notOverwritable = S{'Stoneskin', 'Sneak', 'Spectral Jig'}
 	if notOverwritable:contains(spell.en) and (spell.target.name == player.name) then
-		if spell.en == 'Spectral Jig' then
+		if (spell.en == 'Spectral Jig') then
 			windower.send_command('cancel Sneak')
 		else
 			windower.send_command('wait 0.5; cancel '..spell.en)
@@ -113,49 +141,48 @@ function precast(spell)
 	end
 	
 	--Perform checks prior to execution of the command
-	if player.main_job == 'BRD' and spell.type == 'BardSong' then
-		atc(122, "Casting "..spell.en.." in mode: "..modes.Daurdabla)
+	if (player.main_job == 'BRD') and (spell.type == 'BardSong') then
+		atc(122, 'Casting '..spell.en..' in mode: '..modes.Daurdabla)
 		-- Auto-Pianissimo
-		if spell.target.type == 'PLAYER' and not spell.target.charmed and not buff_active('Pianissimo') then
+		if (spell.target.type == 'PLAYER') and (not spell.target.charmed) and (not buff_active('Pianissimo')) then
 			cancel_spell()
 			windower.send_command('input /ja "Pianissimo" <me>; wait 1.25; input /ma "'..spell.en..'" '..spell.target.name)
 			return
 		end
-	elseif S{'RNG', 'COR'}:contains(player.main_job) then
+	elseif S{'RNG','COR'}:contains(player.main_job) then
 		local check_ammo
 		--Choose which ammo should be verified
-		if spell.type == 'WeaponSkill' and bow_gun_weaponskills:contains(spell.en) then
+		if (spell.type == 'WeaponSkill') and bow_gun_weaponskills:contains(spell.en) then
 			check_ammo = gear[modes.offense..'_ammo_WS']
-		elseif spell.action_type == 'Ranged Attack' then
+		elseif (spell.action_type == 'Ranged Attack') then
 			check_ammo = gear[modes.offense..'_ammo_RA']
 		end
 		
 		if check_ammo then		--Verify that ammunition is available
-			if not player.inventory[check_ammo] then
+			if (not player.inventory[check_ammo]) then
 				atc(104, 'No ammo available for that action.')
 				cancel_spell()
 				return
 			end
-			if player.inventory[check_ammo].count <= options.ammo_warning_limit and
-			   player.inventory[check_ammo].count > 1 and not state.warned then
-				atc(104, '*******************************')
-				atc(104, '*****  LOW AMMO WARNING *****')
-				atc(104, '*******************************')
+			if (player.inventory[check_ammo].count <= options.ammo_warning_limit) and
+			   (player.inventory[check_ammo].count > 1) and (not state.warned) then
+				atc(104, '******************************')
+				atc(104, '*****  LOW AMMO WARNING  *****')
+				atc(104, '******************************')
 				state.warned = true
-			elseif player.inventory[check_ammo].count > options.ammo_warning_limit and state.warned then
+			elseif (player.inventory[check_ammo].count > options.ammo_warning_limit) and state.warned then
 				state.warned = false
 			end
 		end
 	end
 	
-	if S{'WHM', 'BLM', 'RDM', 'SCH', 'BRD', 'BLU'}:contains(player.main_job) then
-		if S{'Melee', 'Skillup', 'Learn'}:contains(modes.offense) then
+	if weapSwapJobs:contains(player.main_job) then
+		if noWeapSwapSets:contains(modes.offense) then
 			disable('main', 'sub')
 		else
 			enable('main', 'sub')
 		end
 	end
-	
 	equip(get_precast_set(spell))
 end
 
@@ -165,8 +192,9 @@ end
 	It should take effect regardless of the spell cast speed.
 --]]
 function midcast(spell)
-	if (spell.type == 'Trust') then return end
-	if spell.en == 'Utsusemi: Ichi' and not spell.interrupted then
+	if (spell.type == 'Trust') then
+		return
+	elseif (spell.en == 'Utsusemi: Ichi') and (not spell.interrupted) then
 		windower.send_command('wait 2; cancel 66; cancel 446')
 	end
 	equip(get_midcast_set(spell))
@@ -176,51 +204,38 @@ end
 	Called upon action completion (i.e., casting finished, ws landed, casting interrupted, etc)
 --]]
 function aftercast(spell)
-	if modes.noIdle then 
+	if modes.noIdle then
 		atc(104, 'WARNING: Did not equip idle set (modes.noIdle is ON)')
 		return
-	end
-
-	if spell.en == 'Unknown Interrupt' then return end
-	local spellMap = spell_maps[spell.en]
-	
-	if not spell.interrupted then
-		initSleepTimer(spell, spellMap)
-		if player.main_job == "BLM" then
-			if spell.en == 'Mana Wall' and player.equipment.feet == "Goetia Sabots +2" then
+	elseif (spell.en == 'Unknown Interrupt') then
+		return
+	elseif spell.interrupted then
+		-- Delay update so aftercast equip will actually be worn.
+		windower.send_command('wait 0.6;gs c update')
+	else
+		local spellMap = spell_maps[spell.en]
+		initSleepTimer(spell, spellMap)	--Does nothing if not a sleep spell
+		if (player.main_job == 'BLM') and (spell.en == 'Mana Wall') then
+			if (player.equipment.feet == 'Goetia Sabots +2') then
 				disable('feet')
 			end
-		elseif player.main_job == "BRD" then
-			if spell.type == 'BardSong' and spell.target then
-				if spell.target.type and spell.target.type:upper() == 'SELF' then
-					adjust_Timers(spell, spellMap)
-				end
+		elseif (player.main_job == 'BRD') and (spell.type == 'BardSong') then
+			if spell.target and (spell.target.type:upper() == 'SELF') then
+				adjust_Timers(spell, spellMap)
 			end
 		end
-	end
-	
-	if spell.interrupted then
-		windower.send_command('wait 0.6;gs c update')	-- Delay update so aftercast equip will actually be worn.
-	else
 		equip(get_gear_for_status(player.status))
 	end
 end
 
------------------------------------------------------------------------------------------------------------
---	Event reactions
------------------------------------------------------------------------------------------------------------
+--==============================================================================
+--			Event Reactions
+--==============================================================================
 
 --[[
 	Called when the player's status changes.
-	[0] = {id=0,en="Idle"},			[1] = {id=1,en="Engaged"},		[2] = {id=2,en="Dead"},			[3] = {id=3,en="Engaged dead"},
-	[4] = {id=4,en="Event"},		[5] = {id=5,en="Chocobo"},		[33] = {id=33,en="Resting"},	[34] = {id=34,en="Locked"},
-	[44] = {id=44,en="Crafting"},	[47] = {id=47,en="Sitting"},	[48] = {id=48,en="Kneeling"},	[50] = {id=50,en="Fishing"},
-	[38] = {id=38,en="Fishing fighting"},			[39] = {id=39,en="Fishing caught"},			[40] = {id=40,en="Fishing broken rod"},
-	[41] = {id=41,en="Fishing broken line"},		[42] = {id=42,en="Fishing caught monster"},	[43] = {id=43,en="Fishing lost catch"},
-	[51] = {id=51,en="Fishing fighting center"},	[52] = {id=52,en="Fishing fighting right"},	[53] = {id=53,en="Fishing fighting left"},
-	[56] = {id=56,en="Fishing rod in water"},		[57] = {id=57,en="Fishing fish on hook"},	[58] = {id=58,en="Fishing caught fish"},
-	[59] = {id=59,en="Fishing rod break"},			[60] = {id=60,en="Fishing line break"},		[61] = {id=61,en="Fishing monster catch"},
-	[62] = {id=62,en="Fishing no catch or lost"}
+	(Idle / Engaged / Dead / Engaged dead / Event / Chocobo / Resting / 
+	Locked / Crafting / Sitting / Kneeling / Fishing*)
 --]]
 function status_change(new, old)
 	update()
@@ -243,24 +258,26 @@ function buff_change(buff, gain)
 		end
 	end
 	
-	if buff == 'sleep' and gain and buff_active('Stoneskin') then
-		--If slept, drop stoneskin if a DOT is active to wake up
-		-- if buffactive['Sublimation: Active'] or dotActive() then
-			-- windower.send_command('cancel stoneskin')
-		-- end
-	elseif player.main_job == "BLM" and buff == "Mana Wall" and not gain then
+	if (buff:lower() == 'sleep') and gain and buff_active('Stoneskin') then
+		--TODO: Account for active DoT spells on self
+		if buff_active('Sublimation: Activated') then
+			windower.send_command('cancel stoneskin')
+		end
+	elseif (player.main_job == 'BLM') and (buff == 'Mana Wall') and (not gain) then
 		enable('feet')		-- Unlock feet when Mana Wall buff is lost.
 		equip(get_gear_for_status(player.status))
 	elseif buff == 'Sublimation: Complete' and gain then
 		atc(204, 'Sublimation is done charging!')
 	end
 	
-	if buff:lower() == 'weakness' then
+	if (buff:lower() == 'weakness') then
 		if gain then	send_command('timers create "Weakness" 300 up abilities/00255.png')
 		else		send_command('timers delete "Weakness"')
 		end
 	elseif (S{'haste','march','sublimation: activated'}:contains(buff:lower())) then
-		update()
+		if not (modes.noIdle) then
+			update()
+		end
 	end
 end
 
@@ -268,16 +285,14 @@ end
 	Called when the player's main job changes.
 --]]
 function main_job_change(new, old)
-	set_modes()
-	set_keybinds()
+	use_user_settings()
 end
 
 --[[
 	Called when the player's sub job changes.
 --]]
 function sub_job_change(new, old)
-	set_modes()
-	set_keybinds()
+	use_user_settings()
 end
 
 -----------------------------------------------------------------------------------------------------------
@@ -285,11 +300,7 @@ end
 -----------------------------------------------------------------------------------------------------------
 
 function get_sub_type()
-	if player.sub_job == 'SAM' then
-		return 'sam'
-	else
-		return 'other'
-	end
+	return (player.sub_job == 'SAM') and 'sam' or 'other'
 end
 
 --[[
@@ -331,7 +342,7 @@ function get_precast_set(spell)
 				
 				precastSet = combineSets(wsSet, precastSet)
 			else
-				if elemental_weaponskills[spell.english] ~= nil then
+				if (elemental_weaponskills[spell.english] ~= nil) then
 					precastSet = sets.wsBase.Magic
 					if weatherPermits(spell.element) and options.useObi then
 						precastSet = combineSets(precastSet, {waist=gear_map.Obi[spell.element]})
@@ -358,27 +369,23 @@ function get_precast_set(spell)
 		end
 	end
 	
-	if player.main_job == 'SCH' then
+	if (player.main_job == 'SCH') then
 		if matchesGrimoire(spell) then
 			precastSet = combineSets(precastSet, sets.precast.FC.Grimoire)		--FastCast/Haste +8%
 		end
-		if buffactive.Celerity or buffactive.Alacrity then
-			if buff_active(elements.storm_of[spell.element]) or spell.element == world.weather_element then
+		if buff_active('Celerity','Alacrity') then
+			if buff_active(elements.storm_of[spell.element]) or (spell.element == world.weather_element) then
 				precastSet = combineSets(precastSet, sets.precast.FC.Weather)	--FastCast/Haste +15%
 			end
 		end
-	elseif player.main_job == 'THF' then
-		if modes.treasure == 'TH' then
-			precastSet = combineSets(precastSet, sets.TreasureHunter)
-		end
+	elseif (player.main_job == 'THF') and (modes.treasure == 'TH') then
+		precastSet = combineSets(precastSet, sets.TreasureHunter)
 	end
 
-	if spell.en == 'Impact' then
+	if (spell.en == 'Impact') then
 		precastSet = combineSets(precastSet, {body='Twilight Cloak'})
 		precastSet.head = nil
 	end
-	
-	--printInfo(precastSet, 'Precast set for '..spell.en)
 	return precastSet
 end
 
@@ -457,7 +464,6 @@ function get_midcast_set(spell)
 			modes.Daurdabla = 'None'
 		elseif spell.skill == 'Dark Magic' then
 			midcastSet = get_standard_magic_set(midcastSet, spell, spellMap, 'DarkMagic')
-			--midcastSet = combineSets(midcastSet, sets.midcast.DarkMagic, modes.casting)
 		elseif spell.skill == 'Healing Magic' then
 			midcastSet = get_standard_magic_set(midcastSet, spell, spellMap, 'HealingMagic')
 			midcastSet = combineSets(midcastSet, sets.midcast.spellMap, status)
@@ -575,7 +581,7 @@ function get_midcast_set(spell)
 				end
 			end
 		else
-			atc(122, 'Using default rule set for '..spell.english..'.')
+			atc(122, 'Using default rule set for '..spell.english..' [skill: '..spell.skill..'][type: '..spell.type..']')
 			midcastSet = combineSets(midcastSet, sets.midcast)
 			midcastSet = combineSets(midcastSet, sets.midcast, spell.type)
 			midcastSet = combineSets(midcastSet, sets.midcast, spell.skill)
@@ -606,18 +612,12 @@ function get_midcast_set(spell)
 		midcastSet = combineSets(midcastSet, sets.midcast, spell.en)
 	end
 	
-	if player.main_job == 'THF' then
-		if modes.treasure == 'TH' then
-			midcastSet = combineSets(midcastSet, sets.TreasureHunter)
-		end
-	end
-	
-	if spell.en == 'Impact' then
+	if (player.main_job == 'THF') and (modes.treasure == 'TH') then
+		midcastSet = combineSets(midcastSet, sets.TreasureHunter)
+	elseif (spell.en == 'Impact') then
 		midcastSet = combineSets(midcastSet, {body='Twilight Cloak'})
 		midcastSet.head = nil
 	end
-	
-	--printInfo(midcastSet, 'Midcast set for '..spell.en)
 	return midcastSet
 end
 
@@ -791,15 +791,17 @@ function equip_set(args)
 end
 
 function update(args)
-	if S{'WHM', 'BLM', 'RDM', 'SCH', 'BRD'}:contains(player.main_job) then
-		if S{'Melee', 'Skillup'}:contains(modes.offense) then
+	if weapSwapJobs:contains(player.main_job) then
+		if noWeapSwapSets:contains(modes.offense) then
 			disable('main', 'sub')
 		else
 			enable('main', 'sub')
 		end
 	end
 	
-	equip(get_gear_for_status(player.status))
+	local equipSet = get_gear_for_status(player.status)
+	equipSet = combineSets(equipSet, sets.weapons, modes.weapon)
+	equip(equipSet)
 
 	if (args ~= nil) and (args[1] == 'user') then
 		display_current_state()
@@ -925,20 +927,22 @@ end
 function pet_status_change(new, old)
 end
 
-function info(args)
-	local argStr = table.concat(args, ' ')
-	local tbl = parseInput(argStr)
-	if tbl ~= nil then
-		--print_set(tbl, argStr)
-		printInfo(tbl, argStr)
-	else
-		atc(0, 'Error: Unable to parse valid command')
+function info_func(args)
+	if info == nil then
+		atc(3,'Unable to parse info.  Windower/addons/info/info_shared.lua was unable to be loaded.')
+		atc(3,'If you would like to use this function, please visit https://github.com/lorand-ffxi/addons to download it.')
+		return
 	end
+	local cmd = args[1]		--Take the first element as the command
+	if (#args > 1) then		--If there were more args provided
+		table.remove(args, 1)	--Remove the first from the list of args
+	end
+	info.process_input(cmd, args)
 end
 
 executable_commands = {
 	['atc']   =	addToChat,	['scholar']=	handle_strategems,	['show']    =	show_set,
 	['update']=	update,		['cycle']  =	cycle_mode,		['set']     =	set_mode,
 	['reset'] =	reset_mode,	['toggle'] =	toggle_mode,		['activate']=	activate_mode,
-	['equip' ]=	equip_set,	['info']   =	info,
+	['equip' ]=	equip_set,	['info']   =	info_func,
 }

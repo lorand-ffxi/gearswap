@@ -8,7 +8,7 @@
 	8:	Savant's Treatise
 	10:	Savant+2 ALL
 	14:	Nares Hands/Legs
-	15:	Academic's Hands/Feet
+	15:	Academic's Feet
 	16:	Academic's +1 Head/Body/Legs
 	17:	Pedagogy ALL
 --]]

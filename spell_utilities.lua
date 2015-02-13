@@ -229,9 +229,14 @@ function get_available_stratagem_count()
 	return maxStrats - stratsUsed
 end
 
+function stratagems_available()
+	return get_available_stratagem_count() > 0
+end
+
 --[[
-	Returns the table from resources that contains information about the first buff from the given list
-	that was found in the list of active buffs.  If none of the given buffs are active, it returns nil.
+	Returns the table from resources that contains information about the
+	first buff from the given list that was found in the list of active
+	buffs.  If none of the given buffs are active, it returns nil.
 --]]
 function buff_active(...)
 	local args = S{...}:map(string.lower)
