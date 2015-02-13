@@ -346,7 +346,7 @@ function get_precast_set(spell)
 				precastSet = combineSets(precastSet, get_ftp_set(spell))
 				
 				for buff,_ in pairs(buffactive) do
-					precastSet = combineSets(precastSet, sets.ws.with_buff[buff])
+					precastSet = combineSets(precastSet, sets.ws, with_buff, buff)
 				end
 			end
 		else
@@ -467,7 +467,7 @@ function get_midcast_set(spell)
 					midcastSet = combineSets(midcastSet, {waist='Korin Obi'})
 				end
 				for buff,_ in pairs(buffactive) do
-					midcastSet = combineSets(midcastSet, sets.midcast.Cure.with_buff[buff])
+					midcastSet = combineSets(midcastSet, sets.midcast.Cure, with_buff, buff)
 				end
 			end
 		elseif spell.skill == 'Divine Magic' then
@@ -478,7 +478,7 @@ function get_midcast_set(spell)
 					midcastSet = combineSets(midcastSet, {waist='Korin Obi'})
 				end
 				for buff,_ in pairs(buffactive) do
-					midcastSet = combineSets(midcastSet, sets.midcast.DivineMagic.Nuke.with_buff[buff])
+					midcastSet = combineSets(midcastSet, sets.midcast.DivineMagic, with_buff, buff)
 				end
 			end
 			midcastSet = combineSets(midcastSet, sets.midcast.DivineMagic, modes.casting)
@@ -501,7 +501,7 @@ function get_midcast_set(spell)
 			midcastSet = combineSets(midcastSet, sets.midcast.ElementalMagic, modes.casting)
 			
 			for buff,_ in pairs(buffactive) do
-				midcastSet = combineSets(midcastSet, sets.midcast.ElementalMagic.with_buff[buff])
+				midcastSet = combineSets(midcastSet, sets.midcast.ElementalMagic, with_buff, buff)
 			end
 		elseif spell.skill == 'Enfeebling Magic' then
 			midcastSet = get_standard_magic_set(midcastSet, spell, spellMap, 'EnfeeblingMagic')
@@ -570,7 +570,7 @@ function get_midcast_set(spell)
 					midcastSet = combineSets(midcastSet, sets.midcast, 'Ninjutsu', 'Nuke', spell.element)
 					
 					for buff,_ in pairs(buffactive) do
-						midcastSet = combineSets(midcastSet, sets.midcast.Ninjutsu.Nuke.with_buff[buff])
+						midcastSet = combineSets(midcastSet, sets.midcast.Ninjutsu.Nuke, with_buff, buff)
 					end
 				end
 			end
@@ -657,7 +657,7 @@ function get_idle_set(baseSet)
 	idleSet = combineSets(idleSet, sets.idle[modes.offense])
 	idleSet = combineSets(idleSet, sets.idle[modes.defense])
 	for buff,_ in pairs(buffactive) do
-		idleSet = combineSets(idleSet, sets.idle.with_buff[buff])
+		idleSet = combineSets(idleSet, sets.idle, with_buff, buff)
 	end
 	if player.mpp < 80 then
 		idleSet = combineSets(idleSet, sets.idle.lowMP)
@@ -729,7 +729,7 @@ function get_melee_set(baseSet)
 	
 	for buff,_ in pairs(buffactive) do
 		--atc(1, '[Engaged] Buffactive: '..tostring(buff))
-		meleeSet = combineSets(meleeSet, sets.engaged.with_buff[buff])
+		meleeSet = combineSets(meleeSet, sets.engaged, with_buff, buff)
 	end
 	
 	if (modes.defense ~= nil) or (modes.defense ~= 'normal') then

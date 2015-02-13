@@ -73,7 +73,7 @@ function init_gear_sets()
 		waist="Siegel Sash"		--8%
 	}
 
-	sets.precast.FC.BardSong = {	--72%
+	sets.precast.FC.BardSong = {		--72%
 		main="Felibre's Dague",		--6%
 		sub="Genbu's Shield",		--0%
 		head="Aoidos' Calot +2",	--12%
@@ -107,9 +107,9 @@ function init_gear_sets()
 	--============================================================
 	sets.midcast.FastRecast = {
 		range="empty",			ammo="empty",
-		head="Kaabanax Hat",		neck="Orunmila's Torque",	ear1="Loquacious Earring",
+		head="Nahtirah Hat",		neck="Orunmila's Torque",	ear1="Loquacious Earring",
 		body="Marduk's Jubbah +1",	hands="Gendewitha Gages +1",	ring1="Prolix Ring",
-		back="Swith Cape",		waist="Cetl Belt",		legs="Artsieq Hose",		feet="Chelona Boots"
+		back="Swith Cape",		waist="Cetl Belt",		legs="Artsieq Hose",		feet="Gendewitha Galoshes +1"
 	}
 	
 	--============================================================
@@ -153,9 +153,9 @@ function init_gear_sets()
 	--This set is for Daurdabla/Terpander dummy songs
 	sets.midcast.SongRecast = {
 		main="Felibre's Dague",		sub="Genbu's Shield",
-		head="Gendewitha Caubeen +1",	neck="Orunmila's Torque",	ear1="Loquacious Earring",	ear2="Novia Earring",
+		head="Nahtirah Hat",		neck="Orunmila's Torque",	ear1="Loquacious Earring",	ear2="Novia Earring",
 		body="Marduk's Jubbah +1",	hands="Buremte Gloves",		ring1="Prolix Ring",
-		back="Swith Cape",		waist="Witful Belt",		legs="Artsieq Hose",		feet="Bihu Slippers"
+		back="Swith Cape",		waist="Witful Belt",		legs="Artsieq Hose",		feet="Gendewitha Galoshes +1"
 	}
 	
 	sets.midcast.MagicAccuracy = {
@@ -165,12 +165,14 @@ function init_gear_sets()
 		back="Rhapsode's Cape",	waist="Ovate Rope",		legs="Artsieq Hose",		feet="Artsieq Boots"
 	}
 	
-	sets.midcast.SongDebuff = {					-- For song debuffs (duration primary, accuracy secondary)
+	-- For song debuffs (duration primary, accuracy secondary)
+	sets.midcast.SongDebuff = {
 		neck="Aoidos' Matinee",
 		legs="Marduk's Shalwar +1",	feet="Brioso Slippers"
 	}
 
-	sets.midcast.SongDebuff.Resistant = sets.midcast.MagicAccuracy	-- For song debuffs (accuracy primary, duration secondary)
+	-- For song debuffs (accuracy primary, duration secondary)
+	sets.midcast.SongDebuff.Resistant = sets.midcast.MagicAccuracy
 
 	--============================================================		
 	
@@ -193,12 +195,11 @@ function init_gear_sets()
 	}
 	
 	sets.midcast.Cure = {
-		main="Arka IV",			sub="Achaq Grip",
-		head="Gendewitha Caubeen +1",	neck="Orunmila's Torque",	ear1="Novia Earring",		ear2="Star Earring",
-		body="Gendewitha Bliaut +1",	hands="Weatherspoon Cuffs +1",	ring1="Aquasoul Ring",		ring2="Aqua Ring",
-		back="Oretania's Cape",		waist="Cascade Belt",		legs="Gendewitha Spats +1",	feet="Bihu Slippers"
+		main="Arka IV",			sub="Achaq Grip",		range="Linos",
+		head="Gendewitha Caubeen +1",	neck="Orunmila's Torque",	ear1="Novia Earring",	ear2="Star Earring",
+		body="Gendewitha Bliaut +1",	hands="Weatherspoon Cuffs +1",	ring1="Prolix Ring",	ring2="Sangoma Ring",
+		back="Swith Cape",		waist="Witful Belt",		legs="Artsieq Hose",	feet="Bihu Slippers"
 	}
-	sets.midcast.Cure.with_buff = {}
 	
 	sets.midcast.DivineMagic = {}
 	sets.midcast.DarkMagic = {}
