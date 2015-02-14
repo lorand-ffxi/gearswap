@@ -123,19 +123,19 @@ function init_gear_sets()
 	
 	sets.midcast.ElementalEnfeeble = {}
 	--============================================================
-	--					Other sets
+	--			Other sets
 	--============================================================
 	
 	sets.resting = {
-		main="Chatoyant Staff",	sub="Elder's Grip",			ammo="Clarus Stone",
-		head="Kaabnax Hat",		neck="Eidolon Pendant",		ear1="Loquacious Earring",	ear2="Relaxing Earring",
+		main="Chatoyant Staff",	sub="Elder's Grip",						ammo="Clarus Stone",
+		head="Kaabnax Hat",	neck="Eidolon Pendant",		ear1="Loquacious Earring",	ear2="Relaxing Earring",
 		body="Artsieq Jubbah",	hands="Nares Cuffs",		ring1="Fenrir Ring +1",		ring2="Sangoma Ring",
-		back="Felicitas Cape",	waist="Emphatikos Rope",	legs="Nares Trews",			feet="Chelona Boots"
+		back="Felicitas Cape",	waist="Emphatikos Rope",	legs="Nares Trews",		feet="Chelona Boots"
 	}
 	
 	sets.idle = {
-		main="Terra's Staff",	sub="Elder's Grip",			ammo="Impatiens",
-		head="Kaabnax Hat",		neck="Twilight Torque",		ear1="Brachyura Earring",	ear2="Ethereal Earring",
+		main="Terra's Staff",	sub="Elder's Grip",						ammo="Impatiens",
+		head="Kaabnax Hat",	neck="Twilight Torque",		ear1="Brachyura Earring",	ear2="Ethereal Earring",
 		body="Artsieq Jubbah",	hands="Yaoyotl Gloves",		ring1="Defending Ring",		ring2="Shneddick Ring",
 		back="Repulse Mantle",	waist="Emphatikos Rope",	legs="Artsieq Hose",		feet="Hagondes Sabots +1"
 	}
