@@ -21,6 +21,8 @@ function load_user_gear(job)
 	for _,fname in pairs(filenames) do
 		if include_if_exists(fname) then
 			return true
+		elseif include_if_exists('gear/'..fname) then
+			return true
 		end
 	end
 	return false

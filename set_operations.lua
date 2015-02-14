@@ -85,13 +85,19 @@ function isAvailable(item)
 	local itable = player.inventory[item] or player.wardrobe[item]
 	if (itable ~= nil) then
 		local iinfo = res.items[itable.id]
-		local lvl_ok = player.main_job_level <= iinfo.level
+		local lvl_ok = iinfo.level <= player.main_job_level
 		local race_ok = iinfo.races:contains(player.race_id)
 		local job_ok = iinfo.jobs:contains(player.main_job_id)
 		local i_su = iinfo.superior_level or 0
 		local p_su = player.superior_level or 0
 		local su_ok = i_su <= p_su
-		return lvl_ok and race_ok and job_ok and su_ok
+		local canuse = lvl_ok and race_ok and job_ok and su_ok
+		
+		if (not canuse) then
+			atc(123, 'isAvailable() determined '..item..' cannot be used.')
+		end
+		
+		return canuse
 	end
 	return false
 end
