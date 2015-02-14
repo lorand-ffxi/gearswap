@@ -90,6 +90,9 @@ function set_keybinds()
 		keybinds['@9'] = 'input /ma "Monomi: Ichi" <me>'
 		keybinds['@0'] = 'input /ma "Tonko: Ni" <me>'
 	end
+	if S{mj,sj}:contains('WAR') then
+		keybinds['@3'] = 'input /ja Provoke <t>'
+	end
 	if S{mj,sj}:contains('DNC') then
 		keybinds['@`'] = 'input /ja "Violent Flourish" <t>'
 		keybinds['@3'] = 'input /ja "Animated Flourish" <t>'

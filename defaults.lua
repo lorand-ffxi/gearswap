@@ -13,6 +13,7 @@ function define_defaults()
 	
 	sets.midcast = {}
 	sets.midcast.FastRecast = {}
+	sets.midcast.BardSong = {}
 	sets.midcast.DarkMagic = {}
 	sets.midcast.DivineMagic = {}
 	sets.midcast.DivineMagic.Nuke = {}
@@ -23,6 +24,7 @@ function define_defaults()
 	
 	sets.idle = {}
 	sets.engaged = {}
+	sets.engaged.with_buff = {}
 	sets.defense = {}
 	sets.defense.PDT = {}
 	sets.defense.MDT = {}

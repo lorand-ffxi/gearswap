@@ -117,13 +117,16 @@ function display_current_state()
 			if usesRanged:contains(player.main_job) then
 				table.insert(ms, tostring(k)..': '..tostring(v))
 			end
+		elseif (k == 'offense') and S{'auto','auto_acc'}:contains(v) then
+			local hm = get_haste_mod()
+			table.insert(ms, tostring(k)..': '..tostring(v)..'['..hm..']')
 		else
 			table.insert(ms, tostring(k)..': '..tostring(v))
 		end
 	end
-	--if (buffs ~= nil) then
-	--	table.insert(ms, 'Haste tier: '..tostring(buffs.Haste))
-	--end
+	if (buffs ~= nil) then
+		table.insert(ms, 'Haste tier: '..tostring(buffs.Haste))
+	end
 	atc(1, table.concat(ms, ' | '))
 end
 

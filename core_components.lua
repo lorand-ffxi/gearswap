@@ -5,38 +5,12 @@
 --]]
 --==============================================================================
 
---[[
-	Called upon receipt of incoming packets.
-	Parses the given packet info if it is an Action Packet for information
-	about incoming buffs that provide Haste effects.
---]]
-function parse_buff_info(id,data)
-	if id == 0x28 then
-		local parsed = packets.parse('incoming', data)
-		if parsed['Target 1 ID'] == player.id then
-			if S{230,266}:contains(parsed['Target 1 Action 1 Message']) then
-				local bid = parsed['Target 1 Action 1 Param']
-				local sid = parsed.Param
-				local bname = res.buffs[bid].en
-				if S{'Haste','March'}:contains(bname) then
-					buffs = buffs or {}
-					if sid == 419 then
-						buffs.March1 = true
-					elseif sid == 420 then
-						buffs.March2 = true
-					elseif sid == 511 then
-						buffs.Haste = 2
-					elseif sid == 57 then
-						buffs.Haste = 1
-					end
-				end
-			end
-		end
-	end
-end
-
 function init()
-	packets = require('packets')	--Required for haste tier detection
+	_libs = _libs or {}
+	_libs.lists = _libs.lists or require('lists')
+	res = res or gearswap.res
+	
+	include('packet_handling')	--Required for haste tier detection
 	chars = require('chat/chars')	--Required for using special characters in delayed messages
 	winraw = gearswap._G.windower	--Required for direct access to windower functions
 	winraw.register_event('incoming chunk', parse_buff_info)
@@ -258,7 +232,24 @@ function buff_change(buff, gain)
 		end
 	end
 	
-	if (buff:lower() == 'sleep') and gain and buff_active('Stoneskin') then
+	if (buff:lower() == 'march') and (not gain) then			--March wore off
+		if (buffactive['march'] ~= nil) then				--There's still an active March
+			if (buffs.March1 ~= nil) and (buffs.March2 ~= nil) then	--Both Marches were active
+				if (buffs.March1 < buffs.March2) then		--March1 was cast before March2
+					buffs.March1 = nil			--March1 wore off
+				else						--March2 was cast before March1
+					buffs.March2 = nil			--March2 wore off
+				end
+			elseif (buffs.March1 ~= nil) then			--March1 was active
+				buffs.March1 = nil				--March1 wore off
+			else							--March2 was active
+				buffs.March2 = nil				--March2 wore off
+			end
+		else								--There are no active March buffs
+			buffs.March1 = nil					--March1 wore off
+			buffs.March2 = nil					--March2 wore off
+		end
+	elseif (buff:lower() == 'sleep') and gain and buff_active('Stoneskin') then
 		--TODO: Account for active DoT spells on self
 		if buff_active('Sublimation: Activated') then
 			windower.send_command('cancel stoneskin')
@@ -695,33 +686,99 @@ function get_idle_set(baseSet)
 end
 
 --[[
-	Determines how much Haste is active
-	TODO: Add haste samba
+	Calculates the sum of active Haste effects.
+	Return values:
+	na  : 0%
+	I   : 5% - 19%
+	I+  : 20% - 28%
+	II  : 29% - 35%
+	II+ : 36%+
 --]]
 function get_haste_mod()
-	local hm = 'na'
-	if (S{'auto','auto_acc'}:contains(modes.offense)) then
-		if (buffactive['haste']) then
-			hm = 'I'
-			if (gearswap.buffs ~= nil) then
-				hm = num2rom[gearswap.buffs.Haste] or 'I'
-			end
-		end
-		if (buffactive['march']) then
-			hm = (hm == 'na') and 'I' or hm..'+'
+	buffs = buffs or {}
+	--Equipment haste caps at 25% (256/1024)
+	
+	--Magic haste caps at 43.75% (448/1024)
+	local msum = 0
+	if (buffs.Refueling ~= nil) then
+		msum = msum + 10
+	elseif (buffactive[33] ~= nil) then
+		local htier = buffs.Haste or 1	--Haste: 150/1024 = 15%
+		msum = msum + (htier * 15)	--Haste II: 307/1024 = 30%
+	end
+	if (buffactive[580] ~= nil) then
+		msum = msum + 30		--Indi/Geo-Haste: 28% + ~1%/+1 Geomancy
+	end
+	if (buff_active('March')) then
+		--If a BRD doesn't have at least March+3, they REALLY suck.
+		--Each March+1 = +16/1024 haste & duration
+		local marchCount = buffactive['march'] or 0
+		if (marchCount > 1) then
+			msum = msum + 25	--11+14 = 25%
+		elseif (buffs.March2 ~= nil) then
+			msum = msum + 14	--96+48/1024 = 14%
+		else
+			msum = msum + 11	--64+48/1024 = 11%
 		end
 	end
-	return hm
+	if (buffactive[228]) then
+		msum = msum + 20		--400 skill Embrava
+	end
+	msum = (msum < 44) and msum or 44
+	
+	--JA haste caps at 25% (256/1024)
+	local jsum = 0
+	if (buff_active('Haste Samba')) then	--5% JA haste
+		if (player.main_job == 'DNC') then
+			jsum = jsum + player.merits.haste_samba_effect
+		end
+		jsum = jsum + 5
+	end
+	if (buff_active('Last Resort')) and (player.main_job == 'DRK') then
+		--http://www.bg-wiki.com/bg/Desperate_Blows
+		jsum = jsum + 15 + (player.merits.desperate_blows * 2)
+	end
+	if buff_active('Hasso') and (player.equipment.main ~= nil) then
+		local weap = res.items:with('en',player.equipment.main)
+		if (#(weap.slots) == 1) then
+			jsum = jsum + 10
+			if (player.equipment.legs == 'Unkai Haidate +2') then
+				jsum = jsum + 2.5
+			elseif (player.equipment.legs == 'Unkai Haidate +1') then
+				jsum = jsum + 1.5
+			end
+			if (player.equipment.hands == 'Wakido Kote +1') then
+				jsum = jsum + 0	--Unknown effect
+			elseif (player.equipment.hands == 'Wakido Kote') then
+				jsum = jsum + 0	--Unknown effect
+			end
+		end
+	end
+	jsum = (jsum < 25) and jsum or 25
+
+	local hsum = msum + jsum
+	if (hsum > 35) then
+		return 'II+'
+	elseif (hsum > 28) then
+		return 'II'
+	elseif (hsum > 19) then
+		return 'I+'
+	elseif (hsum > 4) then
+		return 'I'
+	else
+		return 'na'
+	end
 end
 
 --[[
 	Assembles the player's melee set with an optional baseSet.
 --]]
 function get_melee_set(baseSet)
-	local hasteMod = get_haste_mod()
 	local meleeSet = combineSets(baseSet, sets.engaged)
 	meleeSet = combineSets(meleeSet, sets.engaged[modes.offense])
-	meleeSet = combineSets(meleeSet, sets.engaged[modes.offense], hasteMod)
+	if (S{'auto','auto_acc'}:contains(modes.offense)) then
+		meleeSet = combineSets(meleeSet, sets.engaged[modes.offense], get_haste_mod())
+	end
 	meleeSet = combineSets(meleeSet, sets.engaged[modes.defense])
 	meleeSet = combineSets(meleeSet, sets.engaged[modes.accuracy])
 	meleeSet = combineSets(meleeSet, sets.engaged[modes.offense], modes.accuracy)

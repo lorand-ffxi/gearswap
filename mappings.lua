@@ -244,12 +244,25 @@ spell_maps = {
 	['Absorb-Attri']='Absorb',	['Burn']='ElementalEnfeeble',	['Frost']='ElementalEnfeeble',	['Choke']='ElementalEnfeeble',	['Rasp']='ElementalEnfeeble',
 	['Shock']='ElementalEnfeeble',	['Drown']='ElementalEnfeeble',	['Pyrohelix']='Helix',		['Cryohelix']='Helix',		['Anemohelix']='Helix',
 	['Geohelix']='Helix',		['Ionohelix']='Helix',		['Hydrohelix']='Helix',		['Luminohelix']='Helix',	['Noctohelix']='Helix',
-	['Break'] = 'Break',		['Breakga'] = 'Break',		['Sleep'] = 'Sleep I',		['Sleepga'] = 'Sleep I',	['Sheep Song'] = 'Sleep I',
-	['Sleep II'] = 'Sleep II',	['Sleepga II'] = 'Sleep II',	['Repose'] = 'Sleep II',	['Yawn'] = 'Sleep II',		['Soporific'] = 'Sleep II',
-	['Dream Flower'] = 'Sleep II',
+	['Break']='Break',		['Breakga']='Break',		['Sleep']='Sleep I',		['Sleepga']='Sleep I',		['Sheep Song']='Sleep I',
+	['Sleep II']='Sleep II',	['Sleepga II']='Sleep II',	['Repose']='Sleep II',		['Yawn']='Sleep II',		['Soporific']='Sleep II',
+	['Dream Flower']='Sleep II',
 	--lolPUP
 	['Fire Maneuver']='Maneuver',	['Ice Maneuver']='Maneuver',	['Wind Maneuver']='Maneuver',	['Earth Maneuver']='Maneuver',	['Thunder Maneuver']='Maneuver',
 	['Water Maneuver']='Maneuver',	['Light Maneuver']='Maneuver',	['Dark Maneuver']='Maneuver',
+	--Geo
+	['Indi-Regen']='Indi',		['Indi-Poison']='Indi',		['Indi-Refresh']='Indi',	['Indi-Haste']='Indi',		['Indi-STR']='Indi',
+	['Indi-DEX']='Indi',		['Indi-VIT']='Indi',		['Indi-AGI']='Indi',		['Indi-INT']='Indi',		['Indi-MND']='Indi',
+	['Indi-CHR']='Indi',		['Indi-Fury']='Indi',		['Indi-Barrier']='Indi',	['Indi-Acumen']='Indi',		['Indi-Fend']='Indi',
+	['Indi-Precision']='Indi',	['Indi-Voidance']='Indi',	['Indi-Focus']='Indi',		['Indi-Attunement']='Indi',	['Indi-Wilt']='Indi',
+	['Indi-Frailty']='Indi',	['Indi-Fade']='Indi',		['Indi-Malaise']='Indi',	['Indi-Slip']='Indi',		['Indi-Torpor']='Indi',
+	['Indi-Vex']='Indi',		['Indi-Languor']='Indi',	['Indi-Slow']='Indi',		['Indi-Paralysis']='Indi',	['Indi-Gravity']='Indi',
+	['Geo-Regen']='Geo',		['Geo-Poison']='Geo',		['Geo-Refresh']='Geo',		['Geo-Haste']='Geo',		['Geo-STR']='Geo',
+	['Geo-DEX']='Geo',		['Geo-VIT']='Geo',		['Geo-AGI']='Geo',		['Geo-INT']='Geo',		['Geo-MND']='Geo',
+	['Geo-CHR']='Geo',		['Geo-Fury']='Geo',		['Geo-Barrier']='Geo',		['Geo-Acumen']='Geo',		['Geo-Fend']='Geo',
+	['Geo-Precision']='Geo',	['Geo-Voidance']='Geo',		['Geo-Focus']='Geo',		['Geo-Attunement']='Geo',	['Geo-Wilt']='Geo',
+	['Geo-Frailty']='Geo',		['Geo-Fade']='Geo',		['Geo-Malaise']='Geo',		['Geo-Slip']='Geo',		['Geo-Torpor']='Geo',
+	['Geo-Vex']='Geo',		['Geo-Languor']='Geo',		['Geo-Slow']='Geo',		['Geo-Paralysis']='Geo',	['Geo-Gravity']='Geo',
 }
 
 no_skill_spells_list = S{'Haste','Refresh','Regen','Protect','Protectra','Shell','Shellra','Raise','Reraise','Cursna','Sneak','Invisible','Deodorize'}
