@@ -45,6 +45,7 @@ function set_modes()
 		modelist['offense'] = {'4-Hit', '5-Hit', '5-Acc'}
 		modelist['idle'] = {'normal', 'reraise'}
 	elseif S{'THF'}:contains(player.main_job) then
+		modelist['weapon'] = {'TH','DD','Accuracy','THAcc'}
 		modelist['treasure'] = {'None','TH'}
 		modelist['offense'] = {'TH', 'Normal', 'Acc'}
 		modelist['ranged'] = {'TH', 'Normal', 'Acc'}
@@ -65,10 +66,12 @@ function set_keybinds()
 	keybinds['@d'] = 'gs c reset defense'
 	keybinds['@e'] = 'gs c update user'
 	keybinds['@w'] = 'equip engaged'
+	keybinds['@a'] = 'gs c cycle accuracy'
 	keybinds['@s'] = 'gs c cycle offense'
 	keybinds['@q'] = 'gs c cycle idle'
 	keybinds['@c'] = 'gs c cycle casting'
 	keybinds['@r'] = 'gs c cycle ranged'
+	keybinds['@v'] = 'gs c cycle weapon'
 	keybinds['@F12'] = 'du blinking self always'
 	keybinds['@i'] = 'gs c toggle noIdle'
 

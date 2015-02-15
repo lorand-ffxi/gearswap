@@ -152,7 +152,7 @@ function process_slip_gear()
 	local slipped = {}
 	for item,_ in pairs(items) do
 		if not (player.inventory[item] or player.wardrobe[item]) then
-			local itable = res.items:with('en',item)
+			local itable = res.items:with('en',item) or res.items:with('enl',item)
 			if (itable ~= nil) then
 				for sid,sitems in pairs(slip_items) do
 					if S(sitems):contains(itable.id) then
