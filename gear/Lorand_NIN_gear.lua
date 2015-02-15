@@ -7,7 +7,7 @@
 	Slips:
 		2:	Brutal Earring, Loq. Earring
 		3: 	Twilight Torque
-		10:	Iga+2 Body/Hands/Feet
+		10:	Iga+2 Head/Body/Feet
 		15:	Hachiya Hands/Feet
 		16:	Hachiya+1 Body/Legs
 		18:	Mochizuki+1 Head/Body/Hands/Legs/Feet
@@ -51,10 +51,10 @@ function init_gear_sets()
 		feet="Suzaku's Sune-Ate"		--4%
 	}
 	
-	sets.precast.FC.Utsusemi = combineSets(sets.precast.FC, {	--40%
+	sets.precast.FC.Utsusemi = {		--40%
 		neck="Magoraga Bead Necklace",	--10%
 		body="Mochizuki Chainmail +1",	--10%
-	})
+	}
 
 	--============================================================
 	--sets.wsBase[magic][sam/other][state.OffenseMode][state.RangedMode][wsmod[spell.en]]
@@ -185,15 +185,6 @@ function init_gear_sets()
 	sets.engaged.auto_acc['I+'] =	{head="Whirlpool Mask", ear1="Dudgeon Earring", ear2="Heartseeker Earring", body="Hachiya Chainmail +1", hands="Otronif Gloves +1"}
 	sets.engaged.auto_acc['II'] =	{head="Whirlpool Mask", ear1="Bladeborn Earring", ear2="Steelflash Earring", hands="Otronif Gloves +1"}
 	sets.engaged.auto_acc['II+'] =	{head="Whirlpool Mask", ear1="Bladeborn Earring", ear2="Steelflash Earring", hands="Otronif Gloves +1", legs="Hachiya Hakama +1"}
-	
-	sets.engaged.HasteI = sets.engaged.auto['I']				--15%
-	sets.engaged.HasteI.Higher = sets.engaged.auto_acc['I']			--15%
-	sets.engaged.HasteI_HasteSamba = sets.engaged.auto['I+']		--20%
-	sets.engaged.HasteI_HasteSamba.Higher = sets.engaged.auto_acc['I+']	--20%
-	sets.engaged.HasteII = sets.engaged.auto['II']				--30%
-	sets.engaged.HasteII_Acc = sets.engaged.auto_acc['II']			--30%
-	sets.engaged['HasteII++'] = sets.engaged.auto['II+']			--43%
-	sets.engaged['HasteII++_Acc'] = sets.engaged.auto_acc['II+']		--43%
 	
 	sets.engaged.CrazyAccuracy = {										ammo="Happo Shuriken +1",
 		head="Whirlpool Mask",		neck="Agitator's Collar",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",

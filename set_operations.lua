@@ -1,9 +1,10 @@
------------------------------------------------------------------------------------------------------------
+--==============================================================================
 --[[
 	Author: Ragnarok.Lorand
-	GearSwap utility functions that are related to gear set building and manipulation
+	GearSwap utility functions that are related to gear set building
+	and manipulation
 --]]
------------------------------------------------------------------------------------------------------------
+--==============================================================================
 
 local itemSlots = {'main', 'sub', 'range', 'ammo', 'head', 'neck', 'ear1', 'ear2', 'body', 'hands', 'ring1', 'ring2', 'back', 'waist', 'legs', 'feet'}
 
@@ -92,11 +93,6 @@ function isAvailable(item)
 		local p_su = player.superior_level or 0
 		local su_ok = i_su <= p_su
 		local canuse = lvl_ok and race_ok and job_ok and su_ok
-		
-		if (not canuse) then
-			atc(123, 'isAvailable() determined '..item..' cannot be used.')
-		end
-		
 		return canuse
 	end
 	return false
@@ -131,4 +127,54 @@ function get_ftp_gear(slot, ws)
 		end
 	end
 	return {}
+end
+
+--==============================================================================
+--			Set Information
+--==============================================================================
+
+function retrieve_items(set)
+	local items = S{}
+	for slot,iname in pairs(set) do
+		if (type(iname) == 'table') then
+			local others = retrieve_items(iname)
+			items = items:union(others)
+		elseif (iname ~= 'empty') then
+			items:add(iname)
+		end
+	end
+	return items
+end
+
+function process_slip_gear()
+	local items = retrieve_items(sets)
+	local slip_items = slips.get_player_items()
+	local slipped = {}
+	for item,_ in pairs(items) do
+		if not (player.inventory[item] or player.wardrobe[item]) then
+			local itable = res.items:with('en',item)
+			if (itable ~= nil) then
+				for sid,sitems in pairs(slip_items) do
+					if S(sitems):contains(itable.id) then
+						local sliptbl = res.items[sid]
+						slipped[sliptbl.en] = slipped[sliptbl.en] or S{}
+						slipped[sliptbl.en]:add(item)
+					end
+				end
+			end
+		end
+	end
+	
+	if (sizeof(slipped) > 0) then
+		atc(50, 'Items you need to retrieve from the Porter Moogle:')
+	end
+	local output = {}
+	for slip,stbl in pairs(slipped) do
+		output[tonumber(slip:sub(-2))] = slip..': '..stbl:format('list')
+	end
+	for i = 1, sizeof(slip_items) do
+		if (output[i] ~= nil) then
+			atc(50, output[i])
+		end
+	end	
 end

@@ -4,24 +4,9 @@
 -----------------------------------------------------------------------------------------------------------
 
 -----------------------------------------------------------------------------------------------------------
--- Instrument lists for String and Wind types
+-- Song buff enhancements on instruments and equipment
 -----------------------------------------------------------------------------------------------------------
 instruments = {}
-instruments.string = S{
-	"Angel Lyre", "Camaraderie Harp", "Crooner's Cithara", "Cythara Anglica", "Cythara Anglica +1", "Daurdabla",
-	"Ebony Harp", "Ebony Harp +1", "Ebony Harp +2", "Harp", "Harp +1", "Lamia Harp", "Langeleik", "Maple Harp", "Maple Harp +1",
-	"Military Harp", "Mythic Harp", "Mythic Harp +1", "Nursemaid's Harp", "Oneiros Harp", "Pyf Harp", "Rose Harp", "Rose Harp +1",
-	"Sorrowful Harp", "Terpander", "Vihuela"
-}
-instruments.wind = S{
-	"Angel's Flute", "Angel's Flute +1", "Apollo's Flute", "Cantabank's Horn", "Cornette", "Cornette +1", "Cornette +2", "Cradle Horn",
-	"Crumhorn", "Crumhorn +1", "Crumhorn +2", "Dynamis Horn", "Eminent Flute", "Faerie Piccolo", "Flute", "Flute +1", "Flute +2",
-	"Forefront Flute", "Frenzy Fife", "Gemshorn", "Gemshorn +1", "Gjallarhorn", "Hamelin Flute", "Harlequin's Horn", "Hellish Bugle", "Hellish Bugle +1",
-	"Homestead Flute", "Horn", "Horn +1", "Iron Ram Horn", "Kingdom Horn", "Linos", "Mary's Horn", "Mass Chalemie", "Millennium Horn", "Ney", "Oliphant",
-	"Pan's Horn", "Piccolo", "Piccolo +1", "Pyrrhic Horn", "Relic Horn", "Requiem Flute", "Ryl.Spr. Horn", "San D'Orian Horn", "Shofar", "Shofar +1",
-	"Siren Flute", "Storm Fife", "Syrinx", "Traversiere", "Traversiere +1", "Traversiere +2"
-}
-
 instruments.effects = {
 	["Angel's Flute"] = {['Prelude']=1},	["Angel's Flute +1"] = {['Prelude']=2},	["Apollo's Flute"] = {['Minuet']=3},
 	["Cornette"] = {['Minuet']=1},		["Cornette +1"] = {['Minuet']=2},	["Cornette +2"] = {['Minuet']=2},

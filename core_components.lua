@@ -12,6 +12,7 @@ function init()
 	
 	include('packet_handling')	--Required for haste tier detection
 	chars = require('chat/chars')	--Required for using special characters in delayed messages
+	slips = require('slips')	--Required for notifying which items need to be fetched from the porter moogle
 	winraw = gearswap._G.windower	--Required for direct access to windower functions
 	winraw.register_event('incoming chunk', parse_buff_info)
 	
@@ -28,6 +29,7 @@ function init()
 	-- Load gear from a job-specific file
 	if load_user_gear(player.main_job) then
 		if init_gear_sets then init_gear_sets() end
+		process_slip_gear()
 	end
 	
 	load_user_settings()		--Attempt to load user settings
@@ -303,7 +305,7 @@ function get_precast_set(spell)
 	local spellMap = spell_maps[spell.en]
 	
 	if spell.action_type == 'Magic' then
-		precastSet = sets.precast.FC
+		precastSet = combineSets(precastSet, sets.precast.FC)
 		precastSet = combineSets(precastSet, sets.precast.FC, spell.type)
 		precastSet = combineSets(precastSet, sets.precast.FC, spell.skill:stripchars(' '))
 		precastSet = combineSets(precastSet, sets.precast.FC, spell.element)
@@ -738,7 +740,6 @@ function get_haste_mod()
 		jsum = jsum + 5
 	end
 	if (buff_active('Last Resort')) and (player.main_job == 'DRK') then
-		--http://www.bg-wiki.com/bg/Desperate_Blows
 		jsum = jsum + 15 + (player.merits.desperate_blows * 2)
 	end
 	if buff_active('Hasso') and (player.equipment.main ~= nil) then
@@ -1004,5 +1005,5 @@ executable_commands = {
 	['atc']   =	addToChat,	['scholar']=	handle_strategems,	['show']    =	show_set,
 	['update']=	update,		['cycle']  =	cycle_mode,		['set']     =	set_mode,
 	['reset'] =	reset_mode,	['toggle'] =	toggle_mode,		['activate']=	activate_mode,
-	['equip' ]=	equip_set,	['info']   =	info_func,
+	['equip' ]=	equip_set,	['info']   =	info_func,		['slips']   =	process_slip_gear
 }

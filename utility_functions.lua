@@ -136,6 +136,12 @@ end
 --		Table/Array/Set Manipulation Functions
 --==============================================================================
 
+function sizeof(tbl)
+	local c = 0
+	for _,_ in pairs(tbl) do c = c + 1 end
+	return c
+end
+
 --[[
 	Returns a new table in which the given table's keys are the values,
 	and their associated values are the keys. Useful for determining the

@@ -351,13 +351,15 @@ end
 	Valid types include String and Wind
 --]]
 function get_instrument_type(i)
-	if instruments.string:contains(i) then
-		return 'String'
-	elseif instruments.wind:contains(i) then
-		return 'Wind'
-	else
-		return 'Singing'
+	local item = res.items:with('en', i)
+	if (item ~= nil) and (item.skill ~= nil) then
+		if (item.skill == 41) then
+			return 'String'
+		elseif (item.skill == 42) then
+			return 'Wind'
+		end
 	end
+	return 'Singing'
 end
 
 -- Determine the custom class to use for the given song.
