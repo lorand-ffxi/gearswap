@@ -168,20 +168,11 @@ end
 	elements in the set.
 --]]
 function set.containsOneOrMore(s, eles)
-	if (class(eles) == 'Set') then
-		for chk,_ in pairs(eles) do
-			if s:contains(chk) then
-				return true
-			end
+	local elez = S(eles)
+	for chk,_ in pairs(elez) do
+		if s:contains(chk) then
+			return true
 		end
-	elseif (type(eles) == 'table') then
-		for _,chk in pairs(eles) do
-			if s:contains(chk) then
-				return true
-			end
-		end
-	else
-		return s:contains(eles)
 	end
 	return false
 end

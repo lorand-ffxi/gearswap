@@ -146,13 +146,23 @@ function retrieve_items(set)
 	return items
 end
 
+function get_item_res()
+	local list = S{}
+	for id,tbl in pairs(res.items) do
+		list[id] = {id=id,en_l=tbl.en:lower(),enl_l=tbl.enl:lower()}
+	end
+	return list
+end
+
 function process_slip_gear()
 	local items = retrieve_items(sets)
 	local slip_items = slips.get_player_items()
+	local res_items = get_item_res()
+	
 	local slipped = {}
 	for item,_ in pairs(items) do
 		if not (player.inventory[item] or player.wardrobe[item]) then
-			local itable = res.items:with('en',item) or res.items:with('enl',item)
+			local itable = res_items:with('en_l',item:lower()) or res_items:with('enl_l',item:lower())
 			if (itable ~= nil) then
 				for sid,sitems in pairs(slip_items) do
 					if S(sitems):contains(itable.id) then

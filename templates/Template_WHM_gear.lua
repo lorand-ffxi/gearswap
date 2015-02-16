@@ -44,7 +44,6 @@ function init_gear_sets()
 	sets.midcast.Cure.with_buff = {}
 
 	sets.midcast.Curaga = sets.midcast.Cure
-	sets.midcast.Cure.Engaged = sets.midcast.Cure
 
 	sets.midcast.Cursna = {}
 
