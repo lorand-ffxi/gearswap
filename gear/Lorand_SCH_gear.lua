@@ -18,6 +18,8 @@ function init_gear_sets()
 	--============================================================
 	--			Precast sets
 	--============================================================
+	sets.impact = {body="Twilight Cloak"}	--This is just to remind me to get it from the Porter Moogle
+	
 	sets.precast.JA['Rapture'] =		{head="Savant's Bonnet +2"}
 	sets.precast.JA['Ebullience'] =		{head="Savant's Bonnet +2"}
 	sets.precast.JA['Penury'] =		{legs="Savant's Pants +2"}

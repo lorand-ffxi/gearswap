@@ -1005,5 +1005,6 @@ executable_commands = {
 	['atc']   =	addToChat,	['scholar']=	handle_strategems,	['show']    =	show_set,
 	['update']=	update,		['cycle']  =	cycle_mode,		['set']     =	set_mode,
 	['reset'] =	reset_mode,	['toggle'] =	toggle_mode,		['activate']=	activate_mode,
-	['equip' ]=	equip_set,	['info']   =	info_func,		['slips']   =	process_slip_gear
+	['equip']=	equip_set,	['info']   =	info_func,		['slips']   =	process_slip_gear,
+	['inv_check']=process_inventory_gear
 }

@@ -146,12 +146,53 @@ function retrieve_items(set)
 	return items
 end
 
+function retrieve_item_ids(set, res_items)
+	res_items = res_items or get_item_res()
+	local item_ids = S{}
+	for slot,iname in pairs(set) do
+		if (type(iname) == 'table') then
+			local others = retrieve_item_ids(iname, res_items)
+			item_ids = item_ids:union(others)
+		elseif (iname ~= 'empty') then
+			local itable = res_items:with('en_l',iname:lower()) or res_items:with('enl_l',iname:lower())
+			if (itable ~= nil) then
+				item_ids:add(itable.id)
+			end
+		end
+	end
+	return item_ids
+end
+
 function get_item_res()
 	local list = S{}
 	for id,tbl in pairs(res.items) do
-		list[id] = {id=id,en_l=tbl.en:lower(),enl_l=tbl.enl:lower()}
+		list[id] = {id=id,en=tbl.en,enl=tbl.enl,en_l=tbl.en:lower(),enl_l=tbl.enl:lower()}
 	end
 	return list
+end
+
+function process_inventory_gear()
+	local item_ids = retrieve_item_ids(sets)
+	local res_items = get_item_res()
+	
+	local extras = S{}
+	for _,itbl in pairs(player.inventory) do
+		if not (item_ids:contains(itbl.id)) then
+			local item = res.items[itbl.id]
+			if not (S{'Gil','pearlsack','copper A.M.A.N. voucher'}:contains(item.enl)) then
+				extras:add(item.enl)
+			end
+		end
+	end
+	
+	if (sizeof(extras) > 0) then
+		atc(50, 'Items you do not need in your inventory:')
+	else
+		atc(50, 'Everything in your inventory is necessary!')
+	end
+	for iname,_ in pairs(extras) do
+		atc(50, iname)
+	end
 end
 
 function process_slip_gear()
@@ -177,6 +218,8 @@ function process_slip_gear()
 	
 	if (sizeof(slipped) > 0) then
 		atc(50, 'Items you need to retrieve from the Porter Moogle:')
+	else
+		atc(50, 'You have everything that you need from the Porter Moogle!')
 	end
 	local output = {}
 	for slip,stbl in pairs(slipped) do
