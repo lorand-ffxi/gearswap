@@ -338,7 +338,7 @@ function get_precast_set(spell)
 				if (elemental_weaponskills[spell.english] ~= nil) then
 					precastSet = sets.wsBase.Magic
 					if weatherPermits(spell.element) and options.useObi then
-						precastSet = combineSets(precastSet, {waist=gear_map.Obi[spell.element]})
+						precastSet = combineSets(precastSet, {waist=getObi(spell.element)})
 					end
 				else
 					precastSet = sets.wsBase
@@ -466,7 +466,7 @@ function get_midcast_set(spell)
 			midcastSet = combineSets(midcastSet, sets.midcast.spellMap, targType)
 			if (spellMap == 'Cure') then
 				if weatherPermits(spell.element)then			
-					midcastSet = combineSets(midcastSet, {waist='Korin Obi'})
+					midcastSet = combineSets(midcastSet, {waist=getObi(spell.element)})
 				end
 				for buff,_ in pairs(buffactive) do
 					midcastSet = combineSets(midcastSet, sets.midcast.Cure, with_buff, buff)
@@ -477,7 +477,7 @@ function get_midcast_set(spell)
 			if S{'Banish', 'Holy'}:contains(spellMap) then
 				midcastSet = combineSets(midcastSet, sets.midcast.DivineMagic.Nuke)
 				if weatherPermits(spell.element) and options.useObi then
-					midcastSet = combineSets(midcastSet, {waist='Korin Obi'})
+					midcastSet = combineSets(midcastSet, {waist=getObi(spell.element)})
 				end
 				for buff,_ in pairs(buffactive) do
 					midcastSet = combineSets(midcastSet, sets.midcast.DivineMagic, with_buff, buff)
@@ -490,7 +490,7 @@ function get_midcast_set(spell)
 			
 			if weatherPermits(spell.element) then
 				if spellMap ~= 'Helix' and options.useObi then
-					midcastSet = combineSets(midcastSet, {waist=gear_map.Obi[spell.element]})
+					midcastSet = combineSets(midcastSet, {waist=getObi(spell.element)})
 				end
 				if options.useTwilightCape then
 					midcastSet = combineSets(midcastSet, {back='Twilight Cape'})
@@ -567,7 +567,7 @@ function get_midcast_set(spell)
 				if spellMap == 'NinNuke' then
 					midcastSet = combineSets(midcastSet, sets.midcast, 'Ninjutsu', 'Nuke')
 					if weatherPermits(spell.element) and options.useObi then
-						midcastSet = combineSets(midcastSet, {waist=gear_map.Obi[spell.element]})
+						midcastSet = combineSets(midcastSet, {waist=getObi(spell.element)})
 					end
 					midcastSet = combineSets(midcastSet, sets.midcast, 'Ninjutsu', 'Nuke', spell.element)
 					

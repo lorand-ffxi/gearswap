@@ -129,6 +129,15 @@ function get_ftp_gear(slot, ws)
 	return {}
 end
 
+function getObi(element)
+	local all_ele = 'Hachirin-no-obi'
+	if (player.inventory[all_ele] or player.wardrobe[all_ele]) then
+		return all_ele
+	else
+		return gear_map.Obi[element]
+	end
+end
+
 --==============================================================================
 --			Set Information
 --==============================================================================
