@@ -114,8 +114,14 @@ end
 
 --[[
 	Returns a set containing the ftp piece for the given slot and ws.
+	TODO: New ftp neck/belts
 --]]
 function get_ftp_gear(slot, ws)
+	local all_waist = 'Fotia Belt'
+	if (slot == 'waist') and (player.inventory[all_waist] or player.wardrobe[all_waist]) then
+		return {[slot] = all_waist}
+	end
+	
 	local ws_elements = S{}:
 		union(skillchain_elements[ws.skillchain_a]):
 		union(skillchain_elements[ws.skillchain_b]):
