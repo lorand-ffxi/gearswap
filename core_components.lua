@@ -685,6 +685,15 @@ function get_idle_set(baseSet)
 		if modes.treasure == 'TH' then
 			idleSet = combineSets(idleSet, sets.TreasureHunter)
 		end
+	elseif pet.isvalid then
+		local pcost = get_perp_cost()
+		local perp_set = sets.idle.with_pet['perp'..tostring(pcost)]
+		if (perp_set ~= nil) then
+			idleSet = combineSets(idleSet, perp_set)
+		else
+			idleSet = combineSets(idleSet, sets.idle.with_pet, get_pet_type())
+			idleSet = combineSets(idleSet, sets.idle.with_pet, pet.name)
+		end
 	end
 	
 	if (modes.defense ~= nil) or (modes.defense ~= 'normal') then

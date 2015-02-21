@@ -58,6 +58,7 @@ elements.weak_to = {['Light']='Dark',['Dark']='Light',['Fire']='Ice',['Ice']='Wi
 elements.strong_to = {['Light']='Dark',['Dark']='Light',['Fire']='Water',['Ice']='Fire',['Wind']='Ice',['Earth']='Wind',['Lightning']='Earth',['Water']='Lightning'}
 elements.storm_of = {['Light']="Aurorastorm",['Dark']="Voidstorm",['Fire']="Firestorm",['Ice']="Hailstorm",['Wind']="Windstorm",['Earth']="Sandstorm",['Lightning']="Thunderstorm",['Water']="Rainstorm"}
 elements.spirit_of = {['Light']="Light Spirit",['Dark']="Dark Spirit",['Fire']="Fire Spirit",['Ice']="Ice Spirit",['Wind']="Air Spirit",['Earth']="Earth Spirit",['Lightning']="Thunder Spirit",['Water']="Water Spirit"}
+elements.avatar_of = {['Light']="Carbuncle",['Dark']="Fenrir",['Fire']="Ifrit",['Ice']="Shiva",['Wind']="Garuda",['Earth']="Titan",['Lightning']="Ramuh",['Water']="Leviathan"}
 
 storms = S{"Aurorastorm", "Voidstorm", "Firestorm", "Sandstorm", "Rainstorm", "Windstorm", "Hailstorm", "Thunderstorm"}
 
@@ -248,7 +249,13 @@ spell_maps = {
 	['Geo-Precision']='Geo',	['Geo-Voidance']='Geo',		['Geo-Focus']='Geo',		['Geo-Attunement']='Geo',	['Geo-Wilt']='Geo',
 	['Geo-Frailty']='Geo',		['Geo-Fade']='Geo',		['Geo-Malaise']='Geo',		['Geo-Slip']='Geo',		['Geo-Torpor']='Geo',
 	['Geo-Vex']='Geo',		['Geo-Languor']='Geo',		['Geo-Slow']='Geo',		['Geo-Paralysis']='Geo',	['Geo-Gravity']='Geo',
+	--Cor Shots
+	['Fire Shot']='QuickDraw',	['Ice Shot']='QuickDraw',	['Wind Shot']='QuickDraw',	['Earth Shot']='QuickDraw',	['Thunder Shot']='QuickDraw',
+	['Water Shot']='QuickDraw',	['Light Shot']='QuickDraw',	['Dark Shot']='QuickDraw',
 }
+
+spirits = S{"LightSpirit", "DarkSpirit", "FireSpirit", "EarthSpirit", "WaterSpirit", "AirSpirit", "IceSpirit", "ThunderSpirit"}
+avatars = S{"Carbuncle", "Fenrir", "Diabolos", "Ifrit", "Titan", "Leviathan", "Garuda", "Shiva", "Ramuh", "Odin", "Alexander", "Cait Sith"}
 
 no_skill_spells_list = S{'Haste','Refresh','Regen','Protect','Protectra','Shell','Shellra','Raise','Reraise','Cursna','Sneak','Invisible','Deodorize'}
 var_potency_enfeebs = S{'Slow','Slow II','Paralyze','Paralyze II','Addle'}

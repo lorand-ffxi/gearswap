@@ -12,6 +12,7 @@ function define_defaults()
 	sets.precast.JA = {}
 	
 	sets.midcast = {}
+	sets.midcast.pet = {}
 	sets.midcast.FastRecast = {}
 	sets.midcast.BardSong = {}
 	sets.midcast.DarkMagic = {}
@@ -24,7 +25,6 @@ function define_defaults()
 	
 	sets.idle = {}
 	sets.engaged = {}
-	sets.engaged.with_buff = {}
 	sets.defense = {}
 	sets.defense.PDT = {}
 	sets.defense.MDT = {}
