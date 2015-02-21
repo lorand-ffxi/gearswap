@@ -350,7 +350,7 @@ function get_precast_set(spell)
 				precastSet = combineSets(precastSet, get_ftp_set(spell))
 				
 				for buff,_ in pairs(buffactive) do
-					precastSet = combineSets(precastSet, sets.ws, with_buff, buff)
+					precastSet = combineSets(precastSet, sets.ws, 'with_buff', buff)
 				end
 			end
 		else
@@ -448,11 +448,15 @@ function get_midcast_set(spell)
 				--Layer on magic accuracy or duration enhancing gear based on the type of song being cast
 				if not S{'Finale'}:contains(spellMap) then
 					midcastSet = combineSets(midcastSet, sets.midcast, songType)					--Equip gear based on buff/debuff
-					midcastSet = combineSets(midcastSet, sets.midcast, songType, modes.casting)
+					midcastSet = combineSets(midcastSet, sets.midcast, songType, modes.casting)					
+					if buff_active('Troubadour') then
+						midcastSet = combineSets(midcastSet, sets.midcast.SongDuration)
+					end
 				end
 				--Layer on gear that directly enhances the song being cast
 				midcastSet = combineSets(midcastSet, sets.midcast, spellMap)						--Equip gear based on song
 				midcastSet = combineSets(midcastSet, sets.midcast, spellMap, modes.casting)
+				
 				--Finally, layer on the instrument that will be used.
 				midcastSet = combineSets(midcastSet, {range=activeInstrument})
 			end
@@ -469,7 +473,7 @@ function get_midcast_set(spell)
 					midcastSet = combineSets(midcastSet, {waist=getObi(spell.element)})
 				end
 				for buff,_ in pairs(buffactive) do
-					midcastSet = combineSets(midcastSet, sets.midcast.Cure, with_buff, buff)
+					midcastSet = combineSets(midcastSet, sets.midcast.Cure, 'with_buff', buff)
 				end
 			end
 		elseif spell.skill == 'Divine Magic' then
@@ -480,7 +484,7 @@ function get_midcast_set(spell)
 					midcastSet = combineSets(midcastSet, {waist=getObi(spell.element)})
 				end
 				for buff,_ in pairs(buffactive) do
-					midcastSet = combineSets(midcastSet, sets.midcast.DivineMagic, with_buff, buff)
+					midcastSet = combineSets(midcastSet, sets.midcast.DivineMagic, 'with_buff', buff)
 				end
 			end
 			midcastSet = combineSets(midcastSet, sets.midcast.DivineMagic, modes.casting)
@@ -503,7 +507,7 @@ function get_midcast_set(spell)
 			midcastSet = combineSets(midcastSet, sets.midcast.ElementalMagic, modes.casting)
 			
 			for buff,_ in pairs(buffactive) do
-				midcastSet = combineSets(midcastSet, sets.midcast.ElementalMagic, with_buff, buff)
+				midcastSet = combineSets(midcastSet, sets.midcast.ElementalMagic, 'with_buff', buff)
 			end
 		elseif spell.skill == 'Enfeebling Magic' then
 			midcastSet = get_standard_magic_set(midcastSet, spell, spellMap, 'EnfeeblingMagic')
@@ -572,7 +576,7 @@ function get_midcast_set(spell)
 					midcastSet = combineSets(midcastSet, sets.midcast, 'Ninjutsu', 'Nuke', spell.element)
 					
 					for buff,_ in pairs(buffactive) do
-						midcastSet = combineSets(midcastSet, sets.midcast.Ninjutsu.Nuke, with_buff, buff)
+						midcastSet = combineSets(midcastSet, sets.midcast.Ninjutsu.Nuke, 'with_buff', buff)
 					end
 				end
 			end
@@ -653,7 +657,7 @@ function get_idle_set(baseSet)
 	idleSet = combineSets(idleSet, sets.idle[modes.offense])
 	idleSet = combineSets(idleSet, sets.idle[modes.defense])
 	for buff,_ in pairs(buffactive) do
-		idleSet = combineSets(idleSet, sets.idle, with_buff, buff)
+		idleSet = combineSets(idleSet, sets.idle, 'with_buff', buff)
 	end
 	if player.mpp < 80 then
 		idleSet = combineSets(idleSet, sets.idle.lowMP)
@@ -784,13 +788,13 @@ function get_melee_set(baseSet)
 		meleeSet = combineSets(meleeSet, sets.engaged[modes.offense], get_haste_mod())
 	end
 	meleeSet = combineSets(meleeSet, sets.engaged[modes.defense])
-	meleeSet = combineSets(meleeSet, sets.engaged[modes.accuracy])
-	meleeSet = combineSets(meleeSet, sets.engaged[modes.offense], modes.accuracy)
 	meleeSet = combineSets(meleeSet, sets.engaged[modes.defense], modes.accuracy)
+	meleeSet = combineSets(meleeSet, sets.engaged, modes.offense, modes.accuracy)
+	meleeSet = combineSets(meleeSet, sets.engaged[modes.accuracy])
 	
 	for buff,_ in pairs(buffactive) do
 		--atc(1, '[Engaged] Buffactive: '..tostring(buff))
-		meleeSet = combineSets(meleeSet, sets.engaged, with_buff, buff)
+		meleeSet = combineSets(meleeSet, sets.engaged, 'with_buff', buff)
 	end
 	
 	if (modes.defense ~= nil) or (modes.defense ~= 'normal') then

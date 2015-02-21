@@ -1,14 +1,16 @@
------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 --[[
 	Author: Ragnarok.Lorand
 	
-	Songs can be cast with normal gear/instruments, normal gear + Terpander/Daurdabla,
-	or fast recast gear + Terpander/Daurdabla.
+	Songs can be cast with normal gear/instruments, normal gear +
+	Terpander/Daurdabla, or fast recast gear + Terpander/Daurdabla.
 	
-	When the maximum number of active songs has been reached, the new song will always take the place of
-	the one with the lowest remaining duration.  Exploiting this, you can cast a 3rd song with
-	Terpander/Daurdabla without any duration enhancing gear, and then overwrite it right away with a more
-	desirable song while wearing duration enhancing / potency gear (and instrument).
+	When the maximum number of active songs has been reached, the new song will
+	always take the place of the one with the lowest remaining duration.
+	Exploiting this, you can cast a 3rd song with Terpander/Daurdabla without
+	any duration enhancing gear, and then overwrite it right away with a more
+	desirable song while wearing duration enhancing / potency gear (and
+	instrument).
 	
 	To cycle modes:			gs c cycle Daurdabla
 	To set a specific mode:		gs c set Daurdabla Daurdabla
@@ -17,27 +19,14 @@
 	/console gs c set daurdabla Daurdabla
 	/ma "Mage's Ballad" <stpc>
 	
-	Example usage in a macro, using Terpander/Daurdabla without duration enhancing gear:
-	/console gs c set daurdabla Dummy
+	Example macro, using Terpander/Daurdabla without duration enhancing gear:
+	/console gs c set Daurdabla Dummy
 	/ma "Army's Paeon" <stpc>
 	
-	All macros should be written with <stpc> because Pianissimo will automatically be used when the target
-	is a player other than yourself.
+	All macros should be written with <stpc> because Pianissimo will
+	automatically be used when the target is a player other than yourself.
 --]]
------------------------------------------------------------------------------------------------------------
---[[
-	Author: Ragnarok.Lorand
-	
-	Slips:
-		2:	Loq Earring, Musical Earring
-		3:	Twilight Torque
-		8:	Aoidos' Matinee/Earring
-		10:	Aoidos' (all)
-		14:	Nares Hands/Legs, Marduk's+1 Body/Legs
-		15:	Brioso (all)
-		17:	Bihu (all)
---]]
------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
 function init_gear_sets()
 	--============================================================
@@ -141,7 +130,7 @@ function init_gear_sets()
 	}
 	
 	--This set is for extending party song buff duration
-	sets.midcast.SongBuff = {	--Song duration + 45%
+	sets.midcast.SongDuration = {	--Song duration + 45%
 		main="Legato Dagger",		--5%
 		sub="Genbu's Shield",		--n/a
 		neck="Aoidos' Matinee",		--10%
@@ -149,6 +138,8 @@ function init_gear_sets()
 		legs="Marduk's Shalwar +1",	--10%
 		feet="Brioso Slippers"		--10%
 	}
+	
+	sets.midcast.SongBuff = sets.midcast.SongDuration
 	
 	--This set is for Daurdabla/Terpander dummy songs
 	sets.midcast.SongRecast = {

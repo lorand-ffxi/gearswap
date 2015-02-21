@@ -11,6 +11,8 @@ function set_options()
 	options.use_ftp_waist = false
 	options.useTwilightCape = false
 	options.useObi = true
+	
+	instruments.effects.Linos = {['All']=3}
 end
 
 function set_modes()

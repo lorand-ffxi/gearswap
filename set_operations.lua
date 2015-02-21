@@ -18,12 +18,13 @@ local itemSlots = {'main', 'sub', 'range', 'ammo', 'head', 'neck', 'ear1', 'ear2
 function combineSets(set1, set2, ...)
 	local newSet = {}
 	local subsets = {...}
-	if #subsets > 0 then
-		for i = 1, #subsets, 1 do
-			if set2 ~= nil then
+	local numsub = sizeof(subsets)
+	if numsub > 0 then
+		for i = 1, numsub, 1 do
+			if (set2 ~= nil) then
 				local subset = set2[subsets[i]]
 				if subset == nil then
-					if i < #subsets then	--If not the last potential subset
+					if i < numsub then	--If not the last potential subset
 						--Do nothing; set2 stays the way it is
 					else	--i == #subsets
 						set2 = subset
