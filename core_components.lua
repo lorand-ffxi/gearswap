@@ -22,6 +22,7 @@ function init()
 	
 	include('set_operations')	--Load set_operations.lua (advanced set combination functions)
 	include('spell_utilities')	--Load spell_utilities.lua (cure & timer handling)
+	include('pet_utilities')	--Load pet_utilities.lua (pet handling)
 	include('mappings')		--Load mappings.lua (provides generalizations for spells and abilities)
 	
 	info = require('../info/info_share')	--Load addons\info\info_shared.lua for functions to print information accessed directly from windower
@@ -288,9 +289,9 @@ function sub_job_change(new, old)
 	use_user_settings()
 end
 
------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 --	Gear set building functions
------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
 function get_sub_type()
 	return (player.sub_job == 'SAM') and 'sam' or 'other'
@@ -580,8 +581,10 @@ function get_midcast_set(spell)
 					end
 				end
 			end
+		elseif spell.skill == 'Summoning Magic' then
+			--Precast set is fine here
 		else
-			atc(122, 'Using default rule set for '..spell.english..' [skill: '..spell.skill..'][type: '..spell.type..']')
+			atc(122, 'Using default rule set for '..spell.english..' [skill: '..spell.skill..'][type: '..spell.type..'][action type: '..spell.action_type..']')
 			midcastSet = combineSets(midcastSet, sets.midcast)
 			midcastSet = combineSets(midcastSet, sets.midcast, spell.type)
 			midcastSet = combineSets(midcastSet, sets.midcast, spell.skill)
@@ -656,9 +659,7 @@ function get_idle_set(baseSet)
 	local idleSet = combineSets(baseSet, sets.idle)	
 	idleSet = combineSets(idleSet, sets.idle[modes.offense])
 	idleSet = combineSets(idleSet, sets.idle[modes.defense])
-	for buff,_ in pairs(buffactive) do
-		idleSet = combineSets(idleSet, sets.idle, 'with_buff', buff)
-	end
+	
 	if player.mpp < 80 then
 		idleSet = combineSets(idleSet, sets.idle.lowMP)
 		if (world.time >= (18*60) or world.time <= (6*60)) then
@@ -686,14 +687,16 @@ function get_idle_set(baseSet)
 			idleSet = combineSets(idleSet, sets.TreasureHunter)
 		end
 	elseif pet.isvalid then
-		local pcost = get_perp_cost()
-		local perp_set = sets.idle.with_pet['perp'..tostring(pcost)]
-		if (perp_set ~= nil) then
-			idleSet = combineSets(idleSet, perp_set)
-		else
-			idleSet = combineSets(idleSet, sets.idle.with_pet, get_pet_type())
-			idleSet = combineSets(idleSet, sets.idle.with_pet, pet.name)
+		idleSet = combineSets(idleSet, sets.idle.with_pet, get_pet_type())
+		idleSet = combineSets(idleSet, sets.idle.with_pet, 'perp'..tostring(get_perp_cost()))
+		idleSet = combineSets(idleSet, sets.idle.with_pet, pet.name)
+		if buff_active("Avatar's Favor") then
+			idleSet = combineSets(idleSet, sets.idle.with_favor)
 		end
+	end
+	
+	for buff,_ in pairs(buffactive) do
+		idleSet = combineSets(idleSet, sets.idle, 'with_buff', buff)
 	end
 	
 	if (modes.defense ~= nil) or (modes.defense ~= 'normal') then
@@ -826,9 +829,9 @@ function get_resting_set(baseSet)
 	return restSet
 end
 
------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 --	Custom command handling
------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
 function self_command(args)
 	local args = args
@@ -978,20 +981,55 @@ function show_set(args)
 	end
 end
 
------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 --	Pet Stuff
------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
 function pet_midcast(spell)
+	local pmcset = {}
+	--info.print_table(spell, 'Pet Midcast Spell')
+	local ptype = get_pet_type()
+	if (ptype == 'Avatar') then
+		pmcset = combineSets(pmcset, sets.midcast.pet.BP)
+		if (spell.type == 'BloodPactRage') then
+			pmcset = combineSets(pmcset, sets.midcast.pet.BP.Rage)
+			if bps.magical:contains(spell.en) then
+				pmcset = combineSets(pmcset, sets.midcast.pet.BP.Rage.Magical)
+				if bps.nuke:contains(spell.en) then
+					pmcset = combineSets(pmcset, sets.midcast.pet['Elemental Magic'])
+				end
+			else
+				pmcset = combineSets(pmcset, sets.midcast.pet.BP.Rage.Physical)
+			end
+		elseif (spell.type == 'BloodPactWard') then
+			pmcset = combineSets(pmcset, sets.midcast.pet.BP.Ward)
+			if spell.targets:contains('Enemy') then
+				pmcset = combineSets(pmcset, sets.midcast.pet.BP.Ward.Debuff)
+			else
+				if bps.heal:contains(spell.en) then
+					pmcset = combineSets(pmcset, sets.midcast.pet['White Magic'])
+				else
+					pmcset = combineSets(pmcset, sets.midcast.pet.BP.Ward.Buff)
+				end
+			end
+		else
+			atc(123, 'Unknown Avatar action type')
+		end
+	else
+		atc(123, 'Unknown pet type')
+	end
+	equip(pmcset)
 end
 
 function pet_aftercast(spell)
+	update()
 end
 
 --[[
 	Called when a player gains or loses a pet.
 --]]
 function pet_change(pet, gain)
+	update()
 end
 
 --[[
@@ -1015,9 +1053,9 @@ function info_func(args)
 end
 
 executable_commands = {
-	['atc']   =	addToChat,	['scholar']=	handle_strategems,	['show']    =	show_set,
-	['update']=	update,		['cycle']  =	cycle_mode,		['set']     =	set_mode,
-	['reset'] =	reset_mode,	['toggle'] =	toggle_mode,		['activate']=	activate_mode,
-	['equip']=	equip_set,	['info']   =	info_func,		['slips']   =	process_slip_gear,
-	['inv_check']=process_inventory_gear
+	['atc']    =	addToChat,	['scholar']   =	handle_strategems,	['show']     =	show_set,
+	['update'] =	update,		['cycle']     =	cycle_mode,		['set']      =	set_mode,
+	['reset']  =	reset_mode,	['toggle']    =	toggle_mode,		['activate'] =	activate_mode,
+	['equip']  =	equip_set,	['info']      =	info_func,		['slips']    =	process_slip_gear,
+	['smn']    =	handle_smn,	['inv_check'] =	process_inventory_gear
 }

@@ -1,8 +1,6 @@
 --------------------------------------------------------------------------------
 --[[
 	Author: Ragnarok.Lorand
-	
-	WORK IN PROGRESS - NOT DONE
 --]]
 --------------------------------------------------------------------------------
 
@@ -23,13 +21,10 @@ function init_gear_sets()
 		feet="Chelona Boots"		--4%
 	}
 	
-	sets.precast.FC.SummoningMagic = {}
+	sets.precast.FC.SummoningMagic = {ammo="Eminent Sachet"}
 	
 	sets.precast.FC.EnhancingMagic = {	--59%
 		waist="Siegel Sash"		--8%
-	}
-	sets.precast.FC.HealingMagic = {
-		
 	}
 	
 	sets.precast.FC.Cure = {		--59%
@@ -43,11 +38,14 @@ function init_gear_sets()
 	--============================================================
 	
 	sets.precast.JA['Astral Flow'] = {}
-	sets.precast.JA['Elemental Siphon'] = {}
-	sets.precast.JA['Mana Cede'] = {}
-	sets.precast.BP = {}
-	sets.precast.BP.Ward = {}
-	sets.precast.BP.Rage = {}
+	sets.precast.JA['Elemental Siphon'] = {
+		main="Soulscourge",		sub="Elder's Grip",						ammo="Kalboron Stone",
+		head="Convoker's Horn",		neck="Caller's Pendant",	ear1="Loquacious Earring",	ear2="Caller's Earring",
+		body="Caller's Doublet +2",	hands="Glyphic Bracers",	ring1="Evoker's Ring",		ring2="Sangoma Ring",
+		back="Conveyance Cape",		waist="Emphatikos Rope",	legs="Marduk's Shalwar +1",	feet="Caller's Pigaches +2"
+	}
+	sets.precast.JA['Mana Cede'] = {hands="Caller's Bracers +2"}
+	sets.precast.JA["Avatar's Favor"] = {head="Caller's Horn +2"}
 
 	sets.precast.Waltz = {}
 	
@@ -67,16 +65,31 @@ function init_gear_sets()
 	
 	--======================== Pet ===============================
 	
-	sets.midcast.SummoningMagic = {}
-	
-	sets.midcast.pet = {}
-	sets.midcast.pet.BP = {}
+	sets.midcast.pet.BP = {
+		main="Uffrat +2",		sub="Achaq Grip",		ammo="Eminent Sachet",
+		head="Convoker's Horn",		neck="Caller's Pendant",	ear2="Caller's Earring",
+		body="Convoker's Doublet",	hands="Glyphic Bracers",	ring1="Evoker's Ring",
+		back="Conveyance Cape",		waist="Mujin Obi",		legs="Marduk's Shalwar +1",
+	}
 	sets.midcast.pet.BP.Ward = {}
 	sets.midcast.pet.BP.Ward.Buff = {}
-	sets.midcast.pet.BP.Ward.Debuff = {}
+	sets.midcast.pet.BP.Ward.Debuff = {
+		main="Eminent Pole",
+		head="Bokwus Circlet",
+		hands="Regimen Mittens",
+		feet="Caller's Pigaches +2"
+	}
 	sets.midcast.pet.BP.Rage = {}
-	sets.midcast.pet.BP.Rage.Physical = {}
-	sets.midcast.pet.BP.Rage.Magical = {}
+	sets.midcast.pet.BP.Rage.Physical = {
+		main="Uffrat +2",
+		legs="Caller's Spats +2",
+	}
+	sets.midcast.pet.BP.Rage.Magical = {
+		main="Eminent Pole",
+		head="Bokwus Circlet",
+		hands="Regimen Mittens",
+		feet="Hagondes Sabots +1"
+	}
 	sets.midcast.pet['White Magic'] = {}
 	sets.midcast.pet['Elemental Magic'] = {}
 
@@ -84,15 +97,12 @@ function init_gear_sets()
 	
 	sets.midcast.HealingMagic = {}
 	
-	sets.midcast.Cure = {}
+	sets.midcast.Cure = {
+		
+	}
 	sets.midcast.Curaga = sets.midcast.Cure
 
-	sets.midcast.Cursna = {
-		hands="Hieros Mittens",
-		feet="Gendewitha Galoshes +1"
-	}
-
-	sets.midcast.StatusRemoval = {}
+	sets.midcast.Cursna = {hands="Hieros Mittens"}
 
 	--====================== Enhancing ===========================
 	
@@ -133,17 +143,17 @@ function init_gear_sets()
 	--============================================================
 	
 	sets.resting = {
-		main="Chatoyant Staff",		sub="Elder's Grip",						ammo="Kalboron Stone",
+		main="Chatoyant Staff",		sub="Elder's Grip",						ammo="Clarus Stone",
 		head="Nahtirah Hat",		neck="Eidolon Pendant",		ear1="Loquacious Earring",	ear2="Relaxing Earring",
-		body="Artsieq Jubbah",		hands="Nares Cuffs",		ring1="Defending Ring",		ring2="Sheltered Ring",
+		body="Artsieq Jubbah",		hands="Nares Cuffs",		ring1="Fenrir Ring +1",		ring2="Sangoma Ring",
 		back="Felicitas Cape",		waist="Emphatikos Rope",	legs="Nares Trews",		feet="Chelona Boots"
 	}
 
 	sets.idle = {
-		main="Terra's Staff",		sub="Elder's Grip",						ammo="Kalboron Stone",
-		head="Caller's Horn +2",	neck="Twilight Torque",		ear1="Brachyura Earring",	ear2="Ethereal Earring",
-		body="Artsieq Jubbah",		hands="Hagondes Cuffs +1",	ring1="Defending Ring",		ring2="Shneddick Ring",
-		back="Repulse Mantle",		waist="Emphatikos Rope",	legs="Artsieq Hose",		feet="Hagondes Sabots +1"
+		main="Terra's Staff",	sub="Elder's Grip",						ammo="Kalboron Stone",
+		head="Convoker's Horn",	neck="Twilight Torque",		ear1="Brachyura Earring",	ear2="Ethereal Earring",
+		body="Artsieq Jubbah",	hands="Hagondes Cuffs +1",	ring1="Defending Ring",		ring2="Shneddick Ring",
+		back="Repulse Mantle",	waist="Emphatikos Rope",	legs="Artsieq Hose",		feet="Hagondes Sabots +1"
 	}
 	sets.idle.lowMP = {
 		legs="Nares Trews"
@@ -158,44 +168,45 @@ function init_gear_sets()
 		Avatar = 15			-> 11
 		Avatar's Favor = -4
 	--]]
-	sets.idle.with_pet = {			--p-9
-		hands="Hagondes Cuffs",		--p-5
-		ring1="Evoker's Ring",		--p-1
-		feet="Caller's Pigaches +2"	--p-3
+	sets.idle.with_pet = {
+		neck="Caller's Pendant",
+		hands="Regimen Mittens",
+		waist="Mujin Obi",		legs="Convoker's Spats",
 	}
 	sets.idle.with_pet.perp7 = {		--p-8
 		hands="Hagondes Cuffs",		--p-5
-		feet="Caller's Pigaches +2"	--p-3
+		feet="Artsieq Boots"		--p-3
 	}
 	sets.idle.with_pet.perp9 = {		--p-9
 		hands="Hagondes Cuffs",		--p-5
 		ring1="Evoker's Ring",		--p-1
-		feet="Caller's Pigaches +2"	--p-3
+		feet="Artsieq Boots"		--p-3
 	}
 	sets.idle.with_pet.perp11 = {		--p-12
 		body="Caller's Doublet +2",	--p-4
 		hands="Hagondes Cuffs",		--p-5
-		feet="Caller's Pigaches +2"	--p-3
+		feet="Artsieq Boots"		--p-3
 	}
 	sets.idle.with_pet.perp13 = {		--p-13
 		body="Caller's Doublet +2",	--p-4
 		hands="Hagondes Cuffs",		--p-5
 		ring1="Evoker's Ring",		--p-1
-		feet="Caller's Pigaches +2"	--p-3
+		feet="Artsieq Boots"		--p-3
 	}
 	sets.idle.with_pet.perp15 = {		--p-13, r+1
 		body="Caller's Doublet +2",	--p-4
 		hands="Hagondes Cuffs",		--p-5
 		ring1="Evoker's Ring",		--p-1
 		legs="Nares Trews",		--r+1
-		feet="Caller's Pigaches +2"	--p-3
+		feet="Artsieq Boots"		--p-3
 	}
 	sets.idle.with_pet.Spirit = sets.idle.with_pet.perp7
 	sets.idle.with_pet.Avatar = sets.idle.with_pet.perp15
+	sets.idle.with_favor = {head="Caller's Horn +2"}
+	
 	
 	sets.idle.with_buff = {}
 	sets.idle.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
-	sets.idle.with_buff["Avatar's Favor"] = {head="Caller's Horn +2"}
 	
 	sets.defense.DT = {
 		head="Kaabnax Hat",	neck="Twilight Torque",

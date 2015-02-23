@@ -1,9 +1,10 @@
------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 --[[
 	Author: Ragnarok.Lorand
-	GearSwap utility functions that are related to specific spells or abilities.
+	GearSwap utility functions that are related to specific spells or
+	abilities.
 --]]
------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
 local cure2num = {['Cure'] = 1, ['Cure II'] = 2, ['Cure III'] = 3, ['Cure IV'] = 4, ['Cure V'] = 5, ['Cure VI'] = 6}
 local num2cure = {'Cure','Cure II','Cure III','Cure IV','Cure V','Cure VI'}

@@ -256,6 +256,27 @@ spell_maps = {
 
 spirits = S{"LightSpirit", "DarkSpirit", "FireSpirit", "EarthSpirit", "WaterSpirit", "AirSpirit", "IceSpirit", "ThunderSpirit"}
 avatars = S{"Carbuncle", "Fenrir", "Diabolos", "Ifrit", "Titan", "Leviathan", "Garuda", "Shiva", "Ramuh", "Odin", "Alexander", "Cait Sith"}
+bps = {}
+bps.magical = S{'Inferno','Earthen Fury','Tidal Wave','Aerial Blast','Diamond Dust','Judgment Bolt','Searing Light','Howling Moon','Ruinous Omen','Fire II','Stone II','Water II','Aero II','Blizzard II','Thunder II','Fire IV','Stone IV','Water IV','Aero IV','Blizzard IV','Thunder IV','Thunderspark','Burning Strike','Meteorite','Nether Blast','Flaming Crush','Meteor Strike','Heavenly Strike','Wind Blade','Geocrush','Grand Fall','Thunderstorm','Holy Mist','Lunar Bay','Night Terror','Level ? Holy'}
+bps.nuke = S{'Fire II','Stone II','Water II','Aero II','Blizzard II','Thunder II','Fire IV','Stone IV','Water IV','Aero IV','Blizzard IV','Thunder IV'}
+bps.heal = S{'Healing Ruby','Healing Ruby II','Whispering Wind','Spring Water'}
+
+bps.cure = {['Carbuncle']='Healing Ruby'}
+bps.curaga = {['Carbuncle']='Healing Ruby II',['Garuda']='Whispering Wind',['Leviathan']='Spring Water'}
+bps.buffoffense = {['Carbuncle']='Glittering Ruby',['Ifrit']='Crimson Howl',['Garuda']='Hastega II',['Ramuh']='Rolling Thunder',['Fenrir']='Ecliptic Growl'}
+bps.buffdefense = {['Carbuncle']='Shining Ruby',['Shiva']='Frost Armor',['Garuda']='Aerial Armor',['Titan']='Earthen Ward',['Ramuh']='Lightning Armor',['Fenrir']='Ecliptic Howl',['Diabolos']='Noctoshield',['Cait Sith']='Reraise II'}
+bps.buffspecial = {['Shiva']='Crystal Blessing',['Ifrit']='Inferno Howl',['Garuda']='Fleet Wind',['Titan']='Earthen Armor',['Diabolos']='Dream Shroud',['Leviathan']='Soothing Current',['Carbuncle']='Soothing Ruby',['Fenrir']='Heavenward Howl',['Cait Sith']='Raise II'}
+bps.debuff1 = {['Shiva']='Diamond Storm',['Ramuh']='Shock Squall',['Leviathan']='Tidal Roar',['Fenrir']='Lunar Cry',['Diabolos']='Pavor Nocturnus',['Cait Sith']='Eerie Eye'}
+bps.debuff2 = {['Shiva']='Sleepga',['Leviathan']='Slowga',['Fenrir']='Lunar Roar',['Diabolos']='Somnolence'}
+bps.sleep = {['Shiva']='Sleepga',['Diabolos']='Nightmare',['Cait Sith']='Mewing Lullaby'}
+bps.nuke2 = {['Ifrit']='Fire II',['Shiva']='Blizzard II',['Garuda']='Aero II',['Titan']='Stone II',['Ramuh']='Thunder II',['Leviathan']='Water II'}
+bps.nuke4 = {['Ifrit']='Fire IV',['Shiva']='Blizzard IV',['Garuda']='Aero IV',['Titan']='Stone IV',['Ramuh']='Thunder IV',['Leviathan']='Water IV'}
+bps.bp70 = {['Ifrit']='Flaming Crush',['Shiva']='Rush',['Garuda']='Predator Claws',['Titan']='Mountain Buster',['Ramuh']='Volt Strike',['Leviathan']='Spinning Dive',['Carbuncle']='Meteorite',['Fenrir']='Eclipse Bite',['Diabolos']='Nether Blast',['Cait Sith']='Regal Scratch'}
+bps.bp75 = {['Ifrit']='Meteor Strike',['Shiva']='Heavenly Strike',['Garuda']='Wind Blade',['Titan']='Crag Throw',['Ramuh']='Thunderstorm',['Leviathan']='Grand Fall',['Carbuncle']='Holy Mist',['Fenrir']='Lunar Bay',['Diabolos']='Night Terror',['Cait Sith']='Level ? Holy'}
+bps.astralflow = {['Ifrit']='Inferno',['Shiva']='Diamond Dust',['Garuda']='Aerial Blast',['Titan']='Earthen Fury',['Ramuh']='Judgment Bolt',['Leviathan']='Tidal Wave',['Carbuncle']='Searing Light',['Fenrir']='Howling Moon',['Diabolos']='Ruinous Omen',['Cait Sith']="Altana's Favor"}
+
+smn_cmds = S{'cure','curaga','buffoffense','buffdefense','buffspecial','debuff1','debuff2','sleep','nuke2','nuke4','bp70','bp75','astralflow'}
+
 
 no_skill_spells_list = S{'Haste','Refresh','Regen','Protect','Protectra','Shell','Shellra','Raise','Reraise','Cursna','Sneak','Invisible','Deodorize'}
 var_potency_enfeebs = S{'Slow','Slow II','Paralyze','Paralyze II','Addle'}
