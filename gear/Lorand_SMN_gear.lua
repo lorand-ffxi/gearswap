@@ -69,7 +69,7 @@ function init_gear_sets()
 		main="Uffrat +2",		sub="Achaq Grip",		ammo="Eminent Sachet",
 		head="Convoker's Horn",		neck="Caller's Pendant",	ear2="Caller's Earring",
 		body="Convoker's Doublet",	hands="Glyphic Bracers",	ring1="Evoker's Ring",
-		back="Conveyance Cape",		waist="Mujin Obi",		legs="Marduk's Shalwar +1",
+		back="Conveyance Cape",		waist="Mujin Obi",		legs="Marduk's Shalwar +1",	feet="Convoker's Pigaches"
 	}
 	sets.midcast.pet.BP.Ward = {}
 	sets.midcast.pet.BP.Ward.Buff = {}
@@ -126,7 +126,6 @@ function init_gear_sets()
 	--====================== Offensive ===========================	
 	
 	sets.midcast.DivineMagic = {}
-				
 	sets.midcast.DivineMagic.Nuke = {}
 	
 	sets.midcast.DarkMagic = {}
@@ -179,31 +178,28 @@ function init_gear_sets()
 	}
 	sets.idle.with_pet.perp9 = {		--p-9
 		hands="Hagondes Cuffs",		--p-5
-		ring1="Evoker's Ring",		--p-1
-		feet="Artsieq Boots"		--p-3
+		feet="Convoker's Pigaches"	--p-4
 	}
-	sets.idle.with_pet.perp11 = {		--p-12
+	sets.idle.with_pet.perp11 = {		--p-13
 		body="Caller's Doublet +2",	--p-4
 		hands="Hagondes Cuffs",		--p-5
-		feet="Artsieq Boots"		--p-3
+		feet="Convoker's Pigaches"	--p-4
 	}
 	sets.idle.with_pet.perp13 = {		--p-13
 		body="Caller's Doublet +2",	--p-4
 		hands="Hagondes Cuffs",		--p-5
-		ring1="Evoker's Ring",		--p-1
-		feet="Artsieq Boots"		--p-3
+		feet="Convoker's Pigaches"	--p-4
 	}
-	sets.idle.with_pet.perp15 = {		--p-13, r+1
+	sets.idle.with_pet.perp15 = {		--p-14, r+1
 		body="Caller's Doublet +2",	--p-4
 		hands="Hagondes Cuffs",		--p-5
 		ring1="Evoker's Ring",		--p-1
 		legs="Nares Trews",		--r+1
-		feet="Artsieq Boots"		--p-3
+		feet="Convoker's Pigaches"	--p-4
 	}
 	sets.idle.with_pet.Spirit = sets.idle.with_pet.perp7
 	sets.idle.with_pet.Avatar = sets.idle.with_pet.perp15
 	sets.idle.with_favor = {head="Caller's Horn +2"}
-	
 	
 	sets.idle.with_buff = {}
 	sets.idle.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}

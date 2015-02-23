@@ -940,13 +940,10 @@ end
 function show_set(args)
 	local text = table.concat(args, ' ')
 	local timing = nil
-	
 	if text:lower() == 'engaged' then
 		equip(get_melee_set())
 		return
-	end
-	
-	if text:endswith('precast') then
+	elseif text:endswith('precast') then
 		timing = 'precast'
 		text = text:sub(1, #text-7)
 	elseif text:endswith('midcast') then
@@ -955,27 +952,26 @@ function show_set(args)
 	end
 	text:trim()
 	
-	local action = validabils['english']['/ma']:with('en', text)
-	if action == nil then
-		action = validabils['english']['/ja']:with('en', text)
-		if action == nil then
-			action = validabils['english']['/ws']:with('en', text)
-		end
-		if timing == nil then
-			timing = 'precast'
-		end
+	local action = res.spells:with('en',text)
+	if (action == nil) then
+		action = res.job_abilities:with('en',text)
+		action = action or res.weapon_skills:with('en',text)
+		action.action_type = "Ability"
+		timing = timing or 'precast'
 	else
-		if timing == nil then
-			timing = 'midcast'
-		end
+		action.action_type = "Magic"
+		timing = timing or 'midcast'
 	end
 	
-	if action ~= nil then
+	if (action ~= nil) then
+		local equipset
 		if timing == 'precast' then
-			equip(get_precast_set(action))
+			equipset = get_precast_set(action)
 		elseif timing == 'midcast' then
-			equip(get_midcast_set(action))
+			equipset = get_midcast_set(action)
 		end
+		info.print_table(equipset, timing..' set for '..text)
+		equip(equipset)
 	else
 		atc(166, 'Unable to determine set to equip for '..table.concat(args, ' '))
 	end

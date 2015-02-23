@@ -119,8 +119,11 @@ end
 --]]
 function get_ftp_gear(slot, ws)
 	local all_waist = 'Fotia Belt'
+	local all_neck = 'Fotia Gorget'
 	if (slot == 'waist') and (player.inventory[all_waist] or player.wardrobe[all_waist]) then
 		return {[slot] = all_waist}
+	elseif (slot == 'neck') and (player.inventory[all_neck] or player.wardrobe[all_neck]) then
+		return {[slot] = all_neck}
 	end
 	
 	local ws_elements = S{}:
