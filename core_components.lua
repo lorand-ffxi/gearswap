@@ -583,6 +583,15 @@ function get_midcast_set(spell)
 			end
 		elseif spell.skill == 'Summoning Magic' then
 			--Precast set is fine here
+		elseif spell.skill == 'Geomancy' then
+			midcastSet = combineSets(midcastSet, sets.midcast.Geomancy)
+			if spell.en:startswith('Indi-') then
+				midcastSet = combineSets(midcastSet, sets.midcast.Geomancy, 'Indi')
+			elseif spell.en:startswith('Geo-') then
+				midcastSet = combineSets(midcastSet, sets.midcast.Geomancy, 'Geo')
+			else
+				atc(123,'Error: Unknown Geomancy spell type')
+			end
 		else
 			atc(122, 'Using default rule set for '..spell.english..' [skill: '..spell.skill..'][type: '..spell.type..'][action type: '..spell.action_type..']')
 			midcastSet = combineSets(midcastSet, sets.midcast)
@@ -688,9 +697,12 @@ function get_idle_set(baseSet)
 		end
 	elseif pet.isvalid then
 		idleSet = combineSets(idleSet, sets.idle.with_pet, get_pet_type())
-		idleSet = combineSets(idleSet, sets.idle.with_pet, 'perp'..tostring(get_perp_cost()))
+		if S{player.main_job,player.sub_job}:contains('SMN') then
+			idleSet = combineSets(idleSet, sets.idle.with_pet, 'perp'..tostring(get_perp_cost()))
+		end
 		idleSet = combineSets(idleSet, sets.idle.with_pet, pet.name)
-		if buff_active("Avatar's Favor") then
+		
+		if S{player.main_job,player.sub_job}:contains('SMN') and buff_active("Avatar's Favor") then
 			idleSet = combineSets(idleSet, sets.idle.with_favor)
 		end
 	end

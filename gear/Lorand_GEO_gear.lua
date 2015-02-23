@@ -1,10 +1,6 @@
 --------------------------------------------------------------------------------
 --[[
 	Author: Ragnarok.Lorand
-	
-	Slips:
-		2:	Loquacious Earring
-		3:	Twilight Torque/Cape
 --]]
 --------------------------------------------------------------------------------
 
@@ -21,8 +17,6 @@ function init_gear_sets()
 	}
 
 	sets.precast.FC.Geomancy = {}
-	sets.precast.FC.Geomancy.Indi = {}
-	sets.precast.FC.Geomancy.Geo = {}
 	
 	sets.precast.FC.EnhancingMagic = {}
 	sets.precast.FC.ElementalMagic = {}
@@ -41,8 +35,12 @@ function init_gear_sets()
 	sets.midcast.FastRecast = {}
 
 	sets.midcast.Geomancy = {}
-	sets.midcast.Geomancy.Indi = {}
-	sets.midcast.Geomancy.Geo = {}
+	sets.midcast.Geomancy.Indi = {
+		head="Artsieq Hat"	--proof of concept
+	}
+	sets.midcast.Geomancy.Geo = {
+		head="Hagondes Hat +1"	--proof of concept
+	}
 	
 	sets.midcast.Cure = {}
 	sets.midcast.Cure.with_buff = {}
@@ -76,18 +74,29 @@ function init_gear_sets()
 	sets.resting = {}
 	
 	sets.idle = {
-		main="",	sub="",		range="",	ammo="",
-		head="",	neck="",	ear1="",	ear2="",
-		body="",	hands="",	ring1="",	ring2="",
-		back="",	waist="",	legs="",	feet=""
+		main="Terra's Staff",	sub="Elder's Grip",						ammo="Kalboron Stone",
+		head="Nahtirah Hat",	neck="Twilight Torque",		ear1="Brachyura Earring",	ear2="Ethereal Earring",
+		body="Artsieq Jubbah",	hands="Hagondes Cuffs +1",	ring1="Defending Ring",		ring2="Shneddick Ring",
+		back="Repulse Mantle",	waist="Emphatikos Rope",	legs="Artsieq Hose",		feet="Hagondes Sabots +1"
 	}
-	sets.idle.lowMP = {}
-	sets.idle.lowMP_night =	{}
-	sets.idle.lowMP_day = {}
+	sets.idle.lowMP = {legs="Nares Trews"}
+	sets.idle.lowMP_night =	{hands="Serpentes Cuffs"}
+	sets.idle.lowMP_day = {feet="Serpentes Sabots"}
+	
+	sets.idle.with_pet = {}
+	sets.idle.with_pet.Luopan = {
+		body="Hagondes Coat +1"
+	}
 	
 	-- Defense sets
-	sets.defense.PDT = sets.idle
-	sets.defense.MDT = sets.idle
+	sets.defense.DT = {
+		head="Kaabnax Hat",	neck="Twilight Torque",
+		ring1="Defending Ring",	ring2="Dark Ring",
+	}
+	sets.defense.PDT = combineSets(sets.defense.DT, {
+	})
+	sets.defense.MDT = combineSets(sets.defense.DT, {
+	})
 
 	sets.engaged = {}
 end
