@@ -127,27 +127,28 @@ function precast(spell)
 			return
 		end
 	elseif S{'RNG','COR'}:contains(player.main_job) then
-		local check_ammo
-		--Choose which ammo should be verified
+		local check_ammo		--Choose which ammo should be verified
 		if (spell.type == 'WeaponSkill') and bow_gun_weaponskills:contains(spell.en) then
-			check_ammo = gear[modes.offense..'_ammo_WS']
+			local weaps = sets.weapons[modes.weapon]
+			check_ammo = weaps.ammo2 or weaps.ammo
 		elseif (spell.action_type == 'Ranged Attack') then
-			check_ammo = gear[modes.offense..'_ammo_RA']
+			check_ammo = sets.weapons[modes.weapon].ammo
 		end
 		
 		if check_ammo then		--Verify that ammunition is available
-			if (not player.inventory[check_ammo]) then
+			local itable = player.inventory[check_ammo] or player.wardrobe[check_ammo]
+			if (itable == nil) then
 				atc(104, 'No ammo available for that action.')
 				cancel_spell()
 				return
 			end
-			if (player.inventory[check_ammo].count <= options.ammo_warning_limit) and
-			   (player.inventory[check_ammo].count > 1) and (not state.warned) then
+			if (itable.count <= options.ammo_warning_limit) and
+			   (itable.count > 1) and (not state.warned) then
 				atc(104, '******************************')
 				atc(104, '*****  LOW AMMO WARNING  *****')
 				atc(104, '******************************')
 				state.warned = true
-			elseif (player.inventory[check_ammo].count > options.ammo_warning_limit) and state.warned then
+			elseif (itable.count > options.ammo_warning_limit) and state.warned then
 				state.warned = false
 			end
 		end
@@ -316,7 +317,8 @@ function get_precast_set(spell)
 		precastSet = combineSets(precastSet, sets.precast.FC, status)
 	elseif spell.action_type == 'Ranged Attack' then
 		--Equip snapshot gear & TP ammo
-		precastSet = combineSets(sets.precast.ranged, {ammo=gear[modes.offense..'_ammo_RA']})
+		precastSet = combineSets(sets.precast.ranged, {ammo=sets.weapons[modes.weapon].ammo})
+		--precastSet = combineSets(sets.precast.ranged, {ammo=gear[modes.offense..'_ammo_RA']})
 	elseif spell.action_type == 'Ability' then
 		if spell.type == 'JobAbility' then
 			precastSet = combineSets(precastSet, sets.precast.JA, spell.en)
@@ -327,7 +329,11 @@ function get_precast_set(spell)
 				precastSet = combineSets(precastSet, sets[modes.offense], get_sub_type())
 				precastSet = combineSets(precastSet, sets[modes.offense], get_sub_type(), modes.ranged)
 				precastSet = combineSets(precastSet, sets[modes.offense], get_sub_type(), modes.ranged, 'ws')
-				precastSet = combineSets(precastSet, {ammo=gear[modes.offense..'_ammo_WS']})
+				
+				local weaps = sets.weapons[modes.weapon]
+				local ws_ammo = weaps.ammo2 or weaps.ammo
+				precastSet = combineSets(precastSet, {ammo=ws_ammo})
+				--precastSet = combineSets(precastSet, {ammo=gear[modes.offense..'_ammo_WS']})
 				
 				local wsSet = sets.wsBase
 				wsSet = combineSets(wsSet, sets.wsBase, wsmod[spell.en])
@@ -491,7 +497,12 @@ function get_midcast_set(spell)
 			midcastSet = combineSets(midcastSet, sets.midcast.DivineMagic, modes.casting)
 		elseif spell.skill == 'Elemental Magic' then
 			midcastSet = get_standard_magic_set(midcastSet, spell, spellMap, 'ElementalMagic')
-			--TODO: Add High/Low tier sets
+			
+			if low_tier_nukes:contains(spell.en) then
+				midcastSet = combineSets(midcastSet, sets.midcast.ElementalMagic, 'LowTier')
+			else
+				midcastSet = combineSets(midcastSet, sets.midcast.ElementalMagic, 'HighTier')
+			end
 			
 			if weatherPermits(spell.element) then
 				if spellMap ~= 'Helix' and options.useObi then
@@ -609,7 +620,8 @@ function get_midcast_set(spell)
 				midcastSet = combineSets(midcastSet, sets[modes.offense], get_sub_type())
 				midcastSet = combineSets(midcastSet, sets[modes.offense], get_sub_type(), modes.ranged)
 				midcastSet = combineSets(midcastSet, sets[modes.offense], get_sub_type(), modes.ranged, 'tp')
-				midcastSet = combineSets(midcastSet, {ammo=gear[modes.offense..'_ammo_WS']})
+				midcastSet = combineSets(midcastSet, {ammo=sets.weapons[modes.weapon].ammo})
+				--midcastSet = combineSets(midcastSet, {ammo=gear[modes.offense..'_ammo_WS']})
 				midcastSet = combineSets(sets.tpBase, midcastSet)
 			end
 		else
@@ -690,7 +702,8 @@ function get_idle_set(baseSet)
 		rngSet = combineSets(rngSet, sets[modes.offense])
 		rngSet = combineSets(rngSet, sets[modes.offense], get_sub_type())
 		rngSet = combineSets(rngSet, sets[modes.offense], get_sub_type(), state.RangedMode)
-		idleSet = combineSets(idleSet, rngSet)
+		idleSet = combineSets(rngSet, idleSet)
+		--idleSet = combineSets(idleSet, rngSet)
 	elseif player.main_job == 'THF' then
 		if modes.treasure == 'TH' then
 			idleSet = combineSets(idleSet, sets.TreasureHunter)
@@ -845,13 +858,17 @@ end
 --	Custom command handling
 --------------------------------------------------------------------------------
 
-function self_command(args)
-	local args = args
+function self_command(raw_args)
+	local args = raw_args
 	if type(args) == 'string' then
 		args = T(args:split(' '))
 		if #args == 0 then return end
 	end
 	local command = table.remove(args, 1)
+	
+	if command == 'info' then
+		args = raw_args:sub(6)
+	end
 	execute_command(command, args)
 end
 
@@ -1047,17 +1064,21 @@ end
 function pet_status_change(new, old)
 end
 
-function info_func(args)
+function info_func(command,...)
+	command = command or 'help'
+	local args = {...}
+	
 	if info == nil then
 		atc(3,'Unable to parse info.  Windower/addons/info/info_shared.lua was unable to be loaded.')
 		atc(3,'If you would like to use this function, please visit https://github.com/lorand-ffxi/addons to download it.')
 		return
 	end
-	local cmd = args[1]		--Take the first element as the command
-	if (#args > 1) then		--If there were more args provided
-		table.remove(args, 1)	--Remove the first from the list of args
-	end
-	info.process_input(cmd, args)
+	--local cmd = args[1]		--Take the first element as the command
+	--if (#args > 1) then		--If there were more args provided
+	--	table.remove(args, 1)	--Remove the first from the list of args
+	--end
+	info.process_input(command, args)
+	--info.process_input(cmd, args)
 end
 
 executable_commands = {
@@ -1065,5 +1086,5 @@ executable_commands = {
 	['update'] =	update,		['cycle']     =	cycle_mode,		['set']      =	set_mode,
 	['reset']  =	reset_mode,	['toggle']    =	toggle_mode,		['activate'] =	activate_mode,
 	['equip']  =	equip_set,	['info']      =	info_func,		['slips']    =	process_slip_gear,
-	['smn']    =	handle_smn,	['inv_check'] =	process_inventory_gear
+	['smn']    =	handle_smn,	['inv_check'] =	process_inventory_gear,	['set2chat'] =	set_to_chat
 }

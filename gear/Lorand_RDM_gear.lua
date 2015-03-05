@@ -134,8 +134,8 @@ function init_gear_sets()
 		body="Hagondes Coat +1",	hands="Otomi Gloves",	ring1="Fenrir Ring +1",		ring2="Acumen Ring",
 		back="Toro Cape",			waist="Aswang Sash",	legs="Hagondes Pants +1",	feet="Hagondes Sabots +1"
 	}
-	sets.midcast.ElementalMagic.with_buff = {}
-	sets.midcast.ElementalMagic.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
+	sets.midcast.ElementalMagic.LowTier = {}
+	sets.midcast.ElementalMagic.HighTier = {}
 	sets.midcast.ElementalMagic.Earth = {neck="Quanpur Necklace"}
 	
 	sets.midcast.ElementalEnfeeble = {
@@ -169,10 +169,10 @@ function init_gear_sets()
 	}
 	
 	sets.idle = {
-		main="Terra's Staff",		sub="Elder's Grip",		ammo="Demonry Stone",
+		main="Bolelabunga",		sub="Genbu's Shield",					ammo="Demonry Stone",
 		head="Vitivation Chapeau",	neck="Twilight Torque",	ear1="Brachyura Earring",	ear2="Ethereal Earring",
 		body="Artsieq Jubbah",		hands="Lurid Mitts",	ring1="Defending Ring",		ring2="Shneddick Ring",
-		back="Cheviot Cape",		waist="Flume Belt",		legs="Nares Trews",			feet="Serpentes Sabots"
+		back="Cheviot Cape",		waist="Flume Belt",	legs="Nares Trews",		feet="Serpentes Sabots"
 	}
 	sets.idle.with_buff = {}
 	sets.idle.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}

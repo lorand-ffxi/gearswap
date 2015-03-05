@@ -36,6 +36,7 @@ function set_modes()
 	elseif S{'RNG'}:contains(player.main_job) then
 		modelist['offense'] = {'Gun', 'Bow', 'Melee'}
 		modelist['ranged'] = {'5-hit', 'acc'}
+		modelist['weapon'] = {'Bow1a','Bow1b','Bow1c','Gun'}
 	elseif S{'MNK'}:contains(player.main_job) then
 		modelist['offense'] = {'Normal_A', 'Normal_B', 'Normal_C', 'HitMoar', 'Tank', 'TankAcc', 'HitYouBastard'}
 	elseif S{'NIN'}:contains(player.main_job) then

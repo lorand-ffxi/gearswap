@@ -98,7 +98,7 @@ function init_gear_sets()
 	sets.midcast.EnhancingMagic = {
 		main="Coeus",			sub="Achaq Grip",		ammo="Savant's Treatise",
 		head="Savant's Bonnet +2",	neck="Colossus's Torque",
-		body="Manasa Chasuble",
+		body="Pedagogy Gown",
 		waist="Cascade Belt"
 	}
 	sets.midcast.EnhancingMagic.LA = {
@@ -187,7 +187,8 @@ function init_gear_sets()
 		body="Hagondes Coat +1",	hands="Otomi Gloves",		ring1="Fenrir Ring +1",		ring2="Acumen Ring",
 		back="Bookworm's Cape",		waist="Aswang Sash",		legs="Hagondes Pants +1",	feet="Hagondes Sabots +1"
 	}
-	sets.midcast.ElementalMagic.with_buff = {}
+	sets.midcast.ElementalMagic.LowTier = {}
+	sets.midcast.ElementalMagic.HighTier = {}
 	sets.midcast.ElementalMagic.Earth = {neck="Quanpur Necklace"}
 	
 	sets.midcast.ElementalEnfeeble = {}
@@ -201,14 +202,15 @@ function init_gear_sets()
 	--============================================================
 	
 	sets.resting = {
-		main="Chatoyant Staff",		sub="Elder's Grip",						ammo="Kalboron Stone",
+		main={"Chatoyant Staff","Venabulum"},				sub="Elder's Grip",		ammo="Clarus Stone",
 		head="Kaabnax Hat",		neck="Eidolon Pendant",		ear1="Loquacious Earring",	ear2="Relaxing Earring",
-		body="Academic's Gown +1",	hands="Nares Cuffs",		ring1="Defending Ring",		ring2="Sheltered Ring",
-		back="Felicitas Cape",		waist="Emphatikos Rope",	legs="Nares Trews",		feet="Chelona Boots"
+		body="Artsieq Jubbah",		hands="Nares Cuffs",		ring1="Sangoma Ring",		ring2="Fenrir Ring +1",
+		back={"Felicitas Cape","Pahtli Cape"},
+		waist="Emphatikos Rope",	legs="Nares Trews",		feet="Chelona Boots"
 	}
 	
 	sets.idle = {
-		main="Terra's Staff",			sub="Elder's Grip",						ammo="Impatiens",
+		main="Bolelabunga",			sub="Genbu's Shield",						ammo="Impatiens",
 		head="Academic's Mortarboard +1",	neck="Twilight Torque",		ear1="Brachyura Earring",	ear2="Ethereal Earring",
 		body="Academic's Gown +1",		hands="Gendewitha Gages +1",	ring1="Defending Ring",		ring2="Shneddick Ring",
 		back="Mecistopins Mantle",		waist="Emphatikos Rope",	legs="Academic's Pants +1",	feet="Gendewitha Galoshes +1"
@@ -225,21 +227,22 @@ function init_gear_sets()
 	sets.idle.with_buff['sublimation: activated'] = {
 		head="Academic's Mortarboard +1",
 		body="Pedagogy Gown",
+		back="Repulse Mantle"
 	}
 	sets.idle.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	sets.idle.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}
-		
-	sets.defense.DT = {
-		neck="Twilight Torque",
-		ring1="Defending Ring",	ring2="Dark Ring",
-	}
-	sets.defense.PDT = set_combine(sets.defense.DT, {
-		body="Gendewitha Bliaut +1",	hands="Gendewitha Gages +1",
+	
+	sets.defense.PDT = {
+		head="Gendewitha Caubeen +1",	neck="Twilight Torque",
+		body="Gendewitha Bliaut +1",	hands="Gendewitha Gages +1",	ring1="Defending Ring",		ring2="Dark Ring",
 		back="Repulse Mantle",		legs="Hagondes Pants +1",	feet="Gendewitha Galoshes +1"
-	})
-	sets.defense.MDT = set_combine(sets.defense.DT, {
-		head="Artsieq Hat",	ear1="Merman's Earring",	ear2="Merman's Earring"
-	})
+	}
+	sets.defense.MDT = {
+		main="Venabulum",
+		head="Artsieq Hat",		neck="Twilight Torque",		ear1="Merman's Earring",	ear2="Merman's Earring",
+		ring1="Defending Ring",		ring2="Dark Ring",
+		back="Tuilha Cape"
+	}
 
 	--============================================================
 	

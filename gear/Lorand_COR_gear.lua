@@ -7,11 +7,14 @@
 
 
 function init_gear_sets()
-	gear.Gun = "Hgafircian +2"
-	gear['Gun_ammo'] = "Adlivun Bullet"
-	gear['Gun_ammo_RA'] = "Adlivun Bullet"
-	gear['Gun_ammo_WS'] = "Adlivun Bullet"
-	gear.QDbullet = "Animikii Bullet"
+	sets.weapons = {}
+	sets.weapons.Gun = {range="Hgafircian +2",ammo="Adlivun Bullet"}
+	-- gear.Gun = "Hgafircian +2"
+	-- gear['Gun_ammo'] = "Adlivun Bullet"
+	-- gear['Gun_ammo_RA'] = "Adlivun Bullet"
+	-- gear['Gun_ammo_WS'] = "Adlivun Bullet"
+	
+	sets.precast.QuickDraw = {ammo="Animikii Bullet"}
 	
 	sets.precast.JA['Triple Shot'] = {body="Navarch's Frac +2"}
 	sets.precast.JA['Random Deal'] = {body="Commodore Frac"}

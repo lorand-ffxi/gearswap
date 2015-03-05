@@ -1,16 +1,6 @@
 -----------------------------------------------------------------------------------------------------------
 --[[
 	Author: Ragnarok.Lorand
-	
-	Gorgets needed: BREEZE & SHADOW & LIGHT
-
-	Slips:
-		2:	Brutal Earring, Loq. Earring
-		3: 	Twilight Torque
-		10:	Iga+2 Head/Body/Feet
-		15:	Hachiya Hands/Feet
-		16:	Hachiya+1 Body/Legs
-		18:	Mochizuki+1 Head/Body/Hands/Legs/Feet
 
 	<legs>Iga Hakama +2</legs>	Adds Counter to Yonin when shadows are down
 --]]

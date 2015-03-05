@@ -108,6 +108,8 @@ function init_gear_sets()
 		body="Hagondes Coat +1",	hands="Otomi Gloves",	ring1="Fenrir Ring +1",		ring2="Acumen Ring",
 		back="Bane Cape",		waist="Aswang Sash",	legs="Hagondes Pants +1",	feet="Hagondes Sabots +1"
 	}
+	sets.midcast.ElementalMagic.LowTier = {}
+	sets.midcast.ElementalMagic.HighTier = {}
 	sets.midcast.ElementalMagic.Earth = {neck="Quanpur Necklace"}
 	
 	sets.midcast.ElementalMagic.Resistant = {
@@ -130,7 +132,7 @@ function init_gear_sets()
 	}
 	
 	sets.idle = {
-		main="Terra's Staff",	sub="Elder's Grip",						ammo="Impatiens",
+		main="Bolelabunga",	sub="Genbu's Shield",						ammo="Impatiens",
 		head="Kaabnax Hat",	neck="Twilight Torque",		ear1="Brachyura Earring",	ear2="Ethereal Earring",
 		body="Artsieq Jubbah",	hands="Yaoyotl Gloves",		ring1="Defending Ring",		ring2="Shneddick Ring",
 		back="Repulse Mantle",	waist="Emphatikos Rope",	legs="Artsieq Hose",		feet="Hagondes Sabots +1"

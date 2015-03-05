@@ -250,3 +250,16 @@ function process_slip_gear()
 		end
 	end	
 end
+
+function set_to_chat(args)
+	if not S{'/l','/p'}:contains(args[1]) then
+		atc(123,'Invalid target for printing set info: '..args[1])
+		return
+	end
+	local pe = player.equipment
+	local line1 = 'input '..args[1]..' '..pe.main..', '..pe.sub..', '..pe.range..', '..pe.ammo
+	local line2 = 'input '..args[1]..' '..pe.head..', '..pe.neck..', '..pe.ear1..', '..pe.ear2
+	local line3 = 'input '..args[1]..' '..pe.body..', '..pe.hands..', '..pe.ring1..', '..pe.ring2
+	local line4 = 'input '..args[1]..' '..pe.back..', '..pe.waist..', '..pe.legs..', '..pe.feet
+	windower.send_command(line1..';wait 1.1;'..line2..';wait 1.1;'..line3..';wait 1.1;'..line4)
+end

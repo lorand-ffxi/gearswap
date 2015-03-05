@@ -80,6 +80,8 @@ function init_gear_sets()
 		body="Hagondes Coat +1",	hands="Otomi Gloves",		ring1="Spiral Ring",		ring2="Acumen Ring",
 		back="Bane Cape",		waist="Cognition Belt",		legs="Hagondes Pants +1",	feet="Hagondes Sabots +1"
 	}
+	sets.midcast.ElementalMagic.LowTier = {}
+	sets.midcast.ElementalMagic.HighTier = {}
 	sets.midcast.ElementalMagic.with_buff = {}
 	sets.midcast.ElementalMagic.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
 	sets.midcast.ElementalMagic.Resistant = sets.midcast.ElementalMagic
@@ -101,10 +103,10 @@ function init_gear_sets()
 	
 	-- Idle sets
 	sets.idle = {
-		main="Terra's Staff",	sub="Achaq Grip",			ammo="Kalboron Stone",
-		head="Kaabnax Hat",		neck="Twilight Torque",		ear1="Novia Earring",	ear2="Star Earring",
-		body="Artsieq Jubbah",	hands="Hagondes Cuffs +1",	ring1="Dark Ring",		ring2="Shneddick Ring",
-		back="Cheviot Cape",	waist="Emphatikos Rope",	legs="Nares Trews",		feet="Hagondes Sabots +1"
+		main="Bolelabunga",	sub="Genbu's Shield",					ammo="Kalboron Stone",
+		head="Kaabnax Hat",	neck="Twilight Torque",		ear1="Novia Earring",	ear2="Star Earring",
+		body="Artsieq Jubbah",	hands="Hagondes Cuffs +1",	ring1="Dark Ring",	ring2="Shneddick Ring",
+		back="Cheviot Cape",	waist="Emphatikos Rope",	legs="Nares Trews",	feet="Hagondes Sabots +1"
 	}
 	sets.idle.lowMP = {legs="Nares Trews"}
 	sets.idle.lowMP_night =	{hands="Serpentes Cuffs"}

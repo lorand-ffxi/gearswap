@@ -174,6 +174,8 @@ function init_gear_sets()
 		body="Artsieq Jubbah",	hands="Otomi Gloves",	ring1="Fenrir Ring +1",		ring2="Acumen Ring",
 		back="Toro Cape",	waist="Aswang Sash",	legs="Gendewitha Spats +1",	feet="Gendewitha Galoshes +1"
 	}
+	sets.midcast.ElementalMagic.LowTier = {}
+	sets.midcast.ElementalMagic.HighTier = {}
 	sets.midcast.ElementalMagic.Earth = {neck="Quanpur Necklace"}
 	
 	sets.midcast.ElementalEnfeeble = {}
@@ -190,7 +192,7 @@ function init_gear_sets()
 	}
 
 	sets.idle = {
-		main="Terra's Staff",	sub="Elder's Grip",						ammo="Incantor Stone",
+		main="Bolelabunga",	sub="Genbu's Shield",						ammo="Incantor Stone",
 		head="Nahtirah Hat",	neck="Twilight Torque",		ear1="Brachyura Earring",	ear2="Ethereal Earring",
 		body={"Theophany Briault +1", "Artsieq Jubbah"},
 		hands="Dynasty Mitts",	ring1="Defending Ring",		ring2="Shneddick Ring",

@@ -1,11 +1,14 @@
------------------------------------------------------------------------------------------------------------
--- Adapted from Mote's GearSwap files by Ragnarok.Lorand
--- Mappings, lists and sets to describe game relationships that aren't easily determinable otherwise.
------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--[[
+	Adapted from Mote's GearSwap files by Ragnarok.Lorand
+	Mappings, lists and sets to describe game relationships that aren't
+	easily determinable otherwise.
+--]]
+--------------------------------------------------------------------------------
 
------------------------------------------------------------------------------------------------------------
--- Song buff enhancements on instruments and equipment
------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--		Song buff enhancements on instruments and equipment
+--------------------------------------------------------------------------------
 instruments = {}
 instruments.effects = {
 	["Angel's Flute"] = {['Prelude']=1},	["Angel's Flute +1"] = {['Prelude']=2},	["Apollo's Flute"] = {['Minuet']=3},
@@ -45,9 +48,9 @@ brdGearEffects = {
 	["Marduk's Shalwar +1"] = {['All']=1}
 }
 
------------------------------------------------------------------------------------------------------------
--- Elemental mappings for element relationships and certian types of spells.
------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--	Elemental mappings for element relationships and certian types of spells.
+--------------------------------------------------------------------------------
 elements = {}
 elements.list = S{'Light','Dark','Fire','Ice','Wind','Earth','Lightning','Water'}
 
@@ -173,9 +176,9 @@ elemental_weaponskills = {
 	["Herculean Slash"] = 'Ice',
 }
 
------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 -- Spell mappings allow defining a general category or description for sets of related spells.
------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
 spell_maps = {
 	--White Magic
@@ -277,7 +280,6 @@ bps.astralflow = {['Ifrit']='Inferno',['Shiva']='Diamond Dust',['Garuda']='Aeria
 
 smn_cmds = S{'cure','curaga','buffoffense','buffdefense','buffspecial','debuff1','debuff2','sleep','nuke2','nuke4','bp70','bp75','astralflow'}
 
-
 no_skill_spells_list = S{'Haste','Refresh','Regen','Protect','Protectra','Shell','Shellra','Raise','Reraise','Cursna','Sneak','Invisible','Deodorize'}
 var_potency_enfeebs = S{'Slow','Slow II','Paralyze','Paralyze II','Addle'}
 
@@ -288,39 +290,11 @@ debuff_to_na = {['Blind']='Blindna',['Paralyze']='Paralyna',['Poison']='Poisona'
 
 num2rom = {'I','II','III','IV','V','VI','VII','VIII','IX','X','XI'}
 
------------------------------------------------------------------------------------------------------------
--- Tables to specify general area groupings.  Creates the 'areas' table to be referenced in job files.
--- Zone names provided by world.area/world.zone are currently in all-caps, so defining the same way here.
------------------------------------------------------------------------------------------------------------
-areas = {}
+low_tier_nukes = S{'Stone','Water','Aero','Fire','Blizzard','Thunder','Stone II','Water II','Aero II','Fire II','Blizzard II','Thunder II','Stonega','Waterga','Aeroga','Firaga','Blizzaga','Thundaga','Stonera','Watera','Aerora','Fira','Blizzara','Thundara','Geohelix','Hydrohelix','Anemohelix','Pyrohelix','Cryohelix','Ionohelix','Luminohelix','Noctohelix'}
 
--- City areas for town gear and behavior.
-areas.Cities = S{
-	"Ru'Lude Gardens","Upper Jeuno","Lower Jeuno","Port Jeuno",
-	"Port Windurst","Windurst Waters","Windurst Woods","Windurst Walls","Heavens Tower",
-	"Port San d'Oria","Northern San d'Oria","Southern San d'Oria",
-	"Port Bastok","Bastok Markets","Bastok Mines","Metalworks",
-	"Aht Urhgan Whitegate","Nashmau","Tavanazian Safehold","Norg","Kazham",
-	"Selbina","Mhaura","Eastern Adoulin","Western Adoulin"
-}
--- Adoulin areas, where Ionis will grant special stat bonuses.
-areas.Adoulin = S{
-	"Yahse Hunting Grounds","Ceizak Battlegrounds","Foret de Hennetiel","Morimar Basalt Fields",
-	"Yorcia Weald","Yorcia Weald [U]","Cirdas Caverns","Cirdas Caverns [U]",
-	"Marjami Ravine","Kamihr Drifts","Sih Gates","Moh Gates",
-	"Dho Gates","Woh Gates","Rala Waterways","Rala Waterways [U]",
-	"Outer Ra'Kaznar","Outer Ra'Kaznar [U]"
-}
-
------------------------------------------------------------------------------------------------------------
--- Lists of certain NPCs.
------------------------------------------------------------------------------------------------------------
-npcs = {}
-npcs.Trust = S{'Ayame','Naji','Nanaa Mihgo','Tenzen','Volker','Zeid','Ajido-Marujido','Shantotto','Curilla','Excenmille','Trion','Valaineral','Kupipi','Mihli Aliapoh','Joachim','Lion'}
-
------------------------------------------------------------------------------------------------------------
--- Mappings for elemental gear
------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--			Mappings for elemental gear
+--------------------------------------------------------------------------------
 gear_map = {}
 
 gear_map.Obi = {['Light']='Korin Obi', ['Dark']='Anrin Obi', ['Fire']='Karin Obi', ['Ice']='Hyorin Obi', ['Wind']='Furin Obi', ['Earth']='Dorin Obi', ['Lightning']='Rairin Obi', ['Water']='Suirin Obi'}
@@ -332,96 +306,3 @@ gear_map.RecastStaff = {['Light']='Arka II', ['Dark']='Xsaeta II', ['Fire']='Ata
 gear_map.ftp = {}
 gear_map.ftp['neck'] = {['Light']='Light Gorget', ['Dark']='Shadow Gorget', ['Fire']='Flame Gorget', ['Ice']='Snow Gorget', ['Wind']='Breeze Gorget', ['Earth']='Soil Gorget', ['Lightning']='Thunder Gorget', ['Water']='Aqua Gorget'}
 gear_map.ftp['waist'] = {['Light']='Light Belt', ['Dark']='Shadow Belt', ['Fire']='Flame Belt', ['Ice']='Snow Belt', ['Wind']='Breeze Belt', ['Earth']='Soil Belt', ['Lightning']='Thunder Belt', ['Water']='Aqua Belt'}
-
------------------------------------------------------------------------------------------------------------
---	Elemental spell damage information
------------------------------------------------------------------------------------------------------------
-magic_stats = {
-	['Stone'] =		{V=10,L1=50,M0=2,  L2=100,M50=1,L3=200,M3=0,Max_N=1},
-	['Water'] =		{V=25,L1=50,M0=1.8,L2=100,M50=1,L3=200,M3=0,Max_N=1},
-	['Aero'] =		{V=40,L1=50,M0=1.6,L2=100,M50=1,L3=200,M3=0,Max_N=1},
-	['Fire'] =		{V=55,L1=50,M0=1.4,L2=100,M50=1,L3=200,M3=0,Max_N=1},
-	['Blizzard'] =		{V=70,L1=50,M0=1.2,L2=100,M50=1,L3=200,M3=0,Max_N=1},
-	['Thunder'] =		{V=85,L1=50,M0=1,  L2=100,M50=1,L3=200,M3=0,Max_N=1},
-
-	['Stone II'] =		{V=100,L1=50,M0=3,  L2=100,M50=2,  L3=200,M3=1,Max_N=1},
-	['Water II'] =		{V=120,L1=50,M0=2.8,L2=100,M50=1.9,L3=200,M3=1,Max_N=1},
-	['Aero II'] =		{V=140,L1=50,M0=2.6,L2=100,M50=1.8,L3=200,M3=1,Max_N=1},
-	['Fire II'] =		{V=160,L1=50,M0=2.4,L2=100,M50=1.7,L3=200,M3=1,Max_N=1},
-	['Blizzard II'] =	{V=180,L1=50,M0=2.2,L2=100,M50=1.6,L3=200,M3=1,Max_N=1},
-	['Thunder II'] =	{V=200,L1=50,M0=2,  L2=100,M50=1.5,L3=200,M3=1,Max_N=1},
-
-	['Stone III'] =		{V=200,L1=50,M0=4,  L2=100,M50=3,  L3=200,M3=2,   Max_N=1},
-	['Water III'] =		{V=230,L1=50,M0=3.7,L2=100,M50=2.9,L3=200,M3=1.95,Max_N=1},
-	['Aero III'] =		{V=260,L1=50,M0=3.4,L2=100,M50=2.8,L3=200,M3=1.9, Max_N=1},
-	['Fire III'] =		{V=290,L1=50,M0=3.1,L2=100,M50=2.7,L3=200,M3=1.85,Max_N=1},
-	['Blizzard III'] =	{V=320,L1=50,M0=2.8,L2=100,M50=2.6,L3=200,M3=1.8, Max_N=1},
-	['Thunder III'] =	{V=350,L1=50,M0=2.5,L2=100,M50=2.5,L3=200,M3=1.75,Max_N=1},
-
-	['Stone IV'] =		{V=400,L1=50,M0=5,  L2=100,M50=4,  L3=200,M3=3,   Max_N=1},
-	['Water IV'] =		{V=440,L1=50,M0=4.7,L2=100,M50=3.9,L3=200,M3=2.95,Max_N=1},
-	['Aero IV'] =		{V=480,L1=50,M0=4.4,L2=100,M50=3.8,L3=200,M3=2.9, Max_N=1},
-	['Fire IV'] =		{V=520,L1=50,M0=4.2,L2=100,M50=3.7,L3=200,M3=2.85,Max_N=1},
-	['Blizzard IV'] =	{V=560,L1=50,M0=3.9,L2=100,M50=3.6,L3=200,M3=2.8, Max_N=1},
-	['Thunder IV'] =	{V=600,L1=50,M0=3.6,L2=100,M50=3.5,L3=200,M3=2.75,Max_N=1},
-
-	['Stone V'] =		{V=650,L1=50,M0=6,  L2=100,M50=5,   L3=200,M3=4,   Max_N=1},
-	['Water V'] =		{V=700,L1=50,M0=5.6,L2=100,M50=4.74,L3=200,M3=3.95,Max_N=1},
-	['Aero V'] =		{V=750,L1=50,M0=5.2,L2=100,M50=4.5, L3=200,M3=3.9, Max_N=1},
-	['Fire V'] =		{V=800,L1=50,M0=4.8,L2=100,M50=4.24,L3=200,M3=3.85,Max_N=1},
-	['Blizzard V'] =	{V=850,L1=50,M0=4.4,L2=100,M50=4,   L3=200,M3=3.8, Max_N=1},
-	['Thunder V'] =		{V=900,L1=50,M0=4,  L2=100,M50=3.74,L3=200,M3=3.75,Max_N=1},
-
-	['Quake'] =		{V=700,L1=50,M0=2,L2=100,M50=2,L3=200,M3=2,Max_N=1},
-	['Flood'] =		{V=700,L1=50,M0=2,L2=100,M50=2,L3=200,M3=2,Max_N=1},
-	['Tornado'] =		{V=700,L1=50,M0=2,L2=100,M50=2,L3=200,M3=2,Max_N=1},
-	['Flare'] =		{V=700,L1=50,M0=2,L2=100,M50=2,L3=200,M3=2,Max_N=1},
-	['Freeze'] =		{V=700,L1=50,M0=2,L2=100,M50=2,L3=200,M3=2,Max_N=1},
-	['Burst'] =		{V=700,L1=50,M0=2,L2=100,M50=2,L3=200,M3=2,Max_N=1},
-	['Impact'] =		{V=700,L1=50,M0=2,L2=100,M50=2,L3=200,M3=2,Max_N=1},
-
-	['Quake II'] =		{V=800, L1=50,M0=2,L2=100,M50=2.00,L3=200,M3=2.0,Max_N=1},
-	['Flood II'] =		{V=800, L1=50,M0=2,L2=100,M50=2.00,L3=200,M3=2.0,Max_N=1},
-	['Tornado II'] =	{V=800, L1=50,M0=2,L2=100,M50=2.00,L3=200,M3=2.0,Max_N=1},
-	['Flare II'] =		{V=800, L1=50,M0=2,L2=100,M50=2.00,L3=200,M3=2.0,Max_N=1},
-	['Freeze II'] =		{V=800, L1=50,M0=2,L2=100,M50=2.00,L3=200,M3=2.0,Max_N=1},
-	['Burst II'] =		{V=800, L1=50,M0=2,L2=100,M50=2.00,L3=200,M3=2.0,Max_N=1},
-	['Comet'] =		{V=1000,L1=50,M0=4,L2=100,M50=3.75,L3=200,M3=3.5,Max_N=1},
-
-	['Stonega'] =		{V=60, L1=50,M0=3.0,L2=100,M50=2.0,L3=200,M3=1.00,Max_N=10},
-	['Waterga'] =		{V=80, L1=50,M0=2.8,L2=100,M50=1.9,L3=200,M3=1.00,Max_N=10},
-	['Aeroga'] =		{V=100,L1=50,M0=2.6,L2=100,M50=1.8,L3=200,M3=1.00,Max_N=10},
-	['Firaga'] =		{V=120,L1=50,M0=2.4,L2=100,M50=1.7,L3=200,M3=1.00,Max_N=10},
-	['Blizzaga'] =		{V=160,L1=50,M0=2.2,L2=100,M50=1.6,L3=200,M3=1.00,Max_N=10},
-	['Thundaga'] =		{V=200,L1=50,M0=2.0,L2=100,M50=1.5,L3=200,M3=1.00,Max_N=10},
-
-	['Stonega II'] =	{V=250,L1=50,M0=4.0,L2=100,M50=3.0,L3=200,M3=2.00,Max_N=10},
-	['Waterga II'] =	{V=280,L1=50,M0=3.7,L2=100,M50=2.9,L3=200,M3=1.95,Max_N=10},
-	['Aeroga II'] =		{V=310,L1=50,M0=3.4,L2=100,M50=2.8,L3=200,M3=1.90,Max_N=10},
-	['Firaga II'] =		{V=340,L1=50,M0=3.1,L2=100,M50=2.7,L3=200,M3=1.85,Max_N=10},
-	['Blizzaga II'] =	{V=370,L1=50,M0=2.8,L2=100,M50=2.6,L3=200,M3=1.80,Max_N=10},
-	['Thundaga II'] =	{V=400,L1=50,M0=2.5,L2=100,M50=2.5,L3=200,M3=1.75,Max_N=10},
-
-	['Stonega III'] =	{V=500,L1=50,M0=5.0,L2=100,M50=4.0,L3=200,M3=3.00,Max_N=10},
-	['Waterga III'] =	{V=540,L1=50,M0=4.7,L2=100,M50=3.9,L3=200,M3=2.95,Max_N=10},
-	['Aeroga III'] =	{V=580,L1=50,M0=4.4,L2=100,M50=3.8,L3=200,M3=2.90,Max_N=10},
-	['Firaga III'] =	{V=620,L1=50,M0=4.2,L2=100,M50=3.7,L3=200,M3=2.85,Max_N=10},
-	['Blizzaga III'] =	{V=660,L1=50,M0=3.9,L2=100,M50=3.6,L3=200,M3=2.80,Max_N=10},
-	['Thundaga III'] =	{V=700,L1=50,M0=3.6,L2=100,M50=3.5,L3=200,M3=2.75,Max_N=10},
-
-	['Stoneja'] =		{V=750, L1=50,M0=6.0,L2=100,M50=5.00,L3=200,M3=4.00,Max_N=10},
-	['Waterja'] =		{V=800, L1=50,M0=5.6,L2=100,M50=4.75,L3=200,M3=3.95,Max_N=10},
-	['Aeroja'] =		{V=850, L1=50,M0=5.2,L2=100,M50=4.50,L3=200,M3=3.90,Max_N=10},
-	['Firaja'] =		{V=900, L1=50,M0=4.8,L2=100,M50=4.25,L3=200,M3=3.85,Max_N=10},
-	['Blizzaja'] =		{V=950, L1=50,M0=4.4,L2=100,M50=4.00,L3=200,M3=3.80,Max_N=10},
-	['Thundaja'] =		{V=1000,L1=50,M0=4.0,L2=100,M50=3.75,L3=200,M3=3.75,Max_N=10},
-
-	['Geohelix'] =		{V=0,L1=75,M0=1.1,L2=85,M50=0.75,L3=200,M3=0.5,Max_N=1},
-	['Hydrohelix'] =	{V=0,L1=75,M0=1.1,L2=85,M50=0.75,L3=200,M3=0.5,Max_N=1},
-	['Anemohelix'] =	{V=0,L1=75,M0=1.1,L2=85,M50=0.75,L3=200,M3=0.5,Max_N=1},
-	['Pyrohelix'] =		{V=0,L1=75,M0=1.1,L2=85,M50=0.75,L3=200,M3=0.5,Max_N=1},
-	['Cryohelix'] =		{V=0,L1=75,M0=1.1,L2=85,M50=0.75,L3=200,M3=0.5,Max_N=1},
-	['Ionohelix'] =		{V=0,L1=75,M0=1.1,L2=85,M50=0.75,L3=200,M3=0.5,Max_N=1},
-	['Luminohelix'] =	{V=0,L1=75,M0=1.1,L2=85,M50=0.75,L3=200,M3=0.5,Max_N=1},
-	['Noctohelix'] =	{V=0,L1=75,M0=1.1,L2=85,M50=0.75,L3=200,M3=0.5,Max_N=1},
-}

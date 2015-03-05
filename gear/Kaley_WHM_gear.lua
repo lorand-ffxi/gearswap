@@ -188,6 +188,8 @@ function init_gear_sets()
 		body="Weatherspoon Robe +1",	hands="Otomi Gloves",		ring1="Snow Ring",			ring2="Acumen Ring",
 		back="Toro Cape",				waist="Cognition Belt",		legs="Gendewitha Spats +1",	feet="Gendewitha Galoshes +1"
 	}
+	sets.midcast.ElementalMagic.LowTier = {}
+	sets.midcast.ElementalMagic.HighTier = {}
 	sets.midcast.ElementalMagic.with_buff = {}
 	sets.midcast.ElementalMagic.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
 	sets.midcast.ElementalMagic.Earth = {neck="Quanpur Necklace"}
@@ -204,9 +206,9 @@ function init_gear_sets()
 	}
 
 	sets.idle = {
-		main="Terra's Staff",	sub="Achaq Grip",			ammo="Incantor Stone",
-		head="Kaabnax Hat",		neck="Twilight Torque",		ear1="Novia Earring",		ear2="Star Earring",
-		body="Artsieq Jubbah",	hands="Serpentes Cuffs",	ring1="Dark Ring",			ring2="Shneddick Ring",
+		main="Bolelabunga",	sub="Genbu's Shield",						ammo="Incantor Stone",
+		head="Kaabnax Hat",	neck="Twilight Torque",		ear1="Novia Earring",		ear2="Star Earring",
+		body="Artsieq Jubbah",	hands="Serpentes Cuffs",	ring1="Dark Ring",		ring2="Shneddick Ring",
 		back="Cheviot Cape",	waist="Hierarch Belt",		legs="Piety Pantaloons",	feet="Theophany Duckbills"
 	}
 	sets.idle.with_buff = {}

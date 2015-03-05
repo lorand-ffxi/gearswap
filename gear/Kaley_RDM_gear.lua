@@ -141,6 +141,8 @@ function init_gear_sets()
 		body="Hagondes Coat +1",	hands="Otomi Gloves",	ring1="Acumen Ring",		ring2="Spiral Ring",
 		back="Toro Cape",		waist="Cognition Belt",	legs="Hagondes Pants +1",	feet="Vitivation Boots +1"
 	}
+	sets.midcast.ElementalMagic.LowTier = {}
+	sets.midcast.ElementalMagic.HighTier = {}
 	sets.midcast.ElementalMagic.Earth = {neck="Quanpur Necklace"}
 	
 	sets.midcast.ElementalMagic.with_buff = {}
@@ -187,7 +189,7 @@ function init_gear_sets()
 	
 	sets.idle = {
 		--main="Terra's Staff",		sub="Achaq Grip",		ammo="Kalboron Stone",
-		main="Xiutleato",		sub="Genbu's Shield",		ammo="Kalboron Stone",
+		main="Bolelabunga",		sub="Genbu's Shield",		ammo="Kalboron Stone",
 		head="Vitivation Chapeau +1",	neck="Twilight Torque",		ear1="Novia Earring",		ear2="Ethereal Earring",
 		body="Artsieq Jubbah",		hands="Hagondes Cuffs +1",	ring1="Dark Ring",		ring2="Shneddick Ring",
 		--back="Cheviot Cape",			

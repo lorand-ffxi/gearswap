@@ -24,7 +24,9 @@ function define_defaults()
 	sets.midcast.HealingMagic = {}
 	
 	sets.idle = {}
+	sets.idle.with_buff = {}
 	sets.engaged = {}
+	sets.engaged.with_buff = {}
 	sets.defense = {}
 	sets.defense.PDT = {}
 	sets.defense.MDT = {}
