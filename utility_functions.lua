@@ -79,7 +79,7 @@ function atc(c, msg)
 		msg = c
 		c = 0
 	end
-	winraw.add_to_chat(c, msg)
+	winraw.add_to_chat(c, winraw.to_shift_jis(msg))
 end
 
 --[[

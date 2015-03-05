@@ -340,7 +340,7 @@ function get_precast_set(spell)
 				wsSet = combineSets(wsSet, sets.wsBase, wsmod[spell.en], spell.en)
 				wsSet = combineSets(wsSet, get_ftp_set(spell))
 				
-				precastSet = combineSets(wsSet, precastSet)
+				precastSet = combineSets(precastSet, wsSet)
 			else
 				if (elemental_weaponskills[spell.english] ~= nil) then
 					precastSet = sets.wsBase.Magic
@@ -621,7 +621,6 @@ function get_midcast_set(spell)
 				midcastSet = combineSets(midcastSet, sets[modes.offense], get_sub_type(), modes.ranged)
 				midcastSet = combineSets(midcastSet, sets[modes.offense], get_sub_type(), modes.ranged, 'tp')
 				midcastSet = combineSets(midcastSet, {ammo=sets.weapons[modes.weapon].ammo})
-				--midcastSet = combineSets(midcastSet, {ammo=gear[modes.offense..'_ammo_WS']})
 				midcastSet = combineSets(sets.tpBase, midcastSet)
 			end
 		else
@@ -865,10 +864,6 @@ function self_command(raw_args)
 		if #args == 0 then return end
 	end
 	local command = table.remove(args, 1)
-	
-	if command == 'info' then
-		args = raw_args:sub(6)
-	end
 	execute_command(command, args)
 end
 
@@ -909,6 +904,21 @@ function update(args)
 	equipSet = combineSets(equipSet, sets.weapons, modes.weapon)
 	equip(equipSet)
 
+	if (player.main_job == 'RNG') then
+		local rweap = equipSet.range
+		if (rweap ~= nil) then
+			local rwtbl = res.items:with('en',rweap)
+			if (rwtbl ~= nil) then
+				local skill = rwtbl.skill
+				if (skill == 25) and (modes.offense ~= 'Bow') then
+					set_mode({'offense','Bow'})
+				elseif (skill == 26) and (modes.offense ~= 'Gun') then
+					set_mode({'offense','Gun'})
+				end
+			end
+		end
+	end
+	
 	if (args ~= nil) and (args[1] == 'user') then
 		display_current_state()
 	end
@@ -1064,21 +1074,15 @@ end
 function pet_status_change(new, old)
 end
 
-function info_func(command,...)
-	command = command or 'help'
-	local args = {...}
-	
+function info_func(args)
 	if info == nil then
 		atc(3,'Unable to parse info.  Windower/addons/info/info_shared.lua was unable to be loaded.')
 		atc(3,'If you would like to use this function, please visit https://github.com/lorand-ffxi/addons to download it.')
 		return
 	end
-	--local cmd = args[1]		--Take the first element as the command
-	--if (#args > 1) then		--If there were more args provided
-	--	table.remove(args, 1)	--Remove the first from the list of args
-	--end
-	info.process_input(command, args)
-	--info.process_input(cmd, args)
+	local cmd = args[1]	--Take the first element as the command
+	table.remove(args, 1)	--Remove the first from the list of args
+	info.process_input(cmd, args)
 end
 
 executable_commands = {
