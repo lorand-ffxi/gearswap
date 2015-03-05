@@ -1,6 +1,7 @@
 --------------------------------------------------------------------------------
 --[[
 	Author: Ragnarok.Lorand
+	Note: Lutian Cape is augmented with STR+2 & STP+2
 --]]
 --------------------------------------------------------------------------------
 
@@ -86,60 +87,44 @@ function init_gear_sets()
 	sets.Bow.sam = {}
 	sets.Bow.other = {}
 
-	--5-hit with no requirements
-	sets.Bow.sam['5-hit'] = {main="Mekki Shakki", sub="Rose Strap"}
-	sets.Bow.sam['5-hit'].tp = {}
+	--4-hit /SAM with 2 recycle procs
+	sets.Bow.sam['r4-hit'] = {main="Mekki Shakki", sub="Rose Strap"}
+	sets.Bow.sam['r4-hit'].tp = {waist="Patentia Sash"}
 
-	--5-hit with no requirements
-	sets.Bow.other['5-hit'] = {main="Mekki Shakki", sub="Rose Strap"}
-	sets.Bow.other['5-hit'].tp = {ring1="Rajas Ring",back="Sylvan Chlamys"}
+	sets.Bow.sam.acc = {main="Hurlbat", sub={"Antican Axe", "Legion Scutum"}}
+	sets.Bow.sam.acc.tp = {neck="Hope Torque",hands="Iuitl Wristbands +1",legs="Iuitl Tights +1"}
+	
+	--4-hit /??? with 2 recycle procs
+	sets.Bow.other['r4-hit'] = {main="Mekki Shakki", sub="Rose Strap"}
+	sets.Bow.other['r4-hit'].tp = {
+		hands="Sylvan Glovelettes +2",	ring1="Rajas Ring",	ring2="K'ayres Ring",
+		waist="Patentia Sash",		legs="Iuitl Tights +1"
+	}
 	
 	sets.Bow.other.acc = {main="Hurlbat", sub={"Antican Axe", "Legion Scutum"}}
-	sets.Bow.other.acc.tp = {}
+	sets.Bow.other.acc.tp = {neck="Hope Torque",hands="Iuitl Wristbands +1",legs="Iuitl Tights +1"}
 	
 	--========================[Gun]===============================
 	sets.Gun = combineSets({},sets.weapons[modes.weapon])
 	sets.Gun.sam = {}
 	sets.Gun.other = {}
 	
-	--5-hit with subjob SAM
-	sets.Gun.sam['5-hit'] = {
-		main="Hurlbat",
-		ear2="Volley Earring"
+	--4-hit /SAM with 2 recycle procs
+	sets.Gun.sam['r4-hit'] = {main="Mekki Shakki", sub="Rose Strap"}
+	sets.Gun.sam['r4-hit'].tp = {waist="Patentia Sash"}
+
+	sets.Gun.sam.acc = {main="Hurlbat", sub={"Antican Axe", "Legion Scutum"}}
+	sets.Gun.sam.acc.tp = {neck="Faith Torque",hands="Iuitl Wristbands +1",legs="Iuitl Tights +1"}
+	
+	--4-hit /??? with 2 recycle procs
+	sets.Gun.other['r4-hit'] = {main="Mekki Shakki", sub="Rose Strap"}
+	sets.Gun.other['r4-hit'].tp = {
+		hands="Manibozho Gloves",	ring1="Rajas Ring",	ring2="K'ayres Ring",
+		back="Sylvan Chlamys",		waist="Patentia Sash",	legs="Iuitl Tights +1"
 	}
 	
-	--5-hit with subjob SAM; more attack
-	sets.Gun.sam['a5-hit'] = {main="Hurlbat"}
-	sets.Gun.sam['a5-hit'].tp = {
-		neck="Ocachi Gorget",		ear2="Volley Earring",
-		hands="Arcadian Bracers",	ring1="Rajas Ring"
-	}
-	
-	--4-hit with subjob SAM
-	sets.Gun.sam['4-hit'] = {
-		main="Mekki Shakki",	sub="Rose Strap",
-		ear2="Volley Earring",
-		ring1="Rajas Ring"
-	}
-	sets.Gun.sam['4-hit'].tp = {
-		neck="Ocachi Gorget",
-		hands="Sylvan Glovelettes +2",
-		back="Sylvan Chlamys"
-	}
-	
-	--5-hit with subjob other than SAM
-	sets.Gun.other['5-hit'] = {main="Mekki Shakki", sub="Rose Strap"}
-	sets.Gun.other['5-hit'].tp = {
-		neck="Ocachi Gorget",		ear2="Volley Earring",
-		legs="Aetosaur Trousers"
-	}
-	
-	sets.Gun.other['acc'] = {main="Hurlbat", sub="Antican Axe"}
-	sets.Gun.other['acc'].tp = {
-		neck="Ocachi Gorget",	ear2="Volley Earring",
-		body="Iuitl Vest +1",	ring2="Rajas Ring",
-		waist="Patentia Sash",	legs="Aetosaur Trousers",	feet="Scopuli Nails +1"
-	}
+	sets.Gun.other.acc = {main="Hurlbat", sub={"Antican Axe", "Legion Scutum"}}
+	sets.Gun.other.acc.tp = {neck="Faith Torque",hands="Iuitl Wristbands +1",legs="Iuitl Tights +1"}
 	
 	--============================================================
 
@@ -158,7 +143,7 @@ function init_gear_sets()
 		back="Lutian Cape",		waist="Scout's Belt",		legs="Iuitl Tights +1",		feet="Orion Socks +1"
 	}
 	
-	sets.ranged.barrage = set_combine(sets.ranged.maxAcc, {hands="Orion Bracers"})
+	sets.ranged.barrage = combineSets(sets.ranged.maxAcc, {hands="Orion Bracers"})
 	
 	--============================================================
 	--			Other sets
@@ -178,12 +163,12 @@ function init_gear_sets()
 		neck="Twilight Torque",
 		ring1="Defending Ring",		ring2="Dark Ring"
 	}
-	sets.defense.PDT = set_combine(sets.defense.DT, {	--PDT-18% + DT => PDT-33%
+	sets.defense.PDT = combineSets(sets.defense.DT, {	--PDT-18% + DT => PDT-33%
 		head="Iuitl Headgear +1",
 		body="Iuitl Vest +1",		hands="Umuthi Gloves",
 		back="Repulse Mantle",		waist="Flume Belt",	legs="Iuitl Tights +1",	feet="Iuitl Gaiters +1"
 	})
-	sets.defense.MDT = set_combine(sets.defense.DT, {	--MDT-4% + DT => MDT-16%, MDB+19
+	sets.defense.MDT = combineSets(sets.defense.DT, {	--MDT-4% + DT => MDT-16%, MDB+19
 		head="Ejekamal Mask",	ear1="Merman's Earring",	ear2="Merman's Earring",
 		body="Iuitl Vest +1",	hands="Umuthi Gloves",
 		back="Tuilha Cape",	waist="Flume Belt",		legs="Kaabnax Trousers",	feet="Iuitl Gaiters +1"
