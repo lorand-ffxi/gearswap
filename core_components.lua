@@ -8,11 +8,11 @@
 function init()
 	_libs = _libs or {}
 	_libs.lists = _libs.lists or require('lists')
+	_libs.chars = _libs.chars or require('chat/chars')	--Required for using special characters in delayed messages
+	_libs.slips = _libs.slips or require('slips')		--Required for notifying which items need to be fetched from the porter moogle
 	res = res or gearswap.res
 	
 	include('packet_handling')	--Required for haste tier detection
-	chars = require('chat/chars')	--Required for using special characters in delayed messages
-	slips = require('slips')	--Required for notifying which items need to be fetched from the porter moogle
 	winraw = gearswap._G.windower	--Required for direct access to windower functions
 	winraw.register_event('incoming chunk', parse_buff_info)
 	
@@ -30,7 +30,7 @@ function init()
 	-- Load gear from a job-specific file
 	if load_user_gear(player.main_job) then
 		if init_gear_sets then init_gear_sets() end
-		process_slip_gear()
+		setops.find_slipped()
 	end
 	
 	load_user_settings()		--Attempt to load user settings
@@ -338,14 +338,14 @@ function get_precast_set(spell)
 				local wsSet = sets.wsBase
 				wsSet = combineSets(wsSet, sets.wsBase, wsmod[spell.en])
 				wsSet = combineSets(wsSet, sets.wsBase, wsmod[spell.en], spell.en)
-				wsSet = combineSets(wsSet, get_ftp_set(spell))
+				wsSet = combineSets(wsSet, setops.get_ftp_set(spell))
 				
 				precastSet = combineSets(precastSet, wsSet)
 			else
 				if (elemental_weaponskills[spell.english] ~= nil) then
 					precastSet = sets.wsBase.Magic
 					if weatherPermits(spell.element) and options.useObi then
-						precastSet = combineSets(precastSet, {waist=getObi(spell.element)})
+						precastSet = combineSets(precastSet, {waist=setops.getObi(spell.element)})
 					end
 				else
 					precastSet = sets.wsBase
@@ -354,7 +354,7 @@ function get_precast_set(spell)
 				precastSet = combineSets(precastSet, sets.wsBase, get_sub_type(), modes.offense)
 				precastSet = combineSets(precastSet, sets.wsBase, get_sub_type(), modes.offense, wsmod[spell.en])
 				precastSet = combineSets(precastSet, sets.wsBase, get_sub_type(), modes.offense, wsmod[spell.en], spell.en)
-				precastSet = combineSets(precastSet, get_ftp_set(spell))
+				precastSet = combineSets(precastSet, setops.get_ftp_set(spell))
 				
 				for buff,_ in pairs(buffactive) do
 					precastSet = combineSets(precastSet, sets.ws, 'with_buff', buff)
@@ -477,7 +477,7 @@ function get_midcast_set(spell)
 			midcastSet = combineSets(midcastSet, sets.midcast.spellMap, targType)
 			if (spellMap == 'Cure') then
 				if weatherPermits(spell.element)then			
-					midcastSet = combineSets(midcastSet, {waist=getObi(spell.element)})
+					midcastSet = combineSets(midcastSet, {waist=setops.getObi(spell.element)})
 				end
 				for buff,_ in pairs(buffactive) do
 					midcastSet = combineSets(midcastSet, sets.midcast.Cure, 'with_buff', buff)
@@ -488,7 +488,7 @@ function get_midcast_set(spell)
 			if S{'Banish', 'Holy'}:contains(spellMap) then
 				midcastSet = combineSets(midcastSet, sets.midcast.DivineMagic.Nuke)
 				if weatherPermits(spell.element) and options.useObi then
-					midcastSet = combineSets(midcastSet, {waist=getObi(spell.element)})
+					midcastSet = combineSets(midcastSet, {waist=setops.getObi(spell.element)})
 				end
 				for buff,_ in pairs(buffactive) do
 					midcastSet = combineSets(midcastSet, sets.midcast.DivineMagic, 'with_buff', buff)
@@ -506,7 +506,7 @@ function get_midcast_set(spell)
 			
 			if weatherPermits(spell.element) then
 				if spellMap ~= 'Helix' and options.useObi then
-					midcastSet = combineSets(midcastSet, {waist=getObi(spell.element)})
+					midcastSet = combineSets(midcastSet, {waist=setops.getObi(spell.element)})
 				end
 				if options.useTwilightCape then
 					midcastSet = combineSets(midcastSet, {back='Twilight Cape'})
@@ -583,7 +583,7 @@ function get_midcast_set(spell)
 				if spellMap == 'NinNuke' then
 					midcastSet = combineSets(midcastSet, sets.midcast, 'Ninjutsu', 'Nuke')
 					if weatherPermits(spell.element) and options.useObi then
-						midcastSet = combineSets(midcastSet, {waist=getObi(spell.element)})
+						midcastSet = combineSets(midcastSet, {waist=setops.getObi(spell.element)})
 					end
 					midcastSet = combineSets(midcastSet, sets.midcast, 'Ninjutsu', 'Nuke', spell.element)
 					
@@ -1089,6 +1089,7 @@ executable_commands = {
 	['atc']    =	addToChat,	['scholar']   =	handle_strategems,	['show']     =	show_set,
 	['update'] =	update,		['cycle']     =	cycle_mode,		['set']      =	set_mode,
 	['reset']  =	reset_mode,	['toggle']    =	toggle_mode,		['activate'] =	activate_mode,
-	['equip']  =	equip_set,	['info']      =	info_func,		['slips']    =	process_slip_gear,
-	['smn']    =	handle_smn,	['inv_check'] =	process_inventory_gear,	['set2chat'] =	set_to_chat
+	['equip']  =	equip_set,	['info']      =	info_func,		['slips']    =	setops.find_slipped,
+	['smn']    =	handle_smn,	['inv_check'] =	setops.find_movable,	['set2chat'] =	setops.set_to_chat,
+	['storable'] = setops.determine_storable
 }

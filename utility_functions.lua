@@ -69,6 +69,24 @@ end
 --			Printing Functions
 --==============================================================================
 
+function colorFor(col)
+	local cstr = ''
+	if not ((S{256,257}:contains(col)) or (col<1) or (col>511)) then
+		if (col <= 255) then
+			cstr = string.char(0x1F)..string.char(col)
+		else
+			cstr = string.char(0x1E)..string.char(col - 256)
+		end
+	end
+	return cstr
+end
+
+function string.colorize(str, new_col, reset_col)
+	new_col = new_col or 1
+	reset_col = reset_col or 1
+	return colorFor(new_col)..str..colorFor(reset_col)
+end
+
 --[[
 	Convenience wrapper for accessing the true windower.add_to_chat
 	function. Information printed via print_table() was being mangled and
@@ -103,7 +121,7 @@ function addToChat(cmdParams)
 	end
 	--Parse the text to be displayed for special character codes as found
 	-- in Windower/addons/libs/chat/chars.lua
-	for k,v in pairs(chars) do
+	for k,v in pairs(_libs.chars) do
 		if dispText:contains('<'..k..'>') then
 			--Replace codes with the characters they represent
 			dispText = dispText:gsub('<'..k..'>', v)

@@ -6,6 +6,8 @@
 --]]
 --==============================================================================
 
+setops = setops or {}
+
 local itemSlots = {'main', 'sub', 'range', 'ammo', 'head', 'neck', 'ear1', 'ear2', 'body', 'hands', 'ring1', 'ring2', 'back', 'waist', 'legs', 'feet'}
 
 --[[
@@ -39,11 +41,11 @@ function combineSets(set1, set2, ...)
 	for _,itemSlot in pairs(itemSlots) do
 		if (set2 ~= nil) and (set2[itemSlot] ~= nil) then
 			if type(set2[itemSlot]) == 'table' then
-				local i = chooseAvailablePiece(set2[itemSlot])
+				local i = setops.chooseAvailablePiece(set2[itemSlot])
 				if i ~= nil then
 					newSet[itemSlot] = i
 				end
-			elseif isAvailable(set2[itemSlot]) then
+			elseif setops.isAvailable(set2[itemSlot]) then
 				newSet[itemSlot] = set2[itemSlot]
 			end
 		end
@@ -53,11 +55,11 @@ function combineSets(set1, set2, ...)
 		if newSet[itemSlot] == nil then
 			if (set1 ~= nil) and (set1[itemSlot] ~= nil) then
 				if type(set1[itemSlot]) == 'table' then
-					local i = chooseAvailablePiece(set1[itemSlot])
+					local i = setops.chooseAvailablePiece(set1[itemSlot])
 					if i ~= nil then
 						newSet[itemSlot] = i
 					end
-				elseif isAvailable(set1[itemSlot]) then
+				elseif setops.isAvailable(set1[itemSlot]) then
 					newSet[itemSlot] = set1[itemSlot]
 				end
 			end
@@ -70,10 +72,10 @@ end
 	Returns the name of the first item that is available in the player's inventory from a list
 	that is ordered from most desirable to least desirable.
 --]]
-function chooseAvailablePiece(gearTable)
+function setops.chooseAvailablePiece(gearTable)
 	if gearTable == nil then return nil end
 	for _,i in pairs(gearTable) do
-		if isAvailable(i) then
+		if setops.isAvailable(i) then
 			return i
 		end
 	end
@@ -83,7 +85,7 @@ end
 --[[
 	Returns true if the given item is in the player's inventory, false otherwise.
 --]]
-function isAvailable(item)
+function setops.isAvailable(item)
 	local itable = player.inventory[item] or player.wardrobe[item]
 	if (itable ~= nil) then
 		local iinfo = res.items[itable.id]
@@ -102,22 +104,21 @@ end
 --[[
 	Returns a set containing the ftp pieces for the given ws.
 --]]
-function get_ftp_set(ws)
+function setops.get_ftp_set(ws)
 	local ftpSet = {}
 	if options.use_ftp_neck then
-		ftpSet = combineSets(ftpSet, get_ftp_gear('neck', ws))
+		ftpSet = combineSets(ftpSet, setops.get_ftp_gear('neck', ws))
 	end
 	if options.use_ftp_waist then
-		ftpSet = combineSets(ftpSet, get_ftp_gear('waist', ws))
+		ftpSet = combineSets(ftpSet, setops.get_ftp_gear('waist', ws))
 	end
 	return ftpSet
 end
 
 --[[
 	Returns a set containing the ftp piece for the given slot and ws.
-	TODO: New ftp neck/belts
 --]]
-function get_ftp_gear(slot, ws)
+function setops.get_ftp_gear(slot, ws)
 	local all_waist = 'Fotia Belt'
 	local all_neck = 'Fotia Gorget'
 	if (slot == 'waist') and (player.inventory[all_waist] or player.wardrobe[all_waist]) then
@@ -139,7 +140,7 @@ function get_ftp_gear(slot, ws)
 	return {}
 end
 
-function getObi(element)
+function setops.getObi(element)
 	local all_ele = 'Hachirin-no-obi'
 	if (player.inventory[all_ele] or player.wardrobe[all_ele]) then
 		return all_ele
@@ -152,11 +153,15 @@ end
 --			Set Information
 --==============================================================================
 
-function retrieve_items(set)
+--[[
+	Recursively traverses user-defined sets to compile a list of all gear
+	that is currently necessary.
+--]]
+function setops.retrieve_items(set)
 	local items = S{}
 	for slot,iname in pairs(set) do
 		if (type(iname) == 'table') then
-			local others = retrieve_items(iname)
+			local others = setops.retrieve_items(iname)
 			items = items:union(others)
 		elseif (iname ~= 'empty') then
 			items:add(iname)
@@ -165,12 +170,16 @@ function retrieve_items(set)
 	return items
 end
 
-function retrieve_item_ids(set, res_items)
-	res_items = res_items or get_item_res()
+--[[
+	Recursively traverses user-defined sets to compile a list of item IDs
+	for all gear that is currently necessary.
+--]]
+function setops.retrieve_item_ids(set, res_items)
+	res_items = res_items or setops.get_item_res()
 	local item_ids = S{}
 	for slot,iname in pairs(set) do
 		if (type(iname) == 'table') then
-			local others = retrieve_item_ids(iname, res_items)
+			local others = setops.retrieve_item_ids(iname, res_items)
 			item_ids = item_ids:union(others)
 		elseif (iname ~= 'empty') then
 			local itable = res_items:with('en_l',iname:lower()) or res_items:with('enl_l',iname:lower())
@@ -182,7 +191,10 @@ function retrieve_item_ids(set, res_items)
 	return item_ids
 end
 
-function get_item_res()
+--[[
+	Creates a copy of res.items with all names converted to lower case.
+--]]
+function setops.get_item_res()
 	local list = S{}
 	for id,tbl in pairs(res.items) do
 		list[id] = {id=id,en=tbl.en,enl=tbl.enl,en_l=tbl.en:lower(),enl_l=tbl.enl:lower()}
@@ -190,35 +202,106 @@ function get_item_res()
 	return list
 end
 
-function process_inventory_gear()
-	local item_ids = retrieve_item_ids(sets)
-	local res_items = get_item_res()
+--[[
+	Compiles a list of all items that are in the player's normal storages.
+--]]
+function setops.get_player_items()
+	local bagnames = {'wardrobe','locker','storage','sack','satchel','inventory','safe','case'}
+	local items = winraw.ffxi.get_items()
+	local gear = {}
+	for _,bname in pairs(bagnames) do
+		local bag = items[bname]
+		for i = 1, 80 do
+			local bagged = bag[i]
+			local item = res.items[bagged.id]
+			if (item ~= nil) then
+				table.insert(gear, item)
+			end
+		end
+	end
+	return gear
+end
+
+function setops.determine_storable()
+	local gear = setops.get_player_items()
+	local slippable = {}
+	local c = 0
+	for _,item in pairs(gear) do
+		local slip = _libs.slips.get_slip_id_by_item_id(item.id)
+		if (slip ~= nil) then
+			slippable[slip] = slippable[slip] or S{}
+			slippable[slip]:add(item.enl:capitalize())
+			c = c + 1
+		end
+	end
+	
+	if (c > 0) then
+		atc('Items that you can store with the Porter Moogle (':colorize(262)..tostring(c):colorize(123,262)..'):')
+	else
+		atc("You don't have anything that's storable with the Porter Moogle":colorize(258))
+	end
+	
+	local maxSlip = -1
+	local output = {}
+	for sid,sitems in pairs(slippable) do
+		local sname = res.items[sid].en
+		local snum = tonumber(sname:sub(-2))
+		output[snum] = '[':colorize(263)..tostring(sizeof(sitems)):colorize(4,263)..']'..sname:colorize(326,263)..': '..sitems:format('list')
+		if (snum > maxSlip) then
+			maxSlip = snum
+		end
+	end
+	for i = 1, maxSlip do
+		if (output[i] ~= nil) then
+			atc(output[i])
+		end
+	end	
+end
+
+--[[
+	Compares the gear specified in the currently active Player_JOB_gear.lua
+	with the gear present in inventory.  Reports which items are not
+	necessary so that they can be
+--]]
+function setops.find_movable()
+	local item_ids = setops.retrieve_item_ids(sets)
+	local res_items = setops.get_item_res()
 	
 	local extras = S{}
 	for _,itbl in pairs(player.inventory) do
 		if not (item_ids:contains(itbl.id)) then
 			local item = res.items[itbl.id]
-			if not (S{'Gil','pearlsack','copper A.M.A.N. voucher'}:contains(item.enl)) then
-				extras:add(item.enl)
+			if not (ignore_items:contains(item.enl)) then
+				extras:add(item.enl:capitalize())
 			end
 		end
 	end
 	
 	if (sizeof(extras) > 0) then
-		atc(50, 'Items you do not need in your inventory:')
+		atc('Items you do not need in your inventory (':colorize(262)..tostring(sizeof(extras)):colorize(123,262)..'):')
 	else
-		atc(50, 'Everything in your inventory is necessary!')
+		atc('Everything in your inventory is necessary!':colorize(258))
+		return
 	end
 	for iname,_ in pairs(extras) do
-		atc(50, iname)
+		atc(iname:colorize(329))
 	end
 end
 
-function process_slip_gear()
-	local items = retrieve_items(sets)
-	local slip_items = slips.get_player_items()
-	local res_items = get_item_res()
+--[[
+	Compares the gear specified in the currently active Player_JOB_gear.lua
+	with the gear that is stored with the Porter Moogle.  Reports which
+	slips are necessary to retrieve gear from, and which pieces are stored
+	with each of those slips.
+	Automatically runs when a player change jobs.  Can be run at any time
+	via: //gs c slips
+--]]
+function setops.find_slipped()
+	local items = setops.retrieve_items(sets)		--Get a list of all gear in Player_JOB_gear.lua
+	local slip_items = _libs.slips.get_player_items()	--Get a list of all gear currently stored with the Porter Moogle
+	local res_items = setops.get_item_res()		--Get res.items in a way that's easier to work with
 	
+	--Iterate through required gear, checking to see if any of it is stored with Porter
 	local slipped = {}
 	for item,_ in pairs(items) do
 		if not (player.inventory[item] or player.wardrobe[item]) then
@@ -236,30 +319,44 @@ function process_slip_gear()
 	end
 	
 	if (sizeof(slipped) > 0) then
-		atc(50, 'Items you need to retrieve from the Porter Moogle:')
+		atc('Items you need to retrieve from the Porter Moogle:':colorize(262))
 	else
-		atc(50, 'You have everything that you need from the Porter Moogle!')
+		atc('You have everything that you need from the Porter Moogle!':colorize(258))
+		return
 	end
 	local output = {}
 	for slip,stbl in pairs(slipped) do
-		output[tonumber(slip:sub(-2))] = slip..': '..stbl:format('list')
+		output[tonumber(slip:sub(-2))] = '[':colorize(263)..tostring(sizeof(stbl)):colorize(4,263)..']'..slip:colorize(326,263)..': '..stbl:format('list')
 	end
 	for i = 1, sizeof(slip_items) do
 		if (output[i] ~= nil) then
-			atc(50, output[i])
+			atc(output[i])
 		end
 	end	
 end
 
-function set_to_chat(args)
-	if not S{'/l','/p'}:contains(args[1]) then
+--[[
+	Prints the currently equipped set to the specified chat channel.
+	Valid chat channels: /t name, /p, /l
+	Usage:	//gs c set2chat /t playername
+--]]
+function setops.set_to_chat(args)
+	if not S{'/l','/p','/t'}:contains(args[1]) then
 		atc(123,'Invalid target for printing set info: '..args[1])
 		return
 	end
+	local targ = args[1]
+	if (targ == '/t') then
+		if (args[2] == nil) then
+			atc(123,'Error: No argument provided for /t for printing set info.')
+			return
+		end
+		targ = targ..' '..args[2]
+	end
 	local pe = player.equipment
-	local line1 = 'input '..args[1]..' '..pe.main..', '..pe.sub..', '..pe.range..', '..pe.ammo
-	local line2 = 'input '..args[1]..' '..pe.head..', '..pe.neck..', '..pe.ear1..', '..pe.ear2
-	local line3 = 'input '..args[1]..' '..pe.body..', '..pe.hands..', '..pe.ring1..', '..pe.ring2
-	local line4 = 'input '..args[1]..' '..pe.back..', '..pe.waist..', '..pe.legs..', '..pe.feet
+	local line1 = 'input '..targ..' '..pe.main..', '..pe.sub..', '..pe.range..', '..pe.ammo
+	local line2 = 'input '..targ..' '..pe.head..', '..pe.neck..', '..pe.ear1..', '..pe.ear2
+	local line3 = 'input '..targ..' '..pe.body..', '..pe.hands..', '..pe.ring1..', '..pe.ring2
+	local line4 = 'input '..targ..' '..pe.back..', '..pe.waist..', '..pe.legs..', '..pe.feet
 	windower.send_command(line1..';wait 1.1;'..line2..';wait 1.1;'..line3..';wait 1.1;'..line4)
 end

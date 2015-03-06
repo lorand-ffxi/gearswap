@@ -306,3 +306,5 @@ gear_map.RecastStaff = {['Light']='Arka II', ['Dark']='Xsaeta II', ['Fire']='Ata
 gear_map.ftp = {}
 gear_map.ftp['neck'] = {['Light']='Light Gorget', ['Dark']='Shadow Gorget', ['Fire']='Flame Gorget', ['Ice']='Snow Gorget', ['Wind']='Breeze Gorget', ['Earth']='Soil Gorget', ['Lightning']='Thunder Gorget', ['Water']='Aqua Gorget'}
 gear_map.ftp['waist'] = {['Light']='Light Belt', ['Dark']='Shadow Belt', ['Fire']='Flame Belt', ['Ice']='Snow Belt', ['Wind']='Breeze Belt', ['Earth']='Soil Belt', ['Lightning']='Thunder Belt', ['Water']='Aqua Belt'}
+
+ignore_items = S{'Gil','pearlsack','copper A.M.A.N. voucher','flask of holy water','shihei','inoshishinofuda','shikanofuda','chonofuda','flask of echo drops'}

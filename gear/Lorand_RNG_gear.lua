@@ -7,7 +7,6 @@
 
 function init_gear_sets()
 	sets.weapons = {}
-	--sets.weapons.Gun = {range="Hgafircian +2",ammo="Achiyalabopa Bullet"}
 	sets.weapons.Gun = {range="Hgafircian +2",ammo="Achiyalabopa Bullet"}
 	sets.weapons.Bow = {range="Phaosphaelia",ammo="Achiyalabopa Arrow"}
 	--sets.weapons.XBow = {}
