@@ -1,18 +1,13 @@
 -----------------------------------------------------------------------------------------------------------
 --[[
 	Author: Ragnarok.Lorand
-	
 --]]
 -----------------------------------------------------------------------------------------------------------
 
 
 function init_gear_sets()
 	sets.weapons = {}
-	sets.weapons.Gun = {range="Hgafircian +2",ammo="Adlivun Bullet"}
-	-- gear.Gun = "Hgafircian +2"
-	-- gear['Gun_ammo'] = "Adlivun Bullet"
-	-- gear['Gun_ammo_RA'] = "Adlivun Bullet"
-	-- gear['Gun_ammo_WS'] = "Adlivun Bullet"
+	sets.weapons.Gun = {range="Doomsday",ammo="Adlivun Bullet"}
 	
 	sets.precast.QuickDraw = {ammo="Animikii Bullet"}
 	
@@ -44,7 +39,7 @@ function init_gear_sets()
 	}
 	
 	--============================================================
-	--					TP & WS sets
+	--			TP & WS sets
 	--============================================================
 	
 	sets.wsBase = {
@@ -61,12 +56,12 @@ function init_gear_sets()
 	sets.wsBase.AGI = {
 		head="Uk'uxkaj Cap",
 		hands="Iuitl Wristbands +1",	ring1="Blobnag Ring",		ring2="Stormsoul Ring",
-		back="Ik Cape",					waist="Sveltesse Gouriz",	legs="Kaabnax Trousers"
+		back="Ik Cape",			waist="Sveltesse Gouriz",	legs="Kaabnax Trousers"
 	}
 	sets.wsBase.DEX = {
-		head="Uk'uxkaj Cap",			ear1="Pixie Earring",
+		head="Uk'uxkaj Cap",		ear1="Pixie Earring",
 		hands="Iuitl Wristbands +1",	ring2="Thundersoul Ring",
-		back="Kayapa Cape",				waist="Chiner's Belt",
+		back="Kayapa Cape",		waist="Chiner's Belt",
 	}
 	sets.wsBase.STRAGI = {
 		head="Uk'uxkaj Cap",
@@ -93,8 +88,8 @@ function init_gear_sets()
 
 	sets.midcast.CorsairShot = {ammo=gear.QDbullet,
 		head="Corsair's Tricorne +1",	neck="Stoicheion Medal",	ear1="Friomisi Earring",	ear2="Hecate's Earring",
-		body="Laksamana's Frac",		hands="Buremte Gloves",		ring1="Perception Ring",	ring2="Acumen Ring",
-		back="Gunslinger's Cape",		waist="Aquiline Belt",		legs="Iuitl Tights",		feet="Navarch's Bottes +2"
+		body="Laksamana's Frac",	hands="Buremte Gloves",		ring1="Perception Ring",	ring2="Acumen Ring",
+		back="Gunslinger's Cape",	waist="Aquiline Belt",		legs="Iuitl Tights",		feet="Navarch's Bottes +2"
 	}
 
 	--========================[Gun]===============================
@@ -106,7 +101,7 @@ function init_gear_sets()
 	sets.midcast.FastRecast = {
 		head="Ejekamal Mask",
 		body="Iuitl Vest +1",	hands="Buremte Gloves",	ring2="Diamond Ring",	--Diamond Ring aug: 2% interrupt rate down
-		back="Mujin Mantle",	waist="Cetl Belt",		legs="Kaabnax Trousers",	feet="Iuitl Gaiters +1"
+		back="Mujin Mantle",	waist="Cetl Belt",	legs="Kaabnax Trousers",	feet="Iuitl Gaiters +1"
 	}
 	sets.midcast.Utsusemi = sets.midcast.FastRecast
 	
@@ -115,14 +110,14 @@ function init_gear_sets()
 	sets.midcast.Cure.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
 	
 	--============================================================
-	--					Other sets
+	--			Other sets
 	--============================================================
 	sets.resting = {}
 	
 	sets.idle = {
-		head="Ocelomeh Headpiece +1",	neck="Orochi Nodowa",		ear1="Brachyura Earring",		ear2="Ethereal Earring",
-		body="Orion Jerkin",			hands="Buremte Gloves",		ring1="Defending Ring",			ring2="Shneddick Ring",
-		back="Repulse Mantle",			waist="Flume Belt",			legs="Kaabnax Trousers",		feet="Iuitl Gaiters +1"
+		head="Ocelomeh Headpiece +1",	neck="Orochi Nodowa",		ear1="Brachyura Earring",	ear2="Ethereal Earring",
+		body="Orion Jerkin",		hands="Buremte Gloves",		ring1="Defending Ring",		ring2="Shneddick Ring",
+		back="Repulse Mantle",		waist="Flume Belt",		legs="Kaabnax Trousers",	feet="Iuitl Gaiters +1"
 	}
 	sets.idle.with_buff = {}
 	sets.idle.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
@@ -134,20 +129,20 @@ function init_gear_sets()
 	}
 	sets.defense.PDT = set_combine(sets.defense.Evasion, sets.defense.DT, {	--PDT-18% + DT => PDT-33%
 		head="Iuitl Headgear",
-		body="Iuitl Vest",		hands="Iuitl Wristbands +1",
-		back="Repulse Mantle",	waist="Flume Belt",			legs="Iuitl Tights",	feet="Iuitl Gaiters"
+		body="Iuitl Vest",	hands="Iuitl Wristbands +1",
+		back="Repulse Mantle",	waist="Flume Belt",		legs="Iuitl Tights",	feet="Iuitl Gaiters"
 	})
 	sets.defense.MDT = set_combine(sets.defense.Evasion, sets.defense.DT, {	--MDT-4% + DT => MDT-16%, MDB+19
 		head="Ejekamal Mask",	ear1="Merman's Earring",	ear2="Merman's Earring",
-		body="Iuitl Vest",		hands="Buremte Gloves",
-		back="Tuilha Cape",		waist="Flume Belt",			legs="Kaabnax Trousers",	feet="Iuitl Gaiters"
+		body="Iuitl Vest",	hands="Buremte Gloves",
+		back="Tuilha Cape",	waist="Flume Belt",		legs="Kaabnax Trousers",	feet="Iuitl Gaiters"
 	})
 	
 	sets.Kiting = {feet="Orion Socks"}
 	
 	sets.engaged = {
 		head="Ejekamal Mask",	neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
-		body="Iuitl Vest",		hands="Buremte Gloves",		ring1="Rajas Ring",			ring2="Epona's Ring",
+		body="Iuitl Vest",	hands="Buremte Gloves",		ring1="Rajas Ring",		ring2="Epona's Ring",
 		back="Atheling Mantle",	waist="Patentia Sash",		legs="Kaabanax Trousers",	feet="Orion Socks"
 	}
 	sets.engaged.with_buff = {}

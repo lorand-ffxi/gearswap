@@ -133,7 +133,7 @@ function setops.get_ftp_gear(slot, ws)
 		union(skillchain_elements[ws.skillchain_c])
 	
 	for ele,i in pairs(ws_elements) do
-		if isAvailable(gear_map.ftp[slot][ele]) then
+		if setops.isAvailable(gear_map.ftp[slot][ele]) then
 			return {[slot] = gear_map.ftp[slot][ele]}
 		end
 	end

@@ -317,14 +317,16 @@ function get_precast_set(spell)
 		precastSet = combineSets(precastSet, sets.precast.FC, status)
 	elseif spell.action_type == 'Ranged Attack' then
 		--Equip snapshot gear & TP ammo
-		precastSet = combineSets(sets.precast.ranged, {ammo=sets.weapons[modes.weapon].ammo})
-		--precastSet = combineSets(sets.precast.ranged, {ammo=gear[modes.offense..'_ammo_RA']})
+		precastSet = combineSets(precastSet, sets.precast.ranged)
+		if S{'RNG','COR'}:contains(player.main_job) then
+			precastSet = combineSets(precastSet, {ammo=sets.weapons[modes.weapon].ammo})
+		end
 	elseif spell.action_type == 'Ability' then
 		if spell.type == 'JobAbility' then
 			precastSet = combineSets(precastSet, sets.precast.JA, spell.en)
 		elseif spell.type == 'WeaponSkill' then
 			--sets.wsBase[sam/other][modes.offense][state.RangedMode][wsmod[spell.english]]
-			if S{'RNG', 'COR'}:contains(player.main_job) then
+			if S{'RNG','COR'}:contains(player.main_job) then
 				precastSet = combineSets(precastSet, sets[modes.offense])
 				precastSet = combineSets(precastSet, sets[modes.offense], get_sub_type())
 				precastSet = combineSets(precastSet, sets[modes.offense], get_sub_type(), modes.ranged)
@@ -333,7 +335,6 @@ function get_precast_set(spell)
 				local weaps = sets.weapons[modes.weapon]
 				local ws_ammo = weaps.ammo2 or weaps.ammo
 				precastSet = combineSets(precastSet, {ammo=ws_ammo})
-				--precastSet = combineSets(precastSet, {ammo=gear[modes.offense..'_ammo_WS']})
 				
 				local wsSet = sets.wsBase
 				wsSet = combineSets(wsSet, sets.wsBase, wsmod[spell.en])
@@ -436,7 +437,7 @@ function get_midcast_set(spell)
 				if modes.Daurdabla == 'Daurdabla' then
 					--It is assumed that Daurdabla/Terpander is in the player's inventory if they are using this mode
 					activeInstrument = gear.instruments.multiSong
-				elseif (gear.instruments[spellMap] ~= nil) and isAvailable(gear.instruments[spellMap]) then
+				elseif (gear.instruments[spellMap] ~= nil) and setops.isAvailable(gear.instruments[spellMap]) then
 					--If the instrument that should be used is not defined or not in inventory, this falls back on the default instrument
 					activeInstrument = gear.instruments[spellMap]
 				end
@@ -624,7 +625,7 @@ function get_midcast_set(spell)
 				midcastSet = combineSets(sets.tpBase, midcastSet)
 			end
 		else
-			midcastSet = sets.midcast.ranged
+			midcastSet = combineSets(midcastSet, sets.midcast.ranged)
 			midcastSet = combineSets(midcastSet, sets.midcast.ranged, modes.ranged)
 		end
 	elseif spell.action_type == 'Ability' then
