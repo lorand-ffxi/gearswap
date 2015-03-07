@@ -108,6 +108,12 @@ function init_gear_sets()
 	--			Other sets
 	--============================================================
 	
+	sets.weapons = {}
+	sets.weapons.Main = {main="Kikoku",sub="Tancho +1"}
+	sets.weapons.OAT = {main="Kikoku",sub="Taikogane"}
+	sets.weapons.Reive = {main="Kikoku",sub="Senkutanto"}
+	sets.weapons.Other = {}
+	
 	sets.idle = {												ammo="Demonry Stone",
 		head="Ocelomeh Headpiece +1",	neck="Orochi Nodowa",		ear1="Brachyura Earring",	ear2="Ethereal Earring",
 		body="Kirin's Osode",		hands={"Mochizuki Tekko +1", "Otronif Gloves +1"},

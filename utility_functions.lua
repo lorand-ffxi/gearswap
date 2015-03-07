@@ -127,7 +127,8 @@ function addToChat(cmdParams)
 			dispText = dispText:gsub('<'..k..'>', v)
 		end
 	end
-	atc(cmdParams[1], dispText)
+	local val = tonumber(cmdParams[1]) or 1
+	winraw.add_to_chat(val, dispText)
 end
 
 function display_current_state()

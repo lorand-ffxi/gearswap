@@ -41,6 +41,7 @@ function set_modes()
 		modelist['offense'] = {'Normal_A', 'Normal_B', 'Normal_C', 'HitMoar', 'Tank', 'TankAcc', 'HitYouBastard'}
 	elseif S{'NIN'}:contains(player.main_job) then
 		modelist['offense'] = {'auto', 'auto_acc', 'Tank', 'CrazyAccuracy'}
+		modelist['weapon'] = {'Main','OAT','Reive','Other'}
 	elseif S{'PLD'}:contains(player.main_job) then
 		modelist['offense'] = {'Normal', 'TankP', 'TankM'}
 		modelist['idle'] = {'Showoff', 'PDT', 'MDT', 'normal'}
@@ -77,6 +78,7 @@ function set_keybinds()
 	keybinds['@v'] = 'gs c cycle weapon'
 	keybinds['@F12'] = 'du blinking self always'
 	keybinds['@i'] = 'gs c toggle noIdle'
+	keybinds['@f'] = 'hb f'
 
 	if S{mj,sj}:contains('SCH') then
 		keybinds['^='] = 'gs c scholar light'		--Light Arts / Addendum: White
