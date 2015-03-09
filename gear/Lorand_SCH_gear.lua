@@ -167,6 +167,8 @@ function init_gear_sets()
 		back="Ogapepo Cape",	waist="Ovate Rope",		legs="Artsieq Hose",		feet="Artsieq Boots"
 	}
 	
+	sets.midcast.DarkMagic.Stun.Resistant = combineSets({},sets.midcast.DarkMagic.Stun.HighAcc)
+	
 	sets.midcast.DivineMagic = {}
 	sets.midcast.DivineMagic.LA = {
 		legs="Academic's Pants +1"		--18 Divine/Enfeebling/Enhancing/Healing Skill
@@ -183,10 +185,29 @@ function init_gear_sets()
 	
 	sets.midcast.ElementalMagic = {
 		main="Venabulum",		sub="Zuuxowu Grip",						ammo="Dosis Tathlum",
-		head="Buremte Hat",		neck="Stoicheion Medal",	ear1="Hecate's Earring",	ear2="Friomisi Earring",
-		body="Hagondes Coat +1",	hands="Otomi Gloves",		ring1="Fenrir Ring +1",		ring2="Acumen Ring",
-		back="Bookworm's Cape",		waist="Aswang Sash",		legs="Hagondes Pants +1",	feet="Hagondes Sabots +1"
+		head="Buremte Hat",		neck="Eddy Necklace",	ear1="Hecate's Earring",	ear2="Friomisi Earring",
+		body="Hagondes Coat +1",	hands="Otomi Gloves",	ring1="Fenrir Ring +1",		ring2="Acumen Ring",
+		back="Bookworm's Cape",		waist="Aswang Sash",	legs="Hagondes Pants +1",	feet="Hagondes Sabots +1"
 	}
+	-- sets.midcast.ElementalMagic.Proc = {
+		-- main="Lehbrailg +2",	sub="Mephitis Grip",					ammo="Savant's Treatise",
+		-- head="Artsieq Hat",	neck="Eddy Necklace",	ear1="Lifestorm Earring",	ear2="Psystorm Earring",
+		-- body="Artsieq Jubbah",	hands="Lurid Mitts",	ring1="Fenrir Ring +1",		ring2="Sangoma Ring",
+		-- back="Bookworm's Cape",	waist="Aswang Sash",	legs="Artsieq Hose",		feet="Artsieq Boots"
+	-- }
+	sets.midcast.ElementalMagic.Proc = {
+		main="Chatoyant Staff",		sub="Mephitis Grip",						ammo="Savant's Treatise",
+		head="Artsieq Hat",		neck="Orunmila's Torque",	ear1="Lifestorm Earring",	ear2="Psystorm Earring",
+		body="Academic's Gown +1",	hands="Hagondes Cuffs +1",	ring1="Sangoma Ring",		ring2="Perception Ring",
+		back="Ogapepo Cape",		waist="Ovate Rope",		legs="Artsieq Hose",		feet="Artsieq Boots"
+	}
+	sets.midcast.ElementalMagic.Resistant = {
+		main="Venabulum",			sub="Mephitis Grip",					ammo="Savant's Treatise",
+		head="Academic's Mortarboard +1",	neck="Eddy Necklace",	ear1="Lifestorm Earring",	ear2="Psystorm Earring",
+		body="Artsieq Jubbah",			hands="Yaoyotl Gloves",	ring1="Fenrir Ring +1",		ring2="Sangoma Ring",
+		back="Bookworm's Cape",			waist="Aswang Sash",	legs="Hagondes Pants +1",	feet="Artsieq Boots"
+	}
+	
 	sets.midcast.ElementalMagic.LowTier = {}
 	sets.midcast.ElementalMagic.HighTier = {}
 	sets.midcast.ElementalMagic.Earth = {neck="Quanpur Necklace"}
@@ -215,6 +236,12 @@ function init_gear_sets()
 		body="Academic's Gown +1",		hands="Gendewitha Gages +1",	ring1="Defending Ring",		ring2="Shneddick Ring",
 		back="Mecistopins Mantle",		waist="Emphatikos Rope",	legs="Academic's Pants +1",	feet="Gendewitha Galoshes +1"
 	}
+	-- sets.idle = {
+		-- main="Bolelabunga",		sub="Genbu's Shield",						ammo="Impatiens",
+		-- head="Artsieq Hat",		neck="Twilight Torque",		ear1="Brachyura Earring",	ear2="Merman's Earring",
+		-- body="Academic's Gown +1",	hands="Gendewitha Gages +1",	ring1="Defending Ring",		ring2="Dark Ring",
+		-- back="Tuilha Mantle",		waist="Emphatikos Rope",	legs="Hagondes Pants +1",	feet="Gendewitha Galoshes +1"
+	-- }
 	sets.idle.with_buff = {}
 	
 	sets.idle.lowMP =	{legs="Nares Trews"}

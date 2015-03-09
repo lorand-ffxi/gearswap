@@ -112,6 +112,7 @@ function init_gear_sets()
 	sets.midcast.ElementalMagic.HighTier = {}
 	sets.midcast.ElementalMagic.Earth = {neck="Quanpur Necklace"}
 	
+	sets.midcast.ElementalMagic.Proc = {}
 	sets.midcast.ElementalMagic.Resistant = {
 		main="Kaladanda",	sub="Mephitis Grip",					ammo="Dosis Tathlum",
 		head="Nahtirah Hat",	neck="Eddy Necklace",	ear1="Hecate's Earring",	ear2="Friomisi Earring",

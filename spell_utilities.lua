@@ -147,9 +147,9 @@ function handle_strategems(cmdParams)
 			['accuracy']=	'input /ja Altruism <me>',	['enmity']=	'input /ja Tranquility <me>',		['duration']=	'input /ja Perpetuance <me>',	
 		},
 		['Black Magic'] = {
-			['light']=	'input /ja "Light Arts" <me>',	['dark']=	'input /ja "Addendum: Black" <me>',	['cost']=	'@input /ja Parsimony <me>',
-			['speed']=	'input /ja Alacrity <me>',	['aoe']	=	'input /ja Manifestation <me>',		['power']=	'@input /ja Ebullience <me>',
-			['accuracy']=	'input /ja Focalization <me>',	['enmity']=	'input /ja Equanimity <me>',
+			['light']=	'input /ja "Light Arts" <me>',	['dark']=	'input /ja "Addendum: Black" <me>',	['cost']=	'input /ja Parsimony <me>',
+			['speed']=	'input /ja Alacrity <me>',	['aoe']	=	'input /ja Manifestation <me>',		['power']=	'input /ja Ebullience <me>',
+			['accuracy']=	'input /ja Focalization <me>',	['enmity']=	'input /ja Equanimity <me>',		['ws']=		'input /ja Immanence <me>'
 		},
 		['None'] = {['light']=	'input /ja "Light Arts" <me>',	['dark']=	'input /ja "Dark Arts" <me>'}
 	}

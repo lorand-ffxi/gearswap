@@ -89,6 +89,7 @@ function set_keybinds()
 		keybinds['@F2'] = 'gs c scholar power'		--Rapture / Ebullience
 		keybinds['@F3'] = 'gs c scholar enmity'		--Tranquility / Equanimity
 		keybinds['@F4'] = 'gs c scholar duration'	--Perpetuance [Light only]
+		keybinds['@F5'] = 'gs c scholar ws'		--Immanence [Dark only]
 		keybinds['!a'] = 'gs c scholar aoe'		--Accession / Manifestation
 		keybinds['^a'] = 'gs c scholar aoe'		--Accession / Manifestation
 		keybinds['!s'] = 'input /ja Sublimation <me>'

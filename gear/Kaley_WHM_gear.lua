@@ -215,7 +215,6 @@ function init_gear_sets()
 	sets.idle.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
 	
 	sets.idle.lowMP = {
-		main="Owleyes",		sub="Genbu's Shield",
 		legs="Nares Trews"
 	}
 	sets.idle.lowMP_night =	{hands="Serpentes Cuffs"}

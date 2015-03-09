@@ -512,7 +512,7 @@ function get_midcast_set(spell)
 				if options.useTwilightCape then
 					midcastSet = combineSets(midcastSet, {back='Twilight Cape'})
 				end
-				if buff_active('Klimaform') and player.main_job == 'SCH' then
+				if buff_active('Klimaform') and (player.main_job == 'SCH') and (modes.casting == 'Normal') then
 					midcastSet = combineSets(midcastSet, {feet={"Savant's Loafers +2", "Savant's Loafers +1"}})
 				end
 			end
