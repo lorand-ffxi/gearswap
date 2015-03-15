@@ -24,6 +24,7 @@ function init()
 	include('spell_utilities')	--Load spell_utilities.lua (cure & timer handling)
 	include('pet_utilities')	--Load pet_utilities.lua (pet handling)
 	include('mappings')		--Load mappings.lua (provides generalizations for spells and abilities)
+	include('exporter')		--Load exporter.lua (provides better implementation of gear exporting)
 	
 	info = require('../info/info_share')	--Load addons\info\info_shared.lua for functions to print information accessed directly from windower
 	
@@ -1092,5 +1093,5 @@ executable_commands = {
 	['reset']  =	reset_mode,	['toggle']    =	toggle_mode,		['activate'] =	activate_mode,
 	['equip']  =	equip_set,	['info']      =	info_func,		['slips']    =	setops.find_slipped,
 	['smn']    =	handle_smn,	['inv_check'] =	setops.find_movable,	['set2chat'] =	setops.set_to_chat,
-	['storable'] = setops.determine_storable
+	['export'] =	export_gear,	['storable'] = setops.determine_storable
 }
