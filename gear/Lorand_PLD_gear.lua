@@ -126,7 +126,9 @@ function init_gear_sets()
 	--============================================================
 	--			Other sets
 	--============================================================
-		
+	
+	sets.weapons.Main = {main="Usonmunku",sub="Priwen"}
+	
 	sets.Reraise = {head="Twilight Helm", body="Twilight Mail"}
 	
 	sets.resting = {

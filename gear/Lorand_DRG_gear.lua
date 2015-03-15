@@ -1,23 +1,18 @@
------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 --[[
 	Author: Ragnarok.Lorand
-	
-	Slips:
-		3:	Rose Strap, Twilight Helm/Mail/Torque
-		10:	Lancer's+2 Hands/Legs/Feet
-		14:	Phorcys Korazin
 --]]
------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
 function init_gear_sets()
 	--============================================================
-	--					Precast sets
+	--			Precast sets
 	--============================================================
 	sets.precast.JA['Spirit Link'] = {hands="Lancer's Vambraces +2"}
 	sets.precast.JA.Jump = {
 		ammo="Hagneia Stone",
 		head="Yaoyotl Helm",	neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
-		body="Cizin Mail +1",	hands="Cizin Mufflers +1",	ring1="Rajas Ring",			ring2="K'ayres Ring",
+		body="Xaddi Mail",	hands="Taeon Gloves",		ring1="Rajas Ring",		ring2="K'ayres Ring",
 		back="Atheling Mantle",	waist="Anguinus Belt",		legs="Cizin Breeches +1",	feet="Cizin Greaves +1"
 	}	
 	sets.precast.JA['High Jump'] = combineSets(sets.precast.JA.Jump, {})
@@ -28,7 +23,7 @@ function init_gear_sets()
 	sets.precast.FC = {
 		head="Cizin Helm +1",	neck="Orunmila's Torque",	ear1="Loquacious Earring",
 		body="Nuevo Coselete",	hands="Buremte Gloves",		ring1="Prolix Ring",	ring2="Veneficium Ring",
-		feet="Ejekamal Boots"
+		legs="Enif Cosciales",	feet="Ejekamal Boots"
 	}
 	
 	sets.precast.Waltz = {}
@@ -37,11 +32,10 @@ function init_gear_sets()
 	
 	--============================================================
 	--sets.wsBase[magic][sam/other][state.OffenseMode][state.RangedMode][wsmod[spell.en]]
-	sets.wsBase = {
-		ammo="Potestas Bomblet",
-		head="Yaoyotl Helm",	neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
-		body="Phorcys Korazin",	hands="Cizin Mufflers +1",	ring1="Rajas Ring",			ring2="K'ayres Ring",
-		back="Atheling Mantle",	waist="Windbuffet Belt +1",	legs="Cizin Breeches +1",	feet="Whirlpool Greaves"
+	sets.wsBase = {											ammo="Potestas Bomblet",
+		head="Highwing Helm",	neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
+		body="Phorcys Korazin",	hands="Taeon Gloves",		ring1="Rajas Ring",		ring2="K'ayres Ring",
+		back="Atheling Mantle",	waist="Fotia Belt",		legs="Cizin Breeches +1",	feet="Whirlpool Greaves"
 	}
 	
 	sets.wsBase.magic = {
@@ -50,7 +44,7 @@ function init_gear_sets()
 	}
 	
 	--============================================================
-	--					Midcast sets
+	--			Midcast sets
 	--============================================================
 
 	sets.midcast.FastRecast = {
@@ -64,14 +58,27 @@ function init_gear_sets()
 	sets.midcast.Cure.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
 	
 	--============================================================
-	--					Other sets
+	--			Other sets
 	--============================================================
 	
-	sets.engaged = {
-		sub="Pole Grip",		ammo="Potestas Bomblet",
-		head="Yaoyotl Helm",	neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
-		body="Cizin Mail +1",	hands="Cizin Mufflers +1",	ring1="Rajas Ring",			ring2="K'ayres Ring",
+	sets.weapons.Main = {main="Qatsunoci +2",sub="Pole Grip"}
+	
+	sets.engaged = {										ammo="Potestas Bomblet",
+		head="Highwing Helm",	neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
+		body="Xaddi Mail",	hands="Taeon Gloves",		ring1="Rajas Ring",		ring2="K'ayres Ring",
 		back="Atheling Mantle",	waist="Windbuffet Belt +1",	legs="Cizin Breeches +1",	feet="Whirlpool Greaves"
+	}
+	
+	sets.engaged.MediumAcc = {									ammo="Potestas Bomblet",
+		head="Yaoyotl Helm",	neck="Peacock Amulet",		ear1="Bladeborn Earring",	ear2="Steelflash Earring",
+		body="Xaddi Mail",	hands="Taeon Gloves",		ring1="Rajas Ring",		ring2="K'ayres Ring",
+		back="Updraft Mantle",	waist="Windbuffet Belt +1",	legs="Cizin Breeches +1",	feet="Whirlpool Greaves"
+	}
+	
+	sets.engaged.HighAcc = {									ammo="Potestas Bomblet",
+		head="Yaoyotl Helm",	neck="Peacock Amulet",		ear1="Bladeborn Earring",	ear2="Steelflash Earring",
+		body="Xaddi Mail",	hands="Taeon Gloves",		ring1="Rajas Ring",		ring2="K'ayres Ring",
+		back="Updraft Mantle",	waist="Anguinus Belt",		legs="Cizin Breeches +1",	feet="Whirlpool Greaves"
 	}
 	
 	sets.engaged.with_buff = {}
@@ -82,13 +89,10 @@ function init_gear_sets()
 	
 	sets.resting = {}
 	
-	sets.idle = {
-		ammo="Demonry Stone",
-		head={"Twilight Helm", "Yaoyotl Helm"},
-		neck="Orochi Nodowa",		ear1="Brachyura Earring",	ear2="Ethereal Earring",
-		body={"Twilight Mail", "Cizin Mail +1"},
-		hands="Cizin Mufflers +1",	ring1="Defending Ring",	ring2="Shneddick Ring",
-		back="Repulse Mantle",		waist="Nierenschutz",	legs="Cizin Breeches +1",	feet="Whirlpool Greaves"
+	sets.idle = {										ammo="Demonry Stone",
+		head="Highwing Helm",	neck="Orochi Nodowa",	ear1="Brachyura Earring",	ear2="Ethereal Earring",
+		body="Xaddi Mail",	hands="Umuthi Gloves",	ring1="Defending Ring",		ring2="Shneddick Ring",
+		back="Repulse Mantle",	waist="Nierenschutz",	legs="Cizin Breeches +1",	feet="Whirlpool Greaves"
 	}
 	sets.idle.with_buff = {}
 	sets.idle.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
@@ -109,6 +113,6 @@ function init_gear_sets()
 		ammo="Demonry Stone",
 		head="Cizin Helm +1",	ear1="Merman's Earring",	ear2="Merman's Earring",
 		body="Cizin Mail +1",	hands="Cizin Mufflers +1",
-		back="Tuilha Cape",		legs="Cizin Breeches +1",	feet="Whirlpool Greaves"
+		back="Tuilha Cape",	legs="Cizin Breeches +1",	feet="Whirlpool Greaves"
 	})
 end

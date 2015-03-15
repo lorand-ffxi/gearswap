@@ -498,7 +498,6 @@ function get_midcast_set(spell)
 			midcastSet = combineSets(midcastSet, sets.midcast.DivineMagic, modes.casting)
 		elseif spell.skill == 'Elemental Magic' then
 			midcastSet = get_standard_magic_set(midcastSet, spell, spellMap, 'ElementalMagic')
-			
 			if low_tier_nukes:contains(spell.en) then
 				midcastSet = combineSets(midcastSet, sets.midcast.ElementalMagic, 'LowTier')
 			else
@@ -506,13 +505,13 @@ function get_midcast_set(spell)
 			end
 			
 			if weatherPermits(spell.element) then
-				if spellMap ~= 'Helix' and options.useObi then
+				if (spellMap ~= 'Helix') and options.useObi then
 					midcastSet = combineSets(midcastSet, {waist=setops.getObi(spell.element)})
 				end
 				if options.useTwilightCape then
 					midcastSet = combineSets(midcastSet, {back='Twilight Cape'})
 				end
-				if buff_active('Klimaform') and (player.main_job == 'SCH') and (modes.casting == 'Normal') then
+				if buff_active('Klimaform') and (player.main_job == 'SCH') then
 					midcastSet = combineSets(midcastSet, {feet={"Savant's Loafers +2", "Savant's Loafers +1"}})
 				end
 			end
@@ -530,7 +529,7 @@ function get_midcast_set(spell)
 				midcastSet = combineSets(midcastSet, sets.midcast.EnfeeblingMagic, 'Potency')
 				midcastSet = combineSets(midcastSet, sets.midcast.EnfeeblingMagic, 'Potency', modes.casting)
 			end
-			if player.main_job == 'RDM' and buff_active('Saboteur') then
+			if (player.main_job == 'RDM') and buff_active('Saboteur') then
 				midcastSet = combineSets(midcastSet, sets.precast.JA, 'Saboteur')
 			end
 			midcastSet = combineSets(midcastSet, sets.midcast.EnfeeblingMagic, modes.casting)
@@ -832,6 +831,7 @@ function get_melee_set(baseSet)
 	for buff,_ in pairs(buffactive) do
 		--atc(1, '[Engaged] Buffactive: '..tostring(buff))
 		meleeSet = combineSets(meleeSet, sets.engaged, 'with_buff', buff)
+		meleeSet = combineSets(meleeSet, sets.engaged, modes.offense, 'with_buff', buff)
 	end
 	
 	if (modes.defense ~= nil) or (modes.defense ~= 'normal') then

@@ -63,7 +63,7 @@ function init_gear_sets()
 	sets.midcast.Cure = {
 		main="Tamaxchi",				sub="Genbu's Shield",
 		ear2="Roundel Earring",	
-		hands="Weatherspoon Cuffs +1",	ring2="Aquasoul Ring",
+		hands="Telchine Gloves",	ring2="Aquasoul Ring",
 		legs="Atrophy Tights"
 	}
 	sets.midcast.Cure.with_buff = {}

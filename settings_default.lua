@@ -21,13 +21,17 @@ function set_modes()
 	modelist['defense'] = {'Normal', 'PDT', 'MDT'}
 	modelist['casting'] = {'Normal', 'Resistant', 'Proc'}
 	modelist['accuracy'] = {'Normal', 'MediumAcc', 'HighAcc'}
-	modelist['weapon'] = {'Normal'}
+	modelist['weapon'] = {'Main','Other'}
 	modelist['offense'] = {'Normal'}
 	modelist['ranged'] = {'Normal'}
 	
 	--Note: The first value in the table passed to addMode becomes the default value for that mode.
-	if S{'WHM','BLM','RDM','SCH','GEO'}:contains(player.main_job) then
+	if S{'WHM','BLM','RDM','GEO'}:contains(player.main_job) then
 		modelist['offense'] = {'Magic', 'Melee', 'Skillup'}
+	elseif S{'SCH'}:contains(player.main_job) then
+		modelist['offense'] = {'Magic', 'Melee', 'Skillup'}
+		modelist['idle'] = {'Normal', 'CapFarm', 'MDT'}
+		modelist['casting'] = {'Normal', 'MediumAcc', 'HighAcc', 'Proc'}
 	elseif S{'BRD'}:contains(player.main_job) then
 		modelist['offense'] = {'Magic', 'Melee', 'Skillup'}
 		modelist['Daurdabla'] = {'None','Daurdabla','Dummy'}
@@ -38,7 +42,7 @@ function set_modes()
 		modelist['ranged'] = {'r4-hit', 'acc'}
 		modelist['weapon'] = {'Bow','Gun'}
 	elseif S{'MNK'}:contains(player.main_job) then
-		modelist['offense'] = {'Normal_A', 'Normal_B', 'Normal_C', 'HitMoar', 'Tank', 'TankAcc', 'HitYouBastard'}
+		modelist['offense'] = {'Normal','Tank'}
 	elseif S{'NIN'}:contains(player.main_job) then
 		modelist['offense'] = {'auto', 'auto_acc', 'Tank', 'CrazyAccuracy'}
 		modelist['weapon'] = {'Main','OAT','Reive','Other'}
@@ -47,7 +51,8 @@ function set_modes()
 		modelist['idle'] = {'Showoff', 'PDT', 'MDT', 'normal'}
 	elseif S{'SAM'}:contains(player.main_job) then
 		modelist['offense'] = {'4-Hit', '5-Hit', '5-Acc'}
-		modelist['idle'] = {'normal', 'reraise'}
+		modelist['idle'] = {'Normal', 'reraise'}
+		modelist['weapon'] = {'4-Hit','5-Hit','Other'}
 	elseif S{'THF'}:contains(player.main_job) then
 		modelist['weapon'] = {'TH','DD','Accuracy','THAcc'}
 		modelist['treasure'] = {'None','TH'}

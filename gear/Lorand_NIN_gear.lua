@@ -50,7 +50,7 @@ function init_gear_sets()
 	--sets.wsBase[magic][sam/other][state.OffenseMode][state.RangedMode][wsmod[spell.en]]
 	sets.wsBase = {											ammo="Happo Shuriken +1",
 		head="Uk'uxkaj Cap",	neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
-		body="Qaaxo Harness",	hands="Mochizuki Tekko +1",	ring1="Rajas Ring",		ring2="Epona's Ring",
+		body="Qaaxo Harness",	hands="Taeon Gloves",		ring1="Rajas Ring",		ring2="Epona's Ring",
 		back="Yokaze Mantle",	waist="Windbuffet Belt +1",	legs="Otronif Brais +1",	feet="Mochizuki Kyahan +1"
 	}
 	
@@ -108,17 +108,14 @@ function init_gear_sets()
 	--			Other sets
 	--============================================================
 	
-	sets.weapons = {}
 	sets.weapons.Main = {main="Kikoku",sub="Tancho +1"}
 	sets.weapons.OAT = {main="Kikoku",sub="Taikogane"}
 	sets.weapons.Reive = {main="Kikoku",sub="Senkutanto"}
-	sets.weapons.Other = {}
 	
-	sets.idle = {												ammo="Demonry Stone",
-		head="Ocelomeh Headpiece +1",	neck="Orochi Nodowa",		ear1="Brachyura Earring",	ear2="Ethereal Earring",
-		body="Kirin's Osode",		hands={"Mochizuki Tekko +1", "Otronif Gloves +1"},
-		ring1="Defending Ring",		ring2="Shneddick Ring",
-		back="Repulse Mantle",		waist="Flume Belt",		legs={"Hachiya Hakama +1", "Otronif Brais +1"},
+	sets.idle = {											ammo="Demonry Stone",
+		head="Ocelomeh Headpiece +1",	neck="Orochi Nodowa",	ear1="Brachyura Earring",	ear2="Ethereal Earring",
+		body="Kirin's Osode",		hands="Umuthi Gloves",	ring1="Defending Ring",		ring2="Shneddick Ring",
+		back="Repulse Mantle",		waist="Flume Belt",	legs={"Hachiya Hakama +1", "Otronif Brais +1"},
 		feet="Hachiya Kyahan"
 	}
 	sets.idle.with_buff = {}
@@ -139,13 +136,13 @@ function init_gear_sets()
 	
 	sets.defense.PDT = combineSets(sets.defense.DT, {	--PDT-37%
 		head="Otronif Mask +1",		
-		body="Otronif Harness +1",	hands="Otronif Gloves +1",	
+		body="Otronif Harness +1",	hands="Umuthi Gloves",	
 		back="Repulse Mantle",		waist="Flume Belt",		legs="Otronif Brais +1",	feet="Otronif Boots +1"
 	})
 	sets.defense.MDT = combineSets(sets.defense.DT, {	--MDT-16%, MDB+17
 		ammo="Demonry Stone",
 		head="Otronif Mask +1",		ear1="Merman's Earring",	ear2="Merman's Earring",
-		body="Hachiya Chainmail +1",	hands="Otronif Gloves +1",
+		body="Hachiya Chainmail +1",	hands="Umuthi Gloves",
 		back="Tuilha Cape",		legs="Hachiya Hakama +1",	feet="Mochizuki Kyahan +1"
 	})
 	
@@ -161,36 +158,30 @@ function init_gear_sets()
 	}
 	
 	sets.engaged.auto = {											ammo="Happo Shuriken +1",
-		neck="Asperity Necklace",
-		body="Mochizuki Chainmail +1",	hands="Mochizuki Tekko +1",	ring1="Rajas Ring",		ring2="Epona's Ring",
+		head="Whirlpool Mask",		neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
+		body="Mochizuki Chainmail +1",	hands="Taeon Gloves",		ring1="Rajas Ring",		ring2="Epona's Ring",
 		back="Atheling Mantle",		waist="Patentia Sash",		legs="Mochizuki Hakama +1",	feet="Mochizuki Kyahan +1"
 	}
-	sets.engaged.auto['na'] =	{head="Iga Zukin +2", ear1="Dudgeon Earring", ear2="Heartseeker Earring"}
-	sets.engaged.auto['I'] =	{head="Iga Zukin +2", ear1="Dudgeon Earring", ear2="Heartseeker Earring"}
-	sets.engaged.auto['I+'] =	{head="Uk'uxkaj Cap", ear1="Dudgeon Earring", ear2="Heartseeker Earring", body="Hachiya Chainmail +1"}
-	sets.engaged.auto['II'] =	{head="Uk'uxkaj Cap", ear1="Bladeborn Earring", ear2="Steelflash Earring", feet="Otronif Boots +1"}
-	sets.engaged.auto['II+'] =	{head="Uk'uxkaj Cap", ear1="Bladeborn Earring", ear2="Steelflash Earring", legs="Hachiya Hakama +1"}
+	sets.engaged.auto['na'] =	{head="Iga Zukin +2", ear1="Dudgeon Earring", ear2="Heartseeker Earring", feet="Taeon Boots"}
+	sets.engaged.auto['I'] =	{head="Iga Zukin +2", ear1="Dudgeon Earring", ear2="Heartseeker Earring", feet="Taeon Boots"}
+	sets.engaged.auto['I+'] =	{ear1="Dudgeon Earring", ear2="Heartseeker Earring", body="Hachiya Chainmail +1"}
+	sets.engaged.auto['II'] =	{waist="Windbuffet Belt +1", feet="Taeon Boots"}
+	sets.engaged.auto['II+'] =	{body="Qaaxo Harness", hands="Otronif Gloves +1", waist="Windbuffet Belt +1", legs="Hachiya Hakama +1"}
 	
-	sets.engaged.auto_acc = {									ammo="Happo Shuriken +1",
-		neck="Asperity Necklace",
-		body="Mochizuki Chainmail +1",	ring1="Rajas Ring",	ring2="Epona's Ring",
-		back="Yokaze Mantle",		waist="Patentia Sash",	legs="Mochizuki Hakama +1",	feet="Mochizuki Kyahan +1"
-	}
-	sets.engaged.auto_acc['na'] =	{head="Iga Zukin +2", ear1="Dudgeon Earring", ear2="Heartseeker Earring", hands="Mochizuki Tekko +1"}
-	sets.engaged.auto_acc['I'] =	{head="Iga Zukin +2", ear1="Dudgeon Earring", ear2="Heartseeker Earring", hands="Mochizuki Tekko +1"}
-	sets.engaged.auto_acc['I+'] =	{head="Whirlpool Mask", ear1="Dudgeon Earring", ear2="Heartseeker Earring", body="Hachiya Chainmail +1", hands="Otronif Gloves +1"}
-	sets.engaged.auto_acc['II'] =	{head="Whirlpool Mask", ear1="Bladeborn Earring", ear2="Steelflash Earring", hands="Otronif Gloves +1"}
-	sets.engaged.auto_acc['II+'] =	{head="Whirlpool Mask", ear1="Bladeborn Earring", ear2="Steelflash Earring", hands="Otronif Gloves +1", legs="Hachiya Hakama +1"}
-	
-	sets.engaged.CrazyAccuracy = {										ammo="Happo Shuriken +1",
+	sets.engaged.auto_acc = {										ammo="Happo Shuriken +1",
 		head="Whirlpool Mask",		neck="Agitator's Collar",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
-		body="Mochizuki Chainmail +1",	hands="Otronif Gloves +1",	ring1="Rajas Ring",		ring2="Mars's Ring",
-		back="Yokaze Mantle",		waist="Anguinus Belt",		legs="Hachiya Hakama +1",	feet="Mochizuki Kyahan +1"
+		body="Mochizuki Chainmail +1",	hands="Taeon Gloves",		ring1="Rajas Ring",		ring2="Epona's Ring",
+		back="Yokaze Mantle",		waist="Patentia Sash",		legs="Mochizuki Hakama +1",	feet="Mochizuki Kyahan +1"
 	}
+	sets.engaged.auto_acc['na'] =	{head="Iga Zukin +2", ear1="Dudgeon Earring", ear2="Heartseeker Earring", hands="Mochizuki Tekko +1", feet="Taeon Boots"}
+	sets.engaged.auto_acc['I'] =	{head="Iga Zukin +2", ear1="Dudgeon Earring", ear2="Heartseeker Earring", hands="Mochizuki Tekko +1", feet="Taeon Boots"}
+	sets.engaged.auto_acc['I+'] =	{ear1="Dudgeon Earring", ear2="Heartseeker Earring", body="Hachiya Chainmail +1"}
+	sets.engaged.auto_acc['II'] =	{waist="Windbuffet Belt +1", feet="Taeon Boots"}
+	sets.engaged.auto_acc['II+'] =	{waist="Windbuffet Belt +1", legs="Hachiya Hakama +1"}
 	
-	sets.engaged.Acc = {											ammo="Happo Shuriken +1",
-		head="Mochizuki Hatsuburi +1",	neck="Ziel Charm",		ear1="Dudgeon Earring",		ear2="Heartseeker Earring",
-		body="Mochizuki Chainmail +1",	hands="Otronif Gloves +1",	ring1="Rajas Ring",		ring2="Mars's Ring",
-		back="Yokaze Mantle",		waist="Anguinus Belt",		legs="Hachiya Hakama +1",	feet="Mochizuki Kyahan +1"
+	sets.engaged.CrazyAccuracy = {									ammo="Happo Shuriken +1",
+		head="Whirlpool Mask",		neck="Peacock Amulet",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
+		body="Mochizuki Chainmail +1",	hands="Umuthi Gloves",	ring1="Rajas Ring",		ring2="Mars's Ring",
+		back="Yokaze Mantle",		waist="Anguinus Belt",	legs="Hachiya Hakama +1",	feet="Taeon Boots"
 	}
 end

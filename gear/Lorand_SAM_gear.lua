@@ -1,15 +1,8 @@
------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 --[[
 	Author: Ragnarok.Lorand
-	
-	Slips:
-		3:	Twilight Helm/Mail/Torque
-		10:	Unkai+2 Head/Hands/Legs/Feet
-		15:	Wakido Head/Body/Hands/Legs/Feet
-		17:	Sakonji Hands/Legs/Feet
-		18:	Sakonji+1 Head/Body
 --]]
------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
 function init_gear_sets()
 	--============================================================
@@ -49,21 +42,15 @@ function init_gear_sets()
 	--============================================================
 	--sets.wsBase[magic][sam/other][state.OffenseMode][state.RangedMode][wsmod[spell.en]]
 	sets.wsBase = {
-		head="Otomi Helm",	neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
-		body="Xaddi Mail",	hands="Wakido Kote",		ring1="Rajas Ring",		ring2="Pyrosoul Ring",
-		back="Atheling Mantle",	waist="Windbuffet Belt +1",	legs="Otronif Brais +1",	feet="Ejekamal Boots"
+		head="Yaoyotl Helm",	neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
+		body="Phorcys Korazin",	hands="Otronif Gloves +1",	ring1="Rajas Ring",		ring2="Pyrosoul Ring",
+		back="Atheling Mantle",	waist="Fotia Belt",		legs="Otronif Brais +1",	feet="Whirlpool Greaves"
 	}
 
 	sets.wsBase['4-Hit'] = {
 		head="Yaoyotl Helm",	neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
 		body="Phorcys Korazin",	hands="Otronif Gloves +1",	ring1="Rajas Ring",		ring2="Pyrosoul Ring",
-		back="Takaha Mantle",	waist="Windbuffet Belt +1",	legs="Otronif Brais +1",	feet="Whirlpool Greaves"
-	}
-	
-	sets.wsBase['5-Acc'] = {
-		head="Otomi Helm",	neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
-		body="Xaddi Mail",	hands="Otronif Gloves +1",	ring1="Rajas Ring",		ring2="Pyrosoul Ring",
-		back="Takaha Mantle",	waist="Windbuffet Belt +1",	legs="Otronif Brais +1",	feet="Ejekamal Boots"
+		back="Takaha Mantle",	waist="Fotia Belt",		legs="Otronif Brais +1",	feet="Whirlpool Greaves"
 	}
 	
 	sets.wsBase.magic = {
@@ -90,15 +77,15 @@ function init_gear_sets()
 	--			Other sets
 	--============================================================
 	
+	sets.weapons['4-Hit'] = {main="Amanomurakumo",sub="Pole Grip",range="Cibitshavore",ammo="Eminent Arrow"}
+	sets.weapons['5-Hit'] = {main="Amanomurakumo",sub="Pole Grip",ammo="Potestas Bomblet"}
+	
 	sets.resting = {}
 	
 	sets.idle = {
-		main="Amanomurakumo",	sub="Pole Grip",		range="Cibitshavore",		ammo="Eminent Arrow",
 		head={"Twilight Helm", "Yaoyotl Helm"},
 		neck="Orochi Nodowa",	ear1="Brachyura Earring",	ear2="Ethereal Earring",
-		body={"Kirin's Osode", "Sakonji Domaru +1", "Otronif Harness +1"},
-		hands={"Sakonji Kote", "Otronif Gloves +1"},
-		ring1="Defending Ring",	ring2="Shneddick Ring",
+		body="Kirin's Osode",	hands="Umuthi Gloves",		ring1="Defending Ring",		ring2="Shneddick Ring",
 		back="Repulse Mantle",	waist="Flume Belt",		legs="Otronif Brais +1",	feet="Whirlpool Greaves"
 	}
 	sets.idle.Reraise = {head="Twilight Helm",	body="Twilight Mail"}
@@ -113,7 +100,7 @@ function init_gear_sets()
 	
 	sets.defense.PDT = combineSets(sets.defense.DT, {
 		head="Otronif Mask +1",	
-		body="Otronif Harness +1",	hands="Otronif Gloves +1",	
+		body="Otronif Harness +1",	hands="Umuthi Gloves",
 		back="Repulse Mantle",		waist="Flume Belt",		legs="Otronif Brais +1",	feet="Otronif Boots +1"
 	})
 	sets.defense.MDT = combineSets(sets.defense.DT, {
@@ -128,28 +115,29 @@ function init_gear_sets()
 
 	--============================================================
 	
-	sets.engaged.with_buff = {}
-	sets.engaged.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
-	sets.engaged.with_buff['hasso'] = {head="Yaoyotl Helm", legs="Unkai Haidate +2"}
-	sets.engaged.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}
-	
-	sets.engaged['5-Hit'] = {
-		head="Otomi Helm",	neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
-		body="Xaddi Mail",	hands="Otronif Gloves +1",	ring1="Rajas Ring",		ring2="K'ayres Ring",
-		back="Atheling Mantle",	waist="Windbuffet Belt +1",	legs="Otronif Brais +1",	feet="Ejekamal Boots"
-	}
-	
-	sets.engaged['5-Acc'] = {
-		head="Sakonji Kabuto +1",	neck="Agitator's Collar",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
-		body="Sakonji Domaru +1",	hands="Otronif Gloves +1",	ring1="Rajas Ring",		ring2="Mars's Ring",
-		back="Takaha Mantle",		waist="Sweordfaetels",		legs="Otronif Brais +1",	feet="Whirlpool Greaves"
-	}
-	
 	sets.engaged['4-Hit'] = {
-		head="Yaoyotl Helm",		neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
+		head="Sakonji Kabuto +1",	neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
 		body="Sakonji Domaru +1",	hands="Otronif Gloves +1",	ring1="Rajas Ring",		ring2="K'ayres Ring",
 		back="Takaha Mantle",		waist="Sweordfaetels",		legs="Otronif Brais +1",	feet="Otronif Boots +1"
 	}
+	sets.engaged['4-Hit'].with_buff = {}
+	sets.engaged['4-Hit'].with_buff['hasso'] = {head="Yaoyotl Helm", legs="Unkai Haidate +2"}
+	
+	sets.engaged['5-Hit'] = {
+		head="Highwing Helm",	neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
+		body="Xaddi Mail",	hands="Wakido Kote +1",		ring1="Rajas Ring",		ring2="K'ayres Ring",
+		back="Atheling Mantle",	waist="Windbuffet Belt +1",	legs="Otronif Brais +1",	feet="Whirlpool Greaves"
+	}
+	
+	sets.engaged['5-Acc'] = {
+		head="Yaoyotl Helm",	neck="Agitator's Collar",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
+		body="Xaddi Mail",	hands="Umuthi Gloves",		ring1="Rajas Ring",		ring2="Mars's Ring",
+		back="Takaha Mantle",	waist="Anguinus Belt",		legs="Otronif Brais +1",	feet="Whirlpool Greaves"
+	}
+	
+	sets.engaged.with_buff = {}
+	sets.engaged.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
+	sets.engaged.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}
 	
 	sets.buffs['Meikyou Shisui'] = {feet="Sakonji Sune-Ate"}
 end

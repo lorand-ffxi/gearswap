@@ -52,7 +52,7 @@ function init_gear_sets()
 	sets.midcast.Cure = {
 		main="Tamaxchi",		sub="Genbu's Shield",					ammo="Impatiens",
 		head="Nahtirah Hat",		neck="Orunmila's Torque",	ear1="Roundel Earring",	ear2="Star Earring",
-		body="Hagondes Coat +1",	hands="Weatherspoon Cuffs +1",	ring1="Aquasoul Ring",	ring2="Aqua Ring",
+		body="Hagondes Coat +1",	hands="Telchine Gloves",	ring1="Aquasoul Ring",	ring2="Aqua Ring",
 		back="Oretania's Cape",		waist="Witful Belt",		legs="Nares Trews",	feet="Artsieq Boots"
 	}
 	sets.midcast.Curaga = sets.midcast.Cure

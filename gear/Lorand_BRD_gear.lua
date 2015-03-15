@@ -188,7 +188,7 @@ function init_gear_sets()
 	sets.midcast.Cure = {
 		main="Arka IV",			sub="Achaq Grip",		range="Linos",
 		head="Gendewitha Caubeen +1",	neck="Orunmila's Torque",	ear1="Novia Earring",	ear2="Star Earring",
-		body="Gendewitha Bliaut +1",	hands="Weatherspoon Cuffs +1",	ring1="Prolix Ring",	ring2="Sangoma Ring",
+		body="Gendewitha Bliaut +1",	hands="Telchine Gloves",	ring1="Prolix Ring",	ring2="Sangoma Ring",
 		back="Swith Cape",		waist="Witful Belt",		legs="Artsieq Hose",	feet="Bihu Slippers"
 	}
 	

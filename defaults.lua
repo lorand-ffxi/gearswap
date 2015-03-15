@@ -34,6 +34,7 @@ function define_defaults()
 	sets.buffs.doom = {ring1="Saida Ring", ring2="Saida Ring"}
 	sets.naked = {main=empty,sub=empty,range=empty,ammo=empty,head=empty,neck=empty,ear1=empty,ear2=empty,body=empty,hands=empty,ring1=empty,ring2=empty,back=empty,waist=empty,legs=empty,feet=empty}
 	sets.weapons = {}
+	sets.weapons.Other = {}
 	
 	state = {}
 	
