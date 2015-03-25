@@ -1,15 +1,6 @@
 -----------------------------------------------------------------------------------------------------------
 --[[
 	Author: Ragnarok.Lorand
-	
-	Slips:
-		2:	Loq. Earring
-		3: 	Twilight Torque, Impact body
-		8:	Estoqueuer's Back
-		10:	Estoqueur's+2 (all)
-		14:	Nares Hands/Legs
-		15: Atrophy Hat/Body/Legs
-		17:	Vitivation Hat/Body/Hands
 --]]
 -----------------------------------------------------------------------------------------------------------
 
@@ -17,6 +8,8 @@ function init_gear_sets()
 	--============================================================
 	--					Precast sets
 	--============================================================
+	sets.impact = {body="Twilight Cloak"}	--This is just to remind me to get it from the Porter Moogle
+	
 	sets.precast.JA['Chainspell'] = {body="Vitivation Tabard"}
 	sets.precast.JA['Saboteur'] = {hands="Estoqueur's Gantherots +2"}
 	

@@ -709,6 +709,7 @@ function get_idle_set(baseSet)
 			idleSet = combineSets(idleSet, sets.TreasureHunter)
 		end
 	elseif pet.isvalid then
+		idleSet = combineSets(idleSet, sets.idle.with_pet)
 		idleSet = combineSets(idleSet, sets.idle.with_pet, get_pet_type())
 		if S{player.main_job,player.sub_job}:contains('SMN') then
 			idleSet = combineSets(idleSet, sets.idle.with_pet, 'perp'..tostring(get_perp_cost()))

@@ -19,35 +19,37 @@ function init_gear_sets()
 	sets.precast.JA['Immanence'] =		{hands="Savant's Bracers +2"}
 	sets.precast.JA['Addendum: White'] =	{body="Savant's Gown +2"}
 	sets.precast.JA['Addendum: Black'] =	{body="Savant's Gown +2"}
-	sets.precast.JA['Altruism'] =		{head="Pedagogy Mortarboard"}
-	sets.precast.JA['Focalization'] =	{head="Pedagogy Mortarboard"}
+	sets.precast.JA['Altruism'] =		{head="Pedagogy Mortarboard +1"}
+	sets.precast.JA['Focalization'] =	{head="Pedagogy Mortarboard +1"}
 	
-	sets.precast.FC = {			--44%	|	54% / 34%
-		main="Keraunos",
+	sets.precast.FC = {			--50%	|	40% / 60%
+		main="Keraunos",		--1%
 		ammo="Incantor Stone",		--2%
 		head="Nahtirah Hat",		--10%
 		neck="Orunmila's Torque",	--5%
 		ear1="Loquacious Earring",	--2%
+		body="Helios Jacket",		--4%
 		hands="Gendewitha Gages +1",	--7%
 		ring1="Prolix Ring",		--2%
 		ring2="Veneficium Ring",	--Q+1%
 		back="Swith Cape",		--3%
 		waist="Witful Belt",		--3%
 		legs="Artsieq Hose",		--5%
-		feet="Pedagogy Loafers"		--5%
+		feet="Pedagogy Loafers +1"	--6%
 	}
-	sets.precast.FC.EnhancingMagic = {	--49%	|	59% / 39%
+	sets.precast.FC.EnhancingMagic = {	--55%	|	45% / 65%
 		waist="Siegel Sash"		--8%
 	}
-	sets.precast.FC.Cure = {		--49%	|	59% / 39%
+	sets.precast.FC.Cure = {		--55%	|	45% / 65%
 		back="Pahtli Cape"		--8%
 	}
 	sets.precast.FC.Curaga = sets.precast.FC.Cure
-	sets.precast.FC.Grimoire = {		--47%	|	57% / ??
-		feet="Academic's Loafers"	--8% addition to arts (10%)
+	sets.precast.FC.Grimoire = {		--63%
+		head="Pedagogy Mortarboard +1",	--11% grimoire FC
+		feet="Academic's Loafers"	--8% grimoire FC
 	}
 	sets.precast.FC.Weather = {		--(80%)
-		feet="Pedagogy Loafers"		--15% addition to Celerity/Alacrity (50%)
+		feet="Pedagogy Loafers +1"	--16% addition to Celerity/Alacrity (50%)
 	}
 	sets.precast.FC.Lightning = {main="Apamajas I"}
 
@@ -58,16 +60,16 @@ function init_gear_sets()
 	--============================================================
 	--			Midcast sets
 	--============================================================
-	sets.midcast.FastRecast = set_combine(sets.precast.FC, {
+	sets.midcast.FastRecast = {
 		ammo="Impatiens",
 		head="Kaabnanx Hat",		neck="Orunmila's Torque",
 		body="Hagondes Coat +1",	hands="Gendewitha Gages +1",
 		legs="Hagondes Pants +1",	feet="Hagondes Sabots +1"
-	})
+	}
 
 	sets.midcast.HealingMagic = {
 		body="Argute Gown +2",
-		feet="Pedagogy Loafers"
+		feet="Pedagogy Loafers +1"
 	}
 	sets.midcast.HealingMagic.LA = {
 		legs="Academic's Pants +1"		--18 Divine/Enfeebling/Enhancing/Healing Skill
@@ -81,7 +83,7 @@ function init_gear_sets()
 		main="Tamaxchi",		sub="Genbu's Shield",		ammo="Impatiens",
 		head="Gendewitha Caubeen +1",	neck="Orunmila's Torque",	ear1="Lifestorm Earring",	ear2="Novia Earring",
 		body="Gendewitha Bliaut +1",	hands="Telchine Gloves",	ring1="Prolix Ring",		ring2="Veneficium Ring",
-		back="Ogapepo Cape",		waist="Witful Belt",		legs="Artsieq Hose",		feet="Pedagogy Loafers"
+		back="Ogapepo Cape",		waist="Witful Belt",		legs="Artsieq Hose",		feet="Pedagogy Loafers +1"
 	}
 	sets.midcast.Cure.with_buff = {}
 	sets.midcast.Curaga = sets.midcast.Cure
@@ -131,7 +133,7 @@ function init_gear_sets()
 
 	sets.midcast.DarkMagic = {
 		neck="Dark Torque",
-		back="Bookworm's Cape",	legs="Pedagogy Pants",	feet="Helios Boots"
+		back="Bookworm's Cape",	legs="Pedagogy Pants"
 	}
 	sets.midcast.DarkMagic.DA = {
 		body="Academic's Gown +1"		--18 Elemental/Enfeebling/Dark Skill
@@ -166,7 +168,7 @@ function init_gear_sets()
 	}
 	
 	sets.midcast.ElementalMagicSkill = {
-		head="Pedagogy Mortarboard",
+		head="Pedagogy Mortarboard +1",
 		body="Hyksos Robe",
 		back="Bookworm's Cape",		legs="Pedagogy Pants",	feet="Savant's Loafers +2"
 	}
@@ -178,19 +180,19 @@ function init_gear_sets()
 		main="Keraunos",		sub="Zuuxowu Grip",					ammo="Dosis Tathlum",
 		head="Buremte Hat",		neck="Eddy Necklace",	ear1="Hecate's Earring",	ear2="Friomisi Earring",
 		body="Hagondes Coat +1",	hands="Otomi Gloves",	ring1="Fenrir Ring +1",		ring2="Acumen Ring",
-		back="Bookworm's Cape",		waist="Aswang Sash",	legs="Hagondes Pants +1",	feet="Hagondes Sabots +1"
+		back="Bookworm's Cape",		waist="Aswang Sash",	legs="Hagondes Pants +1",	feet="Helios Boots"
 	}
 	sets.midcast.ElementalMagic.LowTier = {
 		main="Keraunos",		sub="Zuuxowu Grip",					ammo="Dosis Tathlum",
 		head="Buremte Hat",		neck="Eddy Necklace",	ear1="Hecate's Earring",	ear2="Friomisi Earring",
 		body="Hagondes Coat +1",	hands="Otomi Gloves",	ring1="Fenrir Ring +1",		ring2="Acumen Ring",
-		back="Bookworm's Cape",		waist="Tengu-no-Obi",	legs="Hagondes Pants +1",	feet="Hagondes Sabots +1"
+		back="Bookworm's Cape",		waist="Tengu-no-Obi",	legs="Hagondes Pants +1",	feet="Helios Boots"
 	}
 	sets.midcast.ElementalMagic.HighTier = {
-		main="Keraunos",			sub="Zuuxowu Grip",					ammo="Dosis Tathlum",
+		main="Keraunos",			sub="Zuuxowu Grip",					ammo="Witchstone",
 		head="Academic's Mortarboard +1",	neck="Eddy Necklace",	ear1="Hecate's Earring",	ear2="Friomisi Earring",
 		body="Hagondes Coat +1",		hands="Otomi Gloves",	ring1="Fenrir Ring +1",		ring2="Acumen Ring",
-		back="Bookworm's Cape",			waist="Aswang Sash",	legs="Hagondes Pants +1",	feet="Hagondes Sabots +1"
+		back="Bookworm's Cape",			waist="Aswang Sash",	legs="Hagondes Pants +1",	feet="Helios Boots"
 	}
 	sets.midcast.ElementalMagic.Earth = {neck="Quanpur Necklace"}
 	
@@ -224,7 +226,7 @@ function init_gear_sets()
 	--============================================================
 	
 	sets.resting = {
-		main={"Chatoyant Staff","Venabulum"},				sub="Elder's Grip",		ammo="Clarus Stone",
+		main="Bolelabunga",		sub="Genbu's Shield",						ammo="Clarus Stone",
 		head="Kaabnax Hat",		neck="Eidolon Pendant",		ear1="Loquacious Earring",	ear2="Relaxing Earring",
 		body="Artsieq Jubbah",		hands="Nares Cuffs",		ring1="Sangoma Ring",		ring2="Fenrir Ring +1",
 		back={"Felicitas Cape","Pahtli Cape"},
@@ -238,12 +240,7 @@ function init_gear_sets()
 		back="Repulse Mantle",			waist="Emphatikos Rope",	legs="Academic's Pants +1",	feet="Gendewitha Galoshes +1"
 	}
 	
-	sets.idle.CapFarm = {
-		main="Bolelabunga",			sub="Genbu's Shield",						ammo="Impatiens",
-		head="Academic's Mortarboard +1",	neck="Twilight Torque",		ear1="Brachyura Earring",	ear2="Ethereal Earring",
-		body="Academic's Gown +1",		hands="Gendewitha Gages +1",	ring1="Defending Ring",		ring2="Shneddick Ring",
-		back="Mecistopins Mantle",		waist="Emphatikos Rope",	legs="Academic's Pants +1",	feet="Gendewitha Galoshes +1"
-	}
+	sets.idle.CapFarm = {back="Mecistopins Mantle"}
 	
 	sets.idle.MDT = {
 		main="Bolelabunga",		sub="Genbu's Shield",						ammo="Impatiens",
@@ -256,9 +253,6 @@ function init_gear_sets()
 	sets.idle.lowMP =	{legs="Nares Trews"}
 	sets.idle.lowMP_night =	{hands="Serpentes Cuffs"}
 	sets.idle.lowMP_day =	{feet="Serpentes Sabots"}
-	sets.idle.sublimation = {
-		head="Academic's Mortarboard +1",
-	}
 	
 	sets.idle.with_buff['sublimation: activated'] = {
 		head="Academic's Mortarboard +1",

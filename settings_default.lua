@@ -17,7 +17,7 @@ end
 
 function set_modes()
 	local modelist = {}
-	modelist['idle'] = {'Normal'}
+	modelist['idle'] = {'CapFarm','Normal'}
 	modelist['defense'] = {'Normal', 'PDT', 'MDT'}
 	modelist['casting'] = {'Normal', 'Resistant', 'Proc'}
 	modelist['accuracy'] = {'Normal', 'MediumAcc', 'HighAcc'}
@@ -54,7 +54,7 @@ function set_modes()
 		modelist['idle'] = {'Normal', 'reraise'}
 		modelist['weapon'] = {'4-Hit','5-Hit','Other'}
 	elseif S{'THF'}:contains(player.main_job) then
-		modelist['weapon'] = {'TH','DD','Accuracy','THAcc'}
+		modelist['weapon'] = {'TH','DD','Accuracy','THAcc','Other'}
 		modelist['treasure'] = {'None','TH'}
 		modelist['offense'] = {'TH', 'Normal', 'Acc'}
 		modelist['ranged'] = {'TH', 'Normal', 'Acc'}

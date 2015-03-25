@@ -1,9 +1,8 @@
------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 --[[
 	Author: Ragnarok.Lorand
-	
 --]]
------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
 function init_gear_sets()
 	--============================================================
@@ -156,13 +155,10 @@ function init_gear_sets()
 
 	sets.midcast.DarkMagic = {}
 	sets.midcast.Stun = {
-		main="Apamajas II",		sub="Mephitis Grip",	ammo="Kalboron Stone",
-		head="Atrophy Chapeau +1",	neck="Jeweled Collar",	ear1="Lifestorm Earring",	ear2="Psystorm Earring",
-		body="Vitivation Tabard +1",
-		hands="Buremte Gloves",
-		--hands="Gendewitha Gages +1",
-		ring1="Prolix Ring",		ring2="Perception Ring",
-		back="Ogapepo Cape",		waist="Cetl Belt",	legs="Artsieq Hose",		feet="Bokwus Boots"
+		main="Apamajas II",		sub="Mephitis Grip",		ammo="Kalboron Stone",
+		head="Atrophy Chapeau +1",	neck="Jeweled Collar",		ear1="Lifestorm Earring",	ear2="Psystorm Earring",
+		body="Vitivation Tabard +1",	hands="Gendewitha Gages +1",	ring1="Prolix Ring",		ring2="Perception Ring",
+		back="Ogapepo Cape",		waist="Cetl Belt",		legs="Artsieq Hose",		feet="Bokwus Boots"
 	}
 	
 	sets.midcast.DivineMagic = {}
@@ -175,26 +171,27 @@ function init_gear_sets()
 	--============================================================
 	
 	sets.maxMP = {
-		sub="Achaq Grip",		ammo="Kalboron Stone",
+		main="Marin Staff",		sub="Achaq Grip",						ammo="Kalboron Stone",
 		head="Kaabanax Hat",		neck="Estoqueur's Collar",	ear1="Loquacious Earring",	ear2="Star Earring",
-		body="Vitivation Tabard +1",	hands="Otomi Gloves",
+		body="Vitivation Tabard +1",	hands="Otomi Gloves",		ring1="Sangoma Ring",		ring2="Prolix Ring",
 		back="Pahtli Cape",		waist="Hierarch Belt",		legs="Artsieq Hose",		feet="Atrophy Boots"
 	}
 	
-	sets.resting = {
-		main="Boonwell Staff",		sub="Achaq Grip",	ammo="Clarus Stone",
-		head="Vitivation Chapeau +1",	neck="Eidolon Pendant",	hands="Serpentes Cuffs",
-		back="Felicitas Cape",		waist="Austerity Belt",	legs="Nares Trews",	feet="Chelona Boots"
-	}
+	sets.resting = combineSets(sets.maxMP, {
+		main="Boonwell Staff",		sub="Achaq Grip",						ammo="Clarus Stone",
+		head="Vitivation Chapeau +1",	neck="Eidolon Pendant",		ear1="Loquacious Earring",	ear2="Star Earring",
+		body="Artsieq Jubbah",		hands="Serpentes Cuffs",	ring1="Sangoma Ring",		ring2="Prolix Ring",
+		back="Felicitas Cape",		waist="Austerity Belt",		legs="Nares Trews",		feet="Chelona Boots"
+	})
 	
 	sets.idle = {
-		--main="Terra's Staff",		sub="Achaq Grip",		ammo="Kalboron Stone",
 		main="Bolelabunga",		sub="Genbu's Shield",		ammo="Kalboron Stone",
 		head="Vitivation Chapeau +1",	neck="Twilight Torque",		ear1="Novia Earring",		ear2="Ethereal Earring",
 		body="Artsieq Jubbah",		hands="Hagondes Cuffs +1",	ring1="Dark Ring",		ring2="Shneddick Ring",
-		--back="Cheviot Cape",			
-		back="Mecistopins Mantle",	waist="Emphatikos Rope",	legs="Vitivation Tights +1",	feet="Hagondes Sabots +1"
+		back="Cheviot Mantle",		waist="Emphatikos Rope",	legs="Vitivation Tights +1",	feet="Hagondes Sabots +1"
 	}
+	sets.idle.CapFarm = {back="Mecistopins Mantle"}
+	
 	sets.idle.with_buff = {}
 	sets.idle.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
 	
@@ -211,12 +208,12 @@ function init_gear_sets()
 	sets.idle.lowMP_night =	{hands="Serpentes Cuffs"}
 	sets.idle.lowMP_day = {feet="Serpentes Sabots"}
 	
-	sets.minHp = set_combine(sets.naked, {
+	sets.minHp = combineSets(sets.naked, {
 		ear1="Graiai Earring",
 		ring1="Bifrost Ring",	ring2="Serket Ring",
 		back="Swith Cape"
 	})
-	sets.maxHp = set_combine(sets.naked, {
+	sets.maxHp = combineSets(sets.naked, {
 		sub="Genbu's Shield",
 		head="Vitivation Chapeau +1",	neck="Estoqueur's Collar",	ear2="Ethereal Earring",
 		body="Vitivation Tabard +1",	hands="Hagondes Cuffs +1",	ring1="Kunaji Ring",	ring2="Meridian Ring",
@@ -227,12 +224,12 @@ function init_gear_sets()
 		neck="Twilight Torque",
 		ring1="Dark Ring",		ring2="Dark Ring"
 	}
-	sets.defense.PDT = set_combine(sets.defense.DT, {
+	sets.defense.PDT = combineSets(sets.defense.DT, {
 		main="Terra's Staff",
 		hands="Hagondes Cuffs +1",
 		back="Cheviot Cape",		waist="Flume Belt"
 	})
-	sets.defense.MDT = set_combine(sets.defense.DT, {})
+	sets.defense.MDT = combineSets(sets.defense.DT, {})
 
 	sets.engaged = {
 		--main="Iztaasu +2",		sub="Beatific Shield",

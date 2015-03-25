@@ -66,24 +66,23 @@ function init_gear_sets()
 	}
 
 	sets.wsBase = {
-		head="Iuitl Headgear +1",	neck="Asperity Necklace",	ear1="Steelflash Earring",	ear2="Bladeborn Earring",
-		body="Qaaxo Harness",		hands="Plunderer's Armlets +1",	ring1="Rajas Ring",		ring2="Epona's Ring",
-		back="Atheling Mantle",		waist="Anguinus Belt",		legs="Kaabnax Trousers",	feet="Plunderer's Poulaines"
+		head="Taeon Chapeau",	neck="Asperity Necklace",	ear1="Steelflash Earring",	ear2="Bladeborn Earring",
+		body="Qaaxo Harness",	hands="Plunderer's Armlets +1",	ring1="Rajas Ring",		ring2="Epona's Ring",
+		back="Atheling Mantle",	waist="Anguinus Belt",		legs="Taeon Tights",		feet="Plunderer's Poulaines"
 	}
 	
 	sets.wsBase.DEX = {
-		head="Uk'uxkaj Cap"
+		head="Taeon Chapeau"
 	}
 	
 	sets.wsBase.MediumAcc = {
-		head="Whirlpool Mask",
 		hands="Buremte Gloves",
 		legs="Kaabanax Trousers"
 	}
 	sets.wsBase.HighAcc = {
 		head="Whirlpool Mask",	neck="Peacock Amulet",		ear1="Dudgeon Earring",		ear2="Heartseeker Earring",
 		body="Iuitl Vest +1",	hands="Plunderer's Armlets +1",	ring1="Rajas Ring",		ring2="Epona's Ring",
-		back="Canny Cape",	waist="Anguinus Belt",		legs="Iuitl Tights +1",		feet="Iuitl Gaiters +1"
+		back="Canny Cape",	waist="Anguinus Belt",		legs="Taeon Tights",		feet="Iuitl Gaiters +1"
 	}
 
 	sets.wsBase.Magic = {
@@ -97,14 +96,14 @@ function init_gear_sets()
 	--============================================================
 	
 	sets.midcast.FastRecast = {
-		head="Iuitl Headgear +1",	neck="Orunmila's Torque",	ear1="Loquacious Earring",
-		body="Iuitl Vest +1",		hands="Buremte Gloves",		ring1="Prolix Ring",		ring2="Diamond Ring",	--Diamond Ring aug: 2% interrupt rate down
-		back="Mujin Mantle",		waist="Cetl Belt",		legs="Kaabnax Trousers",	feet="Iuitl Gaiters +1"
+		head="Taeon Chapeau",	neck="Orunmila's Torque",	ear1="Loquacious Earring",
+		body="Iuitl Vest +1",	hands="Buremte Gloves",		ring1="Prolix Ring",		ring2="Diamond Ring",	--Diamond Ring aug: 2% interrupt rate down
+		back="Mujin Mantle",	waist="Cetl Belt",		legs="Kaabnax Trousers",	feet="Iuitl Gaiters +1"
 	}
 	sets.midcast.Utsusemi = {back="Mujin Mantle"}
 
 	sets.midcast.ranged = {
-		head="Uk'uxkaj Cap",	neck="Ocachi Gorget",		ear1="Clearview Earring",	ear2="Volley Earring",
+		head="Taeon Chapeau",	neck="Ocachi Gorget",		ear1="Clearview Earring",	ear2="Volley Earring",
 		body="Iuitl Vest +1",	hands="Iuitl Wristbands +1",	ring1="Paqichikaji Ring",	ring2="Longshot Ring",
 		back="Libeccio Mantle",	waist="Sveltesse Gouriz",	legs="Nahtirah Trousers",	feet="Pillager's Poulaines"
 	}
@@ -114,6 +113,7 @@ function init_gear_sets()
 	--			Other sets
 	--============================================================
 	
+	sets.weapons.Other = {}
 	sets.weapons.TH = {main='Sandung',sub='Jugo Kukri',range="Raider's Boomerang"}
 	sets.weapons.DD = {main='Izhiikoh',sub='Jugo Kukri',range="Raider's Boomerang"}
 	sets.weapons.Accuracy = {main='Izhiikoh',sub='Jugo Kukri',ammo='Honed Tathlum'}
@@ -124,16 +124,16 @@ function init_gear_sets()
 	sets.idle = {												--range="Raider's Boomerang",
 		head="Ocelomeh Headpiece +1",	neck="Orochi Nodowa",		ear1="Brachyura Earring",	ear2="Ethereal Earring",
 		body="Qaaxo Harness",		hands="Plunderer's Armlets +1",	ring1="Defending Ring",		ring2="Shneddick Ring",
-		back="Repulse Mantle",		waist="Flume Belt",		legs="Kaabnax Trousers",	feet="Iuitl Gaiters +1"
+		back="Repulse Mantle",		waist="Flume Belt",		legs="Taeon Tights",		feet="Iuitl Gaiters +1"
 	}
 	sets.idle.with_buff = {}
 	sets.idle.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	sets.idle.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}
 	
 	sets.defense.Evasion = {
-		head="Iuitl Headgear +1",	neck="Torero Torque",		ear1="Novia Earring",		ear2="Ethereal Earring",
-		body="Qaaxo Harness",		hands="Plunderer's Armlets +1",	ring1="Defending Ring",		ring2="Alert Ring",
-		back="Canny Cape",		waist="Sveltesse Gouriz",	legs="Kaabnax Trousers",	feet="Iuitl Gaiters +1"
+		head="Taeon Chapeau",	neck="Torero Torque",		ear1="Novia Earring",	ear2="Ethereal Earring",
+		body="Qaaxo Harness",	hands="Plunderer's Armlets +1",	ring1="Defending Ring",	ring2="Alert Ring",
+		back="Canny Cape",	waist="Sveltesse Gouriz",	legs="Taeon Tights",	feet="Iuitl Gaiters +1"
 	}
 
 	sets.defense.DT = combineSets(sets.defense.Evasion,{	--DT-15%, PDT-12%, MDT-10%	=> PDT-27%, MDT-25%
@@ -153,30 +153,30 @@ function init_gear_sets()
 		back="Tuilha Cape",		waist="Flume Belt",		feet="Iuitl Gaiters +1"
 	})
 	
-	sets.engaged = {											--range="Raider's Boomerang",
-		head="Highwing Helm",	neck="Asperity Necklace",	ear1="Dudgeon Earring",		ear2="Heartseeker Earring",
-		body="Qaaxo Harness",	hands="Plunderer's Armlets +1",	ring1="Rajas Ring",		ring2="Epona's Ring",
-		back="Atheling Mantle",	waist="Patentia Sash",		legs="Iuitl Tights +1",		feet="Taeon Boots"
+	sets.engaged = {									--range="Raider's Boomerang",
+		head="Taeon Chapeau",	neck="Asperity Necklace",	ear1="Dudgeon Earring",	ear2="Heartseeker Earring",
+		body="Qaaxo Harness",	hands="Plunderer's Armlets +1",	ring1="Rajas Ring",	ring2="Epona's Ring",
+		back="Atheling Mantle",	waist="Patentia Sash",		legs="Taeon Tights",	feet="Taeon Boots"
 	}
 	sets.engaged.with_buff = {}
 	sets.engaged.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	sets.engaged.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}
 	
-	sets.engaged.MediumAcc = {									--range="Raider's Boomerang",
-		head="Whirlpool Mask",	neck="Asperity Necklace",	ear1="Dudgeon Earring",		ear2="Heartseeker Earring",
-		body="Iuitl Vest +1",	hands="Plunderer's Armlets +1",	ring1="Rajas Ring",		ring2="Epona's Ring",
-		back="Canny Cape",	waist="Patentia Sash",		legs="Iuitl Tights +1",		feet="Taeon Boots"
+	sets.engaged.MediumAcc = {								--range="Raider's Boomerang",
+		head="Taeon Chapeau",	neck="Asperity Necklace",	ear1="Dudgeon Earring",	ear2="Heartseeker Earring",
+		body="Iuitl Vest +1",	hands="Plunderer's Armlets +1",	ring1="Rajas Ring",	ring2="Epona's Ring",
+		back="Canny Cape",	waist="Patentia Sash",		legs="Taeon Tights",	feet="Taeon Boots"
 	}
 	
-	sets.engaged.HighAcc = {					--range=nil,			ammo="Honed Tathlum",
-		head="Whirlpool Mask",	neck="Peacock Amulet",		ear1="Dudgeon Earring",		ear2="Heartseeker Earring",
-		body="Iuitl Vest +1",	hands="Plunderer's Armlets +1",	ring1="Rajas Ring",		ring2="Epona's Ring",
-		back="Canny Cape",	waist="Anguinus Belt",		legs="Iuitl Tights +1",		feet="Taeon Boots"
+	sets.engaged.HighAcc = {					--range=nil,		ammo="Honed Tathlum",
+		head="Whirlpool Mask",	neck="Peacock Amulet",		ear1="Dudgeon Earring",	ear2="Heartseeker Earring",
+		body="Iuitl Vest +1",	hands="Plunderer's Armlets +1",	ring1="Rajas Ring",	ring2="Epona's Ring",
+		back="Canny Cape",	waist="Anguinus Belt",		legs="Taeon Tights",	feet="Taeon Boots"
 	}
 	
-	sets.engaged.TH = {										--range="Raider's Boomerang",
-		head="Uk'uxkaj Cap",	neck="Asperity Necklace",	ear1="Dudgeon Earring",		ear2="Heartseeker Earring",
-		body="Qaaxo Harness",	hands="Plunderer's Armlets +1",	ring1="Rajas Ring",		ring2="Epona's Ring",
-		back="Canny Cape",	waist="Patentia Sash",		legs="Kaabnax Trousers",	feet="Raider's Poulaines +2"
+	sets.engaged.TH = {									--range="Raider's Boomerang",
+		head="Taeon Chapeau",	neck="Asperity Necklace",	ear1="Dudgeon Earring",	ear2="Heartseeker Earring",
+		body="Qaaxo Harness",	hands="Plunderer's Armlets +1",	ring1="Rajas Ring",	ring2="Epona's Ring",
+		back="Canny Cape",	waist="Patentia Sash",		legs="Taeon Tights",	feet="Raider's Poulaines +2"
 	}
 end

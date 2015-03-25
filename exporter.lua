@@ -3,7 +3,7 @@
 	Exports the currently equipped gear in proper lua format to 
 	Windower/addons/GearSwap/data/export/Playername_JOB_timestamp.lua
 	Arguments, providable in any order:
-	list		prints each item on a separate line (defualt is grouped)
+	list		prints each item on a separate line (default is grouped)
 	<set name>	uses the provided name as the name of the set
 --]]
 function export_gear(args)

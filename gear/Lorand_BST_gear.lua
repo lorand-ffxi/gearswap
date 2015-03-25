@@ -8,7 +8,18 @@ function init_gear_sets()
 	--============================================================
 	--			Precast sets
 	--============================================================
-	sets.precast.JA[''] = {	}
+	sets.precast.JA['Charm'] = {	--Modified by CHR
+		head="Beast Helm",
+		body="Beast Jackcoat",	hands="Beast Gloves",
+		legs="Beast Trousers",	feet="Beast Gaiters"
+	}
+	sets.precast.JA['Reward'] = {	--Modified by MND
+		body="Beast Jackcoat",
+		feet="Beast Gaiters"
+	}
+	sets.precast.JA['Tame'] = {	--Modified by INT
+		head="Beast Helm"
+	}
 
 	sets.precast.Waltz = {
 	}
@@ -57,12 +68,16 @@ function init_gear_sets()
 	
 	sets.idle = {											ammo="Demonry Stone",
 		head="Ocelomeh Headpiece +1",	neck="Twilight Torque",	ear1="Brachyura Earring",	ear2="Ethereal Earring",
-		body="Acro Surcoat",		hands="Umuthi Gloves",	ring1="Defending Ring",		ring2="Shneddick Ring",
+		body="Kirin's Osode",		hands="Umuthi Gloves",	ring1="Defending Ring",		ring2="Shneddick Ring",
 		back="Repulse Mantle",		waist="Nierenschutz",	legs="Taeon Tights",		feet="Whirlpool Greaves",
 	}
 	sets.idle.with_buff = {}
 	sets.idle.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	sets.idle.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}
+	
+	sets.idle.with_pet = {
+		ammo="Pet Food Eta",
+	}
 	
 	sets.resting = {}
 	

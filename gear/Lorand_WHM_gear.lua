@@ -8,6 +8,8 @@ function init_gear_sets()
 	--============================================================
 	--			Precast sets
 	--============================================================
+	sets.impact = {body="Twilight Cloak"}	--This is just to remind me to get it from the Porter Moogle
+	
 	sets.precast.FC = {			--54%
 		ammo="Incantor Stone",		--2%
 		head="Nahtirah Hat",		--10%
