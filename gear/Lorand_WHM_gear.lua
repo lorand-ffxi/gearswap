@@ -49,9 +49,9 @@ function init_gear_sets()
 	
 	sets.wsBase = {
 		ammo="Jukukik Feather",
-		head="Gendewitha Caubeen +1",	neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
-		body="Weatherspoon Robe +1",	hands="Gendewitha Gages +1",	ring1="Rajas Ring",		ring2="Mars's Ring",
-		back="Buquwik Cape",		waist="Windbuffet Belt +1",	legs="Gendewitha Spats +1",	feet="Uk'uxkaj Boots"
+		head="Telchine Cap",		neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
+		body="Theophany Briault +1",	hands="Dynasty Mitts",		ring1="Rajas Ring",		ring2="Pyrosoul Ring",
+		back="Buquwik Cape",		waist="Windbuffet Belt +1",	legs="Telchine Braconi",	feet="Gendewitha Galoshes +1"
 	}
 	
 	sets.wsBase.Magic = {
@@ -200,6 +200,9 @@ function init_gear_sets()
 		hands="Dynasty Mitts",	ring1="Defending Ring",		ring2="Shneddick Ring",
 		back="Repulse Mantle",	waist="Emphatikos Rope",	legs="Artsieq Hose",		feet="Gendewitha Galoshes +1"
 	}
+	
+	sets.idle.CapFarm = {back="Mecistopins Mantle"}
+	
 	sets.idle.lowMP = {
 		--main="Owleyes",		sub="Genbu's Shield",
 		legs="Nares Trews"
@@ -227,11 +230,10 @@ function init_gear_sets()
 		back="Tuilha Cape",		legs="Gendewitha Spats +1",	feet="Uk'uxkaj Boots"
 	})
 	
-	sets.engaged = {
-		ammo="Jukukik Feather",
-		head="Nahtirah Hat",	neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
-		body="Artsieq Jubbah",	hands="Otomi Gloves",		ring1="Rajas Ring",		ring2="K'ayres Ring",
-		back="Buquwik Cape",	waist="Cetl Belt",		legs="Artsieq Hose",		feet="Theophany Duckbills"
+	sets.engaged = {										ammo="Jukukik Feather",
+		head="Telchine Cap",	neck="Asperity Necklace",	ear1="Dudgeon Earring",		ear2="Heartseeker Earring",
+		body="Helios Jacket",	hands="Telchine Gloves",	ring1="Rajas Ring",		ring2="Mars's Ring",
+		back="Buquwik Cape",	waist="Cetl Belt",		legs="Telchine Braconi",	feet="Gendewitha Galoshes +1"
 	}
 	sets.engaged.with_buff = {}
 	sets.engaged.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}

@@ -5,6 +5,28 @@
 --]]
 --------------------------------------------------------------------------------
 
+function handle_pet(args)
+	if not args[1] then
+		atc(123,'Error: No pet command given.')
+		return
+	end
+	local cmd = args[1]:lower()
+	if S{'attack','buff'}:contains(cmd) then
+		if pet.isvalid then
+			local action = pet_moves[cmd][pet.name]
+			if (action ~= nil) then
+				windower.send_command('input /pet "'..action..'" <me>')
+			else
+				atc(123,'Error: No buff registered for '..pet.name)
+			end
+		else
+			atc(123,'Error: Unable to use this command without a valid pet.')
+		end
+	else
+		atc(123,'Error: Unknown pet command: '..cmd)
+	end
+end
+
 function handle_smn(args)
 	if not args[1] then
 		atc(123,'Error: No SMN command given.')

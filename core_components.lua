@@ -104,7 +104,7 @@ end
 function precast(spell)
 	if (spell.type == 'Trust') then
 		return
-	elseif modify_spell(spell) or modify_cure(spell) or not_possible_to_use(spell) then
+	elseif midaction() or modify_spell(spell) or modify_cure(spell) or not_possible_to_use(spell) then
 		cancel_spell()
 		return
 	end
@@ -162,7 +162,12 @@ function precast(spell)
 			enable('main', 'sub')
 		end
 	end
-	equip(get_precast_set(spell))
+	
+	if (spell.skill == 36) and (spell.cast_time < 1) then
+		equip(get_midcast_set(spell))
+	else
+		equip(get_precast_set(spell))
+	end
 end
 
 --[[
@@ -271,7 +276,7 @@ function buff_change(buff, gain)
 		else		send_command('timers delete "Weakness"')
 		end
 	elseif (S{'haste','march','sublimation: activated'}:contains(buff:lower())) then
-		if not (modes.noIdle) then
+		if (not midaction()) and (not modes.noIdle) then
 			update()
 		end
 	end
@@ -513,7 +518,7 @@ function get_midcast_set(spell)
 					midcastSet = combineSets(midcastSet, {back='Twilight Cape'})
 				end
 				if buff_active('Klimaform') and (player.main_job == 'SCH') then
-					midcastSet = combineSets(midcastSet, {feet={"Savant's Loafers +2", "Savant's Loafers +1"}})
+					midcastSet = combineSets(midcastSet, {feet=gear.KlimaformFeet})
 				end
 			end
 			midcastSet = combineSets(midcastSet, sets.midcast.ElementalMagic, spell.element)
@@ -1094,5 +1099,5 @@ executable_commands = {
 	['reset']  =	reset_mode,	['toggle']    =	toggle_mode,		['activate'] =	activate_mode,
 	['equip']  =	equip_set,	['info']      =	info_func,		['slips']    =	setops.find_slipped,
 	['smn']    =	handle_smn,	['inv_check'] =	setops.find_movable,	['set2chat'] =	setops.set_to_chat,
-	['export'] =	export_gear,	['storable'] = setops.determine_storable
+	['pet']    =	handle_pet,	['export'] =	export_gear,	['storable'] = setops.determine_storable
 }

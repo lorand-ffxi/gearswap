@@ -13,6 +13,12 @@ function set_options()
 	options.useObi = true
 	
 	instruments.effects.Linos = {['All']=3}
+	
+	pet_moves.buff['CourierCarrie'] = 'Metallic Body'
+	
+	pet_moves.attack['CourierCarrie'] = 'Big Scissors'
+	pet_moves.attack['BlackbeardRandy'] = 'Claw Cyclone'
+	pet_moves.attack['FlowerpotMerle'] = 'Head Butt'
 end
 
 function set_modes()

@@ -49,7 +49,7 @@ function init_gear_sets()
 	--============================================================
 	--sets.wsBase[magic][sam/other][state.OffenseMode][state.RangedMode][wsmod[spell.en]]
 	sets.wsBase = {											ammo="Happo Shuriken +1",
-		head="Uk'uxkaj Cap",	neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
+		head="Taeon Chapeau",	neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
 		body="Qaaxo Harness",	hands="Taeon Gloves",		ring1="Rajas Ring",		ring2="Epona's Ring",
 		back="Yokaze Mantle",	waist="Windbuffet Belt +1",	legs="Otronif Brais +1",	feet="Mochizuki Kyahan +1"
 	}
@@ -78,7 +78,7 @@ function init_gear_sets()
 		body="Otronif Harness +1",	hands="Mochizuki Tekko +1",	ring1="Prolix Ring",		ring2="Diamond Ring",
 		back="Mujin Mantle",		waist="Flume Belt",		legs="Quiahuiz Trousers",	feet="Otronif Boots +1"
 	}
-	sets.midcast.Utsusemi = {feet="Iga Kyahan +2"}
+	sets.midcast.Utsusemi = {feet="Hattori Kyahan"}
 
 	sets.midcast.MagicAccuracy = {
 		head="Hachiya Hatsuburi",	neck="Stoicheion Medal",	ear1="Lifestorm Earring",	ear2="Psystorm Earring",
@@ -119,7 +119,7 @@ function init_gear_sets()
 		feet="Hachiya Kyahan"
 	}
 	sets.idle.with_buff = {}
-	sets.idle.with_buff['migawari'] = {body="Iga Ningi +2"}
+	sets.idle.with_buff['migawari'] = {body="Hattori Ningi"}
 	sets.idle.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}
 	
 	-- Defense sets
@@ -148,7 +148,7 @@ function init_gear_sets()
 	
 	--============================================================
 	
-	sets.engaged.with_buff['migawari'] = {body="Iga Ningi +2"}
+	sets.engaged.with_buff['migawari'] = {body="Hattori Ningi"}
 	sets.engaged.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}
 	
 	sets.engaged.Tank = {											ammo="Happo Shuriken +1",
@@ -162,8 +162,8 @@ function init_gear_sets()
 		body="Mochizuki Chainmail +1",	hands="Taeon Gloves",		ring1="Rajas Ring",		ring2="Epona's Ring",
 		back="Atheling Mantle",		waist="Patentia Sash",		legs="Mochizuki Hakama +1",	feet="Mochizuki Kyahan +1"
 	}
-	sets.engaged.auto['na'] =	{head="Iga Zukin +2", ear1="Dudgeon Earring", ear2="Heartseeker Earring", feet="Taeon Boots"}
-	sets.engaged.auto['I'] =	{head="Iga Zukin +2", ear1="Dudgeon Earring", ear2="Heartseeker Earring", feet="Taeon Boots"}
+	sets.engaged.auto['na'] =	{head="Hattori Zukin", ear1="Dudgeon Earring", ear2="Heartseeker Earring", feet="Taeon Boots"}
+	sets.engaged.auto['I'] =	{head="Hattori Zukin", ear1="Dudgeon Earring", ear2="Heartseeker Earring", feet="Taeon Boots"}
 	sets.engaged.auto['I+'] =	{ear1="Dudgeon Earring", ear2="Heartseeker Earring", body="Hachiya Chainmail +1"}
 	sets.engaged.auto['II'] =	{waist="Windbuffet Belt +1", feet="Taeon Boots"}
 	sets.engaged.auto['II+'] =	{body="Qaaxo Harness", hands="Otronif Gloves +1", waist="Windbuffet Belt +1", legs="Hachiya Hakama +1"}
@@ -173,8 +173,8 @@ function init_gear_sets()
 		body="Mochizuki Chainmail +1",	hands="Taeon Gloves",		ring1="Rajas Ring",		ring2="Epona's Ring",
 		back="Yokaze Mantle",		waist="Patentia Sash",		legs="Mochizuki Hakama +1",	feet="Mochizuki Kyahan +1"
 	}
-	sets.engaged.auto_acc['na'] =	{head="Iga Zukin +2", ear1="Dudgeon Earring", ear2="Heartseeker Earring", hands="Mochizuki Tekko +1", feet="Taeon Boots"}
-	sets.engaged.auto_acc['I'] =	{head="Iga Zukin +2", ear1="Dudgeon Earring", ear2="Heartseeker Earring", hands="Mochizuki Tekko +1", feet="Taeon Boots"}
+	sets.engaged.auto_acc['na'] =	{head="Hattori Zukin", ear1="Dudgeon Earring", ear2="Heartseeker Earring", hands="Mochizuki Tekko +1", feet="Taeon Boots"}
+	sets.engaged.auto_acc['I'] =	{head="Hattori Zukin", ear1="Dudgeon Earring", ear2="Heartseeker Earring", hands="Mochizuki Tekko +1", feet="Taeon Boots"}
 	sets.engaged.auto_acc['I+'] =	{ear1="Dudgeon Earring", ear2="Heartseeker Earring", body="Hachiya Chainmail +1"}
 	sets.engaged.auto_acc['II'] =	{waist="Windbuffet Belt +1", feet="Taeon Boots"}
 	sets.engaged.auto_acc['II+'] =	{waist="Windbuffet Belt +1", legs="Hachiya Hakama +1"}

@@ -53,6 +53,9 @@ function define_defaults()
 	gear.instruments = {}
 	gear.instruments.default = 'Eminent Flute'
 	gear.instruments.multiSong = 'Terpander'
+	gear.KlimaformFeet = {"Arbatel Loafers +1","Arbatel Loafers","Savant's Loafers +2","Savant's Loafers +1"}
+	
+	pet_moves = {buff={},attack={}}
 	
 	weapSwapJobs = S{'WHM','BLM','RDM','SCH','GEO','BRD','BLU'}
 	noWeapSwapSets = S{'Melee','Skillup','Learn'}

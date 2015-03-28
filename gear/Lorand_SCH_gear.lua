@@ -8,6 +8,7 @@ function init_gear_sets()
 	--============================================================
 	--			Precast sets
 	--============================================================
+	gear.KlimaformFeet = "Arbatel Loafers"
 	sets.impact = {body="Twilight Cloak"}	--This is just to remind me to get it from the Porter Moogle
 	
 	sets.precast.JA['Rapture'] =		{head="Savant's Bonnet +2"}
@@ -22,8 +23,8 @@ function init_gear_sets()
 	sets.precast.JA['Altruism'] =		{head="Pedagogy Mortarboard +1"}
 	sets.precast.JA['Focalization'] =	{head="Pedagogy Mortarboard +1"}
 	
-	sets.precast.FC = {			--50%	|	40% / 60%
-		main="Keraunos",		--1%
+	sets.precast.FC = {			--52%	|	42% / 62%
+		main="Marin Staff +1",		--3%
 		ammo="Incantor Stone",		--2%
 		head="Nahtirah Hat",		--10%
 		neck="Orunmila's Torque",	--5%
@@ -37,14 +38,14 @@ function init_gear_sets()
 		legs="Artsieq Hose",		--5%
 		feet="Pedagogy Loafers +1"	--6%
 	}
-	sets.precast.FC.EnhancingMagic = {	--55%	|	45% / 65%
+	sets.precast.FC.EnhancingMagic = {	--57%	|	47% / 67%
 		waist="Siegel Sash"		--8%
 	}
-	sets.precast.FC.Cure = {		--55%	|	45% / 65%
+	sets.precast.FC.Cure = {		--57%	|	47% / 67%
 		back="Pahtli Cape"		--8%
 	}
 	sets.precast.FC.Curaga = sets.precast.FC.Cure
-	sets.precast.FC.Grimoire = {		--63%
+	sets.precast.FC.Grimoire = {		--65%
 		head="Pedagogy Mortarboard +1",	--11% grimoire FC
 		feet="Academic's Loafers"	--8% grimoire FC
 	}
@@ -61,7 +62,7 @@ function init_gear_sets()
 	--			Midcast sets
 	--============================================================
 	sets.midcast.FastRecast = {
-		ammo="Impatiens",
+		main="Marin Staff +1",		ammo="Impatiens",
 		head="Kaabnanx Hat",		neck="Orunmila's Torque",
 		body="Hagondes Coat +1",	hands="Gendewitha Gages +1",
 		legs="Hagondes Pants +1",	feet="Hagondes Sabots +1"
@@ -113,7 +114,7 @@ function init_gear_sets()
 	}
 
 	sets.midcast.MagicAccuracy = {
-		main="Keraunos",	sub="Mephitis Grip",						ammo="Kalboron Stone",
+		main="Marin Staff +1",	sub="Mephitis Grip",						ammo="Kalboron Stone",
 		head="Artsieq Hat",	neck="Eddy Necklace",		ear1="Lifestorm Earring",	ear2="Psystorm Earring",
 		body="Artsieq Jubbah",	hands="Hagondes Cuffs +1",	ring1="Sangoma Ring",		ring2="Perception Ring",
 		back="Ogapepo Cape",	waist="Ovate Rope",		legs="Artsieq Hose",		feet="Artsieq Boots"
@@ -154,7 +155,7 @@ function init_gear_sets()
 	}
 	
 	sets.midcast.DarkMagic.Stun.HighAcc = {	--m.acc+423, dark magic skill + 7
-		main="Keraunos",	sub="Mephitis Grip",						ammo="Kalboron Stone",
+		main="Marin Staff +1",	sub="Mephitis Grip",						ammo="Kalboron Stone",
 		head="Artsieq Hat",	neck="Dark Torque",		ear1="Lifestorm Earring",	ear2="Psystorm Earring",
 		body="Artsieq Jubbah",	hands="Hagondes Cuffs +1",	ring1="Sangoma Ring",		ring2="Perception Ring",
 		back="Ogapepo Cape",	waist="Ovate Rope",		legs="Artsieq Hose",		feet="Artsieq Boots"

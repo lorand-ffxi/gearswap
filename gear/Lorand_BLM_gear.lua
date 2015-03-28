@@ -15,7 +15,7 @@ function init_gear_sets()
 	sets.precast.JA['Convert'] = {}
 	
 	sets.precast.FC = {
-		main="Keraunos",	ammo="Impatiens",
+		main="Marin Staff +1",	ammo="Impatiens",
 		head="Nahtirah Hat",	neck="Orunmila's Torque",	ear1="Loquacious Earring",
 		body="Helios Jacket",	hands="Repartie Gloves",	ring1="Prolix Ring",		ring2="Veneficium Ring",
 		back="Swith Cape",	waist="Witful Belt",		legs="Artsieq Hose",		feet="Chelona Boots"
@@ -39,7 +39,7 @@ function init_gear_sets()
 	--			Midcast sets
 	--============================================================
 	sets.midcast.FastRecast = {
-		ammo="Impatiens",
+		main="Marin Staff +1",		ammo="Impatiens",
 		head="Nahtirah Hat",		neck="Orunmila's Torque",	ear1="Loquacious Earring",
 		body="Hagondes Coat +1",	hands="Otomi Gloves",		ring1="Prolix Ring",
 		back="Swith Cape",		waist="Witful Belt",		legs="Artsieq Hose",		feet="Artsieq Boots"

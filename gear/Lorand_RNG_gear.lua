@@ -19,7 +19,7 @@ function init_gear_sets()
 	sets.precast.JA['Flashy Shot'] =	{hands="Arcadian Bracers"}
 	sets.precast.JA['Barrage'] =		{hands="Orion Bracers"}
 	sets.precast.JA['Shadowbind'] =		{hands="Orion Bracers"}
-	sets.precast.JA['Bounty Shot'] =	{hands="Sylvan Glovelettes +2"}
+	sets.precast.JA['Bounty Shot'] =	{hands="Amini Glovelettes"}
 	sets.precast.JA['Eagle Eye Shot'] =	{legs="Arcadian Braccae"}
 	sets.precast.JA['Sharpshot'] =		{legs="Orion Braccae"}
 	sets.precast.JA['Scavenge'] =		{feet="Orion Socks +1"}
@@ -95,7 +95,7 @@ function init_gear_sets()
 	--4-hit /??? with 2 recycle procs
 	sets.Bow.other['r4-hit'] = {main="Mekki Shakki", sub="Rose Strap"}
 	sets.Bow.other['r4-hit'].tp = {
-		hands="Sylvan Glovelettes +2",	ring1="Rajas Ring",	ring2="K'ayres Ring",
+		hands="Amini Glovelettes",	ring1="Rajas Ring",	ring2="K'ayres Ring",
 		waist="Patentia Sash",		legs="Iuitl Tights +1"
 	}
 	
