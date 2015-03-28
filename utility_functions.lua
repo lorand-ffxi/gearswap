@@ -301,3 +301,40 @@ function get_ally_info(name)
 	end
 	return nil
 end
+
+--[[
+	Generate and send an old style string with equipment.  Created because equip() wasn't working for the below
+	function that shows WS equipment
+--]]
+function equip_now(set)
+	local slotmap = {['ear1']='L.ear',['ear2']='R.ear',['ring1']='L.ring',['ring2']='R.ring'}
+	local equipline = ''	
+	for slot,piece in pairs(set) do
+		local slotstr = slotmap[slot] or slot
+		equipline = equipline..'input /equip '..slotstr..' "'..piece..'";'
+	end
+	send_command(equipline)
+end
+
+local last_outgoing
+function parse_out_text(original)
+	last_outgoing = original
+end
+
+function parse_inc_text(original)
+	if (original == 'You can only use that command during battle.') then
+		if (player.status == 'Idle') and (last_outgoing ~= nil) then
+			last_outgoing = windower.convert_auto_trans(last_outgoing)
+			if last_outgoing:startswith('/ws') then
+				local wsname = last_outgoing:sub(4,-4):trim():stripchars('"'):trim()
+				local ws = res.weapon_skills:with('en',wsname)
+				if (ws ~= nil) then
+					ws.action_type = 'Ability'
+					equip_now(get_precast_set(ws))
+				else
+					atc(123,'Unable to locate resource for '..wsname)
+				end
+			end
+		end
+	end
+end

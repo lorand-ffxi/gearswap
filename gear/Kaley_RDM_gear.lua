@@ -40,7 +40,11 @@ function init_gear_sets()
 		body="Hagondes Coat +1",	hands="Atrophy Gloves +1",	ring1="Rajas Ring",		ring2="Spiral Ring",
 		back="Atheling Mantle",		waist="Anguinus Belt",		legs="Hagondes Pants +1",	feet="Gendewitha Galoshes +1"
 	}
-	sets.wsBase.Magic = {}
+	sets.wsBase.Magic = {										ammo="Witchstone",
+		head="Buremte Hat",		neck="Eddy Necklace",	ear1="Hecate's Earring",	ear2="Friomisi Earring",
+		body="Hagondes Coat +1",	hands="Otomi Gloves",	ring1="Acumen Ring",		ring2="Spiral Ring",
+		back="Toro Cape",		waist="Cognition Belt",	legs="Hagondes Pants +1",	feet="Vitivation Boots +1"
+	}
 	
 	--============================================================
 	--			Midcast sets

@@ -13,10 +13,12 @@ function init()
 	res = res or gearswap.res
 	
 	include('packet_handling')	--Required for haste tier detection
+	include('utility_functions')	--Load utility_functions.lua (defines misc functions)
 	winraw = gearswap._G.windower	--Required for direct access to windower functions
 	winraw.register_event('incoming chunk', parse_buff_info)
+	windower.register_event('incoming text', parse_inc_text)
+	windower.register_event('outgoing text', parse_out_text)
 	
-	include('utility_functions')	--Load utility_functions.lua (defines misc functions)
 	include('defaults')		--Load defaults.lua
 	define_defaults()		--Define some default sets & set up variable modes
 	
@@ -157,14 +159,14 @@ function precast(spell)
 	
 	if weapSwapJobs:contains(player.main_job) then
 		if noWeapSwapSets:contains(modes.offense) then
-			disable('main', 'sub')
+			disable('main', 'sub')	--Prevent weapon switching for mages when in melee mode
 		else
-			enable('main', 'sub')
+			enable('main', 'sub')	--Allow weapon switching for mages
 		end
 	end
 	
 	if (spell.skill == 36) and (spell.cast_time < 1) then
-		equip(get_midcast_set(spell))
+		equip(get_midcast_set(spell))	--Use midcast gear for elemental spells with low cast times
 	else
 		equip(get_precast_set(spell))
 	end
