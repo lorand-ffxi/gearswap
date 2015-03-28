@@ -11,7 +11,7 @@ function handle_pet(args)
 		return
 	end
 	local cmd = args[1]:lower()
-	if S{'attack','buff'}:contains(cmd) then
+	if pet_move_cmds:contains(cmd) then
 		if pet.isvalid then
 			local action = pet_moves[cmd][pet.name]
 			if (action ~= nil) then

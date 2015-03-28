@@ -55,7 +55,11 @@ function define_defaults()
 	gear.instruments.multiSong = 'Terpander'
 	gear.KlimaformFeet = {"Arbatel Loafers +1","Arbatel Loafers","Savant's Loafers +2","Savant's Loafers +1"}
 	
-	pet_moves = {buff={},attack={}}
+	pet_move_cmds = S{'buff','attack','aoe'}
+	pet_moves = {}
+	for pmc,_ in pairs(pet_move_cmds) do
+		pet_moves[pmc] = {}
+	end
 	
 	weapSwapJobs = S{'WHM','BLM','RDM','SCH','GEO','BRD','BLU'}
 	noWeapSwapSets = S{'Melee','Skillup','Learn'}
