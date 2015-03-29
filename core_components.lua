@@ -1031,6 +1031,9 @@ end
 --------------------------------------------------------------------------------
 
 function pet_midcast(spell)
+	atc(1,'Pet midcast: '..spell.en..' | '..pet.name)
+	info.print_table(spell,spell.en)
+
 	local pmcset = {}
 	--info.print_table(spell, 'Pet Midcast Spell')
 	local ptype = get_pet_type()
@@ -1060,6 +1063,8 @@ function pet_midcast(spell)
 		else
 			atc(123, 'Unknown Avatar action type')
 		end
+	elseif (ptype == 'Wyvern') then
+		pmcset = combineSets(pmcset, sets.pet.breath)
 	else
 		atc(123, 'Unknown pet type')
 	end
@@ -1101,5 +1106,5 @@ executable_commands = {
 	['reset']  =	reset_mode,	['toggle']    =	toggle_mode,		['activate'] =	activate_mode,
 	['equip']  =	equip_set,	['info']      =	info_func,		['slips']    =	setops.find_slipped,
 	['smn']    =	handle_smn,	['inv_check'] =	setops.find_movable,	['set2chat'] =	setops.set_to_chat,
-	['pet']    =	handle_pet,	['export'] =	export_gear,	['storable'] = setops.determine_storable
+	['pet']    =	handle_pet,	['export'] =	export_gear,		['storable'] = setops.determine_storable
 }

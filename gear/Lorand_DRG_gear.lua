@@ -87,6 +87,11 @@ function init_gear_sets()
 
 	--============================================================
 	
+	sets.pet = {}
+	sets.pet.breath = {
+		body="Carpenter's Smock"
+	}
+	
 	sets.resting = {}
 	
 	sets.idle = {										ammo="Demonry Stone",
