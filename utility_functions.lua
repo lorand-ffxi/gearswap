@@ -8,6 +8,19 @@
 --			File Handling Functions
 --==============================================================================
 
+
+--[[
+	Loads the contents of the lua file with the given path, returning the contents if successful, otherwise
+	returns nil.
+--]]
+function import(path)
+	local fcontents = _libs.files.read(path)
+	if (fcontents ~= nil) then
+		return loadstring(fcontents)()
+	end
+	return nil
+end
+
 --[[
 	Attempt to load user gear files in place of default gear sets.
 	Returns true if one exists and was loaded, otherwise returns false.

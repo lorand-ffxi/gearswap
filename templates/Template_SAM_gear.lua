@@ -1,3 +1,9 @@
+--------------------------------------------------------------------------------
+--[[
+	Author: Ragnarok.Lorand
+--]]
+--------------------------------------------------------------------------------
+
 function init_gear_sets()
 	--============================================================
 	--			Precast sets
@@ -9,12 +15,7 @@ function init_gear_sets()
 	sets.precast.JA.Sekkanoki = {}
 	sets.precast.JA.Sengikori = {}
 
-	sets.precast.FC = {
-		main="",	sub="",		range="",	ammo="",
-		head="",	neck="",	ear1="",	ear2="",
-		body="",	hands="",	ring1="",	ring2="",
-		back="",	waist="",	legs="",	feet=""
-	}
+	sets.precast.FC = {}
 	
 	sets.precast.Waltz = {}
 	sets.precast.Waltz['Healing Waltz'] = {}
@@ -26,8 +27,6 @@ function init_gear_sets()
 	sets.wsBase = {}
 
 	sets.wsBase['4-Hit'] = {}
-	
-	sets.wsBase['5-Acc'] = {}
 	
 	sets.wsBase.magic = {}
 	
@@ -42,6 +41,9 @@ function init_gear_sets()
 	--============================================================
 	--			Other sets
 	--============================================================
+	
+	sets.weapons['4-Hit'] = {}
+	sets.weapons['5-Hit'] = {}
 	
 	sets.resting = {}
 	
@@ -62,16 +64,17 @@ function init_gear_sets()
 
 	--============================================================
 	
-	sets.engaged.with_buff = {}
-	sets.engaged.with_buff['doom'] = {}
-	sets.engaged.with_buff['Hasso'] = {}
-	sets.engaged.with_buff['reive mark'] = {}
+	sets.engaged['4-Hit'] = {}
+	sets.engaged['4-Hit'].with_buff = {}
+	sets.engaged['4-Hit'].with_buff['hasso'] = {}
 	
 	sets.engaged['5-Hit'] = {}
 	
 	sets.engaged['5-Acc'] = {}
 	
-	sets.engaged['4-Hit'] = {}
+	sets.engaged.with_buff = {}
+	sets.engaged.with_buff['doom'] = {}
+	sets.engaged.with_buff['reive mark'] = {}
 	
 	sets.buffs['Meikyou Shisui'] = {}
 end

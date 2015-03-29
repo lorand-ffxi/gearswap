@@ -1,21 +1,20 @@
---==============================================================================
+--======================================================================================================================
 --[[
 	Author: Ragnarok.Lorand
-	GearSwap utility functions that are related to gear set building
-	and manipulation
+	GearSwap utility functions that are related to gear set building and manipulation
 --]]
---==============================================================================
+--======================================================================================================================
 
 setops = setops or {}
 
 local itemSlots = {'main', 'sub', 'range', 'ammo', 'head', 'neck', 'ear1', 'ear2', 'body', 'hands', 'ring1', 'ring2', 'back', 'waist', 'legs', 'feet'}
 
 --[[
-	Combines equipment verified as available from set1 and set2.  Supports slots having more than one
-	option each, contained in a table ordered by preference.  If a specific item slot's contents is defined
-	in both set1 and set2, then that slot in the resulting set will contain the item defined in set2.  It
-	is safe for set1 and/or set2 to be empty (nil).  Any subsets of either set will NOT be included in the
-	resulting set.  Optionally, a subset may be provided for set2 that will be used if set2 exists.
+	Combines equipment verified as available from set1 and set2.  Supports slots having more than one option each,
+	contained in a table ordered by preference.  If a specific item slot's contents is defined in both set1 and
+	set2, then that slot in the resulting set will contain the item defined in set2.  It is safe for set1 and/or
+	set2 to be empty (nil).  Any subsets of either set will NOT be included in the resulting set.  Optionally, a
+	subset may be provided for set2 that will be used if set2 exists.
 --]]
 function combineSets(set1, set2, ...)
 	local newSet = {}
@@ -69,8 +68,8 @@ function combineSets(set1, set2, ...)
 end
 
 --[[
-	Returns the name of the first item that is available in the player's inventory from a list
-	that is ordered from most desirable to least desirable.
+	Returns the name of the first item that is available in the player's inventory from a list that is ordered from
+	most desirable to least desirable.
 --]]
 function setops.chooseAvailablePiece(gearTable)
 	if gearTable == nil then return nil end
@@ -154,8 +153,7 @@ end
 --==============================================================================
 
 --[[
-	Recursively traverses user-defined sets to compile a list of all gear
-	that is currently necessary.
+	Recursively traverses user-defined sets to compile a list of all gear that is currently necessary.
 --]]
 function setops.retrieve_items(set)
 	local items = S{}
@@ -171,8 +169,7 @@ function setops.retrieve_items(set)
 end
 
 --[[
-	Recursively traverses user-defined sets to compile a list of item IDs
-	for all gear that is currently necessary.
+	Recursively traverses user-defined sets to compile a list of item IDs for all gear that is currently necessary.
 --]]
 function setops.retrieve_item_ids(set, res_items)
 	res_items = res_items or setops.get_item_res()
@@ -259,9 +256,8 @@ function setops.determine_storable()
 end
 
 --[[
-	Compares the gear specified in the currently active Player_JOB_gear.lua
-	with the gear present in inventory.  Reports which items are not
-	necessary so that they can be
+	Compares the gear specified in the currently active Player_JOB_gear.lua with the gear present in inventory.
+	Reports which items are not necessary so that they can be moved to make room.
 --]]
 function setops.find_movable()
 	local item_ids = setops.retrieve_item_ids(sets)
@@ -289,17 +285,14 @@ function setops.find_movable()
 end
 
 --[[
-	Compares the gear specified in the currently active Player_JOB_gear.lua
-	with the gear that is stored with the Porter Moogle.  Reports which
-	slips are necessary to retrieve gear from, and which pieces are stored
-	with each of those slips.
-	Automatically runs when a player change jobs.  Can be run at any time
-	via: //gs c slips
+	Compares the gear specified in the currently active Player_JOB_gear.lua with the gear that is stored with the
+	Porter Moogle.  Reports which slips are necessary to retrieve gear from, and which pieces are stored with each
+	of those slips. Automatically runs when a player change jobs.  Can be run at any time via: //gs c slips
 --]]
 function setops.find_slipped()
-	local items = setops.retrieve_items(sets)		--Get a list of all gear in Player_JOB_gear.lua
-	local slip_items = _libs.slips.get_player_items()	--Get a list of all gear currently stored with the Porter Moogle
-	local res_items = setops.get_item_res()		--Get res.items in a way that's easier to work with
+	local items = setops.retrieve_items(sets)		--List of all gear in Player_JOB_gear.lua
+	local slip_items = _libs.slips.get_player_items()	--List of all gear stored with the Porter Moogle now
+	local res_items = setops.get_item_res()			--Transform res.items for easier use
 	
 	--Iterate through required gear, checking to see if any of it is stored with Porter
 	local slipped = {}
@@ -336,8 +329,7 @@ function setops.find_slipped()
 end
 
 --[[
-	Prints the currently equipped set to the specified chat channel.
-	Valid chat channels: /t name, /p, /l
+	Prints the currently equipped set to the specified chat channel.  Valid chat channels: /t name, /p, /l
 	Usage:	//gs c set2chat /t playername
 --]]
 function setops.set_to_chat(args)

@@ -1,3 +1,9 @@
+--------------------------------------------------------------------------------
+--[[
+	Author: Ragnarok.Lorand
+--]]
+--------------------------------------------------------------------------------
+
 function init_gear_sets()
 	--============================================================
 	--			Precast sets
@@ -24,12 +30,7 @@ function init_gear_sets()
 	
 	--============================================================
 	
-	sets.precast.FC = {
-		main="",	sub="",		range="",	ammo="",
-		head="",	neck="",	ear1="",	ear2="",
-		body="",	hands="",	ring1="",	ring2="",
-		back="",	waist="",	legs="",	feet=""
-	}
+	sets.precast.FC = {}
 	sets.precast.FC.Utsusemi = {}
 
 	--============================================================
@@ -41,7 +42,8 @@ function init_gear_sets()
 	
 	sets.wsBase.DEX = {}
 	
-	sets.wsBase.Acc = {}
+	sets.wsBase.MediumAcc = {}
+	sets.wsBase.HighAcc = {}
 
 	sets.wsBase.Magic = {}
 	
@@ -59,6 +61,12 @@ function init_gear_sets()
 	--			Other sets
 	--============================================================
 	
+	sets.weapons.Other = {}
+	sets.weapons.TH = {}
+	sets.weapons.DD = {}
+	sets.weapons.Accuracy = {}
+	sets.weapons.THAcc = {}
+	
 	sets.resting = {}
 	
 	sets.idle = {}
@@ -68,18 +76,20 @@ function init_gear_sets()
 	
 	sets.defense.Evasion = {}
 
-	sets.defense.DT = {}
+	sets.defense.DT = combineSets(sets.defense.Evasion,{})
 	
-	sets.defense.PDT = combineSets(sets.defense.Evasion, sets.defense.DT, {})
+	sets.defense.PDT = combineSets(sets.defense.DT, {})
 
-	sets.defense.MDT = combineSets(sets.defense.Evasion, sets.defense.DT, {})
+	sets.defense.MDT = combineSets(sets.defense.DT, {})
 	
 	sets.engaged = {}
 	sets.engaged.with_buff = {}
 	sets.engaged.with_buff['doom'] = {}
 	sets.engaged.with_buff['reive mark'] = {}
 	
-	sets.engaged.Acc = {}
+	sets.engaged.MediumAcc = {}
+	
+	sets.engaged.HighAcc = {}
 	
 	sets.engaged.TH = {}
 end

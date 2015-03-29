@@ -22,6 +22,7 @@ function define_defaults()
 	sets.midcast.EnhancingMagic = {}
 	sets.midcast.ElementalMagic = {}
 	sets.midcast.HealingMagic = {}
+	sets.midcast.BlueMagic = {Physical={},Magic={},Breath={}}
 	
 	sets.idle = {}
 	sets.idle.with_buff = {}

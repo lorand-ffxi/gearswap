@@ -1,20 +1,21 @@
+--------------------------------------------------------------------------------
+--[[
+	Author: Ragnarok.Lorand
+--]]
+--------------------------------------------------------------------------------
+
 function init_gear_sets()
 	--============================================================
 	--			Precast sets
 	--============================================================
 	sets.precast.JA['Spirit Link'] = {}
-	sets.precast.JA.Jump = {}	
+	sets.precast.JA.Jump = {}
 	sets.precast.JA['High Jump'] = combineSets(sets.precast.JA.Jump, {})
 	sets.precast.JA['Super Jump'] = combineSets(sets.precast.JA.Jump, {})
 	sets.precast.JA['Spirit Jump'] = combineSets(sets.precast.JA.Jump, {})
 	sets.precast.JA['Soul Jump'] = combineSets(sets.precast.JA.Jump, {})
 	
-	sets.precast.FC = {
-		main="",	sub="",		range="",	ammo="",
-		head="",	neck="",	ear1="",	ear2="",
-		body="",	hands="",	ring1="",	ring2="",
-		back="",	waist="",	legs="",	feet=""
-	}
+	sets.precast.FC = {}
 	
 	sets.precast.Waltz = {}
 	sets.precast.Waltz['Healing Waltz'] = {}
@@ -40,13 +41,22 @@ function init_gear_sets()
 	--			Other sets
 	--============================================================
 	
+	sets.weapons.Main = {}
+	
 	sets.engaged = {}
+	
+	sets.engaged.MediumAcc = {}
+	
+	sets.engaged.HighAcc = {}
 	
 	sets.engaged.with_buff = {}
 	sets.engaged.with_buff['doom'] = {}
 	sets.engaged.with_buff['reive mark'] = {}
 
 	--============================================================
+	
+	sets.pet = {}
+	sets.pet.breath = {}
 	
 	sets.resting = {}
 	

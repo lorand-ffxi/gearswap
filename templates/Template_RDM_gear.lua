@@ -1,3 +1,9 @@
+--------------------------------------------------------------------------------
+--[[
+	Author: Ragnarok.Lorand
+--]]
+--------------------------------------------------------------------------------
+
 function init_gear_sets()
 	--============================================================
 	--			Precast sets
@@ -9,12 +15,7 @@ function init_gear_sets()
 	sets.precast.Waltz['Healing Waltz'] = {}
 	
 	-- Fast Cast caps at 80%; RDM JT: 30%
-	sets.precast.FC = {
-		main="",	sub="",		range="",	ammo="",
-		head="",	neck="",	ear1="",	ear2="",
-		body="",	hands="",	ring1="",	ring2="",
-		back="",	waist="",	legs="",	feet=""
-	}
+	sets.precast.FC = {}
 	
 	sets.precast.FC.HealingMagic = {}
 	sets.precast.FC.EnhancingMagic = {}
@@ -66,6 +67,8 @@ function init_gear_sets()
 	--============================================================
 	
 	sets.midcast.ElementalMagic = {}
+	sets.midcast.ElementalMagic.LowTier = {}
+	sets.midcast.ElementalMagic.HighTier = {}
 	sets.midcast.ElementalMagic.Earth = {}
 	
 	sets.midcast.ElementalMagic.with_buff = {}
@@ -87,9 +90,11 @@ function init_gear_sets()
 	
 	sets.maxMP = {}
 	
-	sets.resting = {}
+	sets.resting = combineSets(sets.maxMP, {})
 	
 	sets.idle = {}
+	sets.idle.CapFarm = {}
+	
 	sets.idle.with_buff = {}
 	sets.idle.with_buff['reive mark'] = {}
 	
@@ -98,12 +103,12 @@ function init_gear_sets()
 	sets.idle.lowMP_night =	{}
 	sets.idle.lowMP_day = {}
 	
-	sets.minHp = set_combine(sets.naked, {})
-	sets.maxHp = set_combine(sets.naked, {})
+	sets.minHp = combineSets(sets.naked, {})
+	sets.maxHp = combineSets(sets.naked, {})
 
 	sets.defense.DT = {}
-	sets.defense.PDT = set_combine(sets.defense.DT, {})
-	sets.defense.MDT = set_combine(sets.defense.DT, {})
+	sets.defense.PDT = combineSets(sets.defense.DT, {})
+	sets.defense.MDT = combineSets(sets.defense.DT, {})
 
 	sets.engaged = {}
 	sets.engaged.with_buff = {}

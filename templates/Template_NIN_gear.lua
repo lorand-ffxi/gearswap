@@ -1,3 +1,11 @@
+-----------------------------------------------------------------------------------------------------------
+--[[
+	Author: Ragnarok.Lorand
+
+	<legs>Iga Hakama +2</legs>	Adds Counter to Yonin when shadows are down
+--]]
+-----------------------------------------------------------------------------------------------------------
+
 function init_gear_sets()
 	--============================================================
 	--			Precast sets
@@ -11,14 +19,9 @@ function init_gear_sets()
 	
 	sets.precast.Ranged = {}
 	
-	sets.precast.FC = {
-		main="",	sub="",		range="",	ammo="",
-		head="",	neck="",	ear1="",	ear2="",
-		body="",	hands="",	ring1="",	ring2="",
-		back="",	waist="",	legs="",	feet=""
-	}
+	sets.precast.FC = {}
 	
-	sets.precast.FC.Utsusemi = combineSets(sets.precast.FC, {})
+	sets.precast.FC.Utsusemi = {}
 
 	--============================================================
 	--sets.wsBase[magic][sam/other][state.OffenseMode][state.RangedMode][wsmod[spell.en]]
@@ -55,6 +58,10 @@ function init_gear_sets()
 	--			Other sets
 	--============================================================
 	
+	sets.weapons.Main = {}
+	sets.weapons.OAT = {}
+	sets.weapons.Reive = {}
+	
 	sets.idle = {}
 	sets.idle.with_buff = {}
 	sets.idle.with_buff['migawari'] = {}
@@ -89,16 +96,5 @@ function init_gear_sets()
 	sets.engaged.auto_acc['II'] =	{}
 	sets.engaged.auto_acc['II+'] =	{}
 	
-	sets.engaged.HasteI = sets.engaged.auto['I']				--15%
-	sets.engaged.HasteI.Higher = sets.engaged.auto_acc['I']			--15%
-	sets.engaged.HasteI_HasteSamba = sets.engaged.auto['I+']		--20%
-	sets.engaged.HasteI_HasteSamba.Higher = sets.engaged.auto_acc['I+']	--20%
-	sets.engaged.HasteII = sets.engaged.auto['II']				--30%
-	sets.engaged.HasteII_Acc = sets.engaged.auto_acc['II']			--30%
-	sets.engaged['HasteII++'] = sets.engaged.auto['II+']			--43%
-	sets.engaged['HasteII++_Acc'] = sets.engaged.auto_acc['II+']		--43%
-	
 	sets.engaged.CrazyAccuracy = {}
-	
-	sets.engaged.Acc = {}
 end

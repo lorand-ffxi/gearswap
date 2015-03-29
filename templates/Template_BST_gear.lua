@@ -5,97 +5,69 @@
 --------------------------------------------------------------------------------
 
 function init_gear_sets()
-	sets.Enmity = {}
 	--============================================================
 	--			Precast sets
 	--============================================================
-	sets.precast.JA = sets.Enmity
-	sets.precast.JA['Invincible'] = {}
-	sets.precast.JA['Holy Circle'] = {}
-	sets.precast.JA['Shield Bash'] = {}
-	sets.precast.JA['Sentinel'] = {}
-	sets.precast.JA['Rampart'] = {}
-	sets.precast.JA['Fealty'] = {}
-	sets.precast.JA['Divine Emblem'] = {}
-	sets.precast.JA['Chivalry'] = {}	-- MP recovered = TP×0.5 + TP×0.015×MND
-	
+	sets.precast.JA['Charm'] = {}
+	sets.precast.JA['Reward'] = {}
+	sets.precast.JA['Tame'] = {}
+
 	sets.precast.Waltz = {}
 	sets.precast.Waltz['Healing Waltz'] = {}
 
+	sets.precast.Step = {}
+	
 	--============================================================
 	
+	-- Fast cast sets for spells
 	sets.precast.FC = {}
-	sets.precast.FC.EnhancingMagic = {}
-		
-	--============================================================
-       
-	sets.wsBase = {}
+	sets.precast.FC.Utsusemi = {}
 	
-	sets.wsBase.DEX = {}
-	sets.wsBase.STR = {}
+	--============================================================
+	
+	sets.wsBase = {}
+	sets.wsBase.MediumAcc = {}
+	sets.wsBase.HighAcc = {}
 
-	sets.wsBase.magic = {}
+	sets.wsBase.Magic = {}
 	
 	--============================================================
 	--			Midcast sets
 	--============================================================
-	sets.midcast.Enmity = sets.Enmity
 	
 	sets.midcast.FastRecast = {}
-	
-	sets.midcast.MagicAccuracy = {}
-	
-	sets.midcast.DivineMagic = {}
-	
-	sets.midcast.Cure = {}
-	
-	sets.midcast.Cure.Self = {}
-	sets.midcast.Cure.with_buff = {}
-	
-	sets.midcast.EnhancingMagic = {}
-	sets.midcast.Protect = {}
-	sets.midcast.Shell = {}
 
 	--============================================================
 	--			Other sets
 	--============================================================
 	
-	sets.weapons.Main = {}
-	
-	sets.Reraise = {}
-	
-	sets.resting = {}
+	sets.buffs['doom'] = {}
 	
 	sets.idle = {}
-	sets.idle.Showoff = {}
 	sets.idle.with_buff = {}
 	sets.idle.with_buff['doom'] = {}
 	sets.idle.with_buff['reive mark'] = {}
 	
-	sets.idle.PDT = {}
+	sets.idle.with_pet = {}
 	
-	sets.idle.MDT = {}
+	sets.resting = {}
 	
 	sets.defense.DT = {}
+	sets.defense.PDT = combineSets(sets.defense.DT, {})
+	sets.defense.MDT = combineSets(sets.defense.DT, {})
 	
-	sets.defense.PDT = {}
+	sets.defense.HP = sets.defense.PDT
 
-	sets.defense.MDT = {}
+	--============================================================
+	
+	sets.weapons.Main = {}
 	
 	sets.engaged = {}
 	
+	sets.engaged.MediumAcc = {}
+	
+	sets.engaged.HighAcc = {}
 	sets.engaged.with_buff = {}
 	sets.engaged.with_buff['doom'] = {}
 	sets.engaged.with_buff['reive mark'] = {}
-	
-	sets.engaged.TankP = {}
-	
-	sets.engaged.TankM = {}
-	
-	sets.engaged.TankMix = {}
-	
-	sets.engaged.Shield = {}
-	
-	sets.buffs.doom = {}
-	sets.buffs.Cover = {}
 end

@@ -1,63 +1,46 @@
------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 --[[
-	Songs can be cast with normal gear/instruments, normal gear + Terpander/Daurdabla,
-	or fast recast gear + Terpander/Daurdabla.
+	Author: Ragnarok.Lorand
 	
-	When the maximum number of active songs has been reached, the new song will always take the place of
-	the one with the lowest remaining duration.  Exploiting this, you can cast a 3rd song with
-	Terpander/Daurdabla without any duration enhancing gear, and then overwrite it right away with a more
-	desirable song while wearing duration enhancing / potency gear (and instrument).
+	Songs can be cast with normal gear/instruments, normal gear +
+	Terpander/Daurdabla, or fast recast gear + Terpander/Daurdabla.
 	
-	To cycle modes:			gs c cycle daurdabla
-	To set a specific mode:		gs c set daurdabla Daurdabla
+	When the maximum number of active songs has been reached, the new song will
+	always take the place of the one with the lowest remaining duration.
+	Exploiting this, you can cast a 3rd song with Terpander/Daurdabla without
+	any duration enhancing gear, and then overwrite it right away with a more
+	desirable song while wearing duration enhancing / potency gear (and
+	instrument).
+	
+	To cycle modes:			gs c cycle Daurdabla
+	To set a specific mode:		gs c set Daurdabla Daurdabla
 	
 	Example usage in a macro, using Terpander/Daurdabla with normal gear:
 	/console gs c set daurdabla Daurdabla
 	/ma "Mage's Ballad" <stpc>
 	
-	Example usage in a macro, using Terpander/Daurdabla without duration enhancing gear:
-	/console gs c set daurdabla Dummy
+	Example macro, using Terpander/Daurdabla without duration enhancing gear:
+	/console gs c set Daurdabla Dummy
 	/ma "Army's Paeon" <stpc>
 	
-	All macros should be written with <stpc> because Pianissimo will automatically be used when the target
-	is a player other than yourself.
+	All macros should be written with <stpc> because Pianissimo will
+	automatically be used when the target is a player other than yourself.
 --]]
------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
 function init_gear_sets()
 	--============================================================
 	--			Instruments
 	--============================================================
-	gear.instruments.multiSong = "Terpander"		--Adds an additional song effect
-	gear.instruments.default = "Linos"			--All Songs +3 (+1 with +2 augment)
-	--Delete any gear.instruments lines below that have bonuses less than the default instrument
-	gear.instruments.Ballad = ""
-	gear.instruments.Carol = ""
-	gear.instruments.Elegy = ""
-	gear.instruments.Etude = ""
-	gear.instruments.Finale = ""
-	gear.instruments.Lullaby = ""
-	gear.instruments.Madrigal = ""
-	gear.instruments.Mambo = ""
-	gear.instruments.March = ""
-	gear.instruments.Mazurka = ""
-	gear.instruments.Minne = ""
-	gear.instruments.Minuet = ""
-	gear.instruments.Paeon = ""
-	gear.instruments.Prelude = ""
-	gear.instruments.Requiem = ""
-	gear.instruments.Scherzo = ""
-	gear.instruments.Threnody = ""
+	gear.instruments.multiSong = "Terpander"	--Adds an additional song effect
+	gear.instruments.default = "Linos"		--All Songs +3 (+1 with +2 augment)
+	gear.instruments.Requiem = "Requiem Flute"	--Requiem +4
 	
 	--============================================================
 	--			Precast sets
 	--============================================================
-	sets.precast.FC = {
-		main="",	sub="",		range="",	ammo="",
-		head="",	neck="",	ear1="",	ear2="",
-		body="",	hands="",	ring1="",	ring2="",
-		back="",	waist="",	legs="",	feet=""
-	}
+	sets.precast.FC = {}
+
 	sets.precast.FC.Cure = {}
 	sets.precast.FC.EnhancingMagic = {}
 
@@ -97,16 +80,20 @@ function init_gear_sets()
 	sets.midcast.String = {}
 	
 	--This set is for extending party song buff duration
-	sets.midcast.SongBuff = {}
+	sets.midcast.SongDuration = {}
+	
+	sets.midcast.SongBuff = sets.midcast.SongDuration
 	
 	--This set is for Daurdabla/Terpander dummy songs
 	sets.midcast.SongRecast = {}
 	
-	sets.midcast.MagicAcc = {}
+	sets.midcast.MagicAccuracy = {}
 	
+	-- For song debuffs (duration primary, accuracy secondary)
 	sets.midcast.SongDebuff = {}
 
-	sets.midcast.ResistantSongDebuff = {}
+	-- For song debuffs (accuracy primary, duration secondary)
+	sets.midcast.SongDebuff.Resistant = sets.midcast.MagicAccuracy
 
 	--============================================================		
 	
@@ -119,7 +106,6 @@ function init_gear_sets()
 	sets.midcast.Cursna = {}
 	
 	sets.midcast.Cure = {}
-	sets.midcast.Cure.with_buff = {}
 	
 	sets.midcast.DivineMagic = {}
 	sets.midcast.DarkMagic = {}
@@ -136,7 +122,7 @@ function init_gear_sets()
 	sets.defense.MDT = combineSets(sets.defense.DT, {})
 	
 	sets.idle = {}
-	sets.idle.lowMP = {}
+	sets.idle.lowMP =	{}
 	sets.idle.lowMP_night =	{}
 	sets.idle.with_buff = {}
 	sets.idle.with_buff['doom'] = {}

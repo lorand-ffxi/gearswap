@@ -1,3 +1,9 @@
+--------------------------------------------------------------------------------
+--[[
+	Author: Ragnarok.Lorand
+--]]
+--------------------------------------------------------------------------------
+
 function init_gear_sets()
 	--============================================================
 	--			Precast sets
@@ -7,7 +13,7 @@ function init_gear_sets()
 	sets.precast.JA['Dodge'] = {}
 	sets.precast.JA['Focus'] = {}
 	sets.precast.JA['Counterstance'] = {}
-	sets.precast.JA['Footwork'] = {}
+	sets.precast.JA['Footwork'] = {}	-- Tantra+2: Raises attack bonus from 100/1024 to 152/1024
 	sets.precast.JA['Formless Strikes'] = {}
 	sets.precast.JA['Mantra'] = {}
 	sets.precast.JA['Impetus'] = {}
@@ -24,18 +30,14 @@ function init_gear_sets()
 	--============================================================
 	
 	-- Fast cast sets for spells
-	sets.precast.FC = {
-		main="",	sub="",		range="",	ammo="",
-		head="",	neck="",	ear1="",	ear2="",
-		body="",	hands="",	ring1="",	ring2="",
-		back="",	waist="",	legs="",	feet=""
-	}
-	sets.precast.FC.Utsusemi = set_combine(sets.precast.FC, {})
+	sets.precast.FC = {}
+	sets.precast.FC.Utsusemi = {}
 	
 	--============================================================
 	
 	sets.wsBase = {}
-	sets.wsBase.Acc = {}
+	sets.wsBase.MediumAcc = {}
+	sets.wsBase.HighAcc = {}
 
 	sets.wsBase.Magic = {}
 	
@@ -43,7 +45,7 @@ function init_gear_sets()
 	--			Midcast sets
 	--============================================================
 	
-	sets.midcast.FastRecast = set_combine(sets.precast.FC, {})
+	sets.midcast.FastRecast = combineSets(sets.precast.FC, {})
 
 	--============================================================
 	--			Other sets
@@ -56,32 +58,30 @@ function init_gear_sets()
 	sets.idle.with_buff['doom'] = {}
 	sets.idle.with_buff['reive mark'] = {}
 	
-	sets.resting = sets.idle
+	sets.resting = {}
 	
 	sets.defense.DT = {}
-	sets.defense.PDT = set_combine(sets.defense.DT, {})
-	sets.defense.MDT = set_combine(sets.defense.DT, {})
+	sets.defense.PDT = combineSets(sets.defense.DT, {})
+	sets.defense.MDT = combineSets(sets.defense.DT, {})
 	
 	sets.defense.HP = sets.defense.PDT
 
 	--============================================================
 	
-	sets.engaged.with_buff['doom'] = {}
-	sets.engaged.with_buff['reive mark'] = {}
+	sets.weapons.Main = {}
 	
-	sets.engaged.HitYouBastard = {}
+	sets.engaged = {}
 	
-	sets.engaged.Normal_A = {}
+	sets.engaged.MediumAcc = {}
 	
-	sets.engaged.Normal_B = {}
+	sets.engaged.HighAcc = {}
 	
-	sets.engaged.Normal_C = {}
-
 	sets.engaged.Tank = {}
 	
-	sets.engaged.TankAcc = {}
+	sets.engaged.Tank.MediumAcc = {}
 	
-	sets.engaged.HitMoar = {}
+	sets.engaged.Tank.HighAcc = {}
 	
-	sets.engaged.Mix = {}
+	sets.engaged.with_buff['doom'] = {}
+	sets.engaged.with_buff['reive mark'] = {}
 end

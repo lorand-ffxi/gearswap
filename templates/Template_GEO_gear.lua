@@ -8,14 +8,12 @@ function init_gear_sets()
 	--============================================================
 	--			Precast sets
 	--============================================================
-	sets.impact = {body="Twilight Cloak"}	--This is just to remind me to get it from the Porter Moogle
-	
-	sets.precast.JA['Mana Wall'] = {}
-	sets.precast.JA['Manafont'] = {}
-	sets.precast.JA['Convert'] = {}
+	sets.impact = {}	--This is just to remind me to get it from the Porter Moogle
 	
 	sets.precast.FC = {}
 
+	sets.precast.FC.Geomancy = {}
+	
 	sets.precast.FC.EnhancingMagic = {}
 	sets.precast.FC.ElementalMagic = {}
 	sets.precast.FC.Lightning = {}
@@ -32,7 +30,12 @@ function init_gear_sets()
 	--============================================================
 	sets.midcast.FastRecast = {}
 
+	sets.midcast.Geomancy = {}
+	sets.midcast.Geomancy.Indi = {}
+	sets.midcast.Geomancy.Geo = {}
+	
 	sets.midcast.Cure = {}
+	sets.midcast.Cure.with_buff = {}
 	sets.midcast.Curaga = sets.midcast.Cure
 
 	sets.midcast.Cursna = {}
@@ -46,21 +49,14 @@ function init_gear_sets()
 	sets.midcast.EnfeeblingMagic = {}
 
 	sets.midcast.DarkMagic = {}
-
 	sets.midcast.Stun = {}
 
 	sets.midcast.DivineMagic = {}
-	
-	sets.midcast.BardSong = {}
 
 	sets.midcast.ElementalMagic = {}
-	sets.midcast.ElementalMagic.LowTier = {}
-	sets.midcast.ElementalMagic.HighTier = {}
 	sets.midcast.ElementalMagic.Earth = {}
 	
-	sets.midcast.ElementalMagic.MediumAcc = {}
-	sets.midcast.ElementalMagic.HighAcc = {}
-	sets.midcast.ElementalMagic.Proc = {}
+	sets.midcast.ElementalMagic.Resistant = {}
 	
 	sets.midcast.ElementalEnfeeble = {}
 	--============================================================
@@ -74,11 +70,13 @@ function init_gear_sets()
 	sets.idle.lowMP_night =	{}
 	sets.idle.lowMP_day = {}
 	
-	-- Defense sets
-	sets.defense.PDT = sets.idle
-	sets.defense.MDT = sets.idle
+	sets.idle.with_pet = {}
+	sets.idle.with_pet.Luopan = {}
 	
-	sets.buffs['Mana Wall'] = {}
+	-- Defense sets
+	sets.defense.DT = {}
+	sets.defense.PDT = combineSets(sets.defense.DT, {})
+	sets.defense.MDT = combineSets(sets.defense.DT, {})
 
 	sets.engaged = {}
 end

@@ -10,14 +10,15 @@ function init()
 	_libs.lists = _libs.lists or require('lists')
 	_libs.chars = _libs.chars or require('chat/chars')	--Required for using special characters in delayed messages
 	_libs.slips = _libs.slips or require('slips')		--Required for notifying which items need to be fetched from the porter moogle
+	_libs.files = _libs.files or require('files')		--Required for loading external files without using require()
 	res = res or gearswap.res
 	
 	include('packet_handling')	--Required for haste tier detection
 	include('utility_functions')	--Load utility_functions.lua (defines misc functions)
 	winraw = gearswap._G.windower	--Required for direct access to windower functions
-	winraw.register_event('incoming chunk', parse_buff_info)
-	windower.register_event('incoming text', parse_inc_text)
-	windower.register_event('outgoing text', parse_out_text)
+	winraw.register_event('incoming chunk', parse_buff_info)	--Gearswap's overridden version causes errors
+	windower.register_event('incoming text', parse_inc_text)	--Need overridden version for reloading
+	windower.register_event('outgoing text', parse_out_text)	--Need overridden version for reloading
 	
 	include('defaults')		--Load defaults.lua
 	define_defaults()		--Define some default sets & set up variable modes
@@ -28,7 +29,7 @@ function init()
 	include('mappings')		--Load mappings.lua (provides generalizations for spells and abilities)
 	include('exporter')		--Load exporter.lua (provides better implementation of gear exporting)
 	
-	info = require('../info/info_share')	--Load addons\info\info_shared.lua for functions to print information accessed directly from windower
+	info = import('../info/info_share')	--Load addons\info\info_shared.lua for functions to print information accessed directly from windower
 	
 	-- Load gear from a job-specific file
 	if load_user_gear(player.main_job) then

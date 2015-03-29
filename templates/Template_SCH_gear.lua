@@ -1,7 +1,16 @@
+-----------------------------------------------------------------------------------------------------------
+--[[
+	Author: Ragnarok.Lorand
+--]]
+-----------------------------------------------------------------------------------------------------------
+
 function init_gear_sets()
 	--============================================================
 	--			Precast sets
 	--============================================================
+	gear.KlimaformFeet = "Arbatel Loafers"
+	sets.impact = {body="Twilight Cloak"}	--This is just to remind me to get it from the Porter Moogle
+	
 	sets.precast.JA['Rapture'] =		{}
 	sets.precast.JA['Ebullience'] =		{}
 	sets.precast.JA['Penury'] =		{}
@@ -14,12 +23,7 @@ function init_gear_sets()
 	sets.precast.JA['Altruism'] =		{}
 	sets.precast.JA['Focalization'] =	{}
 	
-	sets.precast.FC = {
-		main="",	sub="",		range="",	ammo="",
-		head="",	neck="",	ear1="",	ear2="",
-		body="",	hands="",	ring1="",	ring2="",
-		back="",	waist="",	legs="",	feet=""
-	}
+	sets.precast.FC = {}
 	sets.precast.FC.EnhancingMagic = {}
 	sets.precast.FC.Cure = {}
 	sets.precast.FC.Curaga = sets.precast.FC.Cure
@@ -34,7 +38,7 @@ function init_gear_sets()
 	--============================================================
 	--			Midcast sets
 	--============================================================
-	sets.midcast.FastRecast = set_combine(sets.precast.FC, {})
+	sets.midcast.FastRecast = {}
 
 	sets.midcast.HealingMagic = {}
 	sets.midcast.HealingMagic.LA = {}
@@ -51,6 +55,7 @@ function init_gear_sets()
 	sets.midcast.Aquaveil = {}
 	sets.midcast.Stoneskin = {}
 	sets.midcast.Regen = {}
+	sets.midcast.Klimaform = {}
 
 	sets.midcast.MagicAccuracy = {}
 	
@@ -61,6 +66,14 @@ function init_gear_sets()
 	sets.midcast.DarkMagic = {}
 	sets.midcast.DarkMagic.DA = {}
 	
+	sets.midcast.DarkMagic.Stun = {}
+	
+	sets.midcast.DarkMagic.Stun.MediumAcc = {}
+	
+	sets.midcast.DarkMagic.Stun.HighAcc = {}
+	
+	sets.midcast.DarkMagic.Stun.Resistant = combineSets({},sets.midcast.DarkMagic.Stun.HighAcc)
+	
 	sets.midcast.DivineMagic = {}
 	sets.midcast.DivineMagic.LA = {}
 	
@@ -68,8 +81,13 @@ function init_gear_sets()
 	sets.midcast.ElementalMagicSkill.DA = {}
 	
 	sets.midcast.ElementalMagic = {}
-	sets.midcast.ElementalMagic.with_buff = {}
+	sets.midcast.ElementalMagic.LowTier = {}
+	sets.midcast.ElementalMagic.HighTier = {}
 	sets.midcast.ElementalMagic.Earth = {}
+	
+	sets.midcast.ElementalMagic.MediumAcc = {}
+	sets.midcast.ElementalMagic.HighAcc = {}
+	sets.midcast.ElementalMagic.Proc = {}
 	
 	sets.midcast.ElementalEnfeeble = {}
 	
@@ -84,20 +102,22 @@ function init_gear_sets()
 	sets.resting = {}
 	
 	sets.idle = {}
+	
+	sets.idle.CapFarm = {}
+	
+	sets.idle.MDT = {}
 	sets.idle.with_buff = {}
 	
-	sets.idle.lowMP =		{}
+	sets.idle.lowMP =	{}
 	sets.idle.lowMP_night =	{}
 	sets.idle.lowMP_day =	{}
-	sets.idle.sublimation = {}
 	
 	sets.idle.with_buff['sublimation: activated'] = {}
 	sets.idle.with_buff['doom'] = {}
 	sets.idle.with_buff['reive mark'] = {}
-		
-	sets.defense.DT = {}
-	sets.defense.PDT = set_combine(sets.defense.DT, {})
-	sets.defense.MDT = set_combine(sets.defense.DT, {})
+	
+	sets.defense.PDT = {}
+	sets.defense.MDT = {}
 
 	--============================================================
 	

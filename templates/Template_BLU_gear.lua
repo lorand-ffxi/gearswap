@@ -1,3 +1,9 @@
+--------------------------------------------------------------------------------
+--[[
+	Author: Ragnarok.Lorand
+--]]
+--------------------------------------------------------------------------------
+
 function init_gear_sets()
 	--============================================================
 	--			Precast sets
@@ -6,12 +12,7 @@ function init_gear_sets()
 	sets.precast.JA['Chain Affinity'] = {}
 	sets.precast.JA['Efflux'] = {}
 	
-	sets.precast.FC = {
-		main="",	sub="",		range="",	ammo="",
-		head="",	neck="",	ear1="",	ear2="",
-		body="",	hands="",	ring1="",	ring2="",
-		back="",	waist="",	legs="",	feet=""
-	}
+	sets.precast.FC = {}
 	sets.precast.FC.BlueMagic = {}
 	
 	sets.precast.FC.EnhancingMagic = {}

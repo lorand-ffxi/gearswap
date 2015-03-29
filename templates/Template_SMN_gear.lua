@@ -8,20 +8,22 @@ function init_gear_sets()
 	--============================================================
 	--			Precast sets
 	--============================================================
-	sets.impact = {body="Twilight Cloak"}	--This is just to remind me to get it from the Porter Moogle
-	
 	sets.precast.FC = {}
-		
+	
+	sets.precast.FC.SummoningMagic = {}
+	
 	sets.precast.FC.EnhancingMagic = {}
-	sets.precast.FC.HealingMagic = {}
+	
 	sets.precast.FC.Cure = {}
 	
 	sets.precast.FC.Lightning = {}
 	
 	--============================================================
 	
-	sets.precast.JA.Benediction = {}
-	sets.precast.JA.Martyr = {}
+	sets.precast.JA['Astral Flow'] = {}
+	sets.precast.JA['Elemental Siphon'] = {}
+	sets.precast.JA['Mana Cede'] = {}
+	sets.precast.JA["Avatar's Favor"] = {}
 
 	sets.precast.Waltz = {}
 	
@@ -38,6 +40,18 @@ function init_gear_sets()
 	sets.midcast.FastRecast = {}
 	
 	sets.midcast.MagicAccuracy = {}
+	
+	--======================== Pet ===============================
+	
+	sets.midcast.pet.BP = {}
+	sets.midcast.pet.BP.Ward = {}
+	sets.midcast.pet.BP.Ward.Buff = {}
+	sets.midcast.pet.BP.Ward.Debuff = {}
+	sets.midcast.pet.BP.Rage = {}
+	sets.midcast.pet.BP.Rage.Physical = {}
+	sets.midcast.pet.BP.Rage.Magical = {}
+	sets.midcast.pet['White Magic'] = {}
+	sets.midcast.pet['Elemental Magic'] = {}
 
 	--====================== Healing =============================
 	
@@ -48,28 +62,20 @@ function init_gear_sets()
 
 	sets.midcast.Cursna = {}
 
-	sets.midcast.StatusRemoval = {}
-	sets.midcast.StatusRemoval['Divine Caress'] = {}
-
 	--====================== Enhancing ===========================
 	
 	sets.midcast.EnhancingMagic = {}
 	
 	sets.midcast.Stoneskin = {}
-	sets.midcast.Auspice = {}
 	sets.midcast.Aquaveil = {}
 
 	sets.midcast.BarElement = {}
 
 	sets.midcast.Regen = {}
 	
-	sets.midcast.Protectra = {}
-	sets.midcast.Shellra = {}
-	
 	--====================== Offensive ===========================	
 	
 	sets.midcast.DivineMagic = {}
-				
 	sets.midcast.DivineMagic.Nuke = {}
 	
 	sets.midcast.DarkMagic = {}
@@ -79,10 +85,6 @@ function init_gear_sets()
 	sets.midcast.EnfeeblingMagic.Potency.Resistant = {}
 	
 	sets.midcast.ElementalMagic = {}
-	sets.midcast.ElementalMagic.LowTier = {}
-	sets.midcast.ElementalMagic.HighTier = {}
-	sets.midcast.ElementalMagic.Earth = {}
-	
 	sets.midcast.ElementalEnfeeble = {}
 	
 	--============================================================
@@ -92,12 +94,26 @@ function init_gear_sets()
 	sets.resting = {}
 
 	sets.idle = {}
-	
-	sets.idle.CapFarm = {}
-	
 	sets.idle.lowMP = {}
 	sets.idle.lowMP_night =	{}
 	sets.idle.lowMP_day = {}
+	
+	--[[
+		Spirit = 7
+		Carbuncle/Cait Sith = 11	-> 7
+		Fenrir = 13			-> 9
+		Avatar = 15			-> 11
+		Avatar's Favor = -4
+	--]]
+	sets.idle.with_pet = {}
+	sets.idle.with_pet.perp7 = {}
+	sets.idle.with_pet.perp9 = {}
+	sets.idle.with_pet.perp11 = {}
+	sets.idle.with_pet.perp13 = {}
+	sets.idle.with_pet.perp15 = {}
+	sets.idle.with_pet.Spirit = sets.idle.with_pet.perp7
+	sets.idle.with_pet.Avatar = sets.idle.with_pet.perp15
+	sets.idle.with_favor = {}
 	
 	sets.idle.with_buff = {}
 	sets.idle.with_buff['doom'] = {}
@@ -109,5 +125,4 @@ function init_gear_sets()
 	sets.engaged = {}
 	sets.engaged.with_buff = {}
 	sets.engaged.with_buff['doom'] = {}
-	sets.engaged.with_buff['reive mark'] = {}
 end
