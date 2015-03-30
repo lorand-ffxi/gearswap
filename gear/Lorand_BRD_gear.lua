@@ -150,7 +150,7 @@ function init_gear_sets()
 	}
 	
 	sets.midcast.MagicAccuracy = {
-		main="Lehbrailg +2",	sub="Mephitis Grip",
+		main="Marin Staff +1",	sub="Mephitis Grip",
 		head="Artsieq Hat",	neck="Stoicheion Medal",	ear1="Lifestorm Earring",	ear2="Psystorm Earring",
 		body="Artsieq Jubbah",	hands="Lurid Mitts",		ring1="Sangoma Ring",		ring2="Perception Ring",
 		back="Rhapsode's Cape",	waist="Ovate Rope",		legs="Artsieq Hose",		feet="Artsieq Boots"
@@ -200,6 +200,8 @@ function init_gear_sets()
 	--			Other sets
 	--============================================================
 	
+	sets.weapons.Melee = {main="Izhiikoh",sub="Genbu's Shield"}
+	
 	sets.resting = {
 		main="Chatoyant Staff",		sub="Elder's Grip",						ammo="Kalboron Stone",
 		head="Nahtirah Hat",		neck="Eidolon Pendant",		ear1="Loquacious Earring",	ear2="Relaxing Earring",
@@ -228,7 +230,6 @@ function init_gear_sets()
 	sets.idle.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	
 	sets.engaged = {
-		main="Izhiikoh",		sub="Genbu's Shield",
 		head="Highwing Helm",		neck="Peacock Amulet",		ear1="Bladeborn Earring",	ear2="Steelflash Earring",
 		body="Bihu Justaucorps",	hands="Umuthi Gloves",		ring1="Rajas Ring",		ring2="Mars's Ring",
 		back="Kayapa Cape",		waist="Anguinus Belt",		legs="Gendewitha Spats +1",	feet="Gendewitha Galoshes +1"

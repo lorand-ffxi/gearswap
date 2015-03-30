@@ -45,6 +45,7 @@ function set_modes()
 	elseif S{'BRD'}:contains(player.main_job) then
 		modelist['offense'] = {'Magic', 'Melee', 'Skillup'}
 		modelist['Daurdabla'] = {'None','Daurdabla','Dummy'}
+		modelist['weapon'] = {'Main','Melee','Other'}
 	elseif S{'BLU'}:contains(player.main_job) then
 		modelist['offense'] = {'Normal', 'Learn'}
 	elseif S{'RNG'}:contains(player.main_job) then

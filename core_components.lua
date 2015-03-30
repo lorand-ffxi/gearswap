@@ -286,6 +286,7 @@ function buff_change(buff, gain)
 	end
 	
 	if (buff:lower() == 'march') and (not gain) then			--March wore off
+		buffs = buffs and buffs or {}
 		if (buffactive['march'] ~= nil) then				--There's still an active March
 			if (buffs.March1 ~= nil) and (buffs.March2 ~= nil) then	--Both Marches were active
 				if (buffs.March1 < buffs.March2) then		--March1 was cast before March2
@@ -475,63 +476,51 @@ end
 	Assembles the midcast set for the given spell/ability.
 --]]
 function get_midcast_set(spell)
-	local midcastSet = {}
-	local status = player.status:lower()
-	local targType = spell.target.type:lower()
-	local spellMap = spell_maps[spell.en]
+	local midcastSet = {}				--Initialize the set that will be built
+	local status = player.status:lower()		--Player's status (Idle/Engaged/etc)
+	local targType = spell.target.type:lower()	--Target type (self/player/etc)
+	local spellMap = spell_maps[spell.en]		--Generalized spell name (ex: Cure for Cure IV)
 	
 	if spell.action_type == 'Magic' then
-		--The base layer of gear for all spells in midcast is a set to reduce recast delay
-		midcastSet = combineSets(midcastSet, sets.midcast.FastRecast)
+		midcastSet = combineSets(midcastSet, sets.midcast.FastRecast)	--Base layer for all sets; reduce recast
 		
 		if spell.type == 'BardSong' and player.main_job == 'BRD' then
-			--Determine the type of song being cast via spell_utilities.lua.get_song_class(spell)
-			--Valid types include SongDebuff, DaurdablaDummy, and SongBuff
-			local songType = get_song_class(spell)
+			local isBuff = not spell.targets:contains('Enemy')
 			
-			if songType == 'DaurdablaDummy' then
-				--Equip Daudabla/Terpander and gear that reduces recast time but does not enhance buff duration
-				midcastSet = combineSets(midcastSet, sets.midcast.SongRecast)
-				midcastSet = combineSets(midcastSet, {range=gear.instruments.multiSong})
+			local activeInstrument = gear.instruments.default		--Set active inst. to default
+			if isBuff and S{'Dummy','Daurdabla'}:contains(modes.Daurdabla) then
+				activeInstrument = gear.instruments.multiSong		--Set active inst. to multiSong
 			else
-				--Determine the instrument that will be used to cast the song
-				local activeInstrument = gear.instruments.default
-				if modes.Daurdabla == 'Daurdabla' then
-					--It is assumed that Daurdabla/Terpander is in the player's inventory if they are using this mode
-					activeInstrument = gear.instruments.multiSong
-				elseif (gear.instruments[spellMap] ~= nil) and setops.isAvailable(gear.instruments[spellMap]) then
-					--If the instrument that should be used is not defined or not in inventory, this falls back on the default instrument
-					activeInstrument = gear.instruments[spellMap]
+				local instr = gear.instruments[spellMap]
+				if (instr ~= nil) and setops.isAvailable(instr) then	--Check for proper instrument
+					activeInstrument = instr			--Set active inst. if available
+				end
+			end
+			
+			if isBuff and (modes.Daurdabla == 'Dummy') then		--No duration/potency+ for dummy songs
+				midcastSet = combineSets(midcastSet, sets.midcast.SongRecast)
+			else
+				local instrumentSkill = get_instrument_type(activeInstrument)			--Fetch instrument type for activeInstrument
+				if isBuff then
+					midcastSet = combineSets(midcastSet, sets.midcast.Singing)		--Layer on base singing gear
+					midcastSet = combineSets(midcastSet, sets.midcast, instrumentSkill)	--Layer on gear based on skill of instrument
+				else
+					midcastSet = combineSets(midcastSet, sets.midcast.MagicAccuracy)	--Layer on magic accuracy gear
 				end
 				
-				--Determine the skill used by the instrument that will be used to cast the song via spell_utilities.lua.get_instrument_type(i)
-				--The mapping of skill to instrument is done in mappings.lua, and the instruments that should be used for each song should be
-				--defined in Playername_BRD_gear.lua
-				local instrumentSkill = get_instrument_type(activeInstrument)
-				if S{'Threnody','Requiem','Lullaby','Elegy','Finale','Nocturne'}:contains(spellMap) then
-					midcastSet = combineSets(midcastSet, sets.midcast.MagicAccuracy)
-				else
-					--Layer on skill gear for singing, then for the type of instrument being used to cast the song.
-					midcastSet = combineSets(midcastSet, sets.midcast.Singing)					--Equip base singing gear
-					midcastSet = combineSets(midcastSet, sets.midcast, instrumentSkill)				--Equip gear based on skill of instrument
-				end
-				--Layer on magic accuracy or duration enhancing gear based on the type of song being cast
-				if not S{'Finale'}:contains(spellMap) then
-					midcastSet = combineSets(midcastSet, sets.midcast, songType)					--Equip gear based on buff/debuff
+				if not S{'Finale'}:contains(spellMap) then		--Keep magic accuracy gear on for Finale
+					local songType = isBuff and 'SongBuff' or 'SongDebuff'
+					midcastSet = combineSets(midcastSet, sets.midcast, songType)
 					midcastSet = combineSets(midcastSet, sets.midcast, songType, modes.casting)					
-					if buff_active('Troubadour') then
+					if buff_active('Troubadour') then		--No acc necessary when active
 						midcastSet = combineSets(midcastSet, sets.midcast.SongDuration)
 					end
 				end
-				--Layer on gear that directly enhances the song being cast
-				midcastSet = combineSets(midcastSet, sets.midcast, spellMap)						--Equip gear based on song
+				midcastSet = combineSets(midcastSet, sets.midcast, spellMap)			--Layer on song-specific gear
 				midcastSet = combineSets(midcastSet, sets.midcast, spellMap, modes.casting)
-				
-				--Finally, layer on the instrument that will be used.
-				midcastSet = combineSets(midcastSet, {range=activeInstrument})
 			end
-			--Automatically disables Daurdabla mode so that the user doesn't have to after casting a song in that mode
-			modes.Daurdabla = 'None'
+			midcastSet = combineSets(midcastSet, {range=activeInstrument})	--Layer on active instrument
+			modes.Daurdabla = 'None'	--Disables Daurdabla mode after casting a song with it on
 		elseif spell.skill == 'Dark Magic' then
 			midcastSet = get_standard_magic_set(midcastSet, spell, spellMap, 'DarkMagic')
 		elseif spell.skill == 'Healing Magic' then
@@ -606,10 +595,10 @@ function get_midcast_set(spell)
 			
 			if buff_active('Composure') and spell.target.type ~= 'SELF' then
 				midcastSet = combineSets(midcastSet, sets.midcast.EnhancingMagic.Duration.ComposureOther)
-			end
-			if spell.en == 'Phalanx II' then
-				midcastSet = combineSets(midcastSet, sets.midcast, spell.en)
-			end
+				if spell.en == 'Phalanx II' then
+					midcastSet = combineSets(midcastSet, sets.midcast, spell.en)
+				end
+			end			
 		elseif spell.skill == 'Blue Magic' then
 			local bluType = (spell.element == -1) and 'Physical' or 'Magic'
 			if bluType == 'Magic' then

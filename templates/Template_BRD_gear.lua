@@ -25,6 +25,34 @@
 	
 	All macros should be written with <stpc> because Pianissimo will
 	automatically be used when the target is a player other than yourself.
+	
+	Gear layering order:
+	
+	if it's a dummy song {
+	    sets.midcast.SongRecast
+	    range=gear.instruments.multiSong
+	} else if it's a normal song {
+	    activeInstrument = gear.instruments.default
+	    using daur/terp: activeInstrument = gear.instruments.multiSong
+	    otherwise: activeInstrument = gear.instruments[spellMap] (if it exists)
+
+	    if song is Threnody/Requiem/Lullaby/Elegy/Finale/Nocturne {
+		sets.midcast.MagicAccuracy
+	    } else {
+		sets.midcast.Singing
+		sets.midcast[instrumentSkill]
+	    }
+
+	    if not Finale {
+		sets.midcast[SongDebuff/DaurdablaDummy/SongBuff]
+		sets.midcast[SongDebuff/DaurdablaDummy/SongBuff][modes.casting]
+		if troubadour is on: sets.midcast.SongDuration
+	    }
+	    
+	    sets.midcast[spellMap]
+	    sets.midcast[spellMap][modes.casting]
+	    range=activeInstrument
+	}
 --]]
 --------------------------------------------------------------------------------
 

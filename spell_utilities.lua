@@ -377,21 +377,6 @@ function get_instrument_type(i)
 	return 'Singing'
 end
 
--- Determine the custom class to use for the given song.
-function get_song_class(spell)
-	if spell.targets:contains('Enemy') then
-		if modes.casting == 'Resistant' then
-			return 'ResistantSongDebuff'
-		else
-			return 'SongDebuff'
-		end
-	elseif modes.Daurdabla == 'Dummy' then
-		return 'DaurdablaDummy'
-	else
-		return 'SongBuff'
-	end
-end
-
 function get_song_mult(spellName, spellMap)
 	local mult = 1
 	local instrumentEffects = instruments.effects[player.equipment.range]
