@@ -56,14 +56,14 @@ init()	--Execute init()
 --]]
 function filtered_action(spell)
 	local tname = (spell.target.type == 'MONSTER') and '<t>' or spell.target.name
-	if gearswap.addendum_white[spell.id] and (not buff_active('Addendum: White')) then
+	if (spell.type == 'WhiteMagic') and gearswap.addendum_white[spell.id] and (not buff_active('Addendum: White')) then
 		cancel_spell()
 		if stratagems_available() then
 			windower.send_command('gs c scholar light; wait 1.75; input /ma "'..spell.en..'" '..tname)
 		else
 			atc(122, "Cancelled "..spell.en..".  Addendum: White is required, but there are no available stratagems.")
 		end
-	elseif gearswap.addendum_black[spell.id] and (not buff_active('Addendum: Black'))then
+	elseif (spell.type == 'BlackMagic') and gearswap.addendum_black[spell.id] and (not buff_active('Addendum: Black'))then
 		cancel_spell()
 		if stratagems_available() then
 			windower.send_command('gs c scholar dark; wait 1.75; input /ma "'..spell.en..'" '..tname)
@@ -71,7 +71,16 @@ function filtered_action(spell)
 			atc(122, "Cancelled "..spell.en..".  Addendum: Black is required, but there are no available stratagems.")
 		end
 	else
-		atc(166, '[Unhandled] Unable to perform filtered action: '..spell.english)
+		if (spell.type == 'JobAbility') then
+			local jas = S(windower.ffxi.get_abilities().job_abilities)
+			if not jas:contains(spell.id) then
+				cancel_spell()
+				atc(122, 'Cancelled '..spell.en..' because you do not currently have access to it.')
+			end
+		else
+			atc(166, '[Unhandled] Unable to perform filtered action: '..spell.english)
+			--info.print_table(spell,spell.en)
+		end
 	end
 end
 
