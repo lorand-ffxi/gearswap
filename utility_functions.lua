@@ -281,6 +281,18 @@ end
 --==============================================================================
 
 --[[
+	Stores a value if provided, otherwise returns the value stored to the given key (if available).
+--]]
+function cache(key, val)
+	cached = cached or {}
+	if (val == nil) then
+		return cached[key]
+	else
+		cached[key] = val
+	end
+end
+
+--[[
 	Rounds a float to the given number of decimal places.
 	Note: math.round is only for rounding to the nearest integer
 --]]
@@ -316,13 +328,13 @@ function equip_now(set)
 	send_command(equipline)
 end
 
-local last_outgoing
 function parse_out_text(original)
-	last_outgoing = original
+	cache('last outgoing', original)
 end
 
 function parse_inc_text(original)
 	if (original == 'You can only use that command during battle.') then
+		local last_outgoing = cache('last outgoing')
 		if (player.status == 'Idle') and (last_outgoing ~= nil) then
 			last_outgoing = windower.convert_auto_trans(last_outgoing)
 			if last_outgoing:startswith('/ws') then

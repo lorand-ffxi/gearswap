@@ -68,6 +68,8 @@ function set_modes()
 		modelist['treasure'] = {'None','TH'}
 		modelist['offense'] = {'TH', 'Normal', 'Acc'}
 		modelist['ranged'] = {'TH', 'Normal', 'Acc'}
+	elseif S{'COR'}:contains(player.main_job) then
+		modelist['weapon'] = {'Gun'}
 	end
 	
 	--Process the modelist and set modes accordingly
@@ -77,6 +79,7 @@ function set_modes()
 end
 
 function set_keybinds()
+	--'^' = [ctrl]		'!' = [alt]		'@' = [win]
 	local mj = player.main_job
 	local sj = player.sub_job
 	local keybinds = {}
@@ -182,6 +185,9 @@ function set_keybinds()
 		keybinds['!`'] = 'input /ja "Efflux" <me>'
 	elseif (mj == 'THF') then
 		keybinds['@t'] = 'gs c cycle treasure'
+	elseif (mj == 'COR') then
+		keybinds['^`'] = 'input /ja "Snake Eye" <me>'
+		keybinds['!`'] = 'input /ja "Double-Up" <me>'
 	end
 	
 	clear_binds()

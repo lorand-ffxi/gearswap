@@ -93,6 +93,8 @@ function pretarget(spell)
 		windower.send_command('input /ma "'..debuff_to_na[spell.en]..'" '..tname)
 	elseif (spell.en == 'Phalanx') and (spell.target.type == 'PLAYER') and (spell.target.type ~= 'SELF') then
 		windower.send_command('input /ma "Phalanx II" '..spell.target.name)
+	elseif (spell.type == 'CorsairRoll') and (cache('last cor roll') == spell.en) then
+		windower.send_command('input /ja "Double-Up" <me>')
 	else
 		return
 	end
@@ -166,6 +168,35 @@ function precast(spell)
 		end
 	end
 	
+	if (spell.type == 'CorsairRoll') or (spell.en == 'Double-Up') then
+		if (spell.type == 'CorsairRoll') then
+			cache('last cor roll', spell.en)
+			cache('du time', os.clock())
+		end
+		local du_gain = cache('du time')
+		if (spell.en == 'Double-Up') then
+			if (du_gain == -1) then
+				atc(123,'There are no rolls eligible for Double-Up at this time.')
+				cancel_spell()
+				return
+			end
+		end
+		
+		local last_roll = cache('last cor roll')
+		local rinfo = roll_info[last_roll]
+		if (rinfo ~= nil) then
+			local rname = last_roll..': '
+			local lucky = '[Lucky: '..rinfo.lucky..'] '
+			local unlucky = '[Unlucky: '..rinfo.unlucky..'] '
+			local desc = rinfo.effect
+			local dutime = 45 - (os.clock() - du_gain)
+			local dumsg = ' | Double-Up time remaining: '..round(dutime)
+			atc(1, rname:colorize(261)..lucky:colorize(339)..unlucky:colorize(349)..desc:colorize(261)..dumsg:colorize(128))
+		else
+			atc(123, 'Error: No roll info stored for '..spell.en)
+		end
+	end
+
 	if (spell.skill == 36) and (spell.cast_time < 1) then
 		equip(get_midcast_set(spell))	--Use midcast gear for elemental spells with low cast times
 	else
@@ -272,6 +303,10 @@ function buff_change(buff, gain)
 		equip(get_gear_for_status(player.status))
 	elseif buff == 'Sublimation: Complete' and gain then
 		atc(204, 'Sublimation is done charging!')
+	elseif (buff:lower() == 'double-up chance') then
+		if not gain then
+			cache('du time', -1)
+		end
 	end
 	
 	if (buff:lower() == 'weakness') then
@@ -331,7 +366,16 @@ function get_precast_set(spell)
 			precastSet = combineSets(precastSet, {ammo=sets.weapons[modes.weapon].ammo})
 		end
 	elseif spell.action_type == 'Ability' then
-		if spell.type == 'JobAbility' then
+		if (spell.type == 'CorsairRoll') or (spell.en == 'Double-Up') then
+			precastSet = combineSets(precastSet, sets.precast.CorsairRoll)
+			precastSet = combineSets(precastSet, sets.precast.CorsairRoll, cache('last cor roll'))
+		elseif spell.type == 'CorsairShot' then
+			precastSet = combineSets(precastSet, sets.precast.CorsairShot)
+			if not S{'Light Shot','Dark Shot'}:contains(spell.en) then
+				precastSet = combineSets(precastSet, sets.precast.CorsairShot, 'MAB')
+			end
+			precastSet = combineSets(precastSet, sets.precast.CorsairShot, spell.en)
+		elseif spell.type == 'JobAbility' then
 			precastSet = combineSets(precastSet, sets.precast.JA, spell.en)
 		elseif spell.type == 'WeaponSkill' then
 			--sets.wsBase[sam/other][modes.offense][state.RangedMode][wsmod[spell.english]]
@@ -621,7 +665,7 @@ function get_midcast_set(spell)
 			midcastSet = combineSets(midcastSet, sets.midcast, spell.en)
 		end
 	elseif spell.action_type == 'Ranged Attack' then
-		if S{'RNG', 'COR'}:contains(player.main_job) then
+		if S{'RNG'}:contains(player.main_job) then
 			if buff_active('Barrage') then
 				midcastSet = combineSets(midcastSet, sets.ranged.barrage)
 			else
@@ -632,6 +676,11 @@ function get_midcast_set(spell)
 				midcastSet = combineSets(midcastSet, {ammo=sets.weapons[modes.weapon].ammo})
 				midcastSet = combineSets(sets.tpBase, midcastSet)
 			end
+		elseif (player.main_job == 'COR') then
+			midcastSet = combineSets(midcastSet, sets.midcast.ranged)
+			midcastSet = combineSets(midcastSet, sets.midcast.ranged, get_sub_type())
+			midcastSet = combineSets(midcastSet, sets.midcast.ranged, get_sub_type(), modes.ranged)
+			midcastSet = combineSets(midcastSet, {ammo=sets.weapons[modes.weapon].ammo})
 		else
 			midcastSet = combineSets(midcastSet, sets.midcast.ranged)
 			midcastSet = combineSets(midcastSet, sets.midcast.ranged, modes.ranged)

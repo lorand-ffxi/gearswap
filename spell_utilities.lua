@@ -328,6 +328,13 @@ function not_possible_to_use(spell)
 				atc(166, 'Unable to use '..spell.english..' at this time. Insufficient charges available. ['..remtime..'s remaining]')
 				return true
 			end
+		elseif (spell.type == 'CorsairShot') then
+			local rctime = 60 - player.merits.quick_draw_recast
+			local remtime = abil_recasts[spell.recast_id] - rctime
+			if abil_recasts[spell.recast_id] and (remtime > 0) then
+				atc(166, 'Unable to use '..spell.english..' at this time. Insufficient charges available. ['..remtime..'s remaining]')
+				return true
+			end
 		elseif abil_recasts[spell.recast_id] and abil_recasts[spell.recast_id] > 0 then
 			atc(166, 'Unable to use '..spell.english..' at this time. ['..(abil_recasts[spell.recast_id])..'s remaining]')
 			return true

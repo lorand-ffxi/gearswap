@@ -1,41 +1,59 @@
------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
 --[[
 	Author: Ragnarok.Lorand
 --]]
------------------------------------------------------------------------------------------------------------
-
+------------------------------------------------------------------------------------------------------------------------
 
 function init_gear_sets()
 	sets.weapons = {}
-	sets.weapons.Gun = {range="Doomsday",ammo="Adlivun Bullet"}
+	sets.weapons.Gun = {main="Atoyac",sub="Legion Scutum",range="Doomsday",ammo="Eminent Bullet",ammo2="Adlivun Bullet"}
 	
-	sets.precast.QuickDraw = {ammo="Animikii Bullet"}
+	sets.enmityDown = {
+		neck="Orunmila's Torque",	ear1="Novia Earring",	ear2="Psystorm Earring",
+		hands="Iuitl Wristbands +1",	ring1="Prolix Ring",	ring2="Sangoma Ring",
+		waist="Elanid Belt",		legs="Laksamana's Trews"
+	}
+	
+	sets.precast.JA['Quick Draw'] = {									ammo="Animikii Bullet",
+		head="Corsair's Tricorne +1",	neck="Stoicheion Medal",	ear1="Friomisi Earring",	ear2="Hecate's Earring",
+		body="Iuitl Vest +1",		hands="Taeon Gloves",		ring1="Fenrir Ring +1",		ring2="Acumen Ring",
+		back="Gunslinger's Cape",	waist="Elanid Belt",		legs="Shneddick Tights +1",	feet="Navarch's Bottes +2"
+	}
+	--Syntax: sets.precast.CorsairShot[MAB/shot name]
+	sets.precast.CorsairShot = {}
+	sets.precast.CorsairShot.MAB = {
+		ammo="Animikii Bullet",
+		head="Corsair's Tricorne +1",	neck="Stoicheion Medal",	ear1="Friomisi Earring",	ear2="Hecate's Earring",
+		body="Iuitl Vest +1",		hands="Taeon Gloves",		ring1="Fenrir Ring +1",		ring2="Acumen Ring",
+		back="Gunslinger's Cape",	waist="Elanid Belt",		legs="Shneddick Tights +1",	feet="Navarch's Bottes +2"
+	}
 	
 	sets.precast.JA['Triple Shot'] = {body="Navarch's Frac +2"}
 	sets.precast.JA['Random Deal'] = {body="Commodore Frac"}
 
-	sets.precast.CorsairRoll = {
-		head="Commodore Tricorne",	
-		hands="Navarch's Gants +2",	ring1="Merirosvo Ring",	ring2="Barataria Ring",
-	}
-	sets.precast.CorsairRoll["Caster's Roll"] = set_combine(sets.precast.CorsairRoll, {legs="Navarch's Culottes +2"})
-	sets.precast.CorsairRoll["Courser's Roll"] = set_combine(sets.precast.CorsairRoll, {feet="Navarch's Bottes +2"})
-	sets.precast.CorsairRoll["Blitzer's Roll"] = set_combine(sets.precast.CorsairRoll, {head="Navarch's Tricorne +2"})
-	sets.precast.CorsairRoll["Tactician's Roll"] = set_combine(sets.precast.CorsairRoll, {body="Navarch's Frac +2"})
-	sets.precast.CorsairRoll["Allies' Roll"] = set_combine(sets.precast.CorsairRoll, {hands="Navarch's Gants +2"})
+	sets.precast.CorsairRoll = combineSets(sets.enmityDown, {
+		head="Commodore Tricorne",
+		hands="Navarch's Gants +2",	ring1="Luzaf's Ring",	ring2="Barataria Ring",
+	})
+	sets.precast.CorsairRoll["Caster's Roll"] =	{legs="Navarch's Culottes +2"}
+	sets.precast.CorsairRoll["Courser's Roll"] =	{feet="Navarch's Bottes +2"}
+	sets.precast.CorsairRoll["Blitzer's Roll"] =	{head="Navarch's Tricorne +2"}
+	sets.precast.CorsairRoll["Tactician's Roll"] =	{body="Navarch's Frac +2"}
+	sets.precast.CorsairRoll["Allies' Roll"] =	{hands="Navarch's Gants +2"}
 	
 	sets.precast.FC = {
-		head="Anwig Salade",	neck="Orunmila's Torque",	ear1="Loquacious Earring",
-		hands="Thaumas Gloves",	ring1="Prolix Ring"
+		head="Anwig Salade",		neck="Orunmila's Torque",	ear1="Loquacious Earring",
+		body="Taeon Tabard",		hands="Thaumas Gloves",		ring1="Prolix Ring",		ring2="Veneficium Ring",
+		legs="Quiahuiz Trousers"
 	}
-	sets.precast.FC.Utsusemi = set_combine(sets.precast.FC, {neck="Magoraga Bead Necklace"})
+	sets.precast.FC.Utsusemi = {neck="Magoraga Bead Necklace"}
 
 	--============================================================
 
 	sets.precast.ranged = {
-		head="Sylvan Gapette +2",
-		body="Arcadian Jerkin",		hands="Iuitl Wristbands +1",
-		waist="Impulse Belt",		legs="Arcadian Braccae"
+		head="Uk'uxkaj Cap",
+		body="Laksamana's Frac",	hands="Iuitl Wristbands +1",
+		back="Navarch's Mantle",	waist="Impulse Belt",		legs="Nahtirah Trousers"
 	}
 	
 	--============================================================
@@ -43,71 +61,45 @@ function init_gear_sets()
 	--============================================================
 	
 	sets.wsBase = {
-		neck="Ocachi Gorget",	ear1="Clearview Earring",	ear2="Volley Earring",
-		body="Iuitl Vest +1",	ring1="Rajas Ring",
-		feet="Iuitl Gaiters +1"
+		head="Taeon Chapeau",		neck="Ocachi Gorget",		ear1="Clearview Earring",	ear2="Volley Earring",
+		body="Taeon Tabard",		hands="Iuitl Wristbands +1",	ring1="Longshot Ring",		ring2="Paqichikaji Ring",
+		back="Gunslinger's Cape",	waist="Elanid Belt",		legs="Nahtirah Trousers",	feet="Scopuli Nails +1"
 	}
 	
 	sets.wsBase.STR = {
-		head="Ejekamal Mask",
-		ring2="Pyrosoul Ring",
-		back="Buquwik Cape",		waist="Prosilio Belt",		legs="Shneddick Tights +1"
-	}
-	sets.wsBase.AGI = {
-		head="Uk'uxkaj Cap",
-		hands="Iuitl Wristbands +1",	ring1="Blobnag Ring",		ring2="Stormsoul Ring",
-		back="Ik Cape",			waist="Sveltesse Gouriz",	legs="Kaabnax Trousers"
+		head="Whirlpool Mask",
+		ring1="Rajas Ring",	ring2="Pyrosoul Ring",
+		back="Buquwik Cape",	waist="Prosilio Belt"
 	}
 	sets.wsBase.DEX = {
-		head="Uk'uxkaj Cap",		ear1="Pixie Earring",
-		hands="Iuitl Wristbands +1",	ring2="Thundersoul Ring",
-		back="Kayapa Cape",		waist="Chiner's Belt",
-	}
-	sets.wsBase.STRAGI = {
-		head="Uk'uxkaj Cap",
-		ring2="Pyrosoul Ring",
-		waist="Prosilio Belt",		legs="Kaabnax Trousers"
+		ring1="Rajas Ring",	ring2="Thundersoul Ring",
+		back="Kayapa Cape",	waist="Chiner's Belt"
 	}
 	
-	sets.tpBase = {
-		head="Navarch's Tricorne",	neck="Ocachi Gorget",		ear1="Clearview Earring",	ear2="Volley Earring",
-		body="Iuitl Vest +1",		hands="Manibozho Gloves",	ring1="Paqichikaji Ring",	ring2="Longshot Ring",
-		back="Gunslinger's Cape",	waist="Impulse Belt",		legs="Aetosaur Trousers",	feet="Scopuli Nails +1"
+	sets.wsBase.Magic = {
+		head="Taeon Chapeau",		neck="Stoicheion Medal",	ear1="Friomisi Earring",	ear2="Hecate's Earring",
+		body="Taeon Tabard",		hands="Taeon Gloves",		ring1="Fenrir Ring +1",		ring2="Acumen Ring",
+		back="Gunslinger's Cape",	waist="Fotia Belt",		legs="Shneddick Tights +1",	feet="Taeon Boots"
 	}
-	
-	
-	-- Midcast Sets
-	sets.midcast.FastRecast = {
-		head="Whirlpool Mask",	neck="Orunmila's Torque",
-		body="Iuitl Vest",		hands="Iuitl Wristbands +1",
-		legs="Manibozho Brais",	feet="Iuitl Gaiters +1"
-	}
-		
-	-- Specific spells
-	sets.midcast.Utsusemi = sets.midcast.FastRecast
-
-	sets.midcast.CorsairShot = {ammo=gear.QDbullet,
-		head="Corsair's Tricorne +1",	neck="Stoicheion Medal",	ear1="Friomisi Earring",	ear2="Hecate's Earring",
-		body="Laksamana's Frac",	hands="Buremte Gloves",		ring1="Perception Ring",	ring2="Acumen Ring",
-		back="Gunslinger's Cape",	waist="Aquiline Belt",		legs="Iuitl Tights",		feet="Navarch's Bottes +2"
-	}
-
-	--========================[Gun]===============================
-	sets.Gun = {range=gear.Gun,	ammo=gear['Gun_ammo_RA'], neck="Faith Torque"}
-	sets.Gun.other = {}
 	
 	--============================================================
-
-	sets.midcast.FastRecast = {
-		head="Ejekamal Mask",
-		body="Iuitl Vest +1",	hands="Buremte Gloves",	ring2="Diamond Ring",	--Diamond Ring aug: 2% interrupt rate down
-		back="Mujin Mantle",	waist="Cetl Belt",	legs="Kaabnax Trousers",	feet="Iuitl Gaiters +1"
+	--Syntax: sets.midcast.ranged[sam/other][modes.ranged]
+	
+	sets.midcast.ranged = {
+		head="Taeon Chapeau",		neck="Ocachi Gorget",		ear1="Clearview Earring",	ear2="Volley Earring",
+		body="Iuitl Vest +1",		hands="Iuitl Wristbands +1",	ring1="Longshot Ring",		ring2="Paqichikaji Ring",
+		back="Gunslinger's Cape",	waist="Elanid Belt",		legs="Nahtirah Trousers",	feet="Scopuli Nails +1"
 	}
-	sets.midcast.Utsusemi = sets.midcast.FastRecast
+	sets.midcast.ranged.sam = {}
+	sets.midcast.ranged.other = {}
+	
+	sets.midcast.FastRecast = {
+		head="Iuitl Headgear +1",	neck="Orunmila's Torque",	ear1="Loquacious Earring",	ear2="Novia Earring",
+		body="Taeon Tabard",		hands="Thaumas Gloves",		ring1="Prolix Ring",		ring2="Veneficium Ring",
+		back="Mujin Mantle",		waist="Cetl Belt",		legs="Laksamana's Trews",	feet="Taeon Boots",
+	}
 	
 	sets.midcast.Cure = {}
-	sets.midcast.Cure.with_buff = {}
-	sets.midcast.Cure.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
 	
 	--============================================================
 	--			Other sets
@@ -116,8 +108,8 @@ function init_gear_sets()
 	
 	sets.idle = {
 		head="Ocelomeh Headpiece +1",	neck="Orochi Nodowa",		ear1="Brachyura Earring",	ear2="Ethereal Earring",
-		body="Orion Jerkin",		hands="Buremte Gloves",		ring1="Defending Ring",		ring2="Shneddick Ring",
-		back="Repulse Mantle",		waist="Flume Belt",		legs="Kaabnax Trousers",	feet="Iuitl Gaiters +1"
+		body="Qaaxo Harness",		hands="Umuthi Gloves",		ring1="Defending Ring",		ring2="Shneddick Ring",
+		back="Repulse Mantle",		waist="Flume Belt",		legs="Laksamana's Trews",	feet="Iuitl Gaiters +1"
 	}
 	sets.idle.with_buff = {}
 	sets.idle.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
@@ -128,27 +120,22 @@ function init_gear_sets()
 		ring1="Defending Ring",		ring2="Dark Ring"
 	}
 	sets.defense.PDT = set_combine(sets.defense.Evasion, sets.defense.DT, {	--PDT-18% + DT => PDT-33%
-		head="Iuitl Headgear",
-		body="Iuitl Vest",	hands="Iuitl Wristbands +1",
-		back="Repulse Mantle",	waist="Flume Belt",		legs="Iuitl Tights",	feet="Iuitl Gaiters"
+		head="Iuitl Headgear +1",
+		body="Iuitl Vest +1",	hands="Iuitl Wristbands +1",
+		back="Repulse Mantle",	waist="Flume Belt",		legs="Iuitl Tights +1",	feet="Iuitl Gaiters +1"
 	})
 	sets.defense.MDT = set_combine(sets.defense.Evasion, sets.defense.DT, {	--MDT-4% + DT => MDT-16%, MDB+19
 		head="Ejekamal Mask",	ear1="Merman's Earring",	ear2="Merman's Earring",
-		body="Iuitl Vest",	hands="Buremte Gloves",
-		back="Tuilha Cape",	waist="Flume Belt",		legs="Kaabnax Trousers",	feet="Iuitl Gaiters"
+		body="Iuitl Vest +1",	hands="Umuthi Gloves",
+		back="Tuilha Cape",	waist="Flume Belt",		legs="Kaabnax Trousers",	feet="Iuitl Gaiters +1"
 	})
 	
-	sets.Kiting = {feet="Orion Socks"}
-	
 	sets.engaged = {
-		head="Ejekamal Mask",	neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
-		body="Iuitl Vest",	hands="Buremte Gloves",		ring1="Rajas Ring",		ring2="Epona's Ring",
-		back="Atheling Mantle",	waist="Patentia Sash",		legs="Kaabanax Trousers",	feet="Orion Socks"
+		head="Whirlpool Mask",	neck="Orochi Nodowa",		ear1="Bladeborn Earring",	ear2="Steelflash Earring",
+		body="Qaaxo Harness",	hands="Taeon Gloves",		ring1="Rajas Ring",		ring2="Epona's Ring",
+		back="Atheling Mantle",	waist="Windbuffet Belt +1",	legs="Taeon Tights",		feet="Taeon Boots",
 	}
 	sets.engaged.with_buff = {}
 	sets.engaged.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	sets.engaged.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}
-	
-	sets.Melee = {}
-	sets.Melee.tp = sets.engaged
 end

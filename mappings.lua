@@ -1,14 +1,12 @@
---------------------------------------------------------------------------------
+--======================================================================================================================
 --[[
-	Adapted from Mote's GearSwap files by Ragnarok.Lorand
-	Mappings, lists and sets to describe game relationships that aren't
-	easily determinable otherwise.
+	Author: Ragnarok.Lorand
+	Static info / mappings for code simplification.
 --]]
---------------------------------------------------------------------------------
+--======================================================================================================================
+--				Song buff enhancements on instruments and equipment
+--======================================================================================================================
 
---------------------------------------------------------------------------------
---		Song buff enhancements on instruments and equipment
---------------------------------------------------------------------------------
 instruments = {}
 instruments.effects = {
 	["Angel's Flute"] = {['Prelude']=1},	["Angel's Flute +1"] = {['Prelude']=2},	["Apollo's Flute"] = {['Minuet']=3},
@@ -48,9 +46,10 @@ brdGearEffects = {
 	["Marduk's Shalwar +1"] = {['All']=1}
 }
 
---------------------------------------------------------------------------------
---	Elemental mappings for element relationships and certian types of spells.
---------------------------------------------------------------------------------
+--======================================================================================================================
+--			Elemental mappings for element relationships and certian types of spells.
+--======================================================================================================================
+
 elements = {}
 elements.list = S{'Light','Dark','Fire','Ice','Wind','Earth','Lightning','Water'}
 
@@ -65,27 +64,32 @@ elements.avatar_of = {['Light']="Carbuncle",['Dark']="Fenrir",['Fire']="Ifrit",[
 
 storms = S{"Aurorastorm", "Voidstorm", "Firestorm", "Sandstorm", "Rainstorm", "Windstorm", "Hailstorm", "Thunderstorm"}
 
-skillchain_elements = {}
-skillchain_elements.Light =		S{'Light','Fire','Wind','Lightning'}
-skillchain_elements.Dark =		S{'Dark','Ice','Earth','Water'}
-skillchain_elements.Fusion =		S{'Light','Fire'}
-skillchain_elements.Fragmentation =	S{'Wind','Lightning'}
-skillchain_elements.Distortion =	S{'Ice','Water'}
-skillchain_elements.Gravitation =	S{'Dark','Earth'}
-skillchain_elements.Transfixion =	S{'Light'}
-skillchain_elements.Compression =	S{'Dark'}
-skillchain_elements.Liquification =	S{'Fire'}
-skillchain_elements.Induration =	S{'Ice'}
-skillchain_elements.Detonation =	S{'Wind'}
-skillchain_elements.Scission =		S{'Earth'}
-skillchain_elements.Impaction =		S{'Lightning'}
-skillchain_elements.Reverberation =	S{'Water'}
+skillchain_elements = {
+	Light =		S{'Light','Fire','Wind','Lightning'},	Dark =		S{'Dark','Ice','Earth','Water'},
+	Fusion =	S{'Light','Fire'},			Fragmentation =	S{'Wind','Lightning'},
+	Distortion =	S{'Ice','Water'},			Gravitation =	S{'Dark','Earth'},
+	Transfixion =	S{'Light'},				Compression =	S{'Dark'},
+	Liquification =	S{'Fire'},				Induration =	S{'Ice'},
+	Detonation =	S{'Wind'},				Scission =	S{'Earth'},
+	Impaction =	S{'Lightning'},				Reverberation =	S{'Water'}
+}
 
--- list of weaponskills that use ammo
-bow_gun_weaponskills = S{"Flaming Arrow","Piercing Arrow","Dulling Arrow","Sidewinder","Blast Arrow","Arching Arrow","Empyreal Arrow","Refulgent Arrow","Apex Arrow","Namas Arrow","Jishnu's Radiance","Hot Shot","Split Shot","Sniper Shot","Slug Shot","Blast Shot","Heavy Shot","Detonator","Numbing Shot","Last Stand","Coronach","Trueflight","Leaden Salute","Wildfire"}
+--======================================================================================================================
+--				Weaponskill mappings by type and stat modifiers
+--======================================================================================================================
 
--- list of weaponskills that can be used at greater than melee range
-ranged_weaponskills = S{"Flaming Arrow","Piercing Arrow","Dulling Arrow","Sidewinder","Arching Arrow","Empyreal Arrow","Refulgent Arrow","Apex Arrow","Namas Arrow","Jishnu's Radiance","Hot Shot","Split Shot","Sniper Shot","Slug Shot","Heavy Shot","Detonator","Last Stand","Coronach","Trueflight","Leaden Salute","Wildfire","Myrkr"}
+bow_gun_weaponskills = S{	--weaponskills that use ammo
+	"Flaming Arrow","Piercing Arrow","Dulling Arrow","Sidewinder","Blast Arrow","Arching Arrow","Empyreal Arrow",
+	"Refulgent Arrow","Apex Arrow","Namas Arrow","Jishnu's Radiance","Hot Shot","Split Shot","Sniper Shot",
+	"Slug Shot","Blast Shot","Heavy Shot","Detonator","Numbing Shot","Last Stand","Coronach","Trueflight",
+	"Leaden Salute","Wildfire"
+}
+
+ranged_weaponskills = S{	--weaponskills that can be used at greater than melee range
+	"Flaming Arrow","Piercing Arrow","Dulling Arrow","Sidewinder","Arching Arrow","Empyreal Arrow",
+	"Refulgent Arrow","Apex Arrow","Namas Arrow","Jishnu's Radiance","Hot Shot","Split Shot","Sniper Shot",
+	"Slug Shot","Heavy Shot","Detonator","Last Stand","Coronach","Trueflight","Leaden Salute","Wildfire","Myrkr"
+}
 
 wsmod = {
 	--Archery
@@ -176,9 +180,9 @@ elemental_weaponskills = {
 	["Herculean Slash"] = 'Ice',
 }
 
---------------------------------------------------------------------------------
--- Spell mappings allow defining a general category or description for sets of related spells.
---------------------------------------------------------------------------------
+--======================================================================================================================
+--		Spell mappings allow defining a general category or description for sets of related spells.
+--======================================================================================================================
 
 spell_maps = {
 	--White Magic
@@ -257,10 +261,70 @@ spell_maps = {
 	['Water Shot']='QuickDraw',	['Light Shot']='QuickDraw',	['Dark Shot']='QuickDraw',
 }
 
+no_skill_spells_list = S{'Haste','Refresh','Regen','Protect','Protectra','Shell','Shellra','Raise','Reraise','Cursna','Sneak','Invisible','Deodorize'}
+var_potency_enfeebs = S{'Slow','Slow II','Paralyze','Paralyze II','Addle'}
+
+debuff_to_na = {['Blind']='Blindna',['Paralyze']='Paralyna',['Poison']='Poisona',['Silence']='Silena'}
+
+low_tier_nukes = S{'Stone','Water','Aero','Fire','Blizzard','Thunder','Stone II','Water II','Aero II','Fire II','Blizzard II','Thunder II','Stonega','Waterga','Aeroga','Firaga','Blizzaga','Thundaga','Stonera','Watera','Aerora','Fira','Blizzara','Thundara','Geohelix','Hydrohelix','Anemohelix','Pyrohelix','Cryohelix','Ionohelix','Luminohelix','Noctohelix'}
+
+blu_statmap = {
+	["Acrid Stream"]="MND",["Amorphic Spikes"]="DEXINT",["Asuran Claws"]="STRDEX",["Barbed Crescent"]="DEX",
+	["Battle Dance"]="STR",["Benthic Typhoon"]="AGI",["Blastbomb"]="INT",["Blazing Bound"]="STR",
+	["Blitzstrahl"]="INTMND",["Bludgeon"]="CHR",["Body Slam"]="VIT",["Bomb Toss"]="INT",["Cannonball"]="STRVIT",
+	["Charged Whisker"]="DEX",["Claw Cyclone"]="DEX",["Corrosive Ooze"]="INT",["Cursed Sphere"]="INT",
+	["Dark Orb"]="INT",["Death Ray"]="INTMND",["Death Scissors"]="STR",["Delta Thrust"]="STRVIT",
+	["Diffusion Ray"]="MND",["Dimensional Death"]="STR",["Disseverment"]="STRDEX",["Empty Thrash"]="STR",
+	["Everyone's Grudge"]="MND",["Eyes on Me"]="CHR",["Feather Storm"]="AGI",["Firespit"]="INTMND",
+	["Foot Kick"]="STRDEX",["Frenetic Rip"]="STRDEX",["Frypan"]="STRMND",["Gates of Hades"]="STRDEX",
+	["Glutinous Dart"]="STRVIT",["Goblin Rush"]="STRDEX",["Grand Slam"]="VIT",["Head Butt"]="STRINT",
+	["Heavy Strike"]="STR",["Helldive"]="AGI",["Hydro Shot"]="AGI",["Hysteric Barrage"]="DEX",["Ice Break"]="INT",
+	["Jet Stream"]="AGI",["Leafstorm"]="STR",["Maelstrom"]="INTMND",["Magic Hammer"]="MND",
+	["Mandibular Bite"]="STRINT",["Mind Blast"]="MND",["Mysterious Light"]="CHR",["Pinecone Bomb"]="STRAGI",
+	["Power Attack"]="VIT",["Quad. Continuum"]="STRVIT",["Quadrastrike"]="STR",["Queasyshroom"]="INT",
+	["Rail Cannon"]="MND",["Ram Charge"]="STRMND",["Regurgitation"]="MND",["Sandspin"]="INT",
+	["Screwdriver"]="STRMND",["Seedspray"]="DEX",["Sickle Slash"]="DEX",["Sinker Drill"]="DEX",
+	["Smite of Rage"]="STRDEX",["Spinal Cleave"]="STR",["Spiral Spin"]="AGI",["Sprout Smack"]="VIT",
+	["Sub-zero Smash"]="VIT",["Sudden Lunge"]="AGI",["Tail Slap"]="STRVIT",["Terror Touch"]="DEXINT",
+	["Thermal Pulse"]="VIT",["Thrashing Assault"]="STRDEX",["Thunderbolt"]="INTMND",["Tourbillion"]="STRMND",
+	["Uppercut"]="STR",["Vanity Dive"]="DEX",["Vertical Cleave"]="STR",["Water Bomb"]="INTMND",
+	["Whirl of Rage"]="STRMND",["Wild Oats"]="AGI"
+}
+
+blu_typemap = {
+	["Amplification"]="Buff",["Animating Wail"]="Buff",["Auroral Drape"]="Enfeeb",["Awful Eye"]="Enfeeb",
+	["Bad Breath"]="Breath",["Barrier Tusk"]="Buff",["Battery Charge"]="Buff",["Chaotic Eye"]="Enfeeb",
+	["Cimicine Discharge"]="Enfeeb",["Cocoon"]="Buff",["Cold Wave"]="Enfeeb",["Diamondhide"]="Buff",
+	["Dream Flower"]="Enfeeb",["Enervation"]="Enfeeb",["Erratic Flutter"]="Buff",["Exuviation"]="Buff",
+	["Fantod"]="Buff",["Feather Barrier"]="Buff",["Filamented Hold"]="Enfeeb",["Flying Hip Press"]="Breath",
+	["Frightful Roar"]="Enfeeb",["Frost Breath"]="Breath",["Harden Shell"]="Buff",["Healing Breeze"]="Heal",
+	["Heat Breath"]="Breath",["Hecatomb Wave"]="Breath",["Infrasonics"]="Enfeeb",["Light of Penance"]="Enfeeb",
+	["Lowing"]="Enfeeb",["Magic Barrier"]="Buff",["Magic Fruit"]="Heal",["Magnetite Cloud"]="Breath",
+	["Memento Mori"]="Buff",["Metallic Body"]="Buff",["Mortal Ray"]="Enfeeb",["Nature's Meditation"]="Buff",
+	["Occultation"]="Buff",["Orcish Counterstance"]="Buff",["Plenilune Embrace"]="Heal",["Poison Breath"]="Breath",
+	["Pollen"]="Heal",["Pyric Bulwark"]="Buff",["Radiant Breath"]="Breath",["Reactor Cool"]="Buff",
+	["Refueling"]="Buff",["Regeneration"]="Buff",["Restoral"]="Heal",["Saline Coat"]="Buff",["Sandspray"]="Enfeeb",
+	["Sheep Song"]="Enfeeb",["Soporific"]="Enfeeb",["Thunder Breath"]="Breath",["Triumphant Roar"]="Buff",
+	["Vapor Spray"]="Breath",["Venom Shell"]="Enfeeb",["Warm-Up"]="Buff",["White Wind"]="Heal",
+	["Wind Breath"]="Breath",["Winds of Promyvion"]="Buff",["Yawn"]="Enfeeb",["Zephyr Mantle"]="Buff"
+}
+
+--======================================================================================================================
+--					Summoner Blood Pacts & misc. mappings
+--======================================================================================================================
+
+smn_cmds = S{'cure','curaga','buffoffense','buffdefense','buffspecial','debuff1','debuff2','sleep','nuke2','nuke4','bp70','bp75','astralflow'}
+
 spirits = S{"LightSpirit", "DarkSpirit", "FireSpirit", "EarthSpirit", "WaterSpirit", "AirSpirit", "IceSpirit", "ThunderSpirit"}
 avatars = S{"Carbuncle", "Fenrir", "Diabolos", "Ifrit", "Titan", "Leviathan", "Garuda", "Shiva", "Ramuh", "Odin", "Alexander", "Cait Sith"}
 bps = {}
-bps.magical = S{'Inferno','Earthen Fury','Tidal Wave','Aerial Blast','Diamond Dust','Judgment Bolt','Searing Light','Howling Moon','Ruinous Omen','Fire II','Stone II','Water II','Aero II','Blizzard II','Thunder II','Fire IV','Stone IV','Water IV','Aero IV','Blizzard IV','Thunder IV','Thunderspark','Burning Strike','Meteorite','Nether Blast','Flaming Crush','Meteor Strike','Heavenly Strike','Wind Blade','Geocrush','Grand Fall','Thunderstorm','Holy Mist','Lunar Bay','Night Terror','Level ? Holy'}
+bps.magical = S{
+	'Inferno','Earthen Fury','Tidal Wave','Aerial Blast','Diamond Dust','Judgment Bolt','Searing Light',
+	'Howling Moon','Ruinous Omen','Fire II','Stone II','Water II','Aero II','Blizzard II','Thunder II','Fire IV',
+	'Stone IV','Water IV','Aero IV','Blizzard IV','Thunder IV','Thunderspark','Burning Strike','Meteorite',
+	'Nether Blast','Flaming Crush','Meteor Strike','Heavenly Strike','Wind Blade','Geocrush','Grand Fall',
+	'Thunderstorm','Holy Mist','Lunar Bay','Night Terror','Level ? Holy'
+}
 bps.nuke = S{'Fire II','Stone II','Water II','Aero II','Blizzard II','Thunder II','Fire IV','Stone IV','Water IV','Aero IV','Blizzard IV','Thunder IV'}
 bps.heal = S{'Healing Ruby','Healing Ruby II','Whispering Wind','Spring Water'}
 
@@ -278,33 +342,84 @@ bps.bp70 = {['Ifrit']='Flaming Crush',['Shiva']='Rush',['Garuda']='Predator Claw
 bps.bp75 = {['Ifrit']='Meteor Strike',['Shiva']='Heavenly Strike',['Garuda']='Wind Blade',['Titan']='Crag Throw',['Ramuh']='Thunderstorm',['Leviathan']='Grand Fall',['Carbuncle']='Holy Mist',['Fenrir']='Lunar Bay',['Diabolos']='Night Terror',['Cait Sith']='Level ? Holy'}
 bps.astralflow = {['Ifrit']='Inferno',['Shiva']='Diamond Dust',['Garuda']='Aerial Blast',['Titan']='Earthen Fury',['Ramuh']='Judgment Bolt',['Leviathan']='Tidal Wave',['Carbuncle']='Searing Light',['Fenrir']='Howling Moon',['Diabolos']='Ruinous Omen',['Cait Sith']="Altana's Favor"}
 
-smn_cmds = S{'cure','curaga','buffoffense','buffdefense','buffspecial','debuff1','debuff2','sleep','nuke2','nuke4','bp70','bp75','astralflow'}
+--======================================================================================================================
+--						Elemental gear mappings
+--======================================================================================================================
 
-no_skill_spells_list = S{'Haste','Refresh','Regen','Protect','Protectra','Shell','Shellra','Raise','Reraise','Cursna','Sneak','Invisible','Deodorize'}
-var_potency_enfeebs = S{'Slow','Slow II','Paralyze','Paralyze II','Addle'}
+gear_map = {
+	Obi = {
+		['Light']='Korin Obi', ['Dark']='Anrin Obi', ['Fire']='Karin Obi', ['Ice']='Hyorin Obi',
+		['Wind']='Furin Obi', ['Earth']='Dorin Obi', ['Lightning']='Rairin Obi', ['Water']='Suirin Obi'
+	},
+	Gorget = {
+		['Light']='Light Gorget', ['Dark']='Shadow Gorget', ['Fire']='Flame Gorget', ['Ice']='Snow Gorget',
+		['Wind']='Breeze Gorget', ['Earth']='Soil Gorget', ['Lightning']='Thunder Gorget', ['Water']='Aqua Gorget'
+	},
+	Belt = {
+		['Light']='Light Belt', ['Dark']='Shadow Belt', ['Fire']='Flame Belt', ['Ice']='Snow Belt',
+		['Wind']='Breeze Belt', ['Earth']='Soil Belt', ['Lightning']='Thunder Belt', ['Water']='Aqua Belt'
+	},
+	FastcastStaff = {
+		['Light']='Arka I', ['Dark']='Xsaeta I', ['Fire']='Atar I', ['Ice']='Vourukasha I', ['Wind']='Vayuvata I', 
+		['Earth']='Vishrava I', ['Lightning']='Apamajas I', ['Water']='Haoma I', ['Thunder']='Apamajas I'
+	},
+	RecastStaff = {
+		['Light']='Arka II', ['Dark']='Xsaeta II', ['Fire']='Atar II', ['Ice']='Vourukasha II', ['Wind']='Vayuvata II',
+		['Earth']='Vishrava II', ['Lightning']='Apamajas II', ['Water']='Haoma II', ['Thunder']='Apamajas II'
+	}
+}
 
-blu_statmap = {["Acrid Stream"]="MND",["Amorphic Spikes"]="DEXINT",["Asuran Claws"]="STRDEX",["Barbed Crescent"]="DEX",["Battle Dance"]="STR",["Benthic Typhoon"]="AGI",["Blastbomb"]="INT",["Blazing Bound"]="STR",["Blitzstrahl"]="INTMND",["Bludgeon"]="CHR",["Body Slam"]="VIT",["Bomb Toss"]="INT",["Cannonball"]="STRVIT",["Charged Whisker"]="DEX",["Claw Cyclone"]="DEX",["Corrosive Ooze"]="INT",["Cursed Sphere"]="INT",["Dark Orb"]="INT",["Death Ray"]="INTMND",["Death Scissors"]="STR",["Delta Thrust"]="STRVIT",["Diffusion Ray"]="MND",["Dimensional Death"]="STR",["Disseverment"]="STRDEX",["Empty Thrash"]="STR",["Everyone's Grudge"]="MND",["Eyes on Me"]="CHR",["Feather Storm"]="AGI",["Firespit"]="INTMND",["Foot Kick"]="STRDEX",["Frenetic Rip"]="STRDEX",["Frypan"]="STRMND",["Gates of Hades"]="STRDEX",["Glutinous Dart"]="STRVIT",["Goblin Rush"]="STRDEX",["Grand Slam"]="VIT",["Head Butt"]="STRINT",["Heavy Strike"]="STR",["Helldive"]="AGI",["Hydro Shot"]="AGI",["Hysteric Barrage"]="DEX",["Ice Break"]="INT",["Jet Stream"]="AGI",["Leafstorm"]="STR",["Maelstrom"]="INTMND",["Magic Hammer"]="MND",["Mandibular Bite"]="STRINT",["Mind Blast"]="MND",["Mysterious Light"]="CHR",["Pinecone Bomb"]="STRAGI",["Power Attack"]="VIT",["Quad. Continuum"]="STRVIT",["Quadrastrike"]="STR",["Queasyshroom"]="INT",["Rail Cannon"]="MND",["Ram Charge"]="STRMND",["Regurgitation"]="MND",["Sandspin"]="INT",["Screwdriver"]="STRMND",["Seedspray"]="DEX",["Sickle Slash"]="DEX",["Sinker Drill"]="DEX",["Smite of Rage"]="STRDEX",["Spinal Cleave"]="STR",["Spiral Spin"]="AGI",["Sprout Smack"]="VIT",["Sub-zero Smash"]="VIT",["Sudden Lunge"]="AGI",["Tail Slap"]="STRVIT",["Terror Touch"]="DEXINT",["Thermal Pulse"]="VIT",["Thrashing Assault"]="STRDEX",["Thunderbolt"]="INTMND",["Tourbillion"]="STRMND",["Uppercut"]="STR",["Vanity Dive"]="DEX",["Vertical Cleave"]="STR",["Water Bomb"]="INTMND",["Whirl of Rage"]="STRMND",["Wild Oats"]="AGI"}
-blu_typemap = {["Amplification"]="Buff",["Animating Wail"]="Buff",["Auroral Drape"]="Enfeeb",["Awful Eye"]="Enfeeb",["Bad Breath"]="Breath",["Barrier Tusk"]="Buff",["Battery Charge"]="Buff",["Chaotic Eye"]="Enfeeb",["Cimicine Discharge"]="Enfeeb",["Cocoon"]="Buff",["Cold Wave"]="Enfeeb",["Diamondhide"]="Buff",["Dream Flower"]="Enfeeb",["Enervation"]="Enfeeb",["Erratic Flutter"]="Buff",["Exuviation"]="Buff",["Fantod"]="Buff",["Feather Barrier"]="Buff",["Filamented Hold"]="Enfeeb",["Flying Hip Press"]="Breath",["Frightful Roar"]="Enfeeb",["Frost Breath"]="Breath",["Harden Shell"]="Buff",["Healing Breeze"]="Heal",["Heat Breath"]="Breath",["Hecatomb Wave"]="Breath",["Infrasonics"]="Enfeeb",["Light of Penance"]="Enfeeb",["Lowing"]="Enfeeb",["Magic Barrier"]="Buff",["Magic Fruit"]="Heal",["Magnetite Cloud"]="Breath",["Memento Mori"]="Buff",["Metallic Body"]="Buff",["Mortal Ray"]="Enfeeb",["Nature's Meditation"]="Buff",["Occultation"]="Buff",["Orcish Counterstance"]="Buff",["Plenilune Embrace"]="Heal",["Poison Breath"]="Breath",["Pollen"]="Heal",["Pyric Bulwark"]="Buff",["Radiant Breath"]="Breath",["Reactor Cool"]="Buff",["Refueling"]="Buff",["Regeneration"]="Buff",["Restoral"]="Heal",["Saline Coat"]="Buff",["Sandspray"]="Enfeeb",["Sheep Song"]="Enfeeb",["Soporific"]="Enfeeb",["Thunder Breath"]="Breath",["Triumphant Roar"]="Buff",["Vapor Spray"]="Breath",["Venom Shell"]="Enfeeb",["Warm-Up"]="Buff",["White Wind"]="Heal",["Wind Breath"]="Breath",["Winds of Promyvion"]="Buff",["Yawn"]="Enfeeb",["Zephyr Mantle"]="Buff"}
+gear_map.ftp = {
+	neck = {
+		['Light']='Light Gorget', ['Dark']='Shadow Gorget', ['Fire']='Flame Gorget', ['Ice']='Snow Gorget',
+		['Wind']='Breeze Gorget', ['Earth']='Soil Gorget', ['Lightning']='Thunder Gorget', ['Water']='Aqua Gorget'
+	},
+	waist = {
+		['Light']='Light Belt', ['Dark']='Shadow Belt', ['Fire']='Flame Belt', ['Ice']='Snow Belt',
+		['Wind']='Breeze Belt', ['Earth']='Soil Belt', ['Lightning']='Thunder Belt', ['Water']='Aqua Belt'
+	}
+}
 
-debuff_to_na = {['Blind']='Blindna',['Paralyze']='Paralyna',['Poison']='Poisona',['Silence']='Silena'}
+--======================================================================================================================
+--						Corsair roll info
+--======================================================================================================================
+
+roll_info = {
+	["Allies' Roll"] =	{lucky=3,unlucky=10,effect='Skillchain Accuracy & Damage + %'},
+	["Avenger's Roll"] =	{lucky=4,unlucky=8,effect='Counter Rate + %'},
+	["Beast Roll"] =	{lucky=4,unlucky=8,effect='Pet: Attack & Ranged Attack + %'},
+	["Blitzer's Roll"] =	{lucky=4,unlucky=9,effect='Melee Attack Delay - %'},
+	["Bolter's Roll"] =	{lucky=3,unlucky=9,effect='Movement Speed + %'},
+	["Caster's Roll"] =	{lucky=2,unlucky=7,effect='Fast Cast + %'},
+	["Chaos Roll"] =	{lucky=4,unlucky=8,effect='Attack & Ranged Attack + %'},
+	["Choral Roll"] =	{lucky=2,unlucky=6,effect='Spell Interruption Rate - %'},
+	["Companion's Roll"] =	{lucky=2,unlucky=10,effect='Pet: Regain & Regen'},
+	["Corsair's Roll"] =	{lucky=5,unlucky=9,effect='Exp. & Cap. Points + %'},
+	["Courser's Roll"] =	{lucky=3,unlucky=9,effect='Snapshot + %'},
+	["Dancer's Roll"] =	{lucky=3,unlucky=7,effect='Regen'},
+	["Drachen Roll"] =	{lucky=4,unlucky=8,effect='Pet: Accuracy & Ranged Accuracy ++'},
+	["Evoker's Roll"] =	{lucky=5,unlucky=9,effect='Refresh'},
+	["Fighter's Roll"] =	{lucky=5,unlucky=9,effect='Double Attack Rate + %'},
+	["Gallant's Roll"] =	{lucky=3,unlucky=7,effect='Defense + %'},
+	["Healer's Roll"] =	{lucky=3,unlucky=7,effect='Cure Potency + %'},
+	["Hunter's Roll"] =	{lucky=4,unlucky=8,effect='Accuracy & Ranged Accuracy ++'},
+	["Magus's Roll"] =	{lucky=2,unlucky=6,effect='Magic Defense Bonus ++'},
+	["Miser's Roll"] =	{lucky=5,unlucky=7,effect='Save TP ++'},
+	["Monk's Roll"] =	{lucky=3,unlucky=7,effect='Subtle Blow ++'},
+	["Ninja's Roll"] =	{lucky=4,unlucky=8,effect='Evasion ++'},
+	["Puppet Roll"] =	{lucky=3,unlucky=7,effect='Pet: Magic Accuracy & MAB ++'},
+	["Rogue's Roll"] =	{lucky=5,unlucky=9,effect='Critical Hit Rate + %'},
+	["Samurai Roll"] =	{lucky=2,unlucky=6,effect='Store TP ++'},
+	["Scholar's Roll"] =	{lucky=2,unlucky=6,effect='Conserve MP ++'},
+	["Tactician's Roll"] =	{lucky=5,unlucky=8,effect='Regain'},
+	["Warlock's Roll"] =	{lucky=4,unlucky=8,effect='Magic Accuracy ++'},
+	["Wizard's Roll"] =	{lucky=5,unlucky=9,effect='MAB ++'}
+}
+
+--======================================================================================================================
+--						Misc.
+--======================================================================================================================
 
 num2rom = {'I','II','III','IV','V','VI','VII','VIII','IX','X','XI'}
-
-low_tier_nukes = S{'Stone','Water','Aero','Fire','Blizzard','Thunder','Stone II','Water II','Aero II','Fire II','Blizzard II','Thunder II','Stonega','Waterga','Aeroga','Firaga','Blizzaga','Thundaga','Stonera','Watera','Aerora','Fira','Blizzara','Thundara','Geohelix','Hydrohelix','Anemohelix','Pyrohelix','Cryohelix','Ionohelix','Luminohelix','Noctohelix'}
-
---------------------------------------------------------------------------------
---			Mappings for elemental gear
---------------------------------------------------------------------------------
-gear_map = {}
-
-gear_map.Obi = {['Light']='Korin Obi', ['Dark']='Anrin Obi', ['Fire']='Karin Obi', ['Ice']='Hyorin Obi', ['Wind']='Furin Obi', ['Earth']='Dorin Obi', ['Lightning']='Rairin Obi', ['Water']='Suirin Obi'}
-gear_map.Gorget = {['Light']='Light Gorget', ['Dark']='Shadow Gorget', ['Fire']='Flame Gorget', ['Ice']='Snow Gorget', ['Wind']='Breeze Gorget', ['Earth']='Soil Gorget', ['Lightning']='Thunder Gorget', ['Water']='Aqua Gorget'}
-gear_map.Belt = {['Light']='Light Belt', ['Dark']='Shadow Belt', ['Fire']='Flame Belt', ['Ice']='Snow Belt', ['Wind']='Breeze Belt', ['Earth']='Soil Belt', ['Lightning']='Thunder Belt', ['Water']='Aqua Belt'}
-gear_map.FastcastStaff = {['Light']='Arka I', ['Dark']='Xsaeta I', ['Fire']='Atar I', ['Ice']='Vourukasha I', ['Wind']='Vayuvata I', ['Earth']='Vishrava I', ['Lightning']='Apamajas I', ['Water']='Haoma I', ['Thunder']='Apamajas I'}
-gear_map.RecastStaff = {['Light']='Arka II', ['Dark']='Xsaeta II', ['Fire']='Atar II', ['Ice']='Vourukasha II', ['Wind']='Vayuvata II', ['Earth']='Vishrava II', ['Lightning']='Apamajas II', ['Water']='Haoma II', ['Thunder']='Apamajas II'}
-
-gear_map.ftp = {}
-gear_map.ftp['neck'] = {['Light']='Light Gorget', ['Dark']='Shadow Gorget', ['Fire']='Flame Gorget', ['Ice']='Snow Gorget', ['Wind']='Breeze Gorget', ['Earth']='Soil Gorget', ['Lightning']='Thunder Gorget', ['Water']='Aqua Gorget'}
-gear_map.ftp['waist'] = {['Light']='Light Belt', ['Dark']='Shadow Belt', ['Fire']='Flame Belt', ['Ice']='Snow Belt', ['Wind']='Breeze Belt', ['Earth']='Soil Belt', ['Lightning']='Thunder Belt', ['Water']='Aqua Belt'}
 
 ignore_items = S{'Gil','pearlsack','copper A.M.A.N. voucher','flask of holy water','shihei','inoshishinofuda','shikanofuda','chonofuda','flask of echo drops'}
