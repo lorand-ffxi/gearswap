@@ -93,7 +93,7 @@ function pretarget(spell)
 		windower.send_command('input /ma "'..debuff_to_na[spell.en]..'" '..tname)
 	elseif (spell.en == 'Phalanx') and (spell.target.type == 'PLAYER') and (spell.target.type ~= 'SELF') then
 		windower.send_command('input /ma "Phalanx II" '..spell.target.name)
-	elseif (spell.type == 'CorsairRoll') and (cache('last cor roll') == spell.en) then
+	elseif (spell.type == 'CorsairRoll') and (cache('last cor roll') == spell.en) and (cache('du time') > -1) then
 		windower.send_command('input /ja "Double-Up" <me>')
 	else
 		return
