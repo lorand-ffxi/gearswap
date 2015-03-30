@@ -85,8 +85,10 @@ function get_pet_type()
 		return 'Spirit'
 	elseif avatars:contains(pet.name) then
 		return 'Avatar'
-	elseif player.main_job == 'DRG' then
+	elseif (player.main_job == 'DRG') then
 		return 'Wyvern'
+	elseif (player.main_job == 'BST') then
+		return 'BSTpet'
 	end
 	return pet.name
 end

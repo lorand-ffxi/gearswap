@@ -8,21 +8,26 @@ function init_gear_sets()
 	--============================================================
 	--			Precast sets
 	--============================================================
+	sets.precast.JA['Call Beast'] = {hands="Monster Gloves"}
 	sets.precast.JA['Charm'] = {	--Modified by CHR
-		head="Beast Helm",
-		body="Beast Jackcoat",	hands="Beast Gloves",
-		legs="Beast Trousers",	feet="Beast Gaiters"
+		head="Monster Helm",
+		body="Monster Jackcoat",	hands="Monster Gloves",
+		legs="Beast Trousers",		feet="Monster Gaiters"
 	}
 	sets.precast.JA['Reward'] = {	--Modified by MND
-		body="Beast Jackcoat",
-		feet="Beast Gaiters"
+		ammo="Pet Food Eta",
+		head="Iuitl Headgear +1",	ear1="Lifestorm Earring",	ear2="Novia Earring",
+		body="Beast Jackcoat",		hands="Regimen Mittens",	ring1="Perception Ring",	ring2="Prolix Ring",
+		back="Tuilha Cape",		legs="Taeon Tights",		feet="Monster Gaiters"
 	}
 	sets.precast.JA['Tame'] = {	--Modified by INT
 		head="Beast Helm"
 	}
-
-	sets.precast.Waltz = {
-	}
+	sets.precast.JA['Sic'] = {hands="Ferine Manoplas +2"}
+	sets.precast.JA['Ready'] = {hands="Ferine Manoplas +2"}
+	sets.precast.JA['Spur'] = {feet="Ferine Ocreae +2"}
+	
+	sets.precast.Waltz = {}
 	sets.precast.Waltz['Healing Waltz'] = {}
 
 	sets.precast.Step = {}
@@ -57,8 +62,7 @@ function init_gear_sets()
 	--			Midcast sets
 	--============================================================
 	
-	sets.midcast.FastRecast = {
-	}
+	sets.midcast.FastRecast = {}
 
 	--============================================================
 	--			Other sets

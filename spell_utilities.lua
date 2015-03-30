@@ -321,6 +321,13 @@ function not_possible_to_use(spell)
 				atc(166, 'Cancelling '..spell.en..' because it is already active.')
 				return true
 			end
+		elseif (spell.type == 'Monster') and (player.main_job == 'BST') then
+			local rctime = 30 - player.merits.sic_recast
+			local remtime = abil_recasts[spell.recast_id] - (rctime * 2)
+			if abil_recasts[spell.recast_id] and (remtime > 0) then
+				atc(166, 'Unable to use '..spell.english..' at this time. Insufficient charges available. ['..remtime..'s remaining]')
+				return true
+			end
 		elseif abil_recasts[spell.recast_id] and abil_recasts[spell.recast_id] > 0 then
 			atc(166, 'Unable to use '..spell.english..' at this time. ['..(abil_recasts[spell.recast_id])..'s remaining]')
 			return true

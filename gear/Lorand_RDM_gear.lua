@@ -165,7 +165,7 @@ function init_gear_sets()
 		main="Bolelabunga",		sub="Genbu's Shield",					ammo="Demonry Stone",
 		head="Vitivation Chapeau",	neck="Twilight Torque",	ear1="Brachyura Earring",	ear2="Ethereal Earring",
 		body="Artsieq Jubbah",		hands="Lurid Mitts",	ring1="Defending Ring",		ring2="Shneddick Ring",
-		back="Cheviot Cape",		waist="Flume Belt",	legs="Nares Trews",		feet="Serpentes Sabots"
+		back="Repulse Mantle",		waist="Flume Belt",	legs="Nares Trews",		feet="Serpentes Sabots"
 	}
 	sets.idle.with_buff = {}
 	sets.idle.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}

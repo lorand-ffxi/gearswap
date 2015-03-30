@@ -15,10 +15,14 @@ function set_options()
 	instruments.effects.Linos = {['All']=3}
 	
 	pet_moves.buff['CourierCarrie'] = 'Metallic Body'
+	pet_moves.buff['WarlikePatrick'] = 'Secretion'
 	
 	pet_moves.attack['CourierCarrie'] = 'Big Scissors'
 	pet_moves.attack['BlackbeardRandy'] = 'Claw Cyclone'
 	pet_moves.attack['FlowerpotMerle'] = 'Head Butt'
+	pet_moves.attack['WarlikePatrick'] = 'Brain Crush'
+	
+	pet_moves.aoe['WarlikePatrick'] = 'Fireball'
 end
 
 function set_modes()

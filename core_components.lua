@@ -29,7 +29,7 @@ function init()
 	include('mappings')		--Load mappings.lua (provides generalizations for spells and abilities)
 	include('exporter')		--Load exporter.lua (provides better implementation of gear exporting)
 	
-	info = import('../info/info_share')	--Load addons\info\info_shared.lua for functions to print information accessed directly from windower
+	info = require('../info/info_share')	--Load addons\info\info_shared.lua for functions to print information accessed directly from windower
 	
 	-- Load gear from a job-specific file
 	if load_user_gear(player.main_job) then
@@ -1033,7 +1033,7 @@ end
 
 function pet_midcast(spell)
 	atc(1,'Pet midcast: '..spell.en..' | '..pet.name)
-	info.print_table(spell,spell.en)
+	--info.print_table(spell,spell.en)
 
 	local pmcset = {}
 	--info.print_table(spell, 'Pet Midcast Spell')
@@ -1066,6 +1066,8 @@ function pet_midcast(spell)
 		end
 	elseif (ptype == 'Wyvern') then
 		pmcset = combineSets(pmcset, sets.pet.breath)
+	elseif (ptype == 'BSTpet') then
+		pmcset = combineSets(pmcset, sets.precast.JA['Ready'])
 	else
 		atc(123, 'Unknown pet type')
 	end

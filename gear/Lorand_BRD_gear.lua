@@ -220,7 +220,7 @@ function init_gear_sets()
 		main="Terra's Staff",		sub="Achaq Grip",						range="Oneiros Harp",
 		head="Kaabnax Hat",		neck="Twilight Torque",		ear1="Brachyura Earring",	ear2="Ethereal Earring",
 		body="Gendewitha Bliaut +1",	hands="Gendewitha Gages +1",	ring1="Defending Ring",		ring2="Shneddick Ring",
-		back="Cheviot Cape",		waist="Flume Belt",		legs="Bihu Cannions",		feet="Bihu Slippers"
+		back="Repulse Mantle",		waist="Flume Belt",		legs="Bihu Cannions",		feet="Bihu Slippers"
 	}
 	sets.idle.lowMP =	{legs="Nares Trews"}
 	sets.idle.lowMP_night =	{hands="Serpentes Cuffs"}
