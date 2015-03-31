@@ -40,11 +40,11 @@ function combineSets(set1, set2, ...)
 	for _,itemSlot in pairs(itemSlots) do
 		if (set2 ~= nil) and (set2[itemSlot] ~= nil) then
 			if type(set2[itemSlot]) == 'table' then
-				local i = setops.chooseAvailablePiece(set2[itemSlot])
+				local i = setops.chooseAvailablePiece(set2[itemSlot],itemSlot)
 				if i ~= nil then
 					newSet[itemSlot] = i
 				end
-			elseif setops.isAvailable(set2[itemSlot]) then
+			elseif setops.isAvailable(set2[itemSlot],itemSlot) then
 				newSet[itemSlot] = set2[itemSlot]
 			end
 		end
@@ -54,11 +54,11 @@ function combineSets(set1, set2, ...)
 		if newSet[itemSlot] == nil then
 			if (set1 ~= nil) and (set1[itemSlot] ~= nil) then
 				if type(set1[itemSlot]) == 'table' then
-					local i = setops.chooseAvailablePiece(set1[itemSlot])
+					local i = setops.chooseAvailablePiece(set1[itemSlot],itemSlot)
 					if i ~= nil then
 						newSet[itemSlot] = i
 					end
-				elseif setops.isAvailable(set1[itemSlot]) then
+				elseif setops.isAvailable(set1[itemSlot],itemSlot) then
 					newSet[itemSlot] = set1[itemSlot]
 				end
 			end
@@ -67,14 +67,19 @@ function combineSets(set1, set2, ...)
 	return newSet
 end
 
+function canDW()
+	local dwJobs = S{'NIN','DNC','BLU','THF'}
+	return dwJobs:contains(player.main_job) or dwJobs:contains(player.sub_job)
+end
+
 --[[
 	Returns the name of the first item that is available in the player's inventory from a list that is ordered from
 	most desirable to least desirable.
 --]]
-function setops.chooseAvailablePiece(gearTable)
+function setops.chooseAvailablePiece(gearTable, slot)
 	if gearTable == nil then return nil end
 	for _,i in pairs(gearTable) do
-		if setops.isAvailable(i) then
+		if setops.isAvailable(i, slot) then
 			return i
 		end
 	end
@@ -84,7 +89,7 @@ end
 --[[
 	Returns true if the given item is in the player's inventory, false otherwise.
 --]]
-function setops.isAvailable(item)
+function setops.isAvailable(item, slot)
 	local itable = player.inventory[item] or player.wardrobe[item]
 	if (itable ~= nil) then
 		local iinfo = res.items[itable.id]
@@ -94,7 +99,13 @@ function setops.isAvailable(item)
 		local i_su = iinfo.superior_level or 0
 		local p_su = player.superior_level or 0
 		local su_ok = i_su <= p_su
-		local canuse = lvl_ok and race_ok and job_ok and su_ok
+		
+		local dw_ok = true
+		if (iinfo.category == 'Weapon') and (slot == 'sub') then
+			dw_ok = canDW()
+		end
+		
+		local canuse = lvl_ok and race_ok and job_ok and su_ok and dw_ok
 		return canuse
 	end
 	return false

@@ -102,7 +102,7 @@ function pretarget(spell)
 		windower.send_command('input /ma "'..debuff_to_na[spell.en]..'" '..tname)
 	elseif (spell.en == 'Phalanx') and (spell.target.type == 'PLAYER') and (spell.target.type ~= 'SELF') then
 		windower.send_command('input /ma "Phalanx II" '..spell.target.name)
-	elseif (spell.type == 'CorsairRoll') and (cache('last cor roll') == spell.en) and (cache('du time') > -1) then
+	elseif (spell.type == 'CorsairRoll') and buff_active(spell.en) then
 		windower.send_command('input /ja "Double-Up" <me>')
 	else
 		return
@@ -121,6 +121,10 @@ function precast(spell)
 	elseif midaction() or modify_spell(spell) or modify_cure(spell) or not_possible_to_use(spell) then
 		cancel_spell()
 		return
+	end
+	
+	if (cache('du time') == -1) then
+		cache('last cor roll', nil)
 	end
 	
 	local notOverwritable = S{'Stoneskin', 'Sneak', 'Spectral Jig'}
@@ -181,8 +185,9 @@ function precast(spell)
 		if (spell.type == 'CorsairRoll') then
 			cache('last cor roll', spell.en)
 		end
+		local now = os.clock()
 		local du_gain = cache('du time')
-		du_gain = (du_gain ~= nil) and du_gain or os.clock() - 1
+		du_gain = (du_gain ~= nil) and du_gain or (now + 1)
 		if (spell.en == 'Double-Up') then
 			if (du_gain == -1) then
 				atc(123,'There are no rolls eligible for Double-Up at this time.')
@@ -198,7 +203,7 @@ function precast(spell)
 			local lucky = '[Lucky: '..rinfo.lucky..'] '
 			local unlucky = '[Unlucky: '..rinfo.unlucky..'] '
 			local desc = rinfo.effect
-			local dutime = 45 - (os.clock() - du_gain)
+			local dutime = 45 - (now - du_gain)
 			local dumsg = ' | Double-Up time remaining: '..round(dutime)..'s'
 			atc(1, rname:colorize(261)..lucky:colorize(339)..unlucky:colorize(349)..desc:colorize(261)..dumsg:colorize(128))
 		else
