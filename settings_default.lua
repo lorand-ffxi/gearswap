@@ -71,6 +71,8 @@ function set_modes()
 		modelist['ranged'] = {'TH', 'Normal', 'Acc'}
 	elseif S{'COR'}:contains(player.main_job) then
 		modelist['weapon'] = {'Gun'}
+		modelist['offense'] = {'Normal', 'Accuracy'}
+		modelist['ranged'] = {'Normal', 'Accuracy'}
 	end
 	
 	--Process the modelist and set modes accordingly

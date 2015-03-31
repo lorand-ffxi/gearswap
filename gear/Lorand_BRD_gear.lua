@@ -39,7 +39,8 @@ function init_gear_sets()
 	--============================================================
 	--			Precast sets
 	--============================================================
-	sets.precast.FC = {			--52%
+	sets.precast.FC = {			--55%
+		main="Marin Staff +1",		--3%
 		head="Nahtirah Hat",		--10%
 		neck="Orunmila's Torque",	--5%
 		ear1="Loquacious Earring",	--2%
@@ -53,12 +54,12 @@ function init_gear_sets()
 		feet={"Chelona Boots", "Suzaku's Sune-Ate"}		--4%
 	}
 
-	sets.precast.FC.Cure = {		--54%
+	sets.precast.FC.Cure = {		--65%
 		main="Felibre's Dague",		--0%
 		sub="Genbu's Shield",		--8%
 		back="Pahtli Cape"		--8%
 	}
-	sets.precast.FC.EnhancingMagic = {	--46%
+	sets.precast.FC.EnhancingMagic = {	--60%
 		waist="Siegel Sash"		--8%
 	}
 
@@ -88,8 +89,16 @@ function init_gear_sets()
 	--============================================================
 	
 	sets.precast.Waltz = {}
-	sets.wsBase = {}
-	sets.wsBase.Magic = {}
+	sets.wsBase = {
+		head="Highwing Helm",		neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
+		body="Bihu Justaucorps",	hands="Umuthi Gloves",		ring1="Rajas Ring",		ring2="Mars's Ring",
+		back="Atheling Mantle",		waist="Windbuffet Belt +1",	legs="Telchine Braconi",	feet="Gendewitha Galoshes +1",
+	}
+	sets.wsBase.Magic = {
+		head="Highwing Helm",	neck="Stoicheion Medal",	ear1="Friomisi Earring",	ear2="Hecate's Earring",
+		body="Artsieq Jubbah",	hands="Otomi Gloves",		ring1="Fenrir Ring +1",		ring2="Acumen Ring",
+		back="Toro Cape",	waist="Tengu-no-Obi",		legs="Telchine Braconi",	feet="Gendewitha Galoshes +1",
+	}
 	
 	--============================================================
 	--			Midcast sets
@@ -230,9 +239,11 @@ function init_gear_sets()
 	sets.idle.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	
 	sets.engaged = {
-		head="Highwing Helm",		neck="Peacock Amulet",		ear1="Bladeborn Earring",	ear2="Steelflash Earring",
+		head="Highwing Helm",		neck={"Peacock Amulet","Asperity Necklace"},
+		ear1="Bladeborn Earring",	ear2="Steelflash Earring",
 		body="Bihu Justaucorps",	hands="Umuthi Gloves",		ring1="Rajas Ring",		ring2="Mars's Ring",
-		back="Kayapa Cape",		waist="Anguinus Belt",		legs="Gendewitha Spats +1",	feet="Gendewitha Galoshes +1"
+		back={"Kayapa Cape","Atheling Mantle"},				waist={"Anguinus Belt","Windbuffet Belt +1"},	
+		legs="Telchine Braconi",	feet="Gendewitha Galoshes +1"
 	}
 	sets.engaged.with_buff = {}
 	sets.engaged.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}

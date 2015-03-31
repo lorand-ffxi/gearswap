@@ -28,24 +28,28 @@
 	
 	Gear layering order:
 	
+	sets.midcast.FastRecast
+	
+	activeInstrument = gear.instruments.default
+	if it's a buff & modes.Daurdabla is Dummy or Daurdabla {
+	    activeInstrument = gear.instruments.multiSong
+	} else if gear.instruments[spellMap] exists {
+	    activeInstrument = gear.instruments[spellMap]
+	}	note: it's the default instrument if neither of these over-wrote it
+	
 	if it's a dummy song {
 	    sets.midcast.SongRecast
-	    range=gear.instruments.multiSong
 	} else if it's a normal song {
-	    activeInstrument = gear.instruments.default
-	    using daur/terp: activeInstrument = gear.instruments.multiSong
-	    otherwise: activeInstrument = gear.instruments[spellMap] (if it exists)
-
-	    if song is Threnody/Requiem/Lullaby/Elegy/Finale/Nocturne {
-		sets.midcast.MagicAccuracy
-	    } else {
-		sets.midcast.Singing
+	    if it's a buff {
+	        sets.midcast.Singing
 		sets.midcast[instrumentSkill]
+	    } else {
+	        sets.midcast.MagicAccuracy
 	    }
 
 	    if not Finale {
-		sets.midcast[SongDebuff/DaurdablaDummy/SongBuff]
-		sets.midcast[SongDebuff/DaurdablaDummy/SongBuff][modes.casting]
+		sets.midcast[SongDebuff/SongBuff]
+		sets.midcast[SongDebuff/SongBuff][modes.casting]
 		if troubadour is on: sets.midcast.SongDuration
 	    }
 	    

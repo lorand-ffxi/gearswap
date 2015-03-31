@@ -6,7 +6,7 @@
 
 function init_gear_sets()
 	sets.weapons = {}
-	sets.weapons.Gun = {main="Atoyac",sub="Legion Scutum",range="Doomsday",ammo="Eminent Bullet",ammo2="Adlivun Bullet"}
+	sets.weapons.Gun = {main="Sabebus",sub="Atoyac",range="Doomsday",ammo="Eminent Bullet",ammo2="Adlivun Bullet"}
 	
 	sets.enmityDown = {
 		neck="Orunmila's Torque",	ear1="Novia Earring",	ear2="Psystorm Earring",
@@ -92,6 +92,11 @@ function init_gear_sets()
 	}
 	sets.midcast.ranged.sam = {}
 	sets.midcast.ranged.other = {}
+	sets.midcast.ranged.other.Accuracy = {
+		head="Taeon Chapeau",		neck="Peacock Amulet",		ear1="Clearview Earring",	ear2="Volley Earring",
+		body="Iuitl Vest +1",		hands="Iuitl Wristbands +1",	ring1="Longshot Ring",		ring2="Paqichikaji Ring",
+		back="Gunslinger's Cape",	waist="Elanid Belt",		legs="Nahtirah Trousers",	feet="Scopuli Nails +1"
+	}
 	
 	sets.midcast.FastRecast = {
 		head="Iuitl Headgear +1",	neck="Orunmila's Torque",	ear1="Loquacious Earring",	ear2="Novia Earring",
@@ -131,10 +136,17 @@ function init_gear_sets()
 	})
 	
 	sets.engaged = {
-		head="Whirlpool Mask",	neck="Orochi Nodowa",		ear1="Bladeborn Earring",	ear2="Steelflash Earring",
-		body="Qaaxo Harness",	hands="Taeon Gloves",		ring1="Rajas Ring",		ring2="Epona's Ring",
-		back="Atheling Mantle",	waist="Windbuffet Belt +1",	legs="Taeon Tights",		feet="Taeon Boots",
+		head="Whirlpool Mask",	neck="Orochi Nodowa",		ear1="Dudgeon Earring",	ear2="Heartseeker Earring",
+		body="Qaaxo Harness",	hands="Taeon Gloves",		ring1="Rajas Ring",	ring2="Epona's Ring",
+		back="Atheling Mantle",	waist="Windbuffet Belt +1",	legs="Taeon Tights",	feet="Taeon Boots",
 	}
+	
+	sets.engaged.Accuracy = {
+		head="Whirlpool Mask",	neck="Orochi Nodowa",	ear1="Dudgeon Earring",	ear2="Heartseeker Earring",
+		body="Iuitl Vest +1",	hands="Taeon Gloves",	ring1="Rajas Ring",	ring2="Epona's Ring",
+		back="Kayapa Cape",	waist="Anguinus Belt",	legs="Taeon Tights",	feet="Taeon Boots",
+	}
+	
 	sets.engaged.with_buff = {}
 	sets.engaged.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	sets.engaged.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}

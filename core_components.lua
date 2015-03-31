@@ -180,9 +180,9 @@ function precast(spell)
 	if (spell.type == 'CorsairRoll') or (spell.en == 'Double-Up') then
 		if (spell.type == 'CorsairRoll') then
 			cache('last cor roll', spell.en)
-			cache('du time', os.clock())
 		end
 		local du_gain = cache('du time')
+		du_gain = (du_gain ~= nil) and du_gain or os.clock() - 1
 		if (spell.en == 'Double-Up') then
 			if (du_gain == -1) then
 				atc(123,'There are no rolls eligible for Double-Up at this time.')
@@ -199,7 +199,7 @@ function precast(spell)
 			local unlucky = '[Unlucky: '..rinfo.unlucky..'] '
 			local desc = rinfo.effect
 			local dutime = 45 - (os.clock() - du_gain)
-			local dumsg = ' | Double-Up time remaining: '..round(dutime)
+			local dumsg = ' | Double-Up time remaining: '..round(dutime)..'s'
 			atc(1, rname:colorize(261)..lucky:colorize(339)..unlucky:colorize(349)..desc:colorize(261)..dumsg:colorize(128))
 		else
 			atc(123, 'Error: No roll info stored for '..spell.en)
@@ -223,6 +223,9 @@ function midcast(spell)
 		return
 	elseif (spell.en == 'Utsusemi: Ichi') and (not spell.interrupted) then
 		windower.send_command('wait 2; cancel 66; cancel 446')
+	elseif (spell.type == 'CorsairRoll') then
+		cache('last cor roll', spell.en)
+		cache('du time', os.clock())
 	end
 	equip(get_midcast_set(spell))
 end
@@ -384,12 +387,15 @@ function get_precast_set(spell)
 			if not S{'Light Shot','Dark Shot'}:contains(spell.en) then
 				precastSet = combineSets(precastSet, sets.precast.CorsairShot, 'MAB')
 			end
+			if weatherPermits(spell.element)then		
+				precastSet = combineSets(precastSet, {waist=setops.getObi(spell.element)})
+			end
 			precastSet = combineSets(precastSet, sets.precast.CorsairShot, spell.en)
 		elseif spell.type == 'JobAbility' then
 			precastSet = combineSets(precastSet, sets.precast.JA, spell.en)
 		elseif spell.type == 'WeaponSkill' then
 			--sets.wsBase[sam/other][modes.offense][state.RangedMode][wsmod[spell.english]]
-			if S{'RNG','COR'}:contains(player.main_job) then
+			if S{'RNG'}:contains(player.main_job) then
 				precastSet = combineSets(precastSet, sets[modes.offense])
 				precastSet = combineSets(precastSet, sets[modes.offense], get_sub_type())
 				precastSet = combineSets(precastSet, sets[modes.offense], get_sub_type(), modes.ranged)
@@ -1156,5 +1162,5 @@ executable_commands = {
 	['reset']  =	reset_mode,	['toggle']    =	toggle_mode,		['activate'] =	activate_mode,
 	['equip']  =	equip_set,	['info']      =	info_func,		['slips']    =	setops.find_slipped,
 	['smn']    =	handle_smn,	['inv_check'] =	setops.find_movable,	['set2chat'] =	setops.set_to_chat,
-	['pet']    =	handle_pet,	['export'] =	export_gear,		['storable'] = setops.determine_storable
+	['pet']    =	handle_pet,	['export'] =	export_gear,		['storable'] =	setops.determine_storable
 }

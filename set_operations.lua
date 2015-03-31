@@ -202,11 +202,17 @@ end
 --[[
 	Compiles a list of all items that are in the player's normal storages.
 --]]
-function setops.get_player_items()
+function setops.get_player_items(bagname)
 	local bagnames = {'wardrobe','locker','storage','sack','satchel','inventory','safe','case'}
+	
+	local searchbags = bagnames
+	if (bagname ~= nil) and S(bagnames):contains(bagname:lower()) then
+		searchbags = {bagname}
+	end
+
 	local items = winraw.ffxi.get_items()
 	local gear = {}
-	for _,bname in pairs(bagnames) do
+	for _,bname in pairs(searchbags) do
 		local bag = items[bname]
 		for i = 1, 80 do
 			local bagged = bag[i]
@@ -219,8 +225,8 @@ function setops.get_player_items()
 	return gear
 end
 
-function setops.determine_storable()
-	local gear = setops.get_player_items()
+function setops.determine_storable(args)
+	local gear = setops.get_player_items(args[1])
 	local slippable = {}
 	local c = 0
 	for _,item in pairs(gear) do
