@@ -102,19 +102,19 @@ function init_gear_sets()
 		main="Kaladanda",		sub="Zuuxowu Grip",					ammo="Dosis Tathlum",
 		head="Buremte Hat",		neck="Eddy Necklace",	ear1="Hecate's Earring",	ear2="Friomisi Earring",
 		body="Hagondes Coat +1",	hands="Otomi Gloves",	ring1="Fenrir Ring +1",		ring2="Acumen Ring",
-		back="Bane Cape",		waist="Tengu-no-Obi",	legs="Hagondes Pants +1",	feet="Hagondes Sabots +1"
+		back="Bane Cape",		waist="Tengu-no-Obi",	legs="Hagondes Pants +1",	feet="Helios Boots"
 	}
 	sets.midcast.ElementalMagic.LowTier = {
 		main="Kaladanda",		sub="Zuuxowu Grip",					ammo="Dosis Tathlum",
 		head="Buremte Hat",		neck="Eddy Necklace",	ear1="Hecate's Earring",	ear2="Friomisi Earring",
 		body="Hagondes Coat +1",	hands="Otomi Gloves",	ring1="Fenrir Ring +1",		ring2="Acumen Ring",
-		back="Bane Cape",		waist="Tengu-no-Obi",	legs="Hagondes Pants +1",	feet="Hagondes Sabots +1"
+		back="Bane Cape",		waist="Tengu-no-Obi",	legs="Hagondes Pants +1",	feet="Umbani Boots"
 	}
 	sets.midcast.ElementalMagic.HighTier = {
 		main="Keraunos",		sub="Zuuxowu Grip",					ammo="Witchstone",
 		head="Hagondes Hat +1",		neck="Eddy Necklace",	ear1="Hecate's Earring",	ear2="Friomisi Earring",
 		body="Hagondes Coat +1",	hands="Yaoyotl Gloves",	ring1="Fenrir Ring +1",		ring2="Acumen Ring",
-		back="Toro Cape",		waist="Aswang Sash",	legs="Hagondes Pants +1",	feet="Hagondes Sabots +1"
+		back="Toro Cape",		waist="Aswang Sash",	legs="Hagondes Pants +1",	feet="Helios Boots"
 	}
 	sets.midcast.ElementalMagic.Earth = {neck="Quanpur Necklace"}
 	
@@ -122,13 +122,13 @@ function init_gear_sets()
 		main="Kaladanda",	sub="Mephitis Grip",					ammo="Dosis Tathlum",
 		head="Nahtirah Hat",	neck="Eddy Necklace",	ear1="Hecate's Earring",	ear2="Friomisi Earring",
 		body="Artsieq Jubbah",	hands="Yaoyotl Gloves",	ring1="Fenrir Ring +1",		ring2="Sangoma Ring",
-		back="Bane Cape",	waist="Tengu-no-Obi",	legs="Hagondes Pants +1",	feet="Artsieq Boots"
+		back="Bane Cape",	waist="Tengu-no-Obi",	legs="Hagondes Pants +1",	feet="Helios Boots"
 	}
 	sets.midcast.ElementalMagic.HighAcc = {
 		main="Kaladanda",	sub="Mephitis Grip",					ammo="Dosis Tathlum",
 		head="Nahtirah Hat",	neck="Eddy Necklace",	ear1="Hecate's Earring",	ear2="Friomisi Earring",
 		body="Artsieq Jubbah",	hands="Yaoyotl Gloves",	ring1="Fenrir Ring +1",		ring2="Sangoma Ring",
-		back="Bane Cape",	waist="Tengu-no-Obi",	legs="Hagondes Pants +1",	feet="Artsieq Boots"
+		back="Bane Cape",	waist="Tengu-no-Obi",	legs="Hagondes Pants +1",	feet="Helios Boots"
 	}
 	sets.midcast.ElementalMagic.Proc = {	--Damage is not a priority
 		main="Chatoyant Staff",		sub="Mephitis Grip",						ammo="Kalboron Stone",

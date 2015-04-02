@@ -233,7 +233,7 @@ function init_gear_sets()
 	sets.engaged = {										ammo="Jukukik Feather",
 		head="Telchine Cap",	neck="Asperity Necklace",	ear1="Dudgeon Earring",		ear2="Heartseeker Earring",
 		body="Helios Jacket",	hands="Telchine Gloves",	ring1="Rajas Ring",		ring2="Mars's Ring",
-		back="Buquwik Cape",	waist="Cetl Belt",		legs="Telchine Braconi",	feet="Gendewitha Galoshes +1"
+		back="Kayapa Cape",	waist="Cetl Belt",		legs="Telchine Braconi",	feet="Gendewitha Galoshes +1"
 	}
 	sets.engaged.with_buff = {}
 	sets.engaged.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}

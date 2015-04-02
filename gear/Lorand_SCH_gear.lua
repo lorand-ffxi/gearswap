@@ -56,7 +56,10 @@ function init_gear_sets()
 
 	--============================================================
 	
-	sets.precast.WS = {}
+	sets.wsBase = {
+	}
+	sets.wsBase.Magic = {
+	}
 	
 	--============================================================
 	--			Midcast sets
@@ -187,7 +190,7 @@ function init_gear_sets()
 		main="Keraunos",		sub="Zuuxowu Grip",					ammo="Dosis Tathlum",
 		head="Buremte Hat",		neck="Eddy Necklace",	ear1="Hecate's Earring",	ear2="Friomisi Earring",
 		body="Hagondes Coat +1",	hands="Otomi Gloves",	ring1="Fenrir Ring +1",		ring2="Acumen Ring",
-		back="Bookworm's Cape",		waist="Tengu-no-Obi",	legs="Hagondes Pants +1",	feet="Helios Boots"
+		back="Bookworm's Cape",		waist="Tengu-no-Obi",	legs="Hagondes Pants +1",	feet="Umbani Boots"
 	}
 	sets.midcast.ElementalMagic.HighTier = {
 		main="Keraunos",			sub="Zuuxowu Grip",					ammo="Witchstone",
@@ -278,9 +281,9 @@ function init_gear_sets()
 	--============================================================
 	
 	sets.engaged = {
-		head="Nahtirah Hat",		neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
-		body="Academic's Gown +1",	hands="Lurid Mitts",		ring1="Rajas Ring",		ring2="Mars's Ring",
-		back="Kayapa Cape",		waist="Cetl Belt",		legs="Artsieq Hose",		feet="Gendewitha Galoshes +1"
+		head="Pedagogy Mortarboard +1",	neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
+		body="Helios Jacket",		hands="Telchine Gloves",	ring1="Rajas Ring",		ring2="Mars's Ring",
+		back="Kayapa Cape",		waist="Cetl Belt",		legs="Telchine Braconi",	feet="Gendewitha Galoshes +1"
 	}
 	sets.engaged.with_buff = {}
 	sets.engaged.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}

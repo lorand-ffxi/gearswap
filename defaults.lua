@@ -62,7 +62,7 @@ function define_defaults()
 		pet_moves[pmc] = {}
 	end
 	
-	weapSwapJobs = S{'WHM','BLM','RDM','SCH','GEO','BRD','BLU'}
+	weapSwapJobs = S{'WHM','BLM','RDM','SCH','GEO','BRD','BLU','SMN'}
 	noWeapSwapSets = S{'Melee','Skillup','Learn'}
 	usesRanged = S{'RNG','COR','THF','SAM'}
 	

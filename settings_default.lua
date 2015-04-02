@@ -36,7 +36,7 @@ function set_modes()
 	modelist['ranged'] = {'Normal'}
 	
 	--Note: The first value in the table passed to addMode becomes the default value for that mode.
-	if S{'WHM','BLM','RDM','GEO'}:contains(player.main_job) then
+	if S{'WHM','BLM','RDM','GEO','SMN'}:contains(player.main_job) then
 		modelist['offense'] = {'Magic', 'Melee', 'Skillup'}
 	elseif S{'SCH'}:contains(player.main_job) then
 		modelist['offense'] = {'Magic', 'Melee', 'Skillup'}

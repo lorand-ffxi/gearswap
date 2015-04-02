@@ -213,7 +213,12 @@ function init_gear_sets()
 	sets.defense.MDT = combineSets(sets.defense.DT, {
 	})
 	
-	sets.engaged = {}
+	sets.engaged = {
+		main="Scepter Staff",	sub="Pole Grip",						ammo="Jukukik Feather",
+		head="Telchine Cap",	neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
+		body="Helios Jacket",	hands="Telchine Gloves",	ring1="Rajas Ring",		ring2="K'ayres Ring",
+		back="Kayapa Cape",	waist="Goading Belt",		legs="Telchine Braconi",	feet="Telchine Pigaches"
+	}
 	sets.engaged.with_buff = {}
 	sets.engaged.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 end

@@ -101,7 +101,7 @@ function setops.isAvailable(item, slot)
 		local su_ok = i_su <= p_su
 		
 		local dw_ok = true
-		if (iinfo.category == 'Weapon') and (slot == 'sub') then
+		if (iinfo.category == 'Weapon') and (slot == 'sub') and (iinfo.skill ~= 0) then
 			dw_ok = canDW()
 		end
 		
