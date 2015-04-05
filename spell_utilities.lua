@@ -35,7 +35,12 @@ function modify_cure(spell)
 	
 	if ncnum == cnum then return false end
 	
-	windower.send_command('input /ma "'..num2cure[ncnum]..'" '..spell.target.name)
+	local target = windower.ffxi.get_mob_by_target()
+	local newTarg = spell.target.name
+	if (target ~= nil) and (target.name == spell.target.name) then
+		newTarg = '<t>'
+	end
+	windower.send_command('input /ma "'..num2cure[ncnum]..'" '..newTarg)
 	return true
 end
 

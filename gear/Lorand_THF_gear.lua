@@ -114,9 +114,9 @@ function init_gear_sets()
 	--============================================================
 	
 	sets.weapons.Other = {}
-	sets.weapons.TH = {main='Sandung',sub='Jugo Kukri',range="Raider's Boomerang"}
-	sets.weapons.DD = {main='Izhiikoh',sub='Jugo Kukri',range="Raider's Boomerang"}
-	sets.weapons.Accuracy = {main='Izhiikoh',sub='Jugo Kukri',ammo='Honed Tathlum'}
+	sets.weapons.TH = {main='Sandung',sub='Jugo Kukri +1',range="Raider's Boomerang"}
+	sets.weapons.DD = {main='Izhiikoh',sub='Jugo Kukri +1',range="Raider's Boomerang"}
+	sets.weapons.Accuracy = {main='Izhiikoh',sub='Jugo Kukri +1',ammo='Honed Tathlum'}
 	sets.weapons.THAcc = {main='Izhiikoh',sub='Sandung',ammo='Honed Tathlum'}
 	
 	sets.resting = {}

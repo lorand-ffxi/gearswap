@@ -211,6 +211,9 @@ function init_gear_sets()
 		body="Artsieq Jubbah",	hands="Serpentes Cuffs",	ring1="Dark Ring",		ring2="Shneddick Ring",
 		back="Cheviot Cape",	waist="Hierarch Belt",		legs="Piety Pantaloons",	feet="Theophany Duckbills"
 	}
+	
+	sets.idle.CapFarm = {back="Mecistopins Mantle"}
+	
 	sets.idle.with_buff = {}
 	sets.idle.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
 	

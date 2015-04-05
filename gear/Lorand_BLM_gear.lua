@@ -165,5 +165,9 @@ function init_gear_sets()
 	
 	sets.buffs['Mana Wall'] = {feet="Goetia Sabots +2"}
 
-	sets.engaged = {}
+	sets.engaged = {
+		head="Telchine Cap",	neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
+		body="Helios Jacket",	hands="Hagondes Cuffs +1",	ring1="Rajas Ring",		ring2="K'ayres Ring",
+		back="Kayapa Cape",	waist="Cetl Belt",		legs="Telchine Braconi",	feet="Artsieq Boots"
+	}
 end

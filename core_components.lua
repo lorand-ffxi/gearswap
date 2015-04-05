@@ -16,7 +16,7 @@ function init()
 	include('packet_handling')	--Required for haste tier detection
 	include('utility_functions')	--Load utility_functions.lua (defines misc functions)
 	winraw = gearswap._G.windower	--Required for direct access to windower functions
-	winraw.register_event('incoming chunk', parse_buff_info)	--Gearswap's overridden version causes errors
+	winraw.register_event('incoming chunk', handle_incoming_chunk)	--Gearswap's overridden version causes errors
 	windower.register_event('incoming text', parse_inc_text)	--Need overridden version for reloading
 	windower.register_event('outgoing text', parse_out_text)	--Need overridden version for reloading
 	
@@ -50,6 +50,28 @@ init()	--Execute init()
 --==============================================================================
 --			Spell / Ability Handling
 --==============================================================================
+
+function isBusy()
+	local now = os.clock()
+	actionEnd = actionEnd or now
+	actionStart = actionStart or now
+	local busy = (actionEnd < actionStart)
+	if busy then
+		local lastActionStart = cache('lastActionStart')
+		local busyCheckCount = cache('busyCheckCount')
+		if (lastActionStart ~= nil) and (lastActionStart == actionStart)then
+			if (busyCheckCount ~= nil) and (busyCheckCount > 3) or ((now - actionStart) > 10) then
+				return false
+			else
+				cache('busyCheckCount', busyCheckCount + 1)
+			end
+		else
+			cache('lastActionStart', actionStart)
+			cache('busyCheckCount', 0)
+		end	
+	end
+	return busy
+end
 
 --[[
 	Called when an action has been flagged as not possible to perform.
@@ -110,6 +132,32 @@ function pretarget(spell)
 	cancel_spell()
 end
 
+function shouldCancel(spell, giveReason)
+	local cancel = false
+	local reason = ''
+	if isBusy() then
+		reason = 'isBusy()'
+		cancel = true
+	-- if midaction() then
+		-- reason = 'midaction()'
+		-- cancel = true
+	elseif modify_spell(spell) then
+		reason = 'modify_spell(spell)'
+		cancel = true
+	elseif modify_cure(spell) then
+		reason = 'modify_cure(spell)'
+		cancel = true
+	elseif not_possible_to_use(spell) then
+		reason = 'not_possible_to_use(spell)'
+		cancel = true
+	end
+	
+	if giveReason then
+		atc(123,reason)
+	end
+	return cancel
+end
+
 --[[
 	Called after the text command has been processed (and target selected),
 	but before the packet gets pushed out.  Equip any gear that should be
@@ -118,7 +166,7 @@ end
 function precast(spell)
 	if (spell.type == 'Trust') then
 		return
-	elseif midaction() or modify_spell(spell) or modify_cure(spell) or not_possible_to_use(spell) then
+	elseif shouldCancel(spell, false) then
 		cancel_spell()
 		return
 	end
