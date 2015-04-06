@@ -65,6 +65,16 @@ function include_if_exists(filename)
 	return false
 end
 
+function populateTrustList()
+	local trusts = S{}
+	for _,spell in pairs(res.spells) do
+		if (spell.type == 'Trust') then
+			trusts:add(spell.en)
+		end
+	end
+	return trusts
+end
+
 --==============================================================================
 --			Printing Functions
 --==============================================================================
@@ -98,6 +108,31 @@ function atc(c, msg)
 		c = 0
 	end
 	winraw.add_to_chat(c, winraw.to_shift_jis(msg))
+end
+
+function atcd(c, msg)
+	if show_debug then
+		atc(c, msg)
+	end
+end
+
+
+function printTiered(tbl, tab)
+	local sp = tab and tab..'   ' or ''
+	if (tbl ~= nil) and (type(tbl) == 'table') then
+		for k,v in pairs(tbl) do
+			if (type(v) == 'table') then
+				atc(sp..tostring(k)..' = {')
+				printTiered(v, sp)
+				atc(sp..'}')
+			else
+				atc(sp..tostring(k):rpad(' ',15)..': '..tostring(v))
+			end
+		end
+		
+	else
+		atc(0, sp..tostring(tbl))
+	end
 end
 
 --[[
@@ -309,6 +344,15 @@ function get_ally_info(name)
 	for _,m in pairs(windower.ffxi.get_party()) do
 		if (type(m)=='table') and (m.name == name) then
 			return m
+		end
+	end
+	return nil
+end
+
+function getPartyMemberNumber(name)
+	for n,m in pairs(windower.ffxi.get_party()) do
+		if (type(m)=='table') and (m.name == name) then
+			return n
 		end
 	end
 	return nil
