@@ -6,6 +6,7 @@
 --==============================================================================
 
 function init()
+	show_debug = false
 	_libs = _libs or {}
 	_libs.lists = _libs.lists or require('lists')
 	_libs.chars = _libs.chars or require('chat/chars')	--Required for using special characters in delayed messages
@@ -30,6 +31,8 @@ function init()
 	include('exporter')		--Load exporter.lua (provides better implementation of gear exporting)
 	
 	info = require('../info/info_share')	--Load addons\info\info_shared.lua for functions to print information accessed directly from windower
+	
+	trusts = populateTrustList()
 	
 	-- Load gear from a job-specific file
 	if load_user_gear(player.main_job) then
@@ -113,6 +116,14 @@ end
 --]]
 function pretarget(spell)
 	if (spell.target == nil) then return end
+	
+	if trusts:contains(spell.target.name) then
+		local targ = get_ally_info(spell.target.name)
+		if (targ ~= nil) then
+			change_target(tostring(targ.mob.id))
+		end
+	end
+
 	if S{'PLAYER', 'SELF'}:contains(spell.target.type) and debuff_to_na[spell.en] then
 		local tname = spell.target.name
 		if (spell.target.name == player.name) then
@@ -164,6 +175,8 @@ end
 	on before the spell or ability is used.
 --]]
 function precast(spell)
+	--printTiered(gearswap.command_registry)
+	
 	if (spell.type == 'Trust') then
 		return
 	elseif shouldCancel(spell, false) then
