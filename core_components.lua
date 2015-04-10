@@ -146,12 +146,12 @@ end
 function shouldCancel(spell, giveReason)
 	local cancel = false
 	local reason = ''
-	if isBusy() then
-		reason = 'isBusy()'
-		cancel = true
-	-- if midaction() then
-		-- reason = 'midaction()'
+	-- if isBusy() then
+		-- reason = 'isBusy()'
 		-- cancel = true
+	if midaction() then
+		reason = 'midaction()'
+		cancel = true
 	elseif modify_spell(spell) then
 		reason = 'modify_spell(spell)'
 		cancel = true
@@ -458,6 +458,7 @@ function get_precast_set(spell)
 			end
 			precastSet = combineSets(precastSet, sets.precast.CorsairShot, spell.en)
 		elseif spell.type == 'JobAbility' then
+			precastSet = combineSets(precastSet, sets.precast.JA, spellMap)
 			precastSet = combineSets(precastSet, sets.precast.JA, spell.en)
 		elseif spell.type == 'WeaponSkill' then
 			--sets.wsBase[sam/other][modes.offense][state.RangedMode][wsmod[spell.english]]
@@ -500,7 +501,9 @@ function get_precast_set(spell)
 			-- All other ability types, such as Waltz, Jig, Scholar, etc.
 			-- These may use the generic type, or be refined for the individual action, either by name or by spell map.
 			precastSet = combineSets(precastSet, sets.precast, spell.type)
+			precastSet = combineSets(precastSet, sets.precast, spell.type, spellMap)
 			precastSet = combineSets(precastSet, sets.precast, spellMap)
+			precastSet = combineSets(precastSet, sets.precast, spell.type, spell.en)
 			precastSet = combineSets(precastSet, sets.precast, spell.en)
 		end
 	end

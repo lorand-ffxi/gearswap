@@ -41,7 +41,6 @@ function init_gear_sets()
 		body="Iuitl Vest +1",	hands="Plunderer's Armlets +1",	ring2="Spiral Ring",
 		back="Iximulew Cape",	waist="Warwolf Belt",		legs="Shneddick Tights +1",	feet="Iuitl Gaiters +1"
 	}
-	sets.precast.Waltz['Healing Waltz'] = {}
 	
 	--============================================================
 	
