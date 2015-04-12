@@ -77,7 +77,7 @@ function init_gear_sets()
 	sets.tpBase = {
 		head="Arcadian Beret +1",	neck="Ocachi Gorget",		ear1="Clearview Earring",	ear2="Volley Earring",
 		body="Orion Jerkin +1",		hands="Manibozho Gloves",	ring1="Longshot Ring",		ring2="Paqichikaji Ring",
-		back="Lutian Cape",		waist="Scout's Belt",		legs="Nahtirah Trousers",	feet="Orion Socks +1"
+		back="Lutian Cape",		waist="Elanid Belt",		legs="Nahtirah Trousers",	feet="Orion Socks +1"
 	}
 	
 	--========================[Bow]===============================
@@ -90,7 +90,7 @@ function init_gear_sets()
 	sets.Bow.sam['r4-hit'].tp = {waist="Patentia Sash"}
 
 	sets.Bow.sam.acc = {main="Hurlbat", sub={"Antican Axe", "Legion Scutum"}}
-	sets.Bow.sam.acc.tp = {neck="Hope Torque",hands="Iuitl Wristbands +1",legs="Iuitl Tights +1"}
+	sets.Bow.sam.acc.tp = {hands="Iuitl Wristbands +1",legs="Iuitl Tights +1"}
 	
 	--4-hit /??? with 2 recycle procs
 	sets.Bow.other['r4-hit'] = {main="Mekki Shakki", sub="Rose Strap"}
@@ -100,7 +100,7 @@ function init_gear_sets()
 	}
 	
 	sets.Bow.other.acc = {main="Hurlbat", sub={"Antican Axe", "Legion Scutum"}}
-	sets.Bow.other.acc.tp = {neck="Hope Torque",hands="Iuitl Wristbands +1",legs="Iuitl Tights +1"}
+	sets.Bow.other.acc.tp = {hands="Iuitl Wristbands +1",legs="Iuitl Tights +1"}
 	
 	--========================[Gun]===============================
 	sets.Gun = combineSets({},sets.weapons[modes.weapon])
@@ -112,7 +112,7 @@ function init_gear_sets()
 	sets.Gun.sam['r4-hit'].tp = {waist="Patentia Sash"}
 
 	sets.Gun.sam.acc = {main="Hurlbat", sub={"Antican Axe", "Legion Scutum"}}
-	sets.Gun.sam.acc.tp = {neck="Faith Torque",hands="Iuitl Wristbands +1",legs="Iuitl Tights +1"}
+	sets.Gun.sam.acc.tp = {hands="Iuitl Wristbands +1",legs="Iuitl Tights +1"}
 	
 	--4-hit /??? with 2 recycle procs
 	sets.Gun.other['r4-hit'] = {main="Mekki Shakki", sub="Rose Strap"}
@@ -122,7 +122,7 @@ function init_gear_sets()
 	}
 	
 	sets.Gun.other.acc = {main="Hurlbat", sub={"Antican Axe", "Legion Scutum"}}
-	sets.Gun.other.acc.tp = {neck="Faith Torque",hands="Iuitl Wristbands +1",legs="Iuitl Tights +1"}
+	sets.Gun.other.acc.tp = {hands="Iuitl Wristbands +1",legs="Iuitl Tights +1"}
 	
 	--============================================================
 
@@ -138,7 +138,7 @@ function init_gear_sets()
 	sets.ranged.maxAcc = {	--	1 AGI = 0.75 Ranged Accuracy
 		head="Arcadian Beret +1",	neck="Ocachi Gorget",		ear1="Clearview Earring",	ear2="Volley Earring",
 		body="Orion Jerkin +1",		hands="Iuitl Wristbands +1",	ring1="Longshot Ring",		ring2="Paqichikaji Ring",
-		back="Lutian Cape",		waist="Scout's Belt",		legs="Iuitl Tights +1",		feet="Orion Socks +1"
+		back="Lutian Cape",		waist="Elanid Belt",		legs="Iuitl Tights +1",		feet="Orion Socks +1"
 	}
 	
 	sets.ranged.barrage = combineSets(sets.ranged.maxAcc, {hands="Orion Bracers"})

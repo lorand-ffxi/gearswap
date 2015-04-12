@@ -146,13 +146,7 @@ end
 function shouldCancel(spell, giveReason)
 	local cancel = false
 	local reason = ''
-	-- if isBusy() then
-		-- reason = 'isBusy()'
-		-- cancel = true
-	if midaction() then
-		reason = 'midaction()'
-		cancel = true
-	elseif modify_spell(spell) then
+	if modify_spell(spell) then
 		reason = 'modify_spell(spell)'
 		cancel = true
 	elseif modify_cure(spell) then
