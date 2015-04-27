@@ -179,9 +179,15 @@ function init_gear_sets()
 	sets.engaged.auto_acc['II'] =	{waist="Windbuffet Belt +1", feet="Taeon Boots"}
 	sets.engaged.auto_acc['II+'] =	{waist="Windbuffet Belt +1", legs="Hachiya Hakama +1"}
 	
-	sets.engaged.CrazyAccuracy = {									ammo="Happo Shuriken +1",
-		head="Whirlpool Mask",		neck="Peacock Amulet",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
-		body="Mochizuki Chainmail +1",	hands="Umuthi Gloves",	ring1="Rajas Ring",		ring2="Mars's Ring",
-		back="Yokaze Mantle",		waist="Anguinus Belt",	legs="Hachiya Hakama +1",	feet="Taeon Boots"
+	sets.engaged.CrazyAccuracy = {										ammo="Happo Shuriken +1",
+		head="Whirlpool Mask",		neck="Agitator's Collar",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
+		body="Mochizuki Chainmail +1",	hands="Taeon Gloves",		ring1="Rajas Ring",		ring2="Mars's Ring",
+		back="Yokaze Mantle",		waist="Anguinus Belt",		legs="Hachiya Hakama +1",	feet="Taeon Boots"
 	}
+	
+	-- sets.engaged.CrazyAccuracy = {									ammo="Happo Shuriken +1",
+		-- head="Whirlpool Mask",		neck="Peacock Amulet",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
+		-- body="Mochizuki Chainmail +1",	hands="Umuthi Gloves",	ring1="Rajas Ring",		ring2="Mars's Ring",
+		-- back="Yokaze Mantle",		waist="Anguinus Belt",	legs="Hachiya Hakama +1",	feet="Taeon Boots"
+	-- }
 end
