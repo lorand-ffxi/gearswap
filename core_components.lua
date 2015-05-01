@@ -14,6 +14,8 @@ function init()
 	_libs.files = _libs.files or require('files')		--Required for loading external files without using require()
 	res = res or gearswap.res
 	
+	Assert = require('assertion')	--Assertion functions
+	
 	include('packet_handling')	--Required for haste tier detection
 	include('utility_functions')	--Load utility_functions.lua (defines misc functions)
 	winraw = gearswap._G.windower	--Required for direct access to windower functions

@@ -6,7 +6,6 @@
 -----------------------------------------------------------------------------------------------------------
 
 function set_options()
-	options = options or {}
 	options.use_ftp_neck = true
 	options.use_ftp_waist = false
 	options.useTwilightCape = false

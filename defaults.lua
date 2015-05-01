@@ -45,6 +45,7 @@ function define_defaults()
 	setMode('autoCaress', false)
 	
 	options = {}
+	options.autoSan = true
 	options.use_ftp_neck = true
 	options.use_ftp_waist = false
 	options.useTwilightCape = false

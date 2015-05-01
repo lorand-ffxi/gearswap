@@ -258,6 +258,14 @@ function modify_spell(spell)
 				return true
 			end
 		end
+	elseif (player.main_job == 'NIN') and options.autoSan then	--Swap Ni for San
+		if (spell.id == 339) and Assert.has_learned(res.spells[340]) then
+			local rc = getRecast('Utsusemi: San') or -1
+			if (rc == 0) then
+				windower.send_command('input /ma "Utsusemi: San" <me>')
+				return true
+			end
+		end
 	end
 	return false
 end
