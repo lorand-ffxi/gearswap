@@ -49,7 +49,7 @@ function set_modes()
 		modelist['offense'] = {'Normal', 'Learn'}
 	elseif S{'RNG'}:contains(player.main_job) then
 		modelist['offense'] = {'Bow','Gun'}
-		modelist['ranged'] = {'r4-hit', 'acc'}
+		modelist['ranged'] = {'r4-hit'}
 		modelist['weapon'] = {'Bow','Gun'}
 	elseif S{'MNK'}:contains(player.main_job) then
 		modelist['offense'] = {'Normal','Tank'}

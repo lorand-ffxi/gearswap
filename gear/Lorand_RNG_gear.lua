@@ -2,13 +2,17 @@
 --[[
 	Author: Ragnarok.Lorand
 	Note: Lutian Cape is augmented with STR+1, AGI+5, STP+3, Snapshot+2
+	
+	Starting TP	Recycle Procs	Hits to 1k	TP/Hit Req
+	0		0		4		250
+	0		1		4		238
+	0		2		4		225
 --]]
 --------------------------------------------------------------------------------
 
 function init_gear_sets()
 	sets.weapons.Gun = {range="Doomsday",ammo="Achiyalabopa Bullet"}
 	sets.weapons.Bow = {range="Phaosphaelia",ammo="Achiyalabopa Arrow"}
-	--sets.weapons.XBow = {}
 
 	--============================================================
 	--			Precast sets
@@ -51,86 +55,6 @@ function init_gear_sets()
 		back="Lutian Cape",		--2% Snapshot[Augment]
 		waist="Impulse Belt",		--3% Snapshot
 		legs="Nahtirah Trousers",	--9% Snapshot
-		feet="Arcadian Socks"		--4% Rapid Shot
-	}
-	
-	--============================================================
-	--			TP & WS sets
-	--============================================================
-	
-	sets.wsBase = {
-		head="Arcadian Beret +1",	neck="Ocachi Gorget",		ear1="Clearview Earring",	ear2="Volley Earring",
-		body="Orion Jerkin +1",		hands="Iuitl Wristbands +1",	ring1="Rajas Ring",		ring2="Stormsoul Ring",
-		back="Lutian Cape",		waist="Fotia Belt",		legs="Nahtirah Trousers",	feet="Orion Socks +1"
-	}
-	
-	sets.wsBase.STR = {ring2="Pyrosoul Ring",back="Buquwik Cape"}
-	sets.wsBase.AGI = {head="Uk'uxkaj Cap",ring1="Blobnag Ring",ring2="Stormsoul Ring"}
-	sets.wsBase.DEX = {head="Uk'uxkaj Cap",ear1="Pixie Earring",ring2="Thundersoul Ring",back="Kayapa Cape"}
-	sets.wsBase.STRAGI = {head="Uk'uxkaj Cap",ring2="Pyrosoul Ring",back="Sylvan Chlamys"}
-	
-	sets.wsBase.Magic = {
-		head="Highwing Helm",		neck="Stoicheion Medal",	ear1="Hecate's Earring",	ear2="Friomisi Earring",
-		body="Orion Jerkin +1",		hands="Umuthi Gloves",		ring1="Fenrir Ring +1",		ring2="Acumen Ring",
-		back="Toro Cape",		waist="Fotia Belt",		legs="Shneddick Tights +1",	feet="Orion Socks +1"
-	}
-	
-	sets.tpBase = {
-		head="Arcadian Beret +1",	neck="Ocachi Gorget",		ear1="Clearview Earring",	ear2="Volley Earring",
-		body="Orion Jerkin +1",		hands="Manibozho Gloves",	ring1="Longshot Ring",		ring2="Paqichikaji Ring",
-		back="Lutian Cape",		waist="Elanid Belt",		legs="Nahtirah Trousers",	feet="Orion Socks +1"
-	}
-	
-	--========================[Bow]===============================
-	sets.Bow = combineSets({},sets.weapons[modes.weapon])
-	sets.Bow.sam = {}
-	sets.Bow.other = {}
-
-	--4-hit /SAM with 2 recycle procs
-	sets.Bow.sam['r4-hit'] = {main="Mekki Shakki", sub="Rose Strap"}
-	sets.Bow.sam['r4-hit'].tp = {waist="Patentia Sash"}
-
-	sets.Bow.sam.acc = {main="Hurlbat", sub={"Antican Axe", "Legion Scutum"}}
-	sets.Bow.sam.acc.tp = {hands="Iuitl Wristbands +1",legs="Iuitl Tights +1"}
-	
-	--4-hit /??? with 2 recycle procs
-	sets.Bow.other['r4-hit'] = {main="Mekki Shakki", sub="Rose Strap"}
-	sets.Bow.other['r4-hit'].tp = {
-		hands="Amini Glovelettes",	ring1="Rajas Ring",	ring2="K'ayres Ring",
-		waist="Patentia Sash",		legs="Iuitl Tights +1"
-	}
-	
-	sets.Bow.other.acc = {main="Hurlbat", sub={"Antican Axe", "Legion Scutum"}}
-	sets.Bow.other.acc.tp = {hands="Iuitl Wristbands +1",legs="Iuitl Tights +1"}
-	
-	--========================[Gun]===============================
-	sets.Gun = combineSets({},sets.weapons[modes.weapon])
-	sets.Gun.sam = {}
-	sets.Gun.other = {}
-	
-	--4-hit /SAM with 2 recycle procs
-	sets.Gun.sam['r4-hit'] = {main="Mekki Shakki", sub="Rose Strap"}
-	sets.Gun.sam['r4-hit'].tp = {waist="Patentia Sash"}
-
-	sets.Gun.sam.acc = {main="Hurlbat", sub={"Antican Axe", "Legion Scutum"}}
-	sets.Gun.sam.acc.tp = {hands="Iuitl Wristbands +1",legs="Iuitl Tights +1"}
-	
-	--4-hit /??? with 2 recycle procs
-	sets.Gun.other['r4-hit'] = {main="Mekki Shakki", sub="Rose Strap"}
-	sets.Gun.other['r4-hit'].tp = {
-		hands="Manibozho Gloves",	ring1="Rajas Ring",	ring2="K'ayres Ring",
-		back="Sylvan Chlamys",		waist="Patentia Sash",	legs="Iuitl Tights +1"
-	}
-	
-	sets.Gun.other.acc = {main="Hurlbat", sub={"Antican Axe", "Legion Scutum"}}
-	sets.Gun.other.acc.tp = {hands="Iuitl Wristbands +1",legs="Iuitl Tights +1"}
-	
-	--============================================================
-
-	sets.midcast.FastRecast = {
-		head="Ejekamal Mask",	neck="Orunmila's Torque",	ear1="Loquacious Earring",
-		body="Iuitl Vest +1",	hands="Buremte Gloves",		ring1="Prolix Ring",		ring2="Diamond Ring",	--Diamond Ring aug: 2% interrupt rate down
-		back="Mujin Mantle",	waist="Cetl Belt",		legs="Kaabnax Trousers",	feet="Iuitl Gaiters +1"
 	}
 	
 	--============================================================
@@ -143,6 +67,107 @@ function init_gear_sets()
 	}
 	
 	sets.ranged.barrage = combineSets(sets.ranged.maxAcc, {hands="Orion Bracers +1"})
+	
+	--============================================================
+	--			TP & WS sets
+	--============================================================
+	
+	sets.wsBase = {
+		head="Umbani Cap",	neck="Ocachi Gorget",		ear1="Clearview Earring",	ear2="Volley Earring",
+		body="Orion Jerkin +1",	hands="Iuitl Wristbands +1",	ring1="Rajas Ring",		ring2="Stormsoul Ring",
+		back="Lutian Cape",	waist="Fotia Belt",		legs="Nahtirah Trousers",	feet="Orion Socks +1",
+	}
+	
+	sets.wsBase.STR = {ring2="Pyrosoul Ring",back="Buquwik Cape"}
+	sets.wsBase.AGI = {}
+	sets.wsBase.DEX = {ear1="Pixie Earring",ring2="Thundersoul Ring",back="Kayapa Cape"}
+	sets.wsBase.STRAGI = {ring2="Pyrosoul Ring"}
+	
+	sets.wsBase.Magic = {
+		head="Highwing Helm",		neck="Stoicheion Medal",	ear1="Hecate's Earring",	ear2="Friomisi Earring",
+		body="Orion Jerkin +1",		hands="Umuthi Gloves",		ring1="Fenrir Ring +1",		ring2="Acumen Ring",
+		back="Toro Cape",		waist="Fotia Belt",		legs="Shneddick Tights +1",	feet="Orion Socks +1"
+	}
+	
+	sets.tpBase = {
+		head="Arcadian Beret +1",	neck="Ocachi Gorget",		ear1="Clearview Earring",	ear2="Volley Earring",
+		body="Orion Jerkin +1",		hands="Amini Glovelettes",	ring1="Longshot Ring",		ring2="Paqichikaji Ring",
+		back="Lutian Cape",		waist="Elanid Belt",		legs="Nahtirah Trousers",	feet="Orion Socks +1"
+	}
+	
+	--========================[Bow]===============================
+	sets.Bow = combineSets({},sets.weapons[modes.weapon])
+	sets.Bow.sam = {}
+	sets.Bow.other = {}
+
+	--4-hit /SAM with 1-2 recycle procs
+	sets.Bow.sam['r4-hit'] = {main="Mekki Shakki", sub="Rose Strap"}
+	sets.Bow.sam['r4-hit'].tp = {
+		head="Arcadian Beret +1",	neck="Ocachi Gorget",		ear1="Clearview Earring",	ear2="Volley Earring",
+		body="Orion Jerkin +1",		hands="Amini Glovelettes",	ring1="Longshot Ring",		ring2="Paqichikaji Ring",
+		back="Lutian Cape",		waist="Elanid Belt",		legs="Nahtirah Trousers",	feet="Orion Socks +1"
+	}
+	sets.Bow.sam['r4-hit'].tp.MediumAcc = {
+		head="Arcadian Beret +1",	neck="Iqabi Necklace",		ear1="Clearview Earring",	ear2="Volley Earring",
+		body="Orion Jerkin +1",		hands="Amini Glovelettes",	ring1="Longshot Ring",		ring2="Paqichikaji Ring",
+		back="Lutian Cape",		waist="Elanid Belt",		legs="Arcadian Braccae +1",	feet="Orion Socks +1"
+	}
+	sets.Bow.sam['r4-hit'].tp.HighAcc = sets.ranged.maxAcc
+	
+	--4-hit /??? with 2 recycle procs
+	sets.Bow.other['r4-hit'] = {main="Mekki Shakki", sub="Rose Strap"}
+	sets.Bow.other['r4-hit'].tp = {
+		head="Arcadian Beret +1",	neck="Ocachi Gorget",		ear1="Clearview Earring",	ear2="Volley Earring",
+		body="Orion Jerkin +1",		hands="Amini Glovelettes",	ring1="Rajas Ring",		ring2="Paqichikaji Ring",
+		back="Lutian Cape",		waist="Patentia Sash",		legs="Arcadian Braccae +1",	feet="Orion Socks +1"
+	}
+	sets.Bow.other['r4-hit'].tp.MediumAcc = {
+		head="Arcadian Beret +1",	neck="Ocachi Gorget",		ear1="Clearview Earring",	ear2="Volley Earring",
+		body="Orion Jerkin +1",		hands="Amini Glovelettes",	ring1="Rajas Ring",		ring2="Paqichikaji Ring",
+		back="Lutian Cape",		waist="Patentia Sash",		legs="Arcadian Braccae +1",	feet="Orion Socks +1"
+	}	--Nothing I can really change to maintain 4-hit
+	sets.Bow.other['r4-hit'].tp.HighAcc = sets.ranged.maxAcc
+	
+	--========================[Gun]===============================
+	sets.Gun = combineSets({},sets.weapons[modes.weapon])
+	sets.Gun.sam = {}
+	sets.Gun.other = {}
+	
+	--4-hit /SAM with 1-2 recycle procs
+	sets.Gun.sam['r4-hit'] = {main="Mekki Shakki", sub="Rose Strap"}
+	sets.Gun.sam['r4-hit'].tp = {
+		head="Arcadian Beret +1",	neck="Ocachi Gorget",		ear1="Clearview Earring",	ear2="Volley Earring",
+		body="Orion Jerkin +1",		hands="Iuitl Wristbands +1",	ring1="Longshot Ring",		ring2="Paqichikaji Ring",
+		back="Lutian Cape",		waist="Elanid Belt",		legs="Nahtirah Trousers",	feet="Orion Socks +1"
+	}
+	sets.Gun.sam['r4-hit'].tp.MediumAcc = {
+		head="Arcadian Beret +1",	neck="Iqabi Necklace",		ear1="Clearview Earring",	ear2="Volley Earring",
+		body="Orion Jerkin +1",		hands="Iuitl Wristbands +1",	ring1="Longshot Ring",		ring2="Paqichikaji Ring",
+		back="Lutian Cape",		waist="Elanid Belt",		legs="Arcadian Braccae +1",	feet="Orion Socks +1"
+	}
+	sets.Gun.sam['r4-hit'].tp.HighAcc = combineSets(sets.ranged.maxAcc, {hands="Iuitl Wristbands +1"})
+	
+	--4-hit /??? with 2 recycle procs
+	sets.Gun.other['r4-hit'] = {main="Mekki Shakki", sub="Rose Strap"}
+	sets.Gun.other['r4-hit'].tp = {
+		head="Arcadian Beret +1",	neck="Ocachi Gorget",		ear1="Clearview Earring",	ear2="Volley Earring",
+		body="Orion Jerkin +1",		hands="Amini Glovelettes",	ring1="Rajas Ring",		ring2="Paqichikaji Ring",
+		back="Lutian Cape",		waist="Elanid Belt",		legs="Nahtirah Trousers",	feet="Orion Socks +1"
+	}
+	sets.Gun.other['r4-hit'].tp.MediumAcc = {
+		head="Arcadian Beret +1",	neck="Ocachi Gorget",		ear1="Clearview Earring",	ear2="Volley Earring",
+		body="Orion Jerkin +1",		hands="Amini Glovelettes",	ring1="Longshot Ring",		ring2="Paqichikaji Ring",
+		back="Lutian Cape",		waist="Patentia Sash",		legs="Arcadian Braccae +1",	feet="Orion Socks +1"
+	}
+	sets.Gun.other['r4-hit'].tp.HighAcc = combineSets(sets.ranged.maxAcc, {hands="Iuitl Wristbands +1"})
+	
+	--============================================================
+
+	sets.midcast.FastRecast = {
+		head="Ejekamal Mask",	neck="Orunmila's Torque",	ear1="Loquacious Earring",
+		body="Iuitl Vest +1",	hands="Buremte Gloves",		ring1="Prolix Ring",		ring2="Diamond Ring",	--Diamond Ring aug: 2% interrupt rate down
+		back="Mujin Mantle",	waist="Cetl Belt",		legs="Kaabnax Trousers",	feet="Iuitl Gaiters +1"
+	}
 	
 	--============================================================
 	--			Other sets
@@ -174,9 +199,9 @@ function init_gear_sets()
 	})
 	
 	sets.engaged = {
-		head="Whirlpool Mask",	neck="Asperity Necklace",	ear1="Dudgeon Earring",	ear2="Heartseeker Earring",
-		body="Qaaxo Harness",	hands="Umuthi Gloves",		ring1="Rajas Ring",	ring2="Epona's Ring",
-		back="Atheling Mantle",	waist="Patentia Sash",		legs="Iuitl Tights +1",	feet="Taeon Boots"
+		head="Whirlpool Mask",	neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
+		body="Qaaxo Harness",	hands="Umuthi Gloves",		ring1="Rajas Ring",		ring2="Epona's Ring",
+		back="Atheling Mantle",	waist="Patentia Sash",		legs="Iuitl Tights +1",		feet="Taeon Boots"
 	}
 	sets.engaged.with_buff = {}
 	sets.engaged.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}
