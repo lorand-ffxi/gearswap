@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
 --[[
 	Author: Ragnarok.Lorand
-	Note: Lutian Cape is augmented with STR+2 & STP+2
+	Note: Lutian Cape is augmented with STR+1, AGI+5, STP+3, Snapshot+2
 --]]
 --------------------------------------------------------------------------------
 
@@ -17,10 +17,10 @@ function init_gear_sets()
 	sets.precast.JA['Camouflage'] =		{body="Orion Jerkin +1"}
 	sets.precast.JA['Velocity Shot'] =	{body="Sylvan Caban +2"}
 	sets.precast.JA['Flashy Shot'] =	{hands="Arcadian Bracers"}
-	sets.precast.JA['Barrage'] =		{hands="Orion Bracers"}
-	sets.precast.JA['Shadowbind'] =		{hands="Orion Bracers"}
+	sets.precast.JA['Barrage'] =		{hands="Orion Bracers +1"}
+	sets.precast.JA['Shadowbind'] =		{hands="Orion Bracers +1"}
 	sets.precast.JA['Bounty Shot'] =	{hands="Amini Glovelettes"}
-	sets.precast.JA['Eagle Eye Shot'] =	{legs="Arcadian Braccae"}
+	sets.precast.JA['Eagle Eye Shot'] =	{legs="Arcadian Braccae +1"}
 	sets.precast.JA['Sharpshot'] =		{legs="Orion Braccae"}
 	sets.precast.JA['Scavenge'] =		{feet="Orion Socks +1"}
 	sets.precast.JA['Unlimited Shot'] =	{feet="Sylvan Botillons +2"}
@@ -44,10 +44,11 @@ function init_gear_sets()
 
 	--============================================================
 
-	sets.precast.ranged = {			--22% Snapshot, 14% Rapid Shot
+	sets.precast.ranged = {			--24% Snapshot, 14% Rapid Shot
 		head="Sylvan Gapette +2",	--5% Snapshot
 		body="Arcadian Jerkin",		--10% Rapid Shot
 		hands="Iuitl Wristbands +1",	--5% Snapshot
+		back="Lutian Cape",		--2% Snapshot[Augment]
 		waist="Impulse Belt",		--3% Snapshot
 		legs="Nahtirah Trousers",	--9% Snapshot
 		feet="Arcadian Socks"		--4% Rapid Shot
@@ -136,12 +137,12 @@ function init_gear_sets()
 	
 	sets.ranged = {}
 	sets.ranged.maxAcc = {	--	1 AGI = 0.75 Ranged Accuracy
-		head="Arcadian Beret +1",	neck="Ocachi Gorget",		ear1="Clearview Earring",	ear2="Volley Earring",
-		body="Orion Jerkin +1",		hands="Iuitl Wristbands +1",	ring1="Longshot Ring",		ring2="Paqichikaji Ring",
-		back="Lutian Cape",		waist="Elanid Belt",		legs="Iuitl Tights +1",		feet="Orion Socks +1"
+		head="Umbani Cap",		neck="Iqabi Necklace",		ear1="Clearview Earring",	ear2="Volley Earring",
+		body="Orion Jerkin +1",		hands="Amini Glovelettes",	ring1="Longshot Ring",		ring2="Paqichikaji Ring",
+		back="Lutian Cape",		waist="Elanid Belt",		legs="Arcadian Braccae +1",	feet="Orion Socks +1"
 	}
 	
-	sets.ranged.barrage = combineSets(sets.ranged.maxAcc, {hands="Orion Bracers"})
+	sets.ranged.barrage = combineSets(sets.ranged.maxAcc, {hands="Orion Bracers +1"})
 	
 	--============================================================
 	--			Other sets
@@ -152,7 +153,7 @@ function init_gear_sets()
 		head="Ocelomeh Headpiece +1",	neck="Orochi Nodowa",		ear1="Brachyura Earring",	ear2="Ethereal Earring",
 		body={"Kirin's Osode", "Orion Jerkin +1"},
 		hands="Umuthi Gloves",		ring1="Defending Ring",		ring2="Shneddick Ring",
-		back="Repulse Mantle",		waist="Flume Belt",		legs="Kaabnax Trousers",	feet="Orion Socks +1"
+		back="Repulse Mantle",		waist="Flume Belt",		legs="Arcadian Braccae +1",	feet="Orion Socks +1"
 	}
 	sets.idle.with_buff = {}
 	sets.idle.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}
