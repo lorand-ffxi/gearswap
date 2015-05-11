@@ -33,7 +33,7 @@ function init_gear_sets()
 	--============================================================
 	
 	sets.wsBase = {
-		head="Voyager Sallet",	neck="Peacock Amulet",
+		head="Voyager Sallet",	neck="Iqabi Necklace",
 		body="Beast Jackcoat",	hands="Gothic Gauntlets",	ring1="Sniper's Ring",	ring2="Rajas Ring",
 		legs="Beast Trousers",	feet="Gothic Sabatons",
 	}
@@ -55,7 +55,7 @@ function init_gear_sets()
 	--============================================================
 	
 	sets.idle = {										ammo="Bibiki Seashell",
-		head="Patroclus's Helm",	neck="Peacock Amulet",	ear1="Reraise Earring",	ear2="Cassie Earring",
+		head="Patroclus's Helm",	neck="Iqabi Necklace",	ear1="Reraise Earring",	ear2="Cassie Earring",
 		body="Beast Jackcoat",		hands="Beast Gloves",	ring1="Sniper's Ring",	ring2="Blitz Ring",
 		back="Behemoth Mantle",		waist="Swift Belt",	legs="Beast Trousers",	feet="Beast Gaiters"
 	}
@@ -74,7 +74,7 @@ function init_gear_sets()
 	sets.weapons.Main = {main="Darksteel Axe",sub="Tungi"}
 	
 	sets.engaged = {									ammo="Bibiki Seashell",
-		head="Patroclus's Helm",	neck="Peacock Amulet",	ear1="Reraise Earring",	ear2="Cassie Earring",
+		head="Patroclus's Helm",	neck="Iqabi Necklace",	ear1="Reraise Earring",	ear2="Cassie Earring",
 		body="Beast Jackcoat",		hands="Beast Gloves",	ring1="Sniper's Ring",	ring2="Blitz Ring",
 		back="Behemoth Mantle",		waist="Swift Belt",	legs="Beast Trousers",	feet="Beast Gaiters"
 	}

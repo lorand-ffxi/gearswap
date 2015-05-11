@@ -10,6 +10,24 @@ setops = setops or {}
 local itemSlots = {'main', 'sub', 'range', 'ammo', 'head', 'neck', 'ear1', 'ear2', 'body', 'hands', 'ring1', 'ring2', 'back', 'waist', 'legs', 'feet'}
 
 --[[
+	Overwrites the contents of the slots in set1 with the contents of the slots in set2.  Safe to use for setting
+	the contents of a parent set (such as sets.precast.FC) without affecting child sets (sets.precast.FC.Ninjutsu).
+	This function does not consider the usability/possession of items.  By default, if a slot in set2 is empty, the
+	item in set1 will be retained.  Making strict true will cause empty slots in set2 to overwrite occupied slots in
+	set1.
+--]]
+function safe_set(set1, set2, strict)
+	if (set1 == nil) or (set2 == nil) then return end
+	for _,itemSlot in pairs(itemSlots) do
+		if strict then
+			set1[itemSlot] = set2[itemSlot]
+		else
+			set1[itemSlot] = set2[itemSlot] or set1[itemSlot]
+		end
+	end
+end
+
+--[[
 	Combines equipment verified as available from set1 and set2.  Supports slots having more than one option each,
 	contained in a table ordered by preference.  If a specific item slot's contents is defined in both set1 and
 	set2, then that slot in the resulting set will contain the item defined in set2.  It is safe for set1 and/or

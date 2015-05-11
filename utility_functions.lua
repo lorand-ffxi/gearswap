@@ -116,6 +116,14 @@ function atcd(c, msg)
 	end
 end
 
+function atcc(c,msg)
+	if (type(c) == 'string') and (msg == nil) then
+		msg = c
+		c = 0
+	end
+	local msg_safe = winraw.to_shift_jis(msg)
+	winraw.add_to_chat(0, msg_safe:colorize(c))
+end
 
 function printTiered(tbl, tab)
 	local sp = tab and tab..'   ' or ''

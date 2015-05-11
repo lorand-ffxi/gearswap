@@ -19,13 +19,13 @@ function init_gear_sets()
 	}	-- Waltz Potency + 25%
 	
 	sets.precast.Step = {										ammo="Honed Tathlum",
-		head="Whirlpool Mask",		neck="Peacock Amulet",	ear1="Heartseeker Earring",	ear2="Steelflash Earring",
+		head="Whirlpool Mask",		neck="Iqabi Necklace",	ear1="Heartseeker Earring",	ear2="Steelflash Earring",
 		body="Iuitl Vest +1",		hands="Taeon Gloves",	ring1="Rajas Ring",		ring2="Mars's Ring",
 		back="Toetapper Mantle",	waist="Anguinus Belt",	legs="Taeon Tights",		feet="Taeon Boots"
 	}
 	sets.precast.Step['Feather Step'] = {feet="Charis Toe Shoes +2"}
 	
-	sets.precast.Flourish1 = {	--Animated, Desperate, Violent;	offensive - use M.Acc
+	sets.precast.Flourish1 = {	--Animated, Desperate, Violent;	offensive - use Magic Acc
 		neck="Stoicheion Medal",	ear1="Lifestorm Earring",	ear2="Psystorm Earring",
 		hands="Taeon Gloves",		ring1="Sangoma Ring",		ring2="Perception Ring",
 		legs="Iuitl Tights +1",		feet="Iuitl Gaiters +1"
@@ -152,7 +152,7 @@ function init_gear_sets()
 	sets.engaged.auto_acc['II+'] =	{neck="Asperity Necklace", ear1="Bladeborn Earring", ear2="Steelflash Earring"}
 	
 	sets.engaged.CrazyAccuracy = {									ammo="Honed Tathlum",
-		head="Whirlpool Mask",		neck="Peacock Amulet",	ear1="Heartseeker Earring",	ear2="Dudgeon Earring",
+		head="Whirlpool Mask",		neck="Iqabi Necklace",	ear1="Heartseeker Earring",	ear2="Dudgeon Earring",
 		body="Iuitl Vest +1",		hands="Taeon Gloves",	ring1="Rajas Ring",		ring2="Mars's Ring",
 		back="Toetapper Mantle",	waist="Anguinus Belt",	legs="Taeon Tights",		feet="Taeon Boots"
 	}

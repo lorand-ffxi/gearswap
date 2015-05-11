@@ -93,7 +93,7 @@ function init_gear_sets()
 	sets.midcast.ranged.sam = {}
 	sets.midcast.ranged.other = {}
 	sets.midcast.ranged.other.Accuracy = {
-		head="Taeon Chapeau",		neck="Peacock Amulet",		ear1="Clearview Earring",	ear2="Volley Earring",
+		head="Taeon Chapeau",		neck="Iqabi Necklace",		ear1="Clearview Earring",	ear2="Volley Earring",
 		body="Iuitl Vest +1",		hands="Iuitl Wristbands +1",	ring1="Longshot Ring",		ring2="Paqichikaji Ring",
 		back="Gunslinger's Cape",	waist="Elanid Belt",		legs="Nahtirah Trousers",	feet="Scopuli Nails +1"
 	}

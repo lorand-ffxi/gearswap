@@ -43,6 +43,7 @@ function define_defaults()
 	setMode('autoPenury', false)
 	setMode('noIdle', false)
 	setMode('autoCaress', false)
+	setMode('tank', false)
 	
 	options = {}
 	options.autoSan = true
@@ -50,6 +51,7 @@ function define_defaults()
 	options.use_ftp_waist = false
 	options.useTwilightCape = false
 	options.useObi = true
+	options.autoDummy = false
 
 	gear = {}
 	gear.instruments = {}

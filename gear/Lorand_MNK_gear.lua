@@ -139,7 +139,7 @@ function init_gear_sets()
 	}
 	
 	sets.engaged.HighAcc = {										ammo="Honed Tathlum",
-		head="Whirlpool Mask",		neck="Peacock Amulet",		ear1="Bladeborn Earring",	ear2="Steelflash Earring",
+		head="Whirlpool Mask",		neck="Iqabi Necklace",		ear1="Bladeborn Earring",	ear2="Steelflash Earring",
 		body="Otronif Harness +1",	hands="Hesychast's Gloves +1",	ring1="Rajas Ring",		ring2="Epona's Ring",
 		back="Anchoret's Mantle",	waist="Anguinus Belt",		legs="Hesychast's Hose +1",	feet="Taeon Boots"
 	}

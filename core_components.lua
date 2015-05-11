@@ -650,6 +650,7 @@ function get_midcast_set(spell)
 			if var_potency_enfeebs[spell.english] and sets.midcast.EnfeeblingMagic then
 				midcastSet = combineSets(midcastSet, sets.midcast.EnfeeblingMagic, 'Potency')
 				midcastSet = combineSets(midcastSet, sets.midcast.EnfeeblingMagic, 'Potency', modes.casting)
+				midcastSet = combineSets(midcastSet, sets.midcast.EnfeeblingMagic, 'Potency', spell.en, modes.casting)
 			end
 			if (player.main_job == 'RDM') and buff_active('Saboteur') then
 				midcastSet = combineSets(midcastSet, sets.precast.JA, 'Saboteur')
@@ -1061,6 +1062,7 @@ function cycle_mode(args)
 		cycleMode(mode)
 	end
 	atc(1, tostring(mode)..' mode is now '..tostring(modes[mode]))
+	if refresh_gear_sets then refresh_gear_sets() end
 	update()
 end
 
@@ -1071,6 +1073,7 @@ function set_mode(args)
 		setMode(mode, opt)
 	end
 	atc(1, tostring(mode)..' mode is now '..tostring(modes[mode]))
+	if refresh_gear_sets then refresh_gear_sets() end
 	update()
 end
 
@@ -1081,6 +1084,7 @@ function reset_mode(args)
 		cycleMode(mode)
 	end
 	atc(1, tostring(mode)..' mode is now '..tostring(modes[mode]))
+	if refresh_gear_sets then refresh_gear_sets() end
 	update()
 end
 
@@ -1090,6 +1094,7 @@ function toggle_mode(args)
 		modes[mode] = not modes[mode]
 	end
 	atc(1, tostring(mode)..' mode is now '..tostring(modes[mode]))
+	if refresh_gear_sets then refresh_gear_sets() end
 	update()
 end
 
@@ -1099,6 +1104,7 @@ function activate_mode(args)
 		modes[mode] = true
 	end
 	atc(1, tostring(mode)..' mode is now '..tostring(modes[mode]))
+	if refresh_gear_sets then refresh_gear_sets() end
 	update()
 end
 
@@ -1223,7 +1229,25 @@ function info_func(args)
 	info.process_input(cmd, args)
 end
 
+function test(args)
+	local set1 = {head="Anwig Salade", hands="Umuthi Gloves"}
+	set1.b = {body="Kirin's Osode"}
+	local set2 = {head="Taeon Chapeau", feet="Hachiya Kyahan"}
+
+	atcc(260,'Before:')
+	info.print_table(set1,'set1')
+	info.print_table(set1.b,'set1.b')
+	info.print_table(set2,'set2')
+	atcc(260,'safe_set(set1, set2)...')
+	safe_set(set1, set2)
+	atcc(260,'After:')
+	info.print_table(set1,'set1')
+	info.print_table(set1.b,'set1.b')
+	info.print_table(set2,'set2')
+end
+
 executable_commands = {
+	['test']   =	test,
 	['atc']    =	addToChat,	['scholar']   =	handle_strategems,	['show']     =	show_set,
 	['update'] =	update,		['cycle']     =	cycle_mode,		['set']      =	set_mode,
 	['reset']  =	reset_mode,	['toggle']    =	toggle_mode,		['activate'] =	activate_mode,

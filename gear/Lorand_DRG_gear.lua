@@ -70,13 +70,13 @@ function init_gear_sets()
 	}
 	
 	sets.engaged.MediumAcc = {									ammo="Potestas Bomblet",
-		head="Yaoyotl Helm",	neck="Peacock Amulet",		ear1="Bladeborn Earring",	ear2="Steelflash Earring",
+		head="Yaoyotl Helm",	neck="Iqabi Necklace",		ear1="Bladeborn Earring",	ear2="Steelflash Earring",
 		body="Xaddi Mail",	hands="Taeon Gloves",		ring1="Rajas Ring",		ring2="K'ayres Ring",
 		back="Updraft Mantle",	waist="Windbuffet Belt +1",	legs="Cizin Breeches +1",	feet="Whirlpool Greaves"
 	}
 	
 	sets.engaged.HighAcc = {									ammo="Potestas Bomblet",
-		head="Yaoyotl Helm",	neck="Peacock Amulet",		ear1="Bladeborn Earring",	ear2="Steelflash Earring",
+		head="Yaoyotl Helm",	neck="Iqabi Necklace",		ear1="Bladeborn Earring",	ear2="Steelflash Earring",
 		body="Xaddi Mail",	hands="Taeon Gloves",		ring1="Rajas Ring",		ring2="K'ayres Ring",
 		back="Updraft Mantle",	waist="Anguinus Belt",		legs="Cizin Breeches +1",	feet="Whirlpool Greaves"
 	}

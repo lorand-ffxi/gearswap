@@ -178,7 +178,7 @@ function init_gear_sets()
 	
 	sets.midcast.EnhancingMagic = {
 		neck="Colossus's Torque",
-		body="Manasa Chasuble",
+		body="Telchine Chasuble",
 		waist="Cascade Belt"
 	}
 	sets.midcast.Aquaveil = {waist="Emphatikos Rope"}
@@ -239,7 +239,7 @@ function init_gear_sets()
 	sets.idle.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	
 	sets.engaged = {
-		head="Highwing Helm",		neck={"Peacock Amulet","Asperity Necklace"},
+		head="Highwing Helm",		neck={"Iqabi Necklace","Asperity Necklace"},
 		ear1="Bladeborn Earring",	ear2="Steelflash Earring",
 		body="Bihu Justaucorps",	hands="Umuthi Gloves",		ring1="Rajas Ring",		ring2="Mars's Ring",
 		back={"Kayapa Cape","Atheling Mantle"},				waist={"Anguinus Belt","Windbuffet Belt +1"},	

@@ -26,13 +26,22 @@ function init_gear_sets()
 	sets.precast.JA['Chain Affinity'] = {head="Mavi Kavuk +2"}
 	sets.precast.JA['Efflux'] = {legs="Mavi Tayt +2"}
 	
-	sets.precast.FC = {											ammo="Impatiens",
-		head="Haruspex Hat",		neck="Orunmila's Torque",	ear1="Loquacious Earring",
-		hands="Thaumas Gloves",		ring1="Prolix Ring",		ring2="Veneficium Ring",
-		back="Swith Cape",		waist="Witful Belt",		legs="Enif Cosciales",		feet="Chelona Boots"
+	sets.precast.FC = {
+		ammo="Impatiens",		--
+		head="Haruspex Hat",		--
+		neck="Orunmila's Torque",	--5%
+		ear1="Loquacious Earring",	--
+		body="Taeon Tabard",		--4%
+		hands="Thaumas Gloves",		--4%
+		ring1="Prolix Ring",		--
+		ring2="Veneficium Ring",	--
+		back="Swith Cape",		--
+		waist="Witful Belt",		--
+		legs="Enif Cosciales",		--
+		feet="Chelona Boots"		--
 	}
 	sets.precast.FC.BlueMagic = {
-		body="Mavi Mintan +2"
+		body="Mavi Mintan +2"		--
 	}
 	
 	sets.precast.FC.EnhancingMagic = {waist="Siegel Sash"}
@@ -72,7 +81,7 @@ function init_gear_sets()
 	
 	sets.midcast.EnhancingMagic = {
 		neck="Colossus's Torque",
-		body="Manasa Chasuble",
+		body="Telchine Chasuble",
 		waist="Cascade Belt"
 	}
 	sets.midcast.Aquaveil = {waist="Emphatikos Rope"}

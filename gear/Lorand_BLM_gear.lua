@@ -17,7 +17,7 @@ function init_gear_sets()
 	sets.precast.FC = {
 		main="Marin Staff +1",	ammo="Impatiens",
 		head="Nahtirah Hat",	neck="Orunmila's Torque",	ear1="Loquacious Earring",
-		body="Helios Jacket",	hands="Repartie Gloves",	ring1="Prolix Ring",		ring2="Veneficium Ring",
+		body="Anhur Robe",	hands="Repartie Gloves",	ring1="Prolix Ring",		ring2="Veneficium Ring",
 		back="Swith Cape",	waist="Witful Belt",		legs="Artsieq Hose",		feet="Chelona Boots"
 	}
 
@@ -59,7 +59,7 @@ function init_gear_sets()
 	
 	sets.midcast.EnhancingMagic = {
 		neck="Colossus's Torque",
-		body="Manasa Chasuble",			
+		body="Anhur Robe",		
 		waist="Cascade Belt"
 	}
 	sets.midcast.Aquaveil = {waist="Emphatikos Rope"}

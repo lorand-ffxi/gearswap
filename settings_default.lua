@@ -6,12 +6,12 @@
 -----------------------------------------------------------------------------------------------------------
 
 function set_options()
-	options.use_ftp_neck = true
-	options.use_ftp_waist = false
-	options.useTwilightCape = false
-	options.useObi = true
+	--Options only need to be set here if your preference differs from the settings in defaults.lua
+	options.autoDummy = true		--Automatically use Daurdabla/Terpander with specified songs
 	
-	instruments.effects.Linos = {['All']=3}
+	autoDummySongs = S{"Army's Paeon"}
+	
+	instruments.effects.Linos = {['All']=3}	--Base: +1; Augment: +2
 	
 	pet_moves.buff['CourierCarrie'] = 'Metallic Body'
 	pet_moves.buff['WarlikePatrick'] = 'Secretion'
@@ -28,7 +28,7 @@ function set_modes()
 	local modelist = {}
 	modelist['idle'] = {'CapFarm','Normal'}
 	modelist['defense'] = {'Normal', 'PDT', 'MDT'}
-	modelist['casting'] = {'Normal', 'Resistant', 'Proc'}
+	modelist['casting'] = {'Normal', 'MediumAcc', 'HighAcc', 'Proc'}
 	modelist['accuracy'] = {'Normal', 'MediumAcc', 'HighAcc'}
 	modelist['weapon'] = {'Main','Other'}
 	modelist['offense'] = {'Normal'}
@@ -40,7 +40,6 @@ function set_modes()
 	elseif S{'SCH'}:contains(player.main_job) then
 		modelist['offense'] = {'Magic', 'Melee', 'Skillup'}
 		modelist['idle'] = {'Normal', 'CapFarm', 'MDT'}
-		modelist['casting'] = {'Normal', 'MediumAcc', 'HighAcc', 'Proc'}
 	elseif S{'BRD'}:contains(player.main_job) then
 		modelist['offense'] = {'Magic', 'Melee', 'Skillup'}
 		modelist['Daurdabla'] = {'None','Daurdabla','Dummy'}
@@ -64,7 +63,7 @@ function set_modes()
 		modelist['idle'] = {'Normal', 'reraise'}
 		modelist['weapon'] = {'4-Hit','5-Hit','Other'}
 	elseif S{'THF'}:contains(player.main_job) then
-		modelist['weapon'] = {'TH','DD','Accuracy','THAcc','Other'}
+		modelist['weapon'] = {'TH','THOAT','OAT','DD','Accuracy','THAcc','Other'}
 		modelist['treasure'] = {'None','TH'}
 		modelist['offense'] = {'TH', 'Normal', 'Acc'}
 		modelist['ranged'] = {'TH', 'Normal', 'Acc'}
@@ -85,21 +84,23 @@ function set_keybinds()
 	local mj = player.main_job
 	local sj = player.sub_job
 	local keybinds = {}
-	keybinds['^d'] = 'gs c set defense PDT'
-	keybinds['!d'] = 'gs c set defense MDT'
-	keybinds['@d'] = 'gs c reset defense'
-	keybinds['@e'] = 'gs c update user'
-	keybinds['@w'] = 'equip engaged'
-	keybinds['@a'] = 'gs c cycle accuracy'
-	keybinds['@s'] = 'gs c cycle offense'
-	keybinds['@q'] = 'gs c cycle idle'
-	keybinds['@c'] = 'gs c cycle casting'
-	keybinds['@r'] = 'gs c cycle ranged'
-	keybinds['@v'] = 'gs c cycle weapon'
-	keybinds['@F12'] = 'du blinking self always'
-	keybinds['@i'] = 'gs c toggle noIdle'
-	keybinds['@f'] = 'hb f'
+	keybinds['^d'] = 'gs c set defense PDT'		--Enter Physical defense mode
+	keybinds['!d'] = 'gs c set defense MDT'		--Enter Magic defense mode
+	keybinds['@d'] = 'gs c reset defense'		--Reset the defense mode
+	keybinds['@e'] = 'gs c update user'		--Equip whatever should be worn for the current state
+	keybinds['@w'] = 'equip engaged'		--Equip the current proper engaged set
+	keybinds['@a'] = 'gs c cycle accuracy'		--Cycle through accuracy modes
+	keybinds['@s'] = 'gs c cycle offense'		--Cycle through offense modes
+	keybinds['@q'] = 'gs c cycle idle'		--Cycle through idle modes
+	keybinds['@c'] = 'gs c cycle casting'		--Cycle through casting modes
+	keybinds['@r'] = 'gs c cycle ranged'		--Cycle through ranged modes
+	keybinds['@v'] = 'gs c cycle weapon'		--Cycle through weapon modes
+	keybinds['@F12'] = 'du blinking self always'	--Toggle DressUp's prevention of own character blinking always
+	keybinds['@i'] = 'gs c toggle noIdle'		--Toggle prevention of aftercast equipment use
+	keybinds['@f'] = 'hb f'				--Toggle HealBot's Follow feature
+	keybinds['@t'] = 'gs c toggle tank'		--Overwritten by Treasure mode when THF
 
+	--Job-specific keybinds
 	if S{mj,sj}:contains('SCH') then
 		keybinds['^='] = 'gs c scholar light'		--Light Arts / Addendum: White
 		keybinds['!='] = 'gs c scholar dark'		--Dark Arts / Addendum: Black

@@ -79,7 +79,7 @@ function init_gear_sets()
 		legs="Kaabanax Trousers"
 	}
 	sets.wsBase.HighAcc = {
-		head="Whirlpool Mask",	neck="Peacock Amulet",		ear1="Dudgeon Earring",		ear2="Heartseeker Earring",
+		head="Whirlpool Mask",	neck="Iqabi Necklace",		ear1="Dudgeon Earring",		ear2="Heartseeker Earring",
 		body="Iuitl Vest +1",	hands="Plunderer's Armlets +1",	ring1="Rajas Ring",		ring2="Epona's Ring",
 		back="Canny Cape",	waist="Anguinus Belt",		legs="Taeon Tights",		feet="Iuitl Gaiters +1"
 	}
@@ -114,6 +114,8 @@ function init_gear_sets()
 	
 	sets.weapons.Other = {}
 	sets.weapons.TH = {main='Sandung',sub='Jugo Kukri +1',range="Raider's Boomerang"}
+	sets.weapons.THOAT = {main='Sandung',sub='Atoyac',range="Raider's Boomerang"}
+	sets.weapons.OAT = {main='Izhiikoh',sub='Atoyac',range="Raider's Boomerang"}
 	sets.weapons.DD = {main='Izhiikoh',sub='Jugo Kukri +1',range="Raider's Boomerang"}
 	sets.weapons.Accuracy = {main='Izhiikoh',sub='Jugo Kukri +1',ammo='Honed Tathlum'}
 	sets.weapons.THAcc = {main='Izhiikoh',sub='Sandung',ammo='Honed Tathlum'}
@@ -138,7 +140,6 @@ function init_gear_sets()
 	sets.defense.DT = combineSets(sets.defense.Evasion,{	--DT-15%, PDT-12%, MDT-10%	=> PDT-27%, MDT-25%
 		head="Ejekamal Mask",		neck="Twilight Torque",
 		body="Iuitl Vest +1",		ring1="Defending Ring",		ring2="Dark Ring",
-		legs="Kaabnax Trousers"
 	})
 	
 	sets.defense.PDT = combineSets(sets.defense.DT, {	--PDT-12% + DT => PDT-39%
@@ -146,10 +147,10 @@ function init_gear_sets()
 		back="Repulse Mantle",		waist="Flume Belt",	feet="Iuitl Gaiters +1"
 	})
 
-	sets.defense.MDT = combineSets(sets.defense.DT, {	--MDT-4% + DT => MDT-29%, MDB+23
+	sets.defense.MDT = combineSets(sets.defense.DT, {
 		ear1="Merman's Earring",	ear2="Merman's Earring",
 		hands="Iuitl Wristbands +1",
-		back="Tuilha Cape",		waist="Flume Belt",		feet="Iuitl Gaiters +1"
+		back="Tuilha Cape",		legs="Ighwa Trousers",	feet="Iuitl Gaiters +1"
 	})
 	
 	sets.engaged = {									--range="Raider's Boomerang",
@@ -168,9 +169,9 @@ function init_gear_sets()
 	}
 	
 	sets.engaged.HighAcc = {					--range=nil,		ammo="Honed Tathlum",
-		head="Whirlpool Mask",	neck="Peacock Amulet",		ear1="Dudgeon Earring",	ear2="Heartseeker Earring",
+		head="Whirlpool Mask",	neck="Iqabi Necklace",		ear1="Dudgeon Earring",	ear2="Heartseeker Earring",
 		body="Iuitl Vest +1",	hands="Plunderer's Armlets +1",	ring1="Rajas Ring",	ring2="Epona's Ring",
-		back="Canny Cape",	waist="Anguinus Belt",		legs="Taeon Tights",	feet="Taeon Boots"
+		back="Canny Cape",	waist="Anguinus Belt",		legs="Ighwa Trousers",	feet="Taeon Boots"
 	}
 	
 	sets.engaged.TH = {									--range="Raider's Boomerang",

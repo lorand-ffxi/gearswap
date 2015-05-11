@@ -29,7 +29,7 @@ function init_gear_sets()
 		head="Nahtirah Hat",		--10%
 		neck="Orunmila's Torque",	--5%
 		ear1="Loquacious Earring",	--2%
-		body="Helios Jacket",		--4%
+		body="Anhur Robe",		--10%
 		hands="Gendewitha Gages +1",	--7%
 		ring1="Prolix Ring",		--2%
 		ring2="Veneficium Ring",	--Q+1%

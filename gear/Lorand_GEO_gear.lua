@@ -11,10 +11,7 @@ function init_gear_sets()
 	sets.impact = {body="Twilight Cloak"}	--This is just to remind me to get it from the Porter Moogle
 	
 	sets.precast.FC = {
-		main="",	sub="",		range="",	ammo="",
-		head="",	neck="",	ear1="",	ear2="",
-		body="",	hands="",	ring1="",	ring2="",
-		back="",	waist="",	legs="",	feet=""
+		body="Anhur Robe",
 	}
 
 	sets.precast.FC.Geomancy = {}

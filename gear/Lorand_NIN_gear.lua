@@ -6,18 +6,44 @@
 --]]
 -----------------------------------------------------------------------------------------------------------
 
+function refresh_gear_sets()
+	if modes.tank then
+		safe_set(sets.precast.JA, sets.Enmity)
+	else
+		safe_set(sets.precast.JA, {}, true)
+	end
+end
+
 function init_gear_sets()
+	sets.Enmity = {				--39
+		neck="Invidia Torque",		--5
+		ear1="Friomisi Earring",	--2
+		hands="Macabre Gauntlets",	--6
+		ring1="Provocare Ring",		--5
+		ring2="Eihwaz Ring",		--5
+		back="Earthcry Mantle",		--7
+		waist="Warwolf Belt",		--3
+		feet="Mochizuki Kyahan +1"	--6
+	}
 	--============================================================
 	--			Precast sets
 	--============================================================
+	
 	sets.precast.JA['Mijin Gakure'] = {legs="Mochizuki Hakama +1"}
-
+	
+	sets.precast.Flourish1 = sets.precast.JA
+	--Stun; Magic Accuracy
+	sets.precast.Flourish1['Violent Flourish'] = {
+		neck="Stoicheion Medal",	ear1="Lifestorm Earring",	ear2="Psystorm Earring",
+		hands="Taeon Gloves",		ring1="Sangoma Ring",		ring2="Perception Ring",
+		back="Yokaze Mantle",		waist="Ovate Rope",		feet="Taeon Boots"
+	}
+	
 	sets.precast.Waltz = {
 		head="Uk'uxkaj Cap",		neck="Dualism Collar",
 		body="Hachiya Chainmail +1",	hands="Buremte Gloves",	ring1="Asklepian Ring",		ring2="Terrasoul Ring",
 		back="Iximulew Cape",		waist="Warwolf Belt",	legs="Hachiya Hakama +1",	feet="Mochizuki Kyahan +1"
 	}
-	sets.precast.Waltz['Healing Waltz'] = {}
 
 	sets.precast.Step = combineSets(sets.engaged, {
 		body="Mochizuki Chainmail +1"
@@ -186,8 +212,9 @@ function init_gear_sets()
 	}
 	
 	-- sets.engaged.CrazyAccuracy = {									ammo="Happo Shuriken +1",
-		-- head="Whirlpool Mask",		neck="Peacock Amulet",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
+		-- head="Whirlpool Mask",		neck="Iqabi Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
 		-- body="Mochizuki Chainmail +1",	hands="Umuthi Gloves",	ring1="Rajas Ring",		ring2="Mars's Ring",
 		-- back="Yokaze Mantle",		waist="Anguinus Belt",	legs="Hachiya Hakama +1",	feet="Taeon Boots"
 	-- }
+	refresh_gear_sets()
 end

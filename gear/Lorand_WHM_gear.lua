@@ -111,7 +111,7 @@ function init_gear_sets()
 	
 	sets.midcast.EnhancingMagic = {
 		neck="Colossus's Torque",
-		body="Manasa Chasuble",		hands="Dynasty Mitts",
+		body="Telchine Chasuble",	hands="Dynasty Mitts",
 		waist="Cascade Belt",		legs="Piety Pantaloons",	feet="Orison Duckbills +2"
 	}
 	

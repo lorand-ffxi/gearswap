@@ -208,6 +208,12 @@ function init_gear_sets()
 		back="Weard Mantle",		waist="Nierenschutz",		legs="Cizin Breeches +1",	feet="Caballarius Leggings +1"
 	}
 	
+	sets.engaged.MediumAcc = {
+	}
+	
+	sets.engaged.HighAcc = {
+	}
+	
 	sets.engaged.TankMix = {	--45% PDT, 44% MDT
 		ammo="Angha Gem",
 		head="Reverence Coronet +1",	neck="Twilight Torque",		ear1="Creed Earring",		ear2="Ethereal Earring",
