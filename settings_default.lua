@@ -196,8 +196,8 @@ function set_keybinds()
 	clear_binds()
 	windower.send_command('alias equip gs c equip')
 	--Process the keybinds list and set them accordingly
-	for keys,cmd in pairs(keybinds) do
-		windower.send_command('bind '..keys..' '..cmd)
+	for key_combo,cmd in pairs(keybinds) do
+		windower.send_command('bind '..key_combo..' '..cmd)
 	end
 end
 

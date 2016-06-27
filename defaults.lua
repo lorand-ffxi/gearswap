@@ -45,7 +45,7 @@ function define_defaults()
 	setMode('autoCaress', false)
 	setMode('tank', false)
 	
-	options = {}
+	options = T()
 	options.autoSan = true
 	options.use_ftp_neck = true
 	options.use_ftp_waist = false
