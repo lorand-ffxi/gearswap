@@ -81,28 +81,6 @@ end
 --          Printing Functions
 --==============================================================================
 
-
-function printTiered(tbl, tab)
-    local sp = tab and tab..'   ' or ''
-    if (tbl ~= nil) and (type(tbl) == 'table') then
-        for k,v in pairs(tbl) do
-            if (type(v) == 'table') then
-                atc('%s%s = {':fmts(sp, k))
-                --atc(sp..tostring(k)..' = {')
-                printTiered(v, sp)
-                atc(sp..'}')
-            else
-                atc('%s%15s: %s':fmts(sp, k, v))
-                --atc(sp..tostring(k):rpad(' ',15)..': '..tostring(v))
-            end
-        end
-        
-    else
-        atc(0, sp..tostring(tbl))
-    end
-end
-
-
 --[[
     Allows atc to be called via the Windower console.
     This enables messages to be added to the chat log with a delay.

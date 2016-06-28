@@ -1,7 +1,7 @@
 --==============================================================================
 --[[
     Author: Ragnarok.Lorand
-    Updated: 2016-06-25
+    Updated: 2016-06-27
     GearSwap core components
 --]]
 --==============================================================================
@@ -10,6 +10,9 @@ function init()
     show_debug = false
     
     require('lor/lor_utils')
+    if not _libs.lor then
+        gearswap._G.windower.add_to_chat(39, gearswap._G.windower.to_shift_jis('[ERROR] Required: https://github.com/lorand-ffxi/lor_libs'))
+    end
     _libs.lor.req('all')
     _libs.req('lists')
     _libs.req('chat/chars')     --Required for using special characters in delayed messages
@@ -35,13 +38,12 @@ function init()
     include('mappings')     --Load mappings.lua (provides generalizations for spells and abilities)
     include('exporter')     --Load exporter.lua (provides better implementation of gear exporting)
     
-    
     trusts = populateTrustList()
     
     -- Load gear from a job-specific file
     if load_user_gear(player.main_job) then
         if init_gear_sets then init_gear_sets() end
-        setops.find_slipped()
+        setops.find_misplaced()
     end
     
     load_user_settings()        --Attempt to load user settings
@@ -1248,12 +1250,17 @@ function test(args)
     pprint(set2,'set2')
 end
 
+function print_help()
+    atc('Commands available for //gs c <cmd>:')
+    pprint(executable_commands)
+end
+
 executable_commands = {
-    ['test']   =    test,
-    ['atc']    =    addToChat,  ['scholar']   = handle_strategems,  ['show']     =  show_set,
-    ['update'] =    update,     ['cycle']     = cycle_mode,         ['set']      =  set_mode,
-    ['reset']  =    reset_mode, ['toggle']    = toggle_mode,        ['activate'] =  activate_mode,
-    ['equip']  =    equip_set,  ['info']      = info_func,          ['slips']    =  setops.find_slipped,
-    ['smn']    =    handle_smn, ['inv_check'] = setops.find_movable,['set2chat'] =  setops.set_to_chat,
-    ['pet']    =    handle_pet, ['export']    = export_gear,        ['storable'] =  setops.determine_storable
+    ['test']   =    test,       ['help']      = print_help,         ['misplaced'] = setops.find_misplaced,
+    ['atc']    =    addToChat,  ['scholar']   = handle_strategems,  ['show']      =  show_set,
+    ['update'] =    update,     ['cycle']     = cycle_mode,         ['set']       =  set_mode,
+    ['reset']  =    reset_mode, ['toggle']    = toggle_mode,        ['activate']  =  activate_mode,
+    ['equip']  =    equip_set,  ['info']      = info_func,          ['slips']     =  setops.find_slipped,
+    ['smn']    =    handle_smn, ['inv_check'] = setops.find_movable,['set2chat']  =  setops.set_to_chat,
+    ['pet']    =    handle_pet, ['export']    = export_gear,        ['storable']  =  setops.determine_storable
 }

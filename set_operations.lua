@@ -8,9 +8,9 @@
 setops = setops or {}
 
 local itemSlots = {'main', 'sub', 'range', 'ammo', 'head', 'neck', 'ear1', 'ear2', 'body', 'hands', 'ring1', 'ring2', 'back', 'waist', 'legs', 'feet'}
-local equip_bag_names = {'inventory', 'wardrobe', 'wardrobe2'}
 local all_bag_names = S{'case','inventory','locker','sack','safe','safe2','satchel','storage','wardrobe','wardrobe2'}
-
+local equip_bag_names = {'inventory', 'wardrobe', 'wardrobe2'}
+local bags_nonequippable = {'case','locker','sack','safe','safe2','satchel','storage'}
 
 --[[
     Overwrites the contents of the slots in set1 with the contents of the slots in set2.  Safe to use for setting
@@ -95,7 +95,7 @@ function canDW()
 end
 
 
-function setops.player_posesses(item)
+function setops.in_equippable_bag(item)
     local equip_bags = map(customized(lor.fn_get, player), equip_bag_names)
     local item_opts = map(customized(lor.fn_get, item, 2), equip_bags)
     return table.first_value(item_opts)
@@ -120,11 +120,7 @@ end
     Returns true if the given item is in the player's inventory, false otherwise.
 --]]
 function setops.isAvailable(item, slot)
-    --local itable = player.inventory[item] or player.wardrobe[item]
-    local itable = setops.player_posesses(item)
-    --atc(item)
-    --pprint(itable)
-    
+    local itable = setops.in_equippable_bag(item)
     if (itable ~= nil) then
         local iinfo = res.items[itable.id]
         local lvl_ok = iinfo.level <= player.main_job_level
@@ -138,8 +134,6 @@ function setops.isAvailable(item, slot)
         if (iinfo.category == 'Weapon') and (slot == 'sub') and (iinfo.skill ~= 0) then
             dw_ok = canDW()
         end
-        
-        --local canuse = lvl_ok and race_ok and job_ok and su_ok and dw_ok
         return lazy_and(lvl_ok, race_ok, job_ok, su_ok, dw_ok)
     end
     return false
@@ -165,11 +159,9 @@ end
 function setops.get_ftp_gear(slot, ws)
     local all_waist = 'Fotia Belt'
     local all_neck = 'Fotia Gorget'
-    if (slot == 'waist') and setops.player_posesses(all_waist) then
-    --if (slot == 'waist') and (player.inventory[all_waist] or player.wardrobe[all_waist]) then
+    if (slot == 'waist') and setops.in_equippable_bag(all_waist) then
         return {[slot] = all_waist}
-    elseif (slot == 'neck') and setops.player_posesses(all_neck) then
-    --elseif (slot == 'neck') and (player.inventory[all_neck] or player.wardrobe[all_neck]) then
+    elseif (slot == 'neck') and setops.in_equippable_bag(all_neck) then
         return {[slot] = all_neck}
     end
     
@@ -188,8 +180,7 @@ end
 
 function setops.getObi(element)
     local all_ele = 'Hachirin-no-obi'
-    if setops.player_posesses(all_ele) then
-    --if (player.inventory[all_ele] or player.wardrobe[all_ele]) then
+    if setops.in_equippable_bag(all_ele) then
         return all_ele
     else
         return gear_map.Obi[element]
@@ -201,7 +192,8 @@ end
 --==============================================================================
 
 --[[
-    Recursively traverses user-defined sets to compile a list of all gear that is currently necessary.
+    Recursively traverses user-defined sets to compile a list of all gear that
+    is currently necessary.
 --]]
 function setops.retrieve_items(set)
     local items = S{}
@@ -217,7 +209,8 @@ function setops.retrieve_items(set)
 end
 
 --[[
-    Recursively traverses user-defined sets to compile a list of item IDs for all gear that is currently necessary.
+    Recursively traverses user-defined sets to compile a list of item IDs for
+    all gear that is currently necessary.
 --]]
 function setops.retrieve_item_ids(set, res_items)
     res_items = res_items or setops.get_item_res()
@@ -312,7 +305,6 @@ end
 --]]
 function setops.find_movable()
     local item_ids = setops.retrieve_item_ids(sets)
-    --local res_items = setops.get_item_res()
     
     local extras = S{}
     for _,itbl in pairs(player.inventory) do
@@ -341,22 +333,21 @@ end
     of those slips. Automatically runs when a player change jobs.  Can be run at any time via: //gs c slips
 --]]
 function setops.find_slipped()
-    local items = setops.retrieve_items(sets)       --List of all gear in Player_JOB_gear.lua
+    local items = setops.retrieve_items(sets)           --List of all gear in Player_JOB_gear.lua
     local slip_items = _libs.slips.get_player_items()   --List of all gear stored with the Porter Moogle now
-    local res_items = setops.get_item_res()         --Transform res.items for easier use
+    local res_items = setops.get_item_res()             --Transform res.items for easier use
     
     --Iterate through required gear, checking to see if any of it is stored with Porter
     local slipped = {}
     for item,_ in pairs(items) do
-        if not setops.player_posesses(item) then
-        --if not (player.inventory[item] or player.wardrobe[item]) then
+        if not setops.in_equippable_bag(item) then
             local itable = res_items:with('en_l',item:lower()) or res_items:with('enl_l',item:lower())
             if (itable ~= nil) then
                 for sid,sitems in pairs(slip_items) do
                     if S(sitems):contains(itable.id) then
                         local sliptbl = res.items[sid]
-                        slipped[sliptbl.en] = slipped[sliptbl.en] or S{}
-                        slipped[sliptbl.en]:add(item)
+                        slipped[sliptbl.en] = slipped[sliptbl.en] or {}
+                        table.insert(slipped[sliptbl.en], item)
                     end
                 end
             end
@@ -371,14 +362,66 @@ function setops.find_slipped()
     end
     local output = {}
     for slip,stbl in pairs(slipped) do
-        output[tonumber(slip:sub(-2))] = '[':colorize(263)..tostring(sizeof(stbl)):colorize(4,263)..']'..slip:colorize(326,263)..': '..stbl:format('list')
+        local item_list = ", ":join(stbl)
+        output[tonumber(slip:sub(-2))] = '[':colorize(263)..tostring(sizeof(stbl)):colorize(4,263)..']'..slip:colorize(326,263)..': '..item_list 
     end
-    for i = 1, sizeof(slip_items) do
-        if (output[i] ~= nil) then
-            atc(output[i])
-        end
-    end 
+    for k,v in opairs(output) do
+        atc(v)
+    end
 end
+
+
+--[[
+    Prints a list of items that are specified in the current player sets, but
+    are in inventory locations from which those items cannot be equipped.
+--]]
+function setops.find_misplaced()
+    local items = setops.retrieve_items(sets)   --List of all gear in Player_JOB_gear.lua
+    local res_items = setops.get_item_res()     --Transform res.items for easier use
+    
+    local nonequippable = {}
+    for _,bname in pairs(bags_nonequippable) do
+        local bag_contents = player[bname]
+        if bag_contents ~= nil then
+            for iname,itbl in pairs(bag_contents) do
+                if itbl ~= nil then
+                    nonequippable[itbl.id] = bname
+                end
+            end
+        end
+    end
+    
+    local misplaced = {}
+    for item,_ in pairs(items) do
+        if not setops.in_equippable_bag(item) then
+            local itable = res_items:with('en_l',item:lower()) or res_items:with('enl_l',item:lower())
+            if (itable ~= nil) then
+                local bname = nonequippable[itable.id]
+                if bname ~= nil then
+                    misplaced[bname] = misplaced[bname] or {}
+                    table.insert(misplaced[bname], item)
+                end
+            end
+        end
+    end
+    
+    if (sizeof(misplaced) > 0) then
+        atc('Items you need to move to bags from which items can be equipped:':colorize(262))
+    else
+        atc('All of your required items are equippable!':colorize(258))
+        return
+    end
+    local output = {}
+    for bname,btbl in pairs(misplaced) do
+        local item_list = ", ":join(btbl)
+        output[bname] = '[':colorize(263)..tostring(sizeof(btbl)):colorize(4,263)..']'..bname:colorize(326,263)..': '..item_list
+    end
+    for k,v in opairs(output) do
+        atc(v)
+    end
+    setops.find_slipped()
+end
+
 
 --[[
     Prints the currently equipped set to the specified chat channel.  Valid chat channels: /t name, /p, /l
