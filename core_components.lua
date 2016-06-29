@@ -1233,7 +1233,7 @@ function info_func(args)
     _libs.lor.exec.process_input(cmd, args)
 end
 
-function test(args)
+function test_0(args)
     local set1 = {head="Anwig Salade", hands="Umuthi Gloves"}
     set1.b = {body="Kirin's Osode"}
     local set2 = {head="Taeon Chapeau", feet="Hachiya Kyahan"}
@@ -1248,6 +1248,15 @@ function test(args)
     pprint(set1,'set1')
     pprint(set1.b,'set1.b')
     pprint(set2,'set2')
+end
+
+function test()
+    for spellid, spell in pairs(res.spells) do
+        if (spell.type ~= 'Trust') and (spell_maps[spell.en] == nil) and (spell.type ~= 'BlueMagic') then
+            atcfs('%s,%s,%s,%s', spellid, spell.en, spell.type, res.skills[spell.skill].en)
+        end
+    end
+    
 end
 
 function print_help()
