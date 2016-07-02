@@ -14,10 +14,11 @@ function init()
         gearswap._G.windower.add_to_chat(39, gearswap._G.windower.to_shift_jis('[ERROR] Required: https://github.com/lorand-ffxi/lor_libs'))
     end
     _libs.lor.req('all')
-    _libs.req('lists')
+    _libs.req('lists', 'sets')
     _libs.req('chat/chars')     --Required for using special characters in delayed messages
     _libs.req('slips')          --Required for notifying which items need to be fetched from the porter moogle
     _libs.req('files')          --Required for loading external files without using require()
+    extdata = require('extdata')
     res = res or gearswap.res
     
     Assert = require('assertion')   --Assertion functions
@@ -1006,7 +1007,7 @@ end
 function execute_command(command, args)
     local cmd = command:lower()
     if executable_commands[cmd] ~= nil then
-        executable_commands[cmd](args)
+        executable_commands[cmd].fn(args)
     else
         atc(123, '[ERROR] Unknown command: '..command)
     end
@@ -1261,15 +1262,47 @@ end
 
 function print_help()
     atc('Commands available for //gs c <cmd>:')
-    pprint(executable_commands)
+    local group_text = {['mode']='Mode Setting', ['inv']='Inventory Convenience', ['act']='Action & Equipment Management', ['misc']='Misc'}
+    local groups = {['mode']={}, ['inv']={}, ['act']={}, ['misc']={}}
+    for cmd, tbl in pairs(executable_commands) do
+        table.insert(groups[tbl.group], {cmd, tbl})
+    end
+    for gname, group in pairs(groups) do
+        atcc(262, '---------- %s ----------':format(group_text[gname]))
+        for _,cmds in pairs(group) do
+            local cmd, tbl = cmds[1], cmds[2]
+            if not tbl.hide then
+                atcc(263, '%s %s':format(cmd, tbl['args']))
+                atcc(1, '    %s':format(tbl['help']))
+            end
+        end
+    end
 end
 
 executable_commands = {
-    ['test']   =    test,       ['help']      = print_help,         ['misplaced'] = setops.find_misplaced,
-    ['atc']    =    addToChat,  ['scholar']   = handle_strategems,  ['show']      =  show_set,
-    ['update'] =    update,     ['cycle']     = cycle_mode,         ['set']       =  set_mode,
-    ['reset']  =    reset_mode, ['toggle']    = toggle_mode,        ['activate']  =  activate_mode,
-    ['equip']  =    equip_set,  ['info']      = info_func,          ['slips']     =  setops.find_slipped,
-    ['smn']    =    handle_smn, ['inv_check'] = setops.find_movable,['set2chat']  =  setops.set_to_chat,
-    ['pet']    =    handle_pet, ['export']    = export_gear,        ['storable']  =  setops.determine_storable
+    --Mode Setting
+    ['activate']  = {['fn']=activate_mode,             ['group']='mode', ['args']='mode', ['help']='Set modes[mode] to true and update current equipment'},
+    ['cycle']     = {['fn']=cycle_mode,                ['group']='mode', ['args']='mode', ['help']='Advance modes[mode] to the next value'},
+    ['reset']     = {['fn']=reset_mode,                ['group']='mode', ['args']='mode', ['help']='Set modes[mode] to its default value'},
+    ['set']       = {['fn']=set_mode,                  ['group']='mode', ['args']='mode opt', ['help']='Set modes[mode] = opt'},
+    ['toggle']    = {['fn']=toggle_mode,               ['group']='mode', ['args']='mode', ['help']='Toggle modes[mode] to be the opposite of its current value'},
+    --Inventory Convenience
+    ['inv_check'] = {['fn']=setops.find_movable,       ['group']='inv', ['args']='', ['help']='Print a list items in your primary inventory that are not required by your gear lua'},
+    ['misplaced'] = {['fn']=setops.find_misplaced,     ['group']='inv', ['args']='', ['help']='Print the items required by your gear lua that are in a wrong bag, and where they are'},
+    ['export']    = {['fn']=export_gear,               ['group']='inv', ['args']='[format] [name]', ['help']='Export currently equipped gear to .../GearSwap/data/export/.  All args are optional; specify list to put each item on a separate line'}, 
+    ['set2chat']  = {['fn']=setops.set_to_chat,        ['group']='inv', ['args']='channel', ['help']='Print your currently equipped gear to the given channel (/l, /t name, etc.)'},
+    ['slips']     = {['fn']=setops.find_slipped,       ['group']='inv', ['args']='', ['help']='Print the items required by your gear lua that are stored with the porter moogle'},
+    ['storable']  = {['fn']=setops.determine_storable, ['group']='inv', ['args']='', ['help']='Print the the items you have in any inventory location that could be stored with a porter moogle, and the slip they would go in'},
+    --Action & Equipment Management
+    ['equip']     = {['fn']=equip_set,                 ['group']='act', ['args']='status', ['help']='Equip the current set for the given status (engaged/idle)'},
+    ['pet']       = {['fn']=handle_pet,                ['group']='act', ['args']='cmd', ['help']='Execute /pet pet_moves[cmd][PetName] <me> (defined in settings_charName.lua)'},
+    ['scholar']   = {['fn']=handle_strategems,         ['group']='act', ['args']='stratType | list', ['help']='Use the proper stratagem for the given type, or list available types/stratagems'},
+    ['show']      = {['fn']=show_set,                  ['group']='act', ['args']='spell|ability|engaged [precast|midcast]', ['help']='Equip the gear that you would wear for the given action, optionally during the given phase (defaults to precast for abilities and midcast for spells)'},
+    ['smn']       = {['fn']=handle_smn,                ['group']='act', ['args']='cmd|siphon', ['help']='Execute /pet bps[cmd][PetName] <target> or summons an spirit to siphon'},
+    ['update']    = {['fn']=update,                    ['group']='act', ['args']='[user]', ['help']='Update currently equipped gear to what it should be for your current state, optionally printing some status info if \'user\' is specified.'},
+    --Misc
+    ['atc']       = {['fn']=addToChat,                 ['group']='misc', ['args']='[color#] text', ['help']='Add the given text to the chat log using the given color number'},
+    ['help']      = {['fn']=print_help,                ['group']='misc', ['args']='', ['help']='Print this help text'},
+    ['info']      = {['fn']=info_func,                 ['group']='misc', ['args']='[cmd]', ['help']='View addon/windower variable values'},
+    ['test']      = {['fn']=test,                      ['group']='misc', ['hide']=true},
 }

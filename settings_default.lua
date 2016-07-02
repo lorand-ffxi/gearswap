@@ -128,7 +128,7 @@ function set_keybinds()
         keybinds['@3'] = 'input /ja "Animated Flourish" <t>'
         keybinds['@8'] = 'input /ja "Spectral Jig" <me>'
     end
-    if S{mj,sj}:containsOneOrMore({'WHM','RDM','SCH'}) then
+    if table.intersects({mj,sj}, {'WHM','RDM','SCH'}) then
         keybinds['@1'] = 'input /ma "Blink" <me>'
         keybinds['@4'] = 'input /ma "Aquaveil" <me>'
         keybinds['@5'] = 'input /ma "Phalanx" <me>'

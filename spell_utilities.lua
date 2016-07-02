@@ -9,6 +9,24 @@
 local cure2num = {['Cure'] = 1, ['Cure II'] = 2, ['Cure III'] = 3, ['Cure IV'] = 4, ['Cure V'] = 5, ['Cure VI'] = 6}
 local num2cure = {'Cure','Cure II','Cure III','Cure IV','Cure V','Cure VI'}
 local strat_charge_time = {240,120,80,60,48}
+local stratagems = {
+    ['White Magic'] = {
+        ['dark'] =     'Dark Arts', ['light'] =  'Addendum: White', ['cost'] =     'Penury',
+        ['speed'] =    'Celerity',  ['aoe'] =    'Accession',       ['power'] =    'Rapture',
+        ['accuracy'] = 'Altruism',  ['enmity'] = 'Tranquility',     ['duration'] = 'Perpetuance',   
+    },
+    ['Black Magic'] = {
+        ['light'] =    'Light Arts',   ['dark'] =   'Addendum: Black', ['cost'] =  'Parsimony',
+        ['speed'] =    'Alacrity',     ['aoe'] =    'Manifestation',   ['power'] = 'Ebullience',
+        ['accuracy'] = 'Focalization', ['enmity'] = 'Equanimity',      ['ws'] =    'Immanence'
+    },
+    ['None'] = {['light'] = 'Light Arts', ['dark'] = 'Dark Arts'}
+}
+local stratagem_messages = {
+    ['cost'] =     'cost 50% less MP',   ['speed'] =    'cast 50% faster',  ['aoe'] =    'affect multiple targets',
+    ['duration'] = 'last twice as long', ['accuracy'] = 'be more accurate', ['enmity'] = 'generate less enmity'
+}
+
 
 --[[
     Lower the tier of the cure spell being cast if the spell target's HP warrants it.
@@ -70,19 +88,19 @@ end
     Returns the cure tier to use to adequately heal the spell target without wasting MP.
 --]]
 function get_tier_for_hp(cureTier, hpMissing)
-    if (cureTier == 1) then return cureTier end     --Skip this if the tier is already 1
-    local tier = cureTier                   --Set the Cure tier to the given tier
-    local potency = vars.CurePotency[tier]          --Retrieve the Cure potency for the given tier
+    if (cureTier == 1) then return cureTier end         --Skip this if the tier is already 1
+    local tier = cureTier                               --Set the Cure tier to the given tier
+    local potency = vars.CurePotency[tier]              --Retrieve the Cure potency for the given tier
     local pdelta = potency - vars.CurePotency[tier-1]   --Calculate the potency difference between this tier and the next lowest tier
-    local threshold = potency - (pdelta * 0.5)      --Calculate the value to compare the amount of missing HP to
-    while hpMissing < threshold do              --Iterate while the current Cure tier is higher than necessary
-        tier = tier - 1                     --Decrement the tier
-        if tier > 1 then                    --If the tier is high enough
+    local threshold = potency - (pdelta * 0.5)          --Calculate the value to compare the amount of missing HP to
+    while hpMissing < threshold do                      --Iterate while the current Cure tier is higher than necessary
+        tier = tier - 1                                 --Decrement the tier
+        if tier > 1 then                                --If the tier is high enough
             potency = vars.CurePotency[tier]            --Retrieve the Cure potency for the new tier
-            pdelta = potency - vars.CurePotency[tier-1]     --Recalculate the potency difference
-            threshold = potency - (pdelta * 0.5)            --Recalculate the comparison value
-        else                            --Otherwise
-            threshold = 0                       --Break out of the loop
+            pdelta = potency - vars.CurePotency[tier-1] --Recalculate the potency difference
+            threshold = potency - (pdelta * 0.5)        --Recalculate the comparison value
+        else                                            --Otherwise
+            threshold = 0                               --Break out of the loop
         end
     end
     return tier
@@ -126,52 +144,42 @@ function handle_strategems(cmdParams)
     if not cmdParams[1] then
         atc(123,'Error: No strategem command given.')
         return
+    elseif cmdParams[1]:lower() == 'list' then
+        for mtype,vals in pairs(stratagems) do
+            pprint(vals, mtype)
+        end
+        return
     elseif not S{player.main_job, player.sub_job}:contains('SCH') then
         atc(123,'You cannot use stratagems without having Scholar as your main or sub job.')
         return
     end
     local stratagem = cmdParams[1]:lower()
     
-    local magicType = 'None'
+    local magicType = nil
     if buff_active('Light Arts', 'Addendum: White') then
         magicType = 'White Magic'
     elseif buff_active('Dark Arts', 'Addendum: Black') then
         magicType = 'Black Magic'
+    elseif any_eq(stratagem, 'light', 'dark') then
+        magicType = 'None'
     end
     
-    local stratagems = {
-        ['White Magic'] = {
-            ['dark']=   'input /ja "Dark Arts" <me>',   ['light']=  'input /ja "Addendum: White" <me>', ['cost']=   'input /ja Penury <me>',
-            ['speed']=  'input /ja Celerity <me>',  ['aoe'] =   'input /ja Accession <me>',     ['power']=  'input /ja Rapture <me>',
-            ['accuracy']=   'input /ja Altruism <me>',  ['enmity']= 'input /ja Tranquility <me>',       ['duration']=   'input /ja Perpetuance <me>',   
-        },
-        ['Black Magic'] = {
-            ['light']=  'input /ja "Light Arts" <me>',  ['dark']=   'input /ja "Addendum: Black" <me>', ['cost']=   'input /ja Parsimony <me>',
-            ['speed']=  'input /ja Alacrity <me>',  ['aoe'] =   'input /ja Manifestation <me>',     ['power']=  'input /ja Ebullience <me>',
-            ['accuracy']=   'input /ja Focalization <me>',  ['enmity']= 'input /ja Equanimity <me>',        ['ws']=     'input /ja Immanence <me>'
-        },
-        ['None'] = {['light']=  'input /ja "Light Arts" <me>',  ['dark']=   'input /ja "Dark Arts" <me>'}
-    }
-    local messages = {
-        ['cost']=   ' spell will cost 50% less MP.',    ['speed']=  ' spell will cast 50% faster.',     ['aoe'] =   ' spell will affect multiple targets.',
-        ['duration']=   ' spell will last twice as long.',  ['accuracy']=   ' spell will be more accurate.',    ['enmity']= ' spell will generate less enmity.',
-    }
-    
-    if (stratagems[magicType] ~= nil) then
+    if (magicType ~= nil) then
         if (stratagems[magicType][stratagem] ~= nil) then
-            windower.send_command(stratagems[magicType][stratagem])
+            windower.send_command('input /ja "%s" <me>':format(stratagems[magicType][stratagem]))
         else
             atc(123,'Error: Unknown strategem ['..tostring(strategem)..']')
         end
     else
         atc(123,'You must activate Light or Dark Arts before you can use a stratagem.')
+        return
     end
     
-    if (messages[stratagem] ~= nil) then
-        atc(207, 'Your next '..magicType..messages[stratagem])
+    if (stratagem_messages[stratagem] ~= nil) then
+        atcfs(207, 'Your next %s spell will %s.', magicType, stratagem_messages[stratagem])
     elseif (stratagem == 'power') then
         local effectTexts = {['Black Magic']='20%',['White Magic']='50%'}
-        atc(207, 'Your next '..magicType..' spell will be '..effectTexts[magicType]..' more potent.')
+        atcfs(207, 'Your next %s spell will be %s more potent.', magicType, effectTexts[magicType])
     end
 end
 

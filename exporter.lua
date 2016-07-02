@@ -6,7 +6,7 @@
     list        prints each item on a separate line (default is grouped)
     <set name>  uses the provided name as the name of the set
 --]]
-function export_gear(args)
+local _export_gear = function(args)
     local header = 'sets.exported'
     local listfmt = false
     --Process provided arguments
@@ -21,17 +21,34 @@ function export_gear(args)
     --Process currently equipped gear
     local slots = {'main','sub','range','ammo','head','neck','left_ear','right_ear','body','hands','left_ring','right_ring','back','waist','legs','feet'}
     local slotmap = {['left_ear']='ear1',['right_ear']='ear2',['left_ring']='ring1',['right_ring']='ring2'}
+    local bagmap = {[0]='inventory',[8]='wardrobe',[10]='wardrobe2'}
     local itemlist = windower.ffxi.get_items()
+    local eq_tbl = itemlist.equipment
+    
+    local enquote = customized(string.format, "'%s'")
     
     local equipped = {}
     for _,slot in pairs(slots) do
-        local index = itemlist.equipment[slot]
-        if (index ~= 0) then
+        local idx_in_bag = eq_tbl[slot]
+        if (idx_in_bag ~= 0) then
             local sname = slotmap[slot] or slot
-            local bag = itemlist.equipment[slot..'_bag'] == 8 and 'wardrobe' or 'inventory'
-            local itemid = itemlist[bag][index].id
-            local item = res.items[itemid]
-            equipped[sname] = item.enl:capitalize()
+            local uniq_item = itemlist[bagmap[eq_tbl[slot..'_bag']]][idx_in_bag]
+            local iname = '"%s"':format(res.items[uniq_item.id].enl:capitalize())
+            local valid_augs = {}
+            if uniq_item.extdata then
+                local augs = extdata.decode(uniq_item).augments or {}
+                for _,aug in pairs(augs) do
+                    if (#aug > 0) and (aug ~= 'none') then
+                        table.insert(valid_augs, aug)
+                    end
+                end
+            end
+            
+            if #valid_augs > 0 then
+                equipped[sname] = '{name=%s, augments=%s}':format(iname, '{%s}':format(',':join(map(enquote, valid_augs))))
+            else
+                equipped[sname] = iname
+            end
         end
     end
 
@@ -51,6 +68,8 @@ function export_gear(args)
     local f = io.open(windower.addon_path..path..'.lua','w+')
     f:write(header..' = {\n')
     
+    local fmt = '\t%s=%s'
+    
     local comma = false
     local lastnl = false
     for i = 1, 16 do
@@ -63,7 +82,7 @@ function export_gear(args)
         end
         
         if (iname ~= nil) then
-            f:write('\t'..sname..'="'..iname..'"')
+            f:write(fmt:format(sname, iname))
             comma = true
             lastnl = false
         else
@@ -87,3 +106,5 @@ function export_gear(args)
     f:close()
     atc('Successfully exported set to '..path..'.lua')
 end
+
+export_gear = traceable(_export_gear)

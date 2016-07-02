@@ -31,6 +31,48 @@ function safe_set(set1, set2, strict)
     end
 end
 
+--function setops.expand_augments(item)
+local _expand_augments = function(item)
+    if item ~= nil then
+        local encoded = item.extdata
+        if (encoded ~= nil) and (#encoded > 0) then
+            local valid_augs = {}
+            local iaugs = extdata.decode(item).augments or {}
+            for _,aug in pairs(iaugs) do
+                if (#aug > 0) and (aug ~= 'none') then
+                    table.insert(valid_augs, aug)
+                end
+            end
+            item.augments = valid_augs
+        end
+    end
+    return item
+end
+setops.expand_augments = traceable(_expand_augments)
+
+
+function setops.equippable_items()
+    local witems = windower.ffxi.get_items()
+    local equippable = {}
+    for _,bag_name in pairs(equip_bag_names) do
+        for _,bagged_item in ipairs(witems[bag_name]) do
+            if bagged_item ~= nil then
+                bagged_item = setops.expand_augments(bagged_item)
+                local id = bagged_item.id
+                if equippable[id] == nil then equippable[id] = {} end
+                table.insert(equippable[id], bagged_item)
+            end
+        end
+    end
+    return equippable
+end
+
+
+local function refresh_equippable()
+    setops.equippable = setops.equippable_items()
+end
+
+
 --[[
     Combines equipment verified as available from set1 and set2.  Supports slots having more than one option each,
     contained in a table ordered by preference.  If a specific item slot's contents is defined in both set1 and
@@ -39,6 +81,8 @@ end
     subset may be provided for set2 that will be used if set2 exists.
 --]]
 function combineSets(set1, set2, ...)
+    refresh_equippable()
+    
     local newSet = {}
     local subsets = {...}
     local numsub = sizeof(subsets)
@@ -59,15 +103,19 @@ function combineSets(set1, set2, ...)
         end
     end
     
+    local current_item
     for _,itemSlot in pairs(itemSlots) do
         if (set2 ~= nil) and (set2[itemSlot] ~= nil) then
-            if type(set2[itemSlot]) == 'table' then
-                local i = setops.chooseAvailablePiece(set2[itemSlot],itemSlot)
-                if i ~= nil then
-                    newSet[itemSlot] = i
+            current_item = set2[itemSlot]
+            if type(current_item) == 'table' then
+                if current_item.name == nil then
+                    --If it's not a {name, augment} table, it's a list of options for the slot
+                    newSet[itemSlot] = setops.chooseAvailablePiece(current_item, itemSlot)
+                elseif setops.isAvailable(current_item, itemSlot) then
+                    newSet[itemSlot] = current_item
                 end
-            elseif setops.isAvailable(set2[itemSlot],itemSlot) then
-                newSet[itemSlot] = set2[itemSlot]
+            elseif setops.isAvailable(current_item, itemSlot) then
+                newSet[itemSlot] = current_item
             end
         end
         
@@ -75,13 +123,15 @@ function combineSets(set1, set2, ...)
         --in set2 was unavailable, then use what was defined in set1
         if newSet[itemSlot] == nil then
             if (set1 ~= nil) and (set1[itemSlot] ~= nil) then
-                if type(set1[itemSlot]) == 'table' then
-                    local i = setops.chooseAvailablePiece(set1[itemSlot],itemSlot)
-                    if i ~= nil then
-                        newSet[itemSlot] = i
+                current_item = set1[itemSlot]
+                if type(current_item) == 'table' then
+                    if current_item.name == nil then
+                        newSet[itemSlot] = setops.chooseAvailablePiece(current_item, itemSlot)
+                    elseif setops.isAvailable(current_item, itemSlot) then
+                        newSet[itemSlot] = current_item
                     end
-                elseif setops.isAvailable(set1[itemSlot],itemSlot) then
-                    newSet[itemSlot] = set1[itemSlot]
+                elseif setops.isAvailable(current_item, itemSlot) then
+                    newSet[itemSlot] = current_item
                 end
             end
         end
@@ -96,9 +146,34 @@ end
 
 
 function setops.in_equippable_bag(item)
-    local equip_bags = map(customized(lor.fn_get, player), equip_bag_names)
-    local item_opts = map(customized(lor.fn_get, item, 2), equip_bags)
-    return table.first_value(item_opts)
+    local iname = item
+    local augs = nil
+    if type(item) ~= "string" then
+        iname = item.name
+        augs = item.augments
+    end
+    local player_bag_tables = map(customized(lor.fn_get, player), equip_bag_names)
+    local item_opts = map(customized(lor.fn_get, iname, 2), player_bag_tables)
+    if augs == nil then
+        for _,itbl in pairs(item_opts) do
+            if itbl ~= nil then return itbl end
+        end
+        return nil
+    end
+    
+    for _,itbl in pairs(item_opts) do
+        if itbl ~= nil then
+            local equippable_items = setops.equippable[itbl.id]
+            if equippable_items ~= nil then
+                for _,equippable_item in pairs(equippable_items) do
+                    if table.equals(item.augments, equippable_item.augments) then
+                        return itbl
+                    end
+                end
+            end
+        end
+    end
+    return nil
 end
 
 
@@ -115,6 +190,7 @@ function setops.chooseAvailablePiece(gearTable, slot)
     end
     return nil
 end
+
 
 --[[
     Returns true if the given item is in the player's inventory, false otherwise.
@@ -139,6 +215,7 @@ function setops.isAvailable(item, slot)
     return false
 end
 
+
 --[[
     Returns a set containing the ftp pieces for the given ws.
 --]]
@@ -153,10 +230,12 @@ function setops.get_ftp_set(ws)
     return ftpSet
 end
 
+
 --[[
     Returns a set containing the ftp piece for the given slot and ws.
 --]]
 function setops.get_ftp_gear(slot, ws)
+    refresh_equippable()
     local all_waist = 'Fotia Belt'
     local all_neck = 'Fotia Gorget'
     if (slot == 'waist') and setops.in_equippable_bag(all_waist) then
@@ -178,7 +257,9 @@ function setops.get_ftp_gear(slot, ws)
     return {}
 end
 
+
 function setops.getObi(element)
+    refresh_equippable()
     local all_ele = 'Hachirin-no-obi'
     if setops.in_equippable_bag(all_ele) then
         return all_ele
@@ -187,9 +268,11 @@ function setops.getObi(element)
     end
 end
 
+
 --==============================================================================
 --          Set Information
 --==============================================================================
+
 
 --[[
     Recursively traverses user-defined sets to compile a list of all gear that
@@ -207,6 +290,7 @@ function setops.retrieve_items(set)
     end
     return items
 end
+
 
 --[[
     Recursively traverses user-defined sets to compile a list of item IDs for
@@ -229,6 +313,7 @@ function setops.retrieve_item_ids(set, res_items)
     return item_ids
 end
 
+
 --[[
     Creates a copy of res.items with all names converted to lower case.
 --]]
@@ -239,6 +324,7 @@ function setops.get_item_res()
     end
     return list
 end
+
 
 --[[
     Compiles a list of all items that are in the player's normal storages.
@@ -262,6 +348,7 @@ function setops.get_player_items(bagname)
     end
     return gear
 end
+
 
 function setops.determine_storable(args)
     local gear = setops.get_player_items(args[1])
@@ -299,6 +386,7 @@ function setops.determine_storable(args)
     end 
 end
 
+
 --[[
     Compares the gear specified in the currently active Player_JOB_gear.lua with the gear present in inventory.
     Reports which items are not necessary so that they can be moved to make room.
@@ -327,12 +415,14 @@ function setops.find_movable()
     end
 end
 
+
 --[[
     Compares the gear specified in the currently active Player_JOB_gear.lua with the gear that is stored with the
     Porter Moogle.  Reports which slips are necessary to retrieve gear from, and which pieces are stored with each
     of those slips. Automatically runs when a player change jobs.  Can be run at any time via: //gs c slips
 --]]
 function setops.find_slipped()
+    refresh_equippable()
     local items = setops.retrieve_items(sets)           --List of all gear in Player_JOB_gear.lua
     local slip_items = _libs.slips.get_player_items()   --List of all gear stored with the Porter Moogle now
     local res_items = setops.get_item_res()             --Transform res.items for easier use
@@ -376,6 +466,7 @@ end
     are in inventory locations from which those items cannot be equipped.
 --]]
 function setops.find_misplaced()
+    refresh_equippable()
     local items = setops.retrieve_items(sets)   --List of all gear in Player_JOB_gear.lua
     local res_items = setops.get_item_res()     --Transform res.items for easier use
     
@@ -429,7 +520,7 @@ end
 --]]
 function setops.set_to_chat(args)
     if not S{'/l','/p','/t'}:contains(args[1]) then
-        atc(123,'Invalid target for printing set info: '..args[1])
+        atc(123,'Invalid target for printing set info: \'%s\' - Valid: /l, /p, /t':format(args[1]))
         return
     end
     local targ = args[1]
@@ -441,9 +532,12 @@ function setops.set_to_chat(args)
         targ = targ..' '..args[2]
     end
     local pe = player.equipment
-    local line1 = 'input '..targ..' '..pe.main..', '..pe.sub..', '..pe.range..', '..pe.ammo
-    local line2 = 'input '..targ..' '..pe.head..', '..pe.neck..', '..pe.ear1..', '..pe.ear2
-    local line3 = 'input '..targ..' '..pe.body..', '..pe.hands..', '..pe.ring1..', '..pe.ring2
-    local line4 = 'input '..targ..' '..pe.back..', '..pe.waist..', '..pe.legs..', '..pe.feet
-    windower.send_command(line1..';wait 1.1;'..line2..';wait 1.1;'..line3..';wait 1.1;'..line4)
+    local fmt = 'input %s %s, %s, %s, %s'
+    local olines = {
+        fmt:format(targ, pe.main, pe.sub, pe.range, pe.ammo),
+        fmt:format(targ, pe.head, pe.neck, pe.ear1, pe.ear2),
+        fmt:format(targ, pe.body, pe.hands, pe.ring1, pe.ring2),
+        fmt:format(targ, pe.back, pe.waist, pe.legs, pe.feet)
+    }
+    windower.send_command(';wait 1.1;':join(olines))
 end
