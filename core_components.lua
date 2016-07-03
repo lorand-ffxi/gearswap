@@ -1296,9 +1296,9 @@ executable_commands = {
     --Action & Equipment Management
     ['equip']     = {['fn']=equip_set,                 ['group']='act', ['args']='status', ['help']='Equip the current set for the given status (engaged/idle)'},
     ['pet']       = {['fn']=handle_pet,                ['group']='act', ['args']='cmd', ['help']='Execute /pet pet_moves[cmd][PetName] <me> (defined in settings_charName.lua)'},
-    ['scholar']   = {['fn']=handle_strategems,         ['group']='act', ['args']='stratType | list', ['help']='Use the proper stratagem for the given type, or list available types/stratagems'},
+    ['scholar']   = {['fn']=handle_strategems,         ['group']='act', ['args']='stratType|list', ['help']='Use the proper stratagem for the given type, or list available types/stratagems'},
     ['show']      = {['fn']=show_set,                  ['group']='act', ['args']='spell|ability|engaged [precast|midcast]', ['help']='Equip the gear that you would wear for the given action, optionally during the given phase (defaults to precast for abilities and midcast for spells)'},
-    ['smn']       = {['fn']=handle_smn,                ['group']='act', ['args']='cmd|siphon', ['help']='Execute /pet bps[cmd][PetName] <target> or summons an spirit to siphon'},
+    ['smn']       = {['fn']=handle_smn,                ['group']='act', ['args']='cmd|siphon', ['help']='Execute /pet bps[cmd][PetName] <target> or summons a spirit to siphon'},
     ['update']    = {['fn']=update,                    ['group']='act', ['args']='[user]', ['help']='Update currently equipped gear to what it should be for your current state, optionally printing some status info if \'user\' is specified.'},
     --Misc
     ['atc']       = {['fn']=addToChat,                 ['group']='misc', ['args']='[color#] text', ['help']='Add the given text to the chat log using the given color number'},

@@ -90,11 +90,10 @@ function addToChat(cmdParams)
     local dispText = cmdParams[2]
     for i = 3, #cmdParams, 1 do
         dispText = ' ':join(dispText, cmdParams[i])
-        --dispText = dispText .. ' ' .. cmdParams[i]
     end
     --Parse the text to be displayed for special character codes as found
     -- in Windower/addons/libs/chat/chars.lua
-    for k,v in pairs(_libs.chars) do
+    for k,v in pairs(_libs['chat/chars']) do
         local ckey = '<%s>':format(k)
         if dispText:contains(ckey) then
             --Replace codes with the characters they represent

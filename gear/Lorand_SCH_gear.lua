@@ -66,7 +66,7 @@ function init_gear_sets()
     --============================================================
     sets.midcast.FastRecast = {
         main="Marin Staff +1",      ammo="Impatiens",
-        head="Kaabnanx Hat",        neck="Orunmila's Torque",
+        head="Kaabnax Hat",        neck="Orunmila's Torque",
         body="Hagondes Coat +1",    hands="Gendewitha Gages +1",
         legs="Hagondes Pants +1",   feet="Hagondes Sabots +1"
     }
@@ -250,7 +250,7 @@ function init_gear_sets()
         main="Bolelabunga",         sub="Genbu's Shield",                                       ammo="Impatiens",
         head="Artsieq Hat",         neck="Twilight Torque",         ear1="Brachyura Earring",   ear2="Merman's Earring",
         body="Academic's Gown +1",  hands="Gendewitha Gages +1",    ring1="Defending Ring",     ring2="Dark Ring",
-        back="Tuilha Mantle",       waist="Emphatikos Rope",        legs="Hagondes Pants +1",   feet="Gendewitha Galoshes +1"
+        back="Tuilha Cape",         waist="Emphatikos Rope",        legs="Hagondes Pants +1",   feet="Gendewitha Galoshes +1"
     }
     sets.idle.with_buff = {}
     

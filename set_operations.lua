@@ -31,8 +31,9 @@ function safe_set(set1, set2, strict)
     end
 end
 
---function setops.expand_augments(item)
-local _expand_augments = function(item)
+
+--local _expand_augments = function(item)
+function setops.expand_augments(item)
     if item ~= nil then
         local encoded = item.extdata
         if (encoded ~= nil) and (#encoded > 0) then
@@ -48,16 +49,17 @@ local _expand_augments = function(item)
     end
     return item
 end
-setops.expand_augments = traceable(_expand_augments)
+--setops.expand_augments = traceable(_expand_augments)
 
 
-function setops.equippable_items()
+function setops.expand_augments_in_bags(bag_list)
     local witems = windower.ffxi.get_items()
     local equippable = {}
-    for _,bag_name in pairs(equip_bag_names) do
+    for _,bag_name in pairs(bag_list) do
         for _,bagged_item in ipairs(witems[bag_name]) do
             if bagged_item ~= nil then
                 bagged_item = setops.expand_augments(bagged_item)
+                bagged_item.bag_name = bag_name
                 local id = bagged_item.id
                 if equippable[id] == nil then equippable[id] = {} end
                 table.insert(equippable[id], bagged_item)
@@ -69,7 +71,12 @@ end
 
 
 local function refresh_equippable()
-    setops.equippable = setops.equippable_items()
+    setops.equippable = setops.expand_augments_in_bags(equip_bag_names)
+end
+
+
+local function refresh_non_equippable()
+    setops.non_equippable = setops.expand_augments_in_bags(bags_nonequippable)
 end
 
 
@@ -138,6 +145,7 @@ function combineSets(set1, set2, ...)
     end
     return newSet
 end
+
 
 function canDW()
     local dwJobs = S{'NIN','DNC','BLU','THF'}
@@ -278,19 +286,52 @@ end
     Recursively traverses user-defined sets to compile a list of all gear that
     is currently necessary.
 --]]
+--local _retrieve_items = function(set)
 function setops.retrieve_items(set)
-    local items = S{}
-    for slot,iname in pairs(set) do
-        if (type(iname) == 'table') then
-            local others = setops.retrieve_items(iname)
-            items = items:union(others)
-        elseif (iname ~= 'empty') then
-            items:add(iname)
+    local items = {}
+    for slot,item in pairs(set) do
+        if (type(item) == 'table') then
+            if item.name ~= nil then
+                if item.name ~= 'empty' then
+                    items[item.name] = items[item.name] or {}
+                    local found_match = false
+                    for _,existing in pairs(items[item.name]) do
+                        if table.equals(item.augments, existing.augments) then
+                            found_match = true
+                            break
+                        end
+                    end
+                    if not found_match then
+                        table.insert(items[item.name], item)
+                    end
+                end
+            else
+                local others = setops.retrieve_items(item)
+                for iname,instances in pairs(others) do
+                    if iname ~= 'empty' then
+                        items[iname] = items[iname] or {}
+                        for _,instance in pairs(instances) do
+                            local found_match = false
+                            for _,existing in pairs(items[iname]) do
+                                if table.equals(instance.augments, existing.augments) then
+                                    found_match = true
+                                    break
+                                end
+                            end
+                            if not found_match then
+                                table.insert(items[iname], instance)
+                            end
+                        end
+                    end
+                end
+            end
+        elseif (item ~= 'empty') then
+            items[item] = items[item] or {}
         end
     end
     return items
 end
-
+--setops.retrieve_items = traceable(_retrieve_items)
 
 --[[
     Recursively traverses user-defined sets to compile a list of item IDs for
@@ -299,20 +340,26 @@ end
 function setops.retrieve_item_ids(set, res_items)
     res_items = res_items or setops.get_item_res()
     local item_ids = S{}
-    for slot,iname in pairs(set) do
-        if (type(iname) == 'table') then
-            local others = setops.retrieve_item_ids(iname, res_items)
-            item_ids = item_ids:union(others)
-        elseif (iname ~= 'empty') then
-            local itable = res_items:with('en_l',iname:lower()) or res_items:with('enl_l',iname:lower())
-            if (itable ~= nil) then
-                item_ids:add(itable.id)
-            end
+    for iname,instances in pairs(setops.retrieve_items(set)) do
+        local itable = res_items:with('en_l',iname:lower()) or res_items:with('enl_l',iname:lower())
+        if (itable ~= nil) then
+            item_ids:add(itable.id)
         end
     end
     return item_ids
 end
 
+
+--local _retrieve_item_details = function(set, res_items)
+function setops.retrieve_item_details(set, res_items)
+    res_items = res_items or setops.get_item_res()
+    local items = setops.retrieve_items(set)
+    for iname,instances in pairs(items) do
+        items[iname].res = res_items:with('en_l',iname:lower()) or res_items:with('enl_l',iname:lower())
+    end
+    return items
+end
+--setops.retrieve_item_details = traceable(_retrieve_item_details)
 
 --[[
     Creates a copy of res.items with all names converted to lower case.
@@ -410,9 +457,22 @@ function setops.find_movable()
         atc('Everything in your inventory is necessary!':colorize(258))
         return
     end
-    for iname,_ in pairs(extras) do
+    for iname,_ in opairs(extras) do
         atc(iname:colorize(329))
     end
+end
+
+
+function setops.map_slipped_to_slip()
+    local slip_items = _libs.slips.get_player_items()   --List of all gear stored with the Porter Moogle now
+    local slipped = {}
+    for sid,sitems in pairs(slip_items) do
+        local sliptbl = res.items[sid]
+        for _,id in pairs(sitems) do
+            slipped[id] = sliptbl.en
+        end
+    end
+    return slipped
 end
 
 
@@ -423,23 +483,16 @@ end
 --]]
 function setops.find_slipped()
     refresh_equippable()
-    local items = setops.retrieve_items(sets)           --List of all gear in Player_JOB_gear.lua
-    local slip_items = _libs.slips.get_player_items()   --List of all gear stored with the Porter Moogle now
-    local res_items = setops.get_item_res()             --Transform res.items for easier use
+    local items = setops.retrieve_item_details(sets)    --List of all gear in Player_JOB_gear.lua
+    local slipped2slip = setops.map_slipped_to_slip()   --Mapping of items stored in slips to slip names
     
-    --Iterate through required gear, checking to see if any of it is stored with Porter
     local slipped = {}
-    for item,_ in pairs(items) do
-        if not setops.in_equippable_bag(item) then
-            local itable = res_items:with('en_l',item:lower()) or res_items:with('enl_l',item:lower())
-            if (itable ~= nil) then
-                for sid,sitems in pairs(slip_items) do
-                    if S(sitems):contains(itable.id) then
-                        local sliptbl = res.items[sid]
-                        slipped[sliptbl.en] = slipped[sliptbl.en] or {}
-                        table.insert(slipped[sliptbl.en], item)
-                    end
-                end
+    for iname,itbl in pairs(items) do
+        if itbl.res ~= nil then
+            local slip = slipped2slip[itbl.res.id]
+            if slip ~= nil then
+                slipped[slip] = slipped[slip] or {}
+                table.insert(slipped[slip], iname)
             end
         end
     end
@@ -466,31 +519,55 @@ end
     are in inventory locations from which those items cannot be equipped.
 --]]
 function setops.find_misplaced()
-    refresh_equippable()
-    local items = setops.retrieve_items(sets)   --List of all gear in Player_JOB_gear.lua
-    local res_items = setops.get_item_res()     --Transform res.items for easier use
-    
-    local nonequippable = {}
-    for _,bname in pairs(bags_nonequippable) do
-        local bag_contents = player[bname]
-        if bag_contents ~= nil then
-            for iname,itbl in pairs(bag_contents) do
-                if itbl ~= nil then
-                    nonequippable[itbl.id] = bname
-                end
-            end
-        end
-    end
+    refresh_non_equippable()
+    local items = setops.retrieve_items(sets)           --List of all gear in Player_JOB_gear.lua
+    local res_items = setops.get_item_res()             --Transform res.items for easier use
+    local slipped2slip = setops.map_slipped_to_slip()
     
     local misplaced = {}
-    for item,_ in pairs(items) do
-        if not setops.in_equippable_bag(item) then
-            local itable = res_items:with('en_l',item:lower()) or res_items:with('enl_l',item:lower())
-            if (itable ~= nil) then
-                local bname = nonequippable[itable.id]
-                if bname ~= nil then
-                    misplaced[bname] = misplaced[bname] or {}
-                    table.insert(misplaced[bname], item)
+    for iname,instances in pairs(items) do
+        if iname ~= 'empty' then
+            local itable = res_items:with('en_l',iname:lower()) or res_items:with('enl_l',iname:lower())
+            if itable == nil then
+                atcfs(123, 'Unable to find item table for %s', iname)
+            elseif slipped2slip[itable.id] == nil then
+                if #instances == 0 then
+                    if not setops.in_equippable_bag(iname) then
+                        local non_equippable_items = setops.non_equippable[itable.id] or {}
+                        local found_match = false
+                        for _,non_equippable_item in pairs(non_equippable_items) do
+                            local bag_name = non_equippable_item.bag_name
+                            misplaced[bag_name] = misplaced[bag_name] or {}
+                            table.insert(misplaced[bag_name], iname)
+                            found_match = true
+                            break
+                        end
+                        if not found_match then
+                            misplaced['missing'] = misplaced['missing'] or {}
+                            table.insert(misplaced['missing'], iname)
+                        end
+                    end
+                else
+                    local iname2 = '%s%s':format(iname, (#instances > 0) and '*' or '')
+                    for _,item in pairs(instances) do
+                        if not setops.in_equippable_bag(item) then
+                            local non_equippable_items = setops.non_equippable[itable.id] or {}
+                            local found_match = false
+                            for _,non_equippable_item in pairs(non_equippable_items) do
+                                local bag_name = non_equippable_item.bag_name
+                                if table.equals(item.augments, non_equippable_item.augments) then
+                                    misplaced[bag_name] = misplaced[bag_name] or {}
+                                    table.insert(misplaced[bag_name], iname2)
+                                    found_match = true
+                                    break
+                                end
+                            end
+                            if not found_match then
+                                misplaced['missing'] = misplaced['missing'] or {}
+                                table.insert(misplaced['missing'], iname2)
+                            end
+                        end
+                    end
                 end
             end
         end
@@ -498,17 +575,16 @@ function setops.find_misplaced()
     
     if (sizeof(misplaced) > 0) then
         atc('Items you need to move to bags from which items can be equipped:':colorize(262))
+        local output = {}
+        for bname,btbl in pairs(misplaced) do
+            local item_list = ", ":join(btbl)
+            output[bname] = '[':colorize(263)..tostring(sizeof(btbl)):colorize(4,263)..']'..bname:colorize(326,263)..': '..item_list
+        end
+        for k,v in opairs(output) do
+            atc(v)
+        end
     else
         atc('All of your required items are equippable!':colorize(258))
-        return
-    end
-    local output = {}
-    for bname,btbl in pairs(misplaced) do
-        local item_list = ", ":join(btbl)
-        output[bname] = '[':colorize(263)..tostring(sizeof(btbl)):colorize(4,263)..']'..bname:colorize(326,263)..': '..item_list
-    end
-    for k,v in opairs(output) do
-        atc(v)
     end
     setops.find_slipped()
 end
