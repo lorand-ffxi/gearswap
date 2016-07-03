@@ -41,7 +41,8 @@ function setops.expand_augments(item)
             local iaugs = extdata.decode(item).augments or {}
             for _,aug in pairs(iaugs) do
                 if (#aug > 0) and (aug ~= 'none') then
-                    table.insert(valid_augs, aug)
+                    local esc_aug = aug:gsub("'","\\'")
+                    table.insert(valid_augs, esc_aug)
                 end
             end
             item.augments = valid_augs
@@ -488,11 +489,13 @@ function setops.find_slipped()
     
     local slipped = {}
     for iname,itbl in pairs(items) do
-        if itbl.res ~= nil then
-            local slip = slipped2slip[itbl.res.id]
-            if slip ~= nil then
-                slipped[slip] = slipped[slip] or {}
-                table.insert(slipped[slip], iname)
+        if not setops.in_equippable_bag(iname) then
+            if itbl.res ~= nil then
+                local slip = slipped2slip[itbl.res.id]
+                if slip ~= nil then
+                    slipped[slip] = slipped[slip] or {}
+                    table.insert(slipped[slip], iname)
+                end
             end
         end
     end
@@ -586,7 +589,6 @@ function setops.find_misplaced()
     else
         atc('All of your required items are equippable!':colorize(258))
     end
-    setops.find_slipped()
 end
 
 

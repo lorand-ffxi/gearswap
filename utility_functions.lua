@@ -110,22 +110,16 @@ function display_current_state()
         if (k == 'ranged') then
             if usesRanged:contains(player.main_job) then
                 ms:insert('%s: %s':fmts(k, v))
-                --table.insert(ms, tostring(k)..': '..tostring(v))
             end
         elseif (k == 'offense') and S{'auto','auto_acc'}:contains(v) then
-            --local hm = get_haste_mod()
             ms:insert('%s: %s[%s]':fmts(k, v, get_haste_mod()))
-            --table.insert(ms, tostring(k)..': '..tostring(v)..'['..hm..']')
         else
             ms:insert('%s: %s':fmts(k, v))
-            --table.insert(ms, tostring(k)..': '..tostring(v))
         end
     end
     if (buffs ~= nil) then
         ms:insert('Haste tier: %s':fmts(buffs.Haste))
-        --table.insert(ms, 'Haste tier: '..tostring(buffs.Haste))
     end
-    --atc(1, table.concat(ms, ' | '))
     atc(1, ms:concat(' | '))
 end
 
@@ -175,7 +169,6 @@ end
 function addModeOption(mode, option)
     if (options.modes[mode] ~= nil) and (options.modes[mode][option] == nil) then
         options.modes[mode]:insert(option)
-        --table.insert(options.modes[mode], option)
     end
 end
 
@@ -193,7 +186,6 @@ function getNextOption(mode, lastOption)
         if lastOption == nil then
             return options.modes[mode][1]
         end
-        --local i = getIndex(options.modes[mode], lastOption)
         local i = options.modes[mode]:find(lastOption)
         if i ~= nil then
             if i == listLen then
@@ -275,14 +267,10 @@ end
 function equip_now(set)
     local fmt = 'input /equip %s "%s"'
     local slotmap = {['ear1']='L.ear',['ear2']='R.ear',['ring1']='L.ring',['ring2']='R.ring'}
-    --local equipline = ''
     local elines = T()
     for slot,piece in pairs(set) do
-        --local slotstr = slotmap[slot] or slot
         elines:append(fmt:format(slotmap[slot] or slot, piece))
-        --equipline = equipline..'input /equip '..slotstr..' "'..piece..'";'
     end
-    --send_command(equipline)
     send_command(';':join(elines))
 end
 

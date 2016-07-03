@@ -76,7 +76,7 @@ function init_gear_sets()
     
     sets.wsBase.MediumAcc = {
         hands="Buremte Gloves",
-        legs="Kaabanax Trousers"
+        legs="Kaabnax Trousers"
     }
     sets.wsBase.HighAcc = {
         head="Whirlpool Mask",  neck="Iqabi Necklace",          ear1="Dudgeon Earring", ear2="Heartseeker Earring",

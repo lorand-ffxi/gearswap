@@ -207,6 +207,8 @@ function getGrimoire()
 end
 
 function weatherPermits(element)
+    local ele_id = tonumber(element)
+    if ele_id then element = res.elements[ele_id] end
     return buff_active(elements.storm_of[element]) or (element == world.day_element) or (element == world.weather_element)
 end
 

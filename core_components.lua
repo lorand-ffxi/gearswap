@@ -44,7 +44,6 @@ function init()
     -- Load gear from a job-specific file
     if load_user_gear(player.main_job) then
         if init_gear_sets then init_gear_sets() end
-        setops.find_misplaced()
     end
     
     load_user_settings()        --Attempt to load user settings
@@ -552,6 +551,8 @@ end
     Assembles the midcast set for the given spell/ability.
 --]]
 function get_midcast_set(spell)
+    --pprint_tiered(spell)
+
     local midcastSet = {}               --Initialize the set that will be built
     local status = player.status:lower()        --Player's status (Idle/Engaged/etc)
     local targType = spell.target.type:lower()  --Target type (self/player/etc)
@@ -1140,7 +1141,20 @@ function show_set(args)
         action.action_type = "Ability"
         timing = timing or 'precast'
     else
-        action.action_type = "Magic"
+        action.target = windower.ffxi.get_mob_by_target()
+        if action.target ~= nil then
+            if action.target.id == player.id then
+                action.target.type = 'SELF'
+            elseif action.target.is_npc then
+                if action.target.id % 4096 > 2047 then
+                    action.target.type = 'NPC'
+                else
+                    action.target.type = 'MONSTER'
+                end
+            else
+                action.target.type = 'PLAYER'
+            end
+        end
         timing = timing or 'midcast'
     end
     
@@ -1234,24 +1248,14 @@ function info_func(args)
     _libs.lor.exec.process_input(cmd, args)
 end
 
-function test_0(args)
-    local set1 = {head="Anwig Salade", hands="Umuthi Gloves"}
-    set1.b = {body="Kirin's Osode"}
-    local set2 = {head="Taeon Chapeau", feet="Hachiya Kyahan"}
-
-    atcc(260,'Before:')
-    pprint(set1,'set1')
-    pprint(set1.b,'set1.b')
-    pprint(set2,'set2')
-    atcc(260,'safe_set(set1, set2)...')
-    safe_set(set1, set2)
-    atcc(260,'After:')
-    pprint(set1,'set1')
-    pprint(set1.b,'set1.b')
-    pprint(set2,'set2')
+function test(args)
+    local temp = {}
+    temp.group_one = {trusts, storms, var_potency_enfeebs}
+    temp.group_two = {spirits}
+    pprint(temp)
 end
 
-function test()
+function test1()
     for spellid, spell in pairs(res.spells) do
         if (spell.type ~= 'Trust') and (spell_maps[spell.en] == nil) and (spell.type ~= 'BlueMagic') then
             atcfs('%s,%s,%s,%s', spellid, spell.en, spell.type, res.skills[spell.skill].en)

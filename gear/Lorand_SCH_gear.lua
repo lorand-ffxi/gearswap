@@ -240,7 +240,8 @@ function init_gear_sets()
     sets.idle = {
         main="Bolelabunga",                 sub="Genbu's Shield",                                       ammo="Impatiens",
         head="Academic's Mortarboard +1",   neck="Twilight Torque",         ear1="Brachyura Earring",   ear2="Ethereal Earring",
-        body="Academic's Gown +1",          hands="Gendewitha Gages +1",    ring1="Defending Ring",     ring2="Shneddick Ring",
+        body={"Academic's Gown +1", "Artsieq Jubbah"},
+        hands="Gendewitha Gages +1",    ring1="Defending Ring",     ring2="Shneddick Ring",
         back="Repulse Mantle",              waist="Emphatikos Rope",        legs="Academic's Pants +1", feet="Gendewitha Galoshes +1"
     }
     

@@ -39,7 +39,8 @@ local _export_gear = function(args)
                 local augs = extdata.decode(uniq_item).augments or {}
                 for _,aug in pairs(augs) do
                     if (#aug > 0) and (aug ~= 'none') then
-                        table.insert(valid_augs, aug)
+                        local esc_aug = aug:gsub("'","\\'")
+                        table.insert(valid_augs, esc_aug)
                     end
                 end
             end
