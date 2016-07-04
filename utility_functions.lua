@@ -117,7 +117,7 @@ function display_current_state()
             ms:insert('%s: %s':fmts(k, v))
         end
     end
-    if (buffs ~= nil) then
+    if buffs and buffs.Haste then
         ms:insert('Haste tier: %s':fmts(buffs.Haste))
     end
     atc(1, ms:concat(' | '))

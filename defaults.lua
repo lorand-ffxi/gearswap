@@ -54,6 +54,10 @@ function define_defaults()
     options.autoDummy = false
 
     gear = {}
+    gear.ftp = {}
+    gear.ftp.all_waist = {name='Fotia Belt', augments={}}
+    gear.ftp.all_neck = {name='Fotia Gorget', augments={}}
+    gear.all_ele_obi = {name='Hachirin-no-obi', augments={}}
     gear.instruments = {}
     gear.instruments.default = 'Eminent Flute'
     gear.instruments.multiSong = 'Terpander'

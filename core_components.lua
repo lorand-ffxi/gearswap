@@ -1,7 +1,7 @@
 --==============================================================================
 --[[
     Author: Ragnarok.Lorand
-    Updated: 2016-06-27
+    Updated: 2016-07-04
     GearSwap core components
 --]]
 --==============================================================================
@@ -53,6 +53,7 @@ function init()
     else
         echo('WARNING: settings_'..player.name..'.lua not found.')
     end
+    lor.G.collectgarbage()
 end
 
 init()  --Execute init()
@@ -1254,10 +1255,15 @@ function test(args)
     --temp.group_one = {trusts, storms, var_potency_enfeebs}
     --temp.group_two = {spirits}
     --pprint(temp)
-    local t = 'v:k for k,v in pairs(tbl)':psplit('[:,]')
-    for k,v in pairs(t) do
-        atcfs('%s    %s',k,v)
+    --local t = 'v:k for k,v in pairs(tbl)':psplit('[:,]')
+    --for k,v in pairs(t) do
+        --atcfs('%s    %s',k,v)
+    --end
+    
+    for k,v in pairs(_libs['chat/chars']) do
+        winraw.add_to_chat(val, '%s      %s':format(k,v))
     end
+    
 end
 
 function test1()
@@ -1288,6 +1294,10 @@ function print_help()
     end
 end
 
+local function reload()
+    windower.send_command('lua reload '.._addon.name)
+end
+
 executable_commands = {
     --Mode Setting
     ['activate']  = {['fn']=activate_mode,             ['group']='mode', ['args']='mode', ['help']='Set modes[mode] to true and update current equipment'},
@@ -1314,4 +1324,5 @@ executable_commands = {
     ['help']      = {['fn']=print_help,                ['group']='misc', ['args']='', ['help']='Print this help text'},
     ['info']      = {['fn']=info_func,                 ['group']='misc', ['args']='[cmd]', ['help']='View addon/windower variable values'},
     ['test']      = {['fn']=test,                      ['group']='misc', ['hide']=true},
+    ['reload']    = {['fn']=reload,                    ['group']='misc', ['args']='', ['help']='Reload GearSwap entirely; //gs reload only refreshes the user environment, which leads to a memory leak'},
 }
