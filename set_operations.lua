@@ -379,7 +379,7 @@ end
 
 function setops.getObi(element)
     if setops.in_equippable_bag(gear.all_ele_obi) then
-        return gear.obis.all_ele
+        return gear.all_ele_obi
     else
         return gear_map.Obi[element]
     end
