@@ -43,7 +43,8 @@ function init()
     
     -- Load gear from a job-specific file
     if load_user_gear(player.main_job) then
-        if init_gear_sets then init_gear_sets() end
+        if init_gear_sets then init_gear_sets() end --Run the primary function defined in each job-specific lua
+        setops.init()                               --Improves processing speed while running
     end
     
     load_user_settings()        --Attempt to load user settings
@@ -1249,10 +1250,14 @@ function info_func(args)
 end
 
 function test(args)
-    local temp = {}
-    temp.group_one = {trusts, storms, var_potency_enfeebs}
-    temp.group_two = {spirits}
-    pprint(temp)
+    --local temp = {}
+    --temp.group_one = {trusts, storms, var_potency_enfeebs}
+    --temp.group_two = {spirits}
+    --pprint(temp)
+    local t = 'v:k for k,v in pairs(tbl)':psplit('[:,]')
+    for k,v in pairs(t) do
+        atcfs('%s    %s',k,v)
+    end
 end
 
 function test1()

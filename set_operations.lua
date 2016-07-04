@@ -6,11 +6,161 @@
 --======================================================================================================================
 
 setops = setops or {}
+setops._set_res = {}
+setops._item_res = S{}
 
 local itemSlots = {'main', 'sub', 'range', 'ammo', 'head', 'neck', 'ear1', 'ear2', 'body', 'hands', 'ring1', 'ring2', 'back', 'waist', 'legs', 'feet'}
 local all_bag_names = S{'case','inventory','locker','sack','safe','safe2','satchel','storage','wardrobe','wardrobe2'}
 local equip_bag_names = {'inventory', 'wardrobe', 'wardrobe2'}
 local bags_nonequippable = {'case','locker','sack','safe','safe2','satchel','storage'}
+local aug_cache = {}
+
+local nil_aug = string.parse_hex('00':rep(24))
+
+_slots = {}
+_slots.names = {
+    ['main']       = {'main'},
+    ['sub']        = {'sub'},
+    ['range']      = {'range','ranged'},
+    ['ammo']       = {'ammo'},
+    ['head']       = {'head'},
+    ['body']       = {'body'},
+    ['hands']      = {'hands'},
+    ['legs']       = {'legs'},
+    ['feet']       = {'feet'},
+    ['neck']       = {'neck'},
+    ['waist']      = {'waist'},
+    ['left_ear']   = {'ear1','left_ear','learring','lear'},
+    ['right_ear']  = {'ear2','right_ear','rearring','rear'},
+    ['left_ring']  = {'left_ring','lring','ring1'},
+    ['right_ring'] = {'right_ring','rring','ring2'},
+    ['back']       = {'back'}
+}
+_slots.variations_to_proper = table.expanded_invert(_slots.names)
+_slots.improper_to_proper = comp('k:v for k,v in table.expanded_invert(_slots.names) if k ~= v')
+_slots.all_name_variations = comp('k:true for k,v in table.expanded_invert(_slots.names)')
+
+
+--[[
+    Creates a copy of res.items with all names converted to lower case.
+--]]
+function setops.get_item_res()
+    return setops._item_res
+end
+
+
+--[[
+    Updates set in place.  Iterates through the given set, moving the values
+    found under non-proper slot name variations to the proper slot name if a
+    value was not already there.
+--]]
+function setops.resolve_slot_name_conflicts(set)
+    if set == nil then return end
+    for k,v in pairs(set) do
+        local slot = _slots.improper_to_proper[k]
+        if slot then
+            set[slot] = set[slot] or v
+            table.remove(set, k)
+        end
+    end
+    --[[
+    for canonical,variations in pairs(slot_names) do
+        for _,variation in ipairs(variations) do
+            set[canonical] = set[canonical] or set[variation]
+            if set[variation] and (canonical ~= variation) then
+                table.remove(set, variation)
+            end
+        end
+    end
+    --]]
+end
+
+
+local function _add_to_set_res(name, augments)
+    setops._set_res[name] = setops._set_res[name] or {}
+    if not setops._set_res[name].res then
+        setops._set_res[name].res = res.items:with('en', name) or res.items:with('enl', name:lower()) or setops._item_res:with('en_l',name:lower()) or setops._item_res:with('enl_l',name:lower())
+    end
+    
+    if not setops._set_res[name].res then
+        atc(123, 'ERROR Adding \'%s\' to setops._set_res':format(name))
+    end
+    
+    setops._set_res[name].versions = setops._set_res[name].versions or {}
+    if (augments ~= nil) and (#augments > 0) then
+        local found_match = false
+        for _,version in pairs(setops._set_res[name].versions) do
+            if table.equals(augments, version) then
+                found_match = true
+                break
+            end
+        end
+        if not found_match then
+            table.insert(setops._set_res[name].versions, augments)
+        end
+    end
+end
+--local _add_to_set_res = traceable(__add_to_set_res)
+
+--[[
+    For each key in set_table that is a valid slot name, move the value to be
+    associated with the proper slot name key if it wasn't already, and make all
+    items in the set formatted as a table with 'name' and 'augments' keys.
+    For each key that is not a valid slot name, recurse using the table at that
+    key.
+--]]
+local function _normalize(set_table)
+    if set_table == nil then return end
+    for k,v in pairs(set_table) do
+        local slot = _slots.variations_to_proper[k]
+        if slot ~= nil then
+            set_table[slot] = set_table[slot] or v
+            if set_table[slot] then
+                if type(set_table[slot]) == 'string' then
+                    set_table[slot] = {name=set_table[slot], augments={}}
+                    _add_to_set_res(set_table[slot].name, {})
+                elseif type(set_table[slot]) == 'table' then
+                    if set_table[slot].name then
+                        if set_table[slot].name ~= 'empty' then
+                            _add_to_set_res(set_table[slot].name, set_table[slot].augments)
+                        end
+                    else
+                        local temp = {}
+                        for _,item in pairs(set_table[slot]) do
+                            if type(item) == 'string' then
+                                table.insert(temp, {name=item, augments={}})
+                                _add_to_set_res(item, {})
+                            else
+                                table.insert(temp, item)
+                                _add_to_set_res(item.name, item.augments or {})
+                            end
+                        end
+                        set_table[slot] = table.copy(temp)
+                    end
+                end
+            end
+            if slot ~= k then
+                set_table[k] = nil
+            end
+        else
+            _normalize(v)
+        end
+    end
+end
+
+
+function setops.init()
+    if sets == nil then
+        atc(123, 'ERROR: Unable to find any defined gear sets!')
+        return
+    end
+    for id,tbl in pairs(res.items) do
+        setops._item_res[id] = {id=id,en=tbl.en,enl=tbl.enl,en_l=tbl.en:lower(),enl_l=tbl.enl:lower()}
+    end
+    _normalize(sets)
+    _normalize(sets)    --For some reason, one pass doesn't work...
+end
+
 
 --[[
     Overwrites the contents of the slots in set1 with the contents of the slots in set2.  Safe to use for setting
@@ -21,12 +171,13 @@ local bags_nonequippable = {'case','locker','sack','safe','safe2','satchel','sto
 --]]
 function safe_set(set1, set2, strict)
     if any_eq(nil, set1, set2) then return end
-    --if (set1 == nil) or (set2 == nil) then return end
-    for _,itemSlot in pairs(itemSlots) do
+    setops.resolve_slot_name_conflicts(set1)
+    setops.resolve_slot_name_conflicts(set2)
+    for slot,_ in pairs(slot_names) do
         if strict then
-            set1[itemSlot] = set2[itemSlot]
+            set1[slot] = set2[slot]
         else
-            set1[itemSlot] = set2[itemSlot] or set1[itemSlot]
+            set1[slot] = set2[slot] or set1[slot]
         end
     end
 end
@@ -71,6 +222,33 @@ function setops.expand_augments_in_bags(bag_list)
 end
 
 
+local function get_items_with_augments(bag_name, item_id)
+    local _time = os.clock()
+    if (not aug_cache._time) or ((_time - aug_cache._time) > 5) then
+        aug_cache = {}
+        aug_cache._time = _time
+    end
+    if not aug_cache[bag_name] then
+        aug_cache[bag_name] = {}
+        for _,item in ipairs(windower.ffxi.get_items()[bag_name]) do
+            aug_cache[bag_name][item.id] = aug_cache[bag_name][item.id] or {}
+            item.augments = {}
+            if item.extdata ~= nil_aug then
+                local iaugs = extdata.decode(item).augments or {}
+                for _,aug in pairs(iaugs) do
+                    if (#aug > 0) and (aug ~= 'none') then
+                        local esc_aug = aug:gsub("'","\\'")
+                        table.insert(item.augments, esc_aug)
+                    end
+                end
+            end
+            table.insert(aug_cache[bag_name][item.id], item)
+        end
+    end
+    return aug_cache[bag_name][item_id] or {}
+end
+
+
 local function refresh_equippable()
     setops.equippable = setops.expand_augments_in_bags(equip_bag_names)
 end
@@ -89,7 +267,9 @@ end
     subset may be provided for set2 that will be used if set2 exists.
 --]]
 function combineSets(set1, set2, ...)
-    refresh_equippable()
+    --refresh_equippable()
+    _normalize(set1)
+    _normalize(set2)
     
     local newSet = {}
     local subsets = {...}
@@ -98,12 +278,8 @@ function combineSets(set1, set2, ...)
         for i = 1, numsub, 1 do
             if (set2 ~= nil) then
                 local subset = set2[subsets[i]]
-                if subset == nil then
-                    if i < numsub then  --If not the last potential subset
-                        --Do nothing; set2 stays the way it is
-                    else    --i == #subsets
-                        set2 = subset
-                    end
+                if not subset then
+                    if i >= numsub then set2 = subset end
                 else
                     set2 = subset
                 end
@@ -112,16 +288,16 @@ function combineSets(set1, set2, ...)
     end
     
     local current_item
-    for _,itemSlot in pairs(itemSlots) do
+    for itemSlot,_ in pairs(_slots.names) do
         if (set2 ~= nil) and (set2[itemSlot] ~= nil) then
             current_item = set2[itemSlot]
-            if type(current_item) == 'table' then
-                if current_item.name == nil then
-                    --If it's not a {name, augment} table, it's a list of options for the slot
-                    newSet[itemSlot] = setops.chooseAvailablePiece(current_item, itemSlot)
-                elseif setops.isAvailable(current_item, itemSlot) then
-                    newSet[itemSlot] = current_item
-                end
+            if type(current_item) == 'string' then
+                atc(123, current_item)
+                pprint_tiered(set2)
+            end
+            if not current_item.name then
+                --If it's not a {name, augment} table, it's a list of options for the slot
+                newSet[itemSlot] = setops.chooseAvailablePiece(current_item, itemSlot)
             elseif setops.isAvailable(current_item, itemSlot) then
                 newSet[itemSlot] = current_item
             end
@@ -129,15 +305,11 @@ function combineSets(set1, set2, ...)
         
         --If the slot was not defined in set2 or if the item(s) defined for that slot
         --in set2 was unavailable, then use what was defined in set1
-        if newSet[itemSlot] == nil then
+        if not newSet[itemSlot] then
             if (set1 ~= nil) and (set1[itemSlot] ~= nil) then
                 current_item = set1[itemSlot]
-                if type(current_item) == 'table' then
-                    if current_item.name == nil then
-                        newSet[itemSlot] = setops.chooseAvailablePiece(current_item, itemSlot)
-                    elseif setops.isAvailable(current_item, itemSlot) then
-                        newSet[itemSlot] = current_item
-                    end
+                if not current_item.name then
+                    newSet[itemSlot] = setops.chooseAvailablePiece(current_item, itemSlot)
                 elseif setops.isAvailable(current_item, itemSlot) then
                     newSet[itemSlot] = current_item
                 end
@@ -155,29 +327,16 @@ end
 
 
 function setops.in_equippable_bag(item)
-    local iname = item
-    local augs = nil
-    if type(item) ~= "string" then
-        iname = item.name
-        augs = item.augments
-    end
-    local player_bag_tables = map(customized(lor.fn_get, player), equip_bag_names)
-    local item_opts = map(customized(lor.fn_get, iname, 2), player_bag_tables)
-    if augs == nil then
-        for _,itbl in pairs(item_opts) do
-            if itbl ~= nil then return itbl end
-        end
-        return nil
-    end
-    
-    for _,itbl in pairs(item_opts) do
-        if itbl ~= nil then
-            local equippable_items = setops.equippable[itbl.id]
-            if equippable_items ~= nil then
-                for _,equippable_item in pairs(equippable_items) do
-                    if table.equals(item.augments, equippable_item.augments) then
-                        return itbl
-                    end
+    local iname = item.name
+    for _,bname in pairs(equip_bag_names) do
+        local itbl = player[bname][item.name]
+        if itbl then
+            if (not item.augments) or (#item.augments == 0) then
+                return itbl
+            end
+            for _,aitem in pairs(get_items_with_augments(bname, itbl.id)) do
+                if table.equals(item.augments, aitem.augments) then
+                    return itbl
                 end
             end
         end
@@ -244,9 +403,8 @@ end
     Returns a set containing the ftp piece for the given slot and ws.
 --]]
 function setops.get_ftp_gear(slot, ws)
-    refresh_equippable()
-    local all_waist = 'Fotia Belt'
-    local all_neck = 'Fotia Gorget'
+    local all_waist = {name='Fotia Belt',augments={}}
+    local all_neck = {name='Fotia Gorget',augments={}}
     if (slot == 'waist') and setops.in_equippable_bag(all_waist) then
         return {[slot] = all_waist}
     elseif (slot == 'neck') and setops.in_equippable_bag(all_neck) then
@@ -268,8 +426,7 @@ end
 
 
 function setops.getObi(element)
-    refresh_equippable()
-    local all_ele = 'Hachirin-no-obi'
+    local all_ele = {name='Hachirin-no-obi',augments={}}
     if setops.in_equippable_bag(all_ele) then
         return all_ele
     else
@@ -282,6 +439,28 @@ end
 --          Set Information
 --==============================================================================
 
+local function _insert_item(items, item)
+    if item.name ~= 'empty' then
+        items[item.name] = items[item.name] or {}
+        if (not item.augments) or (#item.augments == 0) then
+            if items[item.name] == nil then
+                table.insert(items[item.name], item)
+            end
+        else
+            local found_match = false
+            for _,existing in pairs(items[item.name]) do
+                if table.equals(item.augments, existing.augments) then
+                    found_match = true
+                    break
+                end
+            end
+            if not found_match then
+                table.insert(items[item.name], item)
+            end
+        end
+    end
+end
+
 
 --[[
     Recursively traverses user-defined sets to compile a list of all gear that
@@ -289,45 +468,22 @@ end
 --]]
 --local _retrieve_items = function(set)
 function setops.retrieve_items(set)
+
+    --setops._set_res[name].res
+    --setops._set_res[name].versions = {aug1, aug2, ...}
+    --setops._item_res[id] = {id=id,en=tbl.en,enl=tbl.enl,en_l=tbl.en:lower(),enl_l=tbl.enl:lower()}
+
     local items = {}
     for slot,item in pairs(set) do
-        if (type(item) == 'table') then
-            if item.name ~= nil then
-                if item.name ~= 'empty' then
-                    items[item.name] = items[item.name] or {}
-                    local found_match = false
-                    for _,existing in pairs(items[item.name]) do
-                        if table.equals(item.augments, existing.augments) then
-                            found_match = true
-                            break
-                        end
-                    end
-                    if not found_match then
-                        table.insert(items[item.name], item)
-                    end
-                end
-            else
-                local others = setops.retrieve_items(item)
-                for iname,instances in pairs(others) do
-                    if iname ~= 'empty' then
-                        items[iname] = items[iname] or {}
-                        for _,instance in pairs(instances) do
-                            local found_match = false
-                            for _,existing in pairs(items[iname]) do
-                                if table.equals(instance.augments, existing.augments) then
-                                    found_match = true
-                                    break
-                                end
-                            end
-                            if not found_match then
-                                table.insert(items[iname], instance)
-                            end
-                        end
-                    end
+        if item.name then
+            _insert_item(items, item)
+        else
+            local others = setops.retrieve_items(item)
+            for iname,instances in pairs(others) do
+                for _,instance in pairs(instances) do
+                    _insert_item(items, instance)
                 end
             end
-        elseif (item ~= 'empty') then
-            items[item] = items[item] or {}
         end
     end
     return items
@@ -339,7 +495,7 @@ end
     all gear that is currently necessary.
 --]]
 function setops.retrieve_item_ids(set, res_items)
-    res_items = res_items or setops.get_item_res()
+    res_items = res_items or setops.get_item_res()      --setops._item_res[id]
     local item_ids = S{}
     for iname,instances in pairs(setops.retrieve_items(set)) do
         local itable = res_items:with('en_l',iname:lower()) or res_items:with('enl_l',iname:lower())
@@ -362,16 +518,7 @@ function setops.retrieve_item_details(set, res_items)
 end
 --setops.retrieve_item_details = traceable(_retrieve_item_details)
 
---[[
-    Creates a copy of res.items with all names converted to lower case.
---]]
-function setops.get_item_res()
-    local list = S{}
-    for id,tbl in pairs(res.items) do
-        list[id] = {id=id,en=tbl.en,enl=tbl.enl,en_l=tbl.en:lower(),enl_l=tbl.enl:lower()}
-    end
-    return list
-end
+
 
 
 --[[
@@ -483,13 +630,24 @@ end
     of those slips. Automatically runs when a player change jobs.  Can be run at any time via: //gs c slips
 --]]
 function setops.find_slipped()
-    refresh_equippable()
+    --setops.retrieve_items(sets)
     local items = setops.retrieve_item_details(sets)    --List of all gear in Player_JOB_gear.lua
     local slipped2slip = setops.map_slipped_to_slip()   --Mapping of items stored in slips to slip names
     
     local slipped = {}
+    
+    for _,itbl in pairs(items) do
+        if not setops.in_equippable_bag({name=itbl.name}) then
+            local slip = slipped2slip[itbl.id]
+            if slip then
+                slipped[slip] = slipped[slip] or {}
+                table.insert(slipped[slip], itbl.name)
+            end
+        end
+    end
+    --[[
     for iname,itbl in pairs(items) do
-        if not setops.in_equippable_bag(iname) then
+        if not setops.in_equippable_bag({name=iname}) then
             if itbl.res ~= nil then
                 local slip = slipped2slip[itbl.res.id]
                 if slip ~= nil then
@@ -499,7 +657,7 @@ function setops.find_slipped()
             end
         end
     end
-    
+    --]]
     if (sizeof(slipped) > 0) then
         atc('Items you need to retrieve from the Porter Moogle:':colorize(262))
     else
@@ -523,9 +681,65 @@ end
 --]]
 function setops.find_misplaced()
     refresh_non_equippable()
+    
+    local slipped2slip = setops.map_slipped_to_slip()
+    --setops._set_res[name].res
+    --setops._set_res[name].versions = {aug1, aug2, ...}
+    local misplaced = {}
+    for name, set_res in pairs(setops._set_res) do
+        if name ~= 'empty' then
+            
+            if set_res.res == nil then atc(123,name) end
+        
+            local id = set_res.res.id
+            local non_equippable_items = setops.non_equippable[id] or {}
+            if not slipped2slip[id] then
+                if #set_res.versions == 0 then
+                    if not setops.in_equippable_bag({name=name,augments={}}) then
+                        local found_match = false
+                        for _,non_equippable_item in pairs(non_equippable_items) do
+                            local bag_name = non_equippable_item.bag_name
+                            misplaced[bag_name] = misplaced[bag_name] or {}
+                            table.insert(misplaced[bag_name], name)
+                            found_match = true
+                            break
+                        end
+                        if not found_match then
+                            misplaced.missing = misplaced.missing or {}
+                            table.insert(misplaced['missing'], name)
+                        end
+                    end
+                else
+                    for _,aug_set in pairs(set_res.versions) do
+                        if not setops.in_equippable_bag({name=name,augments=aug_set}) then
+                            local found_match = false
+                            for _,non_equippable_item in pairs(non_equippable_items) do
+                                local bag_name = non_equippable_item.bag_name
+                                if table.equals(aug_set, non_equippable_item.augments) then
+                                    misplaced[bag_name] = misplaced[bag_name] or {}
+                                    table.insert(misplaced[bag_name], name)
+                                    found_match = true
+                                    break
+                                end
+                            end
+                            if not found_match then
+                                misplaced.missing = misplaced.missing or {}
+                                table.insert(misplaced['missing'], name)
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    end
+    
+    
+    
+    
+    --[[
     local items = setops.retrieve_items(sets)           --List of all gear in Player_JOB_gear.lua
     local res_items = setops.get_item_res()             --Transform res.items for easier use
-    local slipped2slip = setops.map_slipped_to_slip()
+    
     
     local misplaced = {}
     for iname,instances in pairs(items) do
@@ -535,7 +749,7 @@ function setops.find_misplaced()
                 atcfs(123, 'Unable to find item table for %s', iname)
             elseif slipped2slip[itable.id] == nil then
                 if #instances == 0 then
-                    if not setops.in_equippable_bag(iname) then
+                    if not setops.in_equippable_bag({name=iname}) then
                         local non_equippable_items = setops.non_equippable[itable.id] or {}
                         local found_match = false
                         for _,non_equippable_item in pairs(non_equippable_items) do
@@ -551,9 +765,9 @@ function setops.find_misplaced()
                         end
                     end
                 else
-                    local iname2 = '%s%s':format(iname, (#instances > 0) and '*' or '')
+                    local iname2 = '%s%s':format(iname, (#instances > 1) and '*' or '')
                     for _,item in pairs(instances) do
-                        if not setops.in_equippable_bag(item) then
+                        if not setops.in_equippable_bag({name=item}) then
                             local non_equippable_items = setops.non_equippable[itable.id] or {}
                             local found_match = false
                             for _,non_equippable_item in pairs(non_equippable_items) do
@@ -575,6 +789,7 @@ function setops.find_misplaced()
             end
         end
     end
+    --]]
     
     if (sizeof(misplaced) > 0) then
         atc('Items you need to move to bags from which items can be equipped:':colorize(262))

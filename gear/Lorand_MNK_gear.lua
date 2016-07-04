@@ -85,7 +85,9 @@ function init_gear_sets()
 		head="Ocelomeh Headpiece +1",	neck="Orochi Nodowa",	ear1="Brachyura Earring",	ear2="Ethereal Earring",
 		body={"Hesychast's Cyclas", "Kirin's Osode", "Qaaxo Harness"},
 		hands="Garden Bangles",		ring1="Defending Ring",	ring2="Shneddick Ring",
-		back="Repulse Mantle",		waist="Black Belt",	legs={"Hesychast's Hose +1", "Otronif Brais +1"},
+		back="Repulse Mantle",		waist="Black Belt",
+        --legs={"Hesychast's Hose +1", "Otronif Brais +1"},
+        legs={name="Taeon Tights", augments={'Attack+21','"Triple Atk."+2'}},
 		feet="Sokushitsu Sune-Ate"
 	}
 	sets.idle.with_buff = {}
@@ -128,26 +130,26 @@ function init_gear_sets()
 	
 	sets.engaged = {										ammo="Potestas Bomblet",
 		head="Highwing Helm",	neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
-		body="Qaaxo Harness",	hands="Taeon Gloves",		ring1="Rajas Ring",		ring2="Epona's Ring",
+		body="Qaaxo Harness",	hands="Taeon Gloves",		ring1="Rajas Ring",		    ring2="Epona's Ring",
 		back="Atheling Mantle",	waist="Windbuffet Belt +1",	legs="Hesychast's Hose +1",	feet="Sokushitsu Sune-Ate"
 	}
 	
 	sets.engaged.MediumAcc = {										ammo="Honed Tathlum",
-		head="Whirlpool Mask",		neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
-		body="Qaaxo Harness",		hands="Hesychast's Gloves +1",	ring1="Rajas Ring",		ring2="Epona's Ring",
-		back="Anchoret's Mantle",	waist="Windbuffet Belt +1",	legs="Hesychast's Hose +1",	feet="Sokushitsu Sune-Ate"
+		head="Whirlpool Mask",		neck="Asperity Necklace",	    ear1="Bladeborn Earring",	ear2="Steelflash Earring",
+		body="Qaaxo Harness",		hands="Hesychast's Gloves +1",	ring1="Rajas Ring",		    ring2="Epona's Ring",
+		back="Anchoret's Mantle",	waist="Windbuffet Belt +1",	    legs="Hesychast's Hose +1",	feet="Sokushitsu Sune-Ate"
 	}
 	
 	sets.engaged.HighAcc = {										ammo="Honed Tathlum",
-		head="Whirlpool Mask",		neck="Iqabi Necklace",		ear1="Bladeborn Earring",	ear2="Steelflash Earring",
-		body="Otronif Harness +1",	hands="Hesychast's Gloves +1",	ring1="Rajas Ring",		ring2="Epona's Ring",
-		back="Anchoret's Mantle",	waist="Anguinus Belt",		legs="Hesychast's Hose +1",	feet="Taeon Boots"
+		head="Whirlpool Mask",		neck="Iqabi Necklace",		    ear1="Bladeborn Earring",	ear2="Steelflash Earring",
+		body="Otronif Harness +1",	hands="Hesychast's Gloves +1",	ring1="Rajas Ring",		    ring2="Epona's Ring",
+		back="Anchoret's Mantle",	waist="Anguinus Belt",		    legs="Hesychast's Hose +1",	feet="Taeon Boots"
 	}
 	
 	sets.engaged.Tank = {											ammo="Demonry Stone",
 		head="Otronif Mask +1",		neck="Twilight Torque",		ear1="Bladeborn Earring",	ear2="Steelflash Earring",
 		body="Otronif Harness +1",	hands="Otronif Gloves +1",	ring1="Defending Ring",		ring2="Rajas Ring",
-		back="Anchoret's Mantle",	waist="Black Belt",		legs="Otronif Brais +1",	feet="Otronif Boots +1"
+		back="Anchoret's Mantle",	waist="Black Belt",		    legs="Otronif Brais +1",	feet="Otronif Boots +1"
 	}
 	
 	sets.engaged.Tank.MediumAcc = {										ammo="Honed Tathlum",
