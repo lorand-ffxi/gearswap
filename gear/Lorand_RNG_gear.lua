@@ -27,7 +27,7 @@ function init_gear_sets()
 	sets.precast.JA['Eagle Eye Shot'] =	{legs="Arcadian Braccae +1"}
 	sets.precast.JA['Sharpshot'] =		{legs="Orion Braccae"}
 	sets.precast.JA['Scavenge'] =		{feet="Orion Socks +1"}
-	sets.precast.JA['Unlimited Shot'] =	{feet="Sylvan Botillons +2"}
+	sets.precast.JA['Unlimited Shot'] =	{feet="Sylvan Bottillons +2"}
 	
 	sets.precast.Waltz = {}
 	sets.precast.Waltz['Healing Waltz'] = {}

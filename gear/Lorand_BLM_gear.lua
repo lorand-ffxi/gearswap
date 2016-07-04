@@ -64,7 +64,7 @@ function init_gear_sets()
 	}
 	sets.midcast.Aquaveil = {waist="Emphatikos Rope"}
 	sets.midcast.Stoneskin = {								ammo="Impatiens",
-		head="Natirah Hat",	neck="Stone Gorget",	ear1="Loquacious Earring",	ear2="Earthcry Earring",
+		head="Nahtirah Hat",	neck="Stone Gorget",	ear1="Loquacious Earring",	ear2="Earthcry Earring",
 		hands="Lurid Mitts",	ring1="Aquasoul Ring",	ring2="Aqua Ring",
 		back="Tuilha Cape",	waist="Siegel Sash",	legs="Haven Hose",		feet="Artsieq Boots"
 	}

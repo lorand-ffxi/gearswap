@@ -214,7 +214,7 @@ function init_gear_sets()
 	sets.resting = {
 		main="Chatoyant Staff",		sub="Elder's Grip",						ammo="Kalboron Stone",
 		head="Nahtirah Hat",		neck="Eidolon Pendant",		ear1="Loquacious Earring",	ear2="Relaxing Earring",
-		body="Gendewitha Bilaut +1",	hands="Nares Cuffs",		ring1="Defending Ring",		ring2="Sheltered Ring",
+		body="Gendewitha Bliaut +1",	hands="Nares Cuffs",		ring1="Defending Ring",		ring2="Sheltered Ring",
 		back="Felicitas Cape",		waist="Emphatikos Rope",	legs="Nares Trews",		feet="Chelona Boots"
 	}
 	

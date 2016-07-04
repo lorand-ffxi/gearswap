@@ -125,8 +125,12 @@ function init_gear_sets()
     
     sets.idle = {                                               --range="Raider's Boomerang",
         head="Ocelomeh Headpiece +1",   neck="Orochi Nodowa",           ear1="Brachyura Earring",   ear2="Ethereal Earring",
-        body="Qaaxo Harness",           hands="Plunderer's Armlets +1", ring1="Defending Ring",     ring2="Shneddick Ring",
-        back="Repulse Mantle",          waist="Flume Belt",             legs="Taeon Tights",        feet="Iuitl Gaiters +1"
+        body="Qaaxo Harness",
+        hands={"Plunderer's Armlets +1", {name="Taeon Gloves", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','AGI+3'}}},
+        ring1="Defending Ring",     ring2="Shneddick Ring",
+        back="Repulse Mantle",          waist="Flume Belt",
+        legs={name="Taeon Tights", augments={'Attack+21','"Triple Atk."+2'}},
+        feet="Iuitl Gaiters +1"
     }
     sets.idle.with_buff = {}
     sets.idle.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}

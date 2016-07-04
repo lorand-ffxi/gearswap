@@ -63,7 +63,7 @@ function init_gear_sets()
 	
 	sets.midcast.Curaga = sets.midcast.Cure
 	sets.midcast.Cure.Engaged = {
-		body="Gendewitha Bliaut +1",	hands="Bokwus Cuffs"
+		body="Gendewitha Bliaut +1",	hands="Bokwus Gloves"
 	}
 	
 	sets.midcast.Cursna = {
