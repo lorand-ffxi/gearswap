@@ -367,9 +367,9 @@ end
 --]]
 function setops.get_ftp_gear(slot, ws)
     if (slot == 'waist') and setops.in_equippable_bag(gear.ftp.all_waist) then
-        return {[slot] = sets.ftp.all_waist}
+        return {[slot] = gear.ftp.all_waist}
     elseif (slot == 'neck') and setops.in_equippable_bag(gear.ftp.all_neck) then
-        return {[slot] = sets.ftp.all_neck}
+        return {[slot] = gear.ftp.all_neck}
     end
     
     local ws_elements = S{}:
@@ -388,7 +388,7 @@ end
 
 function setops.getObi(element)
     if setops.in_equippable_bag(gear.all_ele_obi) then
-        return sets.obis.all_ele
+        return gear.obis.all_ele
     else
         return gear_map.Obi[element]
     end
@@ -635,15 +635,15 @@ function setops.find_misplaced()
         end
     end
     
-    if (sizeof(misplaced) > 0) then
-        atc('Items you need to move to bags from which items can be equipped:':colorize(262))
-        local output = {}
-        for bname,btbl in pairs(misplaced) do
-            if sizeof(btbl) > 0 then
-                local item_list = ", ":join(btbl:sort())
-                output[bname] = '[':colorize(263)..tostring(sizeof(btbl)):colorize(4,263)..']'..bname:colorize(326,263)..': '..item_list
-            end
+    local output = {}
+    for bname,btbl in pairs(misplaced) do
+        if sizeof(btbl) > 0 then
+            local item_list = ", ":join(btbl:sort())
+            output[bname] = '[':colorize(263)..tostring(sizeof(btbl)):colorize(4,263)..']'..bname:colorize(326,263)..': '..item_list
         end
+    end
+    if (sizeof(output) > 0) then
+        atc('Items you need to move to bags from which items can be equipped:':colorize(262))
         for k,v in opairs(output) do
             atcns(v)
         end

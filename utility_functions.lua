@@ -266,10 +266,10 @@ end
 --]]
 function equip_now(set)
     local fmt = 'input /equip %s "%s"'
-    local slotmap = {['ear1']='L.ear',['ear2']='R.ear',['ring1']='L.ring',['ring2']='R.ring'}
+    local slotmap = {['left_ear']='L.ear',['right_ear']='R.ear',['left_ring']='L.ring',['right_ring']='R.ring'}
     local elines = T()
     for slot,piece in pairs(set) do
-        elines:append(fmt:format(slotmap[slot] or slot, piece))
+        elines:append(fmt:format(slotmap[slot] or slot, piece.name))
     end
     send_command(';':join(elines))
 end
