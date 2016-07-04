@@ -8,11 +8,23 @@
 --]]
 local _export_gear = function(args)
     local header = 'sets.exported'
-    local listfmt = false
+    local listfmt = not any_eq('no_augs', unpack(args))
+    local include_augs = true
     --Process provided arguments
     for _,arg in pairs(args) do
-        if (arg:lower() == 'list') then
+        if arg:lower() == 'list' then
             listfmt = true
+        elseif arg:lower() == 'group' then
+            listfmt = false
+        elseif arg:lower() == 'no_augs' then
+            include_augs = false
+        elseif arg:lower() == 'help' then
+            atc('Usage: //gs c export [list] [no_augs] <set_name>')
+            atc('list:     print each item on a separate line')
+            atc('group:    print items grouped by equipment window rows')
+            atc('no_augs:  only include item names, not augments (default: include augments)')
+            atc('set name: name to use for the set (default: %s)':format(header))
+            return
         else
             header = arg
         end
@@ -34,19 +46,9 @@ local _export_gear = function(args)
             local sname = slotmap[slot] or slot
             local uniq_item = itemlist[bagmap[eq_tbl[slot..'_bag']]][idx_in_bag]
             local iname = '"%s"':format(res.items[uniq_item.id].enl:capitalize())
-            local valid_augs = {}
-            if uniq_item.extdata then
-                local augs = extdata.decode(uniq_item).augments or {}
-                for _,aug in pairs(augs) do
-                    if (#aug > 0) and (aug ~= 'none') then
-                        local esc_aug = aug:gsub("'","\\'")
-                        table.insert(valid_augs, esc_aug)
-                    end
-                end
-            end
-            
-            if #valid_augs > 0 then
-                equipped[sname] = '{name=%s, augments=%s}':format(iname, '{%s}':format(',':join(map(enquote, valid_augs))))
+            uniq_item = setops.expand_augments(uniq_item)
+            if include_augs and (#uniq_item.augments > 0) then
+                equipped[sname] = '{name=%s, augments=%s}':format(iname, '{%s}':format(',':join(map(enquote, uniq_item.augments))))
             else
                 equipped[sname] = iname
             end
@@ -60,8 +62,8 @@ local _export_gear = function(args)
     end
     
     local path = 'data/export/'..player.name
-    path = path..'_'..windower.ffxi.get_player().main_job
     path = path..os.date('_%Y.%m.%d_%H.%M.%S')
+    path = path..'_'..windower.ffxi.get_player().main_job
     if windower.file_exists(path..'.lua') then
         path = path..' '..os.clock()
     end
@@ -70,37 +72,33 @@ local _export_gear = function(args)
     f:write(header..' = {\n')
     
     local fmt = '\t%s=%s'
-    
+    local printed = 0
+    local last_comma = sizeof(equipped)
     local comma = false
-    local lastnl = false
+    local last_was_nl = false
     for i = 1, 16 do
         local slot = slots[i]
         local sname = slotmap[slot] or slot
         local iname = equipped[sname]
         
-        if comma then
-            f:write(',')
-        end
-        
-        if (iname ~= nil) then
+        if comma then f:write(',') end
+        if iname then
             f:write(fmt:format(sname, iname))
-            comma = true
-            lastnl = false
+            printed = printed + 1
+            comma = printed < last_comma
+            last_was_nl = false
         else
             comma = false
         end
         
         if listfmt or (i % 4 == 0) then
-            if comma then
-                f:write(',')
-            end
-            if not lastnl then
+            if comma then f:write(',') end
+            if not last_was_nl then
                 f:write('\n')
-                lastnl = true
+                last_was_nl = true
             end
             comma = false
         end
-        
     end
     
     f:write('}')
