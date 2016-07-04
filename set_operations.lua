@@ -13,7 +13,6 @@ local all_bag_names = S{'case','inventory','locker','sack','safe','safe2','satch
 local equip_bag_names = {'inventory', 'wardrobe', 'wardrobe2'}
 local bags_nonequippable = {'case','locker','sack','safe','safe2','satchel','storage'}
 local aug_cache = {}
-
 local nil_aug = string.parse_hex('00':rep(24))
 
 _slots = {}
@@ -40,14 +39,6 @@ _slots.name_list = comp('k for k,v in _slots.names')
 _slots.variations_to_proper = table.expanded_invert(_slots.names)
 _slots.improper_to_proper = comp('k:v for k,v in table.expanded_invert(_slots.names) if k ~= v')
 _slots.all_name_variations = comp('k:true for k,v in table.expanded_invert(_slots.names)')
-
-
---[[
-    Creates a copy of res.items with all names converted to lower case.
---]]
-function setops.get_item_res()
-    return setops._item_res
-end
 
 
 local function _add_to_set_res(name, augments)
@@ -399,74 +390,21 @@ end
 --          Set Information
 --==============================================================================
 
-local function _insert_item(items, item)
-    if item.name ~= 'empty' then
-        items[item.name] = items[item.name] or {}
-        if (not item.augments) or (#item.augments == 0) then
-            if items[item.name] == nil then
-                table.insert(items[item.name], item)
-            end
-        else
-            local found_match = false
-            for _,existing in pairs(items[item.name]) do
-                if table.equals(item.augments, existing.augments) then
-                    found_match = true
-                    break
-                end
-            end
-            if not found_match then
-                table.insert(items[item.name], item)
-            end
-        end
-    end
-end
-
-
---[[
-    Recursively traverses user-defined sets to compile a list of all gear that
-    is currently necessary.
---]]
---local _retrieve_items = function(set)
-function setops.retrieve_items(set)
-
-    --setops._set_res[name].res
-    --setops._set_res[name].versions = {aug1, aug2, ...}
-    --setops._item_res[id] = {id=id,en=tbl.en,enl=tbl.enl,en_l=tbl.en:lower(),enl_l=tbl.enl:lower()}
-
-    local items = {}
-    for slot,item in pairs(set) do
-        if item.name then
-            _insert_item(items, item)
-        else
-            local others = setops.retrieve_items(item)
-            for iname,instances in pairs(others) do
-                for _,instance in pairs(instances) do
-                    _insert_item(items, instance)
-                end
-            end
-        end
-    end
-    return items
-end
---setops.retrieve_items = traceable(_retrieve_items)
-
 
 --[[
     Compiles a list of all items that are in the player's normal storages.
 --]]
 function setops.get_player_items(bagname)
     local searchbags = all_bag_names
-    if (bagname ~= nil) and all_bag_names:contains(bagname:lower()) then
+    if bagname and all_bag_names:contains(bagname:lower()) then
         searchbags = S{bagname}
     end
-
     local items = winraw.ffxi.get_items()
     local gear = {}
     for bname,_ in pairs(searchbags) do
-        local bag = items[bname]
         for i = 1, 80 do
-            local item = res.items[bag[i].id]
-            if (item ~= nil) then
+            local item = res.items[items[bname][i].id]
+            if item then
                 table.insert(gear, item)
             end
         end
@@ -481,45 +419,39 @@ end
     //gs c storable
 --]]
 function setops.determine_storable(args)
-    local gear = setops.get_player_items(args[1])
+    local inv_contents = setops.get_player_items(args[1])
     local slippable = {}
     local c = 0
-    for _,item in pairs(gear) do
-        local slip = _libs.slips.get_slip_id_by_item_id(item.id)
-        if (slip ~= nil) then
-            slippable[slip] = slippable[slip] or S{}
-            slippable[slip]:add(item.enl:capitalize())
-            c = c + 1
+    for _,item in pairs(inv_contents) do
+        if not setops._set_res[item.en] then
+            local slip = _libs.slips.get_slip_id_by_item_id(item.id)
+            if (slip ~= nil) then
+                slippable[slip] = slippable[slip] or S{}
+                slippable[slip]:add(item.enl:capitalize())
+                c = c + 1
+            end
         end
     end
-    
-    if (c > 0) then
-        atc('Items that you can store with the Porter Moogle (':colorize(262)..tostring(c):colorize(123,262)..'):')
-    else
-        atc("You don't have anything that's storable with the Porter Moogle":colorize(258))
-    end
-    
-    local maxSlip = -1
     local output = {}
     for sid,sitems in pairs(slippable) do
         local sname = res.items[sid].en
-        local snum = tonumber(sname:sub(-2))
-        output[snum] = '[':colorize(263)..tostring(sizeof(sitems)):colorize(4,263)..']'..sname:colorize(326,263)..': '..sitems:format('list')
-        if (snum > maxSlip) then
-            maxSlip = snum
-        end
+        output[tonumber(sname:sub(-2))] = '[':colorize(263)..tostring(sizeof(sitems)):colorize(4,263)..']'..sname:colorize(326,263)..': '..sitems:format('list')
     end
-    for i = 1, maxSlip do
-        if (output[i] ~= nil) then
-            atc(output[i])
+    if sizeof(output) > 0 then
+        atc('Items that you can store with the Porter Moogle (':colorize(262)..tostring(c):colorize(123,262)..'):')
+        for k,v in opairs(output) do
+            atc(v)
         end
-    end 
+    else
+        atc("You don't have anything that's storable with the Porter Moogle":colorize(258))
+    end
 end
 
 
 --[[
-    Compares the gear specified in the currently active Player_JOB_gear.lua with the gear present in inventory.
-    Reports which items are not necessary so that they can be moved to make room.
+    Compares the gear specified in the currently active Player_JOB_gear.lua with
+    the gear present in inventory.  Reports which items are not necessary so
+    that they can be moved to make room.
     //gs c inv_check
 --]]
 function setops.find_movable()
@@ -533,7 +465,6 @@ function setops.find_movable()
             end
         end
     end
-    
     if (sizeof(extras) > 0) then
         atc('Items you do not need in your inventory (':colorize(262)..tostring(sizeof(extras)):colorize(123,262)..'):')
         for iname,_ in opairs(extras) do
@@ -545,13 +476,15 @@ function setops.find_movable()
 end
 
 
+--[[
+    Returns a mapping of item_id:slip_name for all items currently stored with
+    a porter moogle.
+--]]
 function setops.map_slipped_to_slip()
-    local slip_items = _libs.slips.get_player_items()   --List of all gear stored with the Porter Moogle now
     local slipped = {}
-    for sid,sitems in pairs(slip_items) do
-        local sliptbl = res.items[sid]
+    for sid,sitems in pairs(_libs.slips.get_player_items()) do
         for _,id in pairs(sitems) do
-            slipped[id] = sliptbl.en
+            slipped[id] = res.items[sid].en
         end
     end
     return slipped
@@ -566,10 +499,6 @@ end
     //gs c slips
 --]]
 function setops.find_slipped()
-    --setops._set_res[res.en].res
-    --setops._set_res[res.en].versions = {aug1, aug2, ...}
-    --setops._item_res[id] = {id=id,en=tbl.en,enl=tbl.enl,en_l=tbl.en:lower(),enl_l=tbl.enl:lower()}
-
     local slipped2slip = setops.map_slipped_to_slip()   --Mapping of items stored in slips to slip names
     local slipped = {}
     for iname,set_res in pairs(setops._set_res) do
@@ -581,20 +510,18 @@ function setops.find_slipped()
             end
         end
     end
-    
     if (sizeof(slipped) > 0) then
         atc('Items you need to retrieve from the Porter Moogle:':colorize(262))
+        local output = {}
+        for slip,stbl in pairs(slipped) do
+            local item_list = ", ":join(stbl)
+            output[tonumber(slip:sub(-2))] = '[':colorize(263)..tostring(sizeof(stbl)):colorize(4,263)..']'..slip:colorize(326,263)..': '..item_list 
+        end
+        for k,v in opairs(output) do
+            atc(v)
+        end
     else
         atc('You have everything that you need from the Porter Moogle!':colorize(258))
-        return
-    end
-    local output = {}
-    for slip,stbl in pairs(slipped) do
-        local item_list = ", ":join(stbl)
-        output[tonumber(slip:sub(-2))] = '[':colorize(263)..tostring(sizeof(stbl)):colorize(4,263)..']'..slip:colorize(326,263)..': '..item_list 
-    end
-    for k,v in opairs(output) do
-        atc(v)
     end
 end
 
@@ -654,7 +581,8 @@ end
 
 
 --[[
-    Prints the currently equipped set to the specified chat channel.  Valid chat channels: /t name, /p, /l
+    Prints the currently equipped set to the specified chat channel.
+    Valid chat channels: /t name, /p, /l
     Usage:  //gs c set2chat /t playername
 --]]
 function setops.set_to_chat(args)
