@@ -1310,6 +1310,7 @@ executable_commands = {
     ['misplaced'] = {['fn']=setops.find_misplaced,     ['group']='inv', ['args']='', ['help']='Print the items required by your gear lua that are in a wrong bag, and where they are'},
     ['export']    = {['fn']=export_gear,               ['group']='inv', ['args']='[format] [name]', ['help']='Export currently equipped gear to .../GearSwap/data/export/.  All args are optional; specify list to put each item on a separate line'}, 
     ['set2chat']  = {['fn']=setops.set_to_chat,        ['group']='inv', ['args']='channel', ['help']='Print your currently equipped gear to the given channel (/l, /t name, etc.)'},
+    ['augs2chat'] = {['fn']=setops.augs_to_chat,       ['group']='inv', ['args']='channel', ['help']='Print your currently equipped gear\'s augments to the given channel (/l, /t name, etc.)'},
     ['slips']     = {['fn']=setops.find_slipped,       ['group']='inv', ['args']='', ['help']='Print the items required by your gear lua that are stored with the porter moogle'},
     ['storable']  = {['fn']=setops.determine_storable, ['group']='inv', ['args']='', ['help']='Print the the items you have in any inventory location that could be stored with a porter moogle, and the slip they would go in'},
     --Action & Equipment Management

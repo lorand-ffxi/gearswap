@@ -581,6 +581,49 @@ end
 
 
 --[[
+    Usage: //gs c augs2chat
+--]]
+function setops.augs_to_chat(args)
+    if not S{'/l','/p','/t'}:contains(args[1]) then
+        atc(123,'Invalid target for printing set info: \'%s\' - Valid: /l, /p, /t':format(args[1]))
+        return
+    end
+    local targ = args[1]
+    if (targ == '/t') then
+        if (args[2] == nil) then
+            atc(123,'Error: No argument provided for /t for printing set info.')
+            return
+        end
+        targ = targ..' '..args[2]
+    end
+    local bags = {[0]='inventory',[8]='wardrobe',[10]='wardrobe2'}
+    local witems = windower.ffxi.get_items()
+    local equipped = witems.equipment
+    local enquote = customized(string.format, "'%s'")
+    local fmt = 'input %s %s {%s}'
+    local output = {}
+    for _,slot in pairs(_slots.name_list) do
+        if slot ~= 'ammo2' then
+            local index = equipped[slot]
+            local bagid = equipped[slot..'_bag']
+            local item = witems[bags[bagid]][index]
+            if item then
+                local ires = setops._item_res[item.id]
+                item = setops.expand_augments(item)
+                if #item.augments > 0 then
+                    local iline = fmt:format(targ, ires.en, ',':join(map(enquote, item.augments)))
+                    table.insert(output, fmt:format(targ, ires.enl:capitalize(), ',':join(map(enquote, item.augments))))
+                end
+            end
+        end
+    end
+    if #output > 0 then
+        windower.send_command(';wait 1.1;':join(output))
+    end
+end
+
+
+--[[
     Prints the currently equipped set to the specified chat channel.
     Valid chat channels: /t name, /p, /l
     Usage:  //gs c set2chat /t playername
