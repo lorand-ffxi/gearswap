@@ -72,7 +72,7 @@ function init_gear_sets()
     }
 
     sets.midcast.HealingMagic = {
-        body="Argute Gown +2",
+        body="Pedagogy Gown",
         feet="Pedagogy Loafers +1"
     }
     sets.midcast.HealingMagic.LA = {
@@ -101,6 +101,8 @@ function init_gear_sets()
     sets.midcast.EnhancingMagic.LA = {
         legs="Academic's Pants +1"      --18 Divine/Enfeebling/Enhancing/Healing Skill
     }
+    sets.midcast.EnhancingMagic.with_buff = {}
+    sets.midcast.EnhancingMagic.with_buff[469] = {hands="Savant's Bracers +2"}  --Perpetuance
     
     sets.midcast.Aquaveil = {waist="Emphatikos Rope"}
     sets.midcast.Stoneskin = {
@@ -113,7 +115,7 @@ function init_gear_sets()
         head="Savant's Bonnet +2"
     }
     sets.midcast.Klimaform = {
-        feet="Savant's Loafers +2"
+        feet="Arbatel Loafers"
     }
 
     sets.midcast.MagicAccuracy = {
@@ -173,8 +175,8 @@ function init_gear_sets()
     
     sets.midcast.ElementalMagicSkill = {
         head="Pedagogy Mortarboard +1",
-        body="Hyksos Robe",
-        back="Bookworm's Cape",     legs="Pedagogy Pants",  feet="Savant's Loafers +2"
+        body="Anhur Robe",
+        back="Bookworm's Cape",     legs="Pedagogy Pants",  feet="Arbatel Loafers"
     }
     sets.midcast.ElementalMagicSkill.DA = {
         body="Academic's Gown +1"       --18 Elemental/Enfeebling/Dark Skill
@@ -213,7 +215,7 @@ function init_gear_sets()
         back="Bookworm's Cape", waist="Tengu-no-Obi",       legs="Artsieq Hose",        feet="Helios Boots"
     }
     sets.midcast.ElementalMagic.Proc = {    --Damage is not a priority
-        main="Chatoyant Staff",     sub="Mephitis Grip",                                    ammo="Savant's Treatise",
+        main="Terra's Staff",     sub="Mephitis Grip",                                    ammo="Savant's Treatise",
         head="Artsieq Hat",         neck="Orunmila's Torque",   ear1="Lifestorm Earring",   ear2="Psystorm Earring",
         body="Academic's Gown +1",  hands="Hagondes Cuffs +1",  ring1="Sangoma Ring",       ring2="Perception Ring",
         back="Ogapepo Cape",        waist="Ovate Rope",         legs="Artsieq Hose",        feet="Artsieq Boots"

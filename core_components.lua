@@ -673,6 +673,9 @@ function get_midcast_set(spell)
             midcastSet = combineSets(midcastSet, sets.midcast, spellMap)
             midcastSet = combineSets(midcastSet, sets.midcast, spell.en)
             
+            for buff,_ in pairs(buffactive) do
+                midcastSet = combineSets(midcastSet, sets.midcast.EnhancingMagic, 'with_buff', buff)
+            end
             if buff_active('Composure') and spell.target.type ~= 'SELF' then
                 midcastSet = combineSets(midcastSet, sets.midcast.EnhancingMagic.Duration.ComposureOther)
                 if spell.en == 'Phalanx II' then
@@ -1308,6 +1311,7 @@ executable_commands = {
     --Inventory Convenience
     ['inv_check'] = {['fn']=setops.find_movable,       ['group']='inv', ['args']='', ['help']='Print a list items in your primary inventory that are not required by your gear lua'},
     ['misplaced'] = {['fn']=setops.find_misplaced,     ['group']='inv', ['args']='', ['help']='Print the items required by your gear lua that are in a wrong bag, and where they are'},
+    ['missing']   = {['fn']=setops.find_misplaced,     ['group']='inv', ['hide']=true},
     ['export']    = {['fn']=export_gear,               ['group']='inv', ['args']='[format] [name]', ['help']='Export currently equipped gear to .../GearSwap/data/export/.  All args are optional; specify list to put each item on a separate line'}, 
     ['set2chat']  = {['fn']=setops.set_to_chat,        ['group']='inv', ['args']='channel', ['help']='Print your currently equipped gear to the given channel (/l, /t name, etc.)'},
     ['augs2chat'] = {['fn']=setops.augs_to_chat,       ['group']='inv', ['args']='channel', ['help']='Print your currently equipped gear\'s augments to the given channel (/l, /t name, etc.)'},

@@ -2,6 +2,20 @@
 --[[
     Author: Ragnarok.Lorand
     GearSwap utility functions that are related to gear set building and manipulation
+    
+    
+    TODO:
+    
+    - coroutine for keeping inventory table up to date 
+        - run every 5-30 seconds (decide later)
+        - keep mapping of item name or id to bag # & slot in that bag
+            - if any changes were made to inventory, refresh table
+            - store list of augments
+        - should improve performance when combining sets while gear swapping
+        - what's in inventory should not change very often in the field
+    - improve error handling so that typos in item names don't cause an incomplete load
+    
+    
 --]]
 --======================================================================================================================
 
@@ -10,7 +24,8 @@ setops._set_res = {}
 setops._item_res = S{}
 
 local all_bag_names = S{'case','inventory','locker','sack','safe','safe2','satchel','storage','wardrobe','wardrobe2'}
-local equip_bag_names = {'inventory', 'wardrobe', 'wardrobe2'}
+local equip_bag_names = {'inventory', 'wardrobe', 'wardrobe2','wardrobe3','wardrobe4'}
+--local bags = {[0]='inventory',[8]='wardrobe',[10]='wardrobe2',[11]='wardrobe3',[12]='wardrobe4'}
 local bags_nonequippable = {'case','locker','sack','safe','safe2','satchel','storage'}
 local aug_cache = {}
 local nil_aug = string.parse_hex('00':rep(24))
@@ -41,10 +56,25 @@ _slots.improper_to_proper = comp('k:v for k,v in table.expanded_invert(_slots.na
 _slots.all_name_variations = comp('k:true for k,v in table.expanded_invert(_slots.names)')
 
 
+local function refresh_bag_contentsA(bag, index, id, count)
+    atcfs('Inventory changed. Bag: %s, Index: %s, ID: %s, Count: %s':format(bag, index, id, count))
+end
+
+local function refresh_bag_contentsR(bag, index, id, count)
+    atcfs('Inventory changed. Bag: %s, Index: %s, ID: %s, Count: %s':format(bag, index, id, count))
+end
+
+
+local function _res_for_item_name(name)
+    if not name then return nil end
+    return res.items:with('en', name) or res.items:with('enl', name:lower()) or setops._item_res:with('en_l',name:lower()) or setops._item_res:with('enl_l',name:lower())
+end
+local res_for_item_name = traceable(_res_for_item_name)
+
 local function _add_to_set_res(name, augments)
     local iname,ires = name,{}
     if name ~= 'empty' then
-        ires = res.items:with('en', name) or res.items:with('enl', name:lower()) or setops._item_res:with('en_l',name:lower()) or setops._item_res:with('enl_l',name:lower())
+        ires = res_for_item_name(name)
         if not ires then
             atc(123, 'ERROR Adding \'%s\' to setops._set_res':format(name))
             return
@@ -140,6 +170,10 @@ function setops.init()
         setops._item_res[id] = {id=id,en=tbl.en,enl=tbl.enl,en_l=tbl.en:lower(),enl_l=tbl.enl:lower()}
     end
     _normalize(sets)
+    
+    --Register events that trigger on inventory change
+    --winraw.register_event('add item', refresh_bag_contentsA)
+    --winraw.register_event('remove item item', refresh_bag_contentsR)
 end
 
 
@@ -588,6 +622,7 @@ function setops.augs_to_chat(args)
         atc(123,'Invalid target for printing set info: \'%s\' - Valid: /l, /p, /t':format(args[1]))
         return
     end
+    local arg_name = nil
     local targ = args[1]
     if (targ == '/t') then
         if (args[2] == nil) then
@@ -595,24 +630,39 @@ function setops.augs_to_chat(args)
             return
         end
         targ = targ..' '..args[2]
+        arg_name = args[3] and " ":join(table.slice(args, 3)) or nil
+    else
+        arg_name = args[2] and " ":join(table.slice(args, 2)) or nil
     end
-    local bags = {[0]='inventory',[8]='wardrobe',[10]='wardrobe2'}
+    
+    local bags = {[0]='inventory',[8]='wardrobe',[10]='wardrobe2',[11]='wardrobe3',[12]='wardrobe4'}
     local witems = windower.ffxi.get_items()
     local equipped = witems.equipment
     local enquote = customized(string.format, "'%s'")
     local fmt = 'input %s %s {%s}'
     local output = {}
-    for _,slot in pairs(_slots.name_list) do
-        if slot ~= 'ammo2' then
-            local index = equipped[slot]
-            local bagid = equipped[slot..'_bag']
-            local item = witems[bags[bagid]][index]
-            if item then
-                local ires = setops._item_res[item.id]
-                item = setops.expand_augments(item)
-                if #item.augments > 0 then
-                    local iline = fmt:format(targ, ires.en, ',':join(map(enquote, item.augments)))
-                    table.insert(output, fmt:format(targ, ires.enl:capitalize(), ',':join(map(enquote, item.augments))))
+    
+    if arg_name then
+        for bag_name,_ in pairs(all_bag_names) do
+            local arg_item = res_for_item_name(arg_name)
+            local augged = get_items_with_augments(bag_name, arg_item.id)
+            for _,aitem in pairs(augged) do
+                local ires = res.items[arg_item.id]
+                table.insert(output, fmt:format(targ, ires.enl:capitalize(), ',':join(map(enquote, aitem.augments))))
+            end
+        end
+    else
+        for _,slot in pairs(_slots.name_list) do
+            if slot ~= 'ammo2' then
+                local index = equipped[slot]
+                local bagid = equipped[slot..'_bag']
+                local item = witems[bags[bagid]][index]
+                if item then
+                    local ires = setops._item_res[item.id]
+                    item = setops.expand_augments(item)
+                    if #item.augments > 0 then
+                        table.insert(output, fmt:format(targ, ires.enl:capitalize(), ',':join(map(enquote, item.augments))))
+                    end
                 end
             end
         end
