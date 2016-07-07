@@ -33,7 +33,7 @@ local _export_gear = function(args)
     --Process currently equipped gear
     local slots = {'main','sub','range','ammo','head','neck','left_ear','right_ear','body','hands','left_ring','right_ring','back','waist','legs','feet'}
     local slotmap = {['left_ear']='ear1',['right_ear']='ear2',['left_ring']='ring1',['right_ring']='ring2'}
-    local bagmap = {[0]='inventory',[8]='wardrobe',[10]='wardrobe2'}
+    local bagmap = {[0]='inventory',[8]='wardrobe',[10]='wardrobe2',[11]='wardrobe3',[12]='wardrobe4'}
     local itemlist = windower.ffxi.get_items()
     local eq_tbl = itemlist.equipment
     

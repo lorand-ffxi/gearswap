@@ -252,6 +252,30 @@ local function get_items_with_augments(bag_name, item_id)
 end
 
 
+local temp_w34_cache = {}
+function temp_w34_workaround(bag_name, item_name)
+    local _time = os.clock()
+    if (not temp_w34_cache._time) or ((_time - temp_w34_cache._time) > 5) then
+        temp_w34_cache = {}
+        temp_w34_cache._time = _time
+    end
+    if not temp_w34_cache[bag_name] then
+        temp_w34_cache[bag_name] = {}
+        for _,item in ipairs(windower.ffxi.get_items()[bag_name]) do
+            if item.id ~= 0 then
+                local ires = res.items[item.id]
+                temp_w34_cache[bag_name][ires.en:lower()] = item
+                temp_w34_cache[bag_name][ires.enl:lower()] = item
+                temp_w34_cache[bag_name][ires.en] = item
+                temp_w34_cache[bag_name][ires.enl] = item
+            end
+        end
+    end
+    return temp_w34_cache[bag_name][item_name] or nil
+end
+
+
+
 --[[
     Combines equipment verified as available from set1 and set2.  Supports slots having more than one option each,
     contained in a table ordered by preference.  If a specific item slot's contents is defined in both set1 and
@@ -317,7 +341,17 @@ end
 function setops.in_equippable_bag(item)
     item = (type(item) == 'table') and item or {name=item}
     for _,bname in pairs(equip_bag_names) do
-        local itbl = player[bname][item.name]
+        --local itbl = player[bname][item.name]
+        
+        local itbl = nil
+        if any_eq(bname, 'wardrobe3', 'wardrobe4')then
+            itbl = temp_w34_workaround(bname, item.name)
+            --atc('Looked for %s in %s':format(item.name, bname))
+            --atcfs('Found: %s', itbl)
+        else
+            itbl = player[bname][item.name]
+        end
+        
         if itbl then
             if (not item.augments) or (#item.augments == 0) then
                 return itbl
