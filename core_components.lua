@@ -708,6 +708,8 @@ function get_midcast_set(spell)
                 midcastSet = combineSets(midcastSet, sets.midcast.BlueMagic.Physical)
                 midcastSet = combineSets(midcastSet, sets.midcast.BlueMagic.Physical[blu_statmap[spell.en]])
             end
+            midcastSet = combineSets(midcastSet, sets.midcast.BlueMagic, spell.en)
+            midcastSet = combineSets(midcastSet, sets.midcast, spell.en)
         elseif spell.skill == 'Ninjutsu' then
             if spellMap == 'Utsusemi' then
                 midcastSet = combineSets(midcastSet, sets.midcast.Utsusemi)

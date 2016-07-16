@@ -81,6 +81,12 @@ end
 --          Printing Functions
 --==============================================================================
 
+function dbg_print(...)
+    if modes.debug then
+        atcfs(...)
+    end
+end
+
 --[[
     Allows atc to be called via the Windower console.
     This enables messages to be added to the chat log with a delay.

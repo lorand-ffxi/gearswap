@@ -44,6 +44,7 @@ function define_defaults()
     setMode('noIdle', false)
     setMode('autoCaress', false)
     setMode('tank', false)
+    setMode('debug', false)
     
     options = T()
     options.autoSan = true

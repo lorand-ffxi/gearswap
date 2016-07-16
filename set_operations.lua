@@ -341,8 +341,8 @@ end
 function setops.in_equippable_bag(item)
     item = (type(item) == 'table') and item or {name=item}
     for _,bname in pairs(equip_bag_names) do
-        --local itbl = player[bname][item.name]
-        
+        local itbl = player[bname][item.name]
+        --[[
         local itbl = nil
         if any_eq(bname, 'wardrobe3', 'wardrobe4')then
             itbl = temp_w34_workaround(bname, item.name)
@@ -351,7 +351,7 @@ function setops.in_equippable_bag(item)
         else
             itbl = player[bname][item.name]
         end
-        
+        --]]
         if itbl then
             if (not item.augments) or (#item.augments == 0) then
                 return itbl

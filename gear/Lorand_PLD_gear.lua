@@ -10,12 +10,14 @@ function init_gear_sets()
         neck="Invidia Torque",          --5
         ear1="Friomisi Earring",        --2
         body="Creed Cuirass +2",        --10
-        hands="Yorium Gauntlets",       --13
+        --hands="Yorium Gauntlets",       --13
+        hands={name="Yorium Gauntlets", augments={'Enmity+9'}},
         ring1="Provocare Ring",         --5
         ring2="Eihwaz Ring",            --5
         back="Earthcry Mantle",         --7
         waist="Creed Baudrier",         --5
-        legs="Caballarius Breeches +1", --7
+        --legs="Caballarius Breeches +1", --7
+        legs={name="Acro Breeches", augments={'Accuracy+8 Attack+8','Enmity+9'}},
         feet="Creed Sabatons +2"        --7
     }
     --============================================================
@@ -60,10 +62,21 @@ function init_gear_sets()
         
     --============================================================
        
-    sets.wsBase = {                                         ammo="Jukukik Feather",
-        head="Yaoyotl Helm",    neck="Asperity Necklace",   ear1="Bladeborn Earring",   ear2="Steelflash Earring",
-        body="Xaddi Mail",      hands="Cizin Mufflers +1",  ring1="Rajas Ring",         ring2="Mars's Ring",
-        back="Atheling Mantle", waist="Windbuffet Belt +1", legs="Cizin Breeches +1",   feet="Ejekamal Boots"
+    sets.wsBase = {
+        ammo="Jukukik Feather",
+        head="Yaoyotl Helm",
+        neck="Asperity Necklace",
+        ear1="Bladeborn Earring",   ear2="Steelflash Earring",
+        body="Xaddi Mail",
+        --hands="Cizin Mufflers +1",
+        hands={name="Cizin Mufflers +1", augments={'Phys. dmg. taken -1%','"Dbl.Atk."+1'}},
+        ring1="Rajas Ring",         ring2="Mars's Ring",
+        back="Atheling Mantle",
+        waist="Windbuffet Belt +1",
+        legs={name="Acro Breeches", augments={'Attack+10','"Dbl.Atk."+3','STR+4 AGI+4'}},
+        feet={name="Acro Leggings", augments={'Accuracy+19','"Store TP"+3','STR+2 AGI+2'}}
+        --legs="Cizin Breeches +1",
+        --feet="Ejekamal Boots"
     }
     
     sets.wsBase.DEX = {ring2="Thundersoul Ring"}
@@ -128,6 +141,7 @@ function init_gear_sets()
     --============================================================
     
     sets.weapons.Main = {main="Usonmunku",sub="Priwen"}
+    sets.weapons.Aegis = {main="Usonmunku",sub="Aegis"}
     
     sets.Reraise = {head="Twilight Helm", body="Twilight Mail"}
     
