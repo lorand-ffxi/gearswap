@@ -19,7 +19,7 @@
 --]]
 --======================================================================================================================
 
-lor_gs_versions.set_operations = '2016-07-16.0'
+lor_gs_versions.set_operations = '2016-07-16.1'
 
 setops = setops or {}
 setops._set_res = {}
@@ -223,12 +223,14 @@ function setops.expand_augments_in_bags(bag_list)
     local witems = windower.ffxi.get_items()
     local equippable = {}
     for _,bag_name in pairs(bag_list) do
-        for _,bagged_item in ipairs(witems[bag_name]) do
-            if bagged_item then
-                bagged_item = setops.expand_augments(bagged_item)
-                bagged_item.bag_name = bag_name
-                equippable[bagged_item.id] = equippable[bagged_item.id] or {}
-                table.insert(equippable[bagged_item.id], bagged_item)
+        if witems[bag_name] then    --Assert player has bag unlocked
+            for _,bagged_item in ipairs(witems[bag_name]) do
+                if bagged_item then
+                    bagged_item = setops.expand_augments(bagged_item)
+                    bagged_item.bag_name = bag_name
+                    equippable[bagged_item.id] = equippable[bagged_item.id] or {}
+                    table.insert(equippable[bagged_item.id], bagged_item)
+                end
             end
         end
     end
@@ -252,30 +254,6 @@ local function get_items_with_augments(bag_name, item_id)
     end
     return aug_cache[bag_name][item_id] or {}
 end
-
-
-local temp_w34_cache = {}
-function temp_w34_workaround(bag_name, item_name)
-    local _time = os.clock()
-    if (not temp_w34_cache._time) or ((_time - temp_w34_cache._time) > 5) then
-        temp_w34_cache = {}
-        temp_w34_cache._time = _time
-    end
-    if not temp_w34_cache[bag_name] then
-        temp_w34_cache[bag_name] = {}
-        for _,item in ipairs(windower.ffxi.get_items()[bag_name]) do
-            if item.id ~= 0 then
-                local ires = res.items[item.id]
-                temp_w34_cache[bag_name][ires.en:lower()] = item
-                temp_w34_cache[bag_name][ires.enl:lower()] = item
-                temp_w34_cache[bag_name][ires.en] = item
-                temp_w34_cache[bag_name][ires.enl] = item
-            end
-        end
-    end
-    return temp_w34_cache[bag_name][item_name] or nil
-end
-
 
 
 --[[
@@ -343,14 +321,16 @@ end
 function setops.in_equippable_bag(item)
     item = (type(item) == 'table') and item or {name=item}
     for _,bname in pairs(equip_bag_names) do
-        local itbl = player[bname][item.name]
-        if itbl then
-            if (not item.augments) or (#item.augments == 0) then
-                return itbl
-            end
-            for _,aitem in pairs(get_items_with_augments(bname, itbl.id)) do
-                if table.equals(item.augments, aitem.augments) then
+        if player[bname] then   --Assert player has bag unlocked
+            local itbl = player[bname][item.name]
+            if itbl then
+                if (not item.augments) or (#item.augments == 0) then
                     return itbl
+                end
+                for _,aitem in pairs(get_items_with_augments(bname, itbl.id)) do
+                    if table.equals(item.augments, aitem.augments) then
+                        return itbl
+                    end
                 end
             end
         end
@@ -462,10 +442,12 @@ function setops.get_player_items(bagname)
     local items = winraw.ffxi.get_items()
     local gear = {}
     for bname,_ in pairs(searchbags) do
-        for i = 1, 80 do
-            local item = res.items[items[bname][i].id]
-            if item then
-                table.insert(gear, item)
+        if items[bname] then    --Assert player has bag unlocked
+            for i = 1, 80 do
+                local item = res.items[items[bname][i].id]
+                if item then
+                    table.insert(gear, item)
+                end
             end
         end
     end
