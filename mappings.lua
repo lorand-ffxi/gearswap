@@ -7,6 +7,8 @@
 --              Song buff enhancements on instruments and equipment
 --======================================================================================================================
 
+lor_gs_versions.mappings = '2016-07-16.0'
+
 instruments = {}
 instruments.effects = {
     ["Angel's Flute"] = {['Prelude']=1},    ["Angel's Flute +1"] = {['Prelude']=2}, ["Apollo's Flute"] = {['Minuet']=3},

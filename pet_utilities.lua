@@ -5,6 +5,8 @@
 --]]
 --------------------------------------------------------------------------------
 
+lor_gs_versions.pet_utilities = '2016-07-16.0'
+
 function handle_pet(args)
     if not args[1] then
         atc(123,'Error: No pet command given.')

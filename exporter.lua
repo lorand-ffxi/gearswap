@@ -1,3 +1,6 @@
+
+lor_gs_versions.exporter = '2016-07-16.0'
+
 --[[
     Export Gear
     Exports the currently equipped gear in proper lua format to 

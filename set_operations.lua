@@ -19,6 +19,8 @@
 --]]
 --======================================================================================================================
 
+lor_gs_versions.set_operations = '2016-07-16.0'
+
 setops = setops or {}
 setops._set_res = {}
 setops._item_res = S{}
@@ -342,16 +344,6 @@ function setops.in_equippable_bag(item)
     item = (type(item) == 'table') and item or {name=item}
     for _,bname in pairs(equip_bag_names) do
         local itbl = player[bname][item.name]
-        --[[
-        local itbl = nil
-        if any_eq(bname, 'wardrobe3', 'wardrobe4')then
-            itbl = temp_w34_workaround(bname, item.name)
-            --atc('Looked for %s in %s':format(item.name, bname))
-            --atcfs('Found: %s', itbl)
-        else
-            itbl = player[bname][item.name]
-        end
-        --]]
         if itbl then
             if (not item.augments) or (#item.augments == 0) then
                 return itbl

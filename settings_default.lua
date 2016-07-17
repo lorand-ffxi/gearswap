@@ -5,6 +5,8 @@
 --]]
 -----------------------------------------------------------------------------------------------------------
 
+lor_gs_versions.settings_default = '2016-07-16.0'
+
 function set_options()
     --Options only need to be set here if your preference differs from the settings in defaults.lua
     options.autoDummy = true        --Automatically use Daurdabla/Terpander with specified songs
@@ -53,7 +55,7 @@ function set_modes()
     elseif S{'MNK'}:contains(player.main_job) then
         modelist['offense'] = {'Normal','Tank'}
     elseif S{'NIN'}:contains(player.main_job) then
-        modelist['offense'] = {'auto', 'auto_acc', 'Tank', 'CrazyAccuracy'}
+        modelist['offense'] = {'auto', 'Tank', 'CrazyAccuracy'}
         modelist['weapon'] = {'Main','OAT','Reive','Other'}
     elseif S{'PLD'}:contains(player.main_job) then
         modelist['offense'] = {'Normal', 'TankP', 'TankM', 'TankMix'}

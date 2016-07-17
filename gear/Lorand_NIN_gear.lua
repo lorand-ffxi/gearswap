@@ -229,132 +229,61 @@ function init_gear_sets()
     
     sets.engaged.auto = {
         ammo="Happo Shuriken +1",
-        head={name="Taeon Chapeau", augments={'Accuracy+18 Attack+18','"Triple Atk."+2','Crit. hit damage +2%'}},
+        head="Hattori Zukin",
         neck="Asperity Necklace",
-        ear1="Bladeborn Earring",       ear2="Steelflash Earring",
-        body="Mochizuki Chainmail +1",
-        hands="Taeon Gloves",
-        ring1="Rajas Ring",             ring2="Epona's Ring",
+        ear1="Dudgeon Earring",
+        ear2="Heartseeker Earring",
+        body={name="Mochizuki Chainmail +1", augments={'Enhances "Sange" effect'}},
+        hands={name="Taeon Gloves", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','DEX+7'}},
+        ring1="Rajas Ring",
+        ring2="Epona's Ring",
         back="Atheling Mantle",
-        waist="Patentia Sash",
-        legs="Mochizuki Hakama +1",
-        feet="Mochizuki Kyahan +1"
+        waist="Windbuffet Belt +1",
+        legs={name="Taeon Tights", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','STR+7 DEX+7'}},
+        feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+3','STR+6 DEX+6'}}
     }
     sets.engaged.auto['na'] =   {
-        head="Hattori Zukin",
-        ear1="Dudgeon Earring",     ear2="Heartseeker Earring",
-        feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+3','STR+6 DEX+6'}}
+        waist="Patentia Sash",
+        legs={name="Mochizuki Hakama +1", augments={'Enhances "Mijin Gakure" effect'}}
     }
     sets.engaged.auto['I'] =    {
-        ammo="Happo Shuriken +1",
-        head="Hattori Zukin",
-        neck="Asperity Necklace",
-        ear1="Dudgeon Earring",
-        ear2="Heartseeker Earring",
-        body={name="Mochizuki Chainmail +1", augments={'Enhances "Sange" effect'}},
-        hands={name="Taeon Gloves", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','DEX+7'}},
-        ring1="Rajas Ring",
-        ring2="Epona's Ring",
-        back="Atheling Mantle",
-        waist="Windbuffet Belt +1",
-        legs={name="Mochizuki Hakama +1", augments={'Enhances "Mijin Gakure" effect'}},
-        feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+3','STR+6 DEX+6'}}
+        legs={name="Mochizuki Hakama +1", augments={'Enhances "Mijin Gakure" effect'}}
     }
-    sets.engaged.auto['I+'] =   {
-        ammo="Happo Shuriken +1",
-        head="Hattori Zukin",
-        neck="Asperity Necklace",
-        ear1="Dudgeon Earring",
-        ear2="Heartseeker Earring",
-        body={name="Mochizuki Chainmail +1", augments={'Enhances "Sange" effect'}},
-        hands={name="Taeon Gloves", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','DEX+7'}},
-        ring1="Rajas Ring",
-        ring2="Epona's Ring",
-        back="Atheling Mantle",
-        waist="Windbuffet Belt +1",
-        legs={name="Taeon Tights", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','STR+7 DEX+7'}},
-        feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+3','STR+6 DEX+6'}}
-    }
+    sets.engaged.auto['I+'] =   {}
     sets.engaged.auto['II'] =   {
-        ammo="Happo Shuriken +1",
-        head={name="Taeon Chapeau", augments={'Accuracy+18 Attack+18','"Triple Atk."+2','Crit. hit damage +2%'}},
-        neck="Asperity Necklace",
-        ear1="Dudgeon Earring",
-        ear2="Heartseeker Earring",
-        body={name="Mochizuki Chainmail +1", augments={'Enhances "Sange" effect'}},
-        hands={name="Taeon Gloves", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','DEX+7'}},
-        ring1="Rajas Ring",
-        ring2="Epona's Ring",
-        back="Atheling Mantle",
-        waist="Windbuffet Belt +1",
-        legs={name="Taeon Tights", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','STR+7 DEX+7'}},
-        feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+3','STR+6 DEX+6'}}
+        head={name="Taeon Chapeau", augments={'Accuracy+18 Attack+18','"Triple Atk."+2','Crit. hit damage +2%'}}
     }
     sets.engaged.auto['II+'] =  {
         head={name="Taeon Chapeau", augments={'Accuracy+18 Attack+18','"Triple Atk."+2','Crit. hit damage +2%'}},
-        neck="Asperity Necklace",
-        ear1="Bladeborn Earring",
-        ear2="Steelflash Earring",
-        body={name="Qaaxo Harness", augments={'Attack+15','Evasion+15','"Dbl.Atk."+2'}},
-        hands={name="Taeon Gloves", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','DEX+7'}},
-        ring1="Rajas Ring",
-        ring2="Epona's Ring",
-        back="Atheling Mantle",
-        waist="Windbuffet Belt +1",
-        legs={name="Taeon Tights", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','STR+7 DEX+7'}},
-        feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+3','STR+6 DEX+6'}}
+        ear1="Bladeborn Earring",   ear2="Steelflash Earring",
+        body={name="Qaaxo Harness", augments={'Attack+15','Evasion+15','"Dbl.Atk."+2'}}
     }
     
-    sets.engaged.auto_acc = {
-        ammo="Happo Shuriken +1",
-        head={name="Taeon Chapeau", augments={'Accuracy+18 Attack+18','"Triple Atk."+2','Crit. hit damage +2%'}},
+    sets.engaged.auto.MediumAcc = {
         neck="Agitator's Collar",
-        ear1="Bladeborn Earring",   ear2="Steelflash Earring",
-        body="Mochizuki Chainmail +1",
-        hands="Taeon Gloves",
-        ring1="Rajas Ring",         ring2="Epona's Ring",
+        ring2="Mars's Ring",
+        back="Yokaze Mantle"
+    }
+    sets.engaged.auto.HighAcc = {
+        neck="Iqabi Necklace",
+        ring2="Mars's Ring",
         back="Yokaze Mantle",
-        waist="Patentia Sash",
-        legs="Mochizuki Hakama +1",
-        feet="Mochizuki Kyahan +1"
-    }
-    sets.engaged.auto_acc['na'] =   {
-        head="Hattori Zukin",
-        ear1="Dudgeon Earring",     ear2="Heartseeker Earring",
-        hands="Mochizuki Tekko +1",
-        feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+3','STR+6 DEX+6'}}
-    }
-    sets.engaged.auto_acc['I'] =    {
-        head="Hattori Zukin",
-        ear1="Dudgeon Earring",     ear2="Heartseeker Earring",
-        hands="Mochizuki Tekko +1",
-        feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+3','STR+6 DEX+6'}}
-    }
-    sets.engaged.auto_acc['I+'] =   {
-        ear1="Dudgeon Earring",     ear2="Heartseeker Earring",
-        body="Hachiya Chainmail +1"
-    }
-    sets.engaged.auto_acc['II'] =   {
-        waist="Windbuffet Belt +1",
-        feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+3','STR+6 DEX+6'}}
-    }
-    sets.engaged.auto_acc['II+'] =  {
-        waist="Windbuffet Belt +1",
-        legs="Hachiya Hakama +1"
+        waist="Anguinus Belt"
     }
     
     sets.engaged.CrazyAccuracy = {
         ammo="Happo Shuriken +1",
         head={name="Taeon Chapeau", augments={'Accuracy+18 Attack+18','"Triple Atk."+2','Crit. hit damage +2%'}},
-        --neck="Agitator's Collar",
         neck="Iqabi Necklace",
-        ear1="Bladeborn Earring",   ear2="Steelflash Earring",
-        body="Mochizuki Chainmail +1",
+        ear1="Bladeborn Earring",
+        ear2="Steelflash Earring",
+        body={name="Mochizuki Chainmail +1", augments={'Enhances "Sange" effect'}},
         hands={name="Taeon Gloves", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','DEX+7'}},
-        ring1="Rajas Ring",         ring2="Mars's Ring",
-        back="Yokaze Mantle",
+        ring1="Rajas Ring",
+        ring2="Mars's Ring",
+        back={name="Yokaze Mantle", augments={'STR+3','DEX+2','Sklchn.dmg.+1%'}},
         waist="Anguinus Belt",
-        legs="Hachiya Hakama +1",
+        legs={name="Taeon Tights", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','STR+7 DEX+7'}},
         feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+3','STR+6 DEX+6'}}
     }
     

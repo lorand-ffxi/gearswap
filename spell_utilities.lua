@@ -6,6 +6,8 @@
 --]]
 --------------------------------------------------------------------------------
 
+lor_gs_versions.spell_utilities = '2016-07-16.0'
+
 local cure2num = {['Cure'] = 1, ['Cure II'] = 2, ['Cure III'] = 3, ['Cure IV'] = 4, ['Cure V'] = 5, ['Cure VI'] = 6}
 local num2cure = {'Cure','Cure II','Cure III','Cure IV','Cure V','Cure VI'}
 local strat_charge_time = {240,120,80,60,48}

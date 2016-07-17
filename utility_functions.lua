@@ -8,6 +8,8 @@
 --          File Handling Functions
 --==============================================================================
 
+lor_gs_versions.utility_functions = '2016-07-16.0'
+
 --[[
     Attempt to load user gear files in place of default gear sets.
     Returns true if one exists and was loaded, otherwise returns false.

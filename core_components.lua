@@ -1,12 +1,12 @@
 --==============================================================================
 --[[
     Author: Ragnarok.Lorand
-    Updated: 2016-07-04
     GearSwap core components
 --]]
 --==============================================================================
 
 function init()
+    lor_gs_versions.core_components = '2016-07-16.0'
     show_debug = false
     
     require('lor/lor_utils')
@@ -965,12 +965,15 @@ function get_melee_set(baseSet)
     local meleeSet = combineSets(baseSet, sets.engaged)
     meleeSet = combineSets(meleeSet, sets.engaged[modes.offense])
     if (S{'auto','auto_acc'}:contains(modes.offense)) then
-        meleeSet = combineSets(meleeSet, sets.engaged[modes.offense], get_haste_mod())
+        local haste_mod = get_haste_mod()
+        meleeSet = combineSets(meleeSet, sets.engaged[modes.offense], modes.accuracy)
+        meleeSet = combineSets(meleeSet, sets.engaged[modes.offense], haste_mod)
+    else
+        meleeSet = combineSets(meleeSet, sets.engaged[modes.accuracy])
+        meleeSet = combineSets(meleeSet, sets.engaged, modes.offense, modes.accuracy)
     end
     meleeSet = combineSets(meleeSet, sets.engaged[modes.defense])
     meleeSet = combineSets(meleeSet, sets.engaged[modes.defense], modes.accuracy)
-    meleeSet = combineSets(meleeSet, sets.engaged, modes.offense, modes.accuracy)
-    meleeSet = combineSets(meleeSet, sets.engaged[modes.accuracy])
     
     for buff,_ in pairs(buffactive) do
         --atc(1, '[Engaged] Buffactive: '..tostring(buff))
@@ -1303,6 +1306,11 @@ local function reload()
     windower.send_command('lua reload '.._addon.name)
 end
 
+local function version_check()
+    atcc(262, 'Found %s versioned files:':format(sizeof(lor_gs_versions)))
+    pprint(lor_gs_versions)
+end
+
 executable_commands = {
     --Mode Setting
     ['activate']  = {['fn']=activate_mode,             ['group']='mode', ['args']='mode', ['help']='Set modes[mode] to true and update current equipment'},
@@ -1332,4 +1340,5 @@ executable_commands = {
     ['info']      = {['fn']=info_func,                 ['group']='misc', ['args']='[cmd]', ['help']='View addon/windower variable values'},
     ['test']      = {['fn']=test,                      ['group']='misc', ['hide']=true},
     ['reload']    = {['fn']=reload,                    ['group']='misc', ['args']='', ['help']='Reload GearSwap entirely; //gs reload only refreshes the user environment, which leads to a memory leak'},
+    ['vercheck']  = {['fn']=version_check,             ['group']='misc', ['args']='', ['help']='Display file versions for lor GS files'},
 }
