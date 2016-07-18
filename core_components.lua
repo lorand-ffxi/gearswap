@@ -15,29 +15,30 @@ function init()
     end
     _libs.lor.req('all')
     _libs.req('lists', 'sets')
-    _libs.req('chat/chars')     --Required for using special characters in delayed messages
-    _libs.req('slips')          --Required for notifying which items need to be fetched from the porter moogle
-    _libs.req('files')          --Required for loading external files without using require()
+    _libs.req('chat/chars')         --Required for using special characters in delayed messages
+    _libs.req('slips')              --Required for notifying which items need to be fetched from the porter moogle
+    _libs.req('files')              --Required for loading external files without using require()
     extdata = require('extdata')
     res = res or gearswap.res
     
     Assert = require('assertion')   --Assertion functions
     
-    include('packet_handling')  --Required for haste tier detection
-    include('utility_functions')    --Load utility_functions.lua (defines misc functions)
-    winraw = gearswap._G.windower   --Required for direct access to windower functions
+    include('packet_handling')                                      --Required for haste tier detection
+    include('utility_functions')                                    --Load utility_functions.lua (defines misc functions)
+    winraw = gearswap._G.windower                                   --Required for direct access to windower functions
     winraw.register_event('incoming chunk', handle_incoming_chunk)  --Gearswap's overridden version causes errors
-    windower.register_event('incoming text', parse_inc_text)    --Need overridden version for reloading
-    windower.register_event('outgoing text', parse_out_text)    --Need overridden version for reloading
+    windower.register_event('incoming text', parse_inc_text)        --Need overridden version for reloading
+    windower.register_event('outgoing text', parse_out_text)        --Need overridden version for reloading
     
-    include('defaults')     --Load defaults.lua
-    define_defaults()       --Define some default sets & set up variable modes
+    include('defaults')         --Load defaults.lua
+    define_defaults()           --Define some default sets & set up variable modes
     
     include('set_operations')   --Load set_operations.lua (advanced set combination functions)
     include('spell_utilities')  --Load spell_utilities.lua (cure & timer handling)
     include('pet_utilities')    --Load pet_utilities.lua (pet handling)
-    include('mappings')     --Load mappings.lua (provides generalizations for spells and abilities)
-    include('exporter')     --Load exporter.lua (provides better implementation of gear exporting)
+    include('mappings')         --Load mappings.lua (provides generalizations for spells and abilities)
+    include('exporter')         --Load exporter.lua (provides better implementation of gear exporting)
+    include('gear_inspection')
     
     trusts = populateTrustList()
     
@@ -49,7 +50,7 @@ function init()
     
     load_user_settings()        --Attempt to load user settings
     if use_user_settings then
-        use_user_settings() --Use the loaded settings
+        use_user_settings()     --Use the loaded settings
     else
         echo('WARNING: settings_'..player.name..'.lua not found.')
     end
