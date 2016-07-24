@@ -6,7 +6,7 @@
 --==============================================================================
 
 function init()
-    lor_gs_versions.core_components = '2016-07-16.0'
+    lor_gs_versions.core_components = '2016-07-24.0'
     show_debug = false
     
     require('lor/lor_utils')
@@ -636,7 +636,7 @@ function get_midcast_set(spell)
             end
             
             if weatherPermits(spell.element) then
-                if (spellMap ~= 'Helix') and options.useObi then
+                if not any_eq(spellMap, 'Helix', 'Helix2') and options.useObi then
                     midcastSet = combineSets(midcastSet, {waist=setops.getObi(spell.element)})
                 end
                 if options.useTwilightCape then
