@@ -236,7 +236,7 @@ function init_gear_sets()
         head="Kaabnax Hat",         neck="Eidolon Pendant",     ear1="Loquacious Earring",  ear2="Relaxing Earring",
         body="Artsieq Jubbah",      hands="Nares Cuffs",        ring1="Sangoma Ring",       ring2="Fenrir Ring +1",
         back={"Felicitas Cape","Pahtli Cape"},
-        waist="Emphatikos Rope",    legs="Nares Trews",         feet="Chelona Boots"
+        waist="Fucho-no-obi",    legs="Nares Trews",         feet="Chelona Boots"
     }
     
     sets.idle = {
@@ -244,7 +244,7 @@ function init_gear_sets()
         head="Academic's Mortarboard +1",   neck="Twilight Torque",         ear1="Brachyura Earring",   ear2="Ethereal Earring",
         body={"Academic's Gown +1", "Artsieq Jubbah"},
         hands="Gendewitha Gages +1",    ring1="Defending Ring",     ring2="Shneddick Ring",
-        back="Repulse Mantle",              waist="Emphatikos Rope",        legs="Academic's Pants +1", feet="Gendewitha Galoshes +1"
+        back="Repulse Mantle",              waist="Fucho-no-obi",        legs="Academic's Pants +1", feet="Gendewitha Galoshes +1"
     }
     
     sets.idle.CapFarm = {back="Mecistopins Mantle"}
@@ -257,7 +257,7 @@ function init_gear_sets()
     }
     sets.idle.with_buff = {}
     
-    sets.idle.lowMP =   {legs="Nares Trews"}
+    sets.idle.lowMP = {waist="Fucho-no-obi", legs="Nares Trews"}
     sets.idle.lowMP_night = {hands="Serpentes Cuffs"}
     sets.idle.lowMP_day =   {feet="Serpentes Sabots"}
     

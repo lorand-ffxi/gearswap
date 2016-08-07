@@ -1,3 +1,0 @@
-sed -i -e "s/{[^}]*}/{}/g" Template*lua
-
-Note: The above sed script does NOT match new line characters.

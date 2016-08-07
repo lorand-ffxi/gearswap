@@ -236,8 +236,10 @@ function init_gear_sets()
     sets.idle = {
         main="Bolelabunga",             sub="Genbu's Shield",       ammo="Kalboron Stone",
         head="Vitivation Chapeau +1",   neck="Twilight Torque",     ear1="Novia Earring",           ear2="Ethereal Earring",
-        body="Artsieq Jubbah",          hands="Hagondes Cuffs +1",  ring1="Dark Ring",              ring2="Shneddick Ring",
-        back="Cheviot Cape",          waist="Emphatikos Rope",    legs="Vitivation Tights +1",    feet="Gendewitha Galoshes +1"
+        body="Artsieq Jubbah",          hands="Hagondes Cuffs +1",
+        ring1={name="Dark Ring", augments={'Phys. dmg. taken -5%','Breath dmg. taken -4%','Magic dmg. taken -3%'}},
+        ring2="Shneddick Ring",
+        back="Cheviot Cape",          waist="Fucho-no-obi",    legs="Vitivation Tights +1",    feet="Gendewitha Galoshes +1"
     }
     sets.idle.CapFarm = {back="Mecistopins Mantle"}
     
@@ -249,9 +251,7 @@ function init_gear_sets()
         body="Artsieq Jubbah",          hands="Hagondes Cuffs +1",  ring1="Dark Ring",              ring2="Shneddick Ring",
         back="Cheviot Cape",            waist="Flume Belt",         legs="Vitivation Tights +1",    feet="Gendewitha Galoshes +1"
     }
-    sets.idle.lowMP = {
-        legs="Nares Trews"
-    }
+    sets.idle.lowMP = {waist="Fucho-no-obi", legs="Nares Trews"}
     sets.idle.lowMP_night = {hands="Serpentes Cuffs"}
     sets.idle.lowMP_day = {feet="Serpentes Sabots"}
     

@@ -25,8 +25,9 @@ local stratagems = {
     ['None'] = {['light'] = 'Light Arts', ['dark'] = 'Dark Arts'}
 }
 local stratagem_messages = {
-    ['cost'] =     'cost 50% less MP',   ['speed'] =    'cast 50% faster',  ['aoe'] =    'affect multiple targets',
-    ['duration'] = 'last twice as long', ['accuracy'] = 'be more accurate', ['enmity'] = 'generate less enmity'
+    cost =     'cost 50% less MP',   speed =    'cast 50% faster',  aoe =    'affect multiple targets',
+    duration = 'last twice as long', accuracy = 'be more accurate', enmity = 'generate less enmity',
+    ws =       'work in a skillchain'
 }
 
 
@@ -254,7 +255,9 @@ function buff_active(...)
     local args = S{...}:map(string.lower)
     for _,buffid in pairs(player.buffs) do
         local buff = gearswap.res.buffs[buffid]
-        if args:contains(buff.en:lower()) then
+        if buff == nil then
+            atc(123, 'Buffid not found in resources: %s':format(buffid))
+        elseif args:contains(buff.en:lower()) then
             return buff
         end
     end

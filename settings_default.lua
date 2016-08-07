@@ -56,7 +56,7 @@ function set_modes()
         modelist['offense'] = {'Normal','Tank'}
     elseif S{'NIN'}:contains(player.main_job) then
         modelist['offense'] = {'auto', 'Tank', 'CrazyAccuracy'}
-        modelist['weapon'] = {'Main','OAT','Reive','Other'}
+        modelist['weapon'] = {'Main','OAT','Reive','Sword','Dagger','Other'}
     elseif S{'PLD'}:contains(player.main_job) then
         modelist['offense'] = {'Normal', 'TankP', 'TankM', 'TankMix'}
         modelist['idle'] = {'Showoff', 'PDT', 'MDT', 'normal'}

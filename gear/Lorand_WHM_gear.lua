@@ -190,7 +190,7 @@ function init_gear_sets()
 		main="Chatoyant Staff",		sub="Elder's Grip",						ammo="Kalboron Stone",
 		head="Nahtirah Hat",		neck="Eidolon Pendant",		ear1="Loquacious Earring",	ear2="Relaxing Earring",
 		body="Gendewitha Bliaut +1",	hands="Nares Cuffs",		ring1="Defending Ring",		ring2="Sheltered Ring",
-		back="Felicitas Cape",		waist="Emphatikos Rope",	legs="Nares Trews",		feet="Chelona Boots"
+		back="Felicitas Cape",		waist="Fucho-no-obi",	legs="Nares Trews",		feet="Chelona Boots"
 	}
 
 	sets.idle = {
@@ -198,15 +198,11 @@ function init_gear_sets()
 		head="Nahtirah Hat",	neck="Twilight Torque",		ear1="Brachyura Earring",	ear2="Ethereal Earring",
 		body={"Theophany Briault +1", "Artsieq Jubbah"},
 		hands="Dynasty Mitts",	ring1="Defending Ring",		ring2="Shneddick Ring",
-		back="Repulse Mantle",	waist="Emphatikos Rope",	legs="Artsieq Hose",		feet="Gendewitha Galoshes +1"
+		back="Repulse Mantle",	waist="Fucho-no-obi",	legs="Artsieq Hose",		feet="Gendewitha Galoshes +1"
 	}
 	
 	sets.idle.CapFarm = {back="Mecistopins Mantle"}
-	
-	sets.idle.lowMP = {
-		--main="Owleyes",		sub="Genbu's Shield",
-		legs="Nares Trews"
-	}
+	sets.idle.lowMP = {waist="Fucho-no-obi", legs="Nares Trews"}
 	sets.idle.lowMP_night =	{hands="Serpentes Cuffs"}
 	sets.idle.lowMP_day = {feet="Serpentes Sabots"}
 	

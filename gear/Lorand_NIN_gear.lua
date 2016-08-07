@@ -179,6 +179,8 @@ function init_gear_sets()
     sets.weapons.Main = {main="Kikoku", sub="Tancho +1"}
     sets.weapons.OAT = {main="Kikoku", sub="Taikogane"}
     sets.weapons.Reive = {main="Kikoku", sub="Senkutanto"}
+    sets.weapons.Sword = {main="Usonmunku", sub="Tancho +1"}
+    sets.weapons.Dagger = {main="Sabebus", sub="Tancho +1"}
     
     sets.idle = {
         ammo="Demonry Stone",
@@ -187,6 +189,7 @@ function init_gear_sets()
         back="Repulse Mantle",          waist="Flume Belt",     legs={"Hachiya Hakama +1", "Otronif Brais +1"},
         feet="Hachiya Kyahan"
     }
+    sets.idle.CapFarm = {back="Mecistopins Mantle"}
     sets.idle.with_buff = {}
     sets.idle.with_buff['migawari'] = {body="Hattori Ningi"}
     sets.idle.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}

@@ -209,7 +209,7 @@ function init_gear_sets()
         main="Bolelabunga", sub="Genbu's Shield",                       ammo="Incantor Stone",
         head="Kaabnax Hat", neck="Twilight Torque",     ear1="Novia Earring",       ear2="Star Earring",
         body="Artsieq Jubbah",  hands="Serpentes Cuffs",    ring1="Dark Ring",      ring2="Shneddick Ring",
-        back="Cheviot Cape",    waist="Hierarch Belt",      legs="Piety Pantaloons",    feet="Theophany Duckbills"
+        back="Cheviot Cape",    waist="Fucho-no-obi",      legs="Piety Pantaloons",    feet="Theophany Duckbills"
     }
     
     sets.idle.CapFarm = {back="Mecistopins Mantle"}
@@ -217,9 +217,7 @@ function init_gear_sets()
     sets.idle.with_buff = {}
     sets.idle.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
     
-    sets.idle.lowMP = {
-        legs="Nares Trews"
-    }
+    sets.idle.lowMP = {waist="Fucho-no-obi", legs="Nares Trews"}
     sets.idle.lowMP_night = {hands="Serpentes Cuffs"}
     sets.idle.lowMP_day = {feet="Serpentes Sabots"}
     

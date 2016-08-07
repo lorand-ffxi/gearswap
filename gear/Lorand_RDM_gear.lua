@@ -168,7 +168,7 @@ function init_gear_sets()
 	}
 	sets.idle.with_buff = {}
 	sets.idle.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
-	sets.idle.lowMP = {legs="Nares Trews"}
+	sets.idle.lowMP = {waist="Fucho-no-obi", legs="Nares Trews"}
 	sets.idle.lowMP_night =	{hands="Serpentes Cuffs"}
 	sets.idle.lowMP_day = {feet="Serpentes Sabots"}
 	

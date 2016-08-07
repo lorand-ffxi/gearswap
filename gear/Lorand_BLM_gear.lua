@@ -70,7 +70,7 @@ function init_gear_sets()
 	}
 
 	sets.midcast.MagicAccuracy = {
-		main="Kaladanda",	sub="Mephitis Grip",						ammo="Kalboron Stone",
+		main="Keraunos",	sub="Mephitis Grip",						ammo="Kalboron Stone",
 		head="Nahtirah Hat",	neck="Eddy Necklace",		ear1="Lifestorm Earring",	ear2="Psystorm Earring",
 		body="Artsieq Jubbah",	hands="Hagondes Cuffs +1",	ring1="Sangoma Ring",		ring2="Perception Ring",
 		back="Ogapepo Cape",	waist="Ovate Rope",		legs="Artsieq Hose",		feet="Artsieq Boots"
@@ -99,33 +99,44 @@ function init_gear_sets()
 	sets.midcast.BardSong = {}
 
 	sets.midcast.ElementalMagic = {
-		main="Kaladanda",		sub="Zuuxowu Grip",					ammo="Dosis Tathlum",
+		main="Keraunos",		sub="Zuuxowu Grip",					ammo="Dosis Tathlum",
 		head="Buremte Hat",		neck="Eddy Necklace",	ear1="Hecate's Earring",	ear2="Friomisi Earring",
 		body="Hagondes Coat +1",	hands="Otomi Gloves",	ring1="Fenrir Ring +1",		ring2="Acumen Ring",
 		back="Bane Cape",		waist="Tengu-no-Obi",	legs="Hagondes Pants +1",	feet="Helios Boots"
 	}
 	sets.midcast.ElementalMagic.LowTier = {
-		main="Kaladanda",		sub="Zuuxowu Grip",					ammo="Dosis Tathlum",
+		main="Keraunos",		sub="Zuuxowu Grip",					ammo="Dosis Tathlum",
 		head="Buremte Hat",		neck="Eddy Necklace",	ear1="Hecate's Earring",	ear2="Friomisi Earring",
 		body="Hagondes Coat +1",	hands="Otomi Gloves",	ring1="Fenrir Ring +1",		ring2="Acumen Ring",
 		back="Bane Cape",		waist="Tengu-no-Obi",	legs="Hagondes Pants +1",	feet="Umbani Boots"
 	}
 	sets.midcast.ElementalMagic.HighTier = {
-		main="Keraunos",		sub="Zuuxowu Grip",					ammo="Witchstone",
-		head="Hagondes Hat +1",		neck="Eddy Necklace",	ear1="Hecate's Earring",	ear2="Friomisi Earring",
-		body="Hagondes Coat +1",	hands="Yaoyotl Gloves",	ring1="Fenrir Ring +1",		ring2="Acumen Ring",
-		back="Toro Cape",		waist="Aswang Sash",	legs="Hagondes Pants +1",	feet="Helios Boots"
+        main={name="Keraunos", augments={'Mag. Acc.+15 "Mag.Atk.Bns."+15','Magic burst mdg.+5%','Magic Damage +13'}},
+        sub="Zuuxowu Grip",
+        ammo="Witchstone",
+        head={name="Helios Band", augments={'"Mag.Atk.Bns."+18','Spell interruption rate down -3%'}},
+        neck="Eddy Necklace",
+        ear1="Hecate's Earring",
+        ear2="Friomisi Earring",
+        body={name="Hagondes Coat +1", augments={'Phys. dmg. taken -1%','"Mag.Atk.Bns."+16'}},
+        hands={name="Helios Gloves", augments={'"Mag.Atk.Bns."+25','Mag. crit. hit dmg. +8%'}},
+        ring1="Fenrir Ring +1",
+        ring2="Acumen Ring",
+        back="Toro Cape",
+        waist="Tengu-no-Obi",
+        legs={name="Hagondes Pants +1", augments={'Phys. dmg. taken -2%','"Mag.Atk.Bns."+17'}},
+        feet={name="Helios Boots", augments={'"Mag.Atk.Bns."+24','Magic crit. hit rate +3','Magic burst mdg.+2%'}}
 	}
 	sets.midcast.ElementalMagic.Earth = {neck="Quanpur Necklace"}
 	
 	sets.midcast.ElementalMagic.MediumAcc = {
-		main="Kaladanda",	sub="Mephitis Grip",					ammo="Dosis Tathlum",
+		main="Keraunos",	sub="Mephitis Grip",					ammo="Dosis Tathlum",
 		head="Nahtirah Hat",	neck="Eddy Necklace",	ear1="Hecate's Earring",	ear2="Friomisi Earring",
 		body="Artsieq Jubbah",	hands="Yaoyotl Gloves",	ring1="Fenrir Ring +1",		ring2="Sangoma Ring",
 		back="Bane Cape",	waist="Tengu-no-Obi",	legs="Hagondes Pants +1",	feet="Helios Boots"
 	}
 	sets.midcast.ElementalMagic.HighAcc = {
-		main="Kaladanda",	sub="Mephitis Grip",					ammo="Dosis Tathlum",
+		main="Keraunos",	sub="Mephitis Grip",					ammo="Dosis Tathlum",
 		head="Nahtirah Hat",	neck="Eddy Necklace",	ear1="Hecate's Earring",	ear2="Friomisi Earring",
 		body="Artsieq Jubbah",	hands="Yaoyotl Gloves",	ring1="Fenrir Ring +1",		ring2="Sangoma Ring",
 		back="Bane Cape",	waist="Tengu-no-Obi",	legs="Hagondes Pants +1",	feet="Helios Boots"
@@ -146,16 +157,16 @@ function init_gear_sets()
 		main="Bolelabunga",	sub="Genbu's Shield",						ammo="Clarus Stone",
 		head="Kaabnax Hat",	neck="Eidolon Pendant",		ear1="Loquacious Earring",	ear2="Relaxing Earring",
 		body="Artsieq Jubbah",	hands="Nares Cuffs",		ring1="Fenrir Ring +1",		ring2="Sangoma Ring",
-		back="Felicitas Cape",	waist="Emphatikos Rope",	legs="Nares Trews",		feet="Chelona Boots"
+		back="Felicitas Cape",	waist="Fucho-no-obi",	legs="Nares Trews",		feet="Chelona Boots"
 	}
 	
 	sets.idle = {
 		main="Bolelabunga",	sub="Genbu's Shield",						ammo="Impatiens",
-		head="Kaabnax Hat",	neck="Twilight Torque",		ear1="Brachyura Earring",	ear2="Ethereal Earring",
+		head="Artsieq Hat",	neck="Twilight Torque",		    ear1="Brachyura Earring",	ear2="Ethereal Earring",
 		body="Artsieq Jubbah",	hands="Hagondes Cuffs +1",	ring1="Defending Ring",		ring2="Shneddick Ring",
-		back="Repulse Mantle",	waist="Emphatikos Rope",	legs="Helios Spats",		feet="Hagondes Sabots +1"
+		back="Repulse Mantle",	waist="Fucho-no-obi",	    legs="Hagondes Pants +1",   feet="Hagondes Sabots +1"
 	}
-	sets.idle.lowMP = {legs="Nares Trews"}
+	sets.idle.lowMP = {waist="Fucho-no-obi", legs="Nares Trews"}
 	sets.idle.lowMP_night =	{hands="Serpentes Cuffs"}
 	sets.idle.lowMP_day = {feet="Serpentes Sabots"}
 	

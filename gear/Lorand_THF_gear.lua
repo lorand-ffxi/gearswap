@@ -86,7 +86,7 @@ function init_gear_sets()
 
     sets.wsBase.Magic = {
         head="Highwing Helm",       neck="Stoicheion Medal",    ear1="Hecate's Earring",    ear2="Friomisi Earring",
-        hands={name="Taeon Gloves", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','AGI+3'}},
+        hands={name="Taeon Gloves", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','DEX+7'}},
         ring1="Fenrir Ring +1",     ring2="Acumen Ring",
         back="Toro Cape",           legs="Shneddick Tights +1", feet="Iuitl Gaiters +1"
     }
@@ -126,10 +126,10 @@ function init_gear_sets()
     sets.idle = {                                               --range="Raider's Boomerang",
         head="Ocelomeh Headpiece +1",   neck="Orochi Nodowa",           ear1="Brachyura Earring",   ear2="Ethereal Earring",
         body="Qaaxo Harness",
-        hands={"Plunderer's Armlets +1", {name="Taeon Gloves", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','AGI+3'}}},
+        hands={"Plunderer's Armlets +1", {name="Taeon Gloves", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','DEX+7'}}},
         ring1="Defending Ring",     ring2="Shneddick Ring",
         back="Repulse Mantle",          waist="Flume Belt",
-        legs={name="Taeon Tights", augments={'Attack+21','"Triple Atk."+2'}},
+        legs={name="Taeon Tights", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','STR+7 DEX+7'}},
         feet="Iuitl Gaiters +1"
     }
     sets.idle.with_buff = {}
@@ -161,7 +161,9 @@ function init_gear_sets()
     sets.engaged = {                                    --range="Raider's Boomerang",
         head="Taeon Chapeau",   neck="Asperity Necklace",       ear1="Dudgeon Earring", ear2="Heartseeker Earring",
         body="Qaaxo Harness",   hands="Plunderer's Armlets +1", ring1="Rajas Ring",     ring2="Epona's Ring",
-        back="Atheling Mantle", waist="Patentia Sash",          legs="Taeon Tights",    feet="Taeon Boots"
+        back="Atheling Mantle", waist="Patentia Sash",
+        legs={name="Taeon Tights", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','STR+7 DEX+7'}},
+        feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+3','STR+6 DEX+6'}}
     }
     
     sets.engaged.with_buff = {}
@@ -171,18 +173,23 @@ function init_gear_sets()
     sets.engaged.MediumAcc = {                              --range="Raider's Boomerang",
         head="Taeon Chapeau",   neck="Asperity Necklace",       ear1="Dudgeon Earring", ear2="Heartseeker Earring",
         body="Iuitl Vest +1",   hands="Plunderer's Armlets +1", ring1="Rajas Ring",     ring2="Epona's Ring",
-        back="Canny Cape",      waist="Patentia Sash",          legs="Taeon Tights",    feet="Taeon Boots"
+        back="Canny Cape",      waist="Patentia Sash",
+        legs={name="Taeon Tights", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','STR+7 DEX+7'}},
+        feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+3','STR+6 DEX+6'}}
     }
     
     sets.engaged.HighAcc = {                    --range=nil,        ammo="Honed Tathlum",
         head="Whirlpool Mask",  neck="Iqabi Necklace",          ear1="Dudgeon Earring", ear2="Heartseeker Earring",
         body="Iuitl Vest +1",   hands="Plunderer's Armlets +1", ring1="Rajas Ring",     ring2="Epona's Ring",
-        back="Canny Cape",      waist="Anguinus Belt",          legs="Ighwa Trousers",  feet="Taeon Boots"
+        back="Canny Cape",      waist="Anguinus Belt",          legs="Ighwa Trousers",
+        feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+3','STR+6 DEX+6'}}
     }
     
     sets.engaged.TH = {                                 --range="Raider's Boomerang",
         head="Taeon Chapeau",   neck="Asperity Necklace",       ear1="Dudgeon Earring", ear2="Heartseeker Earring",
         body="Qaaxo Harness",   hands="Plunderer's Armlets +1", ring1="Rajas Ring",     ring2="Epona's Ring",
-        back="Canny Cape",      waist="Patentia Sash",          legs="Taeon Tights",    feet="Raider's Poulaines +2"
+        back="Canny Cape",      waist="Patentia Sash",
+        legs={name="Taeon Tights", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','STR+7 DEX+7'}},
+        feet="Raider's Poulaines +2"
     }
 end
