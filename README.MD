@@ -112,6 +112,7 @@ A list of Porter Moogle slips, and the required items that are currently stored 
 #### List required items in unequippable bags
 
 **Command:** `//gs c misplaced`
+
 **Alias:** `//gs c missing`
 
 **Output:**
