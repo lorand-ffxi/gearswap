@@ -61,7 +61,7 @@ Other features can be accessed by custom commands via `//gs c <command>` (e.g., 
 
 I originally wrote my own exporter because I did not support augments (I fully support augments now), and because I didn't like some of the formatting used by GearSwap's built-in exporter.
 
-Exports currently equipped gear to: .../GearSwap/data/export/<CharacterName>_<date>_<time>_<JOB>.lua
+Exports currently equipped gear to: .../GearSwap/data/export/CharacterName_date_time_JOB.lua
 
 **Command:** `//gs c export [list | group] [no_augs] <set_name>`
 
