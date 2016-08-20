@@ -37,13 +37,13 @@ function init_gear_sets()
         neck="Stoicheion Medal",    ear1="Lifestorm Earring",   ear2="Psystorm Earring",
         hands="Taeon Gloves",       ring1="Sangoma Ring",       ring2="Perception Ring",
         back="Yokaze Mantle",       waist="Ovate Rope",
-        feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+3','STR+6 DEX+6'}}
+        feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+5','STR+6 DEX+6'}}
     }
     
     sets.precast.Waltz = {
         head="Uk'uxkaj Cap",            neck="Dualism Collar",
         body="Hachiya Chainmail +1",    hands="Buremte Gloves", ring1="Asklepian Ring",     ring2="Terrasoul Ring",
-        back="Iximulew Cape",           waist="Warwolf Belt",   legs="Hachiya Hakama +1",   feet="Mochizuki Kyahan +1"
+        back="Iximulew Cape",           waist="Warwolf Belt",   legs="Desultor Tassets",    feet="Mochizuki Kyahan +1"
     }
 
     sets.precast.Step = combineSets(sets.engaged, {
@@ -87,7 +87,7 @@ function init_gear_sets()
         back="Yokaze Mantle",
         waist="Windbuffet Belt +1",
         legs={name="Taeon Tights", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','STR+7 DEX+7'}},
-        feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+3','STR+6 DEX+6'}}
+        feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+5','STR+6 DEX+6'}}
     }
     
     sets.wsBase.Acc = {}
@@ -187,7 +187,8 @@ function init_gear_sets()
         head="Ocelomeh Headpiece +1",   neck="Orochi Nodowa",   ear1="Brachyura Earring",   ear2="Ethereal Earring",
         body="Kirin's Osode",           hands="Umuthi Gloves",  ring1="Defending Ring",     ring2="Shneddick Ring",
         back="Repulse Mantle",          waist="Flume Belt",     legs={"Hachiya Hakama +1", "Otronif Brais +1"},
-        feet="Hachiya Kyahan"
+        --feet="Hachiya Kyahan"
+        feet="Sokushitsu Sune-Ate"
     }
     sets.idle.CapFarm = {back="Mecistopins Mantle"}
     sets.idle.with_buff = {}
@@ -208,14 +209,16 @@ function init_gear_sets()
     
     sets.defense.PDT = combineSets(sets.defense.DT, {   --PDT-37%
         head="Otronif Mask +1",     
-        body="Otronif Harness +1",  hands="Umuthi Gloves",  
+        body="Otronif Harness +1",  hands="Otronif Gloves +1",  
         back="Repulse Mantle",      waist="Flume Belt",     legs="Otronif Brais +1",    feet="Otronif Boots +1"
     })
     sets.defense.MDT = combineSets(sets.defense.DT, {   --MDT-16%, MDB+17
         ammo="Demonry Stone",
-        head="Otronif Mask +1",         ear1="Merman's Earring",    ear2="Merman's Earring",
-        body="Hachiya Chainmail +1",    hands="Umuthi Gloves",
-        back="Tuilha Cape",             legs="Hachiya Hakama +1",   feet="Mochizuki Kyahan +1"
+        head="Otronif Mask +1", ear1="Merman's Earring",    ear2="Merman's Earring",
+        body="Qaaxo Harness",   hands="Umuthi Gloves",
+        back="Tuilha Cape",
+        legs={name="Taeon Tights", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','STR+7 DEX+7'}},
+        feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+5','STR+6 DEX+6'}}
     })
     
     --============================================================
@@ -243,7 +246,7 @@ function init_gear_sets()
         back="Atheling Mantle",
         waist="Windbuffet Belt +1",
         legs={name="Taeon Tights", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','STR+7 DEX+7'}},
-        feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+3','STR+6 DEX+6'}}
+        feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+5','STR+6 DEX+6'}}
     }
     sets.engaged.auto['na'] =   {
         waist="Patentia Sash",
@@ -287,7 +290,7 @@ function init_gear_sets()
         back={name="Yokaze Mantle", augments={'STR+3','DEX+2','Sklchn.dmg.+1%'}},
         waist="Anguinus Belt",
         legs={name="Taeon Tights", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','STR+7 DEX+7'}},
-        feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+3','STR+6 DEX+6'}}
+        feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+5','STR+6 DEX+6'}}
     }
     
     refresh_gear_sets()

@@ -281,29 +281,31 @@ function combineSets(set1, set2, ...)
     end
     
     local current_item
-    for itemSlot,_ in pairs(_slots.names) do
-        if (set2 ~= nil) and (set2[itemSlot] ~= nil) then
-            current_item = set2[itemSlot]
-            if (type(current_item) == 'string') or current_item.name then
-                if setops.isAvailable(current_item, itemSlot) then
-                    newSet[itemSlot] = current_item
-                end
-            else
-                newSet[itemSlot] = setops.chooseAvailablePiece(current_item, itemSlot)
-            end
-        end
-        
-        --If the slot was not defined in set2 or if the item(s) defined for that slot
-        --in set2 was unavailable, then use what was defined in set1
-        if not newSet[itemSlot] then
-            if (set1 ~= nil) and (set1[itemSlot] ~= nil) then
-                current_item = set1[itemSlot]
+    for itemSlot,variations in pairs(_slots.names) do
+        for _,variation in pairs(variations) do
+            if (set2 ~= nil) and (set2[variation] ~= nil) then
+                current_item = set2[variation]
                 if (type(current_item) == 'string') or current_item.name then
                     if setops.isAvailable(current_item, itemSlot) then
                         newSet[itemSlot] = current_item
                     end
                 else
                     newSet[itemSlot] = setops.chooseAvailablePiece(current_item, itemSlot)
+                end
+            end
+            
+            --If the slot was not defined in set2 or if the item(s) defined for that slot
+            --in set2 was unavailable, then use what was defined in set1
+            if not newSet[itemSlot] then
+                if (set1 ~= nil) and (set1[variation] ~= nil) then
+                    current_item = set1[variation]
+                    if (type(current_item) == 'string') or current_item.name then
+                        if setops.isAvailable(current_item, itemSlot) then
+                            newSet[itemSlot] = current_item
+                        end
+                    else
+                        newSet[itemSlot] = setops.chooseAvailablePiece(current_item, itemSlot)
+                    end
                 end
             end
         end

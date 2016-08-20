@@ -13,7 +13,7 @@ function init()
     if not _libs.lor then
         gearswap._G.windower.add_to_chat(39, gearswap._G.windower.to_shift_jis('[ERROR] Required: https://github.com/lorand-ffxi/lor_libs'))
     end
-    _libs.lor.req('all')
+    _libs.lor.req('all', {n='strings',v='2016.08.07'})
     _libs.req('lists', 'sets')
     _libs.req('chat/chars')         --Required for using special characters in delayed messages
     _libs.req('slips')              --Required for notifying which items need to be fetched from the porter moogle
@@ -1223,7 +1223,7 @@ function pet_midcast(spell)
     elseif (ptype == 'Wyvern') then
         pmcset = combineSets(pmcset, sets.pet.breath)
     elseif (ptype == 'BSTpet') then
-        pmcset = combineSets(pmcset, sets.precast.JA['Ready'])
+        pmcset = combineSets(pmcset, sets.midcast.pet['Ready'])
     else
         atc(123, 'Unknown pet type')
     end

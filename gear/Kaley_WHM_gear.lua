@@ -199,14 +199,14 @@ function init_gear_sets()
     --============================================================
     
     sets.resting = {
-        main="Boonwell Staff",  sub="Achaq Grip",           ammo="Clarus Stone",
+        main="Boonwell Staff",  sub="Achaq Grip",           ammo="Homiliary",
         neck="Eidolon Pendant",
         body="Artsieq Jubbah",  hands="Serpentes Cuffs",
         back="Felicitas Cape",  waist="Austerity Belt",     legs="Nares Trews",     feet="Chelona Boots",
     }
 
     sets.idle = {
-        main="Bolelabunga", sub="Genbu's Shield",                       ammo="Incantor Stone",
+        main="Bolelabunga", sub="Genbu's Shield",                       ammo="Homiliary",
         head="Kaabnax Hat", neck="Twilight Torque",     ear1="Novia Earring",       ear2="Star Earring",
         body="Artsieq Jubbah",  hands="Serpentes Cuffs",    ring1="Dark Ring",      ring2="Shneddick Ring",
         back="Cheviot Cape",    waist="Fucho-no-obi",      legs="Piety Pantaloons",    feet="Theophany Duckbills"

@@ -65,9 +65,9 @@ function set_modes()
         modelist['idle'] = {'Normal', 'reraise'}
         modelist['weapon'] = {'4-Hit','5-Hit','Other'}
     elseif S{'THF'}:contains(player.main_job) then
-        modelist['weapon'] = {'TH','THOAT','OAT','DD','Accuracy','THAcc','Other'}
+        modelist['weapon'] = {'TH','THOAT','Accuracy','DD','OAT','Other'}
         modelist['treasure'] = {'None','TH'}
-        modelist['offense'] = {'TH', 'Normal', 'Acc'}
+        modelist['offense'] = {'TH', 'auto', 'Normal'}
         modelist['ranged'] = {'TH', 'Normal', 'Acc'}
     elseif S{'COR'}:contains(player.main_job) then
         modelist['weapon'] = {'Gun'}
