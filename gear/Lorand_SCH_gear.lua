@@ -275,7 +275,6 @@ function init_gear_sets()
         back="Repulse Mantle",          legs="Hagondes Pants +1",       feet="Gendewitha Galoshes +1"
     }
     sets.defense.MDT = {
-        main="Venabulum",
         head="Artsieq Hat",         neck="Twilight Torque",     ear1="Merman's Earring",    ear2="Merman's Earring",
         ring1="Defending Ring",     ring2="Dark Ring",
         back="Tuilha Cape"

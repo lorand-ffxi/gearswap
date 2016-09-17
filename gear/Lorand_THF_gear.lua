@@ -27,19 +27,23 @@ function init_gear_sets()
     sets.precast.JA['Sneak Attack'] = {
         head="Uk'uxkaj Cap",    neck="Love Torque",             ear2="Delta Earring",
         body="Iuitl Vest +1",   hands="Plunderer's Armlets +1", ring1="Rajas Ring",         ring2="Thundersoul Ring",
-        back="Kayapa Cape",     waist="Chiner's Belt",          legs="Kaabnax Trousers",    feet="Iuitl Gaiters +1"
+        back="Kayapa Cape",     waist="Chiner's Belt",
+        legs={name="Taeon Tights", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','STR+7 DEX+7'}},
+        feet="Iuitl Gaiters +1"
     }
 
     sets.precast.JA['Trick Attack'] = {
         head="Uk'uxkaj Cap",    neck="Hope Torque",             ear2="Suppanomimi",
         body="Iuitl Vest +1",   hands="Iuitl Wristbands +1",    ring1="Stormsoul Ring",     ring2="Blobnag Ring",
-        back="Ik Cape",         waist="Sveltesse Gouriz",       legs="Kaabnax Trousers",    feet="Iuitl Gaiters +1"
+        back="Ik Cape",         waist="Sveltesse Gouriz",
+        legs="Pursuer's Pants",
+        feet="Iuitl Gaiters +1"
     }
 
     sets.precast.Waltz = {
         head="Uk'uxkaj Cap",
         body="Iuitl Vest +1",   hands="Plunderer's Armlets +1", ring2="Spiral Ring",
-        back="Iximulew Cape",   waist="Warwolf Belt",           legs="Shneddick Tights +1", feet="Iuitl Gaiters +1"
+        back="Iximulew Cape",   waist="Warwolf Belt",           legs="Desultor Tassets", feet="Iuitl Gaiters +1"
     }
     
     --============================================================
@@ -107,7 +111,7 @@ function init_gear_sets()
     sets.midcast.FastRecast = {
         head="Taeon Chapeau",   neck="Orunmila's Torque",   ear1="Loquacious Earring",
         body="Iuitl Vest +1",   hands="Buremte Gloves",     ring1="Prolix Ring",        ring2="Diamond Ring",   --Diamond Ring aug: 2% interrupt rate down
-        back="Mujin Mantle",    waist="Cetl Belt",          legs="Kaabnax Trousers",    feet="Iuitl Gaiters +1"
+        back="Mujin Mantle",    waist="Cetl Belt",          legs="Quiahuiz Trousers",   feet="Iuitl Gaiters +1"
     }
     sets.midcast.Utsusemi = {back="Mujin Mantle"}
 
@@ -164,7 +168,7 @@ function init_gear_sets()
     }
 
     sets.defense.DT = combineSets(sets.defense.Evasion,{    --DT-15%, PDT-12%, MDT-10%  => PDT-27%, MDT-25%
-        head="Ejekamal Mask",       neck="Twilight Torque",
+        head="Iuitl Headgear +1",   neck="Twilight Torque",
         body="Iuitl Vest +1",       ring1="Defending Ring",     ring2="Dark Ring",
     })
     

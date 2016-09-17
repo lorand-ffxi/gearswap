@@ -40,13 +40,13 @@ function init_gear_sets()
 	sets.wsBase = {}
 	--STR
 	sets.wsBase['Resolution'] = {									ammo="Aqreqaq Bomblet",
-		head="Ejekamal Mask",	neck="Bull Necklace",		ear1="Flame Pearl",		ear2="Flame Pearl",
+		head="Taeon Chapeau",	neck="Bull Necklace",		ear1="Flame Pearl",		ear2="Flame Pearl",
 		body="Futhark Coat +1",	hands="Runeist Mitons +1",	ring1="Pyrosoul ring",		ring2="Pyrosoul ring",
 		back="Buquwik Cape",	waist="Pipilaka Belt",		legs="Runeist Trousers +1",	feet="Shneddick Boots +1"
 	}
 	--STR
 	sets.wsBase['Requiescat'] = {										ammo="Aqreqaq Bomblet",
-		head="Shneddick Chapeau +1",	neck="Bull Necklace",		ear1="Steelflash earring",	ear2="Bladeborn earring",
+		head="Taeon Chapeau",	neck="Bull Necklace",		ear1="Steelflash earring",	ear2="Bladeborn earring",
 		body="Espial Gambison",		hands="Runeist Mitons +1",	ring1="Epona's ring",		ring2="Ramuh Ring +1",
 		back="Buquwik Cape",		waist="Shadow Belt",		legs="Iuitl Tights",		feet="Weatherspoon Souliers +1"
 	}
@@ -138,6 +138,6 @@ function init_gear_sets()
 	sets.engaged.AccFull = {										ammo="Honed Tathlum",
 		head="Whirlpool Mask",		neck="Peacock Charm",		ear1="Steelflash earring",	ear2="Heartseeker earring",
 		body="Qaaxo Harness",		hands="Qaaxo Mitaines",		ring1="Oneiros Annulet",	ring2="Enlivened Ring",
-		back="Evasionist's Cape",	waist="Anguinus Belt",		legs="Kaabnax Trousers",	feet="Qaaxo Leggings"
+		back="Evasionist's Cape",	waist="Anguinus Belt",		legs="Taeon Tights",	feet="Qaaxo Leggings"
 	}
 end

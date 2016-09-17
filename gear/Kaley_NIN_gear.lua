@@ -77,11 +77,18 @@ function init_gear_sets()
 	--============================================================
 	
 	sets.idle = {
-		ammo="Jukukik Feather",
-		head="Ejekamal Mask",			neck="Twilight Torque",		ear1="Novia Earring",		ear2="Suppanomimi",
-		body="Hachiya Chainmail +1",	hands="Mochizuki Tekko",	ring1="Dark Ring",			ring2="Shneddick Ring",
-		back="Yokaze Mantle",			waist="Flume Belt",			legs="Mochizuki Hakama",	feet="Hachiya Kyahan"
+		range="Wingcutter",
+        head="Otronif Mask +1",         neck="Twilight Torque", ear1="Novia Earring",       ear2="Ethereal Earring",
+        body="Hachiya Chainmail +1",    hands="Macabre Gauntlets",
+        ring1={name="Dark Ring", augments={'Phys. dmg. taken -5%','Breath dmg. taken -4%','Magic dmg. taken -3%'}},
+        ring2="Shneddick Ring",
+        back="Repulse Mantle",          waist="Chuq'aba Belt",  legs="Mochizuki Hakama +1", feet="Hachiya Kyahan"
 	}
+    sets.idle.chef = {
+        main="Hocho",               sub="Trainee Knife",
+        head="Midras's Helm +1",    neck="Culinarian's Torque",
+        ring1="Artificer's Ring",
+    }
 	sets.idle.with_buff = {}
 	sets.idle.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	
@@ -90,42 +97,28 @@ function init_gear_sets()
 		ring1="Dark Ring",		ring2="Dark Ring"
 	}
 	
-	sets.defense.PDT = set_combine(sets.defense.DT, {	--PDT-37%
-		back="Iximulew Cape",		waist="Flume Belt"
+	sets.defense.PDT = set_combine(sets.defense.DT, {
 	})
-	sets.defense.MDT = set_combine(sets.defense.DT, {	--MDT-16%, MDB+17
-		head="Ejekamal Mask",
-		body="Hachiya Chainmail +1",
-		back="Tuilha Cape",			legs="Kaabnax Trousers",	feet="Otronif Boots"
+	sets.defense.MDT = set_combine(sets.defense.DT, {
 	})
 
 	--============================================================
 	
-	sets.engaged = {
-		ammo="Jukukik Feather",
-		head="Uk'uxkaj Cap",		neck="Asperity Necklace",	ear1="Brutal Earring",		ear2="Suppanomimi",
-		body="Hachiya Chainmail +1",hands="Mochizuki Tekko",	ring1="Rajas Ring",			ring2="Epona's Ring",
-		back="Yokaze Mantle",		waist="Cetl Belt",			legs="Mochizuki Hakama",	feet="Mochizuki Kyahan"
+	sets.engaged = {                                                range="Wingcutter",
+        head="Otronif Mask +1",         neck="Asperity Necklace",   ear1="Dudgeon Earring",     ear2="Heartseeker Earring",
+        body="Hachiya Chainmail +1",    hands="Otronif Gloves +1",  ring1="Rajas Ring",         ring2="Epona's Ring",
+        back="Yokaze Mantle",           waist="Anguinus Belt",      legs="Mochizuki Hakama +1", feet="Taeon Boots",
 	}
 	sets.engaged.with_buff = {}
 	sets.engaged.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	
 	sets.engaged.Mix = set_combine(sets.engaged, {
-		head="Ejekamal Mask",
-		body="Mochizuki Chainmail",	hands="Otronif Gloves"
 	})
 	
 	sets.engaged.Acc = set_combine(sets.engaged.Mix, {
-		neck="Ziel Charm",
-		ring2="Adler Ring",
-		waist="Anguinus Belt",	legs="Kaabnax Trousers"
 	})
 	
 	sets.engaged.Tank = {
-		ammo="Jukukik Feather",
-		head="Uk'uxkaj Cap",		neck="Twilight Torque",		ear1="Brutal Earring",		ear2="Suppanomimi",
-		body="Hachiya Chainmail +1",hands="Mochizuki Tekko",	ring1="Rajas Ring",			ring2="Dark Ring",
-		back="Yokaze Mantle",		waist="Cetl Belt",			legs="Mochizuki Hakama",	feet="Mochizuki Kyahan"
 	}
 
 	sets.buffs.Migawari = {body="Iga Ningi +2"}

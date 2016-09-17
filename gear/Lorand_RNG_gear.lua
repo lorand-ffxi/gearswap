@@ -164,9 +164,9 @@ function init_gear_sets()
 	--============================================================
 
 	sets.midcast.FastRecast = {
-		head="Ejekamal Mask",	neck="Orunmila's Torque",	ear1="Loquacious Earring",
+		head="Taeon Chapeau",	neck="Orunmila's Torque",	ear1="Loquacious Earring",
 		body="Iuitl Vest +1",	hands="Buremte Gloves",		ring1="Prolix Ring",		ring2="Diamond Ring",	--Diamond Ring aug: 2% interrupt rate down
-		back="Mujin Mantle",	waist="Cetl Belt",		legs="Kaabnax Trousers",	feet="Iuitl Gaiters +1"
+		back="Mujin Mantle",	waist="Cetl Belt",		legs="Taeon Tights",	feet="Iuitl Gaiters +1"
 	}
 	
 	--============================================================
@@ -193,9 +193,9 @@ function init_gear_sets()
 		back="Repulse Mantle",		waist="Flume Belt",	legs="Iuitl Tights +1",	feet="Iuitl Gaiters +1"
 	})
 	sets.defense.MDT = combineSets(sets.defense.DT, {	--MDT-4% + DT => MDT-16%, MDB+19
-		head="Ejekamal Mask",	ear1="Merman's Earring",	ear2="Merman's Earring",
+		head="Taeon Chapeau",	ear1="Merman's Earring",	ear2="Merman's Earring",
 		body="Iuitl Vest +1",	hands="Umuthi Gloves",
-		back="Tuilha Cape",	waist="Flume Belt",		legs="Kaabnax Trousers",	feet="Iuitl Gaiters +1"
+		back="Tuilha Cape",	waist="Flume Belt",		legs="Taeon Tights",	feet="Iuitl Gaiters +1"
 	})
 	
 	sets.engaged = {

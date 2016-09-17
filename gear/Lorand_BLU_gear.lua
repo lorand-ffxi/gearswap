@@ -50,24 +50,54 @@ function init_gear_sets()
 
     --============================================================
     
-    sets.wsBase = {                                                                             ammo="Honed Tathlum",
-        head="Iuitl Headgear +1",   neck="Asperity Necklace",       ear1="Bladeborn Earring",   ear2="Steelflash Earring",
-        body="Qaaxo Harness",       hands="Iuitl Wristbands +1",    ring1="Rajas Ring",         ring2="Epona's Ring",
-        back="Atheling Mantle",     waist="Windbuffet Belt +1",     legs="Quiahuiz Trousers",   feet="Manibozho Boots"
+    sets.wsBase = {
+        ammo="Honed Tathlum",
+        head={name="Taeon Chapeau", augments={'Accuracy+18 Attack+18','"Triple Atk."+2','Crit. hit damage +2%'}},
+        neck="Asperity Necklace",
+        ear1="Bladeborn Earring",
+        ear2="Steelflash Earring",
+        body="Qaaxo Harness",
+        hands={name="Taeon Gloves", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','DEX+7'}},
+        ring1="Rajas Ring",
+        ring2="Epona's Ring",
+        back="Atheling Mantle",
+        waist="Windbuffet Belt +1",
+        legs={name="Taeon Tights", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','STR+7 DEX+7'}},
+        feet="Jhakri Pigaches"
     }
-    sets.wsBase.Magic = {                                                                   ammo="Dosis Tathlum",
-        head="Hagondes Hat +1",     neck="Eddy Necklace",       ear1="Hecate's Earring",    ear2="Friomisi Earring",
-        body="Hagondes Coat +1",    hands="Hagondes Cuffs +1",  ring1="Fenrir Ring +1",     ring2="Acumen Ring",
-        back="Cornflower Cape",     waist="Aswang Sash",        legs="Hagondes Pants +1",   feet="Hagondes Sabots +1"
+    sets.wsBase.Magic = {
+        ammo="Dosis Tathlum",
+        head="Jhakri Coronal",
+        neck="Eddy Necklace",
+        ear1="Hecate's Earring",
+        ear2="Friomisi Earring",
+        body="Jhakri Robe",
+        hands={name="Helios Gloves", augments={'"Mag.Atk.Bns."+25','Mag. crit. hit dmg. +8%'}},
+        ring1="Fenrir Ring +1",
+        ring2="Acumen Ring",
+        back="Cornflower Cape",
+        waist="Aswang Sash",
+        legs={name="Hagondes Pants +1", augments={'Phys. dmg. taken -2%','"Mag.Atk.Bns."+17'}},
+        feet={name="Helios Boots", augments={'"Mag.Atk.Bns."+24','Magic crit. hit rate +3','Magic burst mdg.+2%'}}
     }
     
     --============================================================
     --          Midcast sets
     --============================================================
-    sets.midcast.FastRecast = {                                                             ammo="Impatiens",
-        head="Iuitl Headgear +1",   neck="Orunmila's Torque",   ear1="Loquacious Earring",  ear2="Novia Earring",
-        body="Hagondes Coat +1",    hands="Hagondes Cuffs +1",  ring1="Prolix Ring",        ring2="Diamond Ring",
-        back="Swith Cape",          waist="Witful Belt",        legs="Enif Cosciales",      feet="Hagondes Sabots +1"
+    sets.midcast.FastRecast = {
+        ammo="Impatiens",
+        head={name="Helios Band", augments={'"Mag.Atk.Bns."+18','Spell interruption rate down -3%'}},
+        neck="Orunmila's Torque",
+        ear1="Loquacious Earring",
+        ear2="Novia Earring",
+        body={name="Taeon Tabard", augments={'Accuracy+17 Attack+17','Haste+2','STR+6 DEX+6'}},
+        hands={name="Buremte Gloves", augments={'Haste+2','"Snapshot"+2','"Fast Cast"+3'}},
+        ring1="Prolix Ring",
+        ring2={name="Diamond Ring", augments={'INT+2','MND+2','Spell interruption rate down -2%'}},
+        back="Swith Cape",
+        waist="Witful Belt",
+        legs={name="Quiahuiz Trousers", augments={'Phys. dmg. taken -2%','Magic dmg. taken -2%','"Fast Cast"+3'}},
+        feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+5','STR+6 DEX+6'}}
     }
 
     sets.midcast.Cure = {
@@ -92,9 +122,10 @@ function init_gear_sets()
     }
 
     sets.midcast.MagicAccuracy = {
-        head="Hagondes Hat +1",     neck="Eddy Necklace",       ear1="Lifestorm Earring",   ear2="Psystorm Earring",
-        body="Hagondes Coat +1",    hands="Hagondes Cuffs +1",  ring1="Sangoma Ring",       ring2="Perception Ring",
-        back="Cornflower Cape",     waist="Ovate Rope",         legs="Iuitl Tights +1",     feet="Iuitl Gaiters +1"
+        head="Jhakri Coronal",  neck="Eddy Necklace",   ear1="Lifestorm Earring",   ear2="Psystorm Earring",
+        body="Jhakri Robe",     hands={name="Hagondes Cuffs +1", augments={'Phys. dmg. taken -1%','Mag. Acc.+6'}},
+        ring1="Sangoma Ring",   ring2="Perception Ring",
+        back="Cornflower Cape", waist="Ovate Rope",     legs="Jhakri Slops",        feet="Jhakri Pigaches"
     }
     
     sets.midcast.BlueMagic = {
@@ -102,87 +133,94 @@ function init_gear_sets()
         back="Cornflower Cape"
     }
     
-    sets.midcast.BlueMagic.Physical = {
-        head="Uk'uxkaj Cap",    neck="Justice Torque",          ear1="Heartseeker Earring", ear2="Steelflash Earring",
-        body="Iuitl Vest +1",   hands="Iuitl Wristbands +1",    ring1="Rajas Ring",         ring2="Mars's Ring",
-        back="Cornflower Cape", waist="Anguinus Belt",          legs="Iuitl Tights +1",     feet="Iuitl Gaiters +1"
+    sets.midcast.BlueMagic.Physical = { ammo="Honed Tathlum",
+        head="Jhakri Coronal",  neck="Asperity Necklace",   ear1="Suppanomimi", ear2="Heartseeker Earring",
+        body="Jhakri Robe",     hands="Jhakri Cuffs",       ring1="Rajas Ring", ring2="Mars's Ring",
+        back={name="Cornflower Cape", augments={'MP+18','DEX+1','Accuracy+1','Blue Magic skill +9'}},
+        waist="Prosilio Belt",  legs="Jhakri Slops",        feet="Jhakri Pigaches"
     }
     sets.midcast.BlueMagic.Physical.AGI = {
-        ear2="Suppanomimi",
-        ring2="Stormsoul Ring",
-        back="Ik Cape",         waist="Sveltesse Gouriz",   legs="Nahtirah Trousers"
+        head={name="Taeon Chapeau", augments={'Accuracy+18 Attack+18','"Triple Atk."+2','Crit. hit damage +2%'}},
+        neck="Hope Torque",
+        ring1="Stormsoul Ring",
+        legs={name="Taeon Tights", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','STR+7 DEX+7'}},
+        feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+5','STR+6 DEX+6'}}
     }
-    sets.midcast.BlueMagic.Physical.CHR = {
-        body="Hagondes Coat +1",    hands="Telchine Gloves",
-        back="Swith Cape",          legs="Hagondes Pants +1",       feet="Hagondes Sabots +1"
-    }
+    sets.midcast.BlueMagic.Physical.CHR = {}
     sets.midcast.BlueMagic.Physical.DEX = {
-        ammo="Jukukik Feather",
-        neck="Love Torque",         ear1="Pixie Earring",
+        head={name="Taeon Chapeau", augments={'Accuracy+18 Attack+18','"Triple Atk."+2','Crit. hit damage +2%'}},
+        neck="Love Torque",
+        hands={name="Taeon Gloves", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','DEX+7'}},
         ring2="Thundersoul Ring",
-        back="Kayapa Cape",         waist="Warwolf Belt"
+        legs={name="Taeon Tights", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','STR+7 DEX+7'}},
+        feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+5','STR+6 DEX+6'}}
     }
     sets.midcast.BlueMagic.Physical.INT = {
-        ear2="Psystorm Earring",
-        body="Hagondes Coat +1",    hands="Telchine Gloves",    ring1="Icesoul Ring",   ring2="Spiral Ring",
-        legs="Hagondes Pants +1",   feet="Hagondes Sabots +1"
+        ring1="Icesoul Ring",   ring2="Diamond Ring",
     }
     sets.midcast.BlueMagic.Physical.MND = {
-        ear1="Lifestorm Earring",
-        body="Hagondes Coat +1",    hands="Hagondes Cuffs +1",  ring2="Aquasoul Ring",
-        waist="Cascade Belt",       legs="Hagondes Pants +1",   feet="Hagondes Sabots +1"
+        ring1="Aqua Ring",  ring2="Aquasoul Ring",
+        waist="Cascade Belt",
     }
     sets.midcast.BlueMagic.Physical.STR = {
-        head="Whirlpool Mask",
+        neck="Justice Torque",
+        hands={name="Taeon Gloves", augments={'Accuracy+25','"Dual Wield"+4','STR+7 DEX+7'}},
         ring2="Pyrosoul Ring",
-        back="Buquwik Cape",    waist="Prosilio Belt",  legs="Nahtirah Trousers",   feet="Iuitl Gaiters +1"
     }
     sets.midcast.BlueMagic.Physical.VIT = {
-        head="Whirlpool Mask",
+        head={name="Taeon Chapeau", augments={'Accuracy+18 Attack+18','"Triple Atk."+2','Crit. hit damage +2%'}},
+        body={name="Taeon Tabard", augments={'Accuracy+17 Attack+17','Haste+2','STR+6 DEX+6'}},
+        hands={name="Taeon Gloves", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','DEX+7'}},
         ring1="Terrasoul Ring", ring2="Spiral Ring",
-        back="Iximulew Cape",   waist="Chuq'aba Belt",  legs="Nahtirah Trousers",   feet="Iuitl Gaiters +1"
+        waist="Chuq'aba Belt",
+        legs={name="Taeon Tights", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','STR+7 DEX+7'}},
+        feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+5','STR+6 DEX+6'}}
     }
     sets.midcast.BlueMagic.Physical.DEXINT = {
-        neck="Love Torque",     ear1="Pixie Earring",       ear2="Psystorm Earring",
-        ring2="Spiral Ring",
-        waist="Warwolf Belt",   legs="Hagondes Pants +1",   feet="Hagondes Sabots +1"
+        neck="Love Torque",
+        hands={name="Taeon Gloves", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','DEX+7'}},
+        ring2="Thundersoul Ring",
+        legs={name="Taeon Tights", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','STR+7 DEX+7'}},
     }
     sets.midcast.BlueMagic.Physical.STRAGI = {
-        head="Whirlpool Mask",
+        neck="Justice Torque",
         ring2="Pyrosoul Ring",
         waist="Prosilio Belt",  legs="Nahtirah Trousers",   feet="Iuitl Gaiters +1"
     }
     sets.midcast.BlueMagic.Physical.STRDEX = {
-        ear1="Pixie Earring",
+        hands={name="Taeon Gloves", augments={'Accuracy+25','"Dual Wield"+4','STR+7 DEX+7'}},
         ring2="Pyrosoul Ring",
-        waist="Warwolf Belt",   legs="Nahtirah Trousers",   feet="Iuitl Gaiters +1"
+        legs={name="Taeon Tights", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','STR+7 DEX+7'}},
+        feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+5','STR+6 DEX+6'}}
     }
     sets.midcast.BlueMagic.Physical.STRINT = {
-        ear2="Psystorm Earring",
-        body="Hagondes Coat +1",    hands="Hagondes Cuffs +1",  ring2="Spiral Ring",
-        waist="Prosilio Belt",      legs="Nahtirah Trousers",   feet="Hagondes Sabots +1"
+        ring2="Spiral Ring",
     }
     sets.midcast.BlueMagic.Physical.STRMND = {
-        ear1="Lifestorm Earring",
-        body="Hagondes Coat +1",    ring2="Pyrosoul Ring",
-        waist="Prosilio Belt",      legs="Nahtirah Trousers",   feet="Hagondes Sabots +1"       
+        ring2="Pyrosoul Ring",
     }
     sets.midcast.BlueMagic.Physical.STRVIT = {
-        head="Whirlpool Mask",
+        hands={name="Taeon Gloves", augments={'Accuracy+25','"Dual Wield"+4','STR+7 DEX+7'}},
         ring2="Spiral Ring",
-        waist="Chuq'aba Belt",  legs="Nahtirah Trousers",   feet="Iuitl Gaiters +1"
     }
     sets.midcast.BlueMagic.Physical['Cannonball'] = {   --Uses def instead of att
         head="Whirlpool Mask",  neck="Stone Gorget",
-        body="Qaaxo Harness",   hands="Iuitl Wristbands +1",    ring1="Paguroidea Ring",    ring2="Spiral Ring",
-        back="Ogapepo Cape",    waist="Cetl Belt",              legs="Nahtirah Trousers",   feet="Iuitl Gaiters +1"
+        body="Qaaxo Harness",   hands="Iuitl Wristbands +1",    ring1="Paguroidea Ring",    ring2="Provocare Ring",
+        back="Ogapepo Cape",    waist="Cetl Belt",              legs="Nahtirah Trousers",
+        feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+5','STR+6 DEX+6'}}
     }
 
     sets.midcast.BlueMagic.Magic = {
         ammo="Dosis Tathlum",
-        head="Hagondes Hat +1",     neck="Eddy Necklace",       ear1="Hecate's Earring",    ear2="Friomisi Earring",
-        body="Hagondes Coat +1",    hands="Hagondes Cuffs +1",  ring1="Fenrir Ring +1",     ring2="Acumen Ring",
-        back="Cornflower Cape",     waist="Aswang Sash",        legs="Hagondes Pants +1",   feet="Hagondes Sabots +1"
+        head="Jhakri Coronal",  neck="Eddy Necklace",   ear1="Hecate's Earring",    ear2="Friomisi Earring",
+        body="Jhakri Robe",
+        hands={name="Helios Gloves", augments={'"Mag.Atk.Bns."+25','Mag. crit. hit dmg. +8%'}},
+        ring1="Fenrir Ring +1",
+        ring2="Acumen Ring",
+        back={name="Cornflower Cape", augments={'MP+18','DEX+1','Accuracy+1','Blue Magic skill +9'}},
+        waist="Aswang Sash",
+        legs={name="Hagondes Pants +1", augments={'Phys. dmg. taken -2%','"Mag.Atk.Bns."+17'}},
+        feet={name="Helios Boots", augments={'"Mag.Atk.Bns."+24','Magic crit. hit rate +3','Magic burst mdg.+2%'}}
     }
     sets.midcast.BlueMagic.Magic.CHR = {}
     sets.midcast.BlueMagic.Magic.DEX = {}
@@ -193,14 +231,16 @@ function init_gear_sets()
     sets.midcast.BlueMagic.Magic.INTMND = {}
     sets.midcast.BlueMagic.Magic.STRDEX = {}
     sets.midcast.BlueMagic.Magic['Blazing Bound'] = {   --Uses MDB instead of MAB
-        head="Hagondes Hat +1",
-        body="Hagondes Coat +1",    hands="Hagondes Cuffs +1",
-        legs="Hagondes Pants +1",   feet="Hagondes Sabots +1"
+        head="Telchine Cap",    neck="Twilight Torque",     ear1="Merman's Earring",    ear2="Merman's Earring",
+        body="Iuitl Vest +1",   hands="Telchine Gloves",    ring1="Defending Ring",     ring2={name="Dark Ring", augments={'Magic dmg. taken -4%','Phys. dmg. taken -5%'}},
+        back="Tuilha Cape",
+        legs={name="Taeon Tights", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','STR+7 DEX+7'}},
+        feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+5','STR+6 DEX+6'}}
     }
     
     sets.midcast.BlueMagic.Breath = {
         ammo="Mavi Tathlum",
-        head="Mirage Keffiyeh"
+        head="Mirage Keffiyeh", neck="Ardor Pendant"
     }
     
     sets.midcast.EnfeeblingMagic = {}
@@ -219,48 +259,67 @@ function init_gear_sets()
     --          Other sets
     --============================================================
     
-    sets.resting = {
-        head="Hagondes Hat +1",     neck="Eidolon Pendant",     ear1="Loquacious Earring",  ear2="Relaxing Earring",
-        body="Hagondes Coat +1",    hands="Serpentes Cuffs",    ring1="Sangoma Ring",       ring2="Fenrir Ring +1",
-        back="Felicitas Cape",      waist="Emphatikos Rope",    legs="Hagondes Pants +1",   feet="Chelona Boots"
+    sets.weapons.Main = {main="Claidheamh Soluis", sub="Usonmunku"}
+    sets.weapons.Magic = {main="Nehushtan", sub="Gabaxorea"}
+    
+    sets.resting = {                                                                    ammo="Demonry Stone",
+        head="Taeon Chapeau",   neck="Eidolon Pendant",     ear1="Loquacious Earring",  ear2="Relaxing Earring",
+        body="Jhakri Robe",     hands="Serpentes Cuffs",    ring1="Sangoma Ring",       ring2="Fenrir Ring +1",
+        back="Felicitas Cape",  waist="Fucho-no-obi",       legs="Helios Spats",        feet="Chelona Boots"
     }
     
-    sets.idle = {
-        ammo="Demonry Stone",
-        head="Ocelomeh Headpiece +1",   neck="Orochi Nodowa",           ear1="Brachyura Earring",   ear2="Ethereal Earring",
-        body="Hagondes Coat +1",        hands="Iuitl Wristbands +1",    ring1="Defending Ring",     ring2="Shneddick Ring",
-        back="Repulse Mantle",          waist="Flume Belt",             legs="Hagondes Pants +1",   feet="Iuitl Gaiters +1"
+    sets.idle = {                                                                           ammo="Demonry Stone",
+        head="Ocelomeh Headpiece +1",   neck="Orochi Nodowa",   ear1="Brachyura Earring",   ear2="Ethereal Earring",
+        body="Jhakri Robe",             hands="Umuthi Gloves",  ring1="Defending Ring",     ring2="Shneddick Ring",
+        back="Repulse Mantle",          waist="Flume Belt",
+        legs={name="Taeon Tights", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','STR+7 DEX+7'}},
+        feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+5','STR+6 DEX+6'}}
     }
-    sets.idle.lowMP = {legs="Nares Trews"}
+    sets.idle.Learn = {hands="Magus Bazubands"}
+    sets.idle.lowMP = {waist="Fucho-no-obi", legs="Nares Trews"}
     sets.idle.lowMP_night = {hands="Serpentes Cuffs"}
     sets.idle.lowMP_day = {feet="Serpentes Sabots"}
     
     sets.idle.with_buff = {}
     sets.idle.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}
+    sets.idle.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
     
     -- Defense sets
-    sets.defense.PDT = sets.idle
-    sets.defense.MDT = sets.idle
+    sets.defense.PDT = {
+        head="Iuitl Headgear +1",   neck="Twilight Torque", ear1="Brachyura Earring",   ear2="Ethereal Earring",
+        body="Iuitl Vest +1",       hands="Umuthi Gloves",  ring1="Defending Ring",     ring2={name="Dark Ring", augments={'Magic dmg. taken -4%','Phys. dmg. taken -5%'}},
+        back="Repulse Mantle",      waist="Flume Belt",     legs="Iuitl Tights +1",     feet="Iuitl Gaiters +1"
+    }
+    sets.defense.MDT = {                                                                ammo="Demonry Stone",
+        head="Telchine Cap",    neck="Twilight Torque",     ear1="Merman's Earring",    ear2="Merman's Earring",
+        body="Iuitl Vest +1",   hands="Telchine Gloves",    ring1="Defending Ring",     ring2={name="Dark Ring", augments={'Magic dmg. taken -4%','Phys. dmg. taken -5%'}},
+        back="Tuilha Cape",
+        legs={name="Taeon Tights", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','STR+7 DEX+7'}},
+        feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+5','STR+6 DEX+6'}}
+    }
 
     sets.engaged = {
         ammo="Honed Tathlum",
-        head="Whirlpool Mask",  neck="Asperity Necklace",       ear1="Bladeborn Earring",   ear2="Steelflash Earring",
-        body="Qaaxo Harness",   hands="Iuitl Wristbands +1",    ring1="Rajas Ring",         ring2="Epona's Ring",
-        back="Atheling Mantle", waist="Windbuffet Belt +1",     legs="Iuitl Tights +1",     feet="Iuitl Gaiters +1"
+        head={name="Taeon Chapeau", augments={'Accuracy+18 Attack+18','"Triple Atk."+2','Crit. hit damage +2%'}},
+        neck="Asperity Necklace",
+        ear1="Dudgeon Earring",
+        ear2="Heartseeker Earring",
+        body="Qaaxo Harness",
+        hands={name="Taeon Gloves", augments={'Accuracy+25','"Dual Wield"+4','STR+7 DEX+7'}},
+        ring1="Rajas Ring",
+        ring2="Epona's Ring",
+        back="Atheling Mantle",
+        waist="Windbuffet Belt +1",
+        legs={name="Taeon Tights", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','STR+7 DEX+7'}},
+        feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+5','STR+6 DEX+6'}}
     }
     sets.engaged.Learn = {
-        ammo="Honed Tathlum",
-        head="Whirlpool Mask",  neck="Ziel Charm",          ear1="Bladeborn Earring",   ear2="Steelflash Earring",
-        body="Iuitl Vest +1",   hands="Magus Bazubands",   ring1="Rajas Ring",          ring2="Mars's Ring",
-        back="Kayapa Cape",     waist="Anguinus Belt",      legs="Iuitl Tights +1",     feet="Iuitl Gaiters +1"
+        hands="Magus Bazubands",
     }
+    sets.engaged.MediumAcc = {}
+    sets.engaged.HighAcc = {}
     
-    sets.engaged.Learn1 = {
-        ammo="Honed Tathlum",
-        head="Whirlpool Mask",  neck="Asperity Necklace",   ear1="Bladeborn Earring",   ear2="Steelflash Earring",
-        body="Qaaxo Harness",   hands="Magus Bazubands",    ring1="Rajas Ring",         ring2="Epona's Ring",
-        back="Atheling Mantle", waist="Windbuffet Belt +1", legs="Iuitl Tights +1",     feet="Iuitl Gaiters +1"
-    }
     sets.engaged.with_buff = {}
     sets.engaged.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}
+    sets.engaged.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 end

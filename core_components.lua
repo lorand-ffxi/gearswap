@@ -684,7 +684,8 @@ function get_midcast_set(spell)
                 end
             end         
         elseif spell.skill == 'Blue Magic' then
-            local bluType = (spell.element == -1) and 'Physical' or 'Magic'
+            local bluType = S{-1,15,'None','Physical'}:contains(spell.element) and 'Physical' or 'Magic'
+            --local bluType = (spell.element == -1) and 'Physical' or 'Magic'
             if bluType == 'Magic' then
                 if (blu_typemap[spell.en] == 'Breath') then
                     midcastSet = combineSets(midcastSet, sets.midcast.MagicAccuracy)
@@ -833,6 +834,17 @@ function get_idle_set(baseSet)
         end
     end
     idleSet = combineSets(idleSet, sets.idle[modes.idle])
+    
+    local zone_info = windower.ffxi.get_info()
+    if zone_info ~= nil then
+        local zoneid = zone_info.zone
+        if zoneid == 131 then
+            windower.send_command('lua unload gearswap')
+        elseif indoor_zones:contains(zoneid) then
+            idleSet = combineSets(idleSet, sets.idle.indoors)
+        end
+        idleSet = combineSets(idleSet, sets.idle, 'zone', res.zones[zoneid].en)
+    end
     
     if (world.time >= (17*60) or world.time <= (6*60)) then
         idleSet = combineSets(idleSet, sets.idle.night)

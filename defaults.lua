@@ -42,7 +42,7 @@ function define_defaults()
     state = {}
     
     setMode('ConserveMP', true)
-    setMode('autoPenury', false)
+    --setMode('autoPenury', false)
     setMode('noIdle', false)
     setMode('autoCaress', false)
     setMode('tank', false)
@@ -73,7 +73,7 @@ function define_defaults()
     end
     
     weapSwapJobs = S{'WHM','BLM','RDM','SCH','GEO','BRD','BLU','SMN'}
-    noWeapSwapSets = S{'Melee','Skillup','Learn'}
+    noWeapSwapSets = S{'Melee','Skillup','Learn','DW'}
     usesRanged = S{'RNG','COR','THF','SAM'}
     
     --addModeOption(mode, option)

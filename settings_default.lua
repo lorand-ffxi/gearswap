@@ -28,7 +28,7 @@ end
 
 function set_modes()
     local modelist = {}
-    modelist['idle'] = {'CapFarm','Normal'}
+    modelist['idle'] = {'CapFarm','Normal','oldschool'}
     modelist['defense'] = {'Normal', 'PDT', 'MDT'}
     modelist['casting'] = {'Normal', 'MediumAcc', 'HighAcc', 'Proc'}
     modelist['accuracy'] = {'Normal', 'MediumAcc', 'HighAcc'}
@@ -38,7 +38,7 @@ function set_modes()
     
     --Note: The first value in the table passed to addMode becomes the default value for that mode.
     if S{'WHM','BLM','RDM','GEO','SMN'}:contains(player.main_job) then
-        modelist['offense'] = {'Magic', 'Melee', 'Skillup'}
+        modelist['offense'] = {'Magic', 'Melee', 'Skillup', 'DW'}
     elseif S{'SCH'}:contains(player.main_job) then
         modelist['offense'] = {'Magic', 'Melee', 'Skillup'}
         modelist['idle'] = {'Normal', 'CapFarm', 'MDT'}
@@ -48,6 +48,8 @@ function set_modes()
         modelist['weapon'] = {'Main','Melee','Other'}
     elseif S{'BLU'}:contains(player.main_job) then
         modelist['offense'] = {'Normal', 'Learn'}
+        modelist['idle'] = {'CapFarm','Normal','Learn'}
+        modelist['weapon'] = {'Main','Magic','Other'}
     elseif S{'RNG'}:contains(player.main_job) then
         modelist['offense'] = {'Bow','Gun'}
         modelist['ranged'] = {'r4-hit'}
@@ -56,10 +58,11 @@ function set_modes()
         modelist['offense'] = {'Normal','Tank'}
     elseif S{'NIN'}:contains(player.main_job) then
         modelist['offense'] = {'auto', 'Tank', 'CrazyAccuracy'}
-        modelist['weapon'] = {'Main','OAT','Reive','Sword','Dagger','Other'}
+        modelist['weapon'] = {'Main','Reverse','OAT','Reive','Sword','Dagger','Other'}
     elseif S{'PLD'}:contains(player.main_job) then
-        modelist['offense'] = {'Normal', 'TankP', 'TankM', 'TankMix'}
-        modelist['idle'] = {'Showoff', 'PDT', 'MDT', 'normal'}
+        modelist['offense'] = {'DD', 'TankP', 'TankM', 'TankMix'}
+        modelist['idle'] = {'normal', 'PDT', 'MDT', 'reraise'}
+        modelist['weapon'] = {'Aegis','Priwen','Other'}
     elseif S{'SAM'}:contains(player.main_job) then
         modelist['offense'] = {'4-Hit', '5-Hit', '5-Acc'}
         modelist['idle'] = {'Normal', 'reraise'}

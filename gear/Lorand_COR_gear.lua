@@ -130,9 +130,9 @@ function init_gear_sets()
 		back="Repulse Mantle",	waist="Flume Belt",		legs="Iuitl Tights +1",	feet="Iuitl Gaiters +1"
 	})
 	sets.defense.MDT = set_combine(sets.defense.Evasion, sets.defense.DT, {	--MDT-4% + DT => MDT-16%, MDB+19
-		head="Ejekamal Mask",	ear1="Merman's Earring",	ear2="Merman's Earring",
+		head="Taeon Chapeau",	ear1="Merman's Earring",	ear2="Merman's Earring",
 		body="Iuitl Vest +1",	hands="Umuthi Gloves",
-		back="Tuilha Cape",	waist="Flume Belt",		legs="Kaabnax Trousers",	feet="Iuitl Gaiters +1"
+		back="Tuilha Cape",	waist="Flume Belt",		legs="Taeon Tights",	feet="Iuitl Gaiters +1"
 	})
 	
 	sets.engaged = {

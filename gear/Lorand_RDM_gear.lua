@@ -95,7 +95,7 @@ function init_gear_sets()
 	--============================================================
 	
 	sets.midcast.MagicAccuracy = {
-		main="Lehbrailg +2",	sub="Mephitis Grip",		ammo="Kalboron Stone",
+		main="Marin Staff +1",	sub="Mephitis Grip",		ammo="Kalboron Stone",
 		head="Nahtirah Hat",	neck="Eddy Necklace",		ear1="Lifestorm Earring",	ear2="Psystorm Earring",
 		body="Artsieq Jubbah",	hands="Hagondes Cuffs +1",	ring1="Sangoma Ring",		ring2="Perception Ring",
 		back="Ogapepo Cape",	waist="Ovate Rope",		legs="Artsieq Hose",		feet="Artsieq Boots"
@@ -121,7 +121,7 @@ function init_gear_sets()
 	--============================================================
 	
 	sets.midcast.ElementalMagic = {
-		main="Venabulum",		sub="Zuuxowu Grip",					ammo="Dosis Tathlum",
+		main="Marin Staff +1",		sub="Zuuxowu Grip",					ammo="Dosis Tathlum",
 		head="Buremte Hat",		neck="Eddy Necklace",	ear1="Hecate's Earring",	ear2="Friomisi Earring",
 		body="Hagondes Coat +1",	hands="Otomi Gloves",	ring1="Fenrir Ring +1",		ring2="Acumen Ring",
 		back="Toro Cape",		waist="Aswang Sash",	legs="Hagondes Pants +1",	feet="Hagondes Sabots +1"
@@ -131,7 +131,7 @@ function init_gear_sets()
 	sets.midcast.ElementalMagic.Earth = {neck="Quanpur Necklace"}
 	
 	sets.midcast.ElementalEnfeeble = {
-		main="Venabulum",		sub="Mephitis Grip",
+		main="Marin Staff +1",		sub="Mephitis Grip",
 		head="Kaabnax Hat",		ear1="Lifestorm Earring",	ear2="Psystorm Earring",
 		body="Hagondes Coat +1",	hands="Lurid Mitts",		ring1="Icesoul Ring",		ring2="Diamond Ring",
 		back="Toro Cape",		legs="Hagondes Pants +1",	feet="Hagondes Sabots +1"

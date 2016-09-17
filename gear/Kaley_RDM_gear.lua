@@ -38,7 +38,7 @@ function init_gear_sets()
     sets.wsBase = {
         head="Atrophy Chapeau +1",  neck="Asperity Necklace",   ear1="Bladeborn Earring",   ear2="Steelflash Earring",
         body="Taeon Tabard",        hands="Atrophy Gloves +1",  ring1="Rajas Ring",         ring2="Tyrant's Ring",
-        back="Atheling Mantle",     waist="Anguinus Belt",      legs="Telchine Braconi",    feet="Taeon Boots"
+        back="Atheling Mantle",     waist="Anguinus Belt",      legs="Telchine Braconi",    feet="Jhakri Pigaches"
     }
     sets.wsBase.MND = {head="Vitivation Chapeau +1",ring2="Aqua Ring",feet="Vitivation Boots +1"}
     
@@ -112,7 +112,7 @@ function init_gear_sets()
         main="Marin Staff",         sub="Mephitis Grip",        ammo="Kalboron Stone",
         head="Atrophy Chapeau +1",  neck="Eddy Necklace",       ear1="Lifestorm Earring",   ear2="Psystorm Earring",
         body="Artsieq Jubbah",      hands="Hagondes Cuffs +1",  ring1="Sangoma Ring",       ring2="Perception Ring",
-        back="Ogapepo Cape",        waist="Ovate Rope",         legs="Artsieq Hose",        feet="Vitivation Boots +1"
+        back="Ogapepo Cape",        waist="Ovate Rope",         legs="Artsieq Hose",        feet="Jhakri Pigaches"
     }
     
     sets.midcast.EnfeeblingMagic = {
@@ -155,36 +155,31 @@ function init_gear_sets()
     --============================================================
     
     sets.midcast.ElementalMagic = {
-        main="Marin Staff",         sub="Bugard Strap +1",                              ammo="Witchstone",
+        main="Marin Staff",         sub="Elder's Grip +1",  ammo="Witchstone",
         head="Buremte Hat",         neck="Eddy Necklace",   ear1="Hecate's Earring",    ear2="Friomisi Earring",
         body="Hagondes Coat +1",    hands="Otomi Gloves",   ring1="Acumen Ring",        ring2="Spiral Ring",
-        back="Toro Cape",           waist="Cognition Belt", legs="Hagondes Pants +1",   feet="Vitivation Boots +1"
+        back="Toro Cape",           waist="Salire Belt",    legs="Hagondes Pants +1",   feet="Jhakri Pigaches"
     }
     sets.midcast.ElementalMagic.LowTier = {
-        main="Marin Staff",         sub="Bugard Strap +1",                              ammo="Witchstone",
-        head="Buremte Hat",         neck="Eddy Necklace",   ear1="Hecate's Earring",    ear2="Friomisi Earring",
-        body="Hagondes Coat +1",    hands="Otomi Gloves",   ring1="Acumen Ring",        ring2="Spiral Ring",
-        back="Ghostfyre Cape",      waist="Cognition Belt", legs="Hagondes Pants +1",   feet="Umbani Boots"
+        sub="Zuuxowu Grip",     ammo="Dosis Tathlum",
+        back="Ghostfyre Cape",  feet="Umbani Boots"
     }
     sets.midcast.ElementalMagic.HighTier = {
-        main="Marin Staff",         sub="Bugard Strap +1",                              ammo="Witchstone",
-        head="Buremte Hat",         neck="Eddy Necklace",   ear1="Hecate's Earring",    ear2="Friomisi Earring",
-        body="Hagondes Coat +1",    hands="Otomi Gloves",   ring1="Acumen Ring",        ring2="Spiral Ring",
-        back="Toro Cape",           waist="Cognition Belt", legs="Hagondes Pants +1",   feet="Umbani Boots"
+        feet="Jhakri Pigaches"
     }
     sets.midcast.ElementalMagic.Earth = {neck="Quanpur Necklace"}
     
     sets.midcast.ElementalMagic.MediumAcc = {
-        main="Marin Staff",         sub="Bugard Strap +1",                              ammo="Witchstone",
-        head="Buremte Hat",         neck="Eddy Necklace",   ear1="Hecate's Earring",    ear2="Friomisi Earring",
-        body="Hagondes Coat +1",    hands="Otomi Gloves",   ring1="Acumen Ring",        ring2="Spiral Ring",
-        back="Toro Cape",           waist="Cognition Belt", legs="Hagondes Pants +1",   feet="Vitivation Boots +1"
+        main="Marin Staff",         sub="Elder's Grip +1",
+        head="Helios Band",         neck="Eddy Necklace",   ear1="Hecate's Earring",    ear2="Friomisi Earring",
+        body="Hagondes Coat +1",    hands="Yaoyotl Gloves", ring1="Acumen Ring",        ring2="Spiral Ring",
+        back="Toro Cape",           waist="Salire Belt",    legs="Hagondes Pants +1",   feet="Jhakri Pigaches"
     }
     sets.midcast.ElementalMagic.HighAcc = {
-        main="Marin Staff",         sub="Bugard Strap +1",                              ammo="Witchstone",
-        head="Buremte Hat",         neck="Eddy Necklace",   ear1="Hecate's Earring",    ear2="Friomisi Earring",
-        body="Hagondes Coat +1",    hands="Otomi Gloves",   ring1="Acumen Ring",        ring2="Spiral Ring",
-        back="Toro Cape",           waist="Cognition Belt", legs="Hagondes Pants +1",   feet="Vitivation Boots +1"
+        main="Marin Staff",         sub="Clerisy Strap",                                ammo="Kalboron Stone",
+        head="Atrophy Chapeau +1",  neck="Eddy Necklace",   ear1="Lifestorm Earring",   ear2="Psystorm Earring",
+        body="Atrophy Tabard +1",   hands="Yaoyotl Gloves", ring1="Acumen Ring",        ring2="Sangoma Ring",
+        back="Toro Cape",           waist="Salire Belt",    legs="Artsieq Hose",        feet="Jhakri Pigaches"
     }
     sets.midcast.ElementalMagic.Proc = {    --Damage is not a priority
         main="Secespita",               sub="Genbu's Shield",                                       ammo="Kalboron Stone",
@@ -197,17 +192,18 @@ function init_gear_sets()
     sets.midcast.ElementalMagic.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
     
     sets.midcast.ElementalEnfeeble = {
-        head="Kaabnax Hat",
-        hands="Otomi Gloves",           ring1="Spiral Ring",
-        legs="Vitivation Tights +1",    feet="Uk'uxkaj Boots"
+        main="Marin Staff",         sub="Clerisy Strap",    ammo="Kalboron Stone",
+        head="Atrophy Chapeau +1",  neck="Eddy Necklace",   ear1="Lifestorm Earring",   ear2="Psystorm Earring",
+        body="Atrophy Tabard +1",   hands="Yaoyotl Gloves", ring1="Sangoma Ring",       ring2="Spiral Ring",
+        back="Toro Cape",           waist="Ovate Rope",     legs="Vitivation Tights +1",feet="Jhakri Pigaches"
     }
 
     sets.midcast.DarkMagic = {}
     sets.midcast.Stun = {
-        main="Apamajas II",             sub="Mephitis Grip",            ammo="Kalboron Stone",
+        main="Apamajas II",             sub="Clerisy Strap",            ammo="Kalboron Stone",
         head="Atrophy Chapeau +1",      neck="Jeweled Collar",          ear1="Lifestorm Earring",   ear2="Psystorm Earring",
-        body="Vitivation Tabard +1",    hands="Gendewitha Gages +1",    ring1="Prolix Ring",        ring2="Perception Ring",
-        back="Ogapepo Cape",            waist="Cetl Belt",              legs="Artsieq Hose",        feet="Bokwus Boots"
+        body="Vitivation Tabard +1",    hands="Gendewitha Gages +1",    ring1="Prolix Ring",        ring2="Sangoma Ring",
+        back="Ogapepo Cape",            waist="Cetl Belt",              legs="Artsieq Hose",        feet="Vitivation Boots +1"
     }
     
     sets.midcast.DivineMagic = {}
@@ -220,28 +216,52 @@ function init_gear_sets()
     --============================================================
     
     sets.maxMP = {
-        main="Marin Staff",             sub="Achaq Grip",                                       ammo="Kalboron Stone",
-        head="Kaabnax Hat",            neck="Estoqueur's Collar",  ear1="Loquacious Earring",  ear2="Star Earring",
-        body="Vitivation Tabard +1",    hands="Otomi Gloves",       ring1="Sangoma Ring",       ring2="Prolix Ring",
-        back="Pahtli Cape",             waist="Hierarch Belt",      legs="Artsieq Hose",        feet="Atrophy Boots"
+        main="Marin Staff",             sub="Elder's Grip +1",                                      ammo="Kalboron Stone",
+        head="Kaabnax Hat",             neck="Estoqueur's Collar",  ear1="Loquacious Earring",      ear2="Star Earring",
+        body="Weatherspoon Robe +1",    hands="Otomi Gloves",       ring1="Sangoma Ring",           ring2="Bifrost Ring",
+        back="Pahtli Cape",             waist="Shinjutsu-no-obi",   legs="Estoqueur's Fuseau +2",   feet="Atrophy Boots"
     }
     
     sets.resting = combineSets(sets.maxMP, {
-        main="Boonwell Staff",          sub="Achaq Grip",                                       ammo="Homiliary",
-        head="Vitivation Chapeau +1",   neck="Eidolon Pendant",     ear1="Loquacious Earring",  ear2="Star Earring",
-        body="Artsieq Jubbah",          hands="Serpentes Cuffs",    ring1="Sangoma Ring",       ring2="Prolix Ring",
-        back="Felicitas Cape",          waist="Austerity Belt",     legs="Nares Trews",         feet="Chelona Boots"
+        main="Boonwell Staff",
+        ammo="Homiliary",
+        head="Vitivation Chapeau +1",
+        neck="Eidolon Pendant",
+        body="Artsieq Jubbah",
+        hands="Serpentes Cuffs",
+        back="Felicitas Cape",
+        waist="Austerity Belt",
+        legs="Nares Trews",
+        feet="Chelona Boots"
     })
     
     sets.idle = {
         main="Bolelabunga",             sub="Genbu's Shield",       ammo="Homiliary",
         head="Vitivation Chapeau +1",   neck="Twilight Torque",     ear1="Novia Earring",           ear2="Ethereal Earring",
-        body="Artsieq Jubbah",          hands="Hagondes Cuffs +1",
+        body="Jhakri Robe",             hands="Hagondes Cuffs +1",
         ring1={name="Dark Ring", augments={'Phys. dmg. taken -5%','Breath dmg. taken -4%','Magic dmg. taken -3%'}},
         ring2="Shneddick Ring",
-        back="Cheviot Cape",          waist="Fucho-no-obi",    legs="Vitivation Tights +1",    feet="Gendewitha Galoshes +1"
+        back="Cheviot Cape",            waist="Fucho-no-obi",       legs="Vitivation Tights +1",    feet="Gendewitha Galoshes +1"
     }
     sets.idle.CapFarm = {back="Mecistopins Mantle"}
+    
+    sets.idle.oldschool = {
+        main="Terra's Staff",
+        sub="Elder's Grip +1",
+        ammo="Homiliary",
+        head="Vitivation Chapeau +1",
+        neck="Twilight Torque",
+        ear1="Novia Earring",
+        ear2="Ethereal Earring",
+        body="Jhakri Robe",
+        hands="Jhakri Cuffs",
+        ring1={name="Dark Ring", augments={'Phys. dmg. taken -5%','Breath dmg. taken -4%','Magic dmg. taken -3%'}},
+        ring2="Shneddick Ring",
+        back="Mecistopins Mantle",
+        waist="Fucho-no-obi",
+        legs="Crimson Cuisses",
+        feet="Jhakri Pigaches"
+    }
     
     sets.idle.with_buff = {}
     sets.idle.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
@@ -283,4 +303,15 @@ function init_gear_sets()
         body="Taeon Tabard",            hands="Atrophy Gloves +1",  ring1="Rajas Ring",         ring2="Tyrant's Ring",
         back="Atheling Mantle",         waist="Cetl Belt",          legs="Taeon Tights",        feet="Taeon Boots"
     }
+    
+    sets.engaged.MediumAcc = {ammo="Jukukik Feather"}
+    sets.engaged.HighAcc = {ammo="Jukukik Feather"}
+    
+    sets.engaged.DW = {
+        head="Vitivation Chapeau +1",   neck="Asperity Necklace",   ear1="Dudgeon Earring", ear2="Heartseeker Earring",
+        body="Taeon Tabard",            hands="Atrophy Gloves +1",  ring1="Rajas Ring",     ring2="Tyrant's Ring",
+        back="Atheling Mantle",         waist="Cetl Belt",          legs="Taeon Tights",    feet="Taeon Boots"
+    }
+    sets.engaged.DW.MediumAcc = {ammo="Jukukik Feather"}
+    sets.engaged.DW.HighAcc = {ammo="Jukukik Feather"}
 end

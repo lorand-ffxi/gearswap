@@ -72,7 +72,7 @@ function init_gear_sets()
     sets.midcast.FastRecast = {
         head="Otronif Mask +1",     neck="Orunmila's Torque",       ear1="Loquacious Earring",
         body="Otronif Harness +1",  hands="Hesychast's Gloves +1",  ring1="Prolix Ring",        ring2="Veneficium Ring",
-        back="Mujin Mantle",        waist="Black Belt",             legs="Otronif Brais +1",    feet="Daihanshi Habaki"
+        back="Mujin Mantle",        waist="Black Belt",             legs="Otronif Brais +1",    feet="Otronif Boots +1"
     }
 
     --============================================================
@@ -111,7 +111,7 @@ function init_gear_sets()
     })
     sets.defense.MDT = combineSets(sets.defense.DT, {   --MDT-6% + DT => MDT-25%, MDB+24
         ammo="Demonry Stone",           --MDB+2
-        head="Ejekamal Mask",           --2%, MDB+3
+        head="Otronif Mask +1",         --MDB+4
         ear1="Merman's Earring",        --2%
         ear2="Merman's Earring",        --2%
         body="Qaaxo Harness",           --MDB+6
@@ -119,7 +119,7 @@ function init_gear_sets()
         back="Tuilha Cape",             --MDB+4
         waist="Black Belt",             --n/a
         legs="Hesychast's Hose +1",     --MDB+3
-        feet="Daihanshi Habaki"         --MDB+5
+        feet="Otronif Boots +1"
     })
     
     sets.defense.HP = sets.defense.PDT

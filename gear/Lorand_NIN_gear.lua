@@ -82,20 +82,24 @@ function init_gear_sets()
         neck="Asperity Necklace",
         ear1="Bladeborn Earring",   ear2="Steelflash Earring",
         body="Qaaxo Harness",
-        hands="Taeon Gloves",
+        hands={name="Taeon Gloves", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','DEX+7'}},
         ring1="Rajas Ring",         ring2="Epona's Ring",
         back="Yokaze Mantle",
         waist="Windbuffet Belt +1",
         legs={name="Taeon Tights", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','STR+7 DEX+7'}},
-        feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+5','STR+6 DEX+6'}}
+        feet="Hizamaru Sune-Ate +1"
     }
     
-    sets.wsBase.Acc = {}
-    sets.wsBase.Acc.DEX = {}
-    sets.wsBase.Acc.AGI = {}
+    sets.wsBase.MediumAcc = {}
+    sets.wsBase.MediumAcc.DEX = {feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+5','STR+6 DEX+6'}}}
+    sets.wsBase.MediumAcc.AGI = {}
+    
+    sets.wsBase.HighAcc = {}
+    sets.wsBase.HighAcc.DEX = {feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+5','STR+6 DEX+6'}}}
+    sets.wsBase.HighAcc.AGI = {}
     
     sets.wsBase.STR = {}
-    sets.wsBase.DEX = {}
+    sets.wsBase.DEX = {feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+5','STR+6 DEX+6'}}}
     sets.wsBase.STRDEX = {}
     sets.wsBase.AGI = {ring1="Stormsoul Ring"}
     
@@ -121,15 +125,15 @@ function init_gear_sets()
         head="Otronif Mask +1",
         neck="Orunmila's Torque",
         ear1="Loquacious Earring",  ear2="Ethereal Earring",
-        body="Otronif Harness +1",
+        body="Taeon Tabard",
         hands="Mochizuki Tekko +1",
         ring1="Prolix Ring",        ring2="Diamond Ring",
         back="Mujin Mantle",
         waist="Flume Belt",
-        legs="Quiahuiz Trousers",
+        legs="Otronif Brais +1",
         feet="Otronif Boots +1"
     }
-    sets.midcast.Utsusemi = {feet="Hattori Kyahan"}
+    sets.midcast.Utsusemi = {back="Andartia's Mantle", feet="Hattori Kyahan"}
 
     sets.midcast.MagicAccuracy = {
         head="Hachiya Hatsuburi",
@@ -177,6 +181,7 @@ function init_gear_sets()
     --============================================================
     
     sets.weapons.Main = {main="Kikoku", sub="Tancho +1"}
+    sets.weapons.Reverse = {main="Tancho +1", sub="Kikoku"}
     sets.weapons.OAT = {main="Kikoku", sub="Taikogane"}
     sets.weapons.Reive = {main="Kikoku", sub="Senkutanto"}
     sets.weapons.Sword = {main="Usonmunku", sub="Tancho +1"}
@@ -188,8 +193,9 @@ function init_gear_sets()
         body="Kirin's Osode",           hands="Umuthi Gloves",  ring1="Defending Ring",     ring2="Shneddick Ring",
         back="Repulse Mantle",          waist="Flume Belt",     legs={"Hachiya Hakama +1", "Otronif Brais +1"},
         --feet="Hachiya Kyahan"
-        feet="Sokushitsu Sune-Ate"
+        feet="Hizamaru Sune-Ate +1"
     }
+    sets.idle.indoors = {ammo="Happo Shuriken +1", head="Ptica Headgear", body="Hachiya Chainmail +1"}
     sets.idle.CapFarm = {back="Mecistopins Mantle"}
     sets.idle.with_buff = {}
     sets.idle.with_buff['migawari'] = {body="Hattori Ningi"}
@@ -235,18 +241,18 @@ function init_gear_sets()
     
     sets.engaged.auto = {
         ammo="Happo Shuriken +1",
-        head="Hattori Zukin",
+        head="Ptica Headgear",
         neck="Asperity Necklace",
         ear1="Dudgeon Earring",
         ear2="Heartseeker Earring",
-        body={name="Mochizuki Chainmail +1", augments={'Enhances "Sange" effect'}},
+        body="Mochizuki Chainmail +1",
         hands={name="Taeon Gloves", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','DEX+7'}},
         ring1="Rajas Ring",
         ring2="Epona's Ring",
         back="Atheling Mantle",
         waist="Windbuffet Belt +1",
         legs={name="Taeon Tights", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','STR+7 DEX+7'}},
-        feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+5','STR+6 DEX+6'}}
+        feet="Hizamaru Sune-Ate +1"
     }
     sets.engaged.auto['na'] =   {
         waist="Patentia Sash",
@@ -272,6 +278,7 @@ function init_gear_sets()
     }
     sets.engaged.auto.HighAcc = {
         neck="Iqabi Necklace",
+        hands="Hizamaru Kote +1",
         ring2="Mars's Ring",
         back="Yokaze Mantle",
         waist="Anguinus Belt"
@@ -283,7 +290,7 @@ function init_gear_sets()
         neck="Iqabi Necklace",
         ear1="Bladeborn Earring",
         ear2="Steelflash Earring",
-        body={name="Mochizuki Chainmail +1", augments={'Enhances "Sange" effect'}},
+        body="Mochizuki Chainmail +1",
         hands={name="Taeon Gloves", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','DEX+7'}},
         ring1="Rajas Ring",
         ring2="Mars's Ring",
