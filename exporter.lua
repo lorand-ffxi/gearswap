@@ -1,5 +1,5 @@
 
-lor_gs_versions.exporter = '2016-09-24.0'
+lor_gs_versions.exporter = '2016-09-24.1'
 
 --[[
     Export Gear
@@ -58,17 +58,22 @@ local _export_gear = function(args)
         if (idx_in_bag ~= 0) then
             local sname = slotmap[slot] or slot
             local uniq_item = itemlist[bagmap[eq_tbl[slot..'_bag']]][idx_in_bag]
-            local iname = '"%s"':format(res.items[uniq_item.id].enl:capitalize())
+            local item_res = res.items[uniq_item.id]
+            local iname = '"%s"':format(item_res.enl:capitalize())
             uniq_item = setops.expand_augments(uniq_item)
             if include_augs and (#uniq_item.augments > 0) then
-                equipped[sname] = '{name=%s, augments=%s}':format(iname, '{%s}':format(',':join(map(enquote, uniq_item.augments))))
-                
-                if (gear ~= nil) and not canonical then
-                    local augd_item = loadstring('return '..equipped[sname])()
-                    for vname, gitem in pairs(gear) do
-                        if table.equals(gitem, augd_item) then
-                            equipped[sname] = 'gear.'..vname
-                            break
+                if not canonical and item_res.flags.Rare then
+                    equipped[sname] = iname
+                else            
+                    equipped[sname] = '{name=%s, augments=%s}':format(iname, '{%s}':format(',':join(map(enquote, uniq_item.augments))))
+                    
+                    if (gear ~= nil) and not canonical then
+                        local augd_item = loadstring('return '..equipped[sname])()
+                        for vname, gitem in pairs(gear) do
+                            if table.equals(gitem, augd_item) then
+                                equipped[sname] = 'gear.'..vname
+                                break
+                            end
                         end
                     end
                 end
