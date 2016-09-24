@@ -1,5 +1,5 @@
 
-lor_gs_versions.exporter = '2016-07-16.0'
+lor_gs_versions.exporter = '2016-09-24.0'
 
 --[[
     Export Gear
@@ -13,26 +13,36 @@ local _export_gear = function(args)
     local header = 'sets.exported'
     local listfmt = not any_eq('no_augs', unpack(args))
     local include_augs = true
-    --Process provided arguments
-    for _,arg in pairs(args) do
-        if arg:lower() == 'list' then
-            listfmt = true
-        elseif arg:lower() == 'group' then
-            listfmt = false
-        elseif arg:lower() == 'no_augs' then
-            include_augs = false
-        elseif arg:lower() == 'help' then
-            atc('Usage: //gs c export [list] [no_augs] <set_name>')
-            atc('list:     print each item on a separate line')
-            atc('group:    print items grouped by equipment window rows')
-            atc('no_augs:  only include item names, not augments (default: include augments)')
-            atc('set name: name to use for the set (default: %s)':format(header))
-            return
+    local canonical = false
+    
+    local kvargs = _libs.lor.argparse.extract_kvpairs(args, true)
+    if kvargs.help or kvargs.h then
+        atc('Usage: //gs c export [--help] [--format {list,group}] [--no_augs] [--name set_name] [--canonical]')
+        atc('--help, -h         show this help message and exit')
+        atc('--format, -f       list: separate lines; group: grouped by equipment window rows')
+        atc('--no_augs          only include item names, not augments (default: include augments)')
+        atc('--name, -n         name to use for the set (default: %s)':format(header))
+        atc('--canonical, -c    include full item info (default: substitute gear.xyz variables when a match is found)')
+        return
+    end
+    if kvargs.format or kvargs.f then
+        local arg_fmt = kvargs.format or kvargs.f
+        if S{'list', 'group'}:contains(arg_fmt) then
+            listfmt = (arg_fmt == 'list')
         else
-            header = arg
+            return
         end
     end
-    
+    if kvargs.name or kvargs.n then
+        header = kvargs.name or kvargs.n
+    end
+    if kvargs.no_augs then
+        include_augs = false
+    end
+    if kvargs.canonical or kvargs.c then
+        canonical = true
+    end
+
     --Process currently equipped gear
     local slots = {'main','sub','range','ammo','head','neck','left_ear','right_ear','body','hands','left_ring','right_ring','back','waist','legs','feet'}
     local slotmap = {['left_ear']='ear1',['right_ear']='ear2',['left_ring']='ring1',['right_ring']='ring2'}
@@ -52,6 +62,16 @@ local _export_gear = function(args)
             uniq_item = setops.expand_augments(uniq_item)
             if include_augs and (#uniq_item.augments > 0) then
                 equipped[sname] = '{name=%s, augments=%s}':format(iname, '{%s}':format(',':join(map(enquote, uniq_item.augments))))
+                
+                if (gear ~= nil) and not canonical then
+                    local augd_item = loadstring('return '..equipped[sname])()
+                    for vname, gitem in pairs(gear) do
+                        if table.equals(gitem, augd_item) then
+                            equipped[sname] = 'gear.'..vname
+                            break
+                        end
+                    end
+                end
             else
                 equipped[sname] = iname
             end

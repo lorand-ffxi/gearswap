@@ -15,6 +15,8 @@ function refresh_gear_sets()
 end
 
 function init_gear_sets()
+    gear.ambuDEXcape = {name="Andartia's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10'}}
+    
     sets.Enmity = {                 --39
         neck="Invidia Torque",      --5
         ear1="Friomisi Earring",    --2
@@ -36,8 +38,8 @@ function init_gear_sets()
     sets.precast.Flourish1['Violent Flourish'] = {
         neck="Stoicheion Medal",    ear1="Lifestorm Earring",   ear2="Psystorm Earring",
         hands="Taeon Gloves",       ring1="Sangoma Ring",       ring2="Perception Ring",
-        back="Yokaze Mantle",       waist="Ovate Rope",
-        feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+5','STR+6 DEX+6'}}
+        back=gear.ambuDEXcape,      waist="Ovate Rope",
+        feet=gear.taeonDWfeet
     }
     
     sets.precast.Waltz = {
@@ -78,28 +80,28 @@ function init_gear_sets()
     --sets.wsBase[magic][sam/other][state.OffenseMode][state.RangedMode][wsmod[spell.en]]
     sets.wsBase = {
         ammo="Happo Shuriken +1",
-        head={name="Taeon Chapeau", augments={'Accuracy+18 Attack+18','"Triple Atk."+2','Crit. hit damage +2%'}},
+        head=gear.taeonTAhead,
         neck="Asperity Necklace",
         ear1="Bladeborn Earring",   ear2="Steelflash Earring",
         body="Qaaxo Harness",
-        hands={name="Taeon Gloves", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','DEX+7'}},
+        hands=gear.taeonTAhands,
         ring1="Rajas Ring",         ring2="Epona's Ring",
-        back="Yokaze Mantle",
+        back=gear.ambuDEXcape,
         waist="Windbuffet Belt +1",
-        legs={name="Taeon Tights", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','STR+7 DEX+7'}},
+        legs=gear.taeonTAlegs,
         feet="Hizamaru Sune-Ate +1"
     }
     
     sets.wsBase.MediumAcc = {}
-    sets.wsBase.MediumAcc.DEX = {feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+5','STR+6 DEX+6'}}}
+    sets.wsBase.MediumAcc.DEX = {feet=gear.taeonDWfeet}
     sets.wsBase.MediumAcc.AGI = {}
     
     sets.wsBase.HighAcc = {}
-    sets.wsBase.HighAcc.DEX = {feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+5','STR+6 DEX+6'}}}
+    sets.wsBase.HighAcc.DEX = {feet=gear.taeonDWfeet}
     sets.wsBase.HighAcc.AGI = {}
     
     sets.wsBase.STR = {}
-    sets.wsBase.DEX = {feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+5','STR+6 DEX+6'}}}
+    sets.wsBase.DEX = {feet=gear.taeonDWfeet}
     sets.wsBase.STRDEX = {}
     sets.wsBase.AGI = {ring1="Stormsoul Ring"}
     
@@ -189,13 +191,12 @@ function init_gear_sets()
     
     sets.idle = {
         ammo="Demonry Stone",
-        head="Ocelomeh Headpiece +1",   neck="Orochi Nodowa",   ear1="Brachyura Earring",   ear2="Ethereal Earring",
-        body="Kirin's Osode",           hands="Umuthi Gloves",  ring1="Defending Ring",     ring2="Shneddick Ring",
-        back="Repulse Mantle",          waist="Flume Belt",     legs={"Hachiya Hakama +1", "Otronif Brais +1"},
+        head="Ocelomeh Headpiece +1",   neck="Orochi Nodowa",   ear1="Brachyura Earring",       ear2="Ethereal Earring",
+        body="Hizamaru Haramaki +1",    hands="Umuthi Gloves",  ring1="Defending Ring",         ring2="Shneddick Ring",
+        back="Repulse Mantle",          waist="Flume Belt",     legs="Hizamaru Hizayoroi +1",   feet="Hizamaru Sune-Ate +1"
         --feet="Hachiya Kyahan"
-        feet="Hizamaru Sune-Ate +1"
     }
-    sets.idle.indoors = {ammo="Happo Shuriken +1", head="Ptica Headgear", body="Hachiya Chainmail +1"}
+    sets.idle.indoors = {ammo="Happo Shuriken +1", head="Ptica Headgear"}
     sets.idle.CapFarm = {back="Mecistopins Mantle"}
     sets.idle.with_buff = {}
     sets.idle.with_buff['migawari'] = {body="Hattori Ningi"}
@@ -223,8 +224,8 @@ function init_gear_sets()
         head="Otronif Mask +1", ear1="Merman's Earring",    ear2="Merman's Earring",
         body="Qaaxo Harness",   hands="Umuthi Gloves",
         back="Tuilha Cape",
-        legs={name="Taeon Tights", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','STR+7 DEX+7'}},
-        feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+5','STR+6 DEX+6'}}
+        legs=gear.taeonTAlegs,
+        feet=gear.taeonDWfeet
     })
     
     --============================================================
@@ -246,58 +247,56 @@ function init_gear_sets()
         ear1="Dudgeon Earring",
         ear2="Heartseeker Earring",
         body="Mochizuki Chainmail +1",
-        hands={name="Taeon Gloves", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','DEX+7'}},
+        hands=gear.taeonTAhands,
         ring1="Rajas Ring",
         ring2="Epona's Ring",
-        back="Atheling Mantle",
+        back=gear.ambuDEXcape,
         waist="Windbuffet Belt +1",
-        legs={name="Taeon Tights", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','STR+7 DEX+7'}},
+        legs=gear.taeonTAlegs,
         feet="Hizamaru Sune-Ate +1"
     }
     sets.engaged.auto['na'] =   {
         waist="Patentia Sash",
-        legs={name="Mochizuki Hakama +1", augments={'Enhances "Mijin Gakure" effect'}}
+        legs="Mochizuki Hakama +1",
     }
     sets.engaged.auto['I'] =    {
-        legs={name="Mochizuki Hakama +1", augments={'Enhances "Mijin Gakure" effect'}}
+        legs="Mochizuki Hakama +1",
     }
     sets.engaged.auto['I+'] =   {}
     sets.engaged.auto['II'] =   {
-        head={name="Taeon Chapeau", augments={'Accuracy+18 Attack+18','"Triple Atk."+2','Crit. hit damage +2%'}}
+        head=gear.taeonTAhead
     }
     sets.engaged.auto['II+'] =  {
-        head={name="Taeon Chapeau", augments={'Accuracy+18 Attack+18','"Triple Atk."+2','Crit. hit damage +2%'}},
+        head=gear.taeonTAhead,
         ear1="Bladeborn Earring",   ear2="Steelflash Earring",
-        body={name="Qaaxo Harness", augments={'Attack+15','Evasion+15','"Dbl.Atk."+2'}}
+        body="Qaaxo Harness",
     }
     
     sets.engaged.auto.MediumAcc = {
         neck="Agitator's Collar",
         ring2="Mars's Ring",
-        back="Yokaze Mantle"
     }
     sets.engaged.auto.HighAcc = {
         neck="Iqabi Necklace",
         hands="Hizamaru Kote +1",
         ring2="Mars's Ring",
-        back="Yokaze Mantle",
         waist="Anguinus Belt"
     }
     
     sets.engaged.CrazyAccuracy = {
         ammo="Happo Shuriken +1",
-        head={name="Taeon Chapeau", augments={'Accuracy+18 Attack+18','"Triple Atk."+2','Crit. hit damage +2%'}},
+        head=gear.taeonTAhead,
         neck="Iqabi Necklace",
         ear1="Bladeborn Earring",
         ear2="Steelflash Earring",
         body="Mochizuki Chainmail +1",
-        hands={name="Taeon Gloves", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','DEX+7'}},
+        hands=gear.taeonTAhands,
         ring1="Rajas Ring",
         ring2="Mars's Ring",
-        back={name="Yokaze Mantle", augments={'STR+3','DEX+2','Sklchn.dmg.+1%'}},
+        back=gear.ambuDEXcape,
         waist="Anguinus Belt",
-        legs={name="Taeon Tights", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','STR+7 DEX+7'}},
-        feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+5','STR+6 DEX+6'}}
+        legs=gear.taeonTAlegs,
+        feet=gear.taeonDWfeet
     }
     
     refresh_gear_sets()

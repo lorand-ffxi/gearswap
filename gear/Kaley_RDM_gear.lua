@@ -223,44 +223,28 @@ function init_gear_sets()
     }
     
     sets.resting = combineSets(sets.maxMP, {
-        main="Boonwell Staff",
-        ammo="Homiliary",
-        head="Vitivation Chapeau +1",
-        neck="Eidolon Pendant",
-        body="Artsieq Jubbah",
-        hands="Serpentes Cuffs",
-        back="Felicitas Cape",
-        waist="Austerity Belt",
-        legs="Nares Trews",
-        feet="Chelona Boots"
+        main="Boonwell Staff",          ammo="Homiliary",
+        head="Vitivation Chapeau +1",   neck="Eidolon Pendant",
+        body="Artsieq Jubbah",          hands="Serpentes Cuffs",
+        back="Felicitas Cape",          waist="Austerity Belt",     legs="Nares Trews", feet="Chelona Boots"
     })
     
     sets.idle = {
         main="Bolelabunga",             sub="Genbu's Shield",       ammo="Homiliary",
         head="Vitivation Chapeau +1",   neck="Twilight Torque",     ear1="Novia Earring",           ear2="Ethereal Earring",
-        body="Jhakri Robe",             hands="Hagondes Cuffs +1",
+        body="Jhakri Robe +1",          hands="Hagondes Cuffs +1",
         ring1={name="Dark Ring", augments={'Phys. dmg. taken -5%','Breath dmg. taken -4%','Magic dmg. taken -3%'}},
         ring2="Shneddick Ring",
-        back="Cheviot Cape",            waist="Fucho-no-obi",       legs="Vitivation Tights +1",    feet="Gendewitha Galoshes +1"
+        back="Cheviot Cape",            waist="Fucho-no-obi",       legs="Vitivation Tights +1",    feet="Carmine Greaves"
     }
     sets.idle.CapFarm = {back="Mecistopins Mantle"}
     
     sets.idle.oldschool = {
-        main="Terra's Staff",
-        sub="Elder's Grip +1",
-        ammo="Homiliary",
-        head="Vitivation Chapeau +1",
-        neck="Twilight Torque",
-        ear1="Novia Earring",
-        ear2="Ethereal Earring",
-        body="Jhakri Robe",
-        hands="Jhakri Cuffs",
-        ring1={name="Dark Ring", augments={'Phys. dmg. taken -5%','Breath dmg. taken -4%','Magic dmg. taken -3%'}},
+        main="Terra's Staff",           sub="Elder's Grip +1",  ammo="Homiliary",
+        head="Vitivation Chapeau +1",   neck="Twilight Torque", ear1="Novia Earring",   ear2="Ethereal Earring",
+        body="Jhakri Robe +1",          hands="Jhakri Cuffs",   ring1={name="Dark Ring", augments={'Phys. dmg. taken -5%','Breath dmg. taken -4%','Magic dmg. taken -3%'}},
         ring2="Shneddick Ring",
-        back="Mecistopins Mantle",
-        waist="Fucho-no-obi",
-        legs="Crimson Cuisses",
-        feet="Jhakri Pigaches"
+        back="Mecistopins Mantle",      waist="Fucho-no-obi",   legs="Crimson Cuisses", feet="Jhakri Pigaches"
     }
     
     sets.idle.with_buff = {}
@@ -268,7 +252,7 @@ function init_gear_sets()
     
     sets.idle.Melee = {                                             ammo="Homiliary",
         head="Vitivation Chapeau +1",   neck="Twilight Torque",     ear1="Novia Earring",           ear2="Ethereal Earring",
-        body="Artsieq Jubbah",          hands="Hagondes Cuffs +1",  ring1="Dark Ring",              ring2="Shneddick Ring",
+        body="Jhakri Robe +1",          hands="Hagondes Cuffs +1",  ring1="Dark Ring",              ring2="Shneddick Ring",
         back="Cheviot Cape",            waist="Flume Belt",         legs="Vitivation Tights +1",    feet="Gendewitha Galoshes +1"
     }
     sets.idle.lowMP = {waist="Fucho-no-obi", legs="Nares Trews"}

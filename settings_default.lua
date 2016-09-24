@@ -5,11 +5,21 @@
 --]]
 -----------------------------------------------------------------------------------------------------------
 
-lor_gs_versions.settings_default = '2016-07-16.0'
+lor_gs_versions.settings_default = '2016-09-24.0'
 
 function set_options()
     --Options only need to be set here if your preference differs from the settings in defaults.lua
     options.autoDummy = true        --Automatically use Daurdabla/Terpander with specified songs
+    
+    if player.name == 'Lorand' then
+        gear.taeonTAhead = {name="Taeon Chapeau", augments={'Accuracy+18 Attack+18','"Triple Atk."+2','Crit. hit damage +2%'}}
+        gear.taeonHasteBody = {name="Taeon Tabard", augments={'Accuracy+17 Attack+17','Haste+2','STR+6 DEX+6'}}
+        gear.taeonTAhands = {name="Taeon Gloves", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','DEX+7'}}
+        gear.taeonDWhands = {name="Taeon Gloves", augments={'Accuracy+25','"Dual Wield"+4','STR+7 DEX+7'}}
+        gear.taeonTAlegs = {name="Taeon Tights", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','STR+7 DEX+7'}}
+        gear.taeonDWfeet = {name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+5','STR+6 DEX+6'}}
+    elseif player.name == 'Kaley' then
+    end
     
     autoDummySongs = S{"Army's Paeon"}
     
@@ -49,7 +59,7 @@ function set_modes()
     elseif S{'BLU'}:contains(player.main_job) then
         modelist['offense'] = {'Normal', 'Learn'}
         modelist['idle'] = {'CapFarm','Normal','Learn'}
-        modelist['weapon'] = {'Main','Magic','Other'}
+        modelist['weapon'] = {'Main','OAT','Magic','Other'}
     elseif S{'RNG'}:contains(player.main_job) then
         modelist['offense'] = {'Bow','Gun'}
         modelist['ranged'] = {'r4-hit'}
@@ -60,7 +70,7 @@ function set_modes()
         modelist['offense'] = {'auto', 'Tank', 'CrazyAccuracy'}
         modelist['weapon'] = {'Main','Reverse','OAT','Reive','Sword','Dagger','Other'}
     elseif S{'PLD'}:contains(player.main_job) then
-        modelist['offense'] = {'DD', 'TankP', 'TankM', 'TankMix'}
+        modelist['offense'] = {'Tankish', 'TankP', 'TankM', 'TankMix', 'DD'}
         modelist['idle'] = {'normal', 'PDT', 'MDT', 'reraise'}
         modelist['weapon'] = {'Aegis','Priwen','Other'}
     elseif S{'SAM'}:contains(player.main_job) then

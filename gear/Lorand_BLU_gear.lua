@@ -1,24 +1,12 @@
 --------------------------------------------------------------------------------
 --[[
     Author: Ragnarok.Lorand
-
-    Base Set                               40       DD                              60      CW                             60
-    Actinic Burst       Refresh     4/8     4       Blazing Bound       Dual Wield   3      Magic Hammer        MAB 1/2     4
-    Winds of Promyvion  Refresh     4/8     5       Quadratic Continuum Dual Wield   4      Charged Whisker                 4
-    Dream Flower        MAB         1/2     3       Delta Thrust        Dual Wield   2      Ice Break                       3
-    Yawn                                    3       Headbutt                         3      Thermal Pulse                   3
-    Battery Charge                          3       Empty Thrash        DA/TA        3      Memento Mori        MAB         4
-    Animating Wail      Dual Wield          5       Acrid Stream        DA/TA        3      Blood Saber                     2
-    Sub-zero Smash      Fast Cast   1/2     4       Asuran Claws                     2          
-    Auroral Drape       Fast Cast   1/2     4
-    Cocoon                                  1
-    Magic Fruit                             3
-    Whirl of Rage                           2
-    Frypan              HP Boost    1/2     3
 --]]
 --------------------------------------------------------------------------------
 
 function init_gear_sets()
+    gear.ambuDDcape = {name="Rosmerta's Cape", augments={'Accuracy+20 Attack+20','"Dbl.Atk."+10'}}
+
     --============================================================
     --          Precast sets
     --============================================================
@@ -60,7 +48,7 @@ function init_gear_sets()
         hands={name="Taeon Gloves", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','DEX+7'}},
         ring1="Rajas Ring",
         ring2="Epona's Ring",
-        back="Atheling Mantle",
+        back=gear.ambuDDcape,
         waist="Windbuffet Belt +1",
         legs={name="Taeon Tights", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','STR+7 DEX+7'}},
         feet="Jhakri Pigaches"
@@ -71,7 +59,7 @@ function init_gear_sets()
         neck="Eddy Necklace",
         ear1="Hecate's Earring",
         ear2="Friomisi Earring",
-        body="Jhakri Robe",
+        body="Jhakri Robe +1",
         hands={name="Helios Gloves", augments={'"Mag.Atk.Bns."+25','Mag. crit. hit dmg. +8%'}},
         ring1="Fenrir Ring +1",
         ring2="Acumen Ring",
@@ -123,7 +111,7 @@ function init_gear_sets()
 
     sets.midcast.MagicAccuracy = {
         head="Jhakri Coronal",  neck="Eddy Necklace",   ear1="Lifestorm Earring",   ear2="Psystorm Earring",
-        body="Jhakri Robe",     hands={name="Hagondes Cuffs +1", augments={'Phys. dmg. taken -1%','Mag. Acc.+6'}},
+        body="Jhakri Robe +1",  hands={name="Hagondes Cuffs +1", augments={'Phys. dmg. taken -1%','Mag. Acc.+6'}},
         ring1="Sangoma Ring",   ring2="Perception Ring",
         back="Cornflower Cape", waist="Ovate Rope",     legs="Jhakri Slops",        feet="Jhakri Pigaches"
     }
@@ -133,9 +121,9 @@ function init_gear_sets()
         back="Cornflower Cape"
     }
     
-    sets.midcast.BlueMagic.Physical = { ammo="Honed Tathlum",
-        head="Jhakri Coronal",  neck="Asperity Necklace",   ear1="Suppanomimi", ear2="Heartseeker Earring",
-        body="Jhakri Robe",     hands="Jhakri Cuffs",       ring1="Rajas Ring", ring2="Mars's Ring",
+    sets.midcast.BlueMagic.Physical = {                                             ammo="Honed Tathlum",
+        head="Jhakri Coronal",  neck="Asperity Necklace",   ear1="Suppanomimi",     ear2="Heartseeker Earring",
+        body="Jhakri Robe +1",  hands="Jhakri Cuffs",       ring1="Rajas Ring",     ring2="Mars's Ring",
         back={name="Cornflower Cape", augments={'MP+18','DEX+1','Accuracy+1','Blue Magic skill +9'}},
         waist="Prosilio Belt",  legs="Jhakri Slops",        feet="Jhakri Pigaches"
     }
@@ -213,7 +201,7 @@ function init_gear_sets()
     sets.midcast.BlueMagic.Magic = {
         ammo="Dosis Tathlum",
         head="Jhakri Coronal",  neck="Eddy Necklace",   ear1="Hecate's Earring",    ear2="Friomisi Earring",
-        body="Jhakri Robe",
+        body="Jhakri Robe +1",
         hands={name="Helios Gloves", augments={'"Mag.Atk.Bns."+25','Mag. crit. hit dmg. +8%'}},
         ring1="Fenrir Ring +1",
         ring2="Acumen Ring",
@@ -260,17 +248,18 @@ function init_gear_sets()
     --============================================================
     
     sets.weapons.Main = {main="Claidheamh Soluis", sub="Usonmunku"}
+    sets.weapons.OAT = {main="Claidheamh Soluis", sub="Xiutleato"}
     sets.weapons.Magic = {main="Nehushtan", sub="Gabaxorea"}
     
     sets.resting = {                                                                    ammo="Demonry Stone",
         head="Taeon Chapeau",   neck="Eidolon Pendant",     ear1="Loquacious Earring",  ear2="Relaxing Earring",
-        body="Jhakri Robe",     hands="Serpentes Cuffs",    ring1="Sangoma Ring",       ring2="Fenrir Ring +1",
+        body="Jhakri Robe +1",  hands="Serpentes Cuffs",    ring1="Sangoma Ring",       ring2="Fenrir Ring +1",
         back="Felicitas Cape",  waist="Fucho-no-obi",       legs="Helios Spats",        feet="Chelona Boots"
     }
     
     sets.idle = {                                                                           ammo="Demonry Stone",
         head="Ocelomeh Headpiece +1",   neck="Orochi Nodowa",   ear1="Brachyura Earring",   ear2="Ethereal Earring",
-        body="Jhakri Robe",             hands="Umuthi Gloves",  ring1="Defending Ring",     ring2="Shneddick Ring",
+        body="Jhakri Robe +1",          hands="Umuthi Gloves",  ring1="Defending Ring",     ring2="Shneddick Ring",
         back="Repulse Mantle",          waist="Flume Belt",
         legs={name="Taeon Tights", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','STR+7 DEX+7'}},
         feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+5','STR+6 DEX+6'}}
@@ -308,7 +297,7 @@ function init_gear_sets()
         hands={name="Taeon Gloves", augments={'Accuracy+25','"Dual Wield"+4','STR+7 DEX+7'}},
         ring1="Rajas Ring",
         ring2="Epona's Ring",
-        back="Atheling Mantle",
+        back=gear.ambuDDcape,
         waist="Windbuffet Belt +1",
         legs={name="Taeon Tights", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','STR+7 DEX+7'}},
         feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+5','STR+6 DEX+6'}}

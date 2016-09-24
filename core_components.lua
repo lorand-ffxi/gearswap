@@ -6,14 +6,14 @@
 --==============================================================================
 
 function init()
-    lor_gs_versions.core_components = '2016-07-24.0'
+    lor_gs_versions.core_components = '2016-09-24.0'
     show_debug = false
     
     require('lor/lor_utils')
     if not _libs.lor then
         gearswap._G.windower.add_to_chat(39, gearswap._G.windower.to_shift_jis('[ERROR] Required: https://github.com/lorand-ffxi/lor_libs'))
     end
-    _libs.lor.req('all', {n='strings',v='2016.08.07'})
+    _libs.lor.req('all', {n='strings',v='2016.08.07'}, {n='argparse',v='2016.09.24'})
     _libs.req('lists', 'sets')
     _libs.req('chat/chars')         --Required for using special characters in delayed messages
     _libs.req('slips')              --Required for notifying which items need to be fetched from the porter moogle

@@ -8,7 +8,7 @@
 --]]
 --======================================================================================================================
 
-lor_gs_versions.gear_inspection = '2016-08-14.0'
+lor_gs_versions.gear_inspection = '2016-09-18.0'
 
 gi = {}
 
@@ -18,6 +18,11 @@ local slotmap = {['left_ear']='ear1',['right_ear']='ear2',['left_ring']='ring1',
 local bagmap = {[0]='inventory',[8]='wardrobe',[10]='wardrobe2',[11]='wardrobe3',[12]='wardrobe4'}
 
 local always_percent = S{'Haste','Triple Attack','Double Attack','Magic Attack Bonus','Weapon skill damage','Store TP','Dual Wield'}
+
+local inconsistent_names = {
+    ['Damage Taken'] = 'Damage taken'
+}
+
 
 local _stat_abbreviations = {
     ['Dbl'] = 'Double',
@@ -113,13 +118,29 @@ local function normalize_stat_list(stats)
 end
 
 
+local function normalize_stat_name(stat_name)
+    return inconsistent_names[stat_name] or stat_name
+end
+
+
+local function normalize_stat_dict_keys(stat_dict)
+    local normalized = {}
+    for k,v in pairs(stat_dict) do
+        local nk = normalize_stat_name(k)
+        normalized[nk] = v
+    end
+    return normalized
+end
+
+
 local function merge_stat_dicts(d1, d2)
-    local merged = table.copy(d1)
+    local merged = normalize_stat_dict_keys(d1)
     for k,v in pairs(d2) do
-        if merged[k] ~= nil then
-            merged[k] = merged[k] + v
+        local nk = normalize_stat_name(k)
+        if merged[nk] ~= nil then
+            merged[nk] = merged[nk] + v
         else
-            merged[k] = v
+            merged[nk] = v
         end
     end
     return merged
@@ -209,6 +230,87 @@ function gi.summarize_stats()
         summary = merge_stat_dicts(summary, stats)
     end
     return summary
+end
+
+
+function gi.get_summary(key)
+    local stat_summary = gi.summarize_stats()
+    key = key:lower()
+    if key == 'mdt' then
+        local dt = stat_summary['Damage taken'] or 0
+        local mdt1 = stat_summary['Magic damage taken'] or 0
+        local mdt2 = stat_summary['Magic damage taken II'] or 0
+        local mdtA = dt + mdt1
+        local mdt_final = ((mdtA > -0.5) and mdtA or -0.5) + mdt2
+        return (mdt_final > -0.875) and mdt_final or -0.875
+    elseif key == 'pdt' then
+        local dt = stat_summary['Damage taken'] or 0
+        local pdt1 = stat_summary['Physical damage taken'] or 0
+        local pdt2 = stat_summary['Physical damage taken II'] or 0
+        local pdtA = dt + pdt1
+        local pdt_final = ((pdtA > -0.5) and pdtA or -0.5) + pdt2
+        return (pdt_final > -0.875) and pdt_final or -0.875
+    elseif key == 'haste' then
+        local haste = stat_summary['Haste'] or 0
+        return haste > 0.25 and 0.25 or haste
+    elseif key == 'mdb' then
+        return stat_summary['Magic Defense Bonus'] or 0
+    elseif key == 'mdt+mdb' then
+        local mdt = gi.get_summary('mdt')
+        local mdb = stat_summary['Magic Defense Bonus'] or 0
+        return (1 + mdt) / (1 + (mdb / 100.0))
+    elseif key == 'dt' then
+        local dt = stat_summary['Damage taken'] or 0
+        dt = (dt > -0.5) and dt or -0.5
+        local pdt = gi.get_summary('pdt')
+        local mdt = gi.get_summary('mdt')
+        local mdtb = gi.get_summary('mdt+mdb')
+        return {dt, pdt, mdt, mdtb}
+    else
+        return nil
+    end
+end
+
+
+local function fpct(val)
+    local pct = val * 100
+    if pct == math.floor(pct) then
+        return '%s%%':format(pct)
+    else
+        return '%.2f%%':format(pct)
+    end
+end
+
+
+function gi.print_summary(key)
+    local summary = gi.get_summary(key)
+    key = key:lower()
+    if summary ~= nil then
+        local dkey = key
+        local dsummary = summary
+        if key == 'dt' then
+            local mdtb = '-%.2f%%':format((1 - summary[4]) * 100)
+            for i = 1, 3 do
+                dsummary[i] = fpct(summary[i])
+            end
+            atcfs('DT: %s  |  PDT: %s  |  MDT: %s  |  MDT+MDB: %s', dsummary[1], dsummary[2], dsummary[3], mdtb)
+            return
+        elseif S{'mdt','mdb','pdt'}:contains(key) then
+            dkey = key:upper()
+            if S{'mdt','pdt'}:contains(key) then
+                dsummary = fpct(summary)
+            end
+        elseif key == 'mdt+mdb' then
+            dkey = 'MDT + MDB'
+            dsummary = '-%.2f%%':format((1 - summary) * 100)
+        elseif key == 'haste' then
+            dkey = 'Haste'
+        end
+        atcfs('%s: %s', dkey, dsummary)
+    else
+        atcfs(123, 'Error: summary not available for \'%s\'', key)
+    end
+    
 end
 
 

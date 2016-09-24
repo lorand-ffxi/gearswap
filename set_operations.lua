@@ -19,7 +19,7 @@
 --]]
 --======================================================================================================================
 
-lor_gs_versions.set_operations = '2016-07-16.1'
+lor_gs_versions.set_operations = '2016-09-24.0'
 
 setops = setops or {}
 setops._set_res = {}
@@ -62,6 +62,7 @@ local function refresh_bag_contentsA(bag, index, id, count)
     atcfs('Inventory changed. Bag: %s, Index: %s, ID: %s, Count: %s':format(bag, index, id, count))
 end
 
+
 local function refresh_bag_contentsR(bag, index, id, count)
     atcfs('Inventory changed. Bag: %s, Index: %s, ID: %s, Count: %s':format(bag, index, id, count))
 end
@@ -72,6 +73,7 @@ local function _res_for_item_name(name)
     return res.items:with('en', name) or res.items:with('enl', name:lower()) or setops._item_res:with('en_l',name:lower()) or setops._item_res:with('enl_l',name:lower())
 end
 local res_for_item_name = traceable(_res_for_item_name)
+
 
 local function _add_to_set_res(name, augments)
     local iname,ires = name,{}
@@ -103,11 +105,9 @@ end
 
 
 --[[
-    For each key in set_table that is a valid slot name, move the value to be
-    associated with the proper slot name key if it wasn't already, and make all
-    items in the set formatted as a table with 'name' and 'augments' keys.
-    For each key that is not a valid slot name, recurse using the table at that
-    key.
+    For each key in set_table that is a valid slot name, move the value to be associated with the proper slot name key
+    if it wasn't already, and make all items in the set formatted as a table with 'name' and 'augments' keys.
+    For each key that is not a valid slot name, recurse using the table at that key.
 --]]
 local function _normalize(set_table)
     if set_table == nil then return end
@@ -115,7 +115,7 @@ local function _normalize(set_table)
     local nested_keys = {}
     local slot_keys = {}
     --Build key lists - the table can't be modified while iterating through it
-    for k,v in pairs(set_table) do
+    for k, v in pairs(set_table) do
         local slot = _slots.variations_to_proper[k]
         if slot then
             if (type(v) == 'table') and table.intersects(_slots.name_list, table.keys(v)) then
@@ -128,7 +128,7 @@ local function _normalize(set_table)
         end
     end
     
-    for vslot,cslot in pairs(slot_keys) do
+    for vslot, cslot in pairs(slot_keys) do  --Variation name, correct name
         set_table[cslot] = set_table[cslot] or set_table[vslot]
         if cslot ~= vslot then
             set_table[vslot] = nil  --Remove entry for slot name variation
@@ -137,6 +137,8 @@ local function _normalize(set_table)
             set_table[cslot] = {name=set_table[cslot], augments={}}
             _add_to_set_res(set_table[cslot].name, {})
         elseif type(set_table[cslot]) == 'table' then
+            --If the value at a key that is a slot name is a table, and that table has a "name" key, then treat it as
+            --an item, otherwise treat it as a list of options for that slot
             if set_table[cslot].name then
                 set_table[cslot].augments = set_table[cslot].augments or {}
                 _add_to_set_res(set_table[cslot].name, set_table[cslot].augments)
@@ -156,6 +158,7 @@ local function _normalize(set_table)
         end
     end
     
+    --Recurse for nested sets
     for nested_set,_ in pairs(nested_keys) do
         _normalize(set_table[nested_set])
     end
@@ -171,6 +174,7 @@ function setops.init()
     for id,tbl in pairs(res.items) do
         setops._item_res[id] = {id=id,en=tbl.en,enl=tbl.enl,en_l=tbl.en:lower(),enl_l=tbl.enl:lower()}
     end
+    --Transform all sets to be uniform - this is an optimization to prevent lag-inducing operations on each gear swap
     _normalize(sets)
     
     --Register events that trigger on inventory change
@@ -180,11 +184,10 @@ end
 
 
 --[[
-    Overwrites the contents of the slots in set1 with the contents of the slots in set2.  Safe to use for setting
-    the contents of a parent set (such as sets.precast.FC) without affecting child sets (sets.precast.FC.Ninjutsu).
-    This function does not consider the usability/possession of items.  By default, if a slot in set2 is empty, the
-    item in set1 will be retained.  Making strict true will cause empty slots in set2 to overwrite occupied slots in
-    set1.
+    Overwrites the contents of the slots in set1 with the contents of the slots in set2.  Safe to use for setting the 
+    contents of a parent set (such as sets.precast.FC) without affecting child sets (sets.precast.FC.Ninjutsu).  This
+    function does not consider the usability/possession of items.  By default, if a slot in set2 is empty, the item in
+    set1 will be retained.  Making strict true will cause empty slots in set2 to overwrite occupied slots in set1.
 --]]
 function safe_set(set1, set2, strict)
     if any_eq(nil, set1, set2) then return end
@@ -294,7 +297,7 @@ function combineSets(set1, set2, ...)
                 end
             end
             
-            --If the slot was not defined in set2 or if the item(s) defined for that slot
+            --If the slot was not defined in set2, or if the item(s) defined for that slot
             --in set2 was unavailable, then use what was defined in set1
             if not newSet[itemSlot] then
                 if (set1 ~= nil) and (set1[variation] ~= nil) then
@@ -493,9 +496,8 @@ end
 
 
 --[[
-    Compares the gear specified in the currently active Player_JOB_gear.lua with
-    the gear present in inventory.  Reports which items are not necessary so
-    that they can be moved to make room.
+    Compares the gear specified in the currently active Player_JOB_gear.lua with the gear present in inventory.
+    Reports which items are not necessary so that they can be moved to make room.
     //gs c inv_check
 --]]
 function setops.find_movable()
@@ -521,8 +523,7 @@ end
 
 
 --[[
-    Returns a mapping of item_id:slip_name for all items currently stored with
-    a porter moogle.
+    Returns a mapping of item_id:slip_name for all items currently stored with a porter moogle.
 --]]
 function setops.map_slipped_to_slip()
     local slipped = {}

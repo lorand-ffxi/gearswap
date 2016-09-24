@@ -8,8 +8,8 @@ function init_gear_sets()
     --============================================================
     --                  Precast sets
     --============================================================
-    sets.precast.FC = {             --42%
-        main="Marin Staff",         --2%
+    sets.precast.FC = {             --
+        main="Marin Staff +1",      --3%
         sub="Clerisy Strap",        --2%
         ammo="Incantor Stone",      --2%
         head="Nares Cap",           --10%
@@ -48,16 +48,16 @@ function init_gear_sets()
     
     sets.wsBase = {
         ammo="Flame Sachet",
-        head="Buremte Hat",     neck="Asperity Necklace",   ear1="Bladeborn Earring",   ear2="Steelflash Earring",
-        body="Gendewitha Bliaut +1",    hands="Gendewitha Gages +1",    ring1="Rajas Ring",     ring2="Spiral Ring",
-        back="Buquwik Cape",        waist="Cascade Belt",       legs="Gendewitha Spats +1", feet="Uk'uxkaj Boots"
+        head="Buremte Hat",             neck="Asperity Necklace",       ear1="Bladeborn Earring",   ear2="Steelflash Earring",
+        body="Gendewitha Bliaut +1",    hands="Gendewitha Gages +1",    ring1="Rajas Ring",         ring2="Spiral Ring",
+        back="Buquwik Cape",            waist="Cascade Belt",           legs="Gendewitha Spats +1", feet="Uk'uxkaj Boots"
     }
     
     sets.wsBase.Magic = {
         ammo="Witchstone",
-        head="Buremte Hat", neck="Stoicheion Medal",    ear1="Hecate's Earring",    ear2="Friomisi Earring",
+        head="Buremte Hat",     neck="Stoicheion Medal",    ear1="Hecate's Earring",    ear2="Friomisi Earring",
         body="Artsieq Jubbah",  hands="Otomi Gloves",       ring2="Acumen Ring",
-        back="Toro Cape",   legs="Gendewitha Spats +1", feet="Gendewitha Galoshes +1"
+        back="Toro Cape",       legs="Gendewitha Spats +1", feet="Gendewitha Galoshes +1"
     }
 
     --============================================================
@@ -65,24 +65,23 @@ function init_gear_sets()
     --============================================================
     
     sets.midcast.FastRecast = {
-        main="Marin Staff",             sub="Clerisy Strap",                                    ammo="Clarus Stone",
+        main="Marin Staff +1",          sub="Clerisy Strap",                                    ammo="Clarus Stone",
         head="Gendewitha Caubeen +1",   neck="Orison Locket",           ear1="Novia Earring",   ear2="Loquacious Earring",
         body="Piety Briault",           hands="Gendewitha Gages +1",    ring1="Prolix Ring",    ring2="Sangoma Ring",
         back="Ogapepo Cape",            waist="Witful Belt",            legs="Artsieq Hose",    feet="Theophany Duckbills +1"
     }
     
     sets.midcast.MagicAccuracy = {
-        main="Marin Staff",     sub="Clerisy Strap",            ammo="Kalboron Stone",
-        head={name="Telchine Cap", augments={'Mag. Acc.+25'}},
-        neck="Eddy Necklace",   ear1="Lifestorm Earring",       ear2="Psystorm Earring",
-        body="Artsieq Jubbah",  hands="Inyanga Dastanas +1",    ring1="Sangoma Ring",       ring2="Perception Ring",
-        back="Ogapepo Cape",    waist="Ovate Rope",             legs="Artsieq Hose",        feet="Inyanga Crackows +1"
+        main="Marin Staff +1",      sub="Clerisy Strap",            ammo="Kalboron Stone",
+        head="Inyanga Tiara +1",    neck="Eddy Necklace",           ear1="Lifestorm Earring",   ear2="Psystorm Earring",
+        body="Artsieq Jubbah",      hands="Inyanga Dastanas +1",    ring1="Sangoma Ring",       ring2="Perception Ring",
+        back="Ogapepo Cape",        waist="Ovate Rope",             legs="Artsieq Hose",        feet="Inyanga Crackows +1"
     }
 
     --====================== Healing =============================
     
     sets.midcast.HealingMagic = {
-        body="Ebers Bliaud",    hands="Theophany Mitts",    ring1="Ephedra Ring",   ring2="Sirona's Ring",
+        body="Ebers Bliaud",    hands="Inyanga Dastanas +1",    ring1="Ephedra Ring",   ring2="Sirona's Ring",
         back="Mending Cape",    legs="Piety Pantaloons"
     }
     
@@ -138,18 +137,13 @@ function init_gear_sets()
     }
 
     sets.midcast.Regen = {
-        body="Piety Briault",   hands="Orison Mitts +2",
+        head="Inyanga Tiara +1", 
+        body="Piety Briault",       hands="Orison Mitts +2",
         legs="Theophany Pantaloons"
     }
     
-    sets.midcast.Protectra = {
-        ring2="Sheltered Ring",
-        feet="Piety Duckbills"
-    }
-    sets.midcast.Shellra = {
-        ring2="Sheltered Ring",
-        legs="Piety Pantaloons"
-    }
+    sets.midcast.Protectra = {feet="Piety Duckbills"}
+    sets.midcast.Shellra = {legs="Piety Pantaloons"}
     
     --====================== Offensive ===========================  
     
@@ -158,10 +152,10 @@ function init_gear_sets()
     }
                 
     sets.midcast.DivineMagic.Nuke = {
-        main="Marin Staff",             sub="Achaq Grip",           ammo="Witchstone",
-        head="Buremte Hat",             neck="Stoicheion Medal",    ear1="Hecate's Earring",    ear2="Friomisi Earring",
-        body="Weatherspoon Robe +1",    hands="Otomi Gloves",       ring1="Solemn Ring",        ring2="Acumen Ring",
-        back="Toro Cape",               waist="Cascade Belt",       legs="Gendewitha Spats +1", feet="Gendewitha Galoshes +1"
+        main="Marin Staff +1",  sub="Zuuxowu Grip",                                 ammo="Dosis Tathlum",
+        head="Buremte Hat",     neck="Eddy Necklace",   ear1="Hecate's Earring",    ear2="Friomisi Earring",
+        body="Artsieq Jubbah",  hands="Otomi Gloves",   ring1="Perception Ring",    ring2="Acumen Ring",
+        back="Toro Cape",       waist="Salire Belt",    legs="Telchine Braconi",    feet="Umbani Boots"
     }
     sets.midcast.DivineMagic.Nuke.with_buff = {}
     sets.midcast.DivineMagic.Nuke.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
@@ -169,27 +163,23 @@ function init_gear_sets()
     sets.midcast.DarkMagic = {}
 
     sets.midcast.EnfeeblingMagic = {
-        main="Marin Staff",     sub="Clerisy Strap",            ammo="Kalboron Stone",
-        head={name="Telchine Cap", augments={'Mag. Acc.+25'}},
-        neck="Eddy Necklace",   ear1="Lifestorm Earring",       ear2="Psystorm Earring",
-        body="Artsieq Jubbah",  hands="Inyanga Dastanas +1",    ring1="Sangoma Ring",       ring2="Perception Ring",
-        back="Ogapepo Cape",    waist="Ovate Rope",             legs="Artsieq Hose",        feet="Theophany Duckbills +1"
+        feet="Theophany Duckbills +1"
     }
     sets.midcast.EnfeeblingMagic.Potency = {}
     sets.midcast.EnfeeblingMagic.Potency.Resistant = {}
     sets.midcast.EnfeeblingMagic.Potency.Normal = {}
     
     sets.midcast.ElementalMagic = {
-        main="Marin Staff",     sub="Elder's Grip +1",      ammo="Witchstone",
+        main="Marin Staff +1",  sub="Elder's Grip +1",                                  ammo="Witchstone",
         head="Helios Band",     neck="Eddy Necklace",       ear1="Hecate's Earring",    ear2="Friomisi Earring",
         body="Artsieq Jubbah",  hands="Yaoyotl Gloves",     ring1="Sangoma Ring",       ring2="Acumen Ring",
-        back="Toro Cape",       waist="Salire Belt",        legs="Gendewitha Spats +1", feet="Umbani Boots"
+        back="Toro Cape",       waist="Salire Belt",        legs="Telchine Braconi",    feet="Umbani Boots"
     }
     sets.midcast.ElementalMagic.LowTier = {
-        main="Marin Staff",     sub="Zuuxowu Grip",     ammo="Dosis Tathlum",
+        main="Marin Staff +1",  sub="Zuuxowu Grip",                                 ammo="Dosis Tathlum",
         head="Buremte Hat",     neck="Eddy Necklace",   ear1="Hecate's Earring",    ear2="Friomisi Earring",
         body="Artsieq Jubbah",  hands="Otomi Gloves",   ring1="Sangoma Ring",       ring2="Acumen Ring",
-        back="Toro Cape",       waist="Salire Belt",    legs="Gendewitha Spats +1", feet="Umbani Boots"
+        back="Toro Cape",       waist="Salire Belt",    legs="Telchine Braconi",    feet="Umbani Boots"
     }
     sets.midcast.ElementalMagic.HighTier = {}
     sets.midcast.ElementalMagic.with_buff = {}
@@ -201,7 +191,7 @@ function init_gear_sets()
     --============================================================
     
     sets.maxMP = {
-        main="Marin Staff",             sub="Elder's Grip +1",      ammo="Kalboron Stone",
+        main="Marin Staff +1",          sub="Elder's Grip +1",                                  ammo="Kalboron Stone",
         head="Kaabnax Hat",             neck="Orison Locket",       ear1="Loquacious Earring",  ear2="Star Earring",
         body="Weatherspoon Robe +1",    hands="Otomi Gloves",       ring1="Sangoma Ring",       ring2="Bifrost Ring",
         back="Pahtli Cape",             waist="Shinjutsu-no-obi",   legs="Helios Spats",        feet="Theophany Duckbills +1"
@@ -215,12 +205,12 @@ function init_gear_sets()
     }
 
     sets.idle = {
-        main="Bolelabunga",     sub="Genbu's Shield",           ammo="Homiliary",
-        head="Hike Khat",       neck="Twilight Torque",         ear1="Novia Earring",   ear2="Star Earring",
-        body="Artsieq Jubbah",  hands="Inyanga Dastanas +1",
+        main="Bolelabunga",         sub="Genbu's Shield",                                   ammo="Homiliary",
+        head="Inyanga Tiara +1",    neck="Twilight Torque",         ear1="Novia Earring",   ear2="Ethereal Earring",
+        body="Artsieq Jubbah",      hands="Inyanga Dastanas +1",
         ring1={name="Dark Ring", augments={'Phys. dmg. taken -5%','Breath dmg. taken -4%','Magic dmg. taken -3%'}},
         ring2="Shneddick Ring",
-        back="Cheviot Cape",    waist="Fucho-no-obi",           legs="Assiduity Pants",    feet="Inyanga Crackows +1"
+        back="Repulse Mantle",        waist="Fucho-no-obi",           legs="Assiduity Pants",    feet="Inyanga Crackows +1"
     }
     sets.idle.CapFarm = {back="Mecistopins Mantle"}
     
@@ -236,21 +226,29 @@ function init_gear_sets()
         ring1="Dark Ring",
         ring2="Dark Ring",
     }
-    sets.defense.PDT = combineSets(sets.defense.DT, {
-        main="Terra's Staff",
-        body="Gendewitha Bliaut +1",    hands="Gendewitha Gages +1",
-        back="Cheviot Cape",        legs="Gendewitha Spats +1",     feet="Gendewitha Galoshes +1"
-    })
-    sets.defense.MDT = combineSets(sets.defense.DT, {})
+    sets.defense.PDT = {
+        main="Bolelabunga",             sub="Genbu's Shield",
+        head="Hike Khat",               neck="Twilight Torque",     ear1="Novia Earring",           ear2="Ethereal Earring",
+        hands="Gendewitha Gages +1",    ring1={name="Dark Ring", augments={'Phys. dmg. taken -5%'}},
+        back="Cheviot Cape",            legs="Gendewitha Spats +1", feet="Gendewitha Galoshes +1"
+    }
+    sets.defense.MDT = {
+        head="Inyanga Tiara +1",    neck="Twilight Torque",         ear1="Novia Earring",   ear2="Ethereal Earring",
+        body="Artsieq Jubbah",      hands="Inyanga Dastanas +1",
+        ring1={name="Dark Ring", augments={'Phys. dmg. taken -5%'}},
+        ring2={name="Dark Ring", augments={'Phys. dmg. taken -5%','Breath dmg. taken -4%','Magic dmg. taken -3%'}},
+        back="Tuilha Cape",         legs="Assiduity Pants",         feet="Inyanga Crackows +1"
+    }
     
-    sets.engaged = {
-        --main="Aedold +2",             sub="Genbu's Shield",       
-        ammo="Jukukik Feather",
-        head="Gendewitha Caubeen +1",   neck="Asperity Necklace",   ear1="Bladeborn Earring",       ear2="Steelflash Earring",
-        body="Artsieq Jubbah",          hands="Otomi Gloves",       ring1="Rajas Ring",             ring2="Tyrant's Ring",
-        back="Buquwik Cape",            waist="Cetl Belt",          legs="Gendewitha Spats +1", feet="Gendewitha Galoshes +1"
+    sets.engaged = {                                                                                ammo="Jukukik Feather",
+        head="Gendewitha Caubeen +1",   neck="Asperity Necklace",       ear1="Bladeborn Earring",   ear2="Steelflash Earring",
+        body="Artsieq Jubbah",          hands="Inyanga Dastanas +1",    ring1="Rajas Ring",         ring2="Tyrant's Ring",
+        back="Buquwik Cape",            waist="Cetl Belt",              legs="Telchine Braconi",    feet="Gendewitha Galoshes +1",
     }
     sets.engaged.with_buff = {}
+    
+    sets.engaged.MediumAcc = {}
+    sets.engaged.HighAcc = {}
     
     sets.engaged.Skillup = {
         ammo="Jukukik Feather",

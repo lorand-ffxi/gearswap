@@ -27,9 +27,7 @@ function init_gear_sets()
     sets.precast.JA['Sneak Attack'] = {
         head="Uk'uxkaj Cap",    neck="Love Torque",             ear2="Delta Earring",
         body="Iuitl Vest +1",   hands="Plunderer's Armlets +1", ring1="Rajas Ring",         ring2="Thundersoul Ring",
-        back="Kayapa Cape",     waist="Chiner's Belt",
-        legs={name="Taeon Tights", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','STR+7 DEX+7'}},
-        feet="Iuitl Gaiters +1"
+        back="Kayapa Cape",     waist="Chiner's Belt",          legs=gear.taeonTAlegs,      feet="Iuitl Gaiters +1"
     }
 
     sets.precast.JA['Trick Attack'] = {
@@ -70,18 +68,9 @@ function init_gear_sets()
     }
 
     sets.wsBase = {
-        head={name="Taeon Chapeau", augments={'Accuracy+18 Attack+18','"Triple Atk."+2','Crit. hit damage +2%'}},
-        neck="Fotia Gorget",
-        ear1="Steelflash Earring",
-        ear2="Bladeborn Earring",
-        body={name="Qaaxo Harness", augments={'Attack+15','Evasion+15','"Dbl.Atk."+2'}},
-        hands="Meghanada Gloves",
-        ring1="Rajas Ring",
-        ring2="Epona's Ring",
-        back="Atheling Mantle",
-        waist="Fotia Belt",
-        legs={name="Taeon Tights", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','STR+7 DEX+7'}},
-        feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+3','STR+6 DEX+6'}}
+        head=gear.taeonTAhead,  neck="Fotia Gorget",        ear1="Steelflash Earring",  ear2="Bladeborn Earring",
+        body="Qaaxo Harness",   hands="Meghanada Gloves",   ring1="Rajas Ring",         ring2="Epona's Ring",
+        back="Atheling Mantle", waist="Fotia Belt",         legs=gear.taeonTAlegs,      feet=gear.taeonDWfeet
     }
     
     sets.wsBase.DEX = {}
@@ -90,7 +79,7 @@ function init_gear_sets()
         back="Canny Cape"
     }
     sets.wsBase.HighAcc = {
-        body={name="Taeon Tabard", augments={'Accuracy+17 Attack+17','Haste+2','STR+6 DEX+6'}},
+        body=gear.taeonHasteBody,
         hands="Meghanada Gloves",
         ring2="Mars's Ring",
         back="Kayapa Cape",
@@ -99,8 +88,7 @@ function init_gear_sets()
 
     sets.wsBase.Magic = {
         head="Highwing Helm",       neck="Stoicheion Medal",    ear1="Hecate's Earring",    ear2="Friomisi Earring",
-        hands={name="Taeon Gloves", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','DEX+7'}},
-        ring1="Fenrir Ring +1",     ring2="Acumen Ring",
+        hands=gear.taeonTAhands,    ring1="Fenrir Ring +1",     ring2="Acumen Ring",
         back="Toro Cape",           legs="Shneddick Tights +1", feet="Iuitl Gaiters +1"
     }
     
@@ -150,11 +138,11 @@ function init_gear_sets()
         ear1="Brachyura Earring",
         ear2="Ethereal Earring",
         body="Qaaxo Harness",
-        hands={"Plunderer's Armlets +1", {name="Taeon Gloves", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','DEX+7'}}},
+        hands={"Plunderer's Armlets +1", gear.taeonTAhands},
         ring1="Defending Ring",     ring2="Shneddick Ring",
         back="Repulse Mantle",
         waist="Flume Belt",
-        legs={name="Taeon Tights", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','STR+7 DEX+7'}},
+        legs=gear.taeonTAlegs,
         feet="Iuitl Gaiters +1"
     }
     sets.idle.with_buff = {}
@@ -184,33 +172,17 @@ function init_gear_sets()
     })
     
     sets.engaged = {
-        head={name="Taeon Chapeau", augments={'Accuracy+18 Attack+18','"Triple Atk."+2','Crit. hit damage +2%'}},
-        neck="Asperity Necklace",
-        ear1="Dudgeon Earring",
-        ear2="Heartseeker Earring",
-        body={name="Qaaxo Harness", augments={'Attack+15','Evasion+15','"Dbl.Atk."+2'}},
-        hands={name="Taeon Gloves", augments={'Accuracy+25','"Dual Wield"+4','STR+7 DEX+7'}},
-        ring1="Rajas Ring",
-        ring2="Epona's Ring",
+        head=gear.taeonTAhead,  neck="Asperity Necklace",   ear1="Dudgeon Earring", ear2="Heartseeker Earring",
+        body="Qaaxo Harness",   hands=gear.taeonDWhands,    ring1="Rajas Ring",     ring2="Epona's Ring",
         back={name="Canny Cape", augments={'DEX+3','AGI+3','"Dual Wield"+4'}},
-        waist="Patentia Sash",
-        legs={name="Taeon Tights", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','STR+7 DEX+7'}},
-        feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+5','STR+6 DEX+6'}}
+        waist="Patentia Sash",  legs=gear.taeonTAlegs,      feet=gear.taeonDWfeet
     }
     
     sets.engaged.auto = {
-        head={name="Taeon Chapeau", augments={'Accuracy+18 Attack+18','"Triple Atk."+2','Crit. hit damage +2%'}},
-        neck="Asperity Necklace",
-        ear1="Dudgeon Earring",
-        ear2="Heartseeker Earring",
-        body={name="Qaaxo Harness", augments={'Attack+15','Evasion+15','"Dbl.Atk."+2'}},
-        hands={name="Taeon Gloves", augments={'Accuracy+25','"Dual Wield"+4','STR+7 DEX+7'}},
-        ring1="Rajas Ring",
-        ring2="Epona's Ring",
+        head=gear.taeonTAhead,  neck="Asperity Necklace",   ear1="Dudgeon Earring", ear2="Heartseeker Earring",
+        body="Qaaxo Harness",   hands=gear.taeonDWhands,    ring1="Rajas Ring",     ring2="Epona's Ring",
         back={name="Canny Cape", augments={'DEX+3','AGI+3','"Dual Wield"+4'}},
-        waist="Patentia Sash",
-        legs={name="Taeon Tights", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','STR+7 DEX+7'}},
-        feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+5','STR+6 DEX+6'}}
+        waist="Patentia Sash",  legs=gear.taeonTAlegs,      feet=gear.taeonDWfeet
     }
     sets.engaged.auto['na'] =   {
     }
@@ -219,29 +191,29 @@ function init_gear_sets()
     sets.engaged.auto['I+'] =   {
         ear1="Steelflash Earring",
         ear2="Bladeborn Earring",
-        hands={name="Taeon Gloves", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','DEX+7'}},
-        feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+5','STR+6 DEX+6'}}
+        hands=gear.taeonTAhands,
+        feet=gear.taeonDWfeet
     }
     sets.engaged.auto['II'] =   {
         ear1="Dudgeon Earring",
         ear2="Heartseeker Earring",
-        hands={name="Taeon Gloves", augments={'Accuracy+25','"Dual Wield"+4','STR+7 DEX+7'}}
+        hands=gear.taeonDWhands
     }
     sets.engaged.auto['II+'] =  {
         ear1="Steelflash Earring",
         ear2="Bladeborn Earring",
-        hands={name="Taeon Gloves", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','DEX+7'}},
-        legs={name="Taeon Tights", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','STR+7 DEX+7'}},
+        hands=gear.taeonTAhands,
+        legs=gear.taeonTAlegs,
         feet="Meghanada Jambeaux"
     }
     
     sets.engaged.auto.MediumAcc = {
-        body={name="Taeon Tabard", augments={'Accuracy+17 Attack+17','Haste+2','STR+6 DEX+6'}},
+        body=gear.taeonHasteBody,
         ring2="Mars's Ring"
     }
     sets.engaged.auto.HighAcc = {
         neck="Iqabi Necklace",
-        body={name="Taeon Tabard", augments={'Accuracy+17 Attack+17','Haste+2','STR+6 DEX+6'}},
+        body=gear.taeonHasteBody,
         ring2="Mars's Ring"
     }
     
@@ -250,32 +222,32 @@ function init_gear_sets()
     sets.engaged.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}
     
     sets.engaged.MediumAcc = {
-        head={name="Taeon Chapeau", augments={'Accuracy+18 Attack+18','"Triple Atk."+2','Crit. hit damage +2%'}},
+        head=gear.taeonTAhead,
         neck="Iqabi Necklace",
         ear1="Dudgeon Earring",
         ear2="Heartseeker Earring",
-        body={name="Taeon Tabard", augments={'Accuracy+17 Attack+17','Haste+2','STR+6 DEX+6'}},
+        body=gear.taeonHasteBody,
         hands="Meghanada Gloves",
         ring1="Rajas Ring",
         ring2="Mars's Ring",
         back={name="Canny Cape", augments={'DEX+3','AGI+3','"Dual Wield"+4'}},
         waist="Patentia Sash",
-        legs={name="Taeon Tights", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','STR+7 DEX+7'}},
-        feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+5','STR+6 DEX+6'}}
+        legs=gear.taeonTAlegs,
+        feet=gear.taeonDWfeet
     }
     
     sets.engaged.HighAcc = {
-        head={name="Taeon Chapeau", augments={'Accuracy+18 Attack+18','"Triple Atk."+2','Crit. hit damage +2%'}},
+        head=gear.taeonTAhead,
         neck="Iqabi Necklace",
         ear1="Steelflash Earring",
         ear2="Heartseeker Earring",
-        body={name="Taeon Tabard", augments={'Accuracy+17 Attack+17','Haste+2','STR+6 DEX+6'}},
+        body=gear.taeonHasteBody,
         hands="Meghanada Gloves",
         ring1="Enlivened Ring",
         ring2="Mars's Ring",
         back={name="Canny Cape", augments={'DEX+3','AGI+3','"Dual Wield"+4'}},
         waist="Anguinus Belt",
-        legs={name="Taeon Tights", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','STR+7 DEX+7'}},
+        legs=gear.taeonTAlegs,
         feet="Meghanada Jambeaux"
     }
     
