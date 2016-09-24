@@ -15,10 +15,11 @@ function init_gear_sets()
         head="Nares Cap",           --10%
         neck="Orison Locket",       --5%
         ear2="Loquacious Earring",  --2%
+        body="Inyanga Jubbah +1",   --13%
         hands="Gendewitha Gages +1",--7%
         ring1="Prolix Ring",        --2%
         back="Swith Cape",          --3%
-        waist="Witful Belt",
+        waist="Witful Belt",        --3%
         legs="Artsieq Hose",        --5%
         feet="Chelona Boots"        --4%
     }
@@ -67,15 +68,15 @@ function init_gear_sets()
     sets.midcast.FastRecast = {
         main="Marin Staff +1",          sub="Clerisy Strap",                                    ammo="Clarus Stone",
         head="Gendewitha Caubeen +1",   neck="Orison Locket",           ear1="Novia Earring",   ear2="Loquacious Earring",
-        body="Piety Briault",           hands="Gendewitha Gages +1",    ring1="Prolix Ring",    ring2="Sangoma Ring",
+        body="Inyanga Jubbah +1",       hands="Gendewitha Gages +1",    ring1="Prolix Ring",    ring2="Sangoma Ring",
         back="Ogapepo Cape",            waist="Witful Belt",            legs="Artsieq Hose",    feet="Theophany Duckbills +1"
     }
     
     sets.midcast.MagicAccuracy = {
-        main="Marin Staff +1",      sub="Clerisy Strap",            ammo="Kalboron Stone",
+        main="Marin Staff +1",      sub="Clerisy Strap",                                        ammo="Kalboron Stone",
         head="Inyanga Tiara +1",    neck="Eddy Necklace",           ear1="Lifestorm Earring",   ear2="Psystorm Earring",
-        body="Artsieq Jubbah",      hands="Inyanga Dastanas +1",    ring1="Sangoma Ring",       ring2="Perception Ring",
-        back="Ogapepo Cape",        waist="Ovate Rope",             legs="Artsieq Hose",        feet="Inyanga Crackows +1"
+        body="Inyanga Jubbah +1",   hands="Inyanga Dastanas +1",    ring1="Sangoma Ring",       ring2="Perception Ring",
+        back="Ogapepo Cape",        waist="Ovate Rope",             legs="Inyanga Shalwar +1",  feet="Inyanga Crackows +1"
     }
 
     --====================== Healing =============================
@@ -89,7 +90,7 @@ function init_gear_sets()
         main="Tamaxchi",                sub="Genbu's Shield",   ammo="Incantor Stone",
         head="Gendewitha Caubeen +1",   neck="Orison Locket",   ear1="Novia Earring",       ear2="Orison Earring",
         body="Ebers Bliaud",            hands="Bokwus Gloves",  ring1="Prolix Ring",        ring2="Sirona's Ring",
-        back="Mending Cape",            waist="Witful Belt",    legs="Ebers Pantaloons",    feet="Theophany Duckbills +1"
+        back="Alaunus's Cape",          waist="Witful Belt",    legs="Ebers Pantaloons",    feet="Theophany Duckbills +1"
     }
     sets.midcast.Curaga = sets.midcast.Cure
 
@@ -103,7 +104,7 @@ function init_gear_sets()
     sets.midcast.Cursna = {
         neck="Malison Medallion",
         hands="Hieros Mittens",     ring1="Ephedra Ring",           ring2="Ephedra Ring",
-        back="Mending Cape",        legs="Theophany Pantaloons",    feet="Gendewitha Galoshes +1"
+        back="Alaunus's Cape",      legs="Theophany Pantaloons",    feet="Gendewitha Galoshes +1"
     }
 
     sets.midcast.StatusRemoval = {

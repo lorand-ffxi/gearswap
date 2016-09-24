@@ -91,6 +91,10 @@ function init_gear_sets()
         legs=gear.taeonTAlegs,
         feet="Hizamaru Sune-Ate +1"
     }
+    sets.wsBase.DEX = {feet=gear.taeonDWfeet}
+    sets.wsBase.STR = {}
+    sets.wsBase.STRDEX = {}
+    sets.wsBase.AGI = {ring1="Stormsoul Ring"}
     
     sets.wsBase.MediumAcc = {}
     sets.wsBase.MediumAcc.DEX = {feet=gear.taeonDWfeet}
@@ -99,11 +103,6 @@ function init_gear_sets()
     sets.wsBase.HighAcc = {}
     sets.wsBase.HighAcc.DEX = {feet=gear.taeonDWfeet}
     sets.wsBase.HighAcc.AGI = {}
-    
-    sets.wsBase.STR = {}
-    sets.wsBase.DEX = {feet=gear.taeonDWfeet}
-    sets.wsBase.STRDEX = {}
-    sets.wsBase.AGI = {ring1="Stormsoul Ring"}
     
     sets.wsBase.Magic = {
         ammo="Dosis Tathlum",
@@ -240,20 +239,10 @@ function init_gear_sets()
         back="Yokaze Mantle",           waist="Patentia Sash",      legs="Mochizuki Hakama +1", feet="Otronif Boots +1"
     }
     
-    sets.engaged.auto = {
-        ammo="Happo Shuriken +1",
-        head="Ptica Headgear",
-        neck="Asperity Necklace",
-        ear1="Dudgeon Earring",
-        ear2="Heartseeker Earring",
-        body="Mochizuki Chainmail +1",
-        hands=gear.taeonTAhands,
-        ring1="Rajas Ring",
-        ring2="Epona's Ring",
-        back=gear.ambuDEXcape,
-        waist="Windbuffet Belt +1",
-        legs=gear.taeonTAlegs,
-        feet="Hizamaru Sune-Ate +1"
+    sets.engaged.auto = {                                                                   ammo="Happo Shuriken +1",
+        head="Ptica Headgear",          neck="Asperity Necklace",   ear1="Dudgeon Earring", ear2="Heartseeker Earring",
+        body="Mochizuki Chainmail +1",  hands=gear.taeonTAhands,    ring1="Rajas Ring",     ring2="Epona's Ring",
+        back=gear.ambuDEXcape,          waist="Windbuffet Belt +1", legs=gear.taeonTAlegs,  feet="Hizamaru Sune-Ate +1"
     }
     sets.engaged.auto['na'] =   {
         waist="Patentia Sash",

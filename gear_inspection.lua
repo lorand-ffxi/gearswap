@@ -8,7 +8,7 @@
 --]]
 --======================================================================================================================
 
-lor_gs_versions.gear_inspection = '2016-09-18.0'
+lor_gs_versions.gear_inspection = '2016-09-24.0'
 
 gi = {}
 
@@ -53,7 +53,15 @@ local set_bonuses = {
 local ambiguous_stats = {
     [14813] = {['Double Attack'] = 0.05},   --Brutal Earring
     [10838] = {['Dual Wield'] = 0.05},      --Patentia Sash
-    [19260] = {['Dual Wield'] = 0.03}    --Raider's Boomerang
+    [19260] = {['Dual Wield'] = 0.03},      --Raider's Boomerang
+    [19257] = {['Fast Cast'] = 0.02},       --Incantor Stone
+    [10911] = {['Fast Cast'] = 0.10},       --Nares Cap
+    [11615] = {['Fast Cast'] = 0.05},       --Orison Locket
+    [14812] = {['Fast Cast'] = 0.02},       --Loquacious Earring
+    [10752] = {['Fast Cast'] = 0.02},       --Prolix Ring
+    [11000] = {['Fast Cast'] = 0.03},       --Swith Cape
+    [10826] = {['Fast Cast'] = 0.03},       --Witful Belt
+    [10365] = {['Fast Cast'] = 0.04},       --Chelona Boots
 }
 
 local job_traits = {

@@ -6,7 +6,7 @@
 --==============================================================================
 
 function init()
-    lor_gs_versions.core_components = '2016-09-24.0'
+    lor_gs_versions.core_components = '2016-09-24.1'
     show_debug = false
     
     require('lor/lor_utils')
@@ -42,18 +42,19 @@ function init()
     
     trusts = populateTrustList()
     
-    -- Load gear from a job-specific file
-    if load_user_gear(player.main_job) then
-        if init_gear_sets then init_gear_sets() end --Run the primary function defined in each job-specific lua
-        setops.init()                               --Improves processing speed while running
-    end
-    
     load_user_settings()        --Attempt to load user settings
     if use_user_settings then
         use_user_settings()     --Use the loaded settings
     else
         echo('WARNING: settings_'..player.name..'.lua not found.')
     end
+    
+    -- Load gear from a job-specific file
+    if load_user_gear(player.main_job) then
+        if init_gear_sets then init_gear_sets() end --Run the primary function defined in each job-specific lua
+        setops.init()                               --Improves processing speed while running
+    end
+    
     lor.G.collectgarbage()
 end
 
