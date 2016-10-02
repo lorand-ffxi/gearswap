@@ -34,7 +34,7 @@ function init_gear_sets()
     sets.wsBase.HighAcc = {}
 
     sets.wsBase.Magic = {                                   ammo="Dosis Tathlum",
-        head="Highwing Helm",   neck="Stoicheion Medal",    ear1="Hecate's Earring",    ear2="Friomisi Earring",
+        head="Highwing Helm",   neck="Sanctity Necklace",    ear1="Hecate's Earring",    ear2="Friomisi Earring",
         hands="Taeon Gloves",   ring1="Fenrir Ring +1",     ring2="Acumen Ring",
         back="Toro Cape",       waist="Fotia Belt",         legs="Shneddick Tights +1",
     }
@@ -55,7 +55,7 @@ function init_gear_sets()
     sets.idle = {
         range="Divinator",
         head="Ocelomeh Headpiece +1",
-        neck="Orochi Nodowa",
+        neck="Sanctity Necklace",
         ear1="Brachyura Earring",
         ear2="Ethereal Earring",
         body="Qaaxo Harness",

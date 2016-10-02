@@ -48,7 +48,7 @@ function init_gear_sets()
 	sets.wsBase.HighAcc = {}
 
 	sets.wsBase.Magic = {							ammo="Dosis Tathlum",
-		neck="Stoicheion Medal",	ear1="Hecate's Earring",	ear2="Friomisi Earring",
+		neck="Sanctity Necklace",	ear1="Hecate's Earring",	ear2="Friomisi Earring",
 		ring1="Fenrir Ring +1",		ring2="Acumen Ring",
 		back="Toro Cape"
 	}

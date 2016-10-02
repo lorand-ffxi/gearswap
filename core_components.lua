@@ -6,7 +6,7 @@
 --==============================================================================
 
 function init()
-    lor_gs_versions.core_components = '2016-09-24.1'
+    lor_gs_versions.core_components = '2016-10-02.0'
     show_debug = false
     
     require('lor/lor_utils')
@@ -220,17 +220,21 @@ function precast(spell)
         end
         
         if check_ammo then      --Verify that ammunition is available
+            if type(check_ammo) == 'table' then
+                check_ammo = check_ammo.name
+            end
             local itable = player.inventory[check_ammo] or player.wardrobe[check_ammo]
             if (itable == nil) then
-                atc(104, 'No ammo available for that action.')
+                atcfs(39, 'Unable to find ammo for that action: %s', tostring(check_ammo))
                 cancel_spell()
                 return
             end
-            if (itable.count <= options.ammo_warning_limit) and
-               (itable.count > 1) and (not state.warned) then
-                atc(104, '******************************')
-                atc(104, '*****  LOW AMMO WARNING  *****')
-                atc(104, '******************************')
+            if (itable.count <= options.ammo_warning_limit) and (itable.count > 1) and (not state.warned) then
+                local ammo_warning = '*****  LOW AMMO WARNING: %s  *****':format(check_ammo)
+                local ammo_bars = '*':rep(#ammo_warning)
+                atc(39, ammo_bars)
+                atc(39, ammo_warning)
+                atc(39, ammo_bars)
                 state.warned = true
             elseif (itable.count > options.ammo_warning_limit) and state.warned then
                 state.warned = false

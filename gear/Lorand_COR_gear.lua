@@ -15,7 +15,7 @@ function init_gear_sets()
 	}
 	
 	sets.precast.JA['Quick Draw'] = {									ammo="Animikii Bullet",
-		head="Corsair's Tricorne +1",	neck="Stoicheion Medal",	ear1="Friomisi Earring",	ear2="Hecate's Earring",
+		head="Corsair's Tricorne +1",	neck="Sanctity Necklace",	ear1="Friomisi Earring",	ear2="Hecate's Earring",
 		body="Iuitl Vest +1",		hands="Taeon Gloves",		ring1="Fenrir Ring +1",		ring2="Acumen Ring",
 		back="Gunslinger's Cape",	waist="Elanid Belt",		legs="Shneddick Tights +1",	feet="Navarch's Bottes +2"
 	}
@@ -23,7 +23,7 @@ function init_gear_sets()
 	sets.precast.CorsairShot = {}
 	sets.precast.CorsairShot.MAB = {
 		ammo="Animikii Bullet",
-		head="Corsair's Tricorne +1",	neck="Stoicheion Medal",	ear1="Friomisi Earring",	ear2="Hecate's Earring",
+		head="Corsair's Tricorne +1",	neck="Sanctity Necklace",	ear1="Friomisi Earring",	ear2="Hecate's Earring",
 		body="Iuitl Vest +1",		hands="Taeon Gloves",		ring1="Fenrir Ring +1",		ring2="Acumen Ring",
 		back="Gunslinger's Cape",	waist="Elanid Belt",		legs="Shneddick Tights +1",	feet="Navarch's Bottes +2"
 	}
@@ -77,7 +77,7 @@ function init_gear_sets()
 	}
 	
 	sets.wsBase.Magic = {
-		head="Taeon Chapeau",		neck="Stoicheion Medal",	ear1="Friomisi Earring",	ear2="Hecate's Earring",
+		head="Taeon Chapeau",		neck="Sanctity Necklace",	ear1="Friomisi Earring",	ear2="Hecate's Earring",
 		body="Taeon Tabard",		hands="Taeon Gloves",		ring1="Fenrir Ring +1",		ring2="Acumen Ring",
 		back="Gunslinger's Cape",	waist="Fotia Belt",		legs="Shneddick Tights +1",	feet="Taeon Boots"
 	}
@@ -112,9 +112,9 @@ function init_gear_sets()
 	sets.resting = {}
 	
 	sets.idle = {
-		head="Ocelomeh Headpiece +1",	neck="Orochi Nodowa",		ear1="Brachyura Earring",	ear2="Ethereal Earring",
-		body="Qaaxo Harness",		hands="Umuthi Gloves",		ring1="Defending Ring",		ring2="Shneddick Ring",
-		back="Repulse Mantle",		waist="Flume Belt",		legs="Laksamana's Trews",	feet="Iuitl Gaiters +1"
+		head="Ocelomeh Headpiece +1",	neck="Sanctity Necklace",   ear1="Brachyura Earring",	ear2="Ethereal Earring",
+		body="Qaaxo Harness",		    hands="Umuthi Gloves",		ring1="Defending Ring",		ring2="Shneddick Ring",
+		back="Repulse Mantle",		    waist="Flume Belt",		    legs=gear.hercLegs,         feet=gear.hercFeet
 	}
 	sets.idle.with_buff = {}
 	sets.idle.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
@@ -136,13 +136,13 @@ function init_gear_sets()
 	})
 	
 	sets.engaged = {
-		head="Whirlpool Mask",	neck="Orochi Nodowa",		ear1="Dudgeon Earring",	ear2="Heartseeker Earring",
+		head="Whirlpool Mask",	neck="Sanctity Necklace",		ear1="Dudgeon Earring",	ear2="Heartseeker Earring",
 		body="Qaaxo Harness",	hands="Taeon Gloves",		ring1="Rajas Ring",	ring2="Epona's Ring",
 		back="Atheling Mantle",	waist="Windbuffet Belt +1",	legs="Taeon Tights",	feet="Taeon Boots",
 	}
 	
 	sets.engaged.Accuracy = {
-		head="Whirlpool Mask",	neck="Orochi Nodowa",	ear1="Dudgeon Earring",	ear2="Heartseeker Earring",
+		head="Whirlpool Mask",	neck="Sanctity Necklace",	ear1="Dudgeon Earring",	ear2="Heartseeker Earring",
 		body="Iuitl Vest +1",	hands="Taeon Gloves",	ring1="Rajas Ring",	ring2="Epona's Ring",
 		back="Kayapa Cape",	waist="Anguinus Belt",	legs="Taeon Tights",	feet="Taeon Boots",
 	}

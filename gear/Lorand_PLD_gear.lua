@@ -5,6 +5,10 @@
 --------------------------------------------------------------------------------
 
 function init_gear_sets()
+    gear.pldJSEback = {name="Weard Mantle", augments={'VIT+1','DEX+4','Enmity+5','Phalanx +3'}}
+    gear.acroEnmityLegs = {name="Acro Breeches", augments={'Accuracy+8 Attack+8','Enmity+9'}}
+    gear.acroDAlegs = {name="Acro Breeches", augments={'Attack+10','"Dbl.Atk."+3','STR+4 AGI+4'}}
+
     sets.Enmity = {                     --74
         head="Hero's Galea",            --8
         neck="Invidia Torque",          --5
@@ -73,18 +77,24 @@ function init_gear_sets()
         ring1="Rajas Ring",         ring2="Mars's Ring",
         back="Atheling Mantle",
         waist="Windbuffet Belt +1",
-        legs={name="Acro Breeches", augments={'Attack+10','"Dbl.Atk."+3','STR+4 AGI+4'}},
+        legs="Sulevia's Cuisses",
         feet={name="Acro Leggings", augments={'Accuracy+19','"Store TP"+3','STR+2 AGI+2'}}
         --legs="Cizin Breeches +1",
         --feet="Ejekamal Boots"
     }
-    
     sets.wsBase.DEX = {ring2="Thundersoul Ring"}
     sets.wsBase.STR = {ring2="Pyrosoul Ring"}
 
+    sets.wsBase.MediumAcc = {
+        body="Sulevia's Platemail"
+    }
+    sets.wsBase.HighAcc = {
+        body="Sulevia's Platemail"
+    }
+    
     sets.wsBase.magic = {
         ammo="Dosis Tathlum",
-        neck="Stoicheion Medal",    ear1="Hecate's Earring",    ear2="Friomisi Earring",
+        neck="Sanctity Necklace",    ear1="Hecate's Earring",    ear2="Friomisi Earring",
         ring1="Fenrir Ring +1",     ring2="Acumen Ring",
         back="Toro Cape"
     }
@@ -145,18 +155,16 @@ function init_gear_sets()
     
     sets.Reraise = {head="Twilight Helm", body="Twilight Mail"}
     
-    sets.resting = {                                                                                ammo="Homiliary",
-        head="Caballarius Coronet +1",  neck="Coatl Gorget +1",         ear1="Brachyura Earring",   ear2="Relaxing Earring",
-        body="Ares' Cuirass +1",        hands="Sulevia's Gauntlets",    ring1="Defending Ring",     ring2="Eihwaz Ring",
-        back={name="Weard Mantle", augments={'VIT+1','DEX+4','Enmity+5','Phalanx +3'}},
-        waist="Fucho-no-obi",           legs="Reverence Breeches +1",   feet="Reverence Leggings +1"
+    sets.resting = {                                                                                    ammo="Homiliary",
+        head="Caballarius Coronet +1",  neck="Coatl Gorget +1",         ear1="Brachyura Earring",       ear2="Relaxing Earring",
+        body="Ares' Cuirass +1",        hands="Sulevia's Gauntlets",    ring1="Defending Ring",         ring2="Eihwaz Ring",
+        back=gear.pldJSEback,           waist="Fucho-no-obi",           legs="Reverence Breeches +1",   feet="Reverence Leggings +1"
     }
     
-    sets.idle = {                                                                                   ammo="Homiliary",
-        head="Sulevia's Mask",          neck="Coatl Gorget +1",         ear1="Brachyura Earring",   ear2="Ethereal Earring",
-        body="Reverence Surcoat +1",    hands="Sulevia's Gauntlets",    ring1="Defending Ring",     ring2="Shneddick Ring",
-        back={name="Weard Mantle", augments={'VIT+1','DEX+4','Enmity+5','Phalanx +3'}},
-        waist="Fucho-no-obi",           legs="Reverence Breeches +1",   feet="Reverence Leggings +1"
+    sets.idle = {                                                                                       ammo="Homiliary",
+        head="Sulevia's Mask",          neck="Coatl Gorget +1",         ear1="Brachyura Earring",       ear2="Ethereal Earring",
+        body="Reverence Surcoat +1",    hands="Sulevia's Gauntlets",    ring1="Defending Ring",         ring2="Shneddick Ring",
+        back=gear.pldJSEback,           waist="Fucho-no-obi",           legs="Sulevia's Cuisses",       feet="Reverence Leggings +1"
     }
     sets.idle.indoors = {body="Ares' Cuirass +1"}
     sets.idle.reraise = {head="Twilight Helm",   body="Twilight Mail"}
@@ -169,15 +177,14 @@ function init_gear_sets()
         head="Reverence Coronet +1",    neck="Twilight Torque",         ear1="Creed Earring",           ear2="Ethereal Earring",
         body="Reverence Surcoat +1",    hands="Reverence Gauntlets +1", ring1="Defending Ring",
         ring2={name="Dark Ring", augments={'Magic dmg. taken -4%','Phys. dmg. taken -5%'}},
-        back="Shadow Mantle",           waist="Flume Belt",             legs="Reverence Breeches +1",   feet="Reverence Leggings +1"
+        back="Shadow Mantle",           waist="Flume Belt",             legs="Sulevia's Cuisses",       feet="Reverence Leggings +1"
     }
     
     sets.idle.MDT = {
         ammo="Demonry Stone",
-        head="Sulevia's Mask",          neck="Twilight Torque",         ear1="Merman's Earring",    ear2="Ethereal Earring",
-        body="Reverence Surcoat +1",    hands="Reverence Gauntlets +1", ring1="Defending Ring",     ring2="Archon Ring",
-        back={name="Weard Mantle", augments={'VIT+1','DEX+4','Enmity+5','Phalanx +3'}},
-        waist="Creed Baudrier",         legs="Reverence Breeches +1",   feet="Caballarius Leggings +1"
+        head="Sulevia's Mask",          neck="Twilight Torque",         ear1="Merman's Earring",        ear2="Ethereal Earring",
+        body="Reverence Surcoat +1",    hands="Reverence Gauntlets +1", ring1="Defending Ring",         ring2="Archon Ring",
+        back=gear.pldJSEback,           waist="Creed Baudrier",         legs="Sulevia's Cuisses",       feet="Caballarius Leggings +1"
     }
     
     sets.defense.DT = {
@@ -190,14 +197,13 @@ function init_gear_sets()
         head="Reverence Coronet +1",    neck="Twilight Torque",         ear1="Creed Earring",           ear2="Ethereal Earring",
         body="Reverence Surcoat +1",    hands="Reverence Gauntlets +1", ring1="Defending Ring",
         ring2={name="Dark Ring", augments={'Magic dmg. taken -4%','Phys. dmg. taken -5%'}},
-        back="Shadow Mantle",           waist="Flume Belt",             legs="Reverence Breeches +1",   feet="Reverence Leggings +1"
+        back="Shadow Mantle",           waist="Flume Belt",             legs="Sulevia's Cuisses",       feet="Reverence Leggings +1"
     }
 
-    sets.defense.MDT = {                                                                            ammo="Demonry Stone",
-        head="Sulevia's Mask",          neck="Twilight Torque",         ear1="Merman's Earring",    ear2="Ethereal Earring",
-        body="Reverence Surcoat +1",    hands="Reverence Gauntlets +1", ring1="Defending Ring",     ring2="Archon Ring",
-        back={name="Weard Mantle", augments={'VIT+1','DEX+4','Enmity+5','Phalanx +3'}},
-        waist="Creed Baudrier",         legs="Reverence Breeches +1",   feet="Caballarius Leggings +1"
+    sets.defense.MDT = {                                                                                ammo="Demonry Stone",
+        head="Sulevia's Mask",          neck="Twilight Torque",         ear1="Merman's Earring",        ear2="Ethereal Earring",
+        body="Reverence Surcoat +1",    hands="Reverence Gauntlets +1", ring1="Defending Ring",         ring2="Archon Ring",
+        back=gear.pldJSEback,           waist="Creed Baudrier",         legs="Sulevia's Cuisses",       feet="Caballarius Leggings +1"
     }
     
     sets.engaged = {}
@@ -207,33 +213,27 @@ function init_gear_sets()
     sets.engaged.Tankish = {                                                                ammo="Hasty Pinion +1",
         head="Sulevia's Mask",  neck="Agitator's Collar",       ear1="Bladeborn Earring",   ear2="Steelflash Earring",
         body="Xaddi Mail",      hands="Sulevia's Gauntlets",    ring1="Defending Ring",     ring2="K'ayres Ring",
-        back={name="Weard Mantle", augments={'VIT+1','DEX+4','Enmity+5','Phalanx +3'}},
-        waist="Pya'ekue Belt",
-        legs="Sulevia's Cuisses",
+        back=gear.pldJSEback,   waist="Pya'ekue Belt",          legs="Sulevia's Cuisses",
         feet={name="Acro Leggings", augments={'Accuracy+19','"Store TP"+3','STR+2 AGI+2'}}
     }
-    sets.engaged.Tankish.MediumAcc = {ring2="Enlivened Ring"}
-    sets.engaged.Tankish.HighAcc = {ring2="Enlivened Ring"}
+    sets.engaged.Tankish.MediumAcc = {body="Sulevia's Platemail", ring2="Enlivened Ring"}
+    sets.engaged.Tankish.HighAcc = {body="Sulevia's Platemail", ring2="Enlivened Ring"}
     
     sets.engaged.DD = {                                                                     ammo="Hasty Pinion +1",
         head="Yaoyotl Helm",    neck="Asperity Necklace",       ear1="Bladeborn Earring",   ear2="Steelflash Earring",
         body="Xaddi Mail",      hands="Sulevia's Gauntlets",    ring1="Rajas Ring",         ring2="K'ayres Ring",
-        back="Atheling Mantle", waist="Sweordfaetels",
-        legs={name="Acro Breeches", augments={'Attack+10','"Dbl.Atk."+3','STR+4 AGI+4'}},
+        back="Atheling Mantle", waist="Sweordfaetels",          legs="Sulevia's Cuisses",
         feet={name="Acro Leggings", augments={'Accuracy+19','"Store TP"+3','STR+2 AGI+2'}}
     }
     sets.engaged.DD.MediumAcc = {
         neck="Agitator's Collar",
         ring2="Chirich Ring",
-        legs={name="Acro Breeches", augments={'Accuracy+8 Attack+8','Enmity+9'}},
+        legs="Sulevia's Cuisses"
     }
     sets.engaged.DD.HighAcc = {
         neck="Iqabi Necklace",
-        ring1="Enlivened Ring",
-        ring2="Chirich Ring",
-        back={name="Weard Mantle", augments={'VIT+1','DEX+4','Enmity+5','Phalanx +3'}},
-        waist="Anguinus Belt",
-        legs={name="Acro Breeches", augments={'Accuracy+8 Attack+8','Enmity+9'}}
+        ring1="Enlivened Ring", ring2="Chirich Ring",
+        back=gear.pldJSEback,   waist="Anguinus Belt",  legs="Sulevia's Cuisses",
     }
     
     sets.engaged.with_buff = {}
@@ -243,9 +243,7 @@ function init_gear_sets()
     sets.engaged.TankP = {                                                                          ammo="Hasty Pinion +1",
         head="Sulevia's Mask",          neck="Agitator's Collar",       ear1="Bladeborn Earring",   ear2="Steelflash Earring",
         body="Reverence Surcoat +1",    hands="Sulevia's Gauntlets",    ring1="Defending Ring",     ring2="Chirich Ring",
-        back={name="Weard Mantle", augments={'VIT+1','DEX+4','Enmity+5','Phalanx +3'}},
-        waist="Goading Belt",
-        legs={name="Cizin Breeches +1", augments={'Phys. dmg. taken -4%','Crit.hit rate+1'}},
+        back=gear.pldJSEback,           waist="Pya'ekue Belt",           legs="Sulevia's Cuisses",
         feet={name="Cizin Greaves +1", augments={'Phys. dmg. taken -4%','Accuracy+4'}}
     }
     sets.engaged.TankP.MediumAcc = {}
@@ -254,10 +252,7 @@ function init_gear_sets()
     sets.engaged.TankM = {                                                                          ammo="Hasty Pinion +1",
         head="Sulevia's Mask",          neck="Twilight Torque",         ear1="Merman's Earring",    ear2="Merman's Earring",
         body="Reverence Surcoat +1",    hands="Sulevia's Gauntlets",    ring1="Defending Ring",     ring2="Chirich Ring",
-        back={name="Weard Mantle", augments={'VIT+1','DEX+4','Enmity+5','Phalanx +3'}},
-        waist="Goading Belt",
-        legs={name="Cizin Breeches +1", augments={'Phys. dmg. taken -4%','Crit.hit rate+1'}},
-        feet="Caballarius Leggings +1"
+        back=gear.pldJSEback,           waist="Pya'ekue Belt",           legs="Sulevia's Cuisses",   feet="Caballarius Leggings +1"
     }
     sets.engaged.TankM.MediumAcc = {}
     sets.engaged.TankM.HighAcc = {}
@@ -265,8 +260,7 @@ function init_gear_sets()
     sets.engaged.TankMix = {                                                                        ammo="Hasty Pinion +1",
         head="Sulevia's Mask",          neck="Twilight Torque",         ear1="Steelflash Earring",  ear2="Bladeborn Earring",
         body="Caballarius Surcoat +1",  hands="Sulevia's Gauntlets",    ring1="Defending Ring",     ring2="Chirich Ring",
-        back={name="Weard Mantle", augments={'VIT+1','DEX+4','Enmity+5','Phalanx +3'}},
-        waist="Pya'ekue Belt",          legs="Cizin Breeches +1",       feet="Caballarius Leggings +1"
+        back=gear.pldJSEback,           waist="Pya'ekue Belt",          legs="Sulevia's Cuisses",   feet="Caballarius Leggings +1"
     }
     sets.engaged.TankMix.MediumAcc = {}
     sets.engaged.TankMix.HighAcc = {}

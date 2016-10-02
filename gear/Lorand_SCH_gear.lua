@@ -84,7 +84,7 @@ function init_gear_sets()
     }
     
     sets.midcast.Cure = {
-        main="Tamaxchi",                sub="Genbu's Shield",       ammo="Impatiens",
+        main="Tamaxchi",                sub="Genbu's Shield",                                   ammo="Impatiens",
         head="Gendewitha Caubeen +1",   neck="Orunmila's Torque",   ear1="Lifestorm Earring",   ear2="Novia Earring",
         body="Gendewitha Bliaut +1",    hands="Telchine Gloves",    ring1="Prolix Ring",        ring2="Veneficium Ring",
         back="Ogapepo Cape",            waist="Witful Belt",        legs="Artsieq Hose",        feet="Pedagogy Loafers +1"
@@ -119,9 +119,9 @@ function init_gear_sets()
     }
 
     sets.midcast.MagicAccuracy = {
-        main="Marin Staff +1",  sub="Mephitis Grip",                                    ammo="Kalboron Stone",
+        main="Marin Staff +1",  sub="Clerisy Strap",                                    ammo="Kalboron Stone",
         head="Artsieq Hat",     neck="Eddy Necklace",       ear1="Lifestorm Earring",   ear2="Psystorm Earring",
-        body="Artsieq Jubbah",  hands="Hagondes Cuffs +1",  ring1="Sangoma Ring",       ring2="Perception Ring",
+        body="Jhakri Robe +1",  hands="Hagondes Cuffs +1",  ring1="Sangoma Ring",       ring2="Perception Ring",
         back="Ogapepo Cape",    waist="Ovate Rope",         legs="Artsieq Hose",        feet="Artsieq Boots"
     }
     
@@ -146,21 +146,21 @@ function init_gear_sets()
     }
     
     sets.midcast.DarkMagic.Stun = {
-        main="Apamajas II",         sub="Mephitis Grip",                                        ammo="Incantor Stone",
+        main="Apamajas II",         sub="Clerisy Strap",                                        ammo="Incantor Stone",
         head="Nahtirah Hat",        neck="Orunmila's Torque",       ear1="Lifestorm Earring",   ear2="Psystorm Earring",
         body="Academic's Gown +1",  hands="Gendewitha Gages +1",    ring1="Sangoma Ring",       ring2="Perception Ring",
         back="Ogapepo Cape",        waist="Witful Belt",            legs="Artsieq Hose",        feet="Artsieq Boots"
     }
     
     sets.midcast.DarkMagic.Stun.MediumAcc = {
-        main="Apamajas II", sub="Mephitis Grip",                                            ammo="Kalboron Stone",
-        head="Artsieq Hat", neck="Dark Torque",                 ear1="Lifestorm Earring",   ear2="Psystorm Earring",
+        main="Apamajas II",     sub="Clerisy Strap",                                            ammo="Kalboron Stone",
+        head="Artsieq Hat",     neck="Dark Torque",             ear1="Lifestorm Earring",   ear2="Psystorm Earring",
         body="Artsieq Jubbah",  hands="Gendewitha Gages +1",    ring1="Sangoma Ring",       ring2="Perception Ring",
         back="Ogapepo Cape",    waist="Witful Belt",            legs="Artsieq Hose",        feet="Artsieq Boots"
     }
     
     sets.midcast.DarkMagic.Stun.HighAcc = { --m.acc+423, dark magic skill + 7
-        main="Marin Staff +1",  sub="Mephitis Grip",                                    ammo="Kalboron Stone",
+        main="Marin Staff +1",  sub="Clerisy Strap",                                    ammo="Kalboron Stone",
         head="Artsieq Hat",     neck="Dark Torque",         ear1="Lifestorm Earring",   ear2="Psystorm Earring",
         body="Artsieq Jubbah",  hands="Hagondes Cuffs +1",  ring1="Sangoma Ring",       ring2="Perception Ring",
         back="Ogapepo Cape",    waist="Ovate Rope",         legs="Artsieq Hose",        feet="Artsieq Boots"
@@ -175,7 +175,6 @@ function init_gear_sets()
     
     sets.midcast.ElementalMagicSkill = {
         head="Pedagogy Mortarboard +1",
-        body="Anhur Robe",
         back="Bookworm's Cape",     legs="Pedagogy Pants",  feet="Arbatel Loafers"
     }
     sets.midcast.ElementalMagicSkill.DA = {
@@ -185,37 +184,37 @@ function init_gear_sets()
     sets.midcast.ElementalMagic = {
         main="Keraunos",            sub="Zuuxowu Grip",                                 ammo="Dosis Tathlum",
         head="Buremte Hat",         neck="Eddy Necklace",   ear1="Hecate's Earring",    ear2="Friomisi Earring",
-        body="Hagondes Coat +1",    hands="Otomi Gloves",   ring1="Fenrir Ring +1",     ring2="Acumen Ring",
+        body="Jhakri Robe +1",      hands="Otomi Gloves",   ring1="Fenrir Ring +1",     ring2="Acumen Ring",
         back="Bookworm's Cape",     waist="Aswang Sash",    legs="Hagondes Pants +1",   feet="Helios Boots"
     }
     sets.midcast.ElementalMagic.LowTier = {
         main="Keraunos",            sub="Zuuxowu Grip",                                 ammo="Dosis Tathlum",
         head="Buremte Hat",         neck="Eddy Necklace",   ear1="Hecate's Earring",    ear2="Friomisi Earring",
-        body="Hagondes Coat +1",    hands="Otomi Gloves",   ring1="Fenrir Ring +1",     ring2="Acumen Ring",
+        body="Jhakri Robe +1",      hands="Helios Gloves",  ring1="Fenrir Ring +1",     ring2="Acumen Ring",
         back="Bookworm's Cape",     waist="Tengu-no-Obi",   legs="Hagondes Pants +1",   feet="Umbani Boots"
     }
     sets.midcast.ElementalMagic.HighTier = {
-        main="Keraunos",                    sub="Zuuxowu Grip",                                 ammo="Witchstone",
-        head="Academic's Mortarboard +1",   neck="Eddy Necklace",   ear1="Hecate's Earring",    ear2="Friomisi Earring",
-        body="Hagondes Coat +1",            hands="Otomi Gloves",   ring1="Fenrir Ring +1",     ring2="Acumen Ring",
-        back="Bookworm's Cape",             waist="Aswang Sash",    legs="Hagondes Pants +1",   feet="Helios Boots"
+        main="Keraunos",            sub="Elder's Grip +1",                              ammo="Witchstone",
+        head="Jhakri Coronal",      neck="Eddy Necklace",   ear1="Hecate's Earring",    ear2="Friomisi Earring",
+        body="Jhakri Robe +1",      hands="Helios Gloves",  ring1="Fenrir Ring +1",     ring2="Acumen Ring",
+        back="Bookworm's Cape",     waist="Aswang Sash",    legs="Hagondes Pants +1",   feet="Helios Boots"
     }
     sets.midcast.ElementalMagic.Earth = {neck="Quanpur Necklace"}
     
     sets.midcast.ElementalMagic.MediumAcc = {
-        main="Keraunos",                    sub="Mephitis Grip",                                ammo="Savant's Treatise",
-        head="Academic's Mortarboard +1",   neck="Eddy Necklace",   ear1="Gwati Earring",       ear2="Friomisi Earring",
-        body="Artsieq Jubbah",              hands="Yaoyotl Gloves", ring1="Fenrir Ring +1",     ring2="Sangoma Ring",
-        back="Bookworm's Cape",             waist="Tengu-no-Obi",   legs="Hagondes Pants +1",   feet="Helios Boots"
+        main="Keraunos",        sub="Clerisy Strap",                                    ammo="Savant's Treatise",
+        head="Jhakri Coronal",  neck="Sanctity Necklace",   ear1="Gwati Earring",       ear2="Friomisi Earring",
+        body="Jhakri Robe +1",  hands="Jhakri Cuffs",       ring1="Fenrir Ring +1",     ring2="Sangoma Ring",
+        back="Bookworm's Cape", waist="Tengu-no-Obi",       legs="Hagondes Pants +1",   feet="Jhakri Pigaches"
     }
     sets.midcast.ElementalMagic.HighAcc = {
-        main="Keraunos",        sub="Mephitis Grip",                                    ammo="Savant's Treatise",
-        head="Artsieq Hat",     neck="Eddy Necklace",       ear1="Lifestorm Earring",   ear2="Psystorm Earring",
-        body="Artsieq Jubbah",  hands="Hagondes Cuffs +1",  ring1="Fenrir Ring +1",     ring2="Sangoma Ring",
-        back="Bookworm's Cape", waist="Tengu-no-Obi",       legs="Artsieq Hose",        feet="Helios Boots"
+        main="Keraunos",        sub="Clerisy Strap",                                    ammo="Savant's Treatise",
+        head="Artsieq Hat",     neck="Sanctity Necklace",   ear1="Lifestorm Earring",   ear2="Psystorm Earring",
+        body="Jhakri Robe +1",  hands="Jhakri Cuffs",       ring1="Fenrir Ring +1",     ring2="Sangoma Ring",
+        back="Bookworm's Cape", waist="Tengu-no-Obi",       legs="Artsieq Hose",        feet="Jhakri Pigaches"
     }
     sets.midcast.ElementalMagic.Proc = {    --Damage is not a priority
-        main="Terra's Staff",     sub="Mephitis Grip",                                    ammo="Savant's Treatise",
+        main="Terra's Staff",       sub="Clerisy Strap",                                    ammo="Savant's Treatise",
         head="Artsieq Hat",         neck="Orunmila's Torque",   ear1="Lifestorm Earring",   ear2="Psystorm Earring",
         body="Academic's Gown +1",  hands="Hagondes Cuffs +1",  ring1="Sangoma Ring",       ring2="Perception Ring",
         back="Ogapepo Cape",        waist="Ovate Rope",         legs="Artsieq Hose",        feet="Artsieq Boots"
@@ -232,19 +231,18 @@ function init_gear_sets()
     --============================================================
     
     sets.resting = {
-        main="Bolelabunga",         sub="Genbu's Shield",                                   ammo="Clarus Stone",
-        head="Kaabnax Hat",         neck="Eidolon Pendant",     ear1="Loquacious Earring",  ear2="Relaxing Earring",
-        body="Artsieq Jubbah",      hands="Nares Cuffs",        ring1="Sangoma Ring",       ring2="Fenrir Ring +1",
+        main="Bolelabunga",     sub="Genbu's Shield",                                   ammo="Homiliary",
+        head="Kaabnax Hat",     neck="Eidolon Pendant",     ear1="Loquacious Earring",  ear2="Relaxing Earring",
+        body="Jhakri Robe +1",  hands="Nares Cuffs",        ring1="Sangoma Ring",       ring2="Fenrir Ring +1",
         back={"Felicitas Cape","Pahtli Cape"},
-        waist="Fucho-no-obi",    legs="Nares Trews",         feet="Chelona Boots"
+        waist="Fucho-no-obi",   legs="Nares Trews",         feet="Chelona Boots"
     }
     
     sets.idle = {
-        main="Bolelabunga",                 sub="Genbu's Shield",                                       ammo="Impatiens",
+        main="Bolelabunga",                 sub="Genbu's Shield",                                       ammo="Homiliary",
         head="Academic's Mortarboard +1",   neck="Twilight Torque",         ear1="Brachyura Earring",   ear2="Ethereal Earring",
-        body={"Academic's Gown +1", "Artsieq Jubbah"},
-        hands="Gendewitha Gages +1",    ring1="Defending Ring",     ring2="Shneddick Ring",
-        back="Repulse Mantle",              waist="Fucho-no-obi",        legs="Academic's Pants +1", feet="Gendewitha Galoshes +1"
+        body="Jhakri Robe +1",              hands="Gendewitha Gages +1",    ring1="Defending Ring",     ring2="Shneddick Ring",
+        back="Repulse Mantle",              waist="Fucho-no-obi",           legs="Academic's Pants +1", feet="Gendewitha Galoshes +1"
     }
     
     sets.idle.CapFarm = {back="Mecistopins Mantle"}

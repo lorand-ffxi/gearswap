@@ -60,7 +60,7 @@ function init_gear_sets()
     sets.wsBase.HighAcc = {ammo="Honed Tathlum",head="Whirlpool Mask",back="Anchoret's Mantle",feet="Taeon Boots"}
 
     sets.wsBase.Magic = {                                   ammo="Dosis Tathlum",
-        head="Highwing Helm",   neck="Stoicheion Medal",    ear1="Hecate's Earring",    ear2="Friomisi Earring",
+        head="Highwing Helm",   neck="Sanctity Necklace",    ear1="Hecate's Earring",    ear2="Friomisi Earring",
         hands="Taeon Gloves",   ring1="Fenrir Ring +1",     ring2="Acumen Ring",
         back="Toro Cape",       waist="Fotia Belt",         legs="Shneddick Tights +1",
     }
@@ -82,7 +82,7 @@ function init_gear_sets()
     sets.buffs['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
     
     sets.idle = {                                                                           ammo="Demonry Stone",
-        head="Ocelomeh Headpiece +1",   neck="Orochi Nodowa",   ear1="Brachyura Earring",   ear2="Ethereal Earring",
+        head="Ocelomeh Headpiece +1",   neck="Sanctity Necklace",   ear1="Brachyura Earring",   ear2="Ethereal Earring",
         body={"Hesychast's Cyclas", "Kirin's Osode", "Qaaxo Harness"},
         hands="Garden Bangles",     ring1="Defending Ring",     ring2="Shneddick Ring",
         back="Repulse Mantle",      waist="Black Belt",

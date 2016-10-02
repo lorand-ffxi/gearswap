@@ -5,6 +5,8 @@
 --------------------------------------------------------------------------------
 
 function init_gear_sets()
+    gear.ambuMABback = {name="Sucellos's Cape", augments={'INT+19','Mag. Acc+20 /Mag. Dmg.+20','Magic Damage +10','"Mag.Atk.Bns."+10'}}
+    
     --============================================================
     --          Precast sets
     --============================================================
@@ -45,7 +47,7 @@ function init_gear_sets()
     sets.wsBase.Magic = {                                                               ammo="Witchstone",
         head="Buremte Hat",         neck="Eddy Necklace",   ear1="Hecate's Earring",    ear2="Friomisi Earring",
         body="Hagondes Coat +1",    hands="Otomi Gloves",   ring1="Acumen Ring",        ring2="Spiral Ring",
-        back="Toro Cape",           waist="Cognition Belt", legs="Hagondes Pants +1",   feet="Umbani Boots"
+        back=gear.ambuMABback,      waist="Cognition Belt", legs="Hagondes Pants +1",   feet="Umbani Boots"
     }
     
     --============================================================
@@ -158,11 +160,11 @@ function init_gear_sets()
         main="Marin Staff",         sub="Elder's Grip +1",  ammo="Witchstone",
         head="Buremte Hat",         neck="Eddy Necklace",   ear1="Hecate's Earring",    ear2="Friomisi Earring",
         body="Hagondes Coat +1",    hands="Otomi Gloves",   ring1="Acumen Ring",        ring2="Spiral Ring",
-        back="Toro Cape",           waist="Salire Belt",    legs="Hagondes Pants +1",   feet="Jhakri Pigaches"
+        back=gear.ambuMABback,      waist="Salire Belt",    legs="Hagondes Pants +1",   feet="Jhakri Pigaches"
     }
     sets.midcast.ElementalMagic.LowTier = {
         sub="Zuuxowu Grip",     ammo="Dosis Tathlum",
-        back="Ghostfyre Cape",  feet="Umbani Boots"
+        back=gear.ambuMABback,  feet="Umbani Boots"
     }
     sets.midcast.ElementalMagic.HighTier = {
         feet="Jhakri Pigaches"
@@ -173,13 +175,13 @@ function init_gear_sets()
         main="Marin Staff",         sub="Elder's Grip +1",
         head="Helios Band",         neck="Eddy Necklace",   ear1="Hecate's Earring",    ear2="Friomisi Earring",
         body="Hagondes Coat +1",    hands="Yaoyotl Gloves", ring1="Acumen Ring",        ring2="Spiral Ring",
-        back="Toro Cape",           waist="Salire Belt",    legs="Hagondes Pants +1",   feet="Jhakri Pigaches"
+        back=gear.ambuMABback,      waist="Salire Belt",    legs="Hagondes Pants +1",   feet="Jhakri Pigaches"
     }
     sets.midcast.ElementalMagic.HighAcc = {
         main="Marin Staff",         sub="Clerisy Strap",                                ammo="Kalboron Stone",
         head="Atrophy Chapeau +1",  neck="Eddy Necklace",   ear1="Lifestorm Earring",   ear2="Psystorm Earring",
         body="Atrophy Tabard +1",   hands="Yaoyotl Gloves", ring1="Acumen Ring",        ring2="Sangoma Ring",
-        back="Toro Cape",           waist="Salire Belt",    legs="Artsieq Hose",        feet="Jhakri Pigaches"
+        back=gear.ambuMABback,      waist="Salire Belt",    legs="Artsieq Hose",        feet="Jhakri Pigaches"
     }
     sets.midcast.ElementalMagic.Proc = {    --Damage is not a priority
         main="Secespita",               sub="Genbu's Shield",                                       ammo="Kalboron Stone",
@@ -195,7 +197,7 @@ function init_gear_sets()
         main="Marin Staff",         sub="Clerisy Strap",    ammo="Kalboron Stone",
         head="Atrophy Chapeau +1",  neck="Eddy Necklace",   ear1="Lifestorm Earring",   ear2="Psystorm Earring",
         body="Atrophy Tabard +1",   hands="Yaoyotl Gloves", ring1="Sangoma Ring",       ring2="Spiral Ring",
-        back="Toro Cape",           waist="Ovate Rope",     legs="Vitivation Tights +1",feet="Jhakri Pigaches"
+        back=gear.ambuMABback,      waist="Ovate Rope",     legs="Vitivation Tights +1",feet="Jhakri Pigaches"
     }
 
     sets.midcast.DarkMagic = {}

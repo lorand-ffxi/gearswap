@@ -95,7 +95,7 @@ function init_gear_sets()
         back="Atheling Mantle",     waist="Windbuffet Belt +1", legs="Telchine Braconi",    feet="Gendewitha Galoshes +1",
     }
     sets.wsBase.Magic = {
-        head="Highwing Helm",   neck="Stoicheion Medal",    ear1="Friomisi Earring",    ear2="Hecate's Earring",
+        head="Highwing Helm",   neck="Sanctity Necklace",    ear1="Friomisi Earring",    ear2="Hecate's Earring",
         body="Artsieq Jubbah",  hands="Otomi Gloves",       ring1="Fenrir Ring +1",     ring2="Acumen Ring",
         back="Toro Cape",       waist="Tengu-no-Obi",       legs="Telchine Braconi",    feet="Gendewitha Galoshes +1",
     }
@@ -160,7 +160,7 @@ function init_gear_sets()
     
     sets.midcast.MagicAccuracy = {
         main="Marin Staff +1",  sub="Mephitis Grip",
-        head="Artsieq Hat",     neck="Stoicheion Medal",    ear1="Lifestorm Earring",   ear2="Psystorm Earring",
+        head="Artsieq Hat",     neck="Sanctity Necklace",    ear1="Lifestorm Earring",   ear2="Psystorm Earring",
         body="Artsieq Jubbah",  hands="Lurid Mitts",        ring1="Sangoma Ring",       ring2="Perception Ring",
         back="Rhapsode's Cape", waist="Ovate Rope",         legs="Artsieq Hose",        feet="Artsieq Boots"
     }

@@ -59,7 +59,7 @@ function init_gear_sets()
 	sets.wsBase.STRAGI = {}
 	
 	sets.wsBase.Magic = {
-		head="Umbani Cap",	neck="Stoicheion Medal",	ear1="Friomisi Earring",	ear2="Hecate's Earring",
+		head="Umbani Cap",	neck="Sanctity Necklace",	ear1="Friomisi Earring",	ear2="Hecate's Earring",
 		body="Taeon Tabard",	hands="Taeon Gloves",		ring1="Paqichikaji Ring",	ring2="Acumen Ring",
 		back="Toro Cape",	waist="Elanid Belt",		legs="Shneddick Tights +1",	feet="Taeon Boots"
 	}

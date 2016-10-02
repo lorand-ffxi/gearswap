@@ -87,7 +87,7 @@ function init_gear_sets()
     }
 
     sets.wsBase.Magic = {
-        head="Highwing Helm",       neck="Stoicheion Medal",    ear1="Hecate's Earring",    ear2="Friomisi Earring",
+        head="Highwing Helm",       neck="Sanctity Necklace",    ear1="Hecate's Earring",    ear2="Friomisi Earring",
         hands=gear.taeonTAhands,    ring1="Fenrir Ring +1",     ring2="Acumen Ring",
         back="Toro Cape",           legs="Shneddick Tights +1", feet="Iuitl Gaiters +1"
     }
@@ -134,7 +134,7 @@ function init_gear_sets()
     
     sets.idle = {                                               --range="Raider's Boomerang",
         head="Ocelomeh Headpiece +1",
-        neck="Orochi Nodowa",
+        neck="Sanctity Necklace",
         ear1="Brachyura Earring",
         ear2="Ethereal Earring",
         body="Qaaxo Harness",

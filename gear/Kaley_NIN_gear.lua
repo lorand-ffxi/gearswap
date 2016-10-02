@@ -17,25 +17,25 @@ function init_gear_sets()
 
 	sets.precast.Step = {
 		head="Ejekamal Mask",		neck="Ziel Charm",
-		body="Mochizuki Chainmail",	hands="Otronif Gloves",	ring2="Adler Ring",
+		body="Mochizuki Chainmail +1",	hands="Otronif Gloves",	ring2="Adler Ring",
 		back="Yokaze Mantle",		waist="Anguinus Belt",	legs="Kaabnax Trousers",	feet="Mochizuki Kyahan"
 	}
 	
 	sets.precast.FC = {
 		neck="Magoraga Bead Necklace",	ear1="Loquacious Earring",
-		body="Mochizuki Chainmail",		hands="Mochizuki Tekko"
+		body="Mochizuki Chainmail +1",		hands="Mochizuki Tekko"
 	}
 	
 	--============================================================
 	
-	sets.wsBase = {
-		head="Uk'uxkaj Cap",			neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Brutal Earring",
-		body="Hachiya Chainmail +1",	hands="Mochizuki Tekko",	ring1="Rajas Ring",			ring2="Epona's Ring",
-		back="Yokaze Mantle",			waist="Anguinus Belt",		legs="Quiahuiz Trousers",	feet="Mochizuki Kyahan"
+	sets.wsBase = {                                                                         ammo="Happo Shuriken",
+        head="Hizamaru Somen",      neck="Asperity Necklace",   ear1="Bladeborn Earring",   ear2="Steelflash Earring",
+        body="Hizamaru Haramaki",   hands="Hizamaru Kote",      ring1="Rajas Ring",         ring2="Epona's Ring",
+        back="Yokaze Mantle",       waist="Anguinus Belt",      legs="Hizamaru Hizayoroi",  feet="Taeon Boots"
 	}
 	
 	sets.wsBase.Magic = {
-		neck="Stoicheion Medal",	ear1="Hecate's Earring",	ear2="Friomisi Earring",
+		neck="Sanctity Necklace",	ear1="Hecate's Earring",	ear2="Friomisi Earring",
 		back="Toro Cape"
 	}
 	
@@ -51,7 +51,7 @@ function init_gear_sets()
 	sets.midcast.Utsusemi = set_combine(sets.midcast.SelfNinjutsu, {feet="Iga Kyahan +2"})
 
 	sets.midcast.MagicAccuracy = {
-		neck="Stoicheion Medal",	ear1="Lifestorm Earring",	ear2="Psystorm Earring",
+		neck="Sanctity Necklace",	ear1="Lifestorm Earring",	ear2="Psystorm Earring",
 		ring1="Perception Ring",
 		back="Yokaze Mantle",		feet="Hachiya Kyahan"
 	}
@@ -68,7 +68,7 @@ function init_gear_sets()
 	sets.midcast.Ninjutsu.Nuke.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
 	
 	sets.midcast.RangedAttack = {
-		body="Mochizuki Chainmail",
+		body="Mochizuki Chainmail +1",
 		back="Yokaze Mantle",		legs="Ninja Hakama +1"
 	}
 
@@ -76,13 +76,23 @@ function init_gear_sets()
 	--					Other sets
 	--============================================================
 	
-	sets.idle = {
-		range="Wingcutter",
-        head="Otronif Mask +1",         neck="Twilight Torque", ear1="Novia Earring",       ear2="Ethereal Earring",
-        body="Hachiya Chainmail +1",    hands="Macabre Gauntlets",
-        ring1={name="Dark Ring", augments={'Phys. dmg. taken -5%','Breath dmg. taken -4%','Magic dmg. taken -3%'}},
-        ring2="Shneddick Ring",
-        back="Repulse Mantle",          waist="Chuq'aba Belt",  legs="Mochizuki Hakama +1", feet="Hachiya Kyahan"
+    sets.weapons.Main = {main="Tancho", sub="Jushimatsu"}
+    sets.weapons.OAT = {main="Tancho", sub="Taikogane"}
+    sets.weapons.Reive = {main="Tancho", sub="Senkutanto"}
+    sets.weapons.Dagger = {main="Atoyac", sub="Jushimatsu"}
+    
+    sets.cooking = {
+        main="Hocho",
+        neck="Culinarian's Torque",
+        ring1="Craftmaster's Ring",
+        ring2="Craftkeeper's Ring",
+        feet="Hachiya Kyahan"
+    }
+    
+	sets.idle = {                                                                       ammo="Happo Shuriken",
+        head="Hizamaru Somen",      neck="Twilight Torque", ear1="Novia Earring",       ear2="Ethereal Earring",
+        body="Hizamaru Haramaki",   hands="Hizamaru Kote",  ring1=gear.darkRing1,       ring2="Shneddick Ring",
+        back="Repulse Mantle",      waist="Chuq'aba Belt",  legs="Hizamaru Hizayoroi",  feet="Hachiya Kyahan"
 	}
     sets.idle.chef = {
         main="Hocho",               sub="Trainee Knife",
@@ -103,23 +113,35 @@ function init_gear_sets()
 	})
 
 	--============================================================
-	
-	sets.engaged = {                                                range="Wingcutter",
-        head="Otronif Mask +1",         neck="Asperity Necklace",   ear1="Dudgeon Earring",     ear2="Heartseeker Earring",
-        body="Hachiya Chainmail +1",    hands="Otronif Gloves +1",  ring1="Rajas Ring",         ring2="Epona's Ring",
-        back="Yokaze Mantle",           waist="Anguinus Belt",      legs="Mochizuki Hakama +1", feet="Taeon Boots",
+
+	sets.engaged = {                                                                            ammo="Happo Shuriken",
+        head="Hizamaru Somen",          neck="Asperity Necklace",   ear1="Dudgeon Earring",     ear2="Heartseeker Earring",
+        body="Mochizuki Chainmail +1",  hands="Hizamaru Kote",      ring1="Rajas Ring",         ring2="Epona's Ring",
+        back="Yokaze Mantle",           waist="Anguinus Belt",      legs="Hizamaru Hizayoroi",  feet="Taeon Boots"
 	}
 	sets.engaged.with_buff = {}
 	sets.engaged.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	
-	sets.engaged.Mix = set_combine(sets.engaged, {
-	})
-	
-	sets.engaged.Acc = set_combine(sets.engaged.Mix, {
-	})
-	
-	sets.engaged.Tank = {
-	}
+    sets.engaged.Tank = {}
+    
+    sets.engaged.auto = {}
+    sets.engaged.auto['na'] =   {
+    }
+    sets.engaged.auto['I'] =    {
+    }
+    sets.engaged.auto['I+'] =   {}
+    sets.engaged.auto['II'] =   {
+    }
+    sets.engaged.auto['II+'] =  {
+    }
+    
+    sets.engaged.auto.MediumAcc = {
+    }
+    sets.engaged.auto.HighAcc = {
+    }
+    
+    sets.engaged.CrazyAccuracy = {}
+    
 
 	sets.buffs.Migawari = {body="Iga Ningi +2"}
 end

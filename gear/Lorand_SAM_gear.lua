@@ -84,7 +84,7 @@ function init_gear_sets()
     
     sets.idle = {
         head={"Twilight Helm", "Yaoyotl Helm"},
-        neck="Orochi Nodowa",   ear1="Brachyura Earring",   ear2="Ethereal Earring",
+        neck="Sanctity Necklace",   ear1="Brachyura Earring",   ear2="Ethereal Earring",
         body="Kirin's Osode",   hands="Umuthi Gloves",      ring1="Defending Ring",     ring2="Shneddick Ring",
         back="Repulse Mantle",  waist="Flume Belt",         legs="Otronif Brais +1",    feet="Whirlpool Greaves"
     }

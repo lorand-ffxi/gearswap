@@ -88,10 +88,10 @@ function init_gear_sets()
 	}
 	
 	sets.midcast.Cure = {
-		main="Tamaxchi",		sub="Genbu's Shield",						ammo="Incantor Stone",
-		head="Gendewitha Caubeen +1",	neck="Orunmila's Torque",	ear1="Loquacious Earring",	ear2="Roundel Earring",
-		body="Orison Bliaud +2",	hands="Telchine Gloves",	ring1="Prolix Ring",		ring2="Aquasoul Ring",
-		back="Swith Cape",		waist="Cetl Belt",		legs="Orison Pantaloons +2",	feet="Theophany Duckbills"
+		main="Tamaxchi",		        sub="Genbu's Shield",						                ammo="Incantor Stone",
+		head="Gendewitha Caubeen +1",	neck="Orunmila's Torque",	ear1="Loquacious Earring",	    ear2="Roundel Earring",
+		body="Orison Bliaud +2",	    hands="Telchine Gloves",	ring1="Prolix Ring",		    ring2="Aquasoul Ring",
+		back="Swith Cape",		        waist="Cetl Belt",		    legs="Orison Pantaloons +2",	feet="Theophany Duckbills"
 	}
 	sets.midcast.Curaga = sets.midcast.Cure
 
@@ -192,6 +192,18 @@ function init_gear_sets()
 		body="Gendewitha Bliaut +1",	hands="Nares Cuffs",		ring1="Defending Ring",		ring2="Sheltered Ring",
 		back="Felicitas Cape",		waist="Fucho-no-obi",	legs="Nares Trews",		feet="Chelona Boots"
 	}
+    
+    sets.maxMP = {
+        main="Marin Staff +1",  sub="Elder's Grip +1",                              ammo="Kalboron Stone",
+        head="Kaabnax Hat",     neck="Iqabi Necklace",      ear1="Graiai Earring",  ear2="Halasz Earring",
+        body="Artsieq Jubbah",  hands="Telchine Gloves",    ring1="Sangoma Ring",   ring2="Fenrir Ring +1",
+        back="Pahtli Cape",     waist="Fucho-no-obi",       legs="Helios Spats",    feet="Artsieq Boots"
+    }
+    sets.maxHP = {
+        head="Nahtirah Hat",    neck="Iqabi Necklace",      ear2="Ethereal Earring",
+        body="Artsieq Jubbah",  hands="Telchine Gloves",    ring1="Meridian Ring",          ring2="K'ayres Ring",
+        back="Repulse Mantle",  legs="Nares Trews",         feet="Gendewitha Galoshes +1"
+    }
 
 	sets.idle = {
 		main="Bolelabunga",	sub="Genbu's Shield",						ammo="Incantor Stone",

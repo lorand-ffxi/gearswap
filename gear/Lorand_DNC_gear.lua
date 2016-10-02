@@ -26,7 +26,7 @@ function init_gear_sets()
 	sets.precast.Step['Feather Step'] = {feet="Charis Toe Shoes +2"}
 	
 	sets.precast.Flourish1 = {	--Animated, Desperate, Violent;	offensive - use Magic Acc
-		neck="Stoicheion Medal",	ear1="Lifestorm Earring",	ear2="Psystorm Earring",
+		neck="Sanctity Necklace",	ear1="Lifestorm Earring",	ear2="Psystorm Earring",
 		hands="Taeon Gloves",		ring1="Sangoma Ring",		ring2="Perception Ring",
 		legs="Iuitl Tights +1",		feet="Iuitl Gaiters +1"
 	}
@@ -59,7 +59,7 @@ function init_gear_sets()
 	}
 
 	sets.wsBase.Magic = {										ammo="Dosis Tathlum",
-		head="Highwing Helm",	neck="Stoicheion Medal",	ear1="Friomisi Earring",	ear2="Hecate's Earring",
+		head="Highwing Helm",	neck="Sanctity Necklace",	ear1="Friomisi Earring",	ear2="Hecate's Earring",
 		body="Taeon Tabard",	hands="Taeon Gloves",		ring1="Fenrir Ring +1",		ring2="Acumen Ring",
 		back="Toro Cape",	waist="Fotia Belt",		legs="Shneddick Tights +1",	feet="Taeon Boots"
 	}
@@ -88,7 +88,7 @@ function init_gear_sets()
 	sets.resting = {}
 	
 	sets.idle = {											ammo="Demonry Stone",
-		head="Ocelomeh Headpiece +1",	neck="Orochi Nodowa",	ear1="Brachyura Earring",	ear2="Ethereal Earring",
+		head="Ocelomeh Headpiece +1",	neck="Sanctity Necklace",	ear1="Brachyura Earring",	ear2="Ethereal Earring",
 		body="Qaaxo Harness",		hands="Umuthi Gloves",	ring1="Defending Ring",		ring2="Shneddick Ring",
 		back="Repulse Mantle",		waist="Flume Belt",	legs="Taeon Tights",		feet="Iuitl Gaiters +1",
 	}

@@ -95,7 +95,7 @@ function init_gear_sets()
 	sets.resting = {}
 	
 	sets.idle = {										ammo="Demonry Stone",
-		head="Highwing Helm",	neck="Orochi Nodowa",	ear1="Brachyura Earring",	ear2="Ethereal Earring",
+		head="Highwing Helm",	neck="Sanctity Necklace",	ear1="Brachyura Earring",	ear2="Ethereal Earring",
 		body="Xaddi Mail",	hands="Umuthi Gloves",	ring1="Defending Ring",		ring2="Shneddick Ring",
 		back="Repulse Mantle",	waist="Nierenschutz",	legs="Cizin Breeches +1",	feet="Whirlpool Greaves"
 	}

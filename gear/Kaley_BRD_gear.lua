@@ -9,7 +9,7 @@ function init_gear_sets()
 	--			Instruments
 	--============================================================
 	gear.instruments.multiSong = "Terpander"	--Adds an additional song effect
-	gear.instruments.default = "Linos"		--All Songs +2 (+1 with +1 augment)
+	gear.instruments.default = "Linos"		    --All Songs +2 (+1 with +1 augment)
 	gear.instruments.Elegy = "Syrinx"
 	gear.instruments.Finale = "Pan's Horn"
 	gear.instruments.Lullaby = "Pan's Horn"
@@ -86,13 +86,13 @@ function init_gear_sets()
 	
 	sets.midcast.MagicAccuracy = {
 		main="Marin Staff",		sub="Mephitis Grip",
-		head="Weatherspoon Corona +1",	neck="Stoicheion Medal",	ear1="Lifestorm Earring",	ear2="Psystorm Earring",
+		head="Weatherspoon Corona +1",	neck="Sanctity Necklace",	ear1="Lifestorm Earring",	ear2="Psystorm Earring",
 		body="Artsieq Jubbah",		hands="Gendewitha Gages +1",	ring1="Sangoma Ring",		ring2="Perception Ring",
 		back="Rhapsode's Cape",		waist="Ovate Rope",		legs="Artsieq Hose",		feet="Bokwus Boots"
 	}
 	
 	sets.midcast.Singing = {
-		body="Aoidos' Hongreline +2",	hands="Aiodos' Manchettes +2",
+		body="Aoidos' Hongreline +2",	hands="Aoidos' Manchettes +2",
 		legs="Aoidos' Rhingrave +2",
 	}
 	

@@ -18,7 +18,13 @@ function set_options()
         gear.taeonDWhands = {name="Taeon Gloves", augments={'Accuracy+25','"Dual Wield"+4','STR+7 DEX+7'}}
         gear.taeonTAlegs = {name="Taeon Tights", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','STR+7 DEX+7'}}
         gear.taeonDWfeet = {name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+5','STR+6 DEX+6'}}
+        gear.nagaAccFeet = {name="Naga Kyahan", augments={'STR+10','Accuracy+15','"Subtle Blow"+7'}}
+        gear.hercHead = {name="Herculean Helm", augments={'Accuracy+19 Attack+19','"Dual Wield"+3','STR+6','Accuracy+13','Attack+13'}}
+        gear.hercHands = {name="Herculean Gloves", augments={'Accuracy+26','"Triple Atk."+3','AGI+6'}}
+        gear.hercLegs = {name="Herculean Trousers", augments={'Accuracy+21 Attack+21','Crit. hit damage +3%','STR+9','Accuracy+9','Attack+8'}}
+        gear.hercFeet = {name="Herculean Boots", augments={'Accuracy+18','"Triple Atk."+3','Attack+10'}}
     elseif player.name == 'Kaley' then
+        gear.darkRing1 = {name="Dark Ring", augments={'Phys. dmg. taken -5%','Breath dmg. taken -4%','Magic dmg. taken -3%'}}
     end
     
     autoDummySongs = S{"Army's Paeon"}
@@ -57,7 +63,7 @@ function set_modes()
         modelist['Daurdabla'] = {'None','Daurdabla','Dummy'}
         modelist['weapon'] = {'Main','Melee','Other'}
     elseif S{'BLU'}:contains(player.main_job) then
-        modelist['offense'] = {'Normal', 'Learn'}
+        modelist['offense'] = {'auto', 'Learn', 'CrazyAccuracy'}
         modelist['idle'] = {'CapFarm','Normal','Learn'}
         modelist['weapon'] = {'Main','OAT','Magic','Other'}
     elseif S{'RNG'}:contains(player.main_job) then

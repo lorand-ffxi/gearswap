@@ -12,6 +12,22 @@ lor_gs_versions.gear_inspection = '2016-09-24.0'
 
 gi = {}
 
+local known_stats = {
+    [14813] = {name='Brutal Earring', stats={['Double Attack'] = 0.05}},
+    [10838] = {name='Patentia Sash', stats={['Dual Wield'] = 0.05}},
+    [19260] = {name="Raider's Boomerang", stats={['Dual Wield'] = 0.03}},
+    [19257] = {name='Incantor Stone', stats={['Fast Cast'] = 0.02}},
+    [10911] = {name='Nares Cap', stats={['Fast Cast'] = 0.10}},
+    [11615] = {name='Orison Locket', stats={['Fast Cast'] = 0.05}},
+    [14812] = {name='Loquacious Earring', stats={['Fast Cast'] = 0.02}},
+    [10752] = {name='Prolix Ring', stats={['Fast Cast'] = 0.02}},
+    [11000] = {name='Swith Cape', stats={['Fast Cast'] = 0.03}},
+    [10826] = {name='Witful Belt', stats={['Fast Cast'] = 0.03}},
+    [10365] = {name='Chelona Boots', stats={['Fast Cast'] = 0.04}},
+}
+
+local ambiguous_stats = _libs.lor.settings.load('data/gear_stats.lua', known_stats)
+
 local schars = {wtilde=string.parse_hex('EFBD9E')}
 local slots = {'main','sub','range','ammo','head','neck','left_ear','right_ear','body','hands','left_ring','right_ring','back','waist','legs','feet'}
 local slotmap = {['left_ear']='ear1',['right_ear']='ear2',['left_ring']='ring1',['right_ring']='ring2'}
@@ -50,19 +66,7 @@ local set_bonuses = {
     },
 }
 
-local ambiguous_stats = {
-    [14813] = {['Double Attack'] = 0.05},   --Brutal Earring
-    [10838] = {['Dual Wield'] = 0.05},      --Patentia Sash
-    [19260] = {['Dual Wield'] = 0.03},      --Raider's Boomerang
-    [19257] = {['Fast Cast'] = 0.02},       --Incantor Stone
-    [10911] = {['Fast Cast'] = 0.10},       --Nares Cap
-    [11615] = {['Fast Cast'] = 0.05},       --Orison Locket
-    [14812] = {['Fast Cast'] = 0.02},       --Loquacious Earring
-    [10752] = {['Fast Cast'] = 0.02},       --Prolix Ring
-    [11000] = {['Fast Cast'] = 0.03},       --Swith Cape
-    [10826] = {['Fast Cast'] = 0.03},       --Witful Belt
-    [10365] = {['Fast Cast'] = 0.04},       --Chelona Boots
-}
+
 
 local job_traits = {
     ['Dual Wield'] = {

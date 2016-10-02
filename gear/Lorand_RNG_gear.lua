@@ -84,7 +84,7 @@ function init_gear_sets()
 	sets.wsBase.STRAGI = {ring2="Pyrosoul Ring"}
 	
 	sets.wsBase.Magic = {
-		head="Highwing Helm",		neck="Stoicheion Medal",	ear1="Hecate's Earring",	ear2="Friomisi Earring",
+		head="Highwing Helm",		neck="Sanctity Necklace",	ear1="Hecate's Earring",	ear2="Friomisi Earring",
 		body="Orion Jerkin +1",		hands="Umuthi Gloves",		ring1="Fenrir Ring +1",		ring2="Acumen Ring",
 		back="Toro Cape",		waist="Fotia Belt",		legs="Shneddick Tights +1",	feet="Orion Socks +1"
 	}
@@ -175,7 +175,7 @@ function init_gear_sets()
 	sets.resting = {}
 	
 	sets.idle = {
-		head="Ocelomeh Headpiece +1",	neck="Orochi Nodowa",		ear1="Brachyura Earring",	ear2="Ethereal Earring",
+		head="Ocelomeh Headpiece +1",	neck="Sanctity Necklace",		ear1="Brachyura Earring",	ear2="Ethereal Earring",
 		body={"Kirin's Osode", "Orion Jerkin +1"},
 		hands="Umuthi Gloves",		ring1="Defending Ring",		ring2="Shneddick Ring",
 		back="Repulse Mantle",		waist="Flume Belt",		legs="Arcadian Braccae +1",	feet="Orion Socks +1"

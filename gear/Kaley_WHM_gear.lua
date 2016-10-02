@@ -56,7 +56,7 @@ function init_gear_sets()
     
     sets.wsBase.Magic = {
         ammo="Witchstone",
-        head="Buremte Hat",     neck="Stoicheion Medal",    ear1="Hecate's Earring",    ear2="Friomisi Earring",
+        head="Buremte Hat",     neck="Sanctity Necklace",    ear1="Hecate's Earring",    ear2="Friomisi Earring",
         body="Artsieq Jubbah",  hands="Otomi Gloves",       ring2="Acumen Ring",
         back="Toro Cape",       legs="Gendewitha Spats +1", feet="Gendewitha Galoshes +1"
     }
@@ -194,7 +194,7 @@ function init_gear_sets()
     sets.maxMP = {
         main="Marin Staff +1",          sub="Elder's Grip +1",                                  ammo="Kalboron Stone",
         head="Kaabnax Hat",             neck="Orison Locket",       ear1="Loquacious Earring",  ear2="Star Earring",
-        body="Weatherspoon Robe +1",    hands="Otomi Gloves",       ring1="Sangoma Ring",       ring2="Bifrost Ring",
+        body="Weatherspoon Robe +1",    hands="Otomi Gloves",       ring1="Sangoma Ring",       ring2="Mephitas's Ring",
         back="Pahtli Cape",             waist="Shinjutsu-no-obi",   legs="Helios Spats",        feet="Theophany Duckbills +1"
     }
     
@@ -248,7 +248,7 @@ function init_gear_sets()
     }
     sets.engaged.with_buff = {}
     
-    sets.engaged.MediumAcc = {}
+    sets.engaged.MediumAcc = {neck="Sanctity Necklace", ring2="Adler Ring", back="Kayapa Cape"}
     sets.engaged.HighAcc = {}
     
     sets.engaged.Skillup = {
