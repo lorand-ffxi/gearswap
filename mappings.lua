@@ -7,7 +7,7 @@
 --              Song buff enhancements on instruments and equipment
 --======================================================================================================================
 
-lor_gs_versions.mappings = '2016-07-16.0'
+lor_gs_versions.mappings = '2016-10-02.0'
 
 instruments = {}
 instruments.effects = {
@@ -338,6 +338,7 @@ blu_statmap = {
     ["Spectral Floe"]="INT",["Subduction"]="INT",["Tem. Upheaval"]="INT",["Tenebral Crush"]="INTMNDVIT"
 }
 
+blu_magic_types = S{"Buff","Heal","Enfeeb","Breath","Debuff","Drain"}
 blu_typemap = {
     ["Amplification"]="Buff",["Animating Wail"]="Buff",["Auroral Drape"]="Enfeeb",["Awful Eye"]="Enfeeb",
     ["Bad Breath"]="Breath",["Barrier Tusk"]="Buff",["Battery Charge"]="Buff",["Chaotic Eye"]="Enfeeb",
@@ -439,6 +440,17 @@ gear_map.ftp = {
     waist = {
         ['Light']='Light Belt',   ['Dark']='Shadow Belt',   ['Fire']='Flame Belt',          ['Ice']='Snow Belt',
         ['Wind']='Breeze Belt',   ['Earth']='Soil Belt',    ['Lightning']='Thunder Belt',   ['Water']='Aqua Belt'
+    }
+}
+
+--======================================================================================================================
+--                      Gear Stat information
+--======================================================================================================================
+
+gear_stats = {
+    hasso_haste = {
+        ['Unkai Haidate +1'] = 1.5, ['Unkai Haidate +2'] = 2.5,
+        ['Kasuga Haidate'] = 2,     ['Kasuga Haidate +1'] = 3
     }
 }
 

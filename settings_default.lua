@@ -23,6 +23,8 @@ function set_options()
         gear.hercHands = {name="Herculean Gloves", augments={'Accuracy+26','"Triple Atk."+3','AGI+6'}}
         gear.hercLegs = {name="Herculean Trousers", augments={'Accuracy+21 Attack+21','Crit. hit damage +3%','STR+9','Accuracy+9','Attack+8'}}
         gear.hercFeet = {name="Herculean Boots", augments={'Accuracy+18','"Triple Atk."+3','Attack+10'}}
+        gear.heliosMABhands = {name="Helios Gloves", augments={'"Mag.Atk.Bns."+25','Mag. crit. hit dmg. +8%'}}
+        gear.heliosMABfeet = {name="Helios Boots", augments={'"Mag.Atk.Bns."+24','Magic crit. hit rate +3','Magic burst mdg.+2%'}}
     elseif player.name == 'Kaley' then
         gear.darkRing1 = {name="Dark Ring", augments={'Phys. dmg. taken -5%','Breath dmg. taken -4%','Magic dmg. taken -3%'}}
     end

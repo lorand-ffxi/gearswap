@@ -15,7 +15,7 @@ function init_gear_sets()
     --============================================================
     sets.precast.JA['Burst Affinity'] = {feet="Mavi Basmak +2"}
     sets.precast.JA['Chain Affinity'] = {head="Mavi Kavuk +2"}
-    sets.precast.JA['Efflux'] = {legs="Mavi Tayt +2"}
+    sets.precast.JA['Efflux'] = {back=gear.ambuDDcape, legs="Mavi Tayt +2"}
     
     sets.precast.FC = {
         ammo="Impatiens",           --
@@ -46,20 +46,10 @@ function init_gear_sets()
         body="Qaaxo Harness",   hands=gear.hercHands,       ring1="Rajas Ring",         ring2="Epona's Ring",
         back=gear.ambuDDcape,   waist="Windbuffet Belt +1", legs=gear.hercLegs,         feet=gear.hercFeet
     }
-    sets.wsBase.Magic = {
-        ammo="Dosis Tathlum",
-        head="Jhakri Coronal",
-        neck="Eddy Necklace",
-        ear1="Hecate's Earring",
-        ear2="Friomisi Earring",
-        body="Jhakri Robe +1",
-        hands={name="Helios Gloves", augments={'"Mag.Atk.Bns."+25','Mag. crit. hit dmg. +8%'}},
-        ring1="Fenrir Ring +1",
-        ring2="Acumen Ring",
-        back="Cornflower Cape",
-        waist="Aswang Sash",
-        legs={name="Hagondes Pants +1", augments={'Phys. dmg. taken -2%','"Mag.Atk.Bns."+17'}},
-        feet={name="Helios Boots", augments={'"Mag.Atk.Bns."+24','Magic crit. hit rate +3','Magic burst mdg.+2%'}}
+    sets.wsBase.Magic = {                                                               ammo="Dosis Tathlum",
+        head="Jhakri Coronal",  neck="Eddy Necklace",       ear1="Hecate's Earring",    ear2="Friomisi Earring",
+        body="Jhakri Robe +1",  hands=gear.heliosMABhands,  ring1="Fenrir Ring +1",     ring2="Acumen Ring",
+        back="Cornflower Cape", waist="Aswang Sash",        legs="Hagondes Pants +1",   feet=gear.heliosMABfeet
     }
     
     --============================================================
@@ -68,7 +58,7 @@ function init_gear_sets()
     sets.midcast.FastRecast = {                                                         ammo="Impatiens",
         head=gear.hercHead,     neck="Orunmila's Torque",   ear1="Loquacious Earring",  ear2="Novia Earring",
         body="Taeon Tabard",    hands="Buremte Gloves",     ring1="Prolix Ring",        ring2={name="Diamond Ring", augments={'INT+2','MND+2','Spell interruption rate down -2%'}},
-        back="Swith Cape",      waist="Witful Belt",        legs="Quiahuiz Trousers",   feet=gear.hercFeet
+        back="Swith Cape",      waist="Witful Belt",        legs=gear.hercLegs,         feet=gear.hercFeet
     }
 
     sets.midcast.Cure = {
@@ -93,15 +83,22 @@ function init_gear_sets()
     }
 
     sets.midcast.MagicAccuracy = {
-        head="Jhakri Coronal",  neck="Eddy Necklace",   ear1="Lifestorm Earring",   ear2="Psystorm Earring",
+        head="Jhakri Coronal",  neck="Sanctity Necklace",   ear1="Lifestorm Earring",   ear2="Psystorm Earring",
         body="Jhakri Robe +1",  hands={name="Hagondes Cuffs +1", augments={'Phys. dmg. taken -1%','Mag. Acc.+6'}},
         ring1="Sangoma Ring",   ring2="Perception Ring",
-        back="Cornflower Cape", waist="Ovate Rope",     legs="Jhakri Slops",        feet="Jhakri Pigaches"
+        back="Cornflower Cape", waist="Ovate Rope",         legs="Jhakri Slops",        feet="Jhakri Pigaches"
     }
     
     sets.midcast.BlueMagic = {
         ammo="Mavi Tathlum",
         back="Cornflower Cape"
+    }
+    
+    sets.midcast.BlueMagic.Buff = {
+        ammo="Mavi Tathlum",
+        head="Luhlaza Keffiyeh",
+        body="Assimilator's Jubbah +1", hands="Mavi Bazubands +2",
+        back=gear.jseCape,              legs="Mavi Tayt +2",        feet="Luhlaza Charuqs +1"
     }
     
     sets.midcast.BlueMagic.Physical = {                                             ammo="Honed Tathlum",

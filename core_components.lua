@@ -6,7 +6,7 @@
 --==============================================================================
 
 function init()
-    lor_gs_versions.core_components = '2016-10-02.0'
+    lor_gs_versions.core_components = '2016-10-02.1'
     show_debug = false
     
     require('lor/lor_utils')
@@ -269,14 +269,15 @@ function precast(spell)
         local rinfo = roll_info[last_roll]
         if (rinfo ~= nil) then
             local rname = last_roll..': '
-            local lucky = '[Lucky: '..rinfo.lucky..'] '
-            local unlucky = '[Unlucky: '..rinfo.unlucky..'] '
+            local lucky = '[Lucky: %s] ':format(rinfo.lucky)
+            local unlucky = '[Unlucky: %s] ':format(rinfo.unlucky)
             local desc = rinfo.effect
             local dutime = 45 - (now - du_gain)
-            local dumsg = ' | Double-Up time remaining: '..roundf(dutime)..'s'
+            dutime = (dutime < 0) and 0 or dutime
+            local dumsg = ' | Double-Up time remaining: %ss':format(roundf(dutime))
             atc(1, rname:colorize(261)..lucky:colorize(339)..unlucky:colorize(349)..desc:colorize(261)..dumsg:colorize(128))
         else
-            atc(123, 'Error: No roll info stored for '..spell.en)
+            atcfs(123, 'Error: No roll info stored for %s', spell.en)
         end
     end
 
@@ -691,20 +692,18 @@ function get_midcast_set(spell)
         elseif spell.skill == 'Blue Magic' then
             local bluType = S{-1,15,'None','Physical'}:contains(spell.element) and 'Physical' or 'Magic'
             --local bluType = (spell.element == -1) and 'Physical' or 'Magic'
+            if blu_magic_types:contains(blu_typemap[spell.en]) then
+                bluType = 'Magic'
+            end
             if bluType == 'Magic' then
-                if (blu_typemap[spell.en] == 'Breath') then
-                    midcastSet = combineSets(midcastSet, sets.midcast.MagicAccuracy)
-                    midcastSet = combineSets(midcastSet, sets.midcast.BlueMagic)
-                    midcastSet = combineSets(midcastSet, sets.midcast.BlueMagic.Magic)
-                    midcastSet = combineSets(midcastSet, sets.midcast.BlueMagic.Breath)
-                elseif (blu_typemap[spell.en] == 'Buff') then
+                if (blu_typemap[spell.en] == 'Buff') then
                     midcastSet = combineSets(midcastSet, sets.midcast.FastRecast)
-                    midcastSet = combineSets(midcastSet, sets.midcast.BlueMagic)
-                elseif (blu_typemap[spell.en] == 'Enfeeb') then
-                    midcastSet = combineSets(midcastSet, sets.midcast.MagicAccuracy)
                     midcastSet = combineSets(midcastSet, sets.midcast.BlueMagic)
                 elseif (blu_typemap[spell.en] == 'Heal') then
                     midcastSet = combineSets(midcastSet, sets.midcast.Cure)
+                elseif (blu_typemap[spell.en] == 'Enfeeb') then
+                    midcastSet = combineSets(midcastSet, sets.midcast.MagicAccuracy)
+                    midcastSet = combineSets(midcastSet, sets.midcast.BlueMagic)
                 else
                     midcastSet = combineSets(midcastSet, sets.midcast.MagicAccuracy)
                     midcastSet = combineSets(midcastSet, sets.midcast.BlueMagic)
@@ -715,8 +714,9 @@ function get_midcast_set(spell)
                 midcastSet = combineSets(midcastSet, sets.midcast.BlueMagic.Physical)
                 midcastSet = combineSets(midcastSet, sets.midcast.BlueMagic.Physical[blu_statmap[spell.en]])
             end
-            midcastSet = combineSets(midcastSet, sets.midcast.BlueMagic, spell.en)
-            midcastSet = combineSets(midcastSet, sets.midcast, spell.en)
+            midcastSet = combineSets(midcastSet, sets.midcast.BlueMagic[blu_typemap[spell.en]])
+            midcastSet = combineSets(midcastSet, sets.midcast.BlueMagic[spell.en])
+            midcastSet = combineSets(midcastSet, sets.midcast[spell.en])
         elseif spell.skill == 'Ninjutsu' then
             if spellMap == 'Utsusemi' then
                 midcastSet = combineSets(midcastSet, sets.midcast.Utsusemi)
@@ -911,13 +911,17 @@ function get_haste_mod()
         msum = msum + 10
     elseif (buffactive[33] ~= nil) then
         local htier = buffs.Haste or 1  --Haste: 150/1024 = 15%
-        msum = msum + (htier * 15)  --Haste II: 307/1024 = 30%
+        msum = msum + (htier * 15)      --Haste II: 307/1024 = 30%
     end
     if (buffactive[580] ~= nil) then
-        msum = msum + 30        --Indi/Geo-Haste: 28% + ~1%/+1 Geomancy
+        msum = msum + 30                --Indi/Geo-Haste: 28% + ~1%/+1 Geomancy
     end
+    if (buffactive[604] ~= nil) then
+        msum = msum + 15                --Mighty Guard
+    end
+    
     if (buff_active('March')) then
-        --If a BRD doesn't have at least March+3, they REALLY suck.
+        --If a BRD doesn't have at least March+3, they REALLY suck. (+2 from sparks instrument, +1 from AF3+2 hands)
         --Each March+1 = +16/1024 haste & duration
         local marchCount = buffactive['march'] or 0
         if (marchCount > 1) then
@@ -948,15 +952,8 @@ function get_haste_mod()
         local weap = res.items:with('en',player.equipment.main)
         if (#(weap.slots) == 1) then
             jsum = jsum + 10
-            if (player.equipment.legs == 'Unkai Haidate +2') then
-                jsum = jsum + 2.5
-            elseif (player.equipment.legs == 'Unkai Haidate +1') then
-                jsum = jsum + 1.5
-            end
-            if (player.equipment.hands == 'Wakido Kote +1') then
-                jsum = jsum + 0 --Unknown effect
-            elseif (player.equipment.hands == 'Wakido Kote') then
-                jsum = jsum + 0 --Unknown effect
+            if gear_stats.hasso_haste[player.equipment.legs] ~= nil then
+                jsum = jsum + gear_stats.hasso_haste[player.equipment.legs]
             end
         end
     end
