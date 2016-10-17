@@ -6,7 +6,7 @@
 --==============================================================================
 
 function init()
-    lor_gs_versions.core_components = '2016-10-02.1'
+    lor_gs_versions.core_components = '2016-10-15.0'
     show_debug = false
     
     require('lor/lor_utils')
@@ -41,6 +41,7 @@ function init()
     include('gear_inspection')
     
     trusts = populateTrustList()
+    load_auto_defense()
     
     load_user_settings()        --Attempt to load user settings
     if use_user_settings then
@@ -1089,10 +1090,11 @@ end
     
 function cycle_mode(args)
     local mode = args[1]
+    local reason = args[2] and ' [Reason: %s]':format(args[2]) or ''
     if mode ~= nil then
         cycleMode(mode)
     end
-    atc(1, tostring(mode)..' mode is now '..tostring(modes[mode]))
+    atcfs(1, '%s mode is now %s%s', tostring(mode), tostring(modes[mode]), reason)
     if refresh_gear_sets then refresh_gear_sets() end
     update()
 end
@@ -1100,41 +1102,45 @@ end
 function set_mode(args)
     local mode = args[1]
     local opt = args[2]
+    local reason = args[3] and ' [Reason: %s]':format(args[3]) or ''
     if (mode ~= nil) and (opt ~= nil) then
         setMode(mode, opt)
     end
-    atc(1, tostring(mode)..' mode is now '..tostring(modes[mode]))
+    atcfs(1, '%s mode is now %s%s', tostring(mode), tostring(modes[mode]), reason)
     if refresh_gear_sets then refresh_gear_sets() end
     update()
 end
 
 function reset_mode(args)
     local mode = args[1]
+    local reason = args[2] and ' [Reason: %s]':format(args[2]) or ''
     if mode ~= nil then
         modes[mode] = nil
         cycleMode(mode)
     end
-    atc(1, tostring(mode)..' mode is now '..tostring(modes[mode]))
+    atcfs(1, '%s mode is now %s%s', tostring(mode), tostring(modes[mode]), reason)
     if refresh_gear_sets then refresh_gear_sets() end
     update()
 end
 
 function toggle_mode(args)
     local mode = args[1]
+    local reason = args[2] and ' [Reason: %s]':format(args[2]) or ''
     if mode ~= nil then
         modes[mode] = not modes[mode]
     end
-    atc(1, tostring(mode)..' mode is now '..tostring(modes[mode]))
+    atcfs(1, '%s mode is now %s%s', tostring(mode), tostring(modes[mode]), reason)
     if refresh_gear_sets then refresh_gear_sets() end
     update()
 end
 
 function activate_mode(args)
     local mode = args[1]
+    local reason = args[2] and ' [Reason: %s]':format(args[2]) or ''
     if mode ~= nil then
         modes[mode] = true
     end
-    atc(1, tostring(mode)..' mode is now '..tostring(modes[mode]))
+    atcfs(1, '%s mode is now %s%s', tostring(mode), tostring(modes[mode]), reason)
     if refresh_gear_sets then refresh_gear_sets() end
     update()
 end
@@ -1353,6 +1359,7 @@ executable_commands = {
     ['atc']       = {['fn']=addToChat,                 ['group']='misc', ['args']='[color#] text', ['help']='Add the given text to the chat log using the given color number'},
     ['help']      = {['fn']=print_help,                ['group']='misc', ['args']='', ['help']='Print this help text'},
     ['info']      = {['fn']=info_func,                 ['group']='misc', ['args']='[cmd]', ['help']='View addon/windower variable values'},
+    ['meleeinfo'] = {['fn']=gi.melee_stats,            ['group']='misc', ['args']='[cmd]', ['help']='Print melee info about current gear'},
     ['test']      = {['fn']=test,                      ['group']='misc', ['hide']=true},
     ['reload']    = {['fn']=reload,                    ['group']='misc', ['args']='', ['help']='Reload GearSwap entirely; //gs reload only refreshes the user environment, which leads to a memory leak'},
     ['vercheck']  = {['fn']=version_check,             ['group']='misc', ['args']='', ['help']='Display file versions for lor GS files'},

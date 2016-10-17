@@ -5,12 +5,17 @@
 --]]
 --======================================================================================================================
 
-lor_gs_versions.packet_handling = '2016-10-02.0'
+lor_gs_versions.packet_handling = '2016-10-15.0'
 
 local messages_initiating = _libs.lor.packets.messages_initiating
 local messages_completing = _libs.lor.packets.messages_completing
 
 local get_action_info = _libs.lor.packets.get_action_info
+
+local abil_start_ids = S{43,326,675}
+local spell_start_ids = S{3,327,716}
+local start_ids = abil_start_ids:union(spell_start_ids)
+
 
 --[[
     Analyze the data contained in incoming packets for useful info.
@@ -28,6 +33,51 @@ function handle_incoming_chunk(id, data)
                             actionStart = os.clock()
                         elseif messages_completing:contains(tact.message_id) then
                             actionEnd = os.clock()
+                        end
+                    elseif modes.autoDefense and start_ids:contains(tact.message_id) and (targ.id == player.id) then
+                        if abil_start_ids:contains(tact.message_id) then
+                            if auto_defense.monster_abilities.turn[tact.param] then
+                                local target = windower.ffxi.get_mob_by_id(ai.actor_id)
+                                if target ~= nil then
+                                    windower.ffxi.turn(target.facing)
+                                    atcfs(258, 'Alert: Turned around for %s!', auto_defense.monster_abilities.turn[tact.param])
+                                else
+                                    atcfs(123, 'Error: Unable to find target to turn for %s', auto_defense.monster_abilities.turn[tact.param])
+                                end
+                                last_mabil_id = tact.param
+                                last_mabil_type = 'turn'
+                            elseif auto_defense.monster_abilities.physical[tact.param] then
+                                set_mode({'defense','PDT',auto_defense.monster_abilities.physical[tact.param]})
+                                last_mabil_id = tact.param
+                                last_mabil_type = 'def'
+                            elseif auto_defense.monster_abilities.magic[tact.param] then
+                                set_mode({'defense','MDT',auto_defense.monster_abilities.magic[tact.param]})
+                                last_mabil_id = tact.param
+                                last_mabil_type = 'def'
+                            end
+                        else
+                            if auto_defense.spells.physical[tact.param] then
+                                set_mode({'defense','PDT',auto_defense.spells.physical[tact.param]})
+                                last_mabil_id = tact.param
+                                last_mabil_type = 'def'
+                            elseif auto_defense.spells.magic[tact.param] then
+                                set_mode({'defense','MDT',auto_defense.spells.magic[tact.param]})
+                                last_mabil_id = tact.param
+                                last_mabil_type = 'def'
+                            end
+                        end
+                    elseif modes.autoDefense and messages_completing:contains(tact.message_id) and (last_mabil_id == tact.param) then
+                        local mob_target = windower.ffxi.get_mob_by_target()
+                        if mob_target ~= nil then
+                            if mob_target.id == ai.actor_id then
+                                last_mabil_id = nil
+                                if last_mabil_type == 'turn' then
+                                    windower.ffxi.turn(-mob_target.facing)
+                                else
+                                    reset_mode({'defense','%s finished their ability':format(mob_target.name)})
+                                end
+                                last_mabil_type = nil
+                            end
                         end
                     end
                     --If the target is me, and it's an incoming buff

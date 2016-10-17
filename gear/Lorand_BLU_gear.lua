@@ -241,7 +241,13 @@ function init_gear_sets()
         body="Jhakri Robe +1",  hands="Umuthi Gloves",      ring1="Defending Ring",     ring2="Shneddick Ring",
         back="Repulse Mantle",  waist="Flume Belt",         legs=gear.hercLegs,         feet=gear.hercFeet
     }
+    sets.idle.DT = {                                                                        ammo="Bibiki Seashell",
+        head="Iuitl Headgear +1",   neck="Twilight Torque",     ear1="Brachyura Earring",   ear2="Ethereal Earring",
+        body="Jhakri Robe +1",      hands="Umuthi Gloves",      ring1="Defending Ring",     ring2="Shneddick Ring",
+        back="Repulse Mantle",      waist="Flume Belt",         legs=gear.hercLegs,         feet=gear.hercFeet
+    }
     sets.idle.Learn = {hands="Magus Bazubands"}
+    sets.idle.CapFarm = {back="Mecistopins Mantle"}
     sets.idle.lowMP = {waist="Fucho-no-obi", legs="Nares Trews"}
     sets.idle.lowMP_night = {hands="Serpentes Cuffs"}
     sets.idle.lowMP_day = {feet="Serpentes Sabots"}

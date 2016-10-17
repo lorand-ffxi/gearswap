@@ -5,6 +5,8 @@
 --------------------------------------------------------------------------------
 
 function init_gear_sets()
+    gear.jseDWCape = {name="Canny Cape", augments={'DEX+3','AGI+3','"Dual Wield"+4'}}
+
     --============================================================
     --          Precast sets
     --============================================================
@@ -88,7 +90,7 @@ function init_gear_sets()
 
     sets.wsBase.Magic = {
         head="Highwing Helm",       neck="Sanctity Necklace",    ear1="Hecate's Earring",    ear2="Friomisi Earring",
-        hands=gear.taeonTAhands,    ring1="Fenrir Ring +1",     ring2="Acumen Ring",
+        hands=gear.hercHands,    ring1="Fenrir Ring +1",     ring2="Acumen Ring",
         back="Toro Cape",           legs="Shneddick Tights +1", feet="Iuitl Gaiters +1"
     }
     
@@ -133,17 +135,11 @@ function init_gear_sets()
     sets.resting = {}
     
     sets.idle = {                                               --range="Raider's Boomerang",
-        head="Ocelomeh Headpiece +1",
-        neck="Sanctity Necklace",
-        ear1="Brachyura Earring",
-        ear2="Ethereal Earring",
+        head="Ocelomeh Headpiece +1",   neck="Sanctity Necklace",   ear1="Brachyura Earring",   ear2="Ethereal Earring",
         body="Qaaxo Harness",
-        hands={"Plunderer's Armlets +1", gear.taeonTAhands},
+        hands={"Plunderer's Armlets +1", gear.hercHands},
         ring1="Defending Ring",     ring2="Shneddick Ring",
-        back="Repulse Mantle",
-        waist="Flume Belt",
-        legs=gear.taeonTAlegs,
-        feet="Iuitl Gaiters +1"
+        back="Repulse Mantle",          waist="Flume Belt",         legs=gear.taeonTAlegs,      feet=gear.hercFeet
     }
     sets.idle.with_buff = {}
     sets.idle.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
@@ -152,7 +148,7 @@ function init_gear_sets()
     sets.defense.Evasion = {
         head="Taeon Chapeau",   neck="Torero Torque",           ear1="Novia Earring",   ear2="Ethereal Earring",
         body="Qaaxo Harness",   hands="Plunderer's Armlets +1", ring1="Defending Ring", ring2="Alert Ring",
-        back="Canny Cape",      waist="Sveltesse Gouriz",       legs="Taeon Tights",    feet="Iuitl Gaiters +1"
+        back="Canny Cape",      waist="Sveltesse Gouriz",       legs="Taeon Tights",    feet=gear.hercFeet
     }
 
     sets.defense.DT = combineSets(sets.defense.Evasion,{    --DT-15%, PDT-12%, MDT-10%  => PDT-27%, MDT-25%
@@ -162,7 +158,7 @@ function init_gear_sets()
     
     sets.defense.PDT = combineSets(sets.defense.DT, {   --PDT-12% + DT => PDT-39%
         hands="Umuthi Gloves",
-        back="Repulse Mantle",      waist="Flume Belt", feet="Iuitl Gaiters +1"
+        back="Repulse Mantle",      waist="Flume Belt", feet=gear.hercFeet
     })
 
     sets.defense.MDT = combineSets(sets.defense.DT, {
@@ -174,15 +170,13 @@ function init_gear_sets()
     sets.engaged = {
         head=gear.taeonTAhead,  neck="Asperity Necklace",   ear1="Dudgeon Earring", ear2="Heartseeker Earring",
         body="Qaaxo Harness",   hands=gear.taeonDWhands,    ring1="Rajas Ring",     ring2="Epona's Ring",
-        back={name="Canny Cape", augments={'DEX+3','AGI+3','"Dual Wield"+4'}},
-        waist="Patentia Sash",  legs=gear.taeonTAlegs,      feet=gear.taeonDWfeet
+        back=gear.jseDWCape,    waist="Patentia Sash",      legs=gear.taeonTAlegs,  feet=gear.taeonDWfeet
     }
     
     sets.engaged.auto = {
         head=gear.taeonTAhead,  neck="Asperity Necklace",   ear1="Dudgeon Earring", ear2="Heartseeker Earring",
         body="Qaaxo Harness",   hands=gear.taeonDWhands,    ring1="Rajas Ring",     ring2="Epona's Ring",
-        back={name="Canny Cape", augments={'DEX+3','AGI+3','"Dual Wield"+4'}},
-        waist="Patentia Sash",  legs=gear.taeonTAlegs,      feet=gear.taeonDWfeet
+        back=gear.jseDWCape,    waist="Patentia Sash",      legs=gear.taeonTAlegs,  feet=gear.taeonDWfeet
     }
     sets.engaged.auto['na'] =   {
     }
@@ -191,7 +185,7 @@ function init_gear_sets()
     sets.engaged.auto['I+'] =   {
         ear1="Steelflash Earring",
         ear2="Bladeborn Earring",
-        hands=gear.taeonTAhands,
+        hands=gear.hercHands,
         feet=gear.taeonDWfeet
     }
     sets.engaged.auto['II'] =   {
@@ -202,19 +196,21 @@ function init_gear_sets()
     sets.engaged.auto['II+'] =  {
         ear1="Steelflash Earring",
         ear2="Bladeborn Earring",
-        hands=gear.taeonTAhands,
+        hands=gear.hercHands,
         legs=gear.taeonTAlegs,
         feet="Meghanada Jambeaux"
     }
     
     sets.engaged.auto.MediumAcc = {
         body=gear.taeonHasteBody,
-        ring2="Mars's Ring"
+        ring2="Chirich Ring",
+        legs=gear.adhemarLegsA
     }
     sets.engaged.auto.HighAcc = {
         neck="Iqabi Necklace",
         body=gear.taeonHasteBody,
-        ring2="Mars's Ring"
+        ring2="Chirich Ring",
+        legs=gear.adhemarLegsA
     }
     
     sets.engaged.with_buff = {}
@@ -222,36 +218,18 @@ function init_gear_sets()
     sets.engaged.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}
     
     sets.engaged.MediumAcc = {
-        head=gear.taeonTAhead,
-        neck="Iqabi Necklace",
-        ear1="Dudgeon Earring",
-        ear2="Heartseeker Earring",
-        body=gear.taeonHasteBody,
-        hands="Meghanada Gloves",
-        ring1="Rajas Ring",
-        ring2="Mars's Ring",
-        back={name="Canny Cape", augments={'DEX+3','AGI+3','"Dual Wield"+4'}},
-        waist="Patentia Sash",
-        legs=gear.taeonTAlegs,
-        feet=gear.taeonDWfeet
+        head=gear.taeonTAhead,      neck="Iqabi Necklace",      ear1="Dudgeon Earring", ear2="Heartseeker Earring",
+        body=gear.taeonHasteBody,   hands="Meghanada Gloves",   ring1="Rajas Ring",     ring2="Chirich Ring",
+        back=gear.jseDWCape,        waist="Patentia Sash",      legs=gear.adhemarLegsA,  feet=gear.taeonDWfeet
     }
     
     sets.engaged.HighAcc = {
-        head=gear.taeonTAhead,
-        neck="Iqabi Necklace",
-        ear1="Steelflash Earring",
-        ear2="Heartseeker Earring",
-        body=gear.taeonHasteBody,
-        hands="Meghanada Gloves",
-        ring1="Enlivened Ring",
-        ring2="Mars's Ring",
-        back={name="Canny Cape", augments={'DEX+3','AGI+3','"Dual Wield"+4'}},
-        waist="Anguinus Belt",
-        legs=gear.taeonTAlegs,
-        feet="Meghanada Jambeaux"
+        head=gear.taeonTAhead,      neck="Iqabi Necklace",      ear1="Steelflash Earring",  ear2="Heartseeker Earring",
+        body=gear.taeonHasteBody,   hands="Meghanada Gloves",   ring1="Enlivened Ring",     ring2="Chirich Ring",
+        back=gear.jseDWCape,        waist="Anguinus Belt",      legs=gear.adhemarLegsA,      feet="Meghanada Jambeaux"
     }
     
-    sets.engaged.TH = sets.TreasureHunter
+    sets.engaged.TH = combineSets({}, sets.TreasureHunter)
     
     --[[{                                 --range="Raider's Boomerang",
         head="Taeon Chapeau",   neck="Asperity Necklace",       ear1="Dudgeon Earring", ear2="Heartseeker Earring",

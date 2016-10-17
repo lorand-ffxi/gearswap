@@ -83,7 +83,11 @@ function init_gear_sets()
         body="Qaaxo Harness",   hands="Herculean Gloves",   ring1="Rajas Ring",         ring2="Epona's Ring",
         back=gear.ambuDEXcape,  waist="Windbuffet Belt +1", legs=gear.taeonTAlegs,      feet="Herculean Boots"
     }
-    sets.wsBase.DEX = {}    --feet="Hizamaru Sune-Ate +1"
+    sets.wsBase.DEX = {
+        head=gear.hercHead,
+        body="Hizamaru Haramaki +1",    hands="Hizamaru Kote +1",   ring2="Thundersoul Ring",
+        legs=gear.adhemarLegsA,         feet="Hizamaru Sune-Ate +1"
+    }
     sets.wsBase.STR = {}
     sets.wsBase.STRDEX = {}
     sets.wsBase.AGI = {ring1="Stormsoul Ring"}
@@ -241,7 +245,7 @@ function init_gear_sets()
     sets.engaged.CrazyAccuracy = {                                                                  ammo="Happo Shuriken +1",
         head="Hizamaru Somen +1",       neck="Iqabi Necklace",      ear1="Bladeborn Earring",       ear2="Steelflash Earring",
         body="Hizamaru Haramaki +1",    hands="Hizamaru Kote +1",   ring1="Rajas Ring",             ring2="Chirich Ring",
-        back=gear.ambuDEXcape,          waist="Anguinus Belt",      legs="Hizamaru Hizayoroi +1",   feet="Hizamaru Sune-Ate +1"
+        back=gear.ambuDEXcape,          waist="Anguinus Belt",      legs=gear.adhemarLegsA,         feet="Hizamaru Sune-Ate +1"
     }
     
     refresh_gear_sets()

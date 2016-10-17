@@ -18,7 +18,7 @@ function init_gear_sets()
     
     -- Fast Cast caps at 80%; RDM JT: 30%
     sets.precast.FC = {                 --50% + 30% = 80%
-        main="Marin Staff",             --2%
+        main="Marin Staff +1",             --2%
         head="Atrophy Chapeau +1",      --12%
         ear1="Loquacious Earring",      --2%
         body="Vitivation Tabard +1",    --13%
@@ -111,7 +111,7 @@ function init_gear_sets()
     --============================================================
     
     sets.midcast.MagicAccuracy = {
-        main="Marin Staff",         sub="Mephitis Grip",        ammo="Kalboron Stone",
+        main="Marin Staff +1",         sub="Mephitis Grip",        ammo="Kalboron Stone",
         head="Atrophy Chapeau +1",  neck="Eddy Necklace",       ear1="Lifestorm Earring",   ear2="Psystorm Earring",
         body="Artsieq Jubbah",      hands="Hagondes Cuffs +1",  ring1="Sangoma Ring",       ring2="Perception Ring",
         back="Ogapepo Cape",        waist="Ovate Rope",         legs="Artsieq Hose",        feet="Jhakri Pigaches"
@@ -138,14 +138,14 @@ function init_gear_sets()
     }
     
     sets.midcast.EnfeeblingMagic.Potency.MediumAcc = {
-        main="Marin Staff",             sub="Mephitis Grip",                                    ammo="Kalboron Stone",
+        main="Marin Staff +1",             sub="Mephitis Grip",                                    ammo="Kalboron Stone",
         head="Vitivation Chapeau +1",   neck="Estoqueur's Collar",  ear1="Lifestorm Earring",   ear2="Star Earring",
         body="Atrophy Tabard +1",       hands="Hagondes Cuffs +1",  ring1="Aqua Ring",          ring2="Solemn Ring",
         back="Tuilha Cape",             waist="Ovate Rope",         legs="Artsieq Hose",        feet="Vitivation Boots +1"
     }
     
     sets.midcast.EnfeeblingMagic.Potency.HighAcc = {
-        main="Marin Staff",             sub="Mephitis Grip",                                    ammo="Kalboron Stone",
+        main="Marin Staff +1",             sub="Mephitis Grip",                                    ammo="Kalboron Stone",
         head="Vitivation Chapeau +1",   neck="Eddy Necklace",       ear1="Lifestorm Earring",   ear2="Psystorm Earring",
         body="Atrophy Tabard +1",       hands="Hagondes Cuffs +1",  ring1="Sangoma Ring",       ring2="Perception Ring",
         back="Ogapepo Cape",            waist="Ovate Rope",         legs="Artsieq Hose",        feet="Vitivation Boots +1"
@@ -157,7 +157,7 @@ function init_gear_sets()
     --============================================================
     
     sets.midcast.ElementalMagic = {
-        main="Marin Staff",         sub="Elder's Grip +1",  ammo="Witchstone",
+        main="Marin Staff +1",         sub="Elder's Grip +1",  ammo="Witchstone",
         head="Buremte Hat",         neck="Eddy Necklace",   ear1="Hecate's Earring",    ear2="Friomisi Earring",
         body="Hagondes Coat +1",    hands="Otomi Gloves",   ring1="Acumen Ring",        ring2="Spiral Ring",
         back=gear.ambuMABback,      waist="Salire Belt",    legs="Hagondes Pants +1",   feet="Jhakri Pigaches"
@@ -172,13 +172,13 @@ function init_gear_sets()
     sets.midcast.ElementalMagic.Earth = {neck="Quanpur Necklace"}
     
     sets.midcast.ElementalMagic.MediumAcc = {
-        main="Marin Staff",         sub="Elder's Grip +1",
+        main="Marin Staff +1",         sub="Elder's Grip +1",
         head="Helios Band",         neck="Eddy Necklace",   ear1="Hecate's Earring",    ear2="Friomisi Earring",
         body="Hagondes Coat +1",    hands="Yaoyotl Gloves", ring1="Acumen Ring",        ring2="Spiral Ring",
         back=gear.ambuMABback,      waist="Salire Belt",    legs="Hagondes Pants +1",   feet="Jhakri Pigaches"
     }
     sets.midcast.ElementalMagic.HighAcc = {
-        main="Marin Staff",         sub="Clerisy Strap",                                ammo="Kalboron Stone",
+        main="Marin Staff +1",         sub="Clerisy Strap",                                ammo="Kalboron Stone",
         head="Atrophy Chapeau +1",  neck="Eddy Necklace",   ear1="Lifestorm Earring",   ear2="Psystorm Earring",
         body="Atrophy Tabard +1",   hands="Yaoyotl Gloves", ring1="Acumen Ring",        ring2="Sangoma Ring",
         back=gear.ambuMABback,      waist="Salire Belt",    legs="Artsieq Hose",        feet="Jhakri Pigaches"
@@ -194,7 +194,7 @@ function init_gear_sets()
     sets.midcast.ElementalMagic.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
     
     sets.midcast.ElementalEnfeeble = {
-        main="Marin Staff",         sub="Clerisy Strap",    ammo="Kalboron Stone",
+        main="Marin Staff +1",         sub="Clerisy Strap",    ammo="Kalboron Stone",
         head="Atrophy Chapeau +1",  neck="Eddy Necklace",   ear1="Lifestorm Earring",   ear2="Psystorm Earring",
         body="Atrophy Tabard +1",   hands="Yaoyotl Gloves", ring1="Sangoma Ring",       ring2="Spiral Ring",
         back=gear.ambuMABback,      waist="Ovate Rope",     legs="Vitivation Tights +1",feet="Jhakri Pigaches"
@@ -218,7 +218,7 @@ function init_gear_sets()
     --============================================================
     
     sets.maxMP = {
-        main="Marin Staff",             sub="Elder's Grip +1",                                      ammo="Kalboron Stone",
+        main="Marin Staff +1",             sub="Elder's Grip +1",                                      ammo="Kalboron Stone",
         head="Kaabnax Hat",             neck="Estoqueur's Collar",  ear1="Loquacious Earring",      ear2="Star Earring",
         body="Weatherspoon Robe +1",    hands="Otomi Gloves",       ring1="Sangoma Ring",           ring2="Bifrost Ring",
         back="Pahtli Cape",             waist="Shinjutsu-no-obi",   legs="Estoqueur's Fuseau +2",   feet="Atrophy Boots"

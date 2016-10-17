@@ -5,7 +5,7 @@
 --]]
 -----------------------------------------------------------------------------------------------------------
 
-lor_gs_versions.defaults = '2016-07-16.0'
+lor_gs_versions.defaults = '2016-10-15.0'
 
 function define_defaults()
     sets = {}
@@ -45,7 +45,7 @@ function define_defaults()
     --setMode('autoPenury', false)
     setMode('noIdle', false)
     setMode('autoCaress', false)
-    setMode('tank', false)
+    setMode('autoDefense', false)
     setMode('debug', false)
     
     options = T()

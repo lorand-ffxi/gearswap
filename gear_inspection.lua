@@ -8,37 +8,27 @@
 --]]
 --======================================================================================================================
 
-lor_gs_versions.gear_inspection = '2016-09-24.0'
+lor_gs_versions.gear_inspection = '2016-10-09.0'
 
 gi = {}
 
-local known_stats = {
-    [14813] = {name='Brutal Earring', stats={['Double Attack'] = 0.05}},
-    [10838] = {name='Patentia Sash', stats={['Dual Wield'] = 0.05}},
-    [19260] = {name="Raider's Boomerang", stats={['Dual Wield'] = 0.03}},
-    [19257] = {name='Incantor Stone', stats={['Fast Cast'] = 0.02}},
-    [10911] = {name='Nares Cap', stats={['Fast Cast'] = 0.10}},
-    [11615] = {name='Orison Locket', stats={['Fast Cast'] = 0.05}},
-    [14812] = {name='Loquacious Earring', stats={['Fast Cast'] = 0.02}},
-    [10752] = {name='Prolix Ring', stats={['Fast Cast'] = 0.02}},
-    [11000] = {name='Swith Cape', stats={['Fast Cast'] = 0.03}},
-    [10826] = {name='Witful Belt', stats={['Fast Cast'] = 0.03}},
-    [10365] = {name='Chelona Boots', stats={['Fast Cast'] = 0.04}},
+local set_bonuses = _libs.lor.settings.load('data/gear_inspection/set_bonuses.lua')
+local ambiguous_stats = _libs.lor.settings.load('data/gear_inspection/gear_stats.lua')
+local hasso_haste = {
+    [11235] = 0.015,    --[['Unkai Haidate +1']]    [11135] = 0.025,    --[['Unkai Haidate +2']]
+    [27259] = 0.02,     --[['Kasuga Haidate']]      [27260] = 0.03      --[['Kasuga Haidate +1']]
 }
-
-local ambiguous_stats = _libs.lor.settings.load('data/gear_stats.lua', known_stats)
 
 local schars = {wtilde=string.parse_hex('EFBD9E')}
 local slots = {'main','sub','range','ammo','head','neck','left_ear','right_ear','body','hands','left_ring','right_ring','back','waist','legs','feet'}
 local slotmap = {['left_ear']='ear1',['right_ear']='ear2',['left_ring']='ring1',['right_ring']='ring2'}
 local bagmap = {[0]='inventory',[8]='wardrobe',[10]='wardrobe2',[11]='wardrobe3',[12]='wardrobe4'}
 
-local always_percent = S{'Haste','Triple Attack','Double Attack','Magic Attack Bonus','Weapon skill damage','Store TP','Dual Wield'}
+local always_percent = S{'Haste','Triple Attack','Double Attack','Magic Attack Bonus','Weapon skill damage','Store TP','Dual Wield','Critical hit rate'}
 
 local inconsistent_names = {
     ['Damage Taken'] = 'Damage taken'
 }
-
 
 local _stat_abbreviations = {
     ['Dbl'] = 'Double',
@@ -54,29 +44,15 @@ for brief,full in pairs(_stat_abbreviations) do
 end
 _stat_abbreviations = nil
 
---[[
-    Value is per-item (set bonus / number of items in set)
---]]
-local set_bonuses = {
-    ['Steelflash+Bladeborn'] = {
-        ids = S{28520,28521}, stat = 'Double Attack', val = 0.035
-    },
-    ['Dudgeon+Heartseeker'] = {
-        ids = S{28522,28523}, stat = 'Dual Wield', val = 0.035
-    },
-}
-
-
-
 local job_traits = {
     ['Dual Wield'] = {
         tiers = {.1,.15,.25,.3,.35},
         levels = {nin={10,25,45,65,85}, dnc={20,40,60,80}, thf={83,90,98}},
         blu = {
-            [657] = 4,  --[[Blazing Bound]]     [661] = 4,  --Animating Wail
-            [673] = 4,  --[[Quad. Continuum]]   [682] = 4,  --Delta Thrust
-            [686] = 4,  --[[Mortal Ray]]        [699] = 4,  --Barbed Crescent
-            [715] = 8   --Molting Plumage
+            [657] = 4,  --[[Blazing Bound]]     [661] = 4,  --[[Animating Wail]]
+            [673] = 4,  --[[Quad. Continuum]]   [682] = 4,  --[[Delta Thrust]]
+            [686] = 4,  --[[Mortal Ray]]        [699] = 4,  --[[Barbed Crescent]]
+            [715] = 8   --[[Molting Plumage]]
         },
         blu_points_per_tier = 8
     },
@@ -84,16 +60,57 @@ local job_traits = {
         tiers = {.1,.15,.2,.25,.3},
         levels = {sam={10,30,50,70,90}},
         blu = {
-            [545] = 4,  --[[Sickle Slash]]      [640] = 4,  --Tail Slap
-            [674] = 4,  --[[Fantod]]            [692] = 4,  --Sudden Lunge
-            [713] = 8,  --Diffusion Ray
+            [545] = 4,  --[[Sickle Slash]]      [640] = 4,  --[[Tail Slap]]
+            [674] = 4,  --[[Fantod]]            [692] = 4,  --[[Sudden Lunge]]
+            [713] = 8,  --[[Diffusion Ray]]
         },
         blu_points_per_tier = 8
     },
     ['Martial Arts'] = {
         tiers = {400,380,360,340,320,300,280},
         levels = {mnk={1,16,31,46,61,75,82}, pup={25,50,75,87,97}}
-    }
+    },
+    ['Double Attack'] = {
+        tiers = {.1,.12,.14,.16,.18},
+        levels = {war={25,50,75,85,99}},
+        blu = {
+            [656] = 4,  --[[Acrid Stream]]      [659] = 4,  --[[Demoralizing Roar]]
+            [677] = 4,  --[[Empty Thrash]]      [688] = 4,  --[[Heavy Strike]]
+            [709] = 8,  --[[Thrashing Assault]]
+        },
+        blu_points_per_tier = 8
+    },
+    ['Triple Attack'] = {
+        tiers = {.05,.06},
+        levels = {thf={55,95}},
+        blu = {
+            [656] = 4,  --[[Acrid Stream]]      [659] = 4,  --[[Demoralizing Roar]]
+            [677] = 4,  --[[Empty Thrash]]      [688] = 4,  --[[Heavy Strike]]
+            [709] = 8,  --[[Thrashing Assault]]
+        },
+        blu_points_per_tier = 8
+    },
+    ['Accuracy Bonus'] = {
+        tiers = {10,22,35,48,60,73},
+        levels = {rng={10,30,50,70,86,96},drg={30,60,76},dnc={30,60,76},run={50,70,90}},
+        blu = {
+            [589] = 4,  --[[Dimensional Death]]     [560] = 4,  --[[Frenetic Rip]]
+            [611] = 4,  --[[Disseverment]]          [667] = 4,  --[[Vanity Dive]]
+            [700] = 8,  --[[Nature's Meditation]]   [721] = 8,  --[[Anvil Lightning]]
+        },
+        blu_points_per_tier = 8
+    },
+    ['Attack Bonus'] = {
+        tiers = {10,22,35,48,60,72,84,96},
+        levels = {drk={10,30,50,70,76,83,91,99},drg={10,91},war={30,65}},
+        blu = {
+            [620] = 4,  --[[Battle Dance]]      [594] = 4,  --[[Uppercut]]
+            [554] = 4,  --[[Death Scissors]]    [540] = 4,  --[[Spinal Cleave]]
+            [616] = 4,  --[[Temporal Shift]]    [675] = 4,  --[[Thermal Pulse]]
+            [703] = 8,  --[[Embalming Earth]]   [719] = 8,  --[[Searing Tempest]]
+        },
+        blu_points_per_tier = 8
+    },
 }
 job_traits['Martial Arts'].tiers[0] = 480
 
@@ -170,11 +187,16 @@ function gi.get_equipped()
             local uniq_item = itemlist[bagmap[eq_tbl[slot..'_bag']]][idx_in_bag]
             local ires = res.items[uniq_item.id]
             equipped[sname] = gi.resolve_stat_misc({
-                name = ires.enl:capitalize(), category = ires.category,
-                id = uniq_item.id, level = ires.level, slots = ires.slots,
-                flags = ires.flags, jobs = ires.jobs,
+                name = ires.enl:capitalize(),
+                category = ires.category,
+                id = uniq_item.id,
+                level = ires.level,
+                slots = ires.slots,
+                flags = ires.flags,
+                jobs = ires.jobs,
                 augments = gi.parse_stats(setops.expand_augments(uniq_item).augments),
-                description = gi.tokenize_description(res.item_descriptions[uniq_item.id].en)
+                description = gi.tokenize_description(res.item_descriptions[uniq_item.id].en),
+                res = ires
             })
         end
     end
@@ -196,9 +218,9 @@ function gi.resolve_stat_misc(item)
         item.description['STR*'] = nil
         item.description['DEX*'] = nil
     end
-    for id,stats in pairs(ambiguous_stats) do
+    for id,info in pairs(ambiguous_stats) do
         if item.id == id then
-            for k,v in pairs(stats) do
+            for k,v in pairs(info.stats) do
                 item.description[k] = v
             end
             break
@@ -360,11 +382,11 @@ function gi.parse_stat_str(line)
             local op = tok:sub(p,p):trim()
             local v = tok:sub(p+1):trim()
             if op == '-' then v = op..v end
-            if v:endswith('%') then
-                v = tonumber(v:sub(1,-2)) / 100
-            elseif v:contains('~') then
+            if v:contains('~') then
                 local rng = v:split('~')
                 v = {tonumber(rng[1]), tonumber(rng[2])}
+            elseif v:endswith('%') then
+                v = tonumber(v:sub(1,-2)) / 100
             else
                 v = tonumber(v)
             end
@@ -408,9 +430,28 @@ local haste_buffs = {
     ['Haste II + Victory March +3'] = 451/1024,
 }
 
+local function calc_acc(skill, dex)
+    local dex_acc = math.floor(dex * 0.75)
+    local skill_acc = 0
+    if skill < 201 then
+        skill_acc = skill
+    elseif skill < 401 then
+        skill_acc = math.floor((skill - 200) * 0.9) + 200
+    elseif skill < 601 then
+        skill_acc = math.floor((skill - 400) * 0.8) + 380
+    else
+        skill_acc = math.floor((skill - 600) * 0.9) + 540
+    end
+    return skill_acc + dex_acc
+end
 
-function gi.weap_delay()
-    --TODO: JA Haste
+
+function gi.equipped_stat(stat)
+    return gi.summarize_stats()[stat] or 0
+end
+
+
+function gi.melee_stats()
     local gear = gi.get_equipped()
     local gear_stats = gi.summarize_stats()
     local dwing = false
@@ -418,12 +459,6 @@ function gi.weap_delay()
     if gear.sub ~= nil then
         dwing = (gear.sub.category == 'Weapon')
     end
-    
-    local gear_haste = (gear_stats.Haste or 0) * 1024
-    gear_haste = ((gear_haste > 256) and 256 or gear_haste) / 1024
-    
-    local gear_stp = gear_stats['Store TP'] or 0
-    local stp = gear_stp + gi.job_trait('Store TP')
     
     local delay1, delay2 = 0, 0
     if gear.main then
@@ -438,36 +473,93 @@ function gi.weap_delay()
         delay1 = gi.job_trait('Martial Arts')
     end
     
-    local rtbl = {}
+    local gear_haste = (gear_stats.Haste or 0) * 1024
+    gear_haste = ((gear_haste > 256) and 256 or gear_haste) / 1024
     
+    local ja_haste = 0
+    --Haste Samba: 5 + (if main=DNC: player.merits.haste_samba_effect)
+    --Last Resort: 15 + (if main=DRK: (player.merits.desperate_blows * 2))
+    if (not h2hing) and buff_active('Hasso') and (gear.main ~= nil) then
+        if (#(gear.main.res.slots) == 1) then
+            ja_haste = ja_haste + .1
+            if hasso_haste[gear.legs.id] ~= nil then
+                ja_haste = ja_haste + hasso_haste[gear.legs.id]
+            end
+        end
+    end
+    ja_haste = (ja_haste < .25) and ja_haste or .25
+    
+    local gear_stp = gear_stats['Store TP'] or 0
+    local stp = gear_stp + gi.job_trait('Store TP')
+    local pre_magic_haste = ja_haste + gear_haste
+    
+    local total_da = (gear_stats['Double Attack'] or 0) + gi.job_trait('Double Attack')
+    local total_ta = (gear_stats['Triple Attack'] or 0) + gi.job_trait('Triple Attack')
+    
+    atcfs('Gear+JA Haste: %.2f%% | Total STP: %.2f%% | Double Attack: %.2f%% | Triple Attack: %.2f%%':format(pre_magic_haste*100, stp*100, total_da*100, total_ta*100))
+    
+    local dex = player.base_dex + (gear_stats['DEX'] or 0)
+    local str = player.base_str + (gear_stats['STR'] or 0)
+    local acc = (gear_stats['Accuracy'] or 0) + gi.job_trait('Accuracy Bonus')
+    local att = (gear_stats['Attack'] or 0) + gi.job_trait('Attack Bonus')
+    
+    local main_acc, main_att = 0, 0
+    local main_skill_type = (gear.main ~= nil) and res.skills[gear.main.res.skill].en or 'Hand-to-Hand'
+    local main_skill = player.skills[main_skill_type:lower():gsub(' ','_'):gsub('-','_')]
+    local main_skill_desc = '%s skill':format(main_skill_type)
+    local main_total_skill = main_skill + ((gear.main ~= nil) and (gear.main.description[main_skill_desc] or 0) or 0)
+    main_acc = calc_acc(main_total_skill, dex) + acc
+    main_att = 15 + main_total_skill + math.floor(str * 0.75) + att
+    
+    local sub_acc, sub_att = 0, 0
+    if gear.sub ~= nil then
+        local sub_skill_type = res.skills[gear.sub.res.skill].en
+        local sub_skill = player.skills[sub_skill_type:lower():gsub(' ','_'):gsub('-','_')]
+        local sub_skill_desc = '%s skill':format(sub_skill_type)
+        local sub_total_skill = sub_skill + (gear.sub.description[sub_skill_desc] or 0)
+        sub_acc = calc_acc(sub_total_skill, dex) + acc
+        sub_att = 15 + sub_total_skill + math.floor(str * 0.5) + att
+    end
+    
+    atcfs('Accuracy: %s / %s  |  Attack: %s / %s', main_acc, sub_acc, main_att, sub_att)
+    
+    local rtbl = {}
     if dwing then
         local gear_dw = gear_stats['Dual Wield'] or 0
         local total_dw = gear_dw + gi.job_trait('Dual Wield')
+        total_dw = (total_dw <= 0.8) and total_dw or 0.8
         local dw_delay = (delay1 + delay2) * (1 - total_dw) / 2.0
-        
-        atcfs('Total DW: %s  |  Base DW delay: %s  |  Total STP: %s', total_dw, dw_delay, stp)
         
         local delay_cap = (delay1 + delay2) * 0.2
         local tpPerHit = gi.tp_for_delay(dw_delay)
         tpPerHit = math.floor(tpPerHit * (1 + stp))
         
-        local unbuffed_delay = (delay1 + delay2) * (1 - total_dw) * (1 - gear_haste)
+        atcfs('Total DW: %.2f%% | Base DW delay: %s | TP/Hit: %s | Hits to 1k: %.2f', total_dw*100, dw_delay, tpPerHit, 1000/tpPerHit)
+        
+        local unbuffed_delay = (delay1 + delay2) * (1 - total_dw) * (1 - pre_magic_haste)
         unbuffed_delay = (unbuffed_delay < delay_cap) and delay_cap or unbuffed_delay
         local delay_reduction = (1 - (unbuffed_delay / (delay1 + delay2))) * 100
         
-        rtbl['Base'] = 'Delay: %d per hand (%.2f%% reduction) | %d TP/Hit':format(math.floor(unbuffed_delay/2), delay_reduction, tpPerHit)
+        rtbl['Base'] = 'Delay: %d per hand (%.2f%% reduction)':format(math.floor(unbuffed_delay/2), delay_reduction)
         
         for buff,value in pairs(haste_buffs) do
             local magic_haste = (value > 448/1024) and 448/1024 or value
-            local total_haste = magic_haste + gear_haste
+            local total_haste = magic_haste + pre_magic_haste
             local buffed_delay = (delay1 + delay2) * (1 - total_dw) * (1 - total_haste)
             buffed_delay = (buffed_delay < delay_cap) and delay_cap or buffed_delay
             delay_reduction = (1 - (buffed_delay / (delay1 + delay2))) * 100
-            rtbl['Buffs: %s':format(buff)] = 'Delay: %d per hand (%.2f%% reduction) | %d TP/Hit':format(math.floor(buffed_delay/2), delay_reduction, tpPerHit)
+            rtbl['Buffs: %s':format(buff)] = 'Delay: %d per hand (%.2f%% reduction)':format(math.floor(buffed_delay/2), delay_reduction)
         end
         
     end
-    return rtbl
+    pprint(rtbl)
+    --return rtbl
+end
+
+
+function gi.print_melee_stats()
+    local melee_stats = gi.melee_stats()
+    
 end
 
 
@@ -492,6 +584,7 @@ end
 --==============================================================================
 
 function gi.blu_trait_tier(point_map, points_per_tier)
+    if point_map == nil then return 0 end
     local set_spells
     local job_points = 0
     if player.main_job == 'BLU' then
@@ -505,7 +598,7 @@ function gi.blu_trait_tier(point_map, points_per_tier)
     
     local trait_points = 0
     for _,id in pairs(set_spells) do
-        trait_points = trait_points + point_map[id]
+        trait_points = trait_points + (point_map[id] or 0)
     end
     local tier = math.floor(trait_points / points_per_tier)
     if job_points >= 1200 then
@@ -552,9 +645,22 @@ function gi.job_trait(trait_name)
     local main_tier = tier_for_job(trait, player.main_job, player.main_job_level)
     local sub_tier = tier_for_job(trait, player.sub_job, player.sub_job_level)
     
+    local blu_da = false
+    if (player.main_job == 'BLU') then
+        if trait_name == 'Double Attack' then
+            blu_da = (main_tier == 1)
+            main_tier = 0
+        elseif trait_name == 'Triple Attack' then
+            main_tier = (main_tier > 1) and 1 or 0
+        end
+    end
     local tier = max(main_tier, sub_tier)
     tier = (tier > #trait.tiers) and #trait.tiers or tier
-    return trait.tiers[tier] or 0
+    local trait_value = trait.tiers[tier] or 0
+    if blu_da then
+        return max(0.07, trait_value)
+    end
+    return trait_value
 end
 
 

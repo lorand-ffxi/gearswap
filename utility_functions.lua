@@ -8,7 +8,7 @@
 --          File Handling Functions
 --==============================================================================
 
-lor_gs_versions.utility_functions = '2016-07-16.0'
+lor_gs_versions.utility_functions = '2016-10-15.0'
 
 --[[
     Attempt to load user gear files in place of default gear sets.
@@ -68,6 +68,49 @@ function include_if_exists(filename)
     end
     return false
 end
+
+
+function load_auto_defense()
+    local ad_settings = _libs.lor.settings.load('data/auto_defense.lua', {monster_abilities={magic=S{},physical=S{},turn=S{}},spells={magic=S{},physical=S{},turn=S{}}})
+    auto_defense = {monster_abilities={magic={},physical={},turn={}},spells={magic={},physical={},turn={}}}
+    
+    local res_types = {'monster_abilities','spells'}
+    local types = {'magic','physical','turn'}
+    local norm_res = {}
+    for _,rtype in pairs(res_types) do
+        norm_res[rtype] = {}
+        for id, action in pairs(res[rtype]) do
+            local aname = action.en
+            local aname_l = aname:lower()
+            norm_res[rtype][aname_l] = norm_res[rtype][aname_l] or {name=aname,ids=S{}}
+            norm_res[rtype][aname_l].ids:add(id)
+        end
+        
+        for _,t in pairs(types) do
+            for action,_ in pairs(ad_settings[rtype][t]) do
+                local maction
+                if isnum(action) then
+                    maction = res[rtype][action]
+                    if maction ~= nil then
+                        auto_defense[rtype][t][maction.id] = maction.en
+                    else
+                        atcfs(123, 'Unable to find %s in resources: %s', rtype, action)
+                    end
+                else
+                    maction = norm_res[rtype][action:lower()]
+                    if maction ~= nil then
+                        for id,_ in pairs(maction.ids) do
+                            auto_defense[rtype][t][id] = maction.name
+                        end
+                    else
+                        atcfs(123, 'Unable to find %s in resources: %s', rtype, action)
+                    end
+                end
+            end
+        end
+    end
+end
+
 
 function populateTrustList()
     local trusts = S{}

@@ -5,7 +5,7 @@
 --]]
 -----------------------------------------------------------------------------------------------------------
 
-lor_gs_versions.settings_default = '2016-09-24.0'
+lor_gs_versions.settings_default = '2016-10-15.0'
 
 function set_options()
     --Options only need to be set here if your preference differs from the settings in defaults.lua
@@ -22,9 +22,10 @@ function set_options()
         gear.hercHead = {name="Herculean Helm", augments={'Accuracy+19 Attack+19','"Dual Wield"+3','STR+6','Accuracy+13','Attack+13'}}
         gear.hercHands = {name="Herculean Gloves", augments={'Accuracy+26','"Triple Atk."+3','AGI+6'}}
         gear.hercLegs = {name="Herculean Trousers", augments={'Accuracy+21 Attack+21','Crit. hit damage +3%','STR+9','Accuracy+9','Attack+8'}}
-        gear.hercFeet = {name="Herculean Boots", augments={'Accuracy+18','"Triple Atk."+3','Attack+10'}}
+        gear.hercFeet = {name="Herculean Boots", augments={'Accuracy+20 Attack+20','"Counter"+4','Accuracy+15'}}
         gear.heliosMABhands = {name="Helios Gloves", augments={'"Mag.Atk.Bns."+25','Mag. crit. hit dmg. +8%'}}
         gear.heliosMABfeet = {name="Helios Boots", augments={'"Mag.Atk.Bns."+24','Magic crit. hit rate +3','Magic burst mdg.+2%'}}
+        gear.adhemarLegsA = {name="Adhemar Kecks", augments={'DEX+10','AGI+10','Accuracy+15'}}
     elseif player.name == 'Kaley' then
         gear.darkRing1 = {name="Dark Ring", augments={'Phys. dmg. taken -5%','Breath dmg. taken -4%','Magic dmg. taken -3%'}}
     end
@@ -66,7 +67,7 @@ function set_modes()
         modelist['weapon'] = {'Main','Melee','Other'}
     elseif S{'BLU'}:contains(player.main_job) then
         modelist['offense'] = {'auto', 'Learn', 'CrazyAccuracy'}
-        modelist['idle'] = {'CapFarm','Normal','Learn'}
+        modelist['idle'] = {'CapFarm','Normal','DT','Learn'}
         modelist['weapon'] = {'Main','OAT','Magic','Other'}
     elseif S{'RNG'}:contains(player.main_job) then
         modelist['offense'] = {'Bow','Gun'}
@@ -107,21 +108,21 @@ function set_keybinds()
     local mj = player.main_job
     local sj = player.sub_job
     local keybinds = {}
-    keybinds['^d'] = 'gs c set defense PDT'     --Enter Physical defense mode
-    keybinds['!d'] = 'gs c set defense MDT'     --Enter Magic defense mode
-    keybinds['@d'] = 'gs c reset defense'       --Reset the defense mode
-    keybinds['@e'] = 'gs c update user'     --Equip whatever should be worn for the current state
-    keybinds['@w'] = 'equip engaged'        --Equip the current proper engaged set
-    keybinds['@a'] = 'gs c cycle accuracy'      --Cycle through accuracy modes
-    keybinds['@s'] = 'gs c cycle offense'       --Cycle through offense modes
-    keybinds['@q'] = 'gs c cycle idle'      --Cycle through idle modes
-    keybinds['@c'] = 'gs c cycle casting'       --Cycle through casting modes
-    keybinds['@r'] = 'gs c cycle ranged'        --Cycle through ranged modes
-    keybinds['@v'] = 'gs c cycle weapon'        --Cycle through weapon modes
+    keybinds['^d'] = 'gs c set defense PDT'         --Enter Physical defense mode
+    keybinds['!d'] = 'gs c set defense MDT'         --Enter Magic defense mode
+    keybinds['@d'] = 'gs c reset defense'           --Reset the defense mode
+    keybinds['@e'] = 'gs c update user'             --Equip whatever should be worn for the current state
+    keybinds['@w'] = 'equip engaged'                --Equip the current proper engaged set
+    keybinds['@a'] = 'gs c cycle accuracy'          --Cycle through accuracy modes
+    keybinds['@s'] = 'gs c cycle offense'           --Cycle through offense modes
+    keybinds['@q'] = 'gs c cycle idle'              --Cycle through idle modes
+    keybinds['@c'] = 'gs c cycle casting'           --Cycle through casting modes
+    keybinds['@r'] = 'gs c cycle ranged'            --Cycle through ranged modes
+    keybinds['@v'] = 'gs c cycle weapon'            --Cycle through weapon modes
     keybinds['@F12'] = 'du blinking self always'    --Toggle DressUp's prevention of own character blinking always
-    keybinds['@i'] = 'gs c toggle noIdle'       --Toggle prevention of aftercast equipment use
-    keybinds['@f'] = 'hb f'             --Toggle HealBot's Follow feature
-    keybinds['@t'] = 'gs c toggle tank'     --Overwritten by Treasure mode when THF
+    keybinds['@i'] = 'gs c toggle noIdle'           --Toggle prevention of aftercast equipment use
+    keybinds['@f'] = 'hb f'                         --Toggle HealBot's Follow feature
+    keybinds['@b'] = 'gs c toggle autoDefense'      --Overwritten by Treasure mode when THF
 
     --Job-specific keybinds
     if S{mj,sj}:contains('SCH') then
