@@ -1,5 +1,5 @@
 
-lor_gs_versions.exporter = '2016-09-24.1'
+lor_gs_versions.exporter = '2016-10-23.0'
 
 --[[
     Export Gear
@@ -10,10 +10,11 @@ lor_gs_versions.exporter = '2016-09-24.1'
     <set name>  uses the provided name as the name of the set
 --]]
 local _export_gear = function(args)
-    local header = 'sets.exported'
+    local default_header = 'sets.exported'
     local listfmt = not any_eq('no_augs', unpack(args))
     local include_augs = true
     local canonical = false
+    local use_tabs = false
     
     local kvargs = _libs.lor.argparse.extract_kvpairs(args, true)
     if kvargs.help or kvargs.h then
@@ -21,8 +22,9 @@ local _export_gear = function(args)
         atc('--help, -h         show this help message and exit')
         atc('--format, -f       list: separate lines; group: grouped by equipment window rows')
         atc('--no_augs          only include item names, not augments (default: include augments)')
-        atc('--name, -n         name to use for the set (default: %s)':format(header))
+        atc('--name, -n         name to use for the set (default: %s)':format(default_header))
         atc('--canonical, -c    include full item info (default: substitute gear.xyz variables when a match is found)')
+        atc('--use_tabs, -t     Use tabs (default: use spaces)')
         return
     end
     if kvargs.format or kvargs.f then
@@ -33,9 +35,8 @@ local _export_gear = function(args)
             return
         end
     end
-    if kvargs.name or kvargs.n then
-        header = kvargs.name or kvargs.n
-    end
+    
+    local header = kvargs.name or kvargs.n or default_header
     if kvargs.no_augs then
         include_augs = false
     end
@@ -99,11 +100,12 @@ local _export_gear = function(args)
     local f = io.open(windower.addon_path..path..'.lua','w+')
     f:write(header..' = {\n')
     
-    local fmt = '\t%s=%s'
+    local fmt = '%s=%s'
     local printed = 0
     local last_comma = sizeof(equipped)
     local comma = false
     local last_was_nl = false
+    local last_entry_len
     for i = 1, 16 do
         local slot = slots[i]
         local sname = slotmap[slot] or slot
@@ -111,10 +113,13 @@ local _export_gear = function(args)
         
         if comma then f:write(',') end
         if iname then
-            f:write(fmt:format(sname, iname))
+            local entry = fmt:format(sname, iname)
+            local spaces = (last_was_nl or (i == 1)) and 4 or (4 - (last_entry_len % 4))
+            f:write(' ':rep(spaces), entry)
             printed = printed + 1
             comma = printed < last_comma
             last_was_nl = false
+            last_entry_len = comma and (#entry + 1) or #entry
         else
             comma = false
         end

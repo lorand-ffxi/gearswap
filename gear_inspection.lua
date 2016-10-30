@@ -344,9 +344,12 @@ function gi.print_summary(key)
     else
         atcfs(123, 'Error: summary not available for \'%s\'', key)
     end
-    
 end
 
+
+function gi.def_report()
+    gi.print_summary('dt')
+end
 
 function gi.merge_item_stats(item)
     return merge_stat_dicts(item.description, item.augments)
@@ -414,6 +417,7 @@ end
 
 
 local haste_buffs = {
+    ['Base'] = 0,
     ['Haste'] = 150/1024,
     ['Haste II'] = 307/1024,
     --['Advancing March +0'] = 64/1024,
@@ -425,9 +429,9 @@ local haste_buffs = {
     --Refueling = 102/1024,
     ['Geo Haste'] = 362/1024,  --29.9% base @ skill 900 + 5.5% (Nepote Bell)
     ['Haste II + March x2'] = 467/1024,
-    ['Haste + March x2'] = 310/1024,
-    ['Haste + March+3 x2'] = 406/1024,
-    ['Haste II + Victory March +3'] = 451/1024,
+    --['Haste + March x2'] = 310/1024,
+    --['Haste + March+3 x2'] = 406/1024,
+    --['Haste II + Victory March +3'] = 451/1024,
 }
 
 local function calc_acc(skill, dex)
@@ -496,7 +500,7 @@ function gi.melee_stats()
     local total_da = (gear_stats['Double Attack'] or 0) + gi.job_trait('Double Attack')
     local total_ta = (gear_stats['Triple Attack'] or 0) + gi.job_trait('Triple Attack')
     
-    atcfs('Gear+JA Haste: %.2f%% | Total STP: %.2f%% | Double Attack: %.2f%% | Triple Attack: %.2f%%':format(pre_magic_haste*100, stp*100, total_da*100, total_ta*100))
+    atcfs('Gear+JA Haste: %.2f%% | Total STP: %s%% | Double Attack: %s%% | Triple Attack: %s%%':format(pre_magic_haste*100, stp*100, total_da*100, total_ta*100))
     
     local dex = player.base_dex + (gear_stats['DEX'] or 0)
     local str = player.base_str + (gear_stats['STR'] or 0)
@@ -512,7 +516,7 @@ function gi.melee_stats()
     main_att = 15 + main_total_skill + math.floor(str * 0.75) + att
     
     local sub_acc, sub_att = 0, 0
-    if gear.sub ~= nil then
+    if dwing then
         local sub_skill_type = res.skills[gear.sub.res.skill].en
         local sub_skill = player.skills[sub_skill_type:lower():gsub(' ','_'):gsub('-','_')]
         local sub_skill_desc = '%s skill':format(sub_skill_type)
@@ -521,7 +525,9 @@ function gi.melee_stats()
         sub_att = 15 + sub_total_skill + math.floor(str * 0.5) + att
     end
     
-    atcfs('Accuracy: %s / %s  |  Attack: %s / %s', main_acc, sub_acc, main_att, sub_att)
+    atcfs('Accuracy: %s / %s  |  Attack: %s / %s  [approximate - acc/att calc is not perfect]', main_acc, sub_acc, main_att, sub_att)
+    
+    local delay_cap = (delay1 + delay2) * 0.2
     
     local rtbl = {}
     if dwing then
@@ -530,27 +536,68 @@ function gi.melee_stats()
         total_dw = (total_dw <= 0.8) and total_dw or 0.8
         local dw_delay = (delay1 + delay2) * (1 - total_dw) / 2.0
         
-        local delay_cap = (delay1 + delay2) * 0.2
-        local tpPerHit = gi.tp_for_delay(dw_delay)
-        tpPerHit = math.floor(tpPerHit * (1 + stp))
+        local base_tpPerHit = gi.tp_for_delay(dw_delay)
+        local tpPerHit = math.floor(base_tpPerHit * (1 + stp))
+        local hits_to_1k = 1000/tpPerHit
+        atcfs('Total DW: %s%% | Base DW delay: %s | TP/hit: %s | Hits to 1k: %.2f', total_dw*100, dw_delay, tpPerHit, hits_to_1k)
         
-        atcfs('Total DW: %.2f%% | Base DW delay: %s | TP/Hit: %s | Hits to 1k: %.2f', total_dw*100, dw_delay, tpPerHit, 1000/tpPerHit)
+        local floored_hits = math.floor(hits_to_1k)
+        local one_hit_fewer = (floored_hits == hits_to_1k) and (floored_hits - 1) or floored_hits
+        local new_stp = stp + 0.01
+        while (1000 /  math.floor(base_tpPerHit * (1 + new_stp))) > one_hit_fewer do
+            new_stp = new_stp + 0.01
+        end
+        local next_tpPerHit = math.floor(base_tpPerHit * (1 + new_stp))
+        local stp_missing = new_stp - stp
+        atcfs('For %.2f hits to 1k: %s TP/hit | %s%% STP (%s%% more)', 1000/next_tpPerHit, next_tpPerHit, new_stp*100, stp_missing*100)
         
         local unbuffed_delay = (delay1 + delay2) * (1 - total_dw) * (1 - pre_magic_haste)
         unbuffed_delay = (unbuffed_delay < delay_cap) and delay_cap or unbuffed_delay
         local delay_reduction = (1 - (unbuffed_delay / (delay1 + delay2))) * 100
         
-        rtbl['Base'] = 'Delay: %d per hand (%.2f%% reduction)':format(math.floor(unbuffed_delay/2), delay_reduction)
-        
+        local buffed_fmt = 'Delay: %d per hand (%.2f%% reduction) | DW to cap: %.2f%% (%s%.2f%%)'
         for buff,value in pairs(haste_buffs) do
             local magic_haste = (value > 448/1024) and 448/1024 or value
             local total_haste = magic_haste + pre_magic_haste
             local buffed_delay = (delay1 + delay2) * (1 - total_dw) * (1 - total_haste)
             buffed_delay = (buffed_delay < delay_cap) and delay_cap or buffed_delay
             delay_reduction = (1 - (buffed_delay / (delay1 + delay2))) * 100
-            rtbl['Buffs: %s':format(buff)] = 'Delay: %d per hand (%.2f%% reduction)':format(math.floor(buffed_delay/2), delay_reduction)
+            local per_hand_delay = math.floor(buffed_delay/2)
+            local req_dw = 1 - (delay_cap / ((delay1 + delay2) * (1 - total_haste)))
+            local missing_dw = req_dw - total_dw
+            local dw_sign = (missing_dw < 0) and '' or '+'
+            rtbl['Buffs: %s':format(buff)] = buffed_fmt:format(per_hand_delay, delay_reduction, req_dw * 100, dw_sign, missing_dw * 100)
         end
+    else
+        local base_tpPerHit = gi.tp_for_delay(delay1)
+        local tpPerHit = math.floor(base_tpPerHit * (1 + stp))
+        local hits_to_1k = 1000/tpPerHit
+        atcfs('Base delay: %s | TP/hit: %s | Hits to 1k: %.2f', delay1, tpPerHit, hits_to_1k)
         
+        local floored_hits = math.floor(hits_to_1k)
+        local one_hit_fewer = (floored_hits == hits_to_1k) and (floored_hits - 1) or floored_hits
+        local new_stp = stp + 0.01
+        while (1000 /  math.floor(base_tpPerHit * (1 + new_stp))) > one_hit_fewer do
+            new_stp = new_stp + 0.01
+        end
+        local next_tpPerHit = math.floor(base_tpPerHit * (1 + new_stp))
+        local stp_missing = new_stp - stp
+        atcfs('For %.2f hits to 1k: %s TP/hit | %s%% STP (%s%% more)', 1000/next_tpPerHit, next_tpPerHit, new_stp*100, stp_missing*100)
+        
+        local unbuffed_delay = (delay1 + delay2) * (1 - pre_magic_haste)
+        unbuffed_delay = (unbuffed_delay < delay_cap) and delay_cap or unbuffed_delay
+        local delay_reduction = (1 - (unbuffed_delay / (delay1 + delay2))) * 100
+        
+        local buffed_fmt = 'Delay: %d (%.2f%% reduction)'
+        for buff,value in pairs(haste_buffs) do
+            local magic_haste = (value > 448/1024) and 448/1024 or value
+            local total_haste = magic_haste + pre_magic_haste
+            local buffed_delay = (delay1 + delay2) * (1 - total_haste)
+            buffed_delay = (buffed_delay < delay_cap) and delay_cap or buffed_delay
+            delay_reduction = (1 - (buffed_delay / (delay1 + delay2))) * 100
+            local actual_delay = math.floor(buffed_delay)
+            rtbl['Buffs: %s':format(buff)] = buffed_fmt:format(actual_delay, delay_reduction)
+        end
     end
     pprint(rtbl)
     --return rtbl

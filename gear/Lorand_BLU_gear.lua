@@ -51,19 +51,24 @@ function init_gear_sets()
         body="Jhakri Robe +1",  hands=gear.heliosMABhands,  ring1="Fenrir Ring +1",     ring2="Acumen Ring",
         back="Cornflower Cape", waist="Aswang Sash",        legs="Hagondes Pants +1",   feet=gear.heliosMABfeet
     }
+    sets.wsBase["Chant du Cygne"] = {                                                   ammo="Jukukik Feather",
+        head=gear.taeonTAhead,  neck="Asperity Necklace",   ear1="Bladeborn Earring",   ear2="Steelflash Earring",
+        body="Jhakri Robe +1",  hands=gear.hercHands,       ring1="Thundersoul Ring",   ring2="Epona's Ring",
+        back=gear.ambuDDcape,   waist="Fotia Belt",         legs=gear.hercLegs,         feet=gear.hercFeet
+    }
     
     --============================================================
     --          Midcast sets
     --============================================================
     sets.midcast.FastRecast = {                                                         ammo="Impatiens",
         head=gear.hercHead,     neck="Orunmila's Torque",   ear1="Loquacious Earring",  ear2="Novia Earring",
-        body="Taeon Tabard",    hands="Buremte Gloves",     ring1="Prolix Ring",        ring2={name="Diamond Ring", augments={'INT+2','MND+2','Spell interruption rate down -2%'}},
+        body="Taeon Tabard",    hands="Buremte Gloves",     ring1="Prolix Ring",        ring2=gear.diamondRing,
         back="Swith Cape",      waist="Witful Belt",        legs=gear.hercLegs,         feet=gear.hercFeet
     }
 
     sets.midcast.Cure = {
         hands="Telchine Gloves",    ring1="Asklepian Ring", ring2="Kunaji Ring",
-        waist="Chuq'aba Belt"
+        back="Solemnity Cape",      waist="Chuq'aba Belt"
     }
     sets.midcast.Cure.with_buff = {}
     sets.midcast.Curaga = sets.midcast.Cure
@@ -92,6 +97,12 @@ function init_gear_sets()
     sets.midcast.BlueMagic = {
         ammo="Mavi Tathlum",
         back="Cornflower Cape"
+    }
+    
+    sets.midcast.BlueMagic['Sudden Lunge'] = {                                          ammo="Honed Tathlum",
+        head=gear.hercHead,     neck="Orunmila's Torque",   ear1="Loquacious Earring",  ear2="Gwati Earring",
+        body="Jhakri Robe +1",  hands="Jhakri Cuffs",       ring1="Sangoma Ring",       ring2="Enlivened Ring",
+        back=gear.jseCape,      waist="Hurch'lan Sash",     legs="Jhakri Slops",        feet=gear.hercFeet
     }
     
     sets.midcast.BlueMagic.Buff = {
@@ -131,23 +142,23 @@ function init_gear_sets()
     }
     sets.midcast.BlueMagic.Physical.STR = {
         neck="Justice Torque",
-        hands={name="Taeon Gloves", augments={'Accuracy+25','"Dual Wield"+4','STR+7 DEX+7'}},
+        hands=gear.taeonDWhands,
         ring2="Pyrosoul Ring",
     }
     sets.midcast.BlueMagic.Physical.VIT = {
-        head={name="Taeon Chapeau", augments={'Accuracy+18 Attack+18','"Triple Atk."+2','Crit. hit damage +2%'}},
-        body={name="Taeon Tabard", augments={'Accuracy+17 Attack+17','Haste+2','STR+6 DEX+6'}},
-        hands={name="Taeon Gloves", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','DEX+7'}},
+        head=gear.taeonTAhead,
+        body=gear.taeonHasteBody,
+        hands=gear.taeonTAhands,
         ring1="Terrasoul Ring", ring2="Spiral Ring",
         waist="Chuq'aba Belt",
-        legs={name="Taeon Tights", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','STR+7 DEX+7'}},
-        feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+5','STR+6 DEX+6'}}
+        legs=gear.taeonTAlegs,
+        feet=gear.taeonDWfeet
     }
     sets.midcast.BlueMagic.Physical.DEXINT = {
         neck="Love Torque",
-        hands={name="Taeon Gloves", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','DEX+7'}},
+        hands=gear.taeonTAhands,
         ring2="Thundersoul Ring",
-        legs={name="Taeon Tights", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','STR+7 DEX+7'}},
+        legs=gear.taeonTAlegs,
     }
     sets.midcast.BlueMagic.Physical.STRAGI = {
         neck="Justice Torque",
@@ -155,10 +166,10 @@ function init_gear_sets()
         waist="Prosilio Belt",  legs="Nahtirah Trousers",   feet="Iuitl Gaiters +1"
     }
     sets.midcast.BlueMagic.Physical.STRDEX = {
-        hands={name="Taeon Gloves", augments={'Accuracy+25','"Dual Wield"+4','STR+7 DEX+7'}},
+        hands=gear.taeonDWhands,
         ring2="Pyrosoul Ring",
-        legs={name="Taeon Tights", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','STR+7 DEX+7'}},
-        feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+5','STR+6 DEX+6'}}
+        legs=gear.taeonTAlegs,
+        feet=gear.taeonDWfeet
     }
     sets.midcast.BlueMagic.Physical.STRINT = {
         ring2="Spiral Ring",
@@ -167,27 +178,20 @@ function init_gear_sets()
         ring2="Pyrosoul Ring",
     }
     sets.midcast.BlueMagic.Physical.STRVIT = {
-        hands={name="Taeon Gloves", augments={'Accuracy+25','"Dual Wield"+4','STR+7 DEX+7'}},
+        hands=gear.taeonDWhands,
         ring2="Spiral Ring",
     }
     sets.midcast.BlueMagic.Physical['Cannonball'] = {   --Uses def instead of att
         head="Whirlpool Mask",  neck="Stone Gorget",
         body="Qaaxo Harness",   hands="Iuitl Wristbands +1",    ring1="Paguroidea Ring",    ring2="Provocare Ring",
         back="Ogapepo Cape",    waist="Cetl Belt",              legs="Nahtirah Trousers",
-        feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+5','STR+6 DEX+6'}}
+        feet=gear.taeonDWfeet
     }
 
-    sets.midcast.BlueMagic.Magic = {
-        ammo="Dosis Tathlum",
-        head="Jhakri Coronal",  neck="Eddy Necklace",   ear1="Hecate's Earring",    ear2="Friomisi Earring",
-        body="Jhakri Robe +1",
-        hands={name="Helios Gloves", augments={'"Mag.Atk.Bns."+25','Mag. crit. hit dmg. +8%'}},
-        ring1="Fenrir Ring +1",
-        ring2="Acumen Ring",
-        back={name="Cornflower Cape", augments={'MP+18','DEX+1','Accuracy+1','Blue Magic skill +9'}},
-        waist="Aswang Sash",
-        legs={name="Hagondes Pants +1", augments={'Phys. dmg. taken -2%','"Mag.Atk.Bns."+17'}},
-        feet={name="Helios Boots", augments={'"Mag.Atk.Bns."+24','Magic crit. hit rate +3','Magic burst mdg.+2%'}}
+    sets.midcast.BlueMagic.Magic = {                                                    ammo="Dosis Tathlum",
+        head="Jhakri Coronal",  neck="Eddy Necklace",       ear1="Hecate's Earring",    ear2="Friomisi Earring",
+        body="Jhakri Robe +1",  hands=gear.heliosMABhands,  ring1="Fenrir Ring +1",     ring2="Acumen Ring",
+        back=gear.jseCape,      waist="Aswang Sash",        legs=gear.hagondesPants,    feet=gear.heliosMABfeet
     }
     sets.midcast.BlueMagic.Magic.CHR = {}
     sets.midcast.BlueMagic.Magic.DEX = {}
@@ -199,10 +203,8 @@ function init_gear_sets()
     sets.midcast.BlueMagic.Magic.STRDEX = {}
     sets.midcast.BlueMagic.Magic['Blazing Bound'] = {   --Uses MDB instead of MAB
         head="Telchine Cap",    neck="Twilight Torque",     ear1="Merman's Earring",    ear2="Merman's Earring",
-        body="Iuitl Vest +1",   hands="Telchine Gloves",    ring1="Defending Ring",     ring2={name="Dark Ring", augments={'Magic dmg. taken -4%','Phys. dmg. taken -5%'}},
-        back="Tuilha Cape",
-        legs={name="Taeon Tights", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','STR+7 DEX+7'}},
-        feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+5','STR+6 DEX+6'}}
+        body="Iuitl Vest +1",   hands="Telchine Gloves",    ring1="Defending Ring",     ring2=gear.darkRing1,
+        back="Tuilha Cape",                                 legs=gear.taeonTAlegs,      feet=gear.taeonDWfeet
     }
     
     sets.midcast.BlueMagic.Breath = {
@@ -228,7 +230,7 @@ function init_gear_sets()
     
     sets.weapons.Main = {main="Tanmogayi +1", sub="Claidheamh Soluis"}
     sets.weapons.OAT = {main="Tanmogayi +1", sub="Xiutleato"}
-    sets.weapons.Magic = {main=gear.nehushtan1, sub="Bolelabunga"}
+    sets.weapons.Magic = {main=gear.nibiruClub1, sub="Bolelabunga"}
     
     sets.resting = {                                                                    ammo="Demonry Stone",
         head="Taeon Chapeau",   neck="Eidolon Pendant",     ear1="Loquacious Earring",  ear2="Relaxing Earring",
@@ -259,12 +261,12 @@ function init_gear_sets()
     -- Defense sets
     sets.defense.PDT = {    ammo="Bibiki Seashell",
         head="Iuitl Headgear +1",   neck="Twilight Torque", ear1="Novia Earring",   ear2="Ethereal Earring",
-        body="Iuitl Vest +1",       hands="Umuthi Gloves",  ring1="Defending Ring", ring2={name="Dark Ring", augments={'Magic dmg. taken -4%','Phys. dmg. taken -5%'}},
+        body="Iuitl Vest +1",       hands="Umuthi Gloves",  ring1="Defending Ring", ring2=gear.darkRing1,
         back="Repulse Mantle",      waist="Flume Belt",     legs=gear.hercLegs,     feet=gear.hercFeet
     }
     sets.defense.MDT = {                                                                ammo="Demonry Stone",
         head="Telchine Cap",    neck="Twilight Torque",     ear1="Merman's Earring",    ear2="Merman's Earring",
-        body="Iuitl Vest +1",   hands="Telchine Gloves",    ring1="Defending Ring",     ring2={name="Dark Ring", augments={'Magic dmg. taken -4%','Phys. dmg. taken -5%'}},
+        body="Iuitl Vest +1",   hands="Telchine Gloves",    ring1="Defending Ring",     ring2=gear.darkRing1,
         back="Tuilha Cape",                                 legs=gear.hercLegs,         feet=gear.hercFeet
     }
 
@@ -300,12 +302,13 @@ function init_gear_sets()
     
     sets.engaged.auto.MediumAcc = {
         neck="Sanctity Necklace",
-        ring2="Chirich Ring"
+        ring2="Chirich Ring",
+        legs="Adhemar Kecks"
     }
     sets.engaged.auto.HighAcc = {   ammo="Honed Tathlum",
         neck="Sanctity Necklace",
         ring1="Mars's Ring",        ring2="Chirich Ring",
-        waist="Hurch'lan Sash"
+        waist="Hurch'lan Sash",     legs="Adhemar Kecks"
     }
     
     sets.engaged.CrazyAccuracy = {                                                      ammo="Honed Tathlum",

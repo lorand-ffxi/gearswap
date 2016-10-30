@@ -1,7 +1,7 @@
 return {
     ['_comment'] = 'Place monster ability names in the appropriate category',
     ['monster_abilities'] = {
-        ['magic'] = S{'Seaspray','Leeching Current'},
+        ['magic'] = S{'Seaspray','Leeching Current','Suction'},
         ['physical'] = S{'Seismic Tail','Gnash','Deathgnash'},
         ['turn'] = S{'Bewitching Lantern','Hypnic Lamp','Mayhem Lantern'}
     },

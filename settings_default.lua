@@ -12,6 +12,7 @@ function set_options()
     options.autoDummy = true        --Automatically use Daurdabla/Terpander with specified songs
     
     if player.name == 'Lorand' then
+        gear.nibiruClub1 = {name="Nibiru Cudgel", augments={'MP+50','INT+10','"Mag.Atk.Bns."+15'}}
         gear.taeonTAhead = {name="Taeon Chapeau", augments={'Accuracy+18 Attack+18','"Triple Atk."+2','Crit. hit damage +2%'}}
         gear.taeonHasteBody = {name="Taeon Tabard", augments={'Accuracy+17 Attack+17','Haste+2','STR+6 DEX+6'}}
         gear.taeonTAhands = {name="Taeon Gloves", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','DEX+7'}}
@@ -26,8 +27,21 @@ function set_options()
         gear.heliosMABhands = {name="Helios Gloves", augments={'"Mag.Atk.Bns."+25','Mag. crit. hit dmg. +8%'}}
         gear.heliosMABfeet = {name="Helios Boots", augments={'"Mag.Atk.Bns."+24','Magic crit. hit rate +3','Magic burst mdg.+2%'}}
         gear.adhemarLegsA = {name="Adhemar Kecks", augments={'DEX+10','AGI+10','Accuracy+15'}}
+        gear.diamondRing = {name="Diamond Ring", augments={'INT+2','MND+2','Spell interruption rate down -2%'}}
+        gear.darkRing1 = {name="Dark Ring", augments={'Magic dmg. taken -4%','Phys. dmg. taken -5%'}}
+        gear.hagondesPants = {name="Hagondes Pants +1", augments={'Phys. dmg. taken -2%','"Mag.Atk.Bns."+17'}}
+        gear.acroAccLegs = {name="Acro Leggings", augments={'Accuracy+19','"Store TP"+3','STR+2 AGI+2'}}
+        gear.odysseanAccLegs = {name="Odyssean Cuisses", augments={'Accuracy+25 Attack+25','Potency of "Cure" effect received+5%','DEX+1','Attack+5'}}
+        gear.xaddiBody = {name="Xaddi Mail", augments={'Attack+15','Accuracy+10','"Store TP"+3'}}
+        gear.cizinHands = {name="Cizin Mufflers +1", augments={'Phys. dmg. taken -1%','"Dbl.Atk."+1'}}
+        gear.cizinPDTfeet = {name="Cizin Greaves +1", augments={'Phys. dmg. taken -4%','Accuracy+4'}}
+        gear.souveranHeadC = {name="Souveran Schaller", augments={'HP+80','Enmity+7','Potency of "Cure" effect received +10%'}}
     elseif player.name == 'Kaley' then
         gear.darkRing1 = {name="Dark Ring", augments={'Phys. dmg. taken -5%','Breath dmg. taken -4%','Magic dmg. taken -3%'}}
+        gear.jeweledCollar = {name="Jeweled Collar", augments={'"Fast Cast"+2','INT+3','MP recovered while healing +2'}}
+        gear.artsieqBody = {name="Artsieq Jubbah", augments={'----------------'}}
+        gear.hagHands = {name="Hagondes Cuffs +1", augments={'Phys. dmg. taken -4%','"Avatar perpetuation cost" -3'}}
+        gear.artsieqLegs = {name="Artsieq Hose", augments={'MP+30','Mag. Acc.+20','MND+7'}}
     end
     
     autoDummySongs = S{"Army's Paeon"}
@@ -208,7 +222,7 @@ function set_keybinds()
         keybinds['@3'] = 'input /ja "Scavenge" <me>'
         keybinds['@4'] = 'input /ja "Bounty Shot" <t>'
     elseif (mj == 'BLU') then
-        keybinds['^`'] = 'input /ja "Chain Affinity" <me>'
+        keybinds['^`'] = 'input /ja "Chain Affinity" <me>'  --; input /p EHRMAHGERD, SC NAO
         keybinds['!`'] = 'input /ja "Efflux" <me>'
     elseif (mj == 'THF') then
         keybinds['@t'] = 'gs c cycle treasure'

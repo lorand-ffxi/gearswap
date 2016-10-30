@@ -699,9 +699,12 @@ function get_midcast_set(spell)
             if bluType == 'Magic' then
                 if (blu_typemap[spell.en] == 'Buff') then
                     midcastSet = combineSets(midcastSet, sets.midcast.FastRecast)
-                    midcastSet = combineSets(midcastSet, sets.midcast.BlueMagic)
+                    midcastSet = combineSets(midcastSet, sets.midcast.BlueMagic)    --Buff caught by typemap below
                 elseif (blu_typemap[spell.en] == 'Heal') then
                     midcastSet = combineSets(midcastSet, sets.midcast.Cure)
+                    for buff,_ in pairs(buffactive) do
+                        midcastSet = combineSets(midcastSet, sets.midcast.Cure, 'with_buff', buff)
+                    end
                 elseif (blu_typemap[spell.en] == 'Enfeeb') then
                     midcastSet = combineSets(midcastSet, sets.midcast.MagicAccuracy)
                     midcastSet = combineSets(midcastSet, sets.midcast.BlueMagic)
@@ -709,11 +712,19 @@ function get_midcast_set(spell)
                     midcastSet = combineSets(midcastSet, sets.midcast.MagicAccuracy)
                     midcastSet = combineSets(midcastSet, sets.midcast.BlueMagic)
                     midcastSet = combineSets(midcastSet, sets.midcast.BlueMagic.Magic)
+                    midcastSet = combineSets(midcastSet, sets.midcast.BlueMagic.Magic, spell.element)
+                    for buff,_ in pairs(buffactive) do
+                        midcastSet = combineSets(midcastSet, sets.midcast.BlueMagic.Magic, 'with_buff', buff)
+                    end
                 end
             elseif bluType == 'Physical' then
                 midcastSet = combineSets(midcastSet, sets.midcast.BlueMagic)
                 midcastSet = combineSets(midcastSet, sets.midcast.BlueMagic.Physical)
                 midcastSet = combineSets(midcastSet, sets.midcast.BlueMagic.Physical[blu_statmap[spell.en]])
+                midcastSet = combineSets(midcastSet, sets.midcast.BlueMagic.Physical, modes.accuracy)
+                for buff,_ in pairs(buffactive) do
+                    midcastSet = combineSets(midcastSet, sets.midcast.BlueMagic.Physical, 'with_buff', buff)
+                end
             end
             midcastSet = combineSets(midcastSet, sets.midcast.BlueMagic[blu_typemap[spell.en]])
             midcastSet = combineSets(midcastSet, sets.midcast.BlueMagic[spell.en])
@@ -980,16 +991,29 @@ end
 function get_melee_set(baseSet)
     local meleeSet = combineSets(baseSet, sets.engaged)
     meleeSet = combineSets(meleeSet, sets.engaged[modes.offense])
+    meleeSet = combineSets(meleeSet, sets.engaged[modes.offense], time_set)
+
+    local time_set = 'daytime'
+    if (world.time >= (18*60) or world.time <= (6*60)) then
+        time_set = 'nighttime'
+    end
+    
     if (S{'auto','auto_acc'}:contains(modes.offense)) then
         local haste_mod = get_haste_mod()
         meleeSet = combineSets(meleeSet, sets.engaged[modes.offense], modes.accuracy)
+        meleeSet = combineSets(meleeSet, sets.engaged[modes.offense], modes.accuracy, time_set)
         meleeSet = combineSets(meleeSet, sets.engaged[modes.offense], haste_mod)
+        meleeSet = combineSets(meleeSet, sets.engaged[modes.offense], haste_mod, time_set)
     else
         meleeSet = combineSets(meleeSet, sets.engaged[modes.accuracy])
+        meleeSet = combineSets(meleeSet, sets.engaged[modes.accuracy], time_set)
         meleeSet = combineSets(meleeSet, sets.engaged, modes.offense, modes.accuracy)
+        meleeSet = combineSets(meleeSet, sets.engaged, modes.offense, modes.accuracy, time_set)
     end
     meleeSet = combineSets(meleeSet, sets.engaged[modes.defense])
+    meleeSet = combineSets(meleeSet, sets.engaged[modes.defense], time_set)
     meleeSet = combineSets(meleeSet, sets.engaged[modes.defense], modes.accuracy)
+    meleeSet = combineSets(meleeSet, sets.engaged[modes.defense], modes.accuracy, time_set)
     
     for buff,_ in pairs(buffactive) do
         --atc(1, '[Engaged] Buffactive: '..tostring(buff))
@@ -1360,6 +1384,7 @@ executable_commands = {
     ['help']      = {['fn']=print_help,                ['group']='misc', ['args']='', ['help']='Print this help text'},
     ['info']      = {['fn']=info_func,                 ['group']='misc', ['args']='[cmd]', ['help']='View addon/windower variable values'},
     ['meleeinfo'] = {['fn']=gi.melee_stats,            ['group']='misc', ['args']='[cmd]', ['help']='Print melee info about current gear'},
+    ['defreport'] = {['fn']=gi.def_report,             ['group']='misc', ['args']='[cmd]', ['help']='Print defense report about current gear'},
     ['test']      = {['fn']=test,                      ['group']='misc', ['hide']=true},
     ['reload']    = {['fn']=reload,                    ['group']='misc', ['args']='', ['help']='Reload GearSwap entirely; //gs reload only refreshes the user environment, which leads to a memory leak'},
     ['vercheck']  = {['fn']=version_check,             ['group']='misc', ['args']='', ['help']='Display file versions for lor GS files'},

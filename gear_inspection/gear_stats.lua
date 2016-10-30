@@ -64,5 +64,11 @@ return {
         ['stats'] = {
             ['Dual Wield'] = 0.03
         }
+    },
+    [28637] = {
+        ['name'] = 'Lifestream Cape',
+        ['stats'] = {
+            ['Fast Cast'] = 0.07
+        }
     }
 }

@@ -13,6 +13,7 @@ function init_gear_sets()
         head="Hero's Galea",            --8
         neck="Invidia Torque",          --5
         ear1="Friomisi Earring",        --2
+        ear2="Trux Earring",            --5
         body="Creed Cuirass +2",        --10
         --hands="Yorium Gauntlets",       --13
         hands={name="Yorium Gauntlets", augments={'Enmity+9'}},
@@ -150,8 +151,8 @@ function init_gear_sets()
     --          Other sets
     --============================================================
     
-    sets.weapons.Aegis = {main="Claidheamh Soluis",sub="Aegis"}
-    sets.weapons.Priwen = {main="Claidheamh Soluis",sub="Priwen"}
+    sets.weapons.Aegis = {main="Tanmogayi +1",sub="Aegis"}
+    sets.weapons.Priwen = {main="Tanmogayi +1",sub="Priwen"}
     
     sets.Reraise = {head="Twilight Helm", body="Twilight Mail"}
     
@@ -172,79 +173,74 @@ function init_gear_sets()
     sets.idle.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring", legs="Shabti Cuisses"}
     sets.idle.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}
     
-    sets.idle.PDT = {
-        ammo="Bibiki Seashell",
-        head="Reverence Coronet +1",    neck="Twilight Torque",         ear1="Creed Earring",           ear2="Ethereal Earring",
-        body="Reverence Surcoat +1",    hands="Reverence Gauntlets +1", ring1="Defending Ring",
-        ring2={name="Dark Ring", augments={'Magic dmg. taken -4%','Phys. dmg. taken -5%'}},
-        back="Shadow Mantle",           waist="Flume Belt",             legs="Sulevia's Cuisses",       feet="Reverence Leggings +1"
+    sets.idle.PDT = {                                                                                   ammo="Bibiki Seashell",
+        head=gear.souveranHeadC,        neck="Twilight Torque",         ear1="Creed Earring",           ear2="Oneiros Earring",
+        body="Reverence Surcoat +1",    hands="Sulevia's Gauntlets",    ring1="Defending Ring",         ring2=gear.darkRing1,
+        back="Shadow Mantle",           waist="Flume Belt",             legs="Caballarius Breeches +1", feet="Reverence Leggings +1"
     }
     
-    sets.idle.MDT = {
-        ammo="Demonry Stone",
-        head="Sulevia's Mask",          neck="Twilight Torque",         ear1="Merman's Earring",        ear2="Ethereal Earring",
-        body="Reverence Surcoat +1",    hands="Reverence Gauntlets +1", ring1="Defending Ring",         ring2="Archon Ring",
-        back=gear.pldJSEback,           waist="Creed Baudrier",         legs="Sulevia's Cuisses",       feet="Caballarius Leggings +1"
+    sets.idle.MDT = {                                                                               ammo="Demonry Stone",
+        head=gear.souveranHeadC,        neck="Twilight Torque",         ear1="Merman's Earring",    ear2="Oneiros Earring",
+        body="Reverence Surcoat +1",    hands="Reverence Gauntlets +1", ring1="Defending Ring",     ring2="Archon Ring",
+        back=gear.pldJSEback,           waist="Creed Baudrier",         legs="Sulevia's Cuisses",   feet="Caballarius Leggings +1"
     }
     
-    sets.defense.DT = {
-        neck="Twilight Torque",         ear1="Creed Earring",
-        body="Caballarius Surcoat +1",  ring1="Defending Ring",     ring2="Dark Ring",
-        back="Weard Mantle",            waist="Nierenschutz"
+    sets.defense.DT = {                                                                             ammo="Angha Gem",
+        head="Sulevia's Mask",          neck="Twilight Torque",         ear1="Creed Earring",       ear2="Oneiros Earring",
+        body="Reverence Surcoat +1",    hands="Sulevia's Gauntlets",    ring1="Defending Ring",     ring2=gear.darkRing1,
+        back=gear.pldJSEback,           waist="Flume Belt",             legs="Sulevia's Cuisses",   feet="Reverence Leggings +1"
     }
     
     sets.defense.PDT = {                                                                                ammo="Bibiki Seashell",
-        head="Reverence Coronet +1",    neck="Twilight Torque",         ear1="Creed Earring",           ear2="Ethereal Earring",
-        body="Reverence Surcoat +1",    hands="Reverence Gauntlets +1", ring1="Defending Ring",
-        ring2={name="Dark Ring", augments={'Magic dmg. taken -4%','Phys. dmg. taken -5%'}},
-        back="Shadow Mantle",           waist="Flume Belt",             legs="Sulevia's Cuisses",       feet="Reverence Leggings +1"
+        head=gear.souveranHeadC,        neck="Twilight Torque",         ear1="Creed Earring",           ear2="Oneiros Earring",
+        body="Reverence Surcoat +1",    hands="Sulevia's Gauntlets",    ring1="Defending Ring",         ring2=gear.darkRing1,
+        back="Shadow Mantle",           waist="Flume Belt",             legs="Caballarius Breeches +1", feet="Reverence Leggings +1"
     }
 
-    sets.defense.MDT = {                                                                                ammo="Demonry Stone",
-        head="Sulevia's Mask",          neck="Twilight Torque",         ear1="Merman's Earring",        ear2="Ethereal Earring",
-        body="Reverence Surcoat +1",    hands="Reverence Gauntlets +1", ring1="Defending Ring",         ring2="Archon Ring",
-        back=gear.pldJSEback,           waist="Creed Baudrier",         legs="Sulevia's Cuisses",       feet="Caballarius Leggings +1"
+    sets.defense.MDT = {                                                                            ammo="Demonry Stone",
+        head=gear.souveranHeadC,        neck="Twilight Torque",         ear1="Merman's Earring",    ear2="Oneiros Earring",
+        body="Reverence Surcoat +1",    hands="Reverence Gauntlets +1", ring1="Defending Ring",     ring2="Archon Ring",
+        back=gear.pldJSEback,           waist="Creed Baudrier",         legs="Sulevia's Cuisses",   feet="Caballarius Leggings +1"
     }
     
     sets.engaged = {}
     sets.engaged.MediumAcc = {}
     sets.engaged.HighAcc = {}
     
-    sets.engaged.Tankish = {                                                                ammo="Hasty Pinion +1",
-        head="Sulevia's Mask",  neck="Agitator's Collar",       ear1="Bladeborn Earring",   ear2="Steelflash Earring",
-        body="Xaddi Mail",      hands="Sulevia's Gauntlets",    ring1="Defending Ring",     ring2="K'ayres Ring",
-        back=gear.pldJSEback,   waist="Pya'ekue Belt",          legs="Sulevia's Cuisses",
-        feet={name="Acro Leggings", augments={'Accuracy+19','"Store TP"+3','STR+2 AGI+2'}}
+    sets.engaged.Tankish = {                                                                    ammo="Hasty Pinion +1",
+        head="Sulevia's Mask",      neck="Agitator's Collar",       ear1="Bladeborn Earring",   ear2="Steelflash Earring",
+        body="Sulevia's Platemail", hands="Sulevia's Gauntlets",    ring1="Defending Ring",     ring2="K'ayres Ring",
+        back=gear.pldJSEback,       waist="Pya'ekue Belt",          legs=gear.odysseanAccLegs,  feet=gear.acroAccLegs
     }
     sets.engaged.Tankish.MediumAcc = {body="Sulevia's Platemail", ring2="Enlivened Ring"}
     sets.engaged.Tankish.HighAcc = {body="Sulevia's Platemail", ring2="Enlivened Ring"}
     
-    sets.engaged.DD = {                                                                     ammo="Hasty Pinion +1",
-        head="Yaoyotl Helm",    neck="Asperity Necklace",       ear1="Bladeborn Earring",   ear2="Steelflash Earring",
-        body="Xaddi Mail",      hands="Sulevia's Gauntlets",    ring1="Rajas Ring",         ring2="K'ayres Ring",
-        back="Atheling Mantle", waist="Sweordfaetels",          legs="Sulevia's Cuisses",
-        feet={name="Acro Leggings", augments={'Accuracy+19','"Store TP"+3','STR+2 AGI+2'}}
+    sets.engaged.DD = {                                                                 ammo="Jukukik Feather",
+        head="Yaoyotl Helm",    neck="Asperity Necklace",   ear1="Bladeborn Earring",   ear2="Steelflash Earring",
+        body=gear.xaddiBody,    hands=gear.cizinHands,      ring1="Rajas Ring",         ring2="K'ayres Ring",
+        back="Atheling Mantle", waist="Sweordfaetels",      legs=gear.odysseanAccLegs,  feet=gear.acroAccLegs
     }
+    sets.engaged.DD.daytime = {ammo="Tengu-no-Hane"}
     sets.engaged.DD.MediumAcc = {
-        neck="Agitator's Collar",
-        ring2="Chirich Ring",
-        legs="Sulevia's Cuisses"
+        head="Yaoyotl Helm",    neck="Sanctity Necklace",       ear1="Bladeborn Earring",   ear2="Steelflash Earring",
+        body=gear.xaddiBody,    hands="Sulevia's Gauntlets",    ring1="Rajas Ring",         ring2="Chirich Ring",
+        back=gear.pldJSEback,   waist="Goading Belt",           legs=gear.odysseanAccLegs,  feet=gear.acroAccLegs
     }
+    sets.engaged.DD.MediumAcc.daytime = {ammo="Tengu-no-Hane"}
     sets.engaged.DD.HighAcc = {
-        neck="Iqabi Necklace",
-        ring1="Enlivened Ring", ring2="Chirich Ring",
-        back=gear.pldJSEback,   waist="Anguinus Belt",  legs="Sulevia's Cuisses",
+        head="Yaoyotl Helm",        neck="Iqabi Necklace",          ear1="Heartseeker Earring", ear2="Steelflash Earring",
+        body="Sulevia's Platemail", hands="Sulevia's Gauntlets",    ring1="Enlivened Ring",     ring2="Chirich Ring",
+        back=gear.pldJSEback,       waist="Pya'ekue Belt",          legs=gear.odysseanAccLegs,  feet=gear.acroAccLegs
     }
     
     sets.engaged.with_buff = {}
     sets.engaged.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring", legs="Shabti Cuisses"}
     sets.engaged.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}
     
-    sets.engaged.TankP = {                                                                          ammo="Hasty Pinion +1",
-        head="Sulevia's Mask",          neck="Agitator's Collar",       ear1="Bladeborn Earring",   ear2="Steelflash Earring",
+    sets.engaged.TankP = {                                                                          ammo="Angha Gem",
+        head="Sulevia's Mask",          neck="Twilight Torque",         ear1="Bladeborn Earring",   ear2="Steelflash Earring",
         body="Reverence Surcoat +1",    hands="Sulevia's Gauntlets",    ring1="Defending Ring",     ring2="Chirich Ring",
-        back=gear.pldJSEback,           waist="Pya'ekue Belt",           legs="Sulevia's Cuisses",
-        feet={name="Cizin Greaves +1", augments={'Phys. dmg. taken -4%','Accuracy+4'}}
+        back=gear.pldJSEback,           waist="Pya'ekue Belt",          legs=gear.odysseanAccLegs,  feet=gear.cizinPDTfeet
     }
     sets.engaged.TankP.MediumAcc = {}
     sets.engaged.TankP.HighAcc = {}
@@ -252,7 +248,7 @@ function init_gear_sets()
     sets.engaged.TankM = {                                                                          ammo="Hasty Pinion +1",
         head="Sulevia's Mask",          neck="Twilight Torque",         ear1="Merman's Earring",    ear2="Merman's Earring",
         body="Reverence Surcoat +1",    hands="Sulevia's Gauntlets",    ring1="Defending Ring",     ring2="Chirich Ring",
-        back=gear.pldJSEback,           waist="Pya'ekue Belt",           legs="Sulevia's Cuisses",   feet="Caballarius Leggings +1"
+        back=gear.pldJSEback,           waist="Pya'ekue Belt",          legs=gear.odysseanAccLegs,  feet="Caballarius Leggings +1"
     }
     sets.engaged.TankM.MediumAcc = {}
     sets.engaged.TankM.HighAcc = {}
