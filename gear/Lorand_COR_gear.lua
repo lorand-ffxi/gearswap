@@ -138,7 +138,7 @@ function init_gear_sets()
 	sets.engaged = {
 		head="Whirlpool Mask",	neck="Sanctity Necklace",		ear1="Dudgeon Earring",	ear2="Heartseeker Earring",
 		body="Qaaxo Harness",	hands="Taeon Gloves",		ring1="Rajas Ring",	ring2="Epona's Ring",
-		back="Atheling Mantle",	waist="Windbuffet Belt +1",	legs="Taeon Tights",	feet="Taeon Boots",
+		back="Bleating Mantle",	waist="Windbuffet Belt +1",	legs="Taeon Tights",	feet="Taeon Boots",
 	}
 	
 	sets.engaged.Accuracy = {

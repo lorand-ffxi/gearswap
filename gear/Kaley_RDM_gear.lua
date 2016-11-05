@@ -5,7 +5,8 @@
 --------------------------------------------------------------------------------
 
 function init_gear_sets()
-    gear.ambuMABback = {name="Sucellos's Cape", augments={'INT+19','Mag. Acc+20 /Mag. Dmg.+20','Magic Damage +10','"Mag.Atk.Bns."+10'}}
+    gear.ambuMABback = {name="Sucellos's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Magic Damage +10','"Mag.Atk.Bns."+10'}}
+    gear.ambuMaccBack = {name="Sucellos's Cape", augments={'MND+1','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10'}}
     
     --============================================================
     --          Precast sets
@@ -111,16 +112,18 @@ function init_gear_sets()
     --============================================================
     
     sets.midcast.MagicAccuracy = {
-        main="Marin Staff +1",         sub="Mephitis Grip",        ammo="Kalboron Stone",
+        main="Marin Staff +1",      sub="Mephitis Grip",        ammo="Kalboron Stone",
         head="Atrophy Chapeau +1",  neck="Eddy Necklace",       ear1="Lifestorm Earring",   ear2="Psystorm Earring",
         body="Artsieq Jubbah",      hands="Hagondes Cuffs +1",  ring1="Sangoma Ring",       ring2="Perception Ring",
-        back="Ogapepo Cape",        waist="Ovate Rope",         legs="Artsieq Hose",        feet="Jhakri Pigaches"
+        back=gear.ambuMaccBack,     waist="Ovate Rope",         legs="Artsieq Hose",        feet="Jhakri Pigaches"
     }
     
     sets.midcast.EnfeeblingMagic = {
-        head="Vitivation Chapeau +1",
-        body="Atrophy Tabard +1",           --hands="Estoqueur's Gantherots +2",
-        feet="Vitivation Boots +1"
+        main="Marin Staff +1",      sub="Mephitis Grip",        ammo="Kalboron Stone",
+        head="Jhakri Coronal +1",   neck="Sanctity Necklace",   ear1="Lifestorm Earring",   ear2="Psystorm Earring",
+        body="Jhakri Robe +1",      hands={name="Chironic Gloves", augments={'Mag. Acc.+16 "Mag.Atk.Bns."+16','Haste+3','Mag. Acc.+6'}},
+        ring1="Sangoma Ring",       ring2="Perception Ring",
+        back=gear.ambuMaccBack,     waist="Ovate Rope", legs="Jhakri Slops +1",    feet="Vitivation Boots +1"
     }
     sets.midcast.EnfeeblingMagic.Saboteur = {hands="Estoqueur's Gantherots +2"}
     
@@ -244,7 +247,7 @@ function init_gear_sets()
     sets.idle.oldschool = {
         main="Terra's Staff",           sub="Elder's Grip +1",  ammo="Homiliary",
         head="Vitivation Chapeau +1",   neck="Twilight Torque", ear1="Novia Earring",   ear2="Ethereal Earring",
-        body="Jhakri Robe +1",          hands="Jhakri Cuffs",   ring1={name="Dark Ring", augments={'Phys. dmg. taken -5%','Breath dmg. taken -4%','Magic dmg. taken -3%'}},
+        body="Jhakri Robe +1",          hands="Jhakri Cuffs +1",   ring1={name="Dark Ring", augments={'Phys. dmg. taken -5%','Breath dmg. taken -4%','Magic dmg. taken -3%'}},
         ring2="Shneddick Ring",
         back="Mecistopins Mantle",      waist="Fucho-no-obi",   legs="Crimson Cuisses", feet="Jhakri Pigaches"
     }

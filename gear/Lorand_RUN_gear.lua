@@ -118,7 +118,7 @@ function init_gear_sets()
 	sets.engaged.Standard = {										ammo="Vanir Battery",
 		head="Whirlpool Mask",		neck="Asperity necklace",	ear1="Steelflash earring",	ear2="Bladeborn earring",
 		body="Futhark Coat +1",		hands="Runeist Mitons +1",	ring1="Epona's ring",		ring2="Beeline ring",
-		back="Atheling mantle",		waist="Windbuffet belt",	legs="Runeist Trousers +1",	feet="Weatherspoon Souliers +1"
+		back="Bleating mantle",		waist="Windbuffet belt",	legs="Runeist Trousers +1",	feet="Weatherspoon Souliers +1"
 	}
 	sets.engaged.PDT = {											ammo="Vanir Battery",
 		head="Futhark Bandeau",		neck="Twilight Torque",		ear1="Steelflash earring",	ear2="Bladeborn earring",
@@ -133,7 +133,7 @@ function init_gear_sets()
 	sets.engaged.Qaaxo = {											ammo="Vanir Battery",
 		head="Iuitl Headgear",		neck="Asperity necklace",	ear1="Steelflash earring",	ear2="Bladeborn earring",
 		body="Qaaxo Harness",		hands="Qaaxo Mitaines",		ring1="Epona's ring",		ring2="Rajas ring",
-		back="Atheling mantle",		waist="Windbuffet belt",	legs="Runeist Trousers +1",	feet="Qaaxo Leggings"
+		back="Bleating mantle",		waist="Windbuffet belt",	legs="Runeist Trousers +1",	feet="Qaaxo Leggings"
 	}
 	sets.engaged.AccFull = {										ammo="Honed Tathlum",
 		head="Whirlpool Mask",		neck="Peacock Charm",		ear1="Steelflash earring",	ear2="Heartseeker earring",

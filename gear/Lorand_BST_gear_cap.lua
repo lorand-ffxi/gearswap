@@ -42,7 +42,7 @@ function init_gear_sets()
 	sets.wsBase = {											ammo="Jukukik Feather",
 		head="Highwing Helm",	neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
 		body="Xaddi Mail",	hands="Taeon Gloves",		ring1="Rajas Ring",		ring2="Epona's Ring",
-		back="Atheling Mantle",	waist="Fotia Belt",		legs="Taeon Tights",		feet="Whirlpool Greaves"
+		back="Bleating Mantle",	waist="Fotia Belt",		legs="Taeon Tights",		feet="Whirlpool Greaves"
 	}
 	sets.wsBase.MediumAcc = {}
 	sets.wsBase.HighAcc = {}
@@ -99,13 +99,13 @@ function init_gear_sets()
 	sets.engaged = {									ammo="Jukukik Feather",
 		head="Highwing Helm",	neck="Asperity Necklace",	ear1="Dudgeon Earring",	ear2="Heartseeker Earring",
 		body="Xaddi Mail",	hands="Regimen Mittens",	ring1="Rajas Ring",	ring2="Epona's Ring",
-		back="Atheling Mantle",	waist="Patentia Sash",		legs="Taeon Tights",	feet="Taeon Boots"
+		back="Bleating Mantle",	waist="Patentia Sash",		legs="Taeon Tights",	feet="Taeon Boots"
 	}
 	
 	sets.engaged.MediumAcc = {								ammo="Jukukik Feather",
 		head="Yaoyotl Helm",	neck="Agitator's Collar",	ear1="Dudgeon Earring",	ear2="Heartseeker Earring",
 		body="Xaddi Mail",	hands="Taeon Gloves",		ring1="Rajas Ring",	ring2="Epona's Ring",
-		back="Atheling Mantle",	waist="Patentia Sash",		legs="Taeon Tights",	feet="Taeon Boots"
+		back="Bleating Mantle",	waist="Patentia Sash",		legs="Taeon Tights",	feet="Taeon Boots"
 	}
 	
 	sets.engaged.HighAcc = {							ammo="Jukukik Feather",

@@ -54,7 +54,7 @@ function init_gear_sets()
     sets.wsBase = {                                         ammo="Potestas Bomblet",
         head="Highwing Helm",   neck="Asperity Necklace",   ear1="Bladeborn Earring",   ear2="Steelflash Earring",
         body="Qaaxo Harness",   hands="Taeon Gloves",       ring1="Rajas Ring",         ring2="Epona's Ring",
-        back="Atheling Mantle", waist="Fotia Belt",         legs="Taeon Tights",        feet="Otronif Boots +1"
+        back="Bleating Mantle", waist="Fotia Belt",         legs="Taeon Tights",        feet="Otronif Boots +1"
     }
     sets.wsBase.MediumAcc = {ammo="Honed Tathlum",head="Whirlpool Mask"}
     sets.wsBase.HighAcc = {ammo="Honed Tathlum",head="Whirlpool Mask",back="Anchoret's Mantle",feet="Taeon Boots"}
@@ -131,7 +131,7 @@ function init_gear_sets()
     sets.engaged = {                                        ammo="Potestas Bomblet",
         head="Highwing Helm",   neck="Asperity Necklace",   ear1="Bladeborn Earring",   ear2="Steelflash Earring",
         body="Qaaxo Harness",   hands="Taeon Gloves",       ring1="Rajas Ring",         ring2="Epona's Ring",
-        back="Atheling Mantle", waist="Windbuffet Belt +1", legs="Hesychast's Hose +1", feet="Sokushitsu Sune-Ate"
+        back="Bleating Mantle", waist="Windbuffet Belt +1", legs="Hesychast's Hose +1", feet="Sokushitsu Sune-Ate"
     }
     
     sets.engaged.MediumAcc = {                                      ammo="Honed Tathlum",

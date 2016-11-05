@@ -201,7 +201,7 @@ function init_gear_sets()
 	sets.engaged = {
 		head="Whirlpool Mask",	neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
 		body="Qaaxo Harness",	hands="Umuthi Gloves",		ring1="Rajas Ring",		ring2="Epona's Ring",
-		back="Atheling Mantle",	waist="Patentia Sash",		legs="Iuitl Tights +1",		feet="Taeon Boots"
+		back="Bleating Mantle",	waist="Patentia Sash",		legs="Iuitl Tights +1",		feet="Taeon Boots"
 	}
 	sets.engaged.with_buff = {}
 	sets.engaged.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}

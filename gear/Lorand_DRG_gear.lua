@@ -13,7 +13,7 @@ function init_gear_sets()
 		ammo="Hagneia Stone",
 		head="Yaoyotl Helm",	neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
 		body="Xaddi Mail",	hands="Taeon Gloves",		ring1="Rajas Ring",		ring2="K'ayres Ring",
-		back="Atheling Mantle",	waist="Anguinus Belt",		legs="Cizin Breeches +1",	feet="Cizin Greaves +1"
+		back="Bleating Mantle",	waist="Anguinus Belt",		legs="Cizin Breeches +1",	feet="Cizin Greaves +1"
 	}	
 	sets.precast.JA['High Jump'] = combineSets(sets.precast.JA.Jump, {})
 	sets.precast.JA['Super Jump'] = combineSets(sets.precast.JA.Jump, {})
@@ -35,7 +35,7 @@ function init_gear_sets()
 	sets.wsBase = {											ammo="Potestas Bomblet",
 		head="Highwing Helm",	neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
 		body="Phorcys Korazin",	hands="Taeon Gloves",		ring1="Rajas Ring",		ring2="K'ayres Ring",
-		back="Atheling Mantle",	waist="Fotia Belt",		legs="Cizin Breeches +1",	feet="Whirlpool Greaves"
+		back="Bleating Mantle",	waist="Fotia Belt",		legs="Cizin Breeches +1",	feet="Whirlpool Greaves"
 	}
 	
 	sets.wsBase.magic = {
@@ -66,7 +66,7 @@ function init_gear_sets()
 	sets.engaged = {										ammo="Potestas Bomblet",
 		head="Highwing Helm",	neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
 		body="Xaddi Mail",	hands="Taeon Gloves",		ring1="Rajas Ring",		ring2="K'ayres Ring",
-		back="Atheling Mantle",	waist="Windbuffet Belt +1",	legs="Cizin Breeches +1",	feet="Whirlpool Greaves"
+		back="Bleating Mantle",	waist="Windbuffet Belt +1",	legs="Cizin Breeches +1",	feet="Whirlpool Greaves"
 	}
 	
 	sets.engaged.MediumAcc = {									ammo="Potestas Bomblet",

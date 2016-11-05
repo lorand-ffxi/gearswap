@@ -44,7 +44,7 @@ function init_gear_sets()
     sets.wsBase = {
         head="Yaoyotl Helm",    neck="Asperity Necklace",   ear1="Bladeborn Earring",   ear2="Steelflash Earring",
         body="Phorcys Korazin", hands="Otronif Gloves +1",  ring1="Rajas Ring",         ring2="Pyrosoul Ring",
-        back="Atheling Mantle", waist="Fotia Belt",         legs="Otronif Brais +1",    feet="Whirlpool Greaves"
+        back="Bleating Mantle", waist="Fotia Belt",         legs="Otronif Brais +1",    feet="Whirlpool Greaves"
     }
 
     sets.wsBase['4-Hit'] = {
@@ -126,7 +126,7 @@ function init_gear_sets()
     sets.engaged['5-Hit'] = {
         head="Highwing Helm",   neck="Asperity Necklace",   ear1="Bladeborn Earring",   ear2="Steelflash Earring",
         body="Xaddi Mail",      hands="Wakido Kote +1",     ring1="Rajas Ring",         ring2="K'ayres Ring",
-        back="Atheling Mantle", waist="Windbuffet Belt +1", legs="Otronif Brais +1",    feet="Whirlpool Greaves"
+        back="Bleating Mantle", waist="Windbuffet Belt +1", legs="Otronif Brais +1",    feet="Whirlpool Greaves"
     }
     
     sets.engaged['5-Acc'] = {

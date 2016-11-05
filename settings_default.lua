@@ -36,6 +36,7 @@ function set_options()
         gear.cizinHands = {name="Cizin Mufflers +1", augments={'Phys. dmg. taken -1%','"Dbl.Atk."+1'}}
         gear.cizinPDTfeet = {name="Cizin Greaves +1", augments={'Phys. dmg. taken -4%','Accuracy+4'}}
         gear.souveranHeadC = {name="Souveran Schaller", augments={'HP+80','Enmity+7','Potency of "Cure" effect received +10%'}}
+        gear.yoriumEnmHands = {name="Yorium Gauntlets", augments={'Enmity+9'}}
     elseif player.name == 'Kaley' then
         gear.darkRing1 = {name="Dark Ring", augments={'Phys. dmg. taken -5%','Breath dmg. taken -4%','Magic dmg. taken -3%'}}
         gear.jeweledCollar = {name="Jeweled Collar", augments={'"Fast Cast"+2','INT+3','MP recovered while healing +2'}}
@@ -91,7 +92,7 @@ function set_modes()
         modelist['offense'] = {'Normal','Tank'}
     elseif S{'NIN'}:contains(player.main_job) then
         modelist['offense'] = {'auto', 'Tank', 'CrazyAccuracy'}
-        modelist['weapon'] = {'Main','Reverse','OAT','Reive','Sword','Dagger','Other'}
+        modelist['weapon'] = {'Main','OAT','Reive','Sword','Dagger','Other'}
     elseif S{'PLD'}:contains(player.main_job) then
         modelist['offense'] = {'Tankish', 'TankP', 'TankM', 'TankMix', 'DD'}
         modelist['idle'] = {'normal', 'PDT', 'MDT', 'reraise'}
@@ -137,6 +138,7 @@ function set_keybinds()
     keybinds['@i'] = 'gs c toggle noIdle'           --Toggle prevention of aftercast equipment use
     keybinds['@f'] = 'hb f'                         --Toggle HealBot's Follow feature
     keybinds['@b'] = 'gs c toggle autoDefense'      --Overwritten by Treasure mode when THF
+    keybinds['@k'] = 'gs c toggle kite'
 
     --Job-specific keybinds
     if S{mj,sj}:contains('SCH') then

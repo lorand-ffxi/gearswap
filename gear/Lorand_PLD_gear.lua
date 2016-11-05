@@ -67,23 +67,17 @@ function init_gear_sets()
         
     --============================================================
        
-    sets.wsBase = {
-        ammo="Jukukik Feather",
-        head="Yaoyotl Helm",
-        neck="Asperity Necklace",
-        ear1="Bladeborn Earring",   ear2="Steelflash Earring",
-        body="Xaddi Mail",
-        --hands="Cizin Mufflers +1",
-        hands={name="Cizin Mufflers +1", augments={'Phys. dmg. taken -1%','"Dbl.Atk."+1'}},
-        ring1="Rajas Ring",         ring2="Mars's Ring",
-        back="Atheling Mantle",
-        waist="Windbuffet Belt +1",
-        legs="Sulevia's Cuisses",
-        feet={name="Acro Leggings", augments={'Accuracy+19','"Store TP"+3','STR+2 AGI+2'}}
-        --legs="Cizin Breeches +1",
-        --feet="Ejekamal Boots"
+    sets.wsBase = {                                                                         ammo="Jukukik Feather",
+        head="Yaoyotl Helm",    neck="Fotia Gorget",            ear1="Bladeborn Earring",   ear2="Steelflash Earring",
+        body=gear.xaddiBody,    hands="Sulevia's Gauntlets",    ring1="Rajas Ring",         ring2="Mars's Ring",
+        back="Bleating Mantle", waist="Windbuffet Belt +1",     legs="Sulevia's Cuisses",   feet="Flamma Gambieras +1"
     }
-    sets.wsBase.DEX = {ring2="Thundersoul Ring"}
+    sets.wsBase.daytime = {ammo="Tengu-no-Hane"}
+    sets.wsBase.DEX = {                                                                         ammo="Jukukik Feather",
+        head="Flamma Zucchetto +1", neck="Fotia Gorget",            ear1="Bladeborn Earring",   ear2="Steelflash Earring",
+        body="Flamma Korazin",      hands="Flamma Manopolas +1",    ring1="Rajas Ring",         ring2="Thundersoul Ring",
+        back="Kayapa Cape",         waist="Windbuffet Belt +1",     legs="Sulevia's Cuisses",   feet="Flamma Gambieras +1"
+    }
     sets.wsBase.STR = {ring2="Pyrosoul Ring"}
 
     sets.wsBase.MediumAcc = {
@@ -105,15 +99,16 @@ function init_gear_sets()
     --============================================================
     sets.midcast.Enmity = sets.Enmity
     
-    sets.midcast.FastRecast = {     --NOTE: Have not re-evaluated yet
-        ammo="Incantor Stone",
-        head="Cizin Helm +1",           neck="Orunmila's Torque",   ear1="Loquacious Earring",      ear2="Knightly Earring",
-        body="Reverence Surcoat +1",    hands="Yorium Gauntlets",   ring1="Prolix Ring",            ring2="Eihwaz Ring",
-        back="Earthcry Mantle",         waist="Cetl Belt",          legs="Caballarius Breeches +1", feet="Ejekamal Boots"
+    sets.midcast.FastRecast = {                                                                     ammo="Impatiens",
+        head=gear.souveranHeadC,        neck="Orunmila's Torque",   ear1="Loquacious Earring",      ear2="Knightly Earring",
+        body="Reverence Surcoat +1",    hands=gear.yoriumEnmHands,  ring1="Prolix Ring",            ring2=gear.diamondRing,
+        back="Earthcry Mantle",         waist="Goading Belt",       legs="Caballarius Breeches +1", feet="Reverence Leggings +1"
     }
     
     sets.midcast.MagicAccuracy = {
-        ring1="Balrahn's Ring", ring2="Perception Ring"
+        neck="Sanctity Necklace",
+        ear2="Gwati Earring",
+        ring1="Perception Ring"
     }
     
     sets.midcast.DivineMagic = {    --Haste+23%, FC+9%, Enmity+61
@@ -123,11 +118,10 @@ function init_gear_sets()
         back="Earthcry Mantle",         waist="Creed Baudrier",             legs="Caballarius Breeches +1", feet="Creed Sabatons +2"
     }
     
-    sets.midcast.Cure = {   --Enmity+56, Haste+23%, FC+5%, Interrupt-10%, Cure+7%
-        ammo="Impatiens",
-        head="Cizin Helm +1",           neck="Invidia Torque",      ear1="Hospitaler Earring",      ear2="Knightly Earring",
-        body="Reverence Surcoat +1",    hands="Macabre Gauntlets",  ring1="Provocare Ring",         ring2="Eihwaz Ring",
-        back="Fierabras's Mantle",      waist="Creed Baudrier",     legs="Caballarius Breeches +1", feet="Caballarius Leggings +1"
+    sets.midcast.Cure = {                                                                       ammo="Impatiens",
+        head=gear.souveranHeadC,        neck="Invidia Torque",      ear1="Hospitaler Earring",  ear2="Knightly Earring",
+        body="Reverence Surcoat +1",    hands="Macabre Gauntlets",  ring1="Provocare Ring",     ring2="Eihwaz Ring",
+        back="Solemnity Cape",          waist="Goading Belt",       legs=gear.odysseanAccLegs,  feet="Reverence Leggings +1"
     }
     
     sets.midcast.Cure.Self = {  --Enmity+33, Haste+29%, FC+8%, Interrupt-10%, Cure+7%, Cure received+31%
@@ -163,15 +157,17 @@ function init_gear_sets()
     }
     
     sets.idle = {                                                                                       ammo="Homiliary",
-        head="Sulevia's Mask",          neck="Coatl Gorget +1",         ear1="Brachyura Earring",       ear2="Ethereal Earring",
+        head=gear.souveranHeadC,        neck="Coatl Gorget +1",         ear1="Brachyura Earring",       ear2="Ethereal Earring",
         body="Reverence Surcoat +1",    hands="Sulevia's Gauntlets",    ring1="Defending Ring",         ring2="Shneddick Ring",
-        back=gear.pldJSEback,           waist="Fucho-no-obi",           legs="Sulevia's Cuisses",       feet="Reverence Leggings +1"
+        back=gear.pldJSEback,           waist="Fucho-no-obi",           legs=gear.odysseanAccLegs,      feet="Reverence Leggings +1"
     }
     sets.idle.indoors = {body="Ares' Cuirass +1"}
     sets.idle.reraise = {head="Twilight Helm",   body="Twilight Mail"}
     sets.idle.with_buff = {}
     sets.idle.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring", legs="Shabti Cuisses"}
     sets.idle.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}
+    
+    sets.kite = {ring2="Shneddick Ring"}
     
     sets.idle.PDT = {                                                                                   ammo="Bibiki Seashell",
         head=gear.souveranHeadC,        neck="Twilight Torque",         ear1="Creed Earring",           ear2="Oneiros Earring",
@@ -215,10 +211,10 @@ function init_gear_sets()
     sets.engaged.Tankish.MediumAcc = {body="Sulevia's Platemail", ring2="Enlivened Ring"}
     sets.engaged.Tankish.HighAcc = {body="Sulevia's Platemail", ring2="Enlivened Ring"}
     
-    sets.engaged.DD = {                                                                 ammo="Jukukik Feather",
-        head="Yaoyotl Helm",    neck="Asperity Necklace",   ear1="Bladeborn Earring",   ear2="Steelflash Earring",
-        body=gear.xaddiBody,    hands=gear.cizinHands,      ring1="Rajas Ring",         ring2="K'ayres Ring",
-        back="Atheling Mantle", waist="Sweordfaetels",      legs=gear.odysseanAccLegs,  feet=gear.acroAccLegs
+    sets.engaged.DD = {                                                                         ammo="Jukukik Feather",
+        head="Flamma Zucchetto +1", neck="Asperity Necklace",       ear1="Bladeborn Earring",   ear2="Steelflash Earring",
+        body=gear.xaddiBody,        hands="Flamma Manopolas +1",    ring1="Rajas Ring",         ring2="K'ayres Ring",
+        back="Bleating Mantle",     waist="Pya'ekue Belt",          legs=gear.odysseanAccLegs,  feet="Flamma Gambieras +1"
     }
     sets.engaged.DD.daytime = {ammo="Tengu-no-Hane"}
     sets.engaged.DD.MediumAcc = {

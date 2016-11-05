@@ -6,6 +6,7 @@
 
 function init_gear_sets()
     gear.ambuDDcape = {name="Rosmerta's Cape", augments={'Accuracy+20 Attack+20','"Dbl.Atk."+10'}}
+    gear.ambuSTPcape = {name="Rosmerta's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10'}}
     gear.jseCape = {name="Cornflower Cape", augments={'MP+18','DEX+1','Accuracy+1','Blue Magic skill +9'}}
     gear.nehushtan1 = {name="Nehushtan", augments={'Accuracy+5','"Dbl.Atk."+3'}}
     gear.nehushtan2 = {name="Nehushtan", augments={}}
@@ -284,7 +285,7 @@ function init_gear_sets()
     sets.engaged.auto = {                                                           ammo="Hasty Pinion +1",
         head=gear.hercHead,     neck="Asperity Necklace",   ear1="Dudgeon Earring", ear2="Heartseeker Earring",
         body="Jhakri Robe +1",  hands=gear.taeonDWhands,    ring1="Rajas Ring",     ring2="Epona's Ring",
-        back=gear.ambuDDcape,   waist="Windbuffet Belt +1", legs=gear.hercLegs,     feet=gear.taeonDWfeet
+        back=gear.ambuSTPcape,   waist="Windbuffet Belt +1", legs=gear.hercLegs,     feet=gear.taeonDWfeet
     }
     sets.engaged.auto['na'] =   {
     }
@@ -314,7 +315,7 @@ function init_gear_sets()
     sets.engaged.CrazyAccuracy = {                                                      ammo="Honed Tathlum",
         head=gear.hercHead,     neck="Sanctity Necklace",   ear1="Steelflash Earring",  ear2="Heartseeker Earring",
         body="Jhakri Robe +1",  hands=gear.hercHands,       ring1="Mars's Ring",        ring2="Chirich Ring",
-        back=gear.ambuDDcape,   waist="Hurch'lan Sash",     legs=gear.hercLegs,         feet=gear.hercFeet
+        back=gear.ambuSTPcape,   waist="Hurch'lan Sash",     legs=gear.hercLegs,         feet=gear.hercFeet
     }
     
     sets.engaged.with_buff = {}

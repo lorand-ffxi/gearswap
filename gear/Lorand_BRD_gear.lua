@@ -92,7 +92,7 @@ function init_gear_sets()
     sets.wsBase = {
         head="Highwing Helm",       neck="Asperity Necklace",   ear1="Bladeborn Earring",   ear2="Steelflash Earring",
         body="Bihu Justaucorps",    hands="Umuthi Gloves",      ring1="Rajas Ring",         ring2="Mars's Ring",
-        back="Atheling Mantle",     waist="Windbuffet Belt +1", legs="Telchine Braconi",    feet="Gendewitha Galoshes +1",
+        back="Bleating Mantle",     waist="Windbuffet Belt +1", legs="Telchine Braconi",    feet="Gendewitha Galoshes +1",
     }
     sets.wsBase.Magic = {
         head="Highwing Helm",   neck="Sanctity Necklace",    ear1="Friomisi Earring",    ear2="Hecate's Earring",
@@ -242,14 +242,14 @@ function init_gear_sets()
     sets.engaged = {
         range="Oneiros Harp",    head="Highwing Helm",  neck="Asperity Necklace", ear1="Dudgeon Earring",       ear2="Heartseeker Earring",
         body="Bihu Justaucorps", hands="Umuthi Gloves", ring1="Rajas Ring",       ring2="Mars's Ring",
-        back="Atheling Mantle",  waist="Cetl Belt",     legs="Telchine Braconi",  feet="Gendewitha Galoshes +1",
+        back="Bleating Mantle",  waist="Cetl Belt",     legs="Telchine Braconi",  feet="Gendewitha Galoshes +1",
     }
     
     sets.engaged.HighAcc = {
         head="Highwing Helm",                   neck={"Iqabi Necklace","Asperity Necklace"},
         ear1="Bladeborn Earring",               ear2="Steelflash Earring",
         body="Bihu Justaucorps",                hands="Umuthi Gloves",                          ring1="Rajas Ring",     ring2="Mars's Ring",
-        back={"Kayapa Cape","Atheling Mantle"}, waist={"Anguinus Belt","Windbuffet Belt +1"},   
+        back={"Kayapa Cape","Bleating Mantle"}, waist={"Anguinus Belt","Windbuffet Belt +1"},   
         legs="Telchine Braconi",                feet="Gendewitha Galoshes +1"
     }
     sets.engaged.with_buff = {}

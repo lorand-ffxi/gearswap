@@ -55,7 +55,7 @@ function init_gear_sets()
 	sets.wsBase = {											ammo="Potestas Bomblet",
 		head="Taeon Chapeau",	neck="Asperity Necklace",	ear1="Bladeborn Earring",	ear2="Steelflash Earring",
 		body="Qaaxo Harness",	hands="Taeon Gloves",		ring1="Rajas Ring",		ring2="Epona's Ring",
-		back="Atheling Mantle",	waist="Fotia Belt",		legs="Taeon Tights",		feet="Taeon Boots",
+		back="Bleating Mantle",	waist="Fotia Belt",		legs="Taeon Tights",		feet="Taeon Boots",
 	}
 
 	sets.wsBase.Magic = {										ammo="Dosis Tathlum",
@@ -131,7 +131,7 @@ function init_gear_sets()
 	sets.engaged.auto = {									ammo="Potestas Bomblet",
 		head="Taeon Chapeau",	neck="Charis Necklace",	ear1="Heartseeker Earring",	ear2="Dudgeon Earring",
 		body="Qaaxo Harness",	hands="Taeon Gloves",	ring1="Rajas Ring",		ring2="Epona's Ring",
-		back="Atheling Mantle",	waist="Patentia Sash",	legs="Taeon Tights",		feet="Taeon Boots"
+		back="Bleating Mantle",	waist="Patentia Sash",	legs="Taeon Tights",		feet="Taeon Boots"
 	}
 	sets.engaged.auto['na'] =	{}	--25% haste, 72% DW max
 	sets.engaged.auto['I'] =	{}	--40% haste, 67% DW max

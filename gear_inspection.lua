@@ -5,10 +5,13 @@
     
     The stats returned may be inaccurate for gear that has Pet: sections...
     
+    TODO:
+    - Avg time to 1k tp (based on delay, avg hits/round, etc)
+    
 --]]
 --======================================================================================================================
 
-lor_gs_versions.gear_inspection = '2016-10-09.0'
+lor_gs_versions.gear_inspection = '2016-10-30.0'
 
 gi = {}
 
@@ -499,8 +502,14 @@ function gi.melee_stats()
     
     local total_da = (gear_stats['Double Attack'] or 0) + gi.job_trait('Double Attack')
     local total_ta = (gear_stats['Triple Attack'] or 0) + gi.job_trait('Triple Attack')
+    local total_qa = (gear_stats['Quadruple Attack'] or 0)
     
-    atcfs('Gear+JA Haste: %.2f%% | Total STP: %s%% | Double Attack: %s%% | Triple Attack: %s%%':format(pre_magic_haste*100, stp*100, total_da*100, total_ta*100))
+    local swings_per_round_base = 1 + ((dwing or h2hing) and 1 or 0)
+    local swings_per_round_mult = (1 - (total_da + total_ta + total_qa)) + (2 * total_da) + (3 * total_ta) + (4 * total_qa)
+    local swings_per_round_avg = swings_per_round_base * swings_per_round_mult
+    swings_per_round_avg = (swings_per_round_avg > 8) and 8 or swings_per_round_avg
+    
+    atcfs('Double Attack: %s%% | Triple Attack: %s%% | Quadruple Attack: %s%% | Avg Swings per Round: %.3f', total_da*100, total_ta*100, total_qa*100, swings_per_round_avg)
     
     local dex = player.base_dex + (gear_stats['DEX'] or 0)
     local str = player.base_str + (gear_stats['STR'] or 0)
@@ -525,7 +534,7 @@ function gi.melee_stats()
         sub_att = 15 + sub_total_skill + math.floor(str * 0.5) + att
     end
     
-    atcfs('Accuracy: %s / %s  |  Attack: %s / %s  [approximate - acc/att calc is not perfect]', main_acc, sub_acc, main_att, sub_att)
+    atcfs('Gear+JA Haste: %.2f%% | Total STP: %s%% | Accuracy*: %s / %s  |  Attack*: %s / %s  [*approximate]', pre_magic_haste*100, stp*100, main_acc, sub_acc, main_att, sub_att)
     
     local delay_cap = (delay1 + delay2) * 0.2
     

@@ -6,7 +6,7 @@
 --==============================================================================
 
 function init()
-    lor_gs_versions.core_components = '2016-10-15.0'
+    lor_gs_versions.core_components = '2016-10-30.1'
     show_debug = false
     
     require('lor/lor_utils')
@@ -497,10 +497,20 @@ function get_precast_set(spell)
                 else
                     precastSet = sets.wsBase
                 end
+                                
+                local time_set = 'daytime'
+                if (world.time >= (18*60) or world.time <= (6*60)) then
+                    time_set = 'nighttime'
+                end
+                precastSet = combineSets(precastSet, sets.wsBase, time_set)
                 precastSet = combineSets(precastSet, sets.wsBase, get_sub_type())
+                precastSet = combineSets(precastSet, sets.wsBase, get_sub_type(), time_set)
                 precastSet = combineSets(precastSet, sets.wsBase, get_sub_type(), modes.offense)
+                precastSet = combineSets(precastSet, sets.wsBase, get_sub_type(), modes.offense, time_set)
                 precastSet = combineSets(precastSet, sets.wsBase, get_sub_type(), modes.offense, wsmod[spell.en])
+                precastSet = combineSets(precastSet, sets.wsBase, get_sub_type(), modes.offense, wsmod[spell.en], time_set)
                 precastSet = combineSets(precastSet, sets.wsBase, get_sub_type(), modes.offense, wsmod[spell.en], spell.en)
+                precastSet = combineSets(precastSet, sets.wsBase, get_sub_type(), modes.offense, wsmod[spell.en], spell.en, time_set)
                 precastSet = combineSets(precastSet, setops.get_ftp_set(spell))
                 
                 for buff,_ in pairs(buffactive) do
@@ -900,7 +910,9 @@ function get_idle_set(baseSet)
     if (modes.defense ~= nil) or (modes.defense ~= 'normal') then
         idleSet = combineSets(idleSet, sets.defense[modes.defense])
     end
-    
+    if modes.kite ~= nil then
+        idleSet = combineSets(idleSet, sets.kite)
+    end
     return idleSet
 end
 

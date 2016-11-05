@@ -151,8 +151,7 @@ function init_gear_sets()
     --          Other sets
     --============================================================
     
-    sets.weapons.Main = {main="Kikoku", sub="Tancho +1"}
-    sets.weapons.Reverse = {main="Tancho +1", sub="Kikoku"}
+    sets.weapons.Main = {main="Kikoku", sub="Shigi"}
     sets.weapons.OAT = {main="Kikoku", sub="Taikogane"}
     sets.weapons.Reive = {main="Kikoku", sub="Senkutanto"}
     sets.weapons.Sword = {main="Usonmunku", sub="Tancho +1"}

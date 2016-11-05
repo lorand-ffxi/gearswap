@@ -72,7 +72,7 @@ function init_gear_sets()
     sets.wsBase = {
         head=gear.taeonTAhead,  neck="Fotia Gorget",        ear1="Steelflash Earring",  ear2="Bladeborn Earring",
         body="Qaaxo Harness",   hands="Meghanada Gloves",   ring1="Rajas Ring",         ring2="Epona's Ring",
-        back="Atheling Mantle", waist="Fotia Belt",         legs=gear.taeonTAlegs,      feet=gear.taeonDWfeet
+        back="Bleating Mantle", waist="Fotia Belt",         legs=gear.taeonTAlegs,      feet=gear.taeonDWfeet
     }
     
     sets.wsBase.DEX = {}
