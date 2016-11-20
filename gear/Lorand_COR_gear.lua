@@ -114,7 +114,7 @@ function init_gear_sets()
 	sets.idle = {
 		head="Ocelomeh Headpiece +1",	neck="Sanctity Necklace",   ear1="Brachyura Earring",	ear2="Ethereal Earring",
 		body="Qaaxo Harness",		    hands="Umuthi Gloves",		ring1="Defending Ring",		ring2="Shneddick Ring",
-		back="Repulse Mantle",		    waist="Flume Belt",		    legs=gear.hercLegs,         feet=gear.hercFeet
+		back="Repulse Mantle",		    waist="Flume Belt",		    legs=gear.hercLegs,         feet=gear.hercCritFeet
 	}
 	sets.idle.with_buff = {}
 	sets.idle.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}

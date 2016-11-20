@@ -49,7 +49,7 @@ function init_gear_sets()
     --============================================================
     
     sets.precast.FC = {
-        head={"Haruspex Hat","Anwig Salade"},       --5%
+        head=gear.hercHead,         --7%
         neck="Orunmila's Torque",   --5%
         ear1="Loquacious Earring",  --2%
         body="Taeon Tabard",        --4%
@@ -135,11 +135,11 @@ function init_gear_sets()
     sets.resting = {}
     
     sets.idle = {                                               --range="Raider's Boomerang",
-        head="Ocelomeh Headpiece +1",   neck="Sanctity Necklace",   ear1="Brachyura Earring",   ear2="Ethereal Earring",
-        body="Qaaxo Harness",
+        head=gear.hercHead,             neck="Sanctity Necklace",   ear1="Brachyura Earring",   ear2="Ethereal Earring",
+        body="Meghanada Cuirie",
         hands={"Plunderer's Armlets +1", gear.hercHands},
-        ring1="Defending Ring",     ring2="Shneddick Ring",
-        back="Repulse Mantle",          waist="Flume Belt",         legs=gear.taeonTAlegs,      feet=gear.hercFeet
+        ring1="Defending Ring",         ring2="Shneddick Ring",
+        back="Repulse Mantle",          waist="Flume Belt",         legs=gear.hercLegs,         feet=gear.hercCritFeet
     }
     sets.idle.with_buff = {}
     sets.idle.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
@@ -148,7 +148,7 @@ function init_gear_sets()
     sets.defense.Evasion = {
         head="Taeon Chapeau",   neck="Torero Torque",           ear1="Novia Earring",   ear2="Ethereal Earring",
         body="Qaaxo Harness",   hands="Plunderer's Armlets +1", ring1="Defending Ring", ring2="Alert Ring",
-        back="Canny Cape",      waist="Sveltesse Gouriz",       legs="Taeon Tights",    feet=gear.hercFeet
+        back="Canny Cape",      waist="Sveltesse Gouriz",       legs=gear.hercLegs,     feet=gear.hercAccFeet
     }
 
     sets.defense.DT = combineSets(sets.defense.Evasion,{    --DT-15%, PDT-12%, MDT-10%  => PDT-27%, MDT-25%
@@ -158,7 +158,7 @@ function init_gear_sets()
     
     sets.defense.PDT = combineSets(sets.defense.DT, {   --PDT-12% + DT => PDT-39%
         hands="Umuthi Gloves",
-        back="Repulse Mantle",      waist="Flume Belt", feet=gear.hercFeet
+        back="Repulse Mantle",      waist="Flume Belt", feet=gear.hercAccFeet
     })
 
     sets.defense.MDT = combineSets(sets.defense.DT, {
@@ -229,7 +229,11 @@ function init_gear_sets()
         back=gear.jseDWCape,        waist="Anguinus Belt",      legs=gear.adhemarLegsA,      feet="Meghanada Jambeaux"
     }
     
-    sets.engaged.TH = combineSets({}, sets.TreasureHunter)
+    sets.engaged.TH = {
+        head=gear.hercHead,         neck="Asperity Necklace",       ear1="Dudgeon Earring", ear2="Heartseeker Earring",
+        body=gear.taeonHasteBody,   hands="Plunderer's Armlets +1", ring1="Rajas Ring",     ring2="Epona's Ring",
+        back=gear.jseDWCape,        waist="Patentia Sash",          legs=gear.hercLegs,     feet="Raider's Poulaines +2"
+    }
     
     --[[{                                 --range="Raider's Boomerang",
         head="Taeon Chapeau",   neck="Asperity Necklace",       ear1="Dudgeon Earring", ear2="Heartseeker Earring",

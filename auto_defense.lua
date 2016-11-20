@@ -3,7 +3,7 @@ return {
     ['monster_abilities'] = {
         ['magic'] = S{'Seaspray','Leeching Current','Suction'},
         ['physical'] = S{'Seismic Tail','Gnash','Deathgnash'},
-        ['turn'] = S{'Bewitching Lantern','Hypnic Lamp','Mayhem Lantern'}
+        ['turn'] = S{'Hypnic Lamp','Mayhem Lantern'}
     },
     ['spells'] = {
         ['magic'] = S{},

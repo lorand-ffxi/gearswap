@@ -11,7 +11,7 @@
 --]]
 --======================================================================================================================
 
-lor_gs_versions.gear_inspection = '2016-10-30.0'
+lor_gs_versions.gear_inspection = '2016-11-20.0'
 
 gi = {}
 
@@ -474,10 +474,14 @@ function gi.melee_stats()
             delay2 = gear.sub.description.Delay
         elseif delay1 == nil then   --Parsing bug that can be used to advantage
             h2hing = true
-            delay1 = gi.job_trait('Martial Arts') + gear.sub.description['Delay:']
+            delay1 = gi.job_trait('Martial Arts') + gear.main.description['Delay:']
         end
     else
         delay1 = gi.job_trait('Martial Arts')
+    end
+    
+    if h2hing then
+        delay1 = delay1 - (gear_stats['Martial Arts'] or 0)
     end
     
     local gear_haste = (gear_stats.Haste or 0) * 1024
@@ -536,7 +540,7 @@ function gi.melee_stats()
     
     atcfs('Gear+JA Haste: %.2f%% | Total STP: %s%% | Accuracy*: %s / %s  |  Attack*: %s / %s  [*approximate]', pre_magic_haste*100, stp*100, main_acc, sub_acc, main_att, sub_att)
     
-    local delay_cap = (delay1 + delay2) * 0.2
+    local delay_cap = h2hing and 96 or ((delay1 + delay2) * 0.2)
     
     local rtbl = {}
     if dwing then
@@ -681,9 +685,10 @@ local function job_trait_tier(levels, player_level)
 end
 
 
-local function tier_for_job(trait, job, level)
+function gi.tier_for_job(trait, job, level)
     job = job:lower()
     if job ~= nil then
+        if isstr(trait) then trait = job_traits[trait] end
         if (job == 'blu') and (trait.blu ~= nil) then
             return gi.blu_trait_tier(trait.blu, trait.blu_points_per_tier)
         else
@@ -694,12 +699,18 @@ end
 
 
 function gi.job_trait(trait_name)
+    local tier, trait_value = gi.get_trait_info(trait_name)
+    return trait_value
+end
+
+
+function gi.get_trait_info(trait_name)
     if job_traits[trait_name] == nil then
         return nil
     end
     local trait = job_traits[trait_name]
-    local main_tier = tier_for_job(trait, player.main_job, player.main_job_level)
-    local sub_tier = tier_for_job(trait, player.sub_job, player.sub_job_level)
+    local main_tier = gi.tier_for_job(trait, player.main_job, player.main_job_level)
+    local sub_tier = gi.tier_for_job(trait, player.sub_job, player.sub_job_level)
     
     local blu_da = false
     if (player.main_job == 'BLU') then
@@ -716,13 +727,19 @@ function gi.job_trait(trait_name)
     if blu_da then
         return max(0.07, trait_value)
     end
-    return trait_value
+    return tier, trait_value
 end
 
 
-
-
-
+function gi.print_trait_info(args)
+    local trait_name = ' ':join(args)
+    local tier, trait_value = gi.get_trait_info(trait_name)
+    if tier ~= nil then
+        atcfs('%s %s : %s', trait_name, num2rom[tier], trait_value)
+    else
+        atcfs('Invalid or unconfigured trait: %s', trait_name)
+    end
+end
 
 
 

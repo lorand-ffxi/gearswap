@@ -9,8 +9,10 @@ function init_gear_sets()
     --          Precast sets
     --============================================================
     sets.precast.JA['Activate'] = {}
+    sets.precast.JA['Repair'] = {ear2="Guignol Earring"}
 
     sets.precast.Waltz = {
+        legs="Desultor Tassets"
     }
     sets.precast.Waltz['Healing Waltz'] = {}
 
@@ -20,15 +22,18 @@ function init_gear_sets()
     
     -- Fast cast sets for spells
     sets.precast.FC = {
-        head="Anwig Salade",        neck="Orunmila's Torque",   ear1="Loquacious Earring",
-        body="Taeon Tabard",        hands="Thaumas Gloves",     ring1="Prolix Ring",        ring2="Veneficium Ring",
-        legs="Quiahuiz Trousers",   feet="Suzaku's Sune-Ate"
+        head=gear.hercHead,         neck="Orunmila's Torque",   ear1="Loquacious Earring",
+        body=gear.taeonHasteBody,   hands="Thaumas Gloves",     ring1="Prolix Ring",        ring2="Veneficium Ring",
+        back="Ogapepo Cape",        legs="Quiahuiz Trousers",   feet="Chelona Boots"
     }
     sets.precast.FC.Utsusemi = {neck="Magoraga Bead Necklace"}
     
     --============================================================
     
     sets.wsBase = {
+        head="Hizamaru Somen +1",       neck="Sanctity Necklace",   ear1="Steelflash Earring",      ear2="Bladeborn Earring",
+        body="Hizamaru Haramaki +1",    hands=gear.hercHands,       ring1="Rajas Ring",             ring2="Epona's Ring",
+        back="Dispersal Mantle",        waist="Windbuffet Belt +1", legs="Hizamaru Hizayoroi +1",   feet=gear.nagaAccFeet
     }
     sets.wsBase.MediumAcc = {}
     sets.wsBase.HighAcc = {}
@@ -52,20 +57,10 @@ function init_gear_sets()
     
     sets.buffs['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
     
-    sets.idle = {
-        range="Divinator",
-        head="Ocelomeh Headpiece +1",
-        neck="Sanctity Necklace",
-        ear1="Brachyura Earring",
-        ear2="Ethereal Earring",
-        body="Qaaxo Harness",
-        hands={name="Otronif Gloves +1", augments={'Phys. dmg. taken -4%','Attack+6'}},
-        ring1="Defending Ring",
-        ring2="Shneddick Ring",
-        back="Repulse Mantle",
-        waist="Hurch'lan Sash",
-        legs={name="Taeon Tights", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','STR+7 DEX+7'}},
-        feet={name="Otronif Boots +1", augments={'Phys. dmg. taken -3%','Attack+6'}}
+    sets.idle = {                                                   range="Divinator",
+        head=gear.hercHead,             neck="Sanctity Necklace",   ear1="Brachyura Earring",   ear2="Ethereal Earring",
+        body="Hizamaru Haramaki +1",    hands=gear.hercHands,       ring1="Defending Ring",     ring2="Shneddick Ring",
+        back="Repulse Mantle",          waist="Hurch'lan Sash",     legs=gear.hercLegs,         feet=gear.hercCritFeet
     }
     sets.idle.with_buff = {}
     sets.idle.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
@@ -86,42 +81,23 @@ function init_gear_sets()
 
     --============================================================
     
-    sets.weapons.Main = {main="Tinhaspa"}
+    sets.weapons.Main = {main="Denouements"}
     
-    sets.engaged = {
-        range="Divinator",
-        head={name="Taeon Chapeau", augments={'Accuracy+18 Attack+18','"Triple Atk."+2','Crit. hit damage +2%'}},
-        neck="Asperity Necklace",
-        ear1="Steelflash Earring",
-        ear2="Bladeborn Earring",
-        body="Qaaxo Harness",
-        hands="Regimen Mittens",
-        ring1="Rajas Ring",
-        ring2="Epona's Ring",
-        back="Dispersal Mantle",
-        waist="Hurch'lan Sash",
-        legs={name="Taeon Tights", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','STR+7 DEX+7'}},
-        feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+5','STR+6 DEX+6'}}
+    sets.engaged = {                                                range="Divinator",
+        head="Hizamaru Somen +1",       neck="Asperity Necklace",   ear1="Steelflash Earring",  ear2="Bladeborn Earring",
+        body="Hizamaru Haramaki +1",    hands="Regimen Mittens",    ring1="Rajas Ring",         ring2="Epona's Ring",
+        back="Dispersal Mantle",        waist="Hurch'lan Sash",     legs=gear.hercLegs,         feet=gear.hercCritFeet
     }
     
     sets.engaged.MediumAcc = {
-        body="Taeon Tabard",
-        ring2="Enlivened Ring"
+        neck="Sanctity Necklace",
+        ring2="Chirich Ring"
     }
     
     sets.engaged.HighAcc = {
-        head={name="Taeon Chapeau", augments={'Accuracy+18 Attack+18','"Triple Atk."+2','Crit. hit damage +2%'}},
         neck="Iqabi Necklace",
-        ear1="Steelflash Earring",
-        ear2="Bladeborn Earring",
-        body={name="Taeon Tabard", augments={'Accuracy+17 Attack+17','Haste+2','STR+6 DEX+6'}},
-        hands={name="Taeon Gloves", augments={'Accuracy+25','"Dual Wield"+4','STR+7 DEX+7'}},
-        ring1="Rajas Ring",
-        ring2="Enlivened Ring",
-        back="Dispersal Mantle",
-        waist="Hurch'lan Sash",
-        legs={name="Taeon Tights", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','STR+7 DEX+7'}},
-        feet={name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+5','STR+6 DEX+6'}}
+        ring2="Chirich Ring",
+        legs="Hizamaru Hizayoroi +1",   feet=gear.hercAccFeet
     }
     
     sets.engaged.with_buff = {}

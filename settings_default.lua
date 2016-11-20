@@ -5,7 +5,7 @@
 --]]
 -----------------------------------------------------------------------------------------------------------
 
-lor_gs_versions.settings_default = '2016-10-15.0'
+lor_gs_versions.settings_default = '2016-11-20.0'
 
 function set_options()
     --Options only need to be set here if your preference differs from the settings in defaults.lua
@@ -21,9 +21,10 @@ function set_options()
         gear.taeonDWfeet = {name="Taeon Boots", augments={'Accuracy+17 Attack+17','"Dual Wield"+5','STR+6 DEX+6'}}
         gear.nagaAccFeet = {name="Naga Kyahan", augments={'STR+10','Accuracy+15','"Subtle Blow"+7'}}
         gear.hercHead = {name="Herculean Helm", augments={'Accuracy+19 Attack+19','"Dual Wield"+3','STR+6','Accuracy+13','Attack+13'}}
-        gear.hercHands = {name="Herculean Gloves", augments={'Accuracy+26','"Triple Atk."+3','AGI+6'}}
+        gear.hercHands = {name="Herculean Gloves", augments={'Accuracy+25 Attack+25','Crit.hit rate+3','DEX+5','Accuracy+1','Attack+12'}}
         gear.hercLegs = {name="Herculean Trousers", augments={'Accuracy+21 Attack+21','Crit. hit damage +3%','STR+9','Accuracy+9','Attack+8'}}
-        gear.hercFeet = {name="Herculean Boots", augments={'Accuracy+20 Attack+20','"Counter"+4','Accuracy+15'}}
+        gear.hercAccFeet = {name="Herculean Boots", augments={'Accuracy+20 Attack+20','"Counter"+4','Accuracy+15'}}
+        gear.hercCritFeet = {name="Herculean Boots", augments={'Accuracy+11 Attack+11','Crit.hit rate+3','AGI+1','Accuracy+13'}}
         gear.heliosMABhands = {name="Helios Gloves", augments={'"Mag.Atk.Bns."+25','Mag. crit. hit dmg. +8%'}}
         gear.heliosMABfeet = {name="Helios Boots", augments={'"Mag.Atk.Bns."+24','Magic crit. hit rate +3','Magic burst mdg.+2%'}}
         gear.adhemarLegsA = {name="Adhemar Kecks", augments={'DEX+10','AGI+10','Accuracy+15'}}
@@ -43,6 +44,10 @@ function set_options()
         gear.artsieqBody = {name="Artsieq Jubbah", augments={'----------------'}}
         gear.hagHands = {name="Hagondes Cuffs +1", augments={'Phys. dmg. taken -4%','"Avatar perpetuation cost" -3'}}
         gear.artsieqLegs = {name="Artsieq Hose", augments={'MP+30','Mag. Acc.+20','MND+7'}}
+    end
+    
+    if player.main_job == 'PUP' then
+        setMode('autoDeploy', true)
     end
     
     autoDummySongs = S{"Army's Paeon"}

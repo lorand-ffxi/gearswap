@@ -6,7 +6,7 @@
 --==============================================================================
 
 function init()
-    lor_gs_versions.core_components = '2016-10-30.1'
+    lor_gs_versions.core_components = '2016-11-20.0'
     show_debug = false
     
     require('lor/lor_utils')
@@ -345,6 +345,14 @@ end
 --]]
 function status_change(new, old)
     update()
+    
+    if new == 'Engaged' then
+        if (player.main_job == 'PUP') and modes.autoDeploy then
+            if get_pet_type() ~= nil then
+                windower.send_command('input /pet Deploy <t>')
+            end
+        end
+    end
 end
 
 --[[
@@ -1395,8 +1403,9 @@ executable_commands = {
     ['atc']       = {['fn']=addToChat,                 ['group']='misc', ['args']='[color#] text', ['help']='Add the given text to the chat log using the given color number'},
     ['help']      = {['fn']=print_help,                ['group']='misc', ['args']='', ['help']='Print this help text'},
     ['info']      = {['fn']=info_func,                 ['group']='misc', ['args']='[cmd]', ['help']='View addon/windower variable values'},
-    ['meleeinfo'] = {['fn']=gi.melee_stats,            ['group']='misc', ['args']='[cmd]', ['help']='Print melee info about current gear'},
-    ['defreport'] = {['fn']=gi.def_report,             ['group']='misc', ['args']='[cmd]', ['help']='Print defense report about current gear'},
+    ['meleeinfo'] = {['fn']=gi.melee_stats,            ['group']='misc', ['args']='', ['help']='Print melee info about current gear'},
+    ['defreport'] = {['fn']=gi.def_report,             ['group']='misc', ['args']='', ['help']='Print defense report about current gear'},
+    ['traitinfo'] = {['fn']=gi.print_trait_info,       ['group']='misc', ['args']='trait_name', ['help']='Print current tier and value for the given trait'},
     ['test']      = {['fn']=test,                      ['group']='misc', ['hide']=true},
     ['reload']    = {['fn']=reload,                    ['group']='misc', ['args']='', ['help']='Reload GearSwap entirely; //gs reload only refreshes the user environment, which leads to a memory leak'},
     ['vercheck']  = {['fn']=version_check,             ['group']='misc', ['args']='', ['help']='Display file versions for lor GS files'},

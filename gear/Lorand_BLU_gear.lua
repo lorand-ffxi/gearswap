@@ -45,7 +45,7 @@ function init_gear_sets()
     sets.wsBase = {                                                                     ammo="Honed Tathlum",
         head=gear.taeonTAhead,  neck="Asperity Necklace",   ear1="Bladeborn Earring",   ear2="Steelflash Earring",
         body="Qaaxo Harness",   hands=gear.hercHands,       ring1="Rajas Ring",         ring2="Epona's Ring",
-        back=gear.ambuDDcape,   waist="Windbuffet Belt +1", legs=gear.hercLegs,         feet=gear.hercFeet
+        back=gear.ambuDDcape,   waist="Windbuffet Belt +1", legs=gear.hercLegs,         feet=gear.hercCritFeet
     }
     sets.wsBase.Magic = {                                                               ammo="Dosis Tathlum",
         head="Jhakri Coronal",  neck="Eddy Necklace",       ear1="Hecate's Earring",    ear2="Friomisi Earring",
@@ -55,7 +55,7 @@ function init_gear_sets()
     sets.wsBase["Chant du Cygne"] = {                                                   ammo="Jukukik Feather",
         head=gear.taeonTAhead,  neck="Asperity Necklace",   ear1="Bladeborn Earring",   ear2="Steelflash Earring",
         body="Jhakri Robe +1",  hands=gear.hercHands,       ring1="Thundersoul Ring",   ring2="Epona's Ring",
-        back=gear.ambuDDcape,   waist="Fotia Belt",         legs=gear.hercLegs,         feet=gear.hercFeet
+        back=gear.ambuDDcape,   waist="Fotia Belt",         legs=gear.hercLegs,         feet=gear.hercCritFeet
     }
     
     --============================================================
@@ -64,7 +64,7 @@ function init_gear_sets()
     sets.midcast.FastRecast = {                                                         ammo="Impatiens",
         head=gear.hercHead,     neck="Orunmila's Torque",   ear1="Loquacious Earring",  ear2="Novia Earring",
         body="Taeon Tabard",    hands="Buremte Gloves",     ring1="Prolix Ring",        ring2=gear.diamondRing,
-        back="Swith Cape",      waist="Witful Belt",        legs=gear.hercLegs,         feet=gear.hercFeet
+        back="Swith Cape",      waist="Witful Belt",        legs=gear.hercLegs,         feet=gear.hercCritFeet
     }
 
     sets.midcast.Cure = {
@@ -92,7 +92,7 @@ function init_gear_sets()
         head="Jhakri Coronal",  neck="Sanctity Necklace",   ear1="Lifestorm Earring",   ear2="Psystorm Earring",
         body="Jhakri Robe +1",  hands={name="Hagondes Cuffs +1", augments={'Phys. dmg. taken -1%','Mag. Acc.+6'}},
         ring1="Sangoma Ring",   ring2="Perception Ring",
-        back="Cornflower Cape", waist="Ovate Rope",         legs="Jhakri Slops",        feet="Jhakri Pigaches"
+        back="Cornflower Cape", waist="Ovate Rope",         legs="Jhakri Slops +1",     feet="Jhakri Pigaches +1"
     }
     
     sets.midcast.BlueMagic = {
@@ -102,8 +102,8 @@ function init_gear_sets()
     
     sets.midcast.BlueMagic['Sudden Lunge'] = {                                          ammo="Honed Tathlum",
         head=gear.hercHead,     neck="Orunmila's Torque",   ear1="Loquacious Earring",  ear2="Gwati Earring",
-        body="Jhakri Robe +1",  hands="Jhakri Cuffs",       ring1="Sangoma Ring",       ring2="Enlivened Ring",
-        back=gear.jseCape,      waist="Hurch'lan Sash",     legs="Jhakri Slops",        feet=gear.hercFeet
+        body="Jhakri Robe +1",  hands="Jhakri Cuffs +1",    ring1="Sangoma Ring",       ring2="Enlivened Ring",
+        back=gear.jseCape,      waist="Hurch'lan Sash",     legs="Jhakri Slops +1",        feet=gear.hercAccFeet
     }
     
     sets.midcast.BlueMagic.Buff = {
@@ -115,15 +115,15 @@ function init_gear_sets()
     
     sets.midcast.BlueMagic.Physical = {                                             ammo="Honed Tathlum",
         head="Jhakri Coronal",  neck="Asperity Necklace",   ear1="Suppanomimi",     ear2="Heartseeker Earring",
-        body="Jhakri Robe +1",  hands="Jhakri Cuffs",       ring1="Rajas Ring",     ring2="Mars's Ring",
-        back=gear.jseCape,      waist="Prosilio Belt",      legs="Jhakri Slops",        feet="Jhakri Pigaches"
+        body="Jhakri Robe +1",  hands="Jhakri Cuffs +1",    ring1="Rajas Ring",     ring2="Mars's Ring",
+        back=gear.jseCape,      waist="Prosilio Belt",      legs="Jhakri Slops +1", feet="Jhakri Pigaches +1"
     }
     sets.midcast.BlueMagic.Physical.AGI = {
         head=gear.hercHead,
         neck="Hope Torque",
         ring1="Stormsoul Ring",
         legs=gear.hercLegs,
-        feet=gear.hercFeet
+        feet=gear.hercAccFeet
     }
     sets.midcast.BlueMagic.Physical.CHR = {}
     sets.midcast.BlueMagic.Physical.DEX = {
@@ -132,7 +132,7 @@ function init_gear_sets()
         hands=gear.hercHands,
         ring2="Thundersoul Ring",
         legs=gear.hercLegs,
-        feet=gear.hercFeet
+        feet=gear.hercAccFeet
     }
     sets.midcast.BlueMagic.Physical.INT = {
         ring1="Icesoul Ring",   ring2="Diamond Ring",
@@ -242,12 +242,12 @@ function init_gear_sets()
     sets.idle = {                                                                       ammo="Demonry Stone",
         head=gear.hercHead,     neck="Sanctity Necklace",   ear1="Brachyura Earring",   ear2="Ethereal Earring",
         body="Jhakri Robe +1",  hands="Umuthi Gloves",      ring1="Defending Ring",     ring2="Shneddick Ring",
-        back="Repulse Mantle",  waist="Flume Belt",         legs=gear.hercLegs,         feet=gear.hercFeet
+        back="Repulse Mantle",  waist="Flume Belt",         legs=gear.hercLegs,         feet=gear.hercCritFeet
     }
     sets.idle.DT = {                                                                        ammo="Bibiki Seashell",
         head="Iuitl Headgear +1",   neck="Twilight Torque",     ear1="Brachyura Earring",   ear2="Ethereal Earring",
         body="Jhakri Robe +1",      hands="Umuthi Gloves",      ring1="Defending Ring",     ring2="Shneddick Ring",
-        back="Repulse Mantle",      waist="Flume Belt",         legs=gear.hercLegs,         feet=gear.hercFeet
+        back="Repulse Mantle",      waist="Flume Belt",         legs=gear.hercLegs,         feet=gear.hercCritFeet
     }
     sets.idle.Learn = {hands="Magus Bazubands"}
     sets.idle.CapFarm = {back="Mecistopins Mantle"}
@@ -263,12 +263,12 @@ function init_gear_sets()
     sets.defense.PDT = {    ammo="Bibiki Seashell",
         head="Iuitl Headgear +1",   neck="Twilight Torque", ear1="Novia Earring",   ear2="Ethereal Earring",
         body="Iuitl Vest +1",       hands="Umuthi Gloves",  ring1="Defending Ring", ring2=gear.darkRing1,
-        back="Repulse Mantle",      waist="Flume Belt",     legs=gear.hercLegs,     feet=gear.hercFeet
+        back="Repulse Mantle",      waist="Flume Belt",     legs=gear.hercLegs,     feet=gear.hercAccFeet
     }
     sets.defense.MDT = {                                                                ammo="Demonry Stone",
         head="Telchine Cap",    neck="Twilight Torque",     ear1="Merman's Earring",    ear2="Merman's Earring",
         body="Iuitl Vest +1",   hands="Telchine Gloves",    ring1="Defending Ring",     ring2=gear.darkRing1,
-        back="Tuilha Cape",                                 legs=gear.hercLegs,         feet=gear.hercFeet
+        back="Tuilha Cape",                                 legs=gear.hercLegs,         feet=gear.hercAccFeet
     }
 
     sets.engaged = {                                                                ammo="Hasty Pinion +1",
@@ -298,7 +298,7 @@ function init_gear_sets()
     }
     sets.engaged.auto['II+'] =  {
         hands=gear.hercHands,
-        feet=gear.hercFeet
+        feet=gear.hercCritFeet
     }
     
     sets.engaged.auto.MediumAcc = {
@@ -315,7 +315,7 @@ function init_gear_sets()
     sets.engaged.CrazyAccuracy = {                                                      ammo="Honed Tathlum",
         head=gear.hercHead,     neck="Sanctity Necklace",   ear1="Steelflash Earring",  ear2="Heartseeker Earring",
         body="Jhakri Robe +1",  hands=gear.hercHands,       ring1="Mars's Ring",        ring2="Chirich Ring",
-        back=gear.ambuSTPcape,   waist="Hurch'lan Sash",     legs=gear.hercLegs,         feet=gear.hercFeet
+        back=gear.ambuSTPcape,  waist="Hurch'lan Sash",     legs="Adhemar Kecks",       feet=gear.hercAccFeet
     }
     
     sets.engaged.with_buff = {}

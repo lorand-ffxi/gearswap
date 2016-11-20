@@ -237,12 +237,25 @@ function init_gear_sets()
 		body="Gendewitha Bliaut +1",	hands="Dynasty Mitts",
 		back="Tuilha Cape",		legs="Gendewitha Spats +1",	feet="Uk'uxkaj Boots"
 	})
-	
-	sets.engaged = {										ammo="Jukukik Feather",
+    
+    
+	sets.engaged = {                                                                    ammo="Jukukik Feather",
+		head="Telchine Cap",	neck="Asperity Necklace",	ear1="Steelflash Earring",	ear2="Bladeborn Earring",
+		body="Helios Jacket",	hands="Telchine Gloves",	ring1="Rajas Ring",		    ring2="Mars's Ring",
+		back="Kayapa Cape",	    waist="Cetl Belt",		    legs="Telchine Braconi",	feet="Gendewitha Galoshes +1"
+    }
+    
+    sets.engaged.MediumAcc = {}
+    sets.engaged.HighAcc = {}
+    
+    sets.engaged.DW = {                                                                 ammo="Jukukik Feather",
 		head="Telchine Cap",	neck="Asperity Necklace",	ear1="Dudgeon Earring",		ear2="Heartseeker Earring",
-		body="Helios Jacket",	hands="Telchine Gloves",	ring1="Rajas Ring",		ring2="Mars's Ring",
-		back="Kayapa Cape",	waist="Cetl Belt",		legs="Telchine Braconi",	feet="Gendewitha Galoshes +1"
-	}
+		body="Helios Jacket",	hands="Telchine Gloves",	ring1="Rajas Ring",		    ring2="Mars's Ring",
+		back="Kayapa Cape",	    waist="Cetl Belt",		    legs="Telchine Braconi",	feet="Gendewitha Galoshes +1"
+    }
+    sets.engaged.DW.MediumAcc = {}
+    sets.engaged.DW.HighAcc = {}
+    
 	sets.engaged.with_buff = {}
 	sets.engaged.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	sets.engaged.with_buff['reive mark'] = {neck="Ygnas's Resolve +1"}
