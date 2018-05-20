@@ -22,7 +22,7 @@ local _export_gear = function(args)
         atc('--help, -h         show this help message and exit')
         atc('--format, -f       list: separate lines; group: grouped by equipment window rows')
         atc('--no_augs          only include item names, not augments (default: include augments)')
-        atc('--name, -n         name to use for the set (default: %s)':format(default_header))
+        atc(('--name, -n         name to use for the set (default: %s)'):format(default_header))
         atc('--canonical, -c    include full item info (default: substitute gear.xyz variables when a match is found)')
         atc('--use_tabs, -t     Use tabs (default: use spaces)')
         return
@@ -60,13 +60,13 @@ local _export_gear = function(args)
             local sname = slotmap[slot] or slot
             local uniq_item = itemlist[bagmap[eq_tbl[slot..'_bag']]][idx_in_bag]
             local item_res = res.items[uniq_item.id]
-            local iname = '"%s"':format(item_res.enl:capitalize())
+            local iname = ('"%s"'):format(item_res.enl:capitalize())
             uniq_item = setops.expand_augments(uniq_item)
             if include_augs and (#uniq_item.augments > 0) then
                 if not canonical and item_res.flags.Rare then
                     equipped[sname] = iname
                 else            
-                    equipped[sname] = '{name=%s, augments=%s}':format(iname, '{%s}':format(',':join(map(enquote, uniq_item.augments))))
+                    equipped[sname] = ('{name=%s, augments=%s}'):format(iname, ('{%s}'):format((','):join(map(enquote, uniq_item.augments))))
                     
                     if (gear ~= nil) and not canonical then
                         local augd_item = loadstring('return '..equipped[sname])()
@@ -115,7 +115,7 @@ local _export_gear = function(args)
         if iname then
             local entry = fmt:format(sname, iname)
             local spaces = (last_was_nl or (i == 1)) and 4 or (4 - (last_entry_len % 4))
-            f:write(' ':rep(spaces), entry)
+            f:write((' '):rep(spaces), entry)
             printed = printed + 1
             comma = printed < last_comma
             last_was_nl = false

@@ -74,7 +74,7 @@ function handle_incoming_chunk(id, data)
                                 if last_mabil_type == 'turn' then
                                     windower.ffxi.turn(-mob_target.facing)
                                 else
-                                    reset_mode({'defense','%s finished their ability':format(mob_target.name)})
+                                    reset_mode({'defense',('%s finished their ability'):format(mob_target.name)})
                                 end
                                 last_mabil_type = nil
                             end

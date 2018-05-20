@@ -30,7 +30,7 @@ local equip_bag_names = {'inventory', 'wardrobe', 'wardrobe2','wardrobe3','wardr
 --local bags = {[0]='inventory',[8]='wardrobe',[10]='wardrobe2',[11]='wardrobe3',[12]='wardrobe4'}
 local bags_nonequippable = {'case','locker','sack','safe','safe2','satchel','storage'}
 local aug_cache = {}
-local nil_aug = string.parse_hex('00':rep(24))
+local nil_aug = string.parse_hex(('00'):rep(24))
 
 _slots = {}
 _slots.names = {
@@ -52,19 +52,19 @@ _slots.names = {
     ['back']       = {'back'},
     ['ammo2']      = {'ammo2'}  -- Not really valid, but core_components will pick this for weaponskills if it exists
 }
-_slots.name_list = comp('k for k,v in _slots.names')
+_slots.name_list = pycomp('k for k,v in _slots.names')
 _slots.variations_to_proper = table.expanded_invert(_slots.names)
-_slots.improper_to_proper = comp('k:v for k,v in table.expanded_invert(_slots.names) if k ~= v')
-_slots.all_name_variations = comp('k:true for k,v in table.expanded_invert(_slots.names)')
+_slots.improper_to_proper = pycomp('k:v for k,v in table.expanded_invert(_slots.names) if k ~= v')
+_slots.all_name_variations = pycomp('k:true for k,v in table.expanded_invert(_slots.names)')
 
 
 local function refresh_bag_contentsA(bag, index, id, count)
-    atcfs('Inventory changed. Bag: %s, Index: %s, ID: %s, Count: %s':format(bag, index, id, count))
+    atcfs(('Inventory changed. Bag: %s, Index: %s, ID: %s, Count: %s'):format(bag, index, id, count))
 end
 
 
 local function refresh_bag_contentsR(bag, index, id, count)
-    atcfs('Inventory changed. Bag: %s, Index: %s, ID: %s, Count: %s':format(bag, index, id, count))
+    atcfs(('Inventory changed. Bag: %s, Index: %s, ID: %s, Count: %s'):format(bag, index, id, count))
 end
 
 
@@ -80,7 +80,7 @@ local function _add_to_set_res(name, augments)
     if name ~= 'empty' then
         ires = res_for_item_name(name)
         if not ires then
-            atc(123, 'ERROR Adding \'%s\' to setops._set_res':format(name))
+            atc(123, ('ERROR Adding \'%s\' to setops._set_res'):format(name))
             return
         end
         iname = ires.en
@@ -482,15 +482,15 @@ function setops.determine_storable(args)
     local output = {}
     for sid,sitems in pairs(slippable) do
         local sname = res.items[sid].en
-        output[tonumber(sname:sub(-2))] = '[':colorize(263)..tostring(sizeof(sitems)):colorize(4,263)..']'..sname:colorize(326,263)..': '..sitems:format('list')
+        output[tonumber(sname:sub(-2))] = ('['):colorize(263)..tostring(sizeof(sitems)):colorize(4,263)..']'..sname:colorize(326,263)..': '..sitems:format('list')
     end
     if sizeof(output) > 0 then
-        atc('Items that you can store with the Porter Moogle (':colorize(262)..tostring(c):colorize(123,262)..'):')
+        atc(('Items that you can store with the Porter Moogle ('):colorize(262)..tostring(c):colorize(123,262)..'):')
         for k,v in opairs(output) do
             atc(v)
         end
     else
-        atc("You don't have anything that's storable with the Porter Moogle":colorize(258))
+        atc(("You don't have anything that's storable with the Porter Moogle"):colorize(258))
     end
 end
 
@@ -512,12 +512,12 @@ function setops.find_movable()
         end
     end
     if (sizeof(extras) > 0) then
-        atc('Items you do not need in your inventory (':colorize(262)..tostring(sizeof(extras)):colorize(123,262)..'):')
+        atc(('Items you do not need in your inventory ('):colorize(262)..tostring(sizeof(extras)):colorize(123,262)..'):')
         for iname,_ in opairs(extras) do
             atc(iname:colorize(329))
         end
     else
-        atc('Everything in your inventory is necessary!':colorize(258))
+        atc(('Everything in your inventory is necessary!'):colorize(258))
     end
 end
 
@@ -556,17 +556,17 @@ function setops.find_slipped()
         end
     end
     if (sizeof(slipped) > 0) then
-        atc('Items you need to retrieve from the Porter Moogle:':colorize(262))
+        atc(('Items you need to retrieve from the Porter Moogle:'):colorize(262))
         local output = {}
         for slip,stbl in pairs(slipped) do
-            local item_list = ", ":join(stbl)
-            output[tonumber(slip:sub(-2))] = '[':colorize(263)..tostring(sizeof(stbl)):colorize(4,263)..']'..slip:colorize(326,263)..': '..item_list 
+            local item_list = (", "):join(stbl)
+            output[tonumber(slip:sub(-2))] = ('['):colorize(263)..tostring(sizeof(stbl)):colorize(4,263)..']'..slip:colorize(326,263)..': '..item_list
         end
         for k,v in opairs(output) do
             atc(v)
         end
     else
-        atc('You have everything that you need from the Porter Moogle!':colorize(258))
+        atc(('You have everything that you need from the Porter Moogle!'):colorize(258))
     end
 end
 
@@ -579,7 +579,7 @@ end
 function setops.find_misplaced()
     local non_equippable = setops.expand_augments_in_bags(bags_nonequippable)
     local slipped2slip = setops.map_slipped_to_slip()
-    local misplaced = comp('v:S{} for k,v in bag_list', {bag_list=bags_nonequippable})
+    local misplaced = pycomp('v:S{} for k,v in bag_list', {bag_list=bags_nonequippable})
     misplaced.missing = S{}
     for name, set_res in pairs(setops._set_res) do
         if name ~= 'empty' then
@@ -591,7 +591,7 @@ function setops.find_misplaced()
                 local versions = (#set_res.versions == 0) and {{}} or set_res.versions
                 for _,aug_set in pairs(versions) do
                     if not setops.in_equippable_bag({name=name,augments=aug_set}) then
-                        local mname = (#aug_set == 0) and name or '%s%s%s':format(string.char(239,40),name,string.char(239,39))
+                        local mname = (#aug_set == 0) and name or ('%s%s%s'):format(string.char(239,40),name,string.char(239,39))
                         local found_match = false
                         for _,item in pairs(non_equippable_items) do
                             if (#aug_set == 0) or table.equals(aug_set, item.augments) then
@@ -610,17 +610,17 @@ function setops.find_misplaced()
     local output = {}
     for bname,btbl in pairs(misplaced) do
         if sizeof(btbl) > 0 then
-            local item_list = ", ":join(btbl:sort())
-            output[bname] = '[':colorize(263)..tostring(sizeof(btbl)):colorize(4,263)..']'..bname:colorize(326,263)..': '..item_list
+            local item_list = (", "):join(btbl:sort())
+            output[bname] = ('['):colorize(263)..tostring(sizeof(btbl)):colorize(4,263)..']'..bname:colorize(326,263)..': '..item_list
         end
     end
     if (sizeof(output) > 0) then
-        atc('Items you need to move to bags from which items can be equipped:':colorize(262))
+        atc(('Items you need to move to bags from which items can be equipped:'):colorize(262))
         for k,v in opairs(output) do
             atcns(v)
         end
     else
-        atc('All of your required items are equippable!':colorize(258))
+        atc(('All of your required items are equippable!'):colorize(258))
     end
 end
 
@@ -630,7 +630,7 @@ end
 --]]
 function setops.augs_to_chat(args)
     if not S{'/l','/p','/t'}:contains(args[1]) then
-        atc(123,'Invalid target for printing set info: \'%s\' - Valid: /l, /p, /t':format(args[1]))
+        atc(123,('Invalid target for printing set info: \'%s\' - Valid: /l, /p, /t'):format(args[1]))
         return
     end
     local arg_name = nil
@@ -641,9 +641,9 @@ function setops.augs_to_chat(args)
             return
         end
         targ = targ..' '..args[2]
-        arg_name = args[3] and " ":join(table.slice(args, 3)) or nil
+        arg_name = args[3] and (' '):join(table.slice(args, 3)) or nil
     else
-        arg_name = args[2] and " ":join(table.slice(args, 2)) or nil
+        arg_name = args[2] and (' '):join(table.slice(args, 2)) or nil
     end
     
     local bags = {[0]='inventory',[8]='wardrobe',[10]='wardrobe2',[11]='wardrobe3',[12]='wardrobe4'}
@@ -659,7 +659,7 @@ function setops.augs_to_chat(args)
             local augged = get_items_with_augments(bag_name, arg_item.id)
             for _,aitem in pairs(augged) do
                 local ires = res.items[arg_item.id]
-                table.insert(output, fmt:format(targ, ires.enl:capitalize(), ',':join(map(enquote, aitem.augments))))
+                table.insert(output, fmt:format(targ, ires.enl:capitalize(), (','):join(map(enquote, aitem.augments))))
             end
         end
     else
@@ -672,14 +672,14 @@ function setops.augs_to_chat(args)
                     local ires = setops._item_res[item.id]
                     item = setops.expand_augments(item)
                     if #item.augments > 0 then
-                        table.insert(output, fmt:format(targ, ires.enl:capitalize(), ',':join(map(enquote, item.augments))))
+                        table.insert(output, fmt:format(targ, ires.enl:capitalize(), (','):join(map(enquote, item.augments))))
                     end
                 end
             end
         end
     end
     if #output > 0 then
-        windower.send_command(';wait 1.1;':join(output))
+        windower.send_command((';wait 1.1;'):join(output))
     end
 end
 
@@ -691,7 +691,7 @@ end
 --]]
 function setops.set_to_chat(args)
     if not S{'/l','/p','/t'}:contains(args[1]) then
-        atc(123,'Invalid target for printing set info: \'%s\' - Valid: /l, /p, /t':format(args[1]))
+        atc(123,('Invalid target for printing set info: \'%s\' - Valid: /l, /p, /t'):format(args[1]))
         return
     end
     local targ = args[1]
@@ -710,5 +710,5 @@ function setops.set_to_chat(args)
         fmt:format(targ, pe.body, pe.hands, pe.ring1, pe.ring2),
         fmt:format(targ, pe.back, pe.waist, pe.legs, pe.feet)
     }
-    windower.send_command(';wait 1.1;':join(olines))
+    windower.send_command((';wait 1.1;'):join(olines))
 end

@@ -5,19 +5,23 @@
 --]]
 --==============================================================================
 
+local global = gearswap._G
+
+
 function init()
-    lor_gs_versions.core_components = '2016-11-20.0'
+    lor_gs_versions.core_components = '2018-05-20.0'
     show_debug = false
     
     require('lor/lor_utils')
     if not _libs.lor then
-        gearswap._G.windower.add_to_chat(39, gearswap._G.windower.to_shift_jis('[ERROR] Required: https://github.com/lorand-ffxi/lor_libs'))
+        global.windower.add_to_chat(39, '[ERROR] Required: https://github.com/lorand-ffxi/lor_libs')
     end
-    _libs.lor.req('all', {n='strings',v='2016.08.07'}, {n='argparse',v='2016.09.24'})
+    _libs.lor.req('all', {n='functional',v='2018.05.19'})
     _libs.req('lists', 'sets')
     _libs.req('chat/chars')         --Required for using special characters in delayed messages
     _libs.req('slips')              --Required for notifying which items need to be fetched from the porter moogle
     _libs.req('files')              --Required for loading external files without using require()
+
     extdata = require('extdata')
     res = res or gearswap.res
     
@@ -25,7 +29,7 @@ function init()
     
     include('packet_handling')                                      --Required for haste tier detection
     include('utility_functions')                                    --Load utility_functions.lua (defines misc functions)
-    winraw = gearswap._G.windower                                   --Required for direct access to windower functions
+    winraw = global.windower                                        --Required for direct access to windower functions
     winraw.register_event('incoming chunk', handle_incoming_chunk)  --Gearswap's overridden version causes errors
     windower.register_event('incoming text', parse_inc_text)        --Need overridden version for reloading
     windower.register_event('outgoing text', parse_out_text)        --Need overridden version for reloading
@@ -55,8 +59,8 @@ function init()
         if init_gear_sets then init_gear_sets() end --Run the primary function defined in each job-specific lua
         setops.init()                               --Improves processing speed while running
     end
-    
-    lor.G.collectgarbage()
+
+    global.collectgarbage()
 end
 
 init()  --Execute init()
@@ -231,8 +235,8 @@ function precast(spell)
                 return
             end
             if (itable.count <= options.ammo_warning_limit) and (itable.count > 1) and (not state.warned) then
-                local ammo_warning = '*****  LOW AMMO WARNING: %s  *****':format(check_ammo)
-                local ammo_bars = '*':rep(#ammo_warning)
+                local ammo_warning = ('*****  LOW AMMO WARNING: %s  *****'):format(check_ammo)
+                local ammo_bars = ('*'):rep(#ammo_warning)
                 atc(39, ammo_bars)
                 atc(39, ammo_warning)
                 atc(39, ammo_bars)
@@ -270,12 +274,12 @@ function precast(spell)
         local rinfo = roll_info[last_roll]
         if (rinfo ~= nil) then
             local rname = last_roll..': '
-            local lucky = '[Lucky: %s] ':format(rinfo.lucky)
-            local unlucky = '[Unlucky: %s] ':format(rinfo.unlucky)
+            local lucky = ('[Lucky: %s] '):format(rinfo.lucky)
+            local unlucky = ('[Unlucky: %s] '):format(rinfo.unlucky)
             local desc = rinfo.effect
             local dutime = 45 - (now - du_gain)
             dutime = (dutime < 0) and 0 or dutime
-            local dumsg = ' | Double-Up time remaining: %ss':format(roundf(dutime))
+            local dumsg = (' | Double-Up time remaining: %ss'):format(roundf(dutime))
             atc(1, rname:colorize(261)..lucky:colorize(339)..unlucky:colorize(349)..desc:colorize(261)..dumsg:colorize(128))
         else
             atcfs(123, 'Error: No roll info stored for %s', spell.en)
@@ -1134,7 +1138,7 @@ end
     
 function cycle_mode(args)
     local mode = args[1]
-    local reason = args[2] and ' [Reason: %s]':format(args[2]) or ''
+    local reason = args[2] and (' [Reason: %s]'):format(args[2]) or ''
     if mode ~= nil then
         cycleMode(mode)
     end
@@ -1146,7 +1150,7 @@ end
 function set_mode(args)
     local mode = args[1]
     local opt = args[2]
-    local reason = args[3] and ' [Reason: %s]':format(args[3]) or ''
+    local reason = args[3] and (' [Reason: %s]'):format(args[3]) or ''
     if (mode ~= nil) and (opt ~= nil) then
         setMode(mode, opt)
     end
@@ -1157,7 +1161,7 @@ end
 
 function reset_mode(args)
     local mode = args[1]
-    local reason = args[2] and ' [Reason: %s]':format(args[2]) or ''
+    local reason = args[2] and (' [Reason: %s]'):format(args[2]) or ''
     if mode ~= nil then
         modes[mode] = nil
         cycleMode(mode)
@@ -1169,7 +1173,7 @@ end
 
 function toggle_mode(args)
     local mode = args[1]
-    local reason = args[2] and ' [Reason: %s]':format(args[2]) or ''
+    local reason = args[2] and (' [Reason: %s]'):format(args[2]) or ''
     if mode ~= nil then
         modes[mode] = not modes[mode]
     end
@@ -1180,7 +1184,7 @@ end
 
 function activate_mode(args)
     local mode = args[1]
-    local reason = args[2] and ' [Reason: %s]':format(args[2]) or ''
+    local reason = args[2] and (' [Reason: %s]'):format(args[2]) or ''
     if mode ~= nil then
         modes[mode] = true
     end
@@ -1334,7 +1338,7 @@ function test(args)
     --end
     
     for k,v in pairs(_libs['chat/chars']) do
-        winraw.add_to_chat(val, '%s      %s':format(k,v))
+        winraw.add_to_chat(val, ('%s      %s'):format(k,v))
     end
     
 end
@@ -1356,12 +1360,12 @@ function print_help()
         table.insert(groups[tbl.group], {cmd, tbl})
     end
     for gname, group in pairs(groups) do
-        atcc(262, '---------- %s ----------':format(group_text[gname]))
+        atcc(262, ('---------- %s ----------'):format(group_text[gname]))
         for _,cmds in pairs(group) do
             local cmd, tbl = cmds[1], cmds[2]
             if not tbl.hide then
-                atcc(263, '%s %s':format(cmd, tbl['args']))
-                atcc(1, '    %s':format(tbl['help']))
+                atcc(263, ('%s %s'):format(cmd, tbl['args']))
+                atcc(1, ('    %s'):format(tbl['help']))
             end
         end
     end
@@ -1372,7 +1376,7 @@ local function reload()
 end
 
 local function version_check()
-    atcc(262, 'Found %s versioned files:':format(sizeof(lor_gs_versions)))
+    atcc(262, ('Found %s versioned files:'):format(sizeof(lor_gs_versions)))
     pprint(lor_gs_versions)
 end
 

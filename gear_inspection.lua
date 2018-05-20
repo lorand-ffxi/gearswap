@@ -312,9 +312,9 @@ end
 local function fpct(val)
     local pct = val * 100
     if pct == math.floor(pct) then
-        return '%s%%':format(pct)
+        return ('%s%%'):format(pct)
     else
-        return '%.2f%%':format(pct)
+        return ('%.2f%%'):format(pct)
     end
 end
 
@@ -326,7 +326,7 @@ function gi.print_summary(key)
         local dkey = key
         local dsummary = summary
         if key == 'dt' then
-            local mdtb = '-%.2f%%':format((1 - summary[4]) * 100)
+            local mdtb = ('-%.2f%%'):format((1 - summary[4]) * 100)
             for i = 1, 3 do
                 dsummary[i] = fpct(summary[i])
             end
@@ -339,7 +339,7 @@ function gi.print_summary(key)
             end
         elseif key == 'mdt+mdb' then
             dkey = 'MDT + MDB'
-            dsummary = '-%.2f%%':format((1 - summary) * 100)
+            dsummary = ('-%.2f%%'):format((1 - summary) * 100)
         elseif key == 'haste' then
             dkey = 'Haste'
         end
@@ -523,7 +523,7 @@ function gi.melee_stats()
     local main_acc, main_att = 0, 0
     local main_skill_type = (gear.main ~= nil) and res.skills[gear.main.res.skill].en or 'Hand-to-Hand'
     local main_skill = player.skills[main_skill_type:lower():gsub(' ','_'):gsub('-','_')]
-    local main_skill_desc = '%s skill':format(main_skill_type)
+    local main_skill_desc = ('%s skill'):format(main_skill_type)
     local main_total_skill = main_skill + ((gear.main ~= nil) and (gear.main.description[main_skill_desc] or 0) or 0)
     main_acc = calc_acc(main_total_skill, dex) + acc
     main_att = 15 + main_total_skill + math.floor(str * 0.75) + att
@@ -532,7 +532,7 @@ function gi.melee_stats()
     if dwing then
         local sub_skill_type = res.skills[gear.sub.res.skill].en
         local sub_skill = player.skills[sub_skill_type:lower():gsub(' ','_'):gsub('-','_')]
-        local sub_skill_desc = '%s skill':format(sub_skill_type)
+        local sub_skill_desc = ('%s skill'):format(sub_skill_type)
         local sub_total_skill = sub_skill + (gear.sub.description[sub_skill_desc] or 0)
         sub_acc = calc_acc(sub_total_skill, dex) + acc
         sub_att = 15 + sub_total_skill + math.floor(str * 0.5) + att
@@ -579,7 +579,7 @@ function gi.melee_stats()
             local req_dw = 1 - (delay_cap / ((delay1 + delay2) * (1 - total_haste)))
             local missing_dw = req_dw - total_dw
             local dw_sign = (missing_dw < 0) and '' or '+'
-            rtbl['Buffs: %s':format(buff)] = buffed_fmt:format(per_hand_delay, delay_reduction, req_dw * 100, dw_sign, missing_dw * 100)
+            rtbl[('Buffs: %s'):format(buff)] = buffed_fmt:format(per_hand_delay, delay_reduction, req_dw * 100, dw_sign, missing_dw * 100)
         end
     else
         local base_tpPerHit = gi.tp_for_delay(delay1)
@@ -609,7 +609,7 @@ function gi.melee_stats()
             buffed_delay = (buffed_delay < delay_cap) and delay_cap or buffed_delay
             delay_reduction = (1 - (buffed_delay / (delay1 + delay2))) * 100
             local actual_delay = math.floor(buffed_delay)
-            rtbl['Buffs: %s':format(buff)] = buffed_fmt:format(actual_delay, delay_reduction)
+            rtbl[('Buffs: %s'):format(buff)] = buffed_fmt:format(actual_delay, delay_reduction)
         end
     end
     pprint(rtbl)
@@ -732,7 +732,7 @@ end
 
 
 function gi.print_trait_info(args)
-    local trait_name = ' ':join(args)
+    local trait_name = (' '):join(args)
     local tier, trait_value = gi.get_trait_info(trait_name)
     if tier ~= nil then
         atcfs('%s %s : %s', trait_name, num2rom[tier], trait_value)

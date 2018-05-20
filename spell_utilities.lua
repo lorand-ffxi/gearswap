@@ -169,7 +169,7 @@ function handle_strategems(cmdParams)
     
     if (magicType ~= nil) then
         if (stratagems[magicType][stratagem] ~= nil) then
-            windower.send_command('input /ja "%s" <me>':format(stratagems[magicType][stratagem]))
+            windower.send_command(('input /ja "%s" <me>'):format(stratagems[magicType][stratagem]))
         else
             atc(123,'Error: Unknown strategem ['..tostring(strategem)..']')
         end
@@ -256,7 +256,7 @@ function buff_active(...)
     for _,buffid in pairs(player.buffs) do
         local buff = gearswap.res.buffs[buffid]
         if buff == nil then
-            atc(123, 'Buffid not found in resources: %s':format(buffid))
+            atc(123, ('Buffid not found in resources: %s'):format(buffid))
         elseif args:contains(buff.en:lower()) then
             return buff
         end

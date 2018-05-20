@@ -140,12 +140,12 @@ end
 function addToChat(cmdParams)
     local dispText = cmdParams[2]
     for i = 3, #cmdParams, 1 do
-        dispText = ' ':join(dispText, cmdParams[i])
+        dispText = (' '):join(dispText, cmdParams[i])
     end
     --Parse the text to be displayed for special character codes as found
     -- in Windower/addons/libs/chat/chars.lua
     for k,v in pairs(_libs['chat/chars']) do
-        local ckey = '<%s>':format(k)
+        local ckey = ('<%s>'):format(k)
         if dispText:contains(ckey) then
             --Replace codes with the characters they represent
             dispText = dispText:gsub(ckey, v)
@@ -160,16 +160,16 @@ function display_current_state()
     for k,v in pairs(modes) do
         if (k == 'ranged') then
             if usesRanged:contains(player.main_job) then
-                ms:insert('%s: %s':fmts(k, v))
+                ms:insert(('%s: %s'):fmts(k, v))
             end
         elseif (k == 'offense') and S{'auto','auto_acc'}:contains(v) then
-            ms:insert('%s: %s[%s]':fmts(k, v, get_haste_mod()))
+            ms:insert(('%s: %s[%s]'):fmts(k, v, get_haste_mod()))
         else
-            ms:insert('%s: %s':fmts(k, v))
+            ms:insert(('%s: %s'):fmts(k, v))
         end
     end
     if buffs and buffs.Haste then
-        ms:insert('Haste tier: %s':fmts(buffs.Haste))
+        ms:insert(('Haste tier: %s'):fmts(buffs.Haste))
     end
     atc(1, ms:concat(' | '))
 end
@@ -322,7 +322,7 @@ function equip_now(set)
     for slot,piece in pairs(set) do
         elines:append(fmt:format(slotmap[slot] or slot, piece.name))
     end
-    send_command(';':join(elines))
+    send_command((';'):join(elines))
 end
 
 function parse_out_text(original)
