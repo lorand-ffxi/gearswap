@@ -24,6 +24,7 @@ lor_gs_versions.set_operations = '2016-09-24.0'
 setops = setops or {}
 setops._set_res = {}
 setops._item_res = S{}
+setops._item_res_x = {en=S{},enl=S{},en_l=S{},enl_l=S{}}
 
 local all_bag_names = S{'case','inventory','locker','sack','safe','safe2','satchel','storage','wardrobe','wardrobe2'}
 local equip_bag_names = {'inventory', 'wardrobe', 'wardrobe2','wardrobe3','wardrobe4'}
@@ -70,7 +71,10 @@ end
 
 local function _res_for_item_name(name)
     if not name then return nil end
-    return res.items:with('en', name) or res.items:with('enl', name:lower()) or setops._item_res:with('en_l',name:lower()) or setops._item_res:with('enl_l',name:lower())
+    local l_name = name:lower()
+    local ires = setops._item_res_x
+    local tbl = ires.en[name] or ires.enl[name] or ires.en_l[l_name] or ires.enl_l[l_name]
+    return tbl
 end
 local res_for_item_name = traceable(_res_for_item_name)
 
@@ -171,8 +175,18 @@ function setops.init()
         atc(123, 'ERROR: Unable to find any defined gear sets!')
         return
     end
-    for id,tbl in pairs(res.items) do
-        setops._item_res[id] = {id=id,en=tbl.en,enl=tbl.enl,en_l=tbl.en:lower(),enl_l=tbl.enl:lower()}
+    for id, tbl in pairs(res.items) do
+        local en_s = tbl.en
+        local en_l = tbl.enl
+        local en_s_l = en_s:lower()
+        local en_l_l = en_l:lower()
+        local val = {id=id, en=en_s, enl=en_l, en_l=en_s_l, enl_l=en_l_l}
+
+        setops._item_res_x.en[en_s] = val
+        setops._item_res_x.enl[en_l] = val
+        setops._item_res_x.en_l[en_s_l] = val
+        setops._item_res_x.enl_l[en_l_l] = val
+        setops._item_res[id] = val
     end
     --Transform all sets to be uniform - this is an optimization to prevent lag-inducing operations on each gear swap
     _normalize(sets)
