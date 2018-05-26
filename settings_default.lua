@@ -127,26 +127,31 @@ function set_keybinds()
     --'^' = [ctrl]      '!' = [alt]     '@' = [win]
     local mj = player.main_job
     local sj = player.sub_job
-    local keybinds = {}
-    keybinds['^d'] = 'gs c set defense PDT'         --Enter Physical defense mode
-    keybinds['!d'] = 'gs c set defense MDT'         --Enter Magic defense mode
-    keybinds['@d'] = 'gs c reset defense'           --Reset the defense mode
-    keybinds['@e'] = 'gs c update user'             --Equip whatever should be worn for the current state
-    keybinds['@w'] = 'equip engaged'                --Equip the current proper engaged set
-    keybinds['@a'] = 'gs c cycle accuracy'          --Cycle through accuracy modes
-    keybinds['@s'] = 'gs c cycle offense'           --Cycle through offense modes
-    keybinds['@q'] = 'gs c cycle idle'              --Cycle through idle modes
-    keybinds['@c'] = 'gs c cycle casting'           --Cycle through casting modes
-    keybinds['@r'] = 'gs c cycle ranged'            --Cycle through ranged modes
-    keybinds['@v'] = 'gs c cycle weapon'            --Cycle through weapon modes
-    keybinds['@F12'] = 'du blinking self always'    --Toggle DressUp's prevention of own character blinking always
-    keybinds['@i'] = 'gs c toggle noIdle'           --Toggle prevention of aftercast equipment use
-    keybinds['@f'] = 'hb f'                         --Toggle HealBot's Follow feature
-    keybinds['@b'] = 'gs c toggle autoDefense'      --Overwritten by Treasure mode when THF
-    keybinds['@k'] = 'gs c toggle kite'
-
+    local player_jobs = S{mj, sj}
+    local aliases = {
+        equip = 'gs c equip',
+        naked = 'gs equip sets.naked'
+    }
+    local keybinds = {
+        ['^d'] = 'gs c set defense PDT',            --Enter Physical defense mode
+        ['!d'] = 'gs c set defense MDT',            --Enter Magic defense mode
+        ['@d'] = 'gs c reset defense',              --Reset the defense mode
+        ['@e'] = 'gs c update user',                --Equip whatever should be worn for the current state
+        ['@w'] = 'equip engaged',                   --Equip the current proper engaged set
+        ['@a'] = 'gs c cycle accuracy',             --Cycle through accuracy modes
+        ['@s'] = 'gs c cycle offense',              --Cycle through offense modes
+        ['@q'] = 'gs c cycle idle',                 --Cycle through idle modes
+        ['@c'] = 'gs c cycle casting',              --Cycle through casting modes
+        ['@r'] = 'gs c cycle ranged',               --Cycle through ranged modes
+        ['@v'] = 'gs c cycle weapon',               --Cycle through weapon modes
+        ['@F12'] = 'du blinking self always',       --Toggle DressUp's prevention of own character blinking always
+        ['@i'] = 'gs c toggle noIdle',              --Toggle prevention of aftercast equipment use
+        ['@f'] = 'hb f',                            --Toggle HealBot's Follow feature
+        ['@b'] = 'gs c toggle autoDefense',         --Overwritten by Treasure mode when THF
+        ['@k'] = 'gs c toggle kite'
+    }
     --Job-specific keybinds
-    if S{mj,sj}:contains('SCH') then
+    if player_jobs:contains('SCH') then
         keybinds['^='] = 'gs c scholar light'       --Light Arts / Addendum: White
         keybinds['!='] = 'gs c scholar dark'        --Dark Arts / Addendum: Black
         keybinds['^`'] = 'gs c scholar cost'        --Penury / Parsimony
@@ -155,20 +160,20 @@ function set_keybinds()
         keybinds['@F2'] = 'gs c scholar power'      --Rapture / Ebullience
         keybinds['@F3'] = 'gs c scholar enmity'     --Tranquility / Equanimity
         keybinds['@F4'] = 'gs c scholar duration'   --Perpetuance [Light only]
-        keybinds['@F5'] = 'gs c scholar ws'     --Immanence [Dark only]
-        keybinds['!a'] = 'gs c scholar aoe'     --Accession / Manifestation
-        keybinds['^a'] = 'gs c scholar aoe'     --Accession / Manifestation
+        keybinds['@F5'] = 'gs c scholar ws'         --Immanence [Dark only]
+        keybinds['!a'] = 'gs c scholar aoe'         --Accession / Manifestation
+        keybinds['^a'] = 'gs c scholar aoe'         --Accession / Manifestation
         keybinds['!s'] = 'input /ja Sublimation <me>'
         keybinds['^s'] = 'input /ja Sublimation <me>'
     end
-    if S{mj,sj}:contains('NIN') then
+    if player_jobs:contains('NIN') then
         keybinds['@9'] = 'input /ma "Monomi: Ichi" <me>'
         keybinds['@0'] = 'input /ma "Tonko: Ni" <me>'
     end
-    if S{mj,sj}:contains('WAR') then
+    if player_jobs:contains('WAR') then
         keybinds['@3'] = 'input /ja Provoke <t>'
     end
-    if S{mj,sj}:contains('DNC') then
+    if player_jobs:contains('DNC') then
         keybinds['@`'] = 'input /ja "Violent Flourish" <t>'
         keybinds['@3'] = 'input /ja "Animated Flourish" <t>'
         keybinds['@8'] = 'input /ja "Spectral Jig" <me>'
@@ -182,17 +187,17 @@ function set_keybinds()
         keybinds['@9'] = 'input /ma "Sneak" <t>'
         keybinds['@0'] = 'input /ma "Invisible" <t>'
     end
-    if S{mj,sj}:contains('NIN') then
+    if player_jobs:contains('NIN') then
         keybinds['@1'] = 'input /ma "Utsusemi: Ni" <me>'
         keybinds['@2'] = 'input /ma "Utsusemi: Ichi" <me>'
     end
-    if S{mj,sj}:contains('BLM') then
+    if player_jobs:contains('BLM') then
         keybinds['@`'] = 'input /ma "Stun" <t>'
         keybinds['@2'] = 'input /ma "Aspir II" <t>'
         keybinds['@3'] = 'input /ma Aspir <t>'
         keybinds['@7'] = 'input /ma "Ice Spikes" <me>'
     end
-    if S{mj,sj}:contains('SAM') then
+    if player_jobs:contains('SAM') then
         keybinds['^`'] = 'input /ja "Hasso" <me>'
         keybinds['!`'] = 'input /ja "Seigan" <me>'
     end
@@ -239,7 +244,9 @@ function set_keybinds()
     end
     
     clear_binds()
-    windower.send_command('alias equip gs c equip')
+    for alias, cmd in pairs(aliases) do
+        windower.send_command(('alias %s %s'):format(alias, cmd))
+    end
     --Process the keybinds list and set them accordingly
     for key_combo,cmd in pairs(keybinds) do
         windower.send_command('bind '..key_combo..' '..cmd)
