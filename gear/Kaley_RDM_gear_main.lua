@@ -8,7 +8,7 @@ function init_gear_sets()
 	--============================================================
 	--			Precast sets
 	--============================================================
-	sets.precast.JA['Chainspell'] = {body="Vitivation Tabard +1"}
+	sets.precast.JA['Chainspell'] = {body="Vitiation Tabard +1"}
 	sets.precast.JA['Saboteur'] = {hands="Estoqueur's Gantherots +2"}
 	
 	sets.precast.Waltz = {}
@@ -19,7 +19,7 @@ function init_gear_sets()
 		main="Marin Staff",		--2%
 		head="Atrophy Chapeau +1",	--12%
 		ear1="Loquacious Earring",	--2%
-		body="Vitivation Tabard +1",	--13%
+		body="Vitiation Tabard +1",	--13%
 		hands="Gendewitha Gages +1",	--7%
 		ring1="Prolix Ring",		--2%
 		back="Swith Cape",		--3%
@@ -52,12 +52,12 @@ function init_gear_sets()
 	
 	sets.midcast.FastRecast = {
 		head="Atrophy Chapeau +1",	neck="Jeweled Collar",		ear1="Loquacious Earring",	ear2="Novia Earring",
-		body="Vitivation Tabard +1",	hands="Gendewitha Gages +1",
+		body="Vitiation Tabard +1",	hands="Gendewitha Gages +1",
 		back="Ogapepo Cape",		waist="Cetl Belt",		legs="Artsieq Hose",		feet="Gendewitha Galoshes +1"
 	}
 
 	sets.midcast.HealingMagic = {
-		body="Vitivation Tabard +1",	ring1="Sirona's Ring",		ring2="Ephedra Ring",
+		body="Vitiation Tabard +1",	ring1="Sirona's Ring",		ring2="Ephedra Ring",
 		legs="Atrophy Tights"
 	}
 	sets.midcast.Cursna = {
@@ -69,7 +69,7 @@ function init_gear_sets()
 	sets.midcast.Cure = {	--Cure potency > 50%	|	Enmity - 33
 		main="Tamaxchi",		sub="Genbu's Shield",	ammo="Clarus Stone",
 		head="Gendewitha Caubeen +1",	neck="Jeweled Collar",	ear1="Roundel Earring",	ear2="Novia Earring",
-		body="Vitivation Tabard +1",	hands="Otomi Gloves",	ring1="Prolix Ring",	ring2="Sirona's Ring",
+		body="Vitiation Tabard +1",	hands="Otomi Gloves",	ring1="Prolix Ring",	ring2="Sirona's Ring",
 		back="Ghostfyre Cape",		waist="Cetl Belt",	legs="Atrophy Tights",	feet="Atrophy Boots"
 	}
 	sets.midcast.Curaga = sets.midcast.Cure
@@ -83,7 +83,7 @@ function init_gear_sets()
 	sets.midcast.EnhancingMagic = {
 		main="Secespita",		sub="Muse Tariqah",		ammo="Clarus Stone",
 		ear1="Loquacious Earring",	ear2="Novia Earring",
-		body="Vitivation Tabard +1",	hands="Vitivation Gloves",
+		body="Vitiation Tabard +1",	hands="Vitiation Gloves",
 		back="Estoqueur's Cape",	waist="Cascade Belt",		legs="Atrophy Tights",	feet="Estoqueur's Houseaux +2"
 	}
 	sets.midcast.EnhancingMagic.Duration = {
@@ -97,7 +97,7 @@ function init_gear_sets()
 	}
 	
 	sets.midcast['Aquaveil'] =	{waist="Emphatikos Rope", legs="Shedir Seraweels"}
-	sets.midcast['Phalanx II'] =	{hands="Vitivation Gloves"}
+	sets.midcast['Phalanx II'] =	{hands="Vitiation Gloves"}
 	sets.midcast['Refresh'] =	{legs="Estoqueur's Fuseau +2"}
 	sets.midcast['Stoneskin'] =	{
 		neck="Stone Gorget",	ear2="Earthcry Earring",
@@ -110,13 +110,13 @@ function init_gear_sets()
 		main="Marin Staff",		sub="Mephitis Grip",		ammo="Kalboron Stone",
 		head="Atrophy Chapeau +1",	neck="Eddy Necklace",		ear1="Lifestorm Earring",	ear2="Psystorm Earring",
 		body="Artsieq Jubbah",		hands="Hagondes Cuffs +1",	ring1="Sangoma Ring",		ring2="Perception Ring",
-		back="Ogapepo Cape",		waist="Ovate Rope",		legs="Artsieq Hose",		feet="Vitivation Boots +1"
+		back="Ogapepo Cape",		waist="Ovate Rope",		legs="Artsieq Hose",		feet="Vitiation Boots +1"
 	}
 	
 	sets.midcast.EnfeeblingMagic = {
-		head="Vitivation Chapeau +1",
+		head="Vitiation Chapeau +1",
 		body="Atrophy Tabard +1",			--hands="Estoqueur's Gantherots +2",
-		feet="Vitivation Boots +1"
+		feet="Vitiation Boots +1"
 	}
 	sets.midcast.EnfeeblingMagic.Saboteur = {hands="Estoqueur's Gantherots +2"}
 	
@@ -133,8 +133,8 @@ function init_gear_sets()
 		back="Tuilha Cape",
 	}
 	
-	sets.midcast['Dia III'] = {head="Vitivation Chapeau +1"}
-	sets.midcast['Slow II'] = {head="Vitivation Chapeau +1"}
+	sets.midcast['Dia III'] = {head="Vitiation Chapeau +1"}
+	sets.midcast['Slow II'] = {head="Vitiation Chapeau +1"}
 	
 	--============================================================
 	
@@ -142,7 +142,7 @@ function init_gear_sets()
 		main="Marin Staff",		sub="Bugard Strap +1",					ammo="Witchstone",
 		head="Buremte Hat",		neck="Eddy Necklace",	ear1="Hecate's Earring",	ear2="Friomisi Earring",
 		body="Hagondes Coat +1",	hands="Otomi Gloves",	ring1="Acumen Ring",		ring2="Spiral Ring",
-		back="Toro Cape",		waist="Cognition Belt",	legs="Hagondes Pants +1",	feet="Vitivation Boots +1"
+		back="Toro Cape",		waist="Cognition Belt",	legs="Hagondes Pants +1",	feet="Vitiation Boots +1"
 	}
 	sets.midcast.ElementalMagic.LowTier = {
 		main="Marin Staff",		sub="Bugard Strap +1",					ammo="Witchstone",
@@ -154,7 +154,7 @@ function init_gear_sets()
 		main="Marin Staff",		sub="Bugard Strap +1",					ammo="Witchstone",
 		head="Buremte Hat",		neck="Eddy Necklace",	ear1="Hecate's Earring",	ear2="Friomisi Earring",
 		body="Hagondes Coat +1",	hands="Otomi Gloves",	ring1="Acumen Ring",		ring2="Spiral Ring",
-		back="Toro Cape",		waist="Cognition Belt",	legs="Hagondes Pants +1",	feet="Vitivation Boots +1"
+		back="Toro Cape",		waist="Cognition Belt",	legs="Hagondes Pants +1",	feet="Vitiation Boots +1"
 	}
 	sets.midcast.ElementalMagic.Earth = {neck="Quanpur Necklace"}
 	
@@ -162,13 +162,13 @@ function init_gear_sets()
 		main="Marin Staff",		sub="Bugard Strap +1",					ammo="Witchstone",
 		head="Buremte Hat",		neck="Eddy Necklace",	ear1="Hecate's Earring",	ear2="Friomisi Earring",
 		body="Hagondes Coat +1",	hands="Otomi Gloves",	ring1="Acumen Ring",		ring2="Spiral Ring",
-		back="Toro Cape",		waist="Cognition Belt",	legs="Hagondes Pants +1",	feet="Vitivation Boots +1"
+		back="Toro Cape",		waist="Cognition Belt",	legs="Hagondes Pants +1",	feet="Vitiation Boots +1"
 	}
 	sets.midcast.ElementalMagic.HighAcc = {
 		main="Marin Staff",		sub="Bugard Strap +1",					ammo="Witchstone",
 		head="Buremte Hat",		neck="Eddy Necklace",	ear1="Hecate's Earring",	ear2="Friomisi Earring",
 		body="Hagondes Coat +1",	hands="Otomi Gloves",	ring1="Acumen Ring",		ring2="Spiral Ring",
-		back="Toro Cape",		waist="Cognition Belt",	legs="Hagondes Pants +1",	feet="Vitivation Boots +1"
+		back="Toro Cape",		waist="Cognition Belt",	legs="Hagondes Pants +1",	feet="Vitiation Boots +1"
 	}
 	sets.midcast.ElementalMagic.Proc = {	--Damage is not a priority
 	}
@@ -179,14 +179,14 @@ function init_gear_sets()
 	sets.midcast.ElementalEnfeeble = {
 		head="Kaabanax Hat",
 		hands="Otomi Gloves",		ring1="Spiral Ring",
-		legs="Vitivation Tights +1",	feet="Uk'uxkaj Boots"
+		legs="Vitiation Tights +1",	feet="Uk'uxkaj Boots"
 	}
 
 	sets.midcast.DarkMagic = {}
 	sets.midcast.Stun = {
 		main="Apamajas II",		sub="Mephitis Grip",		ammo="Kalboron Stone",
 		head="Atrophy Chapeau +1",	neck="Jeweled Collar",		ear1="Lifestorm Earring",	ear2="Psystorm Earring",
-		body="Vitivation Tabard +1",	hands="Gendewitha Gages +1",	ring1="Prolix Ring",		ring2="Perception Ring",
+		body="Vitiation Tabard +1",	hands="Gendewitha Gages +1",	ring1="Prolix Ring",		ring2="Perception Ring",
 		back="Ogapepo Cape",		waist="Cetl Belt",		legs="Artsieq Hose",		feet="Bokwus Boots"
 	}
 	
@@ -202,22 +202,22 @@ function init_gear_sets()
 	sets.maxMP = {
 		main="Marin Staff",		sub="Achaq Grip",						ammo="Kalboron Stone",
 		head="Kaabanax Hat",		neck="Estoqueur's Collar",	ear1="Loquacious Earring",	ear2="Star Earring",
-		body="Vitivation Tabard +1",	hands="Otomi Gloves",		ring1="Sangoma Ring",		ring2="Prolix Ring",
+		body="Vitiation Tabard +1",	hands="Otomi Gloves",		ring1="Sangoma Ring",		ring2="Prolix Ring",
 		back="Pahtli Cape",		waist="Hierarch Belt",		legs="Artsieq Hose",		feet="Atrophy Boots"
 	}
 	
 	sets.resting = combineSets(sets.maxMP, {
 		main="Boonwell Staff",		sub="Achaq Grip",						ammo="Clarus Stone",
-		head="Vitivation Chapeau +1",	neck="Eidolon Pendant",		ear1="Loquacious Earring",	ear2="Star Earring",
+		head="Vitiation Chapeau +1",	neck="Eidolon Pendant",		ear1="Loquacious Earring",	ear2="Star Earring",
 		body="Artsieq Jubbah",		hands="Serpentes Cuffs",	ring1="Sangoma Ring",		ring2="Prolix Ring",
 		back="Felicitas Cape",		waist="Austerity Belt",		legs="Nares Trews",		feet="Chelona Boots"
 	})
 	
 	sets.idle = {
 		main="Bolelabunga",		sub="Genbu's Shield",		ammo="Kalboron Stone",
-		head="Vitivation Chapeau +1",	neck="Twilight Torque",		ear1="Novia Earring",		ear2="Ethereal Earring",
+		head="Vitiation Chapeau +1",	neck="Twilight Torque",		ear1="Novia Earring",		ear2="Ethereal Earring",
 		body="Artsieq Jubbah",		hands="Hagondes Cuffs +1",	ring1="Dark Ring",		ring2="Shneddick Ring",
-		back="Cheviot Mantle",		waist="Emphatikos Rope",	legs="Vitivation Tights +1",	feet="Gendewitha Galoshes +1"
+		back="Cheviot Mantle",		waist="Emphatikos Rope",	legs="Vitiation Tights +1",	feet="Gendewitha Galoshes +1"
 	}
 	sets.idle.CapFarm = {back="Mecistopins Mantle"}
 	
@@ -227,9 +227,9 @@ function init_gear_sets()
 	sets.idle.Melee = {
 		--main="Iztaasu +2",			sub="Beatific Shield",
 		ammo="Jukukik Feather",
-		head="Vitivation Chapeau +1",	neck="Twilight Torque",		ear1="Novia Earring",		ear2="Ethereal Earring",
+		head="Vitiation Chapeau +1",	neck="Twilight Torque",		ear1="Novia Earring",		ear2="Ethereal Earring",
 		body="Artsieq Jubbah",		hands="Hagondes Cuffs +1",	ring1="Dark Ring",		ring2="Shneddick Ring",
-		back="Cheviot Cape",		waist="Flume Belt",		legs="Vitivation Tights +1",	feet="Gendewitha Galoshes +1"
+		back="Cheviot Cape",		waist="Flume Belt",		legs="Vitiation Tights +1",	feet="Gendewitha Galoshes +1"
 	}
 	sets.idle.lowMP = {
 		legs="Nares Trews"
@@ -244,8 +244,8 @@ function init_gear_sets()
 	})
 	sets.maxHp = combineSets(sets.naked, {
 		sub="Genbu's Shield",
-		head="Vitivation Chapeau +1",	neck="Estoqueur's Collar",	ear2="Ethereal Earring",
-		body="Vitivation Tabard +1",	hands="Hagondes Cuffs +1",	ring1="Kunaji Ring",	ring2="Meridian Ring",
+		head="Vitiation Chapeau +1",	neck="Estoqueur's Collar",	ear2="Ethereal Earring",
+		body="Vitiation Tabard +1",	hands="Hagondes Cuffs +1",	ring1="Kunaji Ring",	ring2="Meridian Ring",
 		back="Ebullient Cape",		legs="Nares Trews",		feet="Atrophy Boots"
 	})
 
@@ -263,7 +263,7 @@ function init_gear_sets()
 	sets.engaged = {
 		--main="Iztaasu +2",		sub="Beatific Shield",
 		ammo="Jukukik Feather",
-		head="Vitivation Chapeau +1",	neck="Asperity Necklace",	ear1="Brutal Earring",	ear2="Suppanomimi",
+		head="Vitiation Chapeau +1",	neck="Asperity Necklace",	ear1="Brutal Earring",	ear2="Suppanomimi",
 		body="Hagondes Coat +1",	hands="Atrophy Gloves +1",	ring1="Rajas Ring",	ring2="Tyrant's Ring",
 		back="Atheling Mantle",		waist="Cetl Belt",		legs="Atrophy Tights",	feet="Atrophy Boots"
 	}

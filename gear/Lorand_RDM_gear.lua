@@ -10,7 +10,7 @@ function init_gear_sets()
 	--============================================================
 	sets.impact = {body="Twilight Cloak"}	--This is just to remind me to get it from the Porter Moogle
 	
-	sets.precast.JA['Chainspell'] = {body="Vitivation Tabard"}
+	sets.precast.JA['Chainspell'] = {body="Vitiation Tabard"}
 	sets.precast.JA['Saboteur'] = {hands="Estoqueur's Gantherots +2"}
 	
 	sets.precast.Waltz = {}
@@ -21,7 +21,7 @@ function init_gear_sets()
 		head="Atrophy Chapeau",			--?10%
 		neck="Orunmila's Torque",		--5%
 		ear1="Loquacious Earring",		--2%
-		body="Vitivation Tabard",		--12%
+		body="Vitiation Tabard",		--12%
 		hands="Gendewitha Gages +1",		--7%
 		ring1="Prolix Ring",			--2%
 		ring2="Veneficium Ring",		--Q+1%
@@ -48,7 +48,7 @@ function init_gear_sets()
 	
 	sets.midcast.FastRecast = {										ammo="Impatiens",
 		head="Nahtirah Hat",		neck="Orunmila's Torque",	ear1="Loquacious Earring",
-		body="Vitivation Tabard",	hands="Gendewitha Gages +1",	ring1="Prolix Ring",		ring2="Diamond Ring",
+		body="Vitiation Tabard",	hands="Gendewitha Gages +1",	ring1="Prolix Ring",		ring2="Diamond Ring",
 		back="Swith Cape",		waist="Cetl Belt",		legs="Artsieq Hose",		feet="Hagondes Sabots +1"
 	}
 
@@ -71,7 +71,7 @@ function init_gear_sets()
 	}
 	
 	sets.midcast.EnhancingMagic = {
-		body="Vitivation Tabard",	hands="Vitivation Gloves",
+		body="Vitiation Tabard",	hands="Vitiation Gloves",
 		back="Estoqueur's Cape",	waist="Cascade Belt",		legs="Atrophy Tights",	feet="Estoqueur's Houseaux +2"
 	}
 	sets.midcast.EnhancingMagic.Duration = {
@@ -85,7 +85,7 @@ function init_gear_sets()
 	}
 	
 	sets.midcast['Aquaveil'] = {	waist="Emphatikos Rope"}
-	sets.midcast['Phalanx II'] = {	hands="Vitivation Gloves"}
+	sets.midcast['Phalanx II'] = {	hands="Vitiation Gloves"}
 	sets.midcast['Refresh'] = {	legs="Estoqueur's Fuseau +2"}
 	sets.midcast['Stoneskin'] = {
 		neck="Stone Gorget",	ear2="Earthcry Earring",
@@ -102,7 +102,7 @@ function init_gear_sets()
 	}
 	
 	sets.midcast.EnfeeblingMagic = {
-		head="Vitivation Chapeau",	neck="Enfeebling Torque",
+		head="Vitiation Chapeau",	neck="Enfeebling Torque",
 		body="Atrophy Tabard",		hands="Lurid Mitts"
 	}
 	sets.midcast.EnfeeblingMagic.Saboteur = {hands="Estoqueur's Gantherots +2"}
@@ -115,8 +115,8 @@ function init_gear_sets()
 	sets.midcast.EnfeeblingMagic.Potency.Resistant = {}
 	sets.midcast.EnfeeblingMagic.Potency.Normal = {}
 	
-	sets.midcast['Dia III'] = {head="Vitivation Chapeau"}
-	sets.midcast['Slow II'] = {head="Vitivation Chapeau"}
+	sets.midcast['Dia III'] = {head="Vitiation Chapeau"}
+	sets.midcast['Slow II'] = {head="Vitiation Chapeau"}
 
 	--============================================================
 	
@@ -143,7 +143,7 @@ function init_gear_sets()
 	sets.midcast.Stun = {
 		main="Apamajas II",		sub="Mephitis Grip",						ammo="Kalboron Stone",
 		head="Atrophy Chapeau +1",	neck="Orunmila's Torque",	ear1="Lifestorm Earring",	ear2="Psystorm Earring",
-		body="Vitivation Tabard +1",	hands="Buremte Gloves",		ring1="Perception Ring",
+		body="Vitiation Tabard +1",	hands="Buremte Gloves",		ring1="Perception Ring",
 		back="Ogapepo Cape",		waist="Cetl Belt",		legs="Artsieq Hose",		feet="Artsieq Boots"
 	}
 	
@@ -162,7 +162,7 @@ function init_gear_sets()
 	
 	sets.idle = {
 		main="Bolelabunga",		sub="Genbu's Shield",					ammo="Demonry Stone",
-		head="Vitivation Chapeau",	neck="Twilight Torque",	ear1="Brachyura Earring",	ear2="Ethereal Earring",
+		head="Vitiation Chapeau",	neck="Twilight Torque",	ear1="Brachyura Earring",	ear2="Ethereal Earring",
 		body="Artsieq Jubbah",		hands="Lurid Mitts",	ring1="Defending Ring",		ring2="Shneddick Ring",
 		back="Repulse Mantle",		waist="Flume Belt",	legs="Nares Trews",		feet="Serpentes Sabots"
 	}
