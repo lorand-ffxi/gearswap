@@ -236,7 +236,7 @@ function init_gear_sets()
     
     sets.idle = {
         main="Bolelabunga",             sub="Genbu's Shield",       ammo="Homiliary",
-        head="Vitiation Chapeau +1",   neck="Twilight Torque",     ear1="Novia Earring",           ear2="Ethereal Earring",
+        head="Vitiation Chapeau +1",   neck="Loricate Torque",     ear1="Novia Earring",           ear2="Ethereal Earring",
         body="Jhakri Robe +1",          hands="Hagondes Cuffs +1",
         ring1={name="Dark Ring", augments={'Phys. dmg. taken -5%','Breath dmg. taken -4%','Magic dmg. taken -3%'}},
         ring2="Shneddick Ring",
@@ -246,7 +246,7 @@ function init_gear_sets()
     
     sets.idle.oldschool = {
         main="Terra's Staff",           sub="Elder's Grip +1",  ammo="Homiliary",
-        head="Vitiation Chapeau +1",   neck="Twilight Torque", ear1="Novia Earring",   ear2="Ethereal Earring",
+        head="Vitiation Chapeau +1",   neck="Loricate Torque", ear1="Novia Earring",   ear2="Ethereal Earring",
         body="Jhakri Robe +1",          hands="Jhakri Cuffs +1",   ring1={name="Dark Ring", augments={'Phys. dmg. taken -5%','Breath dmg. taken -4%','Magic dmg. taken -3%'}},
         ring2="Shneddick Ring",
         back="Mecistopins Mantle",      waist="Fucho-no-obi",   legs="Crimson Cuisses", feet="Jhakri Pigaches"
@@ -256,7 +256,7 @@ function init_gear_sets()
     sets.idle.with_buff['reive mark'] = {neck="Arciela's Grace +1"}
     
     sets.idle.Melee = {                                             ammo="Homiliary",
-        head="Vitiation Chapeau +1",   neck="Twilight Torque",     ear1="Novia Earring",           ear2="Ethereal Earring",
+        head="Vitiation Chapeau +1",   neck="Loricate Torque",     ear1="Novia Earring",           ear2="Ethereal Earring",
         body="Jhakri Robe +1",          hands="Hagondes Cuffs +1",  ring1="Dark Ring",              ring2="Shneddick Ring",
         back="Cheviot Cape",            waist="Flume Belt",         legs="Vitiation Tights +1",    feet="Gendewitha Galoshes +1"
     }
@@ -277,7 +277,7 @@ function init_gear_sets()
     })
 
     sets.defense.DT = {
-        neck="Twilight Torque",
+        neck="Loricate Torque",
         ring1="Dark Ring",      ring2="Dark Ring"
     }
     sets.defense.PDT = combineSets(sets.defense.DT, {

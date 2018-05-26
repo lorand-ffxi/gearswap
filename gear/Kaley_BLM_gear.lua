@@ -104,7 +104,7 @@ function init_gear_sets()
 	-- Idle sets
 	sets.idle = {
 		main="Bolelabunga",	sub="Genbu's Shield",					ammo="Kalboron Stone",
-		head="Kaabnax Hat",	neck="Twilight Torque",		ear1="Novia Earring",	ear2="Star Earring",
+		head="Kaabnax Hat",	neck="Loricate Torque",		ear1="Novia Earring",	ear2="Star Earring",
 		body="Artsieq Jubbah",	hands="Hagondes Cuffs +1",	ring1="Dark Ring",	ring2="Shneddick Ring",
 		back="Cheviot Cape",	waist="Emphatikos Rope",	legs="Nares Trews",	feet="Hagondes Sabots +1"
 	}

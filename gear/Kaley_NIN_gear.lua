@@ -44,7 +44,7 @@ function init_gear_sets()
 	--============================================================
 	
 	sets.midcast.FastRecast = {
-		head="Ejekamal Mask",			neck="Twilight Torque",	ear1="Loquacious Earring",
+		head="Ejekamal Mask",			neck="Loricate Torque",	ear1="Loquacious Earring",
 		body="Hachiya Chainmail +1",	hands="Mochizuki Tekko",
 		back="Yokaze Mantle",			waist="Cetl Belt",		legs="Kaabnax Trousers",	feet="Otronif Boots"
 	}
@@ -90,7 +90,7 @@ function init_gear_sets()
     }
     
 	sets.idle = {                                                                       ammo="Happo Shuriken",
-        head="Hizamaru Somen",      neck="Twilight Torque", ear1="Novia Earring",       ear2="Ethereal Earring",
+        head="Hizamaru Somen",      neck="Loricate Torque", ear1="Novia Earring",       ear2="Ethereal Earring",
         body="Hizamaru Haramaki",   hands="Hizamaru Kote",  ring1=gear.darkRing1,       ring2="Shneddick Ring",
         back="Repulse Mantle",      waist="Chuq'aba Belt",  legs="Hizamaru Hizayoroi",  feet="Hachiya Kyahan"
 	}
@@ -103,7 +103,7 @@ function init_gear_sets()
 	sets.idle.with_buff['doom'] = {ring1="Saida Ring", ring2="Saida Ring"}
 	
 	sets.defense.DT = {
-		neck="Twilight Torque",
+		neck="Loricate Torque",
 		ring1="Dark Ring",		ring2="Dark Ring"
 	}
 	

@@ -132,7 +132,7 @@ function init_gear_sets()
 	sets.resting = {}
 	
 	sets.idle = {
-		head="Arcadian Beret +1",	neck="Twilight Torque",	ear1="Novia Earring",	ear2="Ethereal Earring",
+		head="Arcadian Beret +1",	neck="Loricate Torque",	ear1="Novia Earring",	ear2="Ethereal Earring",
 		body="Taeon Tabard",		hands="Taeon Gloves",	ring1="Dark Ring",	ring2="Shneddick Ring",
 		back="Repulse Mantle",		waist="Elanid Belt",	legs="Taeon Tights",	feet="Taeon Boots"
 	}

@@ -213,7 +213,7 @@ function init_gear_sets()
 
     sets.idle = {
         main="Bolelabunga",         sub="Genbu's Shield",           range="Nepote Bell",
-        head="Inyanga Tiara +1",    neck="Twilight Torque",         ear1="Novia Earring",   ear2="Ethereal Earring",
+        head="Inyanga Tiara +1",    neck="Loricate Torque",         ear1="Novia Earring",   ear2="Ethereal Earring",
         body="Artsieq Jubbah",      hands="Inyanga Dastanas +1",    ring1=gear.darkRing1,   ring2="Shneddick Ring",
         back="Repulse Mantle",      waist="Fucho-no-obi",           legs="Assiduity Pants", feet="Inyanga Crackows +1"
     }
@@ -231,18 +231,18 @@ function init_gear_sets()
     sets.idle.lowMP_day = {feet="Serpentes Sabots"}
     
     sets.defense.DT = {
-        neck="Twilight Torque",
+        neck="Loricate Torque",
         ring1="Dark Ring",
         ring2="Dark Ring",
     }
     sets.defense.PDT = {
         main="Bolelabunga",             sub="Genbu's Shield",
-        head="Hike Khat",               neck="Twilight Torque",     ear1="Novia Earring",           ear2="Ethereal Earring",
+        head="Hike Khat",               neck="Loricate Torque",     ear1="Novia Earring",           ear2="Ethereal Earring",
         hands="Gendewitha Gages +1",    ring1={name="Dark Ring", augments={'Phys. dmg. taken -5%'}},
         back="Cheviot Cape",            legs="Gendewitha Spats +1", feet="Gendewitha Galoshes +1"
     }
     sets.defense.MDT = {
-        head="Inyanga Tiara +1",    neck="Twilight Torque",         ear1="Novia Earring",   ear2="Ethereal Earring",
+        head="Inyanga Tiara +1",    neck="Loricate Torque",         ear1="Novia Earring",   ear2="Ethereal Earring",
         body="Artsieq Jubbah",      hands="Inyanga Dastanas +1",
         ring1={name="Dark Ring", augments={'Phys. dmg. taken -5%'}},
         ring2={name="Dark Ring", augments={'Phys. dmg. taken -5%','Breath dmg. taken -4%','Magic dmg. taken -3%'}},
