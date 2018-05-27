@@ -19,7 +19,7 @@
 --]]
 --======================================================================================================================
 
-lor_gs_versions.set_operations = '2016-09-24.0'
+lor_gs_versions.set_operations = '2018-05-27.0'
 
 setops = setops or {}
 setops._set_res = {}
@@ -73,8 +73,7 @@ local function _res_for_item_name(name)
     if not name then return nil end
     local l_name = name:lower()
     local ires = setops._item_res_x
-    local tbl = ires.en[name] or ires.enl[name] or ires.en_l[l_name] or ires.enl_l[l_name]
-    return tbl
+    return ires.en[name] or ires.enl[name] or ires.en_l[l_name] or ires.enl_l[l_name]
 end
 local res_for_item_name = traceable(_res_for_item_name)
 
@@ -170,23 +169,30 @@ end
 --local _normalize = traceable(__normalize)
 
 
+function setops.init_resources()
+    if not setops._initialized then
+        for id, tbl in pairs(res.items) do
+            local en_s = tbl.en
+            local en_l = tbl.enl
+            local en_s_l = en_s:lower()
+            local en_l_l = en_l:lower()
+            local val = {id=id, en=en_s, enl=en_l, en_l=en_s_l, enl_l=en_l_l}
+
+            setops._item_res_x.en[en_s] = val
+            setops._item_res_x.enl[en_l] = val
+            setops._item_res_x.en_l[en_s_l] = val
+            setops._item_res_x.enl_l[en_l_l] = val
+            setops._item_res[id] = val
+        end
+    end
+    setops._initialized = true
+end
+
+
 function setops.init()
     if sets == nil then
         atc(123, 'ERROR: Unable to find any defined gear sets!')
         return
-    end
-    for id, tbl in pairs(res.items) do
-        local en_s = tbl.en
-        local en_l = tbl.enl
-        local en_s_l = en_s:lower()
-        local en_l_l = en_l:lower()
-        local val = {id=id, en=en_s, enl=en_l, en_l=en_s_l, enl_l=en_l_l}
-
-        setops._item_res_x.en[en_s] = val
-        setops._item_res_x.enl[en_l] = val
-        setops._item_res_x.en_l[en_s_l] = val
-        setops._item_res_x.enl_l[en_l_l] = val
-        setops._item_res[id] = val
     end
     --Transform all sets to be uniform - this is an optimization to prevent lag-inducing operations on each gear swap
     _normalize(sets)

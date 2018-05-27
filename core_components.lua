@@ -9,7 +9,7 @@ local global = gearswap._G
 
 
 function init()
-    lor_gs_versions.core_components = '2018-05-20.0'
+    lor_gs_versions.core_components = '2018-05-27.0'
     show_debug = false
     
     require('lor/lor_utils')
@@ -56,6 +56,7 @@ function init()
     
     -- Load gear from a job-specific file
     if load_user_gear(player.main_job) then
+        setops.init_resources()
         if init_gear_sets then init_gear_sets() end --Run the primary function defined in each job-specific lua
         setops.init()                               --Improves processing speed while running
     end
